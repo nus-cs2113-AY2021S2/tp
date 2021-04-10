@@ -818,7 +818,7 @@ Invalid Inputs include:
 	- Illegal date format
 	- Duplicate schedules (i.e similar Patient ID and date)
 	
-`add/[Nurse ID]/[Date (DDMMYYYY)]`
+**Format**: `add/[Nurse ID]/[Date (DDMMYYYY)]`
 
 **Checking validity of data input**
 
@@ -855,7 +855,7 @@ Invalid Inputs include:
 	- Illegal Characters
 	- Illegal date format
 	
-`delete/[Nurse ID]/[Date (DDMMYYYY)]`
+**Format**: `delete/[Nurse ID]/[Date (DDMMYYYY)]`
 
 **Checking validity of data input**
 
@@ -886,7 +886,9 @@ Invalid Inputs include:
 >
 	- Any input apart from "all" OR "NurseID"
 
-`list/all`
+**Format**: `list/all`
+
+<img src="diagrams/NurseScheduleListSD.png">
 
 **Checking validity of data input**
 
@@ -918,7 +920,7 @@ Invalid Inputs include:
 >
 	- Any input apart from "all" OR "NurseID"
 
-`list/[Nurse ID]`
+**Format**: `list/[Nurse ID]`
 
 **Checking validity of data input**
 
