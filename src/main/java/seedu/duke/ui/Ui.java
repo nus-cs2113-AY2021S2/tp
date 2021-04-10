@@ -299,6 +299,11 @@ public class Ui {
         System.out.println("Please enter a valid date format.");
     }
 
+    /**
+     * Reads user input and ensures that it does not contain the delimiter " ~~ ".
+     *
+     * @return User input.
+     */
     public static String readCommand() {
         String command;
         Scanner input = new Scanner(System.in);
@@ -315,6 +320,11 @@ public class Ui {
         return command;
     }
 
+    /**
+     * Reads user input and ensures that it is an Integer.
+     *
+     * @return User input in Integer form.
+     */
     public static int readCommandToInt() {
         int command;
         Scanner input = new Scanner(System.in);

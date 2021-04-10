@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 public class CapSimulatorManager {
 
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+    
     public static void execute() {
 
         while (true) {

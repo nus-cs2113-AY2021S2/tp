@@ -153,6 +153,10 @@ public class Storage {
         fw.close();
     }
 
+    /**
+     * Checks if file exists. It will create a new file if it doesn't exist.
+     * Edits filepath variable within storage.
+     */
     public static void loadTasksFile() {
         filePathForTasks += "/UniTracker Data";
         File data = new File(filePathForTasks);
@@ -175,6 +179,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Downloads the contents from task.txt into tasks ArrayList
+     *
+     * @throws FileNotFoundException if tasks.txt file cannot be accessed.
+     */
     public static void downloadTasks() throws FileNotFoundException {
         File f = new File(filePathForTasks); // create a File for the given file path
         Scanner s = new Scanner(f); // create a Scanner using the File as the source
@@ -188,6 +197,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Writes tasks ArrayList data into tasks.txt file.
+     *
+     * @throws IOException if tasks.txt file cannot be accessed.
+     */
     public static void tasksFileSaver() throws IOException {
         FileWriter fw = new FileWriter(filePathForTasks);
         for (Task task : TaskManager.tasks) {
@@ -200,6 +214,10 @@ public class Storage {
         fw.close();
     }
 
+    /**
+     * Checks if file exists. It will create a new file if it doesn't exist.
+     * Edits filepath variable within storage.
+     */
     public static void loadAssignmentsFile() {
         filePathForAssignments += "/UniTracker Data";
         File data = new File(filePathForAssignments);
@@ -222,6 +240,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Downloads the contents from assignments.txt into assignments ArrayList.
+     *
+     * @throws FileNotFoundException if assignments.txt file cannot be accessed.
+     */
     public static void downloadAssignments() throws FileNotFoundException {
         File f = new File(filePathForAssignments); // create a File for the given file path
         Scanner s = new Scanner(f); // create a Scanner using the File as the source
@@ -235,6 +258,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Writes assignments ArrayList data into assignments.txt file.
+     *
+     * @throws IOException if assignments.txt file cannot be accessed.
+     */
     public static void assignmentsFileSaver() throws IOException {
         FileWriter fw = new FileWriter(filePathForAssignments);
         for (Assignment assignment : TaskManager.assignments) {
@@ -248,6 +276,10 @@ public class Storage {
         fw.close();
     }
 
+    /**
+     * Checks if file exists. It will create a new file if it doesn't exist.
+     * Edits filepath variable within storage.
+     */
     public static void loadMidtermsFile() {
         filePathForMidterms += "/UniTracker Data";
         File data = new File(filePathForMidterms);
@@ -270,6 +302,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Downloads the contents from midterms.txt into midterms ArrayList.
+     *
+     * @throws FileNotFoundException if midterms.txt file cannot be accessed.
+     */
     public static void downloadMidterms() throws FileNotFoundException {
         File f = new File(filePathForMidterms); // create a File for the given file path
         Scanner s = new Scanner(f); // create a Scanner using the File as the source
@@ -283,6 +320,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Writes midterms ArrayList data into midterms.txt file.
+     *
+     * @throws IOException if midterms.txt file cannot be accessed.
+     */
     public static void midtermsFileSaver() throws IOException {
         FileWriter fw = new FileWriter(filePathForMidterms);
         for (Midterm midterm : TaskManager.midterms) {
@@ -296,6 +338,10 @@ public class Storage {
         fw.close();
     }
 
+    /**
+     * Checks if file exists. It will create a new file if it doesn't exist.
+     * Edits filepath variable within storage.
+     */
     public static void loadFinalExamsFile() {
         filePathForFinalExams += "/UniTracker Data";
         File data = new File(filePathForFinalExams);
@@ -318,6 +364,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Downloads the contents from finalExams.txt into finalExams ArrayList.
+     *
+     * @throws FileNotFoundException if finalExams.txt file cannot be accessed.
+     */
     public static void downloadFinalExams() throws FileNotFoundException {
         File f = new File(filePathForFinalExams); // create a File for the given file path
         Scanner s = new Scanner(f); // create a Scanner using the File as the source
@@ -331,6 +382,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Writes finalExams ArrayList data into finalExams.txt file.
+     *
+     * @throws IOException if finalExams.txt file cannot be accessed.
+     */
     public static void finalExamsFileSaver() throws IOException {
         FileWriter fw = new FileWriter(filePathForFinalExams);
         for (FinalExam finalExam : TaskManager.finalExams) {
@@ -344,6 +400,10 @@ public class Storage {
         fw.close();
     }
 
+    /**
+     * Checks if file exists. It will create a new file if it doesn't exist.
+     * Edits filepath variable within storage.
+     */
     public static void loadPinnedTasksFile() {
         filePathForPinnedTasks += "/UniTracker Data";
         File data = new File(filePathForPinnedTasks);
@@ -366,6 +426,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Downloads the contents from pinnedTasks.txt into pinnedTasks HashMap.
+     *
+     * @throws FileNotFoundException if pinnedTasks.txt file cannot be accessed.
+     */
     public static void downloadPinnedTasks() throws FileNotFoundException {
         File f = new File(filePathForPinnedTasks); // create a File for the given file path
         Scanner s = new Scanner(f); // create a Scanner using the File as the source
@@ -405,6 +470,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Writes pinnedTasks HashMap data into pinnedTasks.txt file.
+     *
+     * @throws IOException if pinnedTasks.txt file cannot be accessed.
+     */
     public static void pinnedTasksFileSaver() throws IOException {
         FileWriter fw = new FileWriter(filePathForPinnedTasks);
         Set<String> taskTypes = TaskManager.pinnedTasks.keySet();

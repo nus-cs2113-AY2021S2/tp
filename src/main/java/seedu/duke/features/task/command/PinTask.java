@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Pin task allows the user to pin an assignment, midterm, final exam or normal task.
+ */
 public class PinTask {
 
     private static final int PIN_TASK_COMMAND = 1;
@@ -20,6 +23,11 @@ public class PinTask {
     private static final String FINAL_EXAM_TYPE = "[Final Exam]";
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
+    /**
+     * Executes the pin task feature.
+     *
+     * @param taskTypeNumber The number of the task type the user wants to pin.
+     */
     public static void execute(int taskTypeNumber) {
         if (TaskManager.taskListIsEmpty(taskTypeNumber)) {
             Ui.printTaskListIsEmptyMessage();
@@ -58,6 +66,12 @@ public class PinTask {
         }
     }
 
+    /**
+     * Pins a task.
+     *
+     * @param task The task to be pinned.
+     * @param taskTypeName The type of the task to be pinned.
+     */
     public static void addTaskToPinnedTasks(Task task, String taskTypeName) {
         TaskManager.pinnedTasks.computeIfAbsent(taskTypeName, k -> new ArrayList<>());
         if (TaskManager.pinnedTasks.get(taskTypeName).contains((task))) {
