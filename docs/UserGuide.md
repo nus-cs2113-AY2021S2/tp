@@ -109,23 +109,23 @@ Finally, for returning users who are not sure about the input format for a comma
 >
 >
 > - Words in `UPPER_CASE` are parameters supplied by the user.\
-    > e.g. in `add IC_NUMBER`, `IC_NUMBER` is a parameter that has to be specified.\
-    > Parameters in square brackets (`[]`) are optional.\
+> e.g. in `add IC_NUMBER`, `IC_NUMBER` is a parameter that has to be specified.\
+> Parameters in square brackets (`[]`) are optional.\
 > - e.g. for the `record [DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]` command,
-    > both `record 26/03/2021 /s coughing` and `record /s fever /p panadol` are valid commands.
+> both `record 26/03/2021 /s coughing` and `record /s fever /p panadol` are valid commands.
 > - Parameters with `...` allow multiple parameters (including zero) to be specified.\
-    > e.g. for `help [OPTIONAL_COMMAND]...` both `help` and `help add delete` are valid commands.
+> e.g. for `help [OPTIONAL_COMMAND]...` both `help` and `help add delete` are valid commands.
 > - Parameters starting with a slash (`/`) can be given in any order.\
-    > e.g. if a command specifies `/s SYMPTOMS /p PRESCTIPTION` as its parameters,
-    > `/p PRESCTIPTION /s SYMPTOMS` is also acceptable.\
-    > However, for `record DATE /s SYMPTOMS`, `record /s SYMPTOMS DATE` is not acceptable.\
-    > For first-time users, we recommend that you follow the sequence given in this section.
+> e.g. if a command specifies `/s SYMPTOMS /p PRESCTIPTION` as its parameters,
+> `/p PRESCTIPTION /s SYMPTOMS` is also acceptable.\
+> However, for `record DATE /s SYMPTOMS`, `record /s SYMPTOMS DATE` is not acceptable.\
+> For first-time users, we recommend that you follow the sequence given in this section.
 > - If a parameter is expected only once in the command, but you specify it multiple times,
-    > only the last occurrence of the parameter will be taken.\
-    > e.g. if you specify `/s coughing /s fever`, only `/s fever` will be taken.
+> only the last occurrence of the parameter will be taken.\
+> e.g. if you specify `/s coughing /s fever`, only `/s fever` will be taken.
 > - Extraneous parameters for commands that do not take in parameters (such as `list`
-    > and `exit`) will be ignored.\
-    > e.g. if the command given is `list 123`, it will be interpreted as `list`.
+> and `exit`) will be ignored.\
+> e.g. if the command given is `list 123`, it will be interpreted as `list`.
 
 
 > ❗ Notes on valid and invalid user input:
@@ -133,7 +133,7 @@ Finally, for returning users who are not sure about the input format for a comma
 >
 > - Due to how Patient Manager stores its records to disk, the following ASCII characters are not allowed
 > to be used as part of any input:\
-> ```
+```
 ~\`%#@!
 ```
 > - Dates must be specified in the format `dd/MM/yyyy` with leading zeroes, for example, `05/03/2021`.
