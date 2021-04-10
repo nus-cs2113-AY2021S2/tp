@@ -520,15 +520,15 @@ can keep track of commonly accessed information while keeping track of the tasks
     1. For example, by entering `CS2113T@NUS` as the `module name`, the `@` symbol is seen as a non-alphanumeric character. You will be prompted to confirm the use of such characters.    
     1. Refer to this [link](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#311-add-a-module) for more instructions.  
 1. You may delete a module by the following commands: `1`,`4` (from main menu). Enter the number of the `module` from the list you want to delete.    
-    1. Refer to this [link](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#314-delete-a-module) for more instructions.   
-   
+    1. Refer to this [link](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#314-delete-a-module) for more instructions.    
+
 ### Adding/Deleting a Task  
 1. You may add a `task` to a `module` by the following commands: `1`, `11` OR `3`, `1` (from main menu). Select the `task type` and the `module`.     
-   1. If you want to add a `task` to a **new** `module`, type a number that is NOT in the list of modules.  
+    1. If you want to add a `task` to a **new** `module`, type a number that is NOT in the list of modules.  
     1. Refer to this [link](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#331-add-new-task) for more instructions.  
 1. You may delete a task by the following commands: `1`, `12` OR `3`, `3` (from main menu).  
-    1. Refer to this [link](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#333-delete-a-task) 
-   
+    1. Refer to this [link](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#333-delete-a-task)  
+
 ### Adding/Deleting Zoom Links  
 1. You may add a `zoom link` to a `module` by the following commands: `1`, `13` OR `4`, `2` (from main menu). Select the `module` and enter the `zoom link` (and password).    
     1. Refer to this [link](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#345-add-zoom-link) for more instructions.    
