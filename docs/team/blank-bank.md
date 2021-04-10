@@ -55,7 +55,7 @@ Given below are my contributions to the project
     - Contributing common classes and functions: #163, #145, #141, #136, #130, #92, #76
     - General code enhancements: #311
     - Adjusting code for Java CI: #371
-    - Release management: #204, #60
+    - Release management: Released both v1.0 and v2.0. #204, #60
     - Maintained issue tracker with creation of labels 
     - Hardcore testing for everyone's code
 
