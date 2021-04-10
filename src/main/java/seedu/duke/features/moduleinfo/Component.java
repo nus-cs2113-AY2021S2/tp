@@ -5,12 +5,14 @@ import seedu.duke.ui.Ui;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static seedu.duke.features.moduleinfo.ModuleInfo.viewAllModules;
 
 public class Component {
-    //String moduleName;
     public static Hashtable<String, Integer> components = new Hashtable<>();
+    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     public Component(Hashtable<String, Integer> components) {
         this.components = components;
@@ -70,7 +72,6 @@ public class Component {
             Ui.printModuleDoesNotExistMessage();
         }
 
-
     }
 
     private static void isNumeric(String componentName) throws NumberFormatException {
@@ -123,10 +124,12 @@ public class Component {
         total += newWeightage;
 
         if (total > 100) {
+            logger.log(Level.WARNING, "Weightage exceeds 100%.");
             throw new InvalidComponentException();
         }
 
         if (newWeightage < 0) {
+            logger.log(Level.WARNING, "Weightage falls below 0.");
             throw new InvalidComponentException();
         }
     }

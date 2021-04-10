@@ -4,9 +4,12 @@ import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CapSimulatorManager {
 
+    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     public static void execute() {
 
         while (true) {
@@ -40,6 +43,7 @@ public class CapSimulatorManager {
                 Storage.saveAllFiles();
             } catch (IOException e) {
                 Ui.printFilesCouldNotBeSavedMessage();
+                logger.log(Level.WARNING, "Saving error in CAP Simulator Manager.");
             }
             Ui.printReturnToCapSimulatorMenuMessage();
         }
