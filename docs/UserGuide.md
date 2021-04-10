@@ -57,29 +57,29 @@ This guide is written for users like you, for reference when there is a particul
 
 # How to Use This Guide
 
-> Icons used in this guide:<br>
-> <br>
-> 💡 - Indicates a tip that may be useful to you.<br>
-> ⚠ - indicates a warning that you should take note of.
+#### Icons used in this guide:
+
+💡 - Indicates a tip that may be useful to you.<br>
+⚠ - indicates a warning that you should take note of.
+
+#### Commands will be presented in the following format:
+
+> ### Command function : *keyword*
 >
-> Commands will be presented in the following format:
+> Summary of actions involved.
 >
->> ### Command function : *keyword*
->>
->> Summary of actions involved.
->>
->> **Format:**<br>
->> `command format`
->>
->> **Example:** (if any)<br>
->> <table>
->>   <tr>
->>     <td><i>Step number</i></td>
->>     <td><pre><i>Label</i> >> <b style="color: forestgreen">What you input</b><br><i>What you will get.</i></pre></td>
->>   </tr>
->> </table>
->>
->> **Result** - _Outcome of command_ (if any)
+> **Format:**<br>
+> `command format`
+>
+> **Example:** (if any)<br>
+> <table>
+>   <tr>
+>     <td><i>Step number</i></td>
+>     <td><pre><i>Label</i> >> <b style="color: forestgreen">What you input</b><br><i>What you will get.</i></pre></td>
+>   </tr>
+> </table>
+>
+> **Result** - _Outcome of command_ (if any)
 
 &nbsp;
 
