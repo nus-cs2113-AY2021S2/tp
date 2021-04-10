@@ -142,7 +142,7 @@ Mainstream OS: Windows, Linux, Unix, OS-X
 Given below are the instructions to test Deliveri manually. Do note that these instructions merely provide a starting point for testers to work on and they are expected to do more exploratory testing on their own will. You can refer to the User Guide for further information regarding the command formats.
 
 ### Launching Deliveri
-1. Initial launch of HealthVault 2.
+1. Initial launch of Deliveri.
 2. Download the jar file and copy into an empty folder.
 3. Open up a command pormpt window and change directory to that folder with the jar file. 
 4. Run the command java -jar tp.jar.
