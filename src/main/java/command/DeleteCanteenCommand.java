@@ -9,8 +9,6 @@ import ui.Ui;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Map;
-
 import static ui.Ui.LINESPACING;
 
 public class DeleteCanteenCommand extends Command {
@@ -25,6 +23,8 @@ public class DeleteCanteenCommand extends Command {
 
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
+
+
         int numCanteens = canteens.size();
         if (numCanteens > 0) {
             ui.showDisplaySelectCanteens(canteens, "delete");
@@ -40,6 +40,7 @@ public class DeleteCanteenCommand extends Command {
             ui.showCanteenDeleted(removedCanteen, canteens.size());
             Storage.save(new FileWriter(savePath), canteens);
         } else {
+            System.out.println(LINESPACING);
             System.out.println("There are no canteens left!");
             System.out.println(LINESPACING);
         }

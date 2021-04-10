@@ -16,15 +16,21 @@ public class AddMenuCommand extends Command {
     private NusFoodReviews nusFoodReviews;
 
     public AddMenuCommand(NusFoodReviews nusFoodReviews) {
+
         this.nusFoodReviews = nusFoodReviews;
     }
 
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws DukeExceptions {
         try {
+            if (canteens.size() == 0) {
+                throw new DukeExceptions("There is no canteen. Please add a new canteen and store");
+            }
             getMenu(canteens, ui);
         } catch (NumberFormatException | IOException | DukeExceptions e) {
-            throw new DukeExceptions("Menu not added. Please input your Menu in proper format!");
+            System.out.println(Ui.LINESPACING);
+            System.out.println(e.getMessage());
+            System.out.println(Ui.LINESPACING);
         }
     }
 
@@ -39,10 +45,14 @@ public class AddMenuCommand extends Command {
             ui.menuNotAdded();
             return;
         }
-        ui.showDisplayStores(canteens.get(currentCanteenIndex));
+        if (canteens.get(currentCanteenIndex).getStores().size() == 0) {
+            throw new DukeExceptions("There is no stores in canteen. Please add a new store.");
+        }
 
+        ui.showDisplayStores(canteens.get(currentCanteenIndex));
         ui.chooseStore();
         String line = ui.readCommand();
+
         if (line.equals("cancel")) {
             ui.menuNotAdded();
             return;
@@ -50,8 +60,9 @@ public class AddMenuCommand extends Command {
             currentStoreIndex = Integer.parseInt(line) - 1;
         }
 
+        //check selected store input range
         if (currentStoreIndex < 0 | currentStoreIndex >= canteens.get(currentCanteenIndex).getNumStores()) {
-            throw new DukeExceptions("Store index not in range!");
+            throw new DukeExceptions("Store index not in range! Please try again.");
         }
 
         ui.enterMenuName();

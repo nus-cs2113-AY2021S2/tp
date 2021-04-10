@@ -25,6 +25,14 @@ public class DeleteMenuCommand extends Command {
     }
 
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
+
+        if (canteens.size() == 0) {
+            System.out.println(Ui.LINESPACING);
+            System.out.println("There is no canteen for you to delete any menus from any stores.");
+            System.out.println(Ui.LINESPACING);
+            return;
+        }
+
         nusFoodReviews.setCanteenIndex();
         int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
         if (currentCanteenIndex == -1) {

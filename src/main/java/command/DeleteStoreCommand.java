@@ -23,6 +23,14 @@ public class DeleteStoreCommand extends Command {
 
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
+
+        if (canteens.size() == 0) {
+            System.out.println(Ui.LINESPACING);
+            System.out.println("There are no canteens for you to delete any stores.");
+            System.out.println(Ui.LINESPACING);
+            return;
+        }
+
         nusFoodReviews.setCanteenIndex();
         int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
         ui.showDisplaySelectStores(canteens.get(currentCanteenIndex));
