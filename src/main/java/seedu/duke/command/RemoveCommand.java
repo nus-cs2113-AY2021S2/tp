@@ -88,8 +88,9 @@ public class RemoveCommand extends Command {
     public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreReturnedLoansMap
             creditScoreReturnedLoansMap) {
         Record currentRecord = recordList.getRecordAt(recordNumberInt);
-        ui.printMessage("\n" + "This record will be removed: " + "\n" + "\n"
-                + ui.getId(recordNumberInt) + currentRecord + "\n");
+        ui.printMessage(System.lineSeparator() + "This record will be removed:"
+                + System.lineSeparator() + System.lineSeparator()
+                + ui.getId(recordNumberInt) + currentRecord + System.lineSeparator());
         recordList.deleteRecordAt(recordNumberInt);
         storage.saveData(recordList, creditScoreReturnedLoansMap);
     }
