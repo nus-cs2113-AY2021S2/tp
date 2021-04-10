@@ -5,6 +5,7 @@ import seedu.duke.exception.CommandException;
 import seedu.duke.exception.CustomException;
 import seedu.duke.record.Expense;
 import seedu.duke.record.Loan;
+import seedu.duke.record.Record;
 import seedu.duke.record.RecordList;
 import seedu.duke.record.Saving;
 import seedu.duke.storage.Storage;
@@ -42,10 +43,11 @@ public class AddCommand extends Command {
         OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING, OPTION_AMOUNT, OPTION_DATE, OPTION_PERSON
     };
     private static final String[] CONFLICT_OPTIONS = {OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING};
-    private final BigDecimal amount;
-    private final LocalDate issueDate;
-    private final String description;
-    private final String borrowerName;
+
+    private BigDecimal amount;
+    private LocalDate issueDate;
+    private String description;
+    private String borrowerName;
     private RecordType recordType;
 
     /**
@@ -56,33 +58,31 @@ public class AddCommand extends Command {
      */
     public AddCommand(ArrayList<String> arguments) throws CommandException {
         validateOptions(arguments, COMMAND_ADD, VALID_OPTIONS, CONFLICT_OPTIONS);
-        description = getDescription(arguments);
-        amount = getAmount(arguments);
-        issueDate = getDate(arguments);
-        borrowerName = getPerson(arguments);
+        setDescription(arguments);
+        setAmount(arguments);
+        setDate(arguments);
+        setPerson(arguments);
     }
 
     /**
-     * Gets the description field.
+     * Sets the description field.
      *
      * @param arguments parsed input containing options and arguments.
-     * @return a String containing the description of the record.
      * @throws CommandException contains the error messages when a incorrect format is detected.
      */
-    private String getDescription(ArrayList<String> arguments) throws CommandException {
-        return getOptionValue(arguments, COMMAND_ADD, checkRecordType(arguments));
+    private void setDescription(ArrayList<String> arguments) throws CommandException {
+        description = getOptionValue(arguments, COMMAND_ADD, checkRecordType(arguments));
     }
 
     /**
-     * Gets the amount field.
+     * Sets the amount field.
      *
      * @param arguments parsed input containing options and arguments.
-     * @return a BigDecimal object containing the amount of the record.
      * @throws CommandException contains the error messages when a incorrect format is detected.
      */
-    private BigDecimal getAmount(ArrayList<String> arguments) throws CommandException {
+    private void setAmount(ArrayList<String> arguments) throws CommandException {
         try {
-            return validateAmount(getOptionValue(arguments, COMMAND_ADD, OPTION_AMOUNT));
+            amount = validateAmount(getOptionValue(arguments, COMMAND_ADD, OPTION_AMOUNT));
         } catch (NumberFormatException e) {
             throw new CommandException(ERROR_NON_NUM_AMOUNT, COMMAND_ADD);
         } catch (CustomException e) {
@@ -91,43 +91,39 @@ public class AddCommand extends Command {
     }
 
     /**
-     * Gets the date field.
+     * Sets the date field.
      *
      * @param arguments parsed input containing options and arguments.
-     * @return a LocalDate object containing the date of the record.
      * @throws CommandException contains the error messages when a incorrect format is detected.
      */
-    private LocalDate getDate(ArrayList<String> arguments) throws CommandException {
+    private void setDate(ArrayList<String> arguments) throws CommandException {
         try {
             LocalDate issueDate = validateDate(getOptionValue(arguments, COMMAND_ADD, OPTION_DATE));
             if (issueDate.compareTo(LocalDate.now()) > 0) {
                 throw new CommandException(ERROR_FUTURE_ISSUE_DATE, COMMAND_ADD);
             }
-            return issueDate;
+            this.issueDate = issueDate;
         } catch (DateTimeException e) {
             throw new CommandException(e.getMessage(), COMMAND_ADD);
         }
     }
 
     /**
-     * Gets the person field.
+     * Sets the person field.
      *
      * @param arguments parsed input containing the options and arguments.
-     * @return the option value of person, or {@code null} if {@code recordType} is not a loan.
      * @throws CommandException if {@code recordType} is not a loan but arguments contains the person option,
      *                          or if the option value of person is empty.
      */
-    private String getPerson(ArrayList<String> arguments) throws CommandException {
+    private void setPerson(ArrayList<String> arguments) throws CommandException {
         if (recordType == RecordType.LOAN) {
             String borrowerName = getOptionValue(arguments, COMMAND_ADD, OPTION_PERSON);
             if (borrowerName.contains(FILE_DELIMITER_CHAR)) {
                 throw new CommandException(ERROR_INVALID_BORROWER_NAME, COMMAND_ADD);
             }
-            return borrowerName;
+            this.borrowerName = borrowerName;
         } else if (hasOption(arguments, OPTION_PERSON)) {
             throw new CommandException(ERROR_INVALID_OPTION_P, COMMAND_ADD);
-        } else {
-            return null;
         }
     }
 
@@ -152,6 +148,19 @@ public class AddCommand extends Command {
         }
     }
 
+    private Record createRecord() {
+        switch (recordType) {
+        case EXPENSE:
+            return new Expense(amount, issueDate, description);
+        case LOAN:
+            return new Loan(amount, issueDate, description, borrowerName);
+        case SAVING:
+            // Fallthrough
+        default:
+            return new Saving(amount, issueDate, description);
+        }
+    }
+
     /**
      * Executes the add function.
      *
@@ -162,26 +171,9 @@ public class AddCommand extends Command {
     @Override
     public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreReturnedLoansMap
             creditScoreReturnedLoansMap) {
-        switch (recordType) {
-        case EXPENSE:
-            Expense expenseObj = new Expense(amount, issueDate, description);
-            recordList.addRecord(expenseObj);
-            storage.saveData(recordList, creditScoreReturnedLoansMap);
-            ui.printSuccessfulAdd(expenseObj, recordList.getRecordCount());
-            break;
-        case LOAN:
-            Loan loanObj = new Loan(amount, issueDate, description, borrowerName);
-            recordList.addRecord(loanObj);
-            storage.saveData(recordList, creditScoreReturnedLoansMap);
-            ui.printSuccessfulAdd(loanObj, recordList.getRecordCount());
-            break;
-        case SAVING:
-            // Fallthrough
-        default:
-            Saving savingObj = new Saving(amount, issueDate, description);
-            recordList.addRecord(savingObj);
-            storage.saveData(recordList, creditScoreReturnedLoansMap);
-            ui.printSuccessfulAdd(savingObj, recordList.getRecordCount());
-        }
+        Record record = createRecord();
+        recordList.addRecord(record);
+        storage.saveData(recordList, creditScoreReturnedLoansMap);
+        ui.printSuccessfulAdd(record, recordList.getRecordCount());
     }
 }
