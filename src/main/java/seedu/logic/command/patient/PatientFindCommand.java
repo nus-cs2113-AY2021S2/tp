@@ -4,6 +4,9 @@ import seedu.logic.command.Command;
 import seedu.model.patient.PatientList;
 import seedu.ui.PatientUI;
 
+/**
+ * Represents a command that allows users to find an existing patient from the list of patients.
+ */
 public class PatientFindCommand extends Command {
 
     private String args;
