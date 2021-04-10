@@ -1,9 +1,9 @@
 package seedu.logic.errorchecker;
 
 import seedu.exceptions.CorruptedFileException;
-import seedu.exceptions.DuplicateIDException;
+import seedu.exceptions.DuplicateIdException;
 import seedu.exceptions.HealthVaultException;
-import seedu.exceptions.IDNotFoundException;
+import seedu.exceptions.IdNotFoundException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.patient.InvalidFieldsNumberException;
 import seedu.exceptions.patient.InvalidIdLengthException;
@@ -268,20 +268,20 @@ public class PatientChecker extends MainChecker {
      * @param userID the string containing the ID of the patient.
      * @param patients the current list of patients.
      * @param command the command that the user is trying to access.
-     * @throws IDNotFoundException when the ID does not exist in the patient list
-     * @throws DuplicateIDException when there is already an existing ID in the patient list.
+     * @throws IdNotFoundException when the ID does not exist in the patient list
+     * @throws DuplicateIdException when there is already an existing ID in the patient list.
      */
-    private void checkIdExist(String userID, PatientList patients, String command) throws IDNotFoundException,
-            DuplicateIDException {
+    private void checkIdExist(String userID, PatientList patients, String command) throws IdNotFoundException,
+            DuplicateIdException {
         if (patients.isIdTaken(userID)) {
             if (command.equals("add")) {
                 logger.log(Level.WARNING, "Duplicate patient ID in patient list.");
-                throw new DuplicateIDException("Patient");
+                throw new DuplicateIdException("Patient");
             }
         } else {
             if ((command.equals("delete") || command.equals("find"))) {
                 logger.log(Level.WARNING, "Patient ID does not exist.");
-                throw new IDNotFoundException("Patient");
+                throw new IdNotFoundException("Patient");
             }
         }
     }

@@ -3,7 +3,7 @@ package seedu.exceptions;
 /**
  * Exception to handle invalid gender input.
  */
-public class InvalidGenderException extends HealthVaultException{
+public class InvalidGenderException extends HealthVaultException {
 
     /**
      * Returns invalid gender input error message.
