@@ -1,3 +1,5 @@
+First time user, you are.... 
+Creating new files, I am
 -------------------------------------
 Welcome to Diliveri
 The following are several accepted commands by Diliveri:
