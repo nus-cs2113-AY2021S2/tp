@@ -1,8 +1,9 @@
 # Patient Manager User Guide
 
-Patient Manager is a _Command Line Interface_ (CLI) application for **_general practitioners_** (GP)
-who work in government polyclinics to manage their patient list. This includes a recording/retrieval of
-past record of visit, scheduling of the next appointment, and some other features listed below.
+Patient Manager is a _Command Line Interface_ (CLI) application for **_general practitioners_** (GPs)
+who work in polyclinics to manage their patient list. This includes managing patient list, 
+recording/retrieval of past record of visit, and some other features listed below.
+
 With the Patient Manager, GPs will be able to reduce paperwork and have a more efficient way
 to organize the records of their patients.
 
@@ -54,9 +55,8 @@ The user guide includes symbols such as:
 1. Obtain a copy of the latest version of the Patient Manager (tp.jar) from
    [here](https://github.com/AY2021S2-CS2113T-W09-4/tp/releases) and place it in an empty folder.
 
-1. Open a terminal/Command Prompt (cmd)/PowerShell. A Windows 10 OS' screenshot is here:\
-   \
-   ![PowerShell](./images/WindowsPowerShell.png)
+1. Open a terminal/Command Prompt (cmd)/PowerShell. A Windows 10 OS' screenshot is here:
+   <img src="./images/WindowsPowerShell.png" width="600">
 
 1. Execute `java -jar tp.jar` to start Patient Manager.
 
@@ -83,13 +83,13 @@ record 01/05/2021  /s   coughing,       fever
 
 ❗ This is important: treating all these four the same means any number of spaces in between words will only be
 considered as **ONE**. Take a look at the third input. Despite there are multiple spaces between `coughing,` and 
-`fever`, it will go into the database as `coughing, fever` - same as every other lines do.
+`fever`, it will go into the database as `coughing, fever` — same as every other lines do.
 
 ### Order of Arguments
 
 Words or characters starts with `/` mark the beginning of an argument. 
 An argument block continues until the other one is found.
-For example, `record 01/05/2021 /s coughing, fever /d flu` has two argument blocks - `/s coughing, fever` and `/d flu`.
+For example, `record 01/05/2021 /s coughing, fever /d flu` has two argument blocks — `/s coughing, fever` and `/d flu`.
 The sequence of these two arguments blocks would not affect the result of the command. These two are equivalent:
 ```
 record 01/05/2021 /s coughing, fever /d flu
@@ -348,8 +348,8 @@ and place it in the folder `tp.jar` is found in on the new device.
 **A**: No, the data is saved automatically after every command that modifies the data.
 
 **Q**: Can I edit the data file? \
-**A**: Patient Manager data is saved as a text file. While it is possible to edit the data file, it is not
-recommended to do so as invalid formats in the data file will result in errors.
+**A**: Patient Manager data is saved as a text file. While it is possible to edit the data file, it is
+recommended not to do so as invalid formats in the data file will result in errors.
 
 ---
 

@@ -4,16 +4,18 @@
 
 * [Introduction](#introduction)
 * [Setting up the project in your computer](#setting-up-the-project-in-your-computer)
-* [Design & implementation](#design--implementation)
+* [Design & Implementation](#design--implementation)
   * [Architecture](#architecture)
     * [How the architecture components interact with each other](#how-the-architecture-components-interact-with-each-other)
   * [UI Component](#ui-component)
-  * [Parser Component](#parser-component)
   * [Logic Component](#logic-component)
   * [Model Component](#model-component)
   * [Storage Component](#storage-component)
   * [Exception Component](#exception-component)
   * [Commons](#commons)
+* [Implementation](#implementation)
+  * [Parsing User Input and Initializing Command Class](#parsing-user-input-and-initializing-command-class)
+  * [Exception Handling](#exception-handling)
 * [Appendix A: Product scope](#appendix-a-product-scope)
   * [Target user profile](#target-user-profile)
   * [Value proposition](#value-proposition)
@@ -22,17 +24,18 @@
 * [Appendix D: Glossary](#appendix-d-glossary)
 * [Appendix E: Instructions for Manual Testing](#appendix-e-instructions-for-manual-testing)
   * [Launch, Help and Shutdown](#launch-help-and-shutdown)
-  * [Adding and Loading Patients](#adding-loading-and-deleting-patients)
-  * [Adding and Viewing a Patient's Visit Records](#adding-viewing-and-deleting-a-patients-visit-records)
+  * [Adding and Loading Patients](#adding-and-loading-patients)
+  * [Adding, Viewing and Deleting a Patient's Visit Records](#adding-viewing-and-deleting-a-patients-visit-records)
   * [Saving Data](#saving-data)
 <!-- ^ The above table of content is auto generated -->
 <!-- * [Instructions for manual testing](#instructions-for-manual-testing) -->
 
 ## Introduction
 
-Patient Manager is a _Command Line Interface_ (CLI) application for **_general practitioners_** (GP)
-who work in clinics to manage their patient list. This includes a recording/retrieval of
-past record of visit, scheduling of the next appointment, and some other features listed below.
+Patient Manager is a _Command Line Interface_ (CLI) application for **_general practitioners_** (GPs)
+who work in polyclinics to manage their patient list. This includes managing patient list, 
+recording/retrieval of past record of visit, and some other features listed below.
+
 With the Patient Manager, GPs will be able to reduce paperwork and have a more efficient way
 to organize the records of their patients.
 
@@ -42,19 +45,17 @@ to organize the records of their patients.
 
 First, **fork** [this repo](https://github.com/AY2021S2-CS2113T-W09-4/tp), and **clone** the fork into your computer.
 
-If you plan to use Intellij IDEA (highly recommended):
+If you plan to use IntelliJ IDEA (highly recommended):
 
 1. Configure the JDK: Follow the guide 
-   [Intellij IDEA: Configuring the JDK @SE-EDU/guides](https://se-education.org/guides/tutorials/intellijJdk.html) \
-   IDEA: Configuring the JDK to ensure Intellij is configured 
-   to use JDK 11.
+   [IntelliJ IDEA: Configuring the JDK @SE-EDU/guides](https://se-education.org/guides/tutorials/intellijJdk.html) 
+   and ensure IntelliJ is configured to use JDK 11.
 1. Import the project as a Gradle project: Follow the guide 
-   [Intellij IDEA: Importing a Gradle project @SE-EDU/guides](https://se-education.org/guides/tutorials/intellijImportGradleProject.html) \
-   IDEA: Importing a Gradle project to import 
-   the project into IDEA.
+   [IntelliJ IDEA: Importing a Gradle project @SE-EDU/guides](https://se-education.org/guides/tutorials/intellijImportGradleProject.html) 
+   to import the project into IDEA.
    > ❗ Note: Importing a Gradle project is slightly different from importing a normal Java project.
-1. Verify the setup: Run `seedu.duke.PatientManager` and try a few commands.\
-   [Run the tests](#appendix-e-instructions-for-manual-testing) to ensure they all pass.
+1. Verify the setup: Run `seedu.duke.PatientManager` and try a few commands.
+1. [Run the tests](#appendix-e-instructions-for-manual-testing) to ensure they all pass.
 
 ## Design & Implementation
 
@@ -68,7 +69,7 @@ Given below is a brief overview of each component.
 
 This class is responsible for:
 - When the app is launched: Initializing the other components in the correct sequence and connecting them with each other
-- When the app exits: Shuts down the components and invokes cleanup methods where necessary
+- When the app exits: Shuts down the components and invokes clean-up methods where necessary
 
 `Commons` contains constants that are shared across the other classes.
 
@@ -106,7 +107,7 @@ API: `Parser.java` and `Command.java`
 1. Within the `execute()` method, the `Command` object can instruct the `Ui` to perform certain actions,
    such as displaying the command output to the screen
 
-Given below is the Sequence Diagram for interactions within the `Logic` component after Patient Manager recieves `add S1234567D`
+Given below is the Sequence Diagram for interactions within the `Logic` component after Patient Manager receives `add S1234567D`
 as an input, and the `execute()` API call is made.\
 {TODO: Add sequence diagram here}
 
@@ -142,7 +143,7 @@ API: `Storage.java`
 The storage component is in charge of printing all patients' data into a file, and loading from it when the application restarts. 
 This would ensure that patient data is not lost after exiting the application.
 
-To initialise this component, the `SortedMap<String, Patient>` from the Data class is passed during object creation.
+To initialize this component, the `SortedMap<String, Patient>` from the Data class is passed during object creation.
 This SortedMap<String, Patient> is the entire list of patients and their records.
 
 Then, we can call the `save(SortedMap<String, Patient> patientData)` method to save the SortedMap into a file whenever changes are made.
@@ -163,19 +164,25 @@ converted to a SortedMap<String, Patient> afterwards.
 API: `BaseException.java` and its subclasses
 
 `BaseException.java`:
-- handles all exceptions that occur during the execution of PatientManager
-- can report an error message, prompting the user to provide a syntatically correct command
+- handles all exceptions that occur during the execution of Patient Manager
+- can report an error message, prompting the user to provide a syntactically correct command
 - may also report the cause of error for debugging purposes
 
 ### Commons
 
-Constants used by multiple classes are stored in the `seedu.duke.Constants` class.
+There are two common classes, `Constants` and `Common`.
+
+`seedu.duke.Constants` class stores constants used by multiple classes. This includes help and
+exception messages, magic numbers, delimiter for save file parsing, etc.
+
+`seedu.duke.Common` class have a number of static methods shared by multiple command classes.
+For example, it includes `isValidID()` for checking the validity of an NRIC/FIN number.
 
 ## Implementation
 
 This section describes some noteworthy details on how certain details are implemented.
 
-### Tokenizing User Input
+### Parsing User Input and Initializing Command Class
 
 The parser is one of the core components in charge of parsing all user input commands into program-understandable commands and
 arguments. For the ease of expansion of this program's functionality as well as for its testability, reflection is used to invoke
@@ -206,12 +213,12 @@ This is broken into a few steps:
 
 At the end, we have an argument hashmap like this:
 
-| Key     | Value                         |
-| ------- | ----------------------------- |
-| command | record                        |
-| payload | 01/05/2021                    |
-| s       | coughing, fever               |
-| p       | panadol Paracetamol 500mg\*20 |
+| Key     | Value                          |
+| ------- | ------------------------------ |
+| command | record                         |
+| payload | 01/05/2021                     |
+| s       | coughing, fever                |
+| p       | Panadol Paracetamol 500 mg\*20 |
 
 Next step is the initialization of a command class. Since we have command `record`, the program finds a class called
 `RecordCommand` under the module `seedu.duke.command` (first character being capitalized, then concatenated with 'Command').
@@ -274,21 +281,10 @@ throw new InvalidInputException(InvalidInputException.Type.UNKNOWN_COMMAND, e);
 
 If a second argument is passed, it is called the **cause** of the exception. For example, the user's wrong input
 triggers **ClassNotFoundException**, and then this exception is captured in `Parser` which then **causes**
-`InvalidInputException`. If a **cause** is passed in, it will be printed out for the user as well. See the difference:
+`InvalidInputException`.
 
-```
-----------------------------------------------------------------------
-Input command and/or arguments are invalid:
-        Empty string is found when trying to parse command!
-----------------------------------------------------------------------
-wrongcommand
-----------------------------------------------------------------------
-Input command and/or arguments are invalid:
-        Invalid command is provided!
-... and is caused by ...
-        java.lang.ClassNotFoundException: seedu.duke.command.WrongcommandCommand
-----------------------------------------------------------------------
-```
+This cause is stored for debugging purposes, and it will not be printed out to the user. The implementation of this
+facilitates breakpoint debugging during development.
 
 ## Appendix A: Product scope
 
@@ -305,18 +301,18 @@ The typical paperwork, such as recording of symptoms, diagnoses and prescription
 
 ## Appendix B: User Stories
 
-| Version | As a ...           | I want to ...                          | So that I can ...                                       |
-| ------- | ------------------ | -------------------------------------- | ------------------------------------------------------- |
-| v1.0    | GP in a polyclinic | add a new patient                      | record a patient                                        |
-| v1.0    | GP in a polyclinic | view the list of patients              | track the list of patients                              |
-| v1.0    | GP in a polyclinic | select a specific patient's records    | access the patient's records                            |
-| v1.0    | GP in a polyclinic | add new record for a patient           | refer to them during future consultations               |
-| v1.0    | GP in a polyclinic | retrieve the patient's past records    | refer to them during the current consultation           |
-| v1.0    | new User           | view list of available commands        | refer to them if I have any problems                    |
-| v2.0    | GP in a polyclinic | delete a patient                       | remove patients are no longer required to be tracked    |
-| v2.0    | GP in a polyclinic | delete a patient's records             | remove records that I no longer need                    |
-| v2.0    | GP in a polyclinic | know if I entered a invalid Patient ID | make sure no mistake is made recording the patient's ID |
-| v2.0    | GP in a polyclinic | load and save existing data            | work on the data on another device                      |
+| Version | As a ...           | I want to ...                           | So that I can ...                                       |
+| ------- | ------------------ | --------------------------------------- | ------------------------------------------------------- |
+| v1.0    | GP in a polyclinic | add a new patient                       | record a patient                                        |
+| v1.0    | GP in a polyclinic | view the list of patients               | track the list of patients                              |
+| v1.0    | GP in a polyclinic | select a specific patient's records     | access the patient's records                            |
+| v1.0    | GP in a polyclinic | add new record for a patient            | refer to them during future consultations               |
+| v1.0    | GP in a polyclinic | retrieve the patient's past records     | refer to them during the current consultation           |
+| v1.0    | new User           | view list of available commands         | refer to them if I have any problems                    |
+| v2.0    | GP in a polyclinic | delete a patient                        | remove patients are no longer required to be tracked    |
+| v2.0    | GP in a polyclinic | delete a patient's records              | remove records that I no longer need                    |
+| v2.0    | GP in a polyclinic | know if I entered an invalid Patient ID | make sure no mistake is made recording the patient's ID |
+| v2.0    | GP in a polyclinic | load and save existing data             | work on the data on another device                      |
 
 ## Appendix C: Non-Functional Requirements
 
@@ -338,7 +334,7 @@ The typical paperwork, such as recording of symptoms, diagnoses and prescription
   refers those with serious conditions to a hospital. Their duties are not confined to specific organs of the body,
   and they have particular skills in treating people with multiple health issues.
 - *Visit Record* - Details taken down by the doctor during one's visit. In this case, Patient Manager can record
-  the patient's symptoms, the diagnosis made by the doctor, and any prescriptions or referals given.
+  the patient's symptoms, the diagnosis made by the doctor, and any prescriptions or referrals given.
 
 ## Appendix E: Instructions for Manual Testing
 
@@ -346,7 +342,7 @@ The typical paperwork, such as recording of symptoms, diagnoses and prescription
 
 1. Initial launch
    1. Download `tp.jar` and copy into an empty folder.
-   1. Open a terminal/command line (cmd)/powershell. A Windows 10 OS' screenshot is here:
+   1. Open a terminal/Command Prompt (cmd)/PowerShell. A Windows 10 OS' screenshot is here:
       <img src="./images/WindowsPowerShell.png" width="600">
    1. Execute `java -jar tp.jar` to start the Patient Manager.\
       Expected: Shows the welcome message as shown below
@@ -360,7 +356,7 @@ The typical paperwork, such as recording of symptoms, diagnoses and prescription
 1. Exiting
     1. Test case: `exit`\
        Expected: Application prints goodbye message and exits. All data will be saved to
-       `pm.save` in the same folder as `tp.jar`
+       `pm.save` in the same folder as `tp.jar`.
 
 ### Adding and Loading Patients
 
