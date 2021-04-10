@@ -143,7 +143,8 @@ public class Ui {
         } else {
             ArrayList<Store> stores = canteen.getStores();
             System.out.println("Here's a list of the stores in the canteen: " + canteen.getCanteenName());
-            System.out.println("Please select one of the following stores:" + " (Enter 'login' to go back to login page)");
+            System.out.println("Please select one of the following stores:"
+                    + " (Enter 'login' to go back to login page)");
             for (int i = 0; i < stores.size(); i++) {
                 System.out.print((i + 1) + ". ");
                 stores.get(i).displayStore();

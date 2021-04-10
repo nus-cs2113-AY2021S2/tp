@@ -54,7 +54,7 @@ public class DeleteReviewCommand extends Command {
                 ui.showReviewNotDeleted();
                 return;
             }
-            int reviewIndex = parser.parseInt(line,1,reviews.size())-1;
+            int reviewIndex = parser.parseInt(line, 1, reviews.size()) - 1;
             store.deleteReview(reviewIndex);
             ui.reviewDeleted();
             Storage.save(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH), canteens);
