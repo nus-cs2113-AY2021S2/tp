@@ -18,7 +18,7 @@ end box
 activate AddCommand
 AddCommand -> AddCommand: categoriseAndGenerateFood(params)
 activate AddCommand
-AddCommand -> NewFood **: create
+AddCommand -> NewFood **: constructor()
 activate NewFood
 return foodToAdd
 deactivate AddCommand
@@ -31,7 +31,7 @@ activate AddCommand
 AddCommand-> Fridge: add(foodToAdd)
 activate Fridge
 
-Fridge -> Checker **: create
+Fridge -> Checker **: constructor()
 activate Checker
 return checker
 Fridge -> Checker: checker.isFoodnameUnique()
