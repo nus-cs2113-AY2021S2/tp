@@ -9,6 +9,8 @@ import seedu.duke.record.Loan;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -39,9 +41,9 @@ public class Ui {
     private static final String MESSAGE_EXPENSE_SUCCESSFULLY_ADDED = "Expense has been added...";
     private static final String MESSAGE_LOAN_SUCCESSFULLY_ADDED = "Loan has been added...";
     private static final String MESSAGE_SAVING_SUCCESSFULLY_ADDED = "Saving has been added...";
-    private static final String MESSAGE_TOTAL_EXPENSE = "The total amount for expense is $";
-    private static final String MESSAGE_TOTAL_LOAN = "The total amount for loan is $";
-    private static final String MESSAGE_TOTAL_SAVING = "The total amount for saving is $";
+    private static final String MESSAGE_TOTAL_EXPENSE = "The total amount for expense is ";
+    private static final String MESSAGE_TOTAL_LOAN = "The total amount for loan is ";
+    private static final String MESSAGE_TOTAL_SAVING = "The total amount for saving is ";
     private static final String MESSAGE_FAILED_INIT = "File or contents corrupted! Bad Init!\nSystem will now exit!";
 
 
@@ -98,8 +100,7 @@ public class Ui {
         }
         int formattedIndex = index - 1;
         System.out.println();
-        getId(formattedIndex);
-        System.out.println(recordAdded);
+        System.out.println(getId(formattedIndex) + recordAdded);
         System.out.println();
         System.out.println(DIVIDER);
     }
@@ -227,7 +228,7 @@ public class Ui {
             }
         }
         assert !(totalAmount.compareTo(BigDecimal.ZERO) == -1) : "Expenses cannot be negative!";
-        System.out.println(MESSAGE_TOTAL_EXPENSE + totalAmount.setScale(2, RoundingMode.HALF_EVEN));
+        System.out.println(MESSAGE_TOTAL_EXPENSE + NumberFormat.getCurrencyInstance(Locale.US).format(totalAmount));
         System.out.println(DIVIDER);
     }
 
@@ -246,7 +247,7 @@ public class Ui {
             }
         }
         assert !(totalAmount.compareTo(BigDecimal.ZERO) == -1) : "Loans cannot be negative!";
-        System.out.println(MESSAGE_TOTAL_LOAN + totalAmount.setScale(2, RoundingMode.HALF_EVEN));
+        System.out.println(MESSAGE_TOTAL_LOAN + NumberFormat.getCurrencyInstance(Locale.US).format(totalAmount));
         System.out.println(DIVIDER);
     }
 
@@ -265,7 +266,7 @@ public class Ui {
             }
         }
         assert !(totalAmount.compareTo(BigDecimal.ZERO) == -1) : "Savings cannot be negative!";
-        System.out.println(MESSAGE_TOTAL_SAVING + totalAmount.setScale(2, RoundingMode.HALF_EVEN));
+        System.out.println(MESSAGE_TOTAL_SAVING + NumberFormat.getCurrencyInstance(Locale.US).format(totalAmount));
         System.out.println(DIVIDER);
     }
 
@@ -294,9 +295,9 @@ public class Ui {
         assert !(totalExpense.compareTo(BigDecimal.ZERO) == -1) : "Expenses cannot be negative!";
         assert !(totalLoan.compareTo(BigDecimal.ZERO) == -1) : "Loans cannot be negative!";
         assert !(totalSaving.compareTo(BigDecimal.ZERO) == -1) : "Savings cannot be negative!";
-        System.out.println(MESSAGE_TOTAL_EXPENSE + totalExpense.setScale(2, RoundingMode.HALF_EVEN));
-        System.out.println(MESSAGE_TOTAL_LOAN + totalLoan.setScale(2, RoundingMode.HALF_EVEN));
-        System.out.println(MESSAGE_TOTAL_SAVING + totalSaving.setScale(2, RoundingMode.HALF_EVEN));
+        System.out.println(MESSAGE_TOTAL_EXPENSE + NumberFormat.getCurrencyInstance(Locale.US).format(totalExpense));
+        System.out.println(MESSAGE_TOTAL_LOAN + NumberFormat.getCurrencyInstance(Locale.US).format(totalLoan));
+        System.out.println(MESSAGE_TOTAL_SAVING + NumberFormat.getCurrencyInstance(Locale.US).format(totalSaving));
         System.out.println(DIVIDER);
     }
 
