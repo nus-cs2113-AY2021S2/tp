@@ -36,9 +36,9 @@ public class StaffList {
     public void addStaff(Staff staff) {
         list.add(staff);
         if (staff.getType().equals(NURSE_TYPE)) {
-            numNurse ++;
+            numNurse++;
         } else if (staff.getType().equals(DOCTOR_TYPE)) {
-            numDoctor ++;
+            numDoctor++;
         }
         numStaff++;
     }
@@ -69,6 +69,7 @@ public class StaffList {
         }
         return true;
     }
+
     /**
      * Returns an ArrayList that holds all Staff objects.
      *
@@ -95,7 +96,7 @@ public class StaffList {
             for (Staff staff : list) {
                 display(staff);
             }
-        } else if (array[1].equals("nurses") && getNumNurse() != 0 ) {
+        } else if (array[1].equals("nurses") && getNumNurse() != 0) {
             StaffUI.staffListHeader();
             UI.showLine();
             for (Staff staff : list) {
@@ -103,7 +104,7 @@ public class StaffList {
                     display(staff);
                 }
             }
-        } else if (array[1].equals("doctors") && getNumDoctor() != 0 ) {
+        } else if (array[1].equals("doctors") && getNumDoctor() != 0) {
             StaffUI.staffListHeader();
             UI.showLine();
             for (Staff staff : list) {
@@ -187,8 +188,10 @@ public class StaffList {
      */
     public static void display(Staff staff) {
         System.out.println(
-                prettyPrint(staff.getId(), 10) + " | " + prettyPrint(staff.getName(), 10) + " | "
-                        + prettyPrint(Integer.toString(staff.getAge()), 5) + " | " + prettyPrint(staff.getSpecialisation(), 20));
+                prettyPrint(staff.getId(), 10) + " | "
+                + prettyPrint(staff.getName(), 10) + " | "
+                + prettyPrint(Integer.toString(staff.getAge()), 5) + " | "
+                + prettyPrint(staff.getSpecialisation(), 20));
     }
 
     /**

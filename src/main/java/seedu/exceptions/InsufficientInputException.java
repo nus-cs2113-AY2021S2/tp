@@ -3,7 +3,7 @@ package seedu.exceptions;
 /**
  * Exception to handle any insufficient inputs given to commands.
  */
-public class InsufficientInputException extends HealthVaultException{
+public class InsufficientInputException extends HealthVaultException {
 
     /**
      * Returns the insufficient input error message.

@@ -1,4 +1,5 @@
 package seedu.exceptions.staff;
+
 import seedu.exceptions.HealthVaultException;
 
 /**
@@ -12,6 +13,7 @@ public class WrongListInputException extends HealthVaultException {
      * @return Error Message.
      */
     public String getMessage() {
-        return "Invalid List command parameter\nPlease input with the either of the following format:\n\tlist\n\tlist/nurses\n\tlist/doctors";
+        return "Invalid List command parameter\n"
+                + "Please input with the either of the following format:\n\tlist\n\tlist/nurses\n\tlist/doctors";
     }
 }

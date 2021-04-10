@@ -1,9 +1,15 @@
 package seedu.logic.errorchecker;
 
-import seedu.exceptions.*;
+import seedu.exceptions.DuplicateIdException;
+import seedu.exceptions.ExcessInputException;
+import seedu.exceptions.HealthVaultException;
+import seedu.exceptions.InvalidIntegerException;
+import seedu.exceptions.IllegalCharacterException;
+import seedu.exceptions.InsufficientInputException;
 import seedu.exceptions.staff.InvalidStaffAgeException;
 import seedu.exceptions.staff.WrongListInputException;
-import seedu.exceptions.staff.WrongStaffIDException;
+import seedu.exceptions.staff.WrongStaffIdException;
+
 import seedu.model.staff.Staff;
 import seedu.model.staff.StaffList;
 
@@ -42,14 +48,14 @@ public class StaffChecker extends MainChecker {
         String[] array = line.trim().split("/");
         checkNumInput(array, 5, 5);
         array = Arrays.copyOfRange(array, 1, 5);
-        for (int i = 0; i<array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             array[i] = array[i].trim();
         }
         return array;
     }
 
     /**
-     * Calls various checker functions to determine the validity of inputs for Add command
+     * Calls various checker functions to determine the validity of inputs for Add command.
      *
      * @param line  String input of entire command given.
      * @param staffList StaffList object that is an aggregation of all Staff Objects.
@@ -89,13 +95,13 @@ public class StaffChecker extends MainChecker {
      *
      * @param id  String of ID to be checked against the ArrayList.
      * @param list ArrayList containing data for Staff objects.
-     * @throws DuplicateIDException  If id is found in list
+     * @throws DuplicateIdException  If id is found in list
      */
-    public void checkDuplicateStaffID(String id, ArrayList<Staff> list) throws DuplicateIDException {
+    public void checkDuplicateStaffID(String id, ArrayList<Staff> list) throws DuplicateIdException {
         logger.log(Level.INFO, "Checking Duplicated Staff ID.");
         for (Staff staff : list) {
             if (staff.getId().equals(id)) {
-                throw new DuplicateIDException("Staff");
+                throw new DuplicateIdException("Staff");
             }
         }
     }
@@ -104,22 +110,22 @@ public class StaffChecker extends MainChecker {
      * Checks if a given String id has valid Staff ID format.
      *
      * @param id  String of Staff ID
-     * @throws WrongStaffIDException  If the format of Staff ID is not valid ([D/N][5 digit integer])
+     * @throws WrongStaffIdException  If the format of Staff ID is not valid ([D/N][5 digit integer])
      */
-    public void checkStaffID(String id) throws WrongStaffIDException {
+    public void checkStaffID(String id) throws WrongStaffIdException {
         logger.log(Level.INFO, "Checking Staff ID.");
         try {
             if (id.length() < 5) {
-                throw new WrongStaffIDException();
+                throw new WrongStaffIdException();
             }
             if (!(id.charAt(0) == 'D' || id.charAt(0) == 'N') || (id.length()) != 6) {
-                throw new WrongStaffIDException();
+                throw new WrongStaffIdException();
             }
             if (Integer.parseInt(id.substring(1)) < 0) {
-                throw new WrongStaffIDException();
+                throw new WrongStaffIdException();
             }
         } catch (NumberFormatException e) {
-            throw new WrongStaffIDException();
+            throw new WrongStaffIdException();
         }
 
     }
@@ -204,8 +210,8 @@ public class StaffChecker extends MainChecker {
     public String[] checkListCommand(String line) throws WrongListInputException,
             ExcessInputException, InsufficientInputException {
         String[] array = line.split("/");
-        if ((array.length > 1) &&
-                !(isEqualNurses(array[1]) || isEqualDoctors(array[1]) )) {
+        if ((array.length > 1)
+                && !(isEqualNurses(array[1]) || isEqualDoctors(array[1]))) {
             throw new WrongListInputException();
         }
         MainChecker.checkNumInput(array,2,1);
@@ -218,12 +224,12 @@ public class StaffChecker extends MainChecker {
      *
      * @param line  Entire delete command input.
      * @return Staff ID to be deleted.
-     * @throws WrongStaffIDException  If zone is <= 0.
+     * @throws WrongStaffIdException  If zone is <= 0.
      * @throws InsufficientInputException  If number of input fields is less than 2.
      * @throws ExcessInputException  If number of input fields is more than 2.
      */
     public String checkDeleteCommand(String line) throws ExcessInputException,
-            InsufficientInputException, WrongStaffIDException {
+            InsufficientInputException, WrongStaffIdException {
         checkNumInput(line.split("/"),2,2);
         String input = line.split("/")[1];
         checkStaffID(input);
