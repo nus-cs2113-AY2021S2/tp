@@ -1,5 +1,8 @@
 # User Guide
 
+* Do not remove this line (it will not be displayed)
+{:toc}
+
 ## Introduction
 
 Welcome to Diliveri. The ultimate smart assistant for deliverymen.

@@ -1,7 +1,11 @@
 # Developer Guide
 
- ## Introduction 
- ### What is Diliveri
+* Do not remove this line (it will not be displayed)
+{:toc}
+
+## Introduction 
+
+### What is Diliveri
 Diliveri is desktop application built on Java and has cross platform abilities across different operating systems. 
 With the rise of demand for deliveryman due to the pandemic, this app optimises the delivery route for each delivery 
 man taking into account the number of deliveries per location and distances between locations, we improve the time and 
@@ -121,12 +125,26 @@ ease of use for deliverymen around the world
 
 ## Non-Functional Requirements
 
-{Give non-functional requirements}
+1. Application should work on any mainstream OS if it has Java 11 or above installed.
+2. A user with above average typing speed for English text should be able to accomplish majority of the tasks faster using commands than using the mouse.
+3. The database implemented should be able to hold up to 1000 deliverymen details without experiencing a noticeable lag in the program.
+4. The data retrieval time should return near instant without experiencing a delay in between command and output.
+5. Application would be affordable and easily accessible to the general public.
+6. The accessibility of the system is relatively secure, but further authorization schemes are in consideration to be implemented for greater security to protect user data.
+7. Deliveri is not accountable for any data lost in the case of the user's computer failure.
 
 ## Glossary
 
-* *glossary item* - Definition
+Mainstream OS: Windows, Linux, Unix, OS-X
 
 ## Instructions for manual testing
 
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+Given below are the instructions to test Deliveri manually. Do note that these instructions merely provide a starting point for testers to work on and they are expected to do more exploratory testing on their own will. You can refer to the User Guide for further information regarding the command formats.
+
+### Launching Deliveri
+1. Initial launch of Deliveri.
+2. Download the jar file and copy into an empty folder.
+3. Open up a command pormpt window and change directory to that folder with the jar file. 
+4. Run the command java -jar tp.jar.
+
+Expected: Deliveri will be loaded, and a welcome message will be displayed. Do ensure that the version number in the welcome matches version of the jar file downloaded.
