@@ -35,7 +35,7 @@ public class DeleteStoreCommand extends Command {
         int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
 
         if (canteens.get(currentCanteenIndex).getStores().size() == 0) {
-           throw new DukeExceptions("There are current no stores in the canteen");
+            throw new DukeExceptions("There are current no stores in the canteen");
         }
 
         ui.showDisplaySelectStores(canteens.get(currentCanteenIndex));
