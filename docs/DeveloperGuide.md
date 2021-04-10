@@ -3,7 +3,7 @@
 <!--@@author ivanchongzhien-->
 # Developer Guide
 
-**GULIO (Get Ur Life In Order)** is a desktop app that provides a single consolidated and personalised workspace for NUS SOC students to organize their modules. It is optimized for use via a Command Line Interface (CLI) which SOC students will be familiar with typing in, instead of a Graphical User Interface (GUI).
+**GULIO (Get Ur Life In Order)** is a desktop app that provides a single consolidated and personalised workspace for NUS SoC students to organize their modules. It is optimized for use via a Command Line Interface (CLI) which SoC students will be familiar with typing in, instead of a Graphical User Interface (GUI).
 
 This guide is for developers looking to modify GULIO. For users of GULIO, please refer to the User Guide [here](UserGuide.md).
 
@@ -29,6 +29,7 @@ This guide is for developers looking to modify GULIO. For users of GULIO, please
     * [Adding of Lesson](#adding-of-lesson)
     * [Adding of Cheat-Sheet](#adding-of-cheat-sheet)
     * [Loading & Storing of Data](#loading--storing-of-data)
+    * Design Considerations
     * [Future Features](#future-features)
 * [Appendix: Requirements](#appendix-requirements)
     * [Product Scope](#product-scope)
@@ -413,11 +414,19 @@ If the `Loader` failed to load the file, null would be returned. If null is not 
 
 &nbsp;
 
+### Design Considerations
+
+#### Implementation of `EditLessonCommand` and `EditTaskCommand`
+
+* **Initial:** used a while loop for fields to be updated that require input validation (email, link for `EditLessonCommand` and deadline for `EditTaskCommand`). It only breaks when the user enters a valid input for the field, otherwise keeps prompting for another input.
+* **Current:** notifies the user that the field was unsuccessfully updated, goes on to the next field to be updated (if any).
+* **Rationale for change:** we decided not to use a while loop because we anticipated that if the user changed his/her mind halfway and no longer wanted to edit the lesson or task, they should not be stuck endlessly being prompted for a valid input. In future implementations we could combine both methods to make these commands even more user-friendly e.g. a "cancel" command together with the while loop.
+
 ### Future Features
 
 1. Add weightage for modules.
-1. Integrate with github.
-1. Project info. (Including links and emails)
+1. Integrate with Github.
+1. Group project information for each module (e.g. group members' emails, off-limit days).
 1. Search via a filter.
 
 &nbsp;
