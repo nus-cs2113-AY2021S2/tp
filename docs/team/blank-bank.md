@@ -32,15 +32,15 @@ Given below are my contributions to the project
 - **Code contributed**: [*RepoSense* Link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=blank-bank).
 
 - **Contributions to documentation**:
-    - User Guide:
-        - Added documentation for the features `add`, `delete`, `list`, `return`, `help` in Staff. 
+    - [User Guide](https://github.com/AY2021S2-CS2113T-F08-2/tp/blob/master/docs/UserGuide.md)
+        - Added documentation for the features `add`, `delete`, `list`, `return`,` find`, `help` in Staff. 
         - Edited Content Page.
         - Edited section "How to use the User Guide".
         - Edited section "Command Summary".
         - Edited section "Start Menu".
         - Edited section "Interpreting help commands".
 
-    - Developer Guide:
+    - [Developer Guide:](https://github.com/AY2021S2-CS2113T-F08-2/tp/blob/master/docs/DeveloperGuide.md)
         - Added implementation details of Staff, including all of its features.
         - Added section "Getting Started". 
         - Added section "Architecture"
@@ -51,16 +51,16 @@ Given below are my contributions to the project
 
 - **Contributions to Team-Based Tasks**:
     - Leading project goals and deadlines
-    - Coordinating project to-dos between members: #304, #300
+    - Coordinating project to-dos between members: #311, #304, #300
     - Contributing common classes and functions: #163, #145, #141, #136, #130, #92, #76
-    - General code enhancements: #311
+    - General code enhancements (Code quality, Bugfixes, Logging, Junit Tests)
     - Adjusting code for Java CI: #371
     - Release management: Released both v1.0 and v2.0. #204, #60
     - Maintained issue tracker with creation of labels 
     - Hardcore testing for everyone's code
 
 - **Review/Mentoring contributions**:
-    - PR's reviewed: 
+    - PR's reviewed: #310
     - Managing code structure for the entire project: #92. #20
     - Looking through other's code and bugfixed other's code: #205, #127
     - Help to vet UML diagrams and Sequence diagrams.
