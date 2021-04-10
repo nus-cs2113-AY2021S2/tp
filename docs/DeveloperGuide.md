@@ -208,6 +208,8 @@ The UI of this program can be found under the package named UI. It consists of `
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/Model.png">
 
+The Model component consists of classes that represents the tasks and things that a nurse has to do in the real world. 
+
 The `Model`, consists of 5 different types of lists.
 
 - AppointmentList stores DoctorAppointment objects. AppointmentList also has methods needed to modify the list with objects.
