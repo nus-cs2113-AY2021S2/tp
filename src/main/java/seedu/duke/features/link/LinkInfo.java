@@ -6,6 +6,9 @@ import java.util.regex.Pattern;
 
 import seedu.duke.ui.Ui;
 
+/**
+ * This class deals with the LinkInfo object and linksList which is an array of LinkInfo objects.
+ */
 public class LinkInfo {
 
     public static ArrayList<LinkInfo> linksList = new ArrayList<>();
@@ -19,6 +22,9 @@ public class LinkInfo {
         this.linkDescription = linkDescription;
     }
 
+    /**
+     * Populates the linksList with the default links at the start of every app launch.
+     */
     public static void initialiseList() {
         for (LinkInfo link : LinkInfo.linksList) {
             if (link.getLink().equals(nusRedditLink)
@@ -44,7 +50,12 @@ public class LinkInfo {
         linksList.add(linkDescription);
     }
 
-    public static void deleteLink(int deleteIndex) throws NumberFormatException, IndexOutOfBoundsException {
+    /**
+     * Deletes a LinkInfo object from linksList.
+     * @param deleteIndex is the index of the object to be deleted.
+     * @throws IndexOutOfBoundsException if the index is out of bounds.
+     */
+    public static void deleteLink(int deleteIndex) throws IndexOutOfBoundsException {
         assert deleteIndex >= 0 : "Index is invalid";
         LinkInfo deletedLinkInfo = linksList.get(deleteIndex);
         linksList.remove(deleteIndex);
