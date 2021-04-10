@@ -2,6 +2,7 @@ package seedu.logic.parser;
 
 import seedu.exceptions.HealthVaultException;
 import seedu.exceptions.UnrecognizedCommandException;
+import seedu.logger.HealthVaultLogger;
 import seedu.logic.command.Command;
 import seedu.logic.command.patient.PatientAddCommand;
 import seedu.logic.command.patient.PatientDeleteCommand;
@@ -13,6 +14,9 @@ import seedu.model.patient.PatientList;
 import seedu.logic.errorchecker.MainChecker;
 import seedu.logic.errorchecker.PatientChecker;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import static seedu.ui.UI.smartCommandRecognition;
 
 /**
@@ -22,6 +26,7 @@ public class PatientParser {
 
     protected static final String[] COMMANDS = {"add", "delete", "list", "find", "return", "help"};
     private PatientChecker checker;
+    public Logger logger = HealthVaultLogger.getLogger();
 
     /**
      * Converts the user input into usable and non-volatile data.
@@ -49,32 +54,39 @@ public class PatientParser {
         checker = new PatientChecker(patients, stringTokens, command, numberOfTokens);
         switch (command) {
         case "list":
+            logger.log(Level.INFO, "Patient list command accessed");
             checker.checkLength();
             c = new PatientListCommand();
             break;
         case "add":
+            logger.log(Level.INFO, "Patient add command accessed");
             checker.checkAdd();
             String[] addFormat = parseToAddFormat(stringTokens);
             c = new PatientAddCommand(addFormat);
             break;
         case "delete":
+            logger.log(Level.INFO, "Patient delete command accessed");
             checker.checkLength();
             checker.checkId();
             c = new PatientDeleteCommand(stringTokens[1]);
             break;
         case "find":
+            logger.log(Level.INFO, "Patient find command accessed");
             checker.checkFind();
             c = new PatientFindCommand(stringTokens[1]);
             break;
         case "help":
+            logger.log(Level.INFO, "Patient help command accessed");
             checker.checkLength();
             c = new PatientHelpCommand();
             break;
         case "return":
+            logger.log(Level.INFO, "Patient return command accessed");
             checker.checkLength();
             c = new PatientReturnCommand();
             break;
         default:
+            logger.log(Level.WARNING, "Patient command Unrecognized!");
             throw new UnrecognizedCommandException();
         }
         return c;
