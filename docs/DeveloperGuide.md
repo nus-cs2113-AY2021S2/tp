@@ -256,7 +256,18 @@ The `Model`, consists of 5 different types of lists.
 <br>
 
 ### 4.5 Storage component
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/StorageUML.png">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/UpdatedStorageUML.png">
+
+The Storage component consists of classes that individually reads data from, and writes data to, 5 different .txt files.
+
+The `Storage`, consists of 5 different types of classes:
+
+- DoctorApointmentStorage implements `writeToFile()` to write information regarding doctorID, name, date, appointmentID, and gender into DoctorAppointment.txt file. `loadFile()`loads the data in the DoctorAppointment.txt file into an array list to be returned. `loadDoctorFile()` loads the doctor information from the staff database.
+- IventoryStorage implements `storeInventory()` to write information regarding drug name, price, and quantity into Inventory.txt file. `loadInventory()`loads the data in the Inventory.txt file into an array list to be returned.
+- NurseScheduleStorage implements `writeToFile()` to write information regarding nurseID, patientID, date into NurseSchedule.txt file. `loadPatientFile()` loads the patient information from the patient database.
+- StaffStorage implements `writeToFile()` to write information regarding staffID, name, age, and specialisation into Staff.txt file. `loadFile()`loads the data in the Patients.txt file into an array list to be returned.
+- PatientStorage implements `storePatients()` to write information regarding patientID, name, age, gender, illness, and drugsNeeded into Patient.txt file. `loadPatients()`loads the data in the Patient.txt file into an array list to be returned.
+
 <br>
 
 ## 5. Implementation
@@ -1280,7 +1291,7 @@ Given below are instructions to test HealthVault manually.
     1.2 Open up a command window to that folder with the jar file.
     1.3 Run the command `java -jar tp.jar` 
         
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** HealthVault will be loaded, and a welcome message will be shown. Ensure that the version number in the welcome matches version of the jar file downloaded.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** HealthVault will be loaded, and a welcome message will be shown. Ensure &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;that the version number in the welcome matches version of the jar file downloaded.
 
 ### Start Menu
 1. Choose a directory from the Start Menu
@@ -1289,8 +1300,8 @@ Given below are instructions to test HealthVault manually.
     >
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.1 **Test case:** `staff` (where you will be directed to the Staff Menu)
 
-&nbsp;&nbsp;nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
-	
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+
 	```
 	Welcome to Staff Menu!
 	Type "help" for staff menu commands
@@ -1298,7 +1309,7 @@ Given below are instructions to test HealthVault manually.
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.2 **Test case:** `patient` (where you will be directed to the Patient Menu)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 	
 	```
 	Welcome to the patient Commands section!
@@ -1307,7 +1318,7 @@ Given below are instructions to test HealthVault manually.
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.3 **Test case:** `appointments` (where you will be directed to the Appointments' Menu)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
 	```
 	Welcome to the Appointments' Menu!
@@ -1316,7 +1327,7 @@ Given below are instructions to test HealthVault manually.
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.4 **Test case:** `schedules` (where you will be directed to the Schedules' Menu)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 	
 	```
 	Welcome to Nurse Schedules!
@@ -1325,7 +1336,7 @@ Given below are instructions to test HealthVault manually.
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.5 **Test case:** `inventory` (where you will be directed to the Staff Menu)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 
 	```
 	Welcome to Inventory Menu!
@@ -1335,7 +1346,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.6 **Test case:** `help` (where you will be directed to the Help Menu)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
 	```
 	Commands       Description                             Format    
@@ -1351,7 +1362,7 @@ Given below are instructions to test HealthVault manually.
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.7 **Test case:** `exit` (where you will exit the program)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Goodbye! Have a nice day!```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Goodbye! Have a nice day!```
 	 
 <br/><br/>
 
@@ -1372,7 +1383,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Doctor MingShun hired :)```
 
-<br/><br/>
+<br/>
  
 2. Deleting staff
 
@@ -1383,7 +1394,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```D12345 has been fired :(```
 
-<br/><br/>
+<br/>
 
 3. Listing all doctors and nurses
 
@@ -1392,7 +1403,7 @@ Given below are instructions to test HealthVault manually.
     
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.1 **Test case:** ```list/nurses ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
 	```
 	ID         | Name       | Age   | Specialisation      
@@ -1402,7 +1413,7 @@ Given below are instructions to test HealthVault manually.
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.2 **Test case:** ```list/doctors ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
 	```
 	ID         | Name       | Age   | Specialisation      
@@ -1412,7 +1423,7 @@ Given below are instructions to test HealthVault manually.
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.3 **Test case:** ```list ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 		
 	```
 	ID         | Name       | Age   | Specialisation      
@@ -1422,7 +1433,7 @@ Given below are instructions to test HealthVault manually.
 	D12355     | Alex       | 28    | Oncology
 	```		
 	
-<br/><br/>
+<br/>
 
 4. Finding a staff
 
@@ -1441,7 +1452,7 @@ Given below are instructions to test HealthVault manually.
 	Staff -->
 	```
 
-<br/><br/>
+<br/>
 
 5. Returning to Start Menu
 
@@ -1449,7 +1460,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to start menu!```
 
-<br/><br/>
+<br/>
 
 6. Directing to help function
 
@@ -1487,7 +1498,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Sam is now a patient here!```
 
-<br/><br/>
+<br/>
  
 2. Deleting a patient
 
@@ -1505,7 +1516,7 @@ Given below are instructions to test HealthVault manually.
 	Now you have 0 patients in the list
 	```
 
-<br/><br/>
+<br/>
 
 3. Listing all patients
 
@@ -1521,7 +1532,7 @@ Given below are instructions to test HealthVault manually.
 	P12345   | Amy                  | 35     | F        | Flu                  | Panadol
 	```
 	
-<br/><br/>
+<br/>
 
 4. Finding a patient
 
@@ -1532,7 +1543,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.1 **Test case:** ```find/P55555```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
 	```
 	ID       | Name                 | Age    | Gender   | Illness              | Medication Required 
@@ -1541,14 +1552,14 @@ Given below are instructions to test HealthVault manually.
 	```
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.2 **Test case:** ```find/Sam```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
 	```
 	ID       | Name                 | Age    | Gender   | Illness              | Medication Required 
 	____________________________________________________________________________________________________
 	P55555   | Sam                  | 40     | M        | Fever                | Paracetamol    
 	```
-<br/><br/>
+<br/>
 
 5. Returning to Start Menu
 
@@ -1556,7 +1567,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to start menu!```
 
-<br/><br/>
+<br/>
 
 6. Directing to help function
 
@@ -1593,7 +1604,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Appointment Added```
 	
-<br/><br/>
+<br/>
  
 2. Deleting an appointment
 
@@ -1608,7 +1619,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```DoctorID / Appointment ID: D12345/A12345 has been deleted!```
 
-<br/><br/>
+<br/>
 
 3. Listing appointments
 
@@ -1618,7 +1629,7 @@ Given below are instructions to test HealthVault manually.
     
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.1 **Test case:** ```list/all```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 
 	```
 	Doctor ID      | Appointment ID | Name           | Gender         | Date          
@@ -1629,7 +1640,7 @@ Given below are instructions to test HealthVault manually.
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.2 **Test case:** ```list/D12345```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 
 	```
 	Doctor ID      | Appointment ID | Name           | Gender         | Date          
@@ -1639,7 +1650,7 @@ Given below are instructions to test HealthVault manually.
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.3 **Test case:** ```list/A12345 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 
 	```
 	Doctor ID      | Appointment ID | Name           | Gender         | Date          
@@ -1647,7 +1658,7 @@ Given below are instructions to test HealthVault manually.
 	D12345         | A12345         | Alex           | M              | 21/01/2021  
 	```		
 	
-<br/><br/>
+<br/>
 
 4. Returning to Start Menu
 
@@ -1655,7 +1666,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to start menu!```
 
-<br/><br/>
+<br/>
 
 5. Directing to help function
 
@@ -1687,9 +1698,9 @@ Given below are instructions to test HealthVault manually.
     
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```add/N12345/P12345/30012020```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ````Trip to P12345 on 30/01/2020 added!```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Trip to P12345 on 30/01/2020 added!```
 	
-<br/><br/>
+<br/>
  
 2. Deleting schedule
 
@@ -1702,7 +1713,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Trip to P12345 on 30/01/2020 has been cancelled!```
 
-<br/><br/>
+<br/>
 
 3. Listing schedules
 
@@ -1712,7 +1723,7 @@ Given below are instructions to test HealthVault manually.
     
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.1 **Test case:** ```list/N12345 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 
 	```
 	Nurse ID   | Patient ID | Date      
@@ -1722,7 +1733,7 @@ Given below are instructions to test HealthVault manually.
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.2 **Test case:** ```list/all```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 	```
 	Nurse ID   | Patient ID | Date      
 	____________________________________________________________
@@ -1730,7 +1741,7 @@ Given below are instructions to test HealthVault manually.
 	N55555     | P55555     | 30/01/2020   
 	```
 		
-<br/><br/>
+<br/>
 
 4. Returning to Start Menu
 
@@ -1738,7 +1749,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to start menu!```
 
-<br/><br/>
+<br/>
 
 5. Directing to help function
 
@@ -1772,7 +1783,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```90 paracetamol is added into Inventory!```
 
-<br/><br/>
+<br/>
  
 2. Decreasing quantity of drugs
 
@@ -1783,7 +1794,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Noted. I've removed 20 paracetamol```
 
-<br/><br/>
+<br/>
 
 3. Listing all drugs
     
@@ -1799,7 +1810,7 @@ Given below are instructions to test HealthVault manually.
 	Panadol         | 4.80       | 36 
 	```		
 	
-<br/><br/>
+<br/>
 
 4. Returning to Start Menu
 
@@ -1807,7 +1818,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to start Menu!```
 
-<br/><br/>
+<br/>
 
 4. Directing to help function
 
