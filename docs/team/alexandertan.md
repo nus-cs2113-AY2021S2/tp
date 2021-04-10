@@ -31,16 +31,16 @@ Given below are my contributions to the project.
 
   - Developer Guide:
     - Added implementation details of Nurse Schedules, including all of its features. [\#330](), [\#305](), [\#288]()
-    - Added User Stories [\#324]()
-    - Added Model Component [\#324]()
+    - Added User Stories table [\#324]()
+    - Added Model Component with diagram [\#324]()
 
 - **Contributions to Team-Based Tasks**:
   - General code enhancements
-  - Fix Java CI
+  - Fixed Java CI
   - Maintained issue tracker with creation of some labels
 
 - **Review/Mentoring contributions**:
-  - PR's reviewed: #35, #334, #333
+  - PR's reviewed: #35, #171, #334, #333
 
 - **Contributions beyond the team**:
   - Helped find and reported bugs in other team's application

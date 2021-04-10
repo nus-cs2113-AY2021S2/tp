@@ -30,6 +30,9 @@ public class NurseScheduleInstance {
     private NurseScheduleUI ui;
     public Logger logger = HealthVaultLogger.getLogger();
 
+    /**
+     * Constructor for NurseScheduleInstance.
+     */
     public NurseScheduleInstance() {
         parser = new NurseSchedulesParser();
         storage = new NurseScheduleStorage();

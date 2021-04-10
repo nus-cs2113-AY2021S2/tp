@@ -48,18 +48,38 @@ public class NurseSchedule implements Comparable<NurseSchedule> {
         return formatter.format(date);
     }
 
+    /**
+     * returns Nurse ID.
+     *
+     * @return nurseID
+     */
     public String getNurseID() {
         return nurseID;
     }
 
+    /**
+     * returns patient ID.
+     *
+     * @return patientID
+     */
     public String getPatientID() {
         return patientID;
     }
 
+    /**
+     * returns date of schedule.
+     *
+     * @return date
+     */
     public String getDate() {
         return date;
     }
 
+    /**
+     * returns formatted date.
+     *
+     * @return date
+     */
     public String getFormattedDate() {
         String date = null;
         try {
@@ -70,15 +90,30 @@ public class NurseSchedule implements Comparable<NurseSchedule> {
         return date;
     }
 
+    /**
+     * returns format of data to be written into nurseschedule.txt.
+     *
+     * @return string of data
+     */
     public String toSave() {
         return getNurseID() + "|" + getPatientID() + "|" + getDate();
     }
 
+    /**
+     * returns format of data to be displayed when listing.
+     *
+     * @return string of data
+     */
     public String toFind() {
         //return getFormattedDate() + " " + patientID;
         return prettyPrint(patientID, 10) + " | " + prettyPrint(getFormattedDate(), 10);
     }
 
+    /**
+     * returns string of data.
+     *
+     * @return string of data
+     */
     public String toString() {
         return nurseID + " " + patientID + " " + getFormattedDate();
     }
