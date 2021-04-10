@@ -178,13 +178,7 @@ checks for duplicate by comparing spelling, and the number of blank spaces in be
 If you attempt to add a pre-existing review title, Connoisseur will prompt you of the existence of duplicate in the list and ask you 
 to enter a unique title. <br>
 
-|Title input by user | Pre-existing title in list | Duplicate / Unique | Explanation |
-| ----------- | ---------- | -----------|-----------|
-| CapTaiN AmeRICA | captain america | Duplicate|Spelling and number of spaces in between words <br> are the same|
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CapTaiN AmeRICA <br> CapTaiN AmeRICA     | captain america | Duplicate| The difference between title input by user and the <br> pre-existing title in the list are the presence of blank <br> spaces before and after the title. Nonetheless, the <br> spelling and number of spaces in between words in <br> are the same. Hence, the title input by <br> the user is duplicate |
-| captain &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; america | captain america | Unique|Although spelling is the same, the number of spaces in <br> between words are different|
-| CapTaiN AmeRICA2 | captain america | Unique|Different spelling|
-
+![img.png](images/ug/guidelines_duplicate_titles.png)
 Table 1. Guidelines on duplicate and unique title
 
 #### 4.1.2 List Reviews
@@ -273,6 +267,7 @@ typed before the command, Connoisseur will detect it as an invalid command.
 prompt you saying that no such review exits. When typing the title you want to view, ensure spelling, and the number of blank spaces in between words is the same as the title in the list.
 
 <span>&#10071;</span> When adding a review, if you did not put in a description for it, the text "No description entered." will appear when viewing the review.
+
 #### 4.1.5 Edit a Review
 
 This feature allows you to make edits to the Title / Category / Rating / Description of the review in your list. <br />
@@ -370,6 +365,11 @@ it is located at as shown in Figure 16.
 <span>&#10071;</span>Price range should be numbers up to 2 decimal places between 0.00 to 9999.99 and separated by '-'. If you
 input more than 2 decimal places, Connoisseur will round up to the nearest 2 decimal places.
 
+<span>&#10071;</span> Ensure the title of the recommendation added is unique and does not already exist in the list. Connoisseur
+checks for duplicate by comparing spelling, and the number of blank spaces in between words in the title. Refer to table 1 in [section 4.1.1](#411-adding-a-review) for examples.
+If you attempt to add a pre-existing recommendation title, Connoisseur will prompt you of the existence of duplicate in the list and ask you 
+to enter a unique title. <br>
+
 <span>&#10071;</span> If you try to add a Recommendation title that already exists in your Review list, Connoisseur will
 warn you. Perhaps you had forgotten that you have already experienced and reviewed the item in the past!
 Not to worry, Connoisseur will ask you if you want to exit *adding a recommendation*. Input `y` to exit. 
@@ -399,7 +399,7 @@ Command : `edit [TITLE_OF_RECOMMENDATION] `
 `[TITLE_OF_RECOMMENDATION]` : title of recommendation that you want to edit.
 
 <span>&#10071;</span>Ensure the title of the recommendation you want to edit already exists in your lists of recommendations.
-Otherwise, Connoisseur will prompt you saying that no such recommendation exists.
+Otherwise, Connoisseur will prompt you saying that no such recommendation exists. When typing the title you want to edit, ensure spelling and the number of blank spaces in between words is the same as the title in the list.
 
 As shown in Figure 18 below, Connoisseur will prompt you asking whether you would like to make changes to Title/
 Category/ Price range/ Location/ RecBy. Input either `Title`,`Category`, `Price range`,`Location` or `RecBy` .
