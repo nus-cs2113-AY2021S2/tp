@@ -14,6 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static ui.Ui.LINESPACING;
+
 
 public class AddReviewCommand extends Command {
     private Store store;
@@ -75,6 +77,7 @@ public class AddReviewCommand extends Command {
             rating = Double.parseDouble(line);
             if (rating < 1.0 || rating > 5.0) {
                 System.out.println("Please enter valid rating");
+                System.out.println(LINESPACING);
                 return;
             }
         }
@@ -82,7 +85,7 @@ public class AddReviewCommand extends Command {
         ui.reviewAdded();
         Date dateTime = new Date();
         Format formatter = new SimpleDateFormat("yyy-MM-dd");
-        Storage.saveReview(new FileWriter(Storage.fileName,true),canteen,store,description,line,
+        Storage.saveReview(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH,true),canteen,store,description,line,
                 formatter.format(dateTime));
     }
 }

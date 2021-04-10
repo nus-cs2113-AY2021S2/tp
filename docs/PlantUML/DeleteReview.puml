@@ -1,0 +1,63 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+box DeleteReviews
+
+->":DeleteReviewsCommand": execute(canteens,ui)
+activate ":DeleteReviewsCommand"
+alt canteens.size()>0
+    ":DeleteReviewsCommand"->":ArrayList<Canteen> canteens":get(currentCanteenIndex)
+    activate ":ArrayList<Canteen> canteens"
+    ":ArrayList<Canteen> canteens"-->":DeleteReviewsCommand":currentCanteen
+    deactivate ":ArrayList<Canteen> canteens"
+    ":DeleteReviewsCommand"->":Store":getStore(currentStoreIndex)
+    activate ":Store"
+    ":Store"-->":DeleteReviewsCommand":store
+    deactivate ":Store"
+    ":DeleteReviewsCommand"->":Store":getReviews()
+    activate ":Store"
+    ":Store"-->":DeleteReviewsCommand":reviews
+    deactivate ":Store"
+    ":DeleteReviewsCommand"->":Store":getAverageRating()
+    activate ":Store"
+    ":Store"-->":DeleteReviewsCommand":averageRating
+    deactivate ":Store"
+    ":DeleteReviewsCommand"->":Store":getStoreName()
+    activate ":Store"
+    ":Store"-->":DeleteReviewsCommand":storeName
+    deactivate ":Store"
+    ":DeleteReviewsCommand"->":Ui":showReviews(storeName, reviews,averageRating)
+    activate ":Ui"
+    ":Ui"-->":DeleteReviewsCommand"
+    deactivate ":Ui"
+    ":DeleteReviewsCommand"->":Ui":showDeleteReview()
+    activate ":Ui"
+    ":Ui"-->":DeleteReviewsCommand"
+    deactivate ":Ui"
+    ":DeleteReviewsCommand"->":Ui":readCommand()
+    activate ":Ui"
+    ":Ui"-->":DeleteReviewsCommand":line
+    deactivate ":Ui"
+    alt line.equals("cancel")
+    ":DeleteReviewsCommand"->":Ui":showReviewNotDeleted
+    activate ":Ui"
+    ":Ui"-->":DeleteReviewsCommand"
+    deactivate ":Ui"
+    end
+    ":DeleteReviewsCommand"->":Store":deleteReview(reviewIndex)
+    activate ":Store"
+    ":Store"-->":DeleteReviewsCommand"
+    deactivate ":Store"
+    ":DeleteReviewsCommand"->":Ui":reviewDeleted()
+    activate ":Ui"
+    ":Ui"-->":DeleteReviewsCommand"
+    deactivate ":Ui"
+    ":DeleteReviewsCommand"->":Storage":save()
+    activate ":Storage"
+    ":Storage"-->":DeleteReviewsCommand"
+    deactivate ":Storage"
+    <--":DeleteReviewsCommand"
+end
+deactivate ":DeleteReviewsCommand"
+@enduml

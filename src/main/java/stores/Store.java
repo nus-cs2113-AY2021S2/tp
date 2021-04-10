@@ -12,7 +12,6 @@ public class Store {
     private ArrayList<Review> reviews;
     private ArrayList<Menu> menus;
     public static double ratingSum = 0;
-    public static int ratingCount = 0;
     public static int menuCount = 0;
     public static double averageRating;
 
@@ -22,7 +21,7 @@ public class Store {
         this.storeName = storeName;
         menus = new ArrayList<>();
         reviews = new ArrayList<>();
-        logger.log(Level.INFO, "New Store object " + storeName + " created");
+        logger.log(Level.FINER, "New Store object " + storeName + " created");
     }
 
     public void displayStore() {
@@ -42,16 +41,11 @@ public class Store {
         return menus;
     }
 
-    public int getRatingCount() {
-        return ratingCount;
-    }
-
     public double getAverageRating() {
-        for (Review rating : reviews) {
-            ratingSum = ratingSum + rating.getRating();
-            ratingCount++;
+        for (Review review : reviews) {
+            ratingSum = ratingSum + review.getRating();
         }
-        averageRating = ratingSum / ratingCount;
+        averageRating = ratingSum / reviews.size();
         return averageRating;
     }
 
@@ -63,9 +57,8 @@ public class Store {
         reviews.add(newReview);
     }
 
-    public void deleteReview(int reviewCount) {
-        reviews.remove(reviewCount);
-        ratingCount--;
+    public void deleteReview(int reviewIndex) {
+        reviews.remove(reviewIndex);
     }
 
     public void addMenu(Menu newMenu) {

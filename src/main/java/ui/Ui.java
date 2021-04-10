@@ -45,8 +45,6 @@ public class Ui {
             }
         } catch (NullPointerException e) {
             System.out.println("Input cannot be empty.");
-        } catch (DukeExceptions e) {
-            System.out.println(e.getMessage());
         }
         return line;
     }
@@ -80,19 +78,19 @@ public class Ui {
         System.out.println("1. View canteens");
         System.out.println("2. Add canteen");
         System.out.println("3. Add a store in a canteen");
-        System.out.println("4. Add Menu");
+        System.out.println("4. Add Menu to a store");
         System.out.println("5. Delete canteen");
         System.out.println("6. Delete a store in a canteen");
-        System.out.println("7. Delete reviews");
-        System.out.println("8. Delete menu");
+        System.out.println("7. Delete reviews in a store");
+        System.out.println("8. Delete menu in a store");
         System.out.println("9. View stores in a canteen");
-        System.out.println("10. Exit");
+        System.out.println("0. Exit");
         System.out.println(LINESPACING);
     }
 
-    public void printStoreAdded(String storeName) {
+    public void printStoreAdded(String storeName, String canteenName) {
         System.out.println(LINESPACING);
-        System.out.println("Got it ! Successfully added " + storeName + " to The Deck");
+        System.out.println("Got it ! Successfully added " + storeName + " to " + canteenName + ".");
         System.out.println(LINESPACING);
     }
 
@@ -145,7 +143,8 @@ public class Ui {
         } else {
             ArrayList<Store> stores = canteen.getStores();
             System.out.println("Here's a list of the stores in the canteen: " + canteen.getCanteenName());
-            System.out.println("Please select one of the following stores:");
+            System.out.println("Please select one of the following stores:"
+                    + " (Enter 'login' to go back to login page)");
             for (int i = 0; i < stores.size(); i++) {
                 System.out.print((i + 1) + ". ");
                 stores.get(i).displayStore();
@@ -197,6 +196,12 @@ public class Ui {
 
     public void showDisplaySelectCanteens(ArrayList<Canteen> canteens, String action) {
         System.out.println(LINESPACING);
+        if (canteens.size() <= 0) {
+            System.out.println("There are no canteens yet! Log in as admin to add a new canteen.");
+            System.out.println("Enter 'login' to switch to Admin.");
+            System.out.println(LINESPACING);
+            return;
+        }
         if (action.equals("delete")) {
             System.out.println("Select one of the following NUS canteens to " + action
                     + ": (Enter 'cancel' to go back)");
@@ -255,9 +260,10 @@ public class Ui {
     }
 
     public void showStoreOptions(String canteenName, String storeName) {
-        System.out.println("You are now viewing: " + canteenName + ": " + storeName);
-        System.out.println("Please Enter your command:");
-        System.out.println("If you need help then Enter 'help' to view all the commands");
+        System.out.println("You are now viewing the store: " + storeName + " in the canteen: " + canteenName);
+        System.out.println("Please enter your command:");
+        System.out.println("If you need help, enter 'help' to view all the commands");
+        System.out.println("Enter 'login' if you want to go back to login page");
         System.out.println(LINESPACING);
     }
 
@@ -332,6 +338,11 @@ public class Ui {
 
     public void showAddCanteenSuccess(String canteenName) {
         System.out.println("The canteen '" + canteenName + "' has been added!");
+        System.out.println(LINESPACING);
+    }
+
+    public void showInvalidCanteenPrompt(String canteenName) {
+        System.out.println("The canteen name '" + canteenName + "' is already taken! Please enter another name:");
     }
 
     public void showCanteenNotAdded() {
@@ -339,6 +350,11 @@ public class Ui {
         System.out.println("Cancelling.... Canteen not added");
         System.out.println(LINESPACING);
     }
+
+    public void showInvalidStorePrompt(String storeName) {
+        System.out.println("The store name '" + storeName + "' already exist! Please enter again:");
+    }
+
 
     public void showStoreNotAdded() {
         System.out.println(LINESPACING);
@@ -367,6 +383,20 @@ public class Ui {
     public void showMenuNotDeleted() {
         System.out.println(LINESPACING);
         System.out.println("Cancelling.... Menu not Deleted");
+        System.out.println(LINESPACING);
+    }
+
+    public static void showDirectoryCreated() {
+        System.out.println(LINESPACING);
+        System.out.println("Directory not found...New directory created.");
+        System.out.println("New database file created...");
+        System.out.println(LINESPACING);
+    }
+
+    public static void showDirectoryFound() {
+        System.out.println(LINESPACING);
+        System.out.println("Directory found!...");
+        System.out.println("Data loaded successfully...");
         System.out.println(LINESPACING);
     }
 

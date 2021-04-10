@@ -131,6 +131,7 @@ public class NusFoodReviews {
     public void setCanteenIndex() throws DukeExceptions {
         ui.showDisplaySelectCanteens(canteens, "view");
         String line = ui.readCommand();
+
         if (line.equals("exit")) {
             ui.showGoodbye();
             System.exit(0);
@@ -141,7 +142,10 @@ public class NusFoodReviews {
             resetAllIndex();
             return;
         }
-        canteenIndex = parser.parseInt(line, 1, canteens.size()) - 1;
+
+        if (canteens.size() > 0) {
+            canteenIndex = parser.parseInt(line, 1, canteens.size()) - 1;
+        }
     }
 
     public int getStoreIndex() {

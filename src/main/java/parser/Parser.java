@@ -32,7 +32,7 @@ public class Parser {
 
     private NusFoodReviews nusFoodReviews;
     private Ui ui;
-    private String savePath = Storage.fileName;
+    private String savePath = Storage.DEFAULT_STORAGE_FILEPATH;
 
     public Parser(NusFoodReviews nusFoodReviews, Ui ui) {
         this.nusFoodReviews = nusFoodReviews;
@@ -116,7 +116,7 @@ public class Parser {
         case "9":
             newCommand = new ViewStoreCommand(nusFoodReviews);
             break;
-        case "10":
+        case "0":
             newCommand = new ExitCommand();
             break;
         case "login":

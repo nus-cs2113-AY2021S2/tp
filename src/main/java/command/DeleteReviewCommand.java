@@ -12,7 +12,6 @@ import ui.Ui;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Map;
 
 import static stores.Store.averageRating;
 import static ui.Ui.LINESPACING;
@@ -28,23 +27,26 @@ public class DeleteReviewCommand extends Command {
     }
 
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
-        nusFoodReviews.setCanteenIndex();
-        int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
-        if (currentCanteenIndex == -1) {
-            ui.showReviewNotDeleted();
-            return;
-        }
-        nusFoodReviews.setStoreIndex();
-        int currentStoreIndex = nusFoodReviews.getStoreIndex();
-        if (currentStoreIndex == -1) {
-            ui.showReviewNotDeleted();
-            return;
-        }
-        ArrayList<Store> stores = canteens.get(currentCanteenIndex).getStores();
-        ArrayList<Review> reviews = canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getReviews();
-        averageRating = stores.get(currentStoreIndex).getAverageRating();
-        if (reviews.size() > 0) {
-            ui.showReviews(stores.get(currentStoreIndex).getStoreName(), reviews, averageRating);
+        if (canteens.size() > 0) {
+            nusFoodReviews.setCanteenIndex();
+            int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
+            nusFoodReviews.setStoreIndex();
+            int currentStoreIndex = nusFoodReviews.getStoreIndex();
+            if (currentStoreIndex == -1) {
+                return;
+            }
+            Canteen currentCanteen = canteens.get(currentCanteenIndex);
+            Store store = currentCanteen.getStore(currentStoreIndex);
+            ArrayList<Review> reviews = store.getReviews();
+            averageRating = store.getAverageRating();
+            if (reviews.size() <= 0) {
+                System.out.println(LINESPACING);
+                System.out.println("There are currently no reviews in this store to delete!");
+                System.out.println(LINESPACING);
+                return;
+            }
+            String storeName = store.getStoreName();
+            ui.showReviews(storeName, reviews, averageRating);
             ui.showDeleteReview();
 
             String line = ui.readCommand();
@@ -52,18 +54,17 @@ public class DeleteReviewCommand extends Command {
                 ui.showReviewNotDeleted();
                 return;
             }
-            int reviewNumber = parser.parseInt(line, 1,
-                    canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getRatingCount()) - 1;
-
-            Canteen currentCanteen = canteens.get(currentCanteenIndex);
-            Store store = currentCanteen.getStore(currentStoreIndex);
-            store.deleteReview(reviewNumber);
+            int reviewIndex = parser.parseInt(line, 1, reviews.size()) - 1;
+            store.deleteReview(reviewIndex);
             ui.reviewDeleted();
-            Storage.save(new FileWriter(Storage.fileName), canteens);
+            Storage.save(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH), canteens);
         } else {
-            System.out.println("There are no reviews in this store!");
+            System.out.println(LINESPACING);
+            System.out.println("There are no canteens for you to delete reviews for any stores!");
             System.out.println(LINESPACING);
         }
+
+
     }
 
 }
