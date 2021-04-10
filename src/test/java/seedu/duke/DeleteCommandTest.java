@@ -120,7 +120,7 @@ public class DeleteCommandTest {
     }
 
     @Test
-    public void executeDeleteCommand_emptyNRICArgument() {
+    public void executeDeleteCommand_emptyNricArgument() {
         Data data = new Data();
         Ui ui = new Ui();
         HashMap<String, String> arguments = new HashMap<>();
