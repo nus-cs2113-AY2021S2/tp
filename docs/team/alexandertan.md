@@ -39,5 +39,5 @@ Given below are my contributions to the project.
   - Fix Java CI
   - Maintained issue tracker with creation of some labels
 
-- **Contributions beyond the team:
+- **Contributions beyond the team**:
   - Helped find and reported bugs in other team's application
