@@ -64,11 +64,10 @@ as well as associated JUnit tests and helper function code.
 
 ### Contributions to Team-based Tasks
 
-  - Consolidated issues created during PE-D for the team and labelled issue trackers.
+  - Consolidated issues created during PE-D for the team and labelled issue trackers
   - Coordinating communications between instructors on MSTeams and teammates
   - Streaming the execution and usage of the application in Project Demo Video
-  - Proofread Documentations
-  - Test final jar file for bugs
+  - Check documentations and final jar file for bugs
  
 **Review/Mentoring Contributions**  
   - Gave suggestions and help debug in weekly meetings
