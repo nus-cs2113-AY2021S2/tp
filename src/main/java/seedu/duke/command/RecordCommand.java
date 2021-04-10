@@ -28,18 +28,18 @@ public class RecordCommand extends Command {
     public void execute() throws InvalidInputException, StorageException {
         assert ui != null : "Ui must not be null";
         assert arguments.containsKey("payload") : "Arguments must contain a value for the `payload` key";
-        Patient patient = data.currentPatient;
-        if (patient == null) {
-            throw new InvalidInputException(InvalidInputException.Type.NO_PATIENT_LOADED);
-        }
+//        Patient patient = data.currentPatient;
+//        if (patient == null) {
+//            throw new InvalidInputException(InvalidInputException.Type.NO_PATIENT_LOADED);
+//        }
         String dateString = arguments.get(Constants.PAYLOAD_KEY);
         LocalDate date = Common.parseDate(dateString);
-        addRecord(patient, date);
+        addRecord(date);
         data.saveFile();
-        printNewRecord(patient);
+//        printNewRecord(patient);
     }
 
-    private void addRecord(Patient patient, LocalDate date) throws InvalidInputException {
+    private void addRecord(LocalDate date) throws InvalidInputException {
         String symptom = null;
         String diagnosis = null;
         String prescription = null;
@@ -58,7 +58,7 @@ public class RecordCommand extends Command {
         if (!containsSymptom && !containsDiagnosis && !containsPrescription) {
             throw new InvalidInputException(InvalidInputException.Type.EMPTY_DESCRIPTION);
         }
-        patient.addRecord(date, symptom, diagnosis, prescription);
+        data.addRecord(date, symptom, diagnosis, prescription);
     }
 
     private void printNewRecord(Patient patient) {

@@ -1,8 +1,10 @@
 package seedu.duke;
 
+import java.time.LocalDate;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import seedu.duke.exception.DataException;
 import seedu.duke.exception.StorageException;
 import seedu.duke.model.Patient;
 
@@ -32,6 +34,7 @@ public class Data {
 
     /**
      * This initializes an empty data instance with a storage instance.
+     *
      * @param storage an instance of the storage class
      */
     public Data(Storage storage) {
@@ -42,7 +45,8 @@ public class Data {
      * This initializes a data instance with an existing patient list.
      * Storage instance must be specified if want to use an existing list of patients. However it can be set
      * to null (i.e. new Data(null, existingPatients)) for testing purposes.
-     * @param storage an instance of the storage class
+     *
+     * @param storage  an instance of the storage class
      * @param patients the patient list
      */
     public Data(Storage storage, SortedMap<String, Patient> patients) {
@@ -53,6 +57,7 @@ public class Data {
 
     /**
      * This retrieves the full hashmap of patients.
+     *
      * @return the patient hashmap
      */
     public SortedMap<String, Patient> getPatients() {
@@ -61,6 +66,7 @@ public class Data {
 
     /**
      * This retrieves a single patient bases on its unique identifier.
+     *
      * @param id unique identifier of the patient to be retrieved
      * @return the patient instance associated with this ID if found, otherwise null is returned
      */
@@ -70,6 +76,7 @@ public class Data {
 
     /**
      * Add or update a new patient to the hashmap of this database.
+     *
      * @param patient the patient to be added/updated
      */
     public void setPatient(Patient patient) {
@@ -79,6 +86,7 @@ public class Data {
     /**
      * This loads a patient to the currentPatient attribute.
      * Take note that currentPatient can still be null if there is no patients with this id in the hashmap.
+     *
      * @param id unique identifier of the patient to be loaded
      * @return true if a patient is successfully loaded, otherwise false
      */
@@ -93,6 +101,7 @@ public class Data {
 
     /**
      * This removes a patient from the hashmap of this database.
+     *
      * @param id unique identifier of the patient to be loaded
      */
     public void deletePatient(String id) {
@@ -114,5 +123,18 @@ public class Data {
         if (storage != null) {
             storage.save(patients);
         }
+    }
+
+    /**
+     * Add medical record(s) to the currently loaded patient.
+     *
+     * @param date the date of the patient's consultation
+     * @param symptom symptoms reported by the patient
+     * @param diagnosis diagnosis made by the doctor
+     * @param prescription prescription made by the doctor
+     * @throws DataException if there is no loaded patient
+     */
+    public void addRecord(LocalDate date, String symptom, String diagnosis, String prescription) throws DataException {
+
     }
 }
