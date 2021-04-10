@@ -1,5 +1,8 @@
 # Developer Guide
 
+* Do not remove this line (it will not be displayed)
+{:toc}
+
  ## Introduction 
  ### What is Diliveri
 Diliveri is desktop application built on Java and has cross platform abilities across different operating systems. 
