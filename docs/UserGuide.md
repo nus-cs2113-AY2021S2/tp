@@ -43,7 +43,7 @@ It is written in Java, and has more than 6000 lines of code.
 
 ## Features
 
-:information_source: Words in UPPER_CASE are the parameters to be supplied by the user. For example, `add FOOD_NAME` should be executed as `add chicken` where `FOOD_NAME` is a parameter.
+:information_source: Words in UPPER_CASE are the parameters to be supplied by the user. For example, `add FOOD_NAME` should be executed as `add chicken` where `FOOD_NAME` is the parameter.
 
 :information_source: Extraneous parameters for commands that do not take in parameters will be ignored. For example, `help me` will execute as `help`.
 
@@ -84,15 +84,15 @@ This is the list of storage locations:
 
 Adds a food item into the fridge.
 
-If a particular FOOD_NAME is in the fridge, the other fields have to be same in order to
-add the quantity. Otherwise, a unique FOOD_NAME has to be used to add the food into the FridgeFriend.
+If a particular `FOOD_NAME` is in the fridge, the other fields have to be same in order to
+add the quantity. Otherwise, a unique `FOOD_NAME` has to be used to add the food into the FridgeFriend.
 
 Format: `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_FRIDGE /qty FOOD_QUANTITY`
 
-* The `FOOD_NAME` can be the name of a food but not an empty description.
-* The `FOOD_CATEGORY` can be the basic food groups otherwise it will be categorised as others.
+* The `FOOD_NAME` is the name of a food but not an empty description.
+* The `FOOD_CATEGORY` must be one of the available food categories.
 * The `EXPIRY_DATE` must be in the format `dd-mm-yyyy`.
-* The `LOCATION_IN_THE_FRIDGE` can be a general compartment in a fridge.
+* The `LOCATION_IN_THE_FRIDGE` must be one of the available storage locations.
 * The `FOOD_QUANTITY` must be a positive integer.
 
 :bulb: **Tip:**
@@ -105,10 +105,11 @@ Otherwise, you will be prompted to retry the `add` command.
 
 :information_source: Additional info:
 
-* Basic Food Groups: `MEAT`, `SEAFOOD`, `EGG`, `DAIRY`, `VEGETABLE`, `FRUIT`,
+* Available Food Categories: `MEAT`, `SEAFOOD`, `EGG`, `DAIRY`, `VEGETABLE`, `FRUIT`,
   `BEVERAGE`, `COOKED_DISH`, `READY_TO_EAT`, `FROZEN`, `OTHERS`
-* Basic Fridge Location: `FREEZER`, `UPPER_SHELF`, `MIDDLE_SHELF`, `LOWER_SHELF`,
+* Available Fridge Location: `FREEZER`, `UPPER_SHELF`, `MIDDLE_SHELF`, `LOWER_SHELF`,
   `DRAWERS`, `FRIDGE_DOOR`, `OTHERS`
+* The list of available `FOOD_CATEGORY` and `LOCATION_IN_THE_FRIDGE` can be found using the [`help`](#get-help-message-help) command.
 
 Example of usage:
 
@@ -205,9 +206,7 @@ These are the food stored in DRAWERS:
 
 ### Remove a food item by quantity: `remove`
 
-Removes a food item based on its index. Additionally, if a removal results in a food category falling below the specified limit 
-(as per in [`setlimit`](#modify-the-minimum-quantity-limits-setlimit)), this command will also give a warning that the category is 
-[`runninglow`](#list-categories-with-food-running-low-runninglow) on food.
+Removes a food item based on its index. Additionally, if a removal results in a food category falling below the specified limit (as per in [`setlimit`](#modify-the-minimum-quantity-limits-setlimit)), this command will also give a warning that the category is [`runninglow`](#list-categories-with-food-running-low-runninglow) on food.
 
 Format: `remove FOODNAME /qty QUANITTY_TO_REMOVE`
 
@@ -300,8 +299,8 @@ These are the food expiring in the following week:
 
 ### List categories with food running low: `runninglow`
 
-Displays a list of food categories which total quantity is below a specified minimum limit. 
-This command also displays the existing quantities along with its limits for each category. 
+Displays a list of food categories which total quantity is below a specified minimum limit.
+This command also displays the existing quantities along with its limits for each category.
 Note that these limits can be modified with the [`setlimit`](#modify-the-minimum-quantity-limits-setlimit) command.
 
 :information_source: If the user tries to run the `runninglow` command with all the food categories limit set to 0,
