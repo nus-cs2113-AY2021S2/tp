@@ -116,7 +116,7 @@ public class Parser {
         case "9":
             newCommand = new ViewStoreCommand(nusFoodReviews);
             break;
-        case "10":
+        case "0":
             newCommand = new ExitCommand();
             break;
         case "login":
