@@ -648,7 +648,7 @@ Invalid Input includes:
 
 `add/[Doctor ID]/[Appointment ID]/[Patient's Name]/[Gender]/[Date]`
 
-<img src="images/DG DoctorAppSequencePlant.png">
+<img src="diagrams/DG DoctorAppSequencePlantUpdated.png">
 
 
 **Check validity of the data input**
