@@ -23,23 +23,33 @@ https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?breakdown=true&search=brando
 * Responsible for the Model of this project (`Data`, `Patient` and `Record` classes). These classes model and store data
   in the application.
 * Implemented and improved the `record` and `retrieve` commands, which are used to add visit records to patients.
-  (#29, #58)
+  ([#29](https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/29),
+  [#58](https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/58))
 * Generated JUnit tests for automated testing for the above two classes, and improvements to JUnit tests for other
-  classes (#124)
-* Enhanced features by adding more bounds checking. (#83)
-* Restructured the application to be more in line with Object-Oriented design and Software Engineering patterns. (#127)
-* Other generic bug fixes for the entire project, including bugs reported by peer teams during PE-D. (#83)
+  classes ([#124](https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/124))
+* Enhanced features by adding more bounds checking. ([#83](https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/83))
+* Restructured the application to be more in line with Object-Oriented design and Software Engineering patterns.
+  ([#127](https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/127))
+* Other generic bug fixes for the entire project, including bugs reported by peer teams during PE-D.
+  ([#83](https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/83))
 
 ### Contribution to User Guide
 
-* Added explanations on the syntax of the `record` and `retrieve` commands. (#62)
-* Made general improvements to the User Guide to increase user-friendliness. (#126)
+* Added explanations on the syntax of the `record` and `retrieve` commands.
+  ([#62](https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/62))
+* Made general improvements to the User Guide to increase user-friendliness.
+  ([#126](https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/126))
 
-### Contribution to Developer Guide #60,, #66, #74
+### Contribution to Developer Guide
 
-* Added documentation on system architecture and generated diagrams for the Developer Guide. (#60, #66, #74)
-* Added documentation for the Appendices of the Developer Guide. (#66)
-* Added steps for testing in the Developer Guide. (#66)
+* Added documentation on system architecture and generated diagrams for the Developer Guide.
+  ([#60](https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/60),
+  [#66](https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/66),
+  [#74](https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/74))
+* Added documentation for the Appendices of the Developer Guide.
+  ([#66](https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/66))
+* Added steps for testing in the Developer Guide.
+  ([#66](https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/66))
 * General formatting and fixing.
 
 ### Contribution to Team-Based Tasks
