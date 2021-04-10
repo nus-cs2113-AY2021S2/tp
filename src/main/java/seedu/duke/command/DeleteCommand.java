@@ -73,9 +73,9 @@ public class DeleteCommand extends Command {
         }
         if (patient.recordExist(date)) {
             patient.deleteRecord(date);
-            ui.printMessage("Record for " + date + " has been deleted!");
+            ui.printMessage("Record for " + dateString + " has been deleted!");
         } else {
-            ui.printMessage("Record for " + date + " does not exist!");
+            ui.printMessage("Record for " + dateString + " does not exist!");
         }
 
     }
