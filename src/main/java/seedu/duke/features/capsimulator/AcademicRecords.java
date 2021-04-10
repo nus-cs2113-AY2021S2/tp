@@ -34,8 +34,8 @@ public class AcademicRecords {
     }
 
     public static Double getCurrentCap() {
-//        DecimalFormat df = new DecimalFormat("#.##");
-//        String formattedCap = df.format(currentCap);
+        //DecimalFormat df = new DecimalFormat("#.##");
+        //String formattedCap = df.format(currentCap);
         return currentCap;
     }
 

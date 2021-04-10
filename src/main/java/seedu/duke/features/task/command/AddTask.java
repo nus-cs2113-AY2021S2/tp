@@ -15,6 +15,9 @@ import java.time.format.DateTimeParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Add task allows the user to add an assignment, midterm, final exam or normal task.
+ */
 public class AddTask {
 
     private static final int ADD_TASK_COMMAND = 1;
@@ -25,6 +28,11 @@ public class AddTask {
     private static final String NOT_DONE_STATUS = "[    ] ";
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
+    /**
+     * Executes the add task feature.
+     *
+     * @param taskTypeNumber The number of the task type the user wants to add.
+     */
     public static void execute(int taskTypeNumber) {
         String dateAndTime = EMPTY_STRING;
         String module;
@@ -71,12 +79,23 @@ public class AddTask {
         logger.log(Level.FINE, "add task successfully executed");
     }
 
+    /**
+     * Gets the date and time of a task.
+     *
+     * @param taskTypeNumber The number of the task type.
+     * @return Date and time of the task.
+     */
     private static String getDateAndTime(int taskTypeNumber) {
         String dateAndTime;
         dateAndTime = getDate(taskTypeNumber) + ", " + getTime(taskTypeNumber);
         return dateAndTime;
     }
 
+    /**
+     * Gets module for a task.
+     *
+     * @return Module of the task.
+     */
     private static String getModuleForTask() {
         String module;
         ModuleInfo.addNewModule();
@@ -84,6 +103,11 @@ public class AddTask {
         return module;
     }
 
+    /**
+     * Gets description for a task.
+     *
+     * @return Description of the task.
+     */
     private static String getDescription() {
         String description = Ui.readCommand();
         while (Ui.userCommandIsEmpty(description)) {
@@ -94,6 +118,11 @@ public class AddTask {
         return description;
     }
 
+    /**
+     * Gets message for a task.
+     *
+     * @return Message of the task.
+     */
     private static String getMessage() {
         String message = Ui.readCommand();
         while (Ui.userCommandIsEmpty(message)) {
@@ -104,6 +133,13 @@ public class AddTask {
         return message;
     }
 
+    /**
+     * Adds a normal task to the task list.
+     *
+     * @param module Module of the task.
+     * @param description Description of the task.
+     * @param message Message of the task.
+     */
     public static void addTask(String module, String description, String message) {
         Task task = new Task(module, description, message);
         if (TaskManager.findIfTaskExists(module, description, NOT_DONE_STATUS)) {
@@ -117,6 +153,14 @@ public class AddTask {
         logger.log(Level.FINE, "task successfully added");
     }
 
+    /**
+     * Adds an assignment to the assignment list.
+     *
+     * @param module Module of the assignment.
+     * @param description Description of the assignment.
+     * @param message Message of the assignment.
+     * @param dateAndTime Date and Time of the assignment.
+     */
     public static void addAssignment(String module, String description,
                                      String message, String dateAndTime) {
         Assignment assignment = new Assignment(module, description, message, dateAndTime);
@@ -131,6 +175,14 @@ public class AddTask {
         logger.log(Level.FINE, "assignment successfully added");
     }
 
+    /**
+     * Adds a midterm to the midterm list.
+     *
+     * @param module Module of the midterm.
+     * @param description Description of the midterm.
+     * @param message Message of the midterm.
+     * @param dateAndTime Date and Time of the midterm.
+     */
     public static void addMidterm(String module, String description,
                                   String message, String dateAndTime) {
         Midterm midterm = new Midterm(module, description, message, dateAndTime);
@@ -145,6 +197,14 @@ public class AddTask {
         logger.log(Level.FINE, "midterm successfully added");
     }
 
+    /**
+     * Adds a final exam to the final exam list.
+     *
+     * @param module Module of the final exam.
+     * @param description Description of the final exam.
+     * @param message Message of the final exam.
+     * @param dateAndTime Date and Time of the final exam.
+     */
     public static void addFinalExam(String module, String description,
                                     String message, String dateAndTime) {
         FinalExam finalExam = new FinalExam(module, description, message, dateAndTime);
@@ -159,6 +219,11 @@ public class AddTask {
         logger.log(Level.FINE, "final exam successfully added");
     }
 
+    /**
+     * Prints existing module list and gets the module the user chooses.
+     *
+     * @return The module code.
+     */
     public static String printAndGetModule() {
         Ui.printModuleList();
         try {
@@ -186,6 +251,12 @@ public class AddTask {
         return module;
     }
 
+    /**
+     * Gets the time of a task.
+     *
+     * @param taskNumber Number of the task type.
+     * @return Time of the task.
+     */
     public static String getTime(int taskNumber) {
         while (true) {
             try {
@@ -200,6 +271,12 @@ public class AddTask {
         }
     }
 
+    /**
+     * Gets the date of a task.
+     *
+     * @param taskNumber Number of the task type.
+     * @return Date of the task.
+     */
     public static String getDate(int taskNumber) {
         while (true) {
             try {
@@ -214,12 +291,26 @@ public class AddTask {
         }
     }
 
+    /**
+     * Gets the time of a task in a parsed format.
+     *
+     * @param time Time of the task.
+     * @return Formatted time of the task.
+     * @throws DateTimeParseException If the time of the task is not in a valid format.
+     */
     public static String validTime(String time) throws DateTimeParseException {
         LocalTime taskTime = LocalTime.parse(time);
         String formattedTime = taskTime.format(DateTimeFormatter.ofPattern("hh:mm a"));
         return formattedTime;
     }
 
+    /**
+     * Gets the date of a task in a parsed format.
+     *
+     * @param date Date of the task.
+     * @return Formatted date of the task.
+     * @throws DateTimeParseException If the date of the task is not in a valid format.
+     */
     public static String validDate(String date) throws DateTimeParseException {
         LocalDate taskDate = LocalDate.parse(date);
         String formattedDate = taskDate.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
