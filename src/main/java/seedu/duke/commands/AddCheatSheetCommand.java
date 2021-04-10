@@ -34,7 +34,8 @@ public class AddCheatSheetCommand extends Command {
     @Override
     public void execute(UI ui) throws CommandException {
         Module module = ModuleList.getSelectedModule();
-        if (fileName.isEmpty() || sanitiseInput(fileName)) {
+        boolean isInvalidFileName = sanitiseInput(fileName);
+        if (fileName.isEmpty() || isInvalidFileName) {
             throw new CommandException(MESSAGE_INVALID_FILE_NAME);
         }
         try {
