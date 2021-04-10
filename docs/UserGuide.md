@@ -206,11 +206,34 @@ Patient S1234567D has been added!
 ----------------------------------------------------------------------
 ```
 
+### Loading a patient's medical records: `load`
+
+Finds the patient whose IC number matches the given search query and loads their medical records
+for editing. If none of the patients' IC numbers match the search query, Patient Manager will display
+an error message to inform you that the patient was not found.
+
+Usage: `load IC_NUMBER`
+
+Example of usage:
+
+```
+load S1234567D
+```
+
+Expected output:
+
+```
+----------------------------------------------------------------------
+Patient S1234567D's data has been found and loaded.
+----------------------------------------------------------------------
+```
+
 ### Deleting a patient or a patient's consultation details: `delete`
 
 Deletes a patient from the list or deletes a patient's consultation details for a specific date.\
 The `/p` flag is used to delete patients based on their NRIC/FIN number, while the `/r` flag
-is used to delete records from a certain date.
+is used to delete records from a certain date. Exactly one of the `/p` or `/r` flags and their 
+corresponding arguments must be specified.
 
 > ❗ Note: Before deleting a patient's record, you must have previously loaded a patient with the
 > [`load`](#loading-a-patients-medical-records-load) command. If no patient has been loaded, Patient Manager
@@ -234,19 +257,19 @@ Patient S1234567D has been deleted!
 Example of usage:
 
 ```
-delete /r 26/03/2021
+delete /r 10/04/2021
 ```
 
 Expected output:
 ```
 ----------------------------------------------------------------------
-Record for 2021-04-10 has been deleted!
+Record for 10/04/2021 has been deleted!
 ----------------------------------------------------------------------
 ```
 
 ### Listing all patients: `list`
 
-Shows a list of all patients.
+Shows a list of all patients in alphanumeric order.
 
 Usage: `list`
 
@@ -260,31 +283,10 @@ List of patients (in alphanumeric order):
 ----------------------------------------------------------------------
 ```
 
-### Loading a patient's medical records: `load`
-
-Finds the patient whose IC number matches the given search query and loads their medical records. If none of the
-patients' IC numbers match the search query, it will print an error message.
-
-Usage: `load IC_NUMBER`
-
-Example of usage:
-
-```
-load S1234567D
-```
-
-Expected output:
-
-```
-----------------------------------------------------------------------
-Patient S1234567D's data has been found and loaded.
-----------------------------------------------------------------------
-```
-
 ### Displaying the current loaded patient: `current`
 
 Displays the patient that has been loaded through the [`load`](#loading-a-patients-medical-records-load) command. If no
-patient has been loaded, it will inform the user that there is no loaded patient.
+patient has been loaded, it will display a message to inform the user that there is no loaded patient.
 
 Usage: `current`
 
@@ -298,14 +300,16 @@ The currently loaded patient's ID is S1234567D.
 
 ### Recording a patient's consultation details: `record`
 
-Adds a patient's consultation details to the patient's records. This command requires that a patient has been loaded
-with the
-[`load`](#loading-a-patients-medical-records-load) command. If no patient has been loaded, Patient Manager will print an
-error message.
+Adds a patient's consultation details to the patient's records. At least one symptom, diagnosis or prescription
+has to be specified by using the `/s`, `/d` or `/p` flags with a non-empty input.
 
 An optional `DATE` argument may be provided to modify previous visit records, or to create a new record with the
-specified date. If the `DATE` parameter is not specified, Patient Manager will execute the command with the current
-system date.
+specified date. This date has to be equal to or earlier than the current system date. If the no date is specified,
+Patient Manager will execute the command with the current system date. 
+
+> ❗ Note: Before adding a medical record to a patient, you must have previously loaded a patient with the
+> [`load`](#loading-a-patients-medical-records-load) command. If no patient has been loaded, Patient Manager
+> will print an error message.
 
 Usage: `record [DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]`
 
@@ -326,11 +330,16 @@ Symptom: fever and slight cough
 
 ### Retrieving a patient's consultation details: `retrieve`
 
-Retrieves all consultation details of a patient. This command requires that a patient has been loaded with the
-[`load`](#loading-a-patients-medical-records-load) command. If no patient has been loaded, Patient Manager will print an
-error message.
+Retrieves all consultation details of a patient.
 
-Usage: `retrieve`
+An optional `DATE` argument may be provided to retrieve the records from a specific date. If no records were
+found for the patient at the specified date, Patient Manager will inform you that no records were found.
+
+> ❗ Note: Before retrieving the  medical record(s) to a patient, you must have previously loaded a patient
+> with the [`load`](#loading-a-patients-medical-records-load) command. If no patient has been loaded, Patient
+> Manager will print an error message.
+
+Usage: `retrieve [DATE]`
 
 Example output:
 
@@ -367,8 +376,8 @@ Usage: `exit`
 ## Frequently Asked Questions
 
 **Q**: Can I transfer the data to a different device? \
-**A**: Yes, simply copy the `pm` folder that is found in the same folder as `tp.jar` from the original device and place
-it in the folder `tp.jar` is found in on the new device.
+**A**: Yes, simply copy the `save.pm` file that is found in the same folder as `PatientManager.jar` from the
+original device and place it in the folder `PatientManager.jar` is found in on the new device.
 
 **Q**: Will I have to manually save? \
 **A**: No, the data is saved automatically after every command that modifies the data.
@@ -394,4 +403,4 @@ Click on the commands to navigate to specific feature details.
 | [list](#listing-all-patients-list)                                      | `list`                             |
 | [load](#loading-a-patients-medical-records-load)                        | `load IC_NUMBER`                   |
 | [record](#recording-a-patients-consultation-details-record)             | `record [DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]`|
-| [retrieve](#retrieving-a-patients-consultation-details-retrieve)        | `retrieve`                         |
+| [retrieve](#retrieving-a-patients-consultation-details-retrieve)        | `retrieve [DATE]`                  |
