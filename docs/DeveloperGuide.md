@@ -169,7 +169,11 @@ The Ui class handles user input and also contains the methods for user interface
 
 ### 3.3 Features Component
 
-blank
+![Diagram](diagrams/featuresArchitecture.png)
+*Figure 3*
+
+The class diagram for our features component can be seen in figure 3.
+
 
 ### 3.4 Storage Component
 

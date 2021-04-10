@@ -528,15 +528,6 @@ public class ModuleInfo {
 
     }
 
-    public static Module getModule(String description) {
-        for (Module module : modules) {
-            if (module.getName().equals(description)) {
-                return module;
-            }
-        }
-        return null;
-    }
-
     public static void deleteReview() {
         if (modules.isEmpty()) {
             System.out.println("You have not added any modules.");
