@@ -2,13 +2,17 @@
 !include ../Style.puml
 'https://plantuml.com/sequence-diagram
 
-autonumber
 
-Ui -> Delivery: completeDelivery()
+activate ":Ui"
+":Ui" -> ":Delivery": completeDelivery()
 
-Delivery -> Deliveryman: completeDelivery(Deliveryman : deliveryman)
-Deliveryman -> Deliveryman : records.add(Delivery : delivery)
-Deliveryman -> Delivery
+    activate ":Delivery"
+    ":Delivery" -> ":Deliveryman": completeDelivery()
 
-Delivery --> Ui
+        activate ":Deliveryman"
+        ":Deliveryman" -> ":Delivery"
+        deactivate ":Deliveryman"
+
+    ":Delivery" --> ":Ui"
+    deactivate ":Delivery"
 @enduml

@@ -5,12 +5,39 @@
 Welcome to Diliveri. The ultimate smart assistant for deliverymen.
 Not just the men, but the women and children too!
 
+## Before getting started:
+We know that you can't wait to dive into our application, but there are a few restrictions on our program
+that we'd like you to read through and understand first!
+
+1. Diliveri is heavily reliant on third party courier service applications (such as Grab and FoodPanda) to provide
+   deliverymen with accurate location data and delivery assignments to available deliverymen. As such, for the purpose
+   of implementing v2.1, running Diliveri for the first time will automatically generate files containing sample
+   data that would be ordinarily generated and communicated to the Deliveryman via other delivery applications
+2. These pregenerated files would ordinarily be hidden and not accessible to normal users (i.e you!). Therefore, altering
+   the contents of any of these pregenerated files manually (i.e. not from the user interface) will likely result
+   in the application not performing as intended, or even crashing.
+3. TLDR: Please do <b>NOT</b> edit the various .txt files or the program may crash
+
+
+## Dependencies
+
+Diliveri will, upon initialization, generate a few .txt files. These are their respective purposes:
+1. <b>Delivery.txt</b> : This file contains sample delivery data and information, including delivery
+   completion status, address, delivery recipient, and the various items present in
+   the delivery. The format of the items are as follows: {[item number]-[item weight]}
+2. <b>profile.txt</b> : This file contains the default deliveryman profile, including name,
+    vehicle model, license plate as well as the maximum tolerable weight. These can be altered
+   from within Diliveri.
+
+3. <b>routes.txt</b> : This file contains the various routes, with each location being tagged to a
+    distance, as well as the corresponding delivery fee awarded upon completing a delivery at that location.
+   
 ## Quick Start
 
-{Give steps to get started quickly}
-
 1. Ensure that you have Java 11 or above installed.
-2. Down the latest version of `Diliveri` from [here](http://link.to/duke).
+2. Down the latest version of `Diliveri` from [here](https://github.com/AY2021S2-CS2113-W10-1/tp/releases).
+3. That's all! Diliveri is fully self-sufficient!
+
 
 ## Features 
 
