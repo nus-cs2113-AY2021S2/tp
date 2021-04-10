@@ -25,6 +25,6 @@ Given below are my contributions to the project.
 
 - **Contributions to documentation**:
   - User Guide:
-    - Added documentation for the features `add`, `delete, `list`, `return`, `help` in Schedules for Nurses. [\#196]()
-    - Added command summary
+    - Added documentation for the features `add`, `delete, `list`, `return`, `help` in Schedules for Nurses. [\#196](), [\#188](), [\#187]()
+    - Added command summary. [\#117]()
     - Added application logo
