@@ -39,6 +39,7 @@ public class DeleteReviewCommand extends Command {
             ArrayList<Review> reviews = stores.get(currentStoreIndex).getReviews();
             averageRating = stores.get(currentStoreIndex).getAverageRating();
             if (reviews.size() <= 0) {
+                System.out.println(LINESPACING);
                 System.out.println("There are currently no reviews in this store to delete!");
                 System.out.println(LINESPACING);
                 return;
@@ -60,6 +61,7 @@ public class DeleteReviewCommand extends Command {
             ui.reviewDeleted();
             Storage.save(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH), canteens);
         } else {
+            System.out.println(LINESPACING);
             System.out.println("There are no canteens for you to delete reviews for any stores!");
             System.out.println(LINESPACING);
         }

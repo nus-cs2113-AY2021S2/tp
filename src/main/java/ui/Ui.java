@@ -350,7 +350,7 @@ public class Ui {
     }
 
     public void showInvalidStorePrompt(String storeName) {
-        System.out.println("The store name '" + storeName + "' is already taken! Please enter another name:");
+        System.out.println("The store name '" + storeName + "' already exist! Please enter again:");
     }
 
 

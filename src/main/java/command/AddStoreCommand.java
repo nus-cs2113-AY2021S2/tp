@@ -21,6 +21,14 @@ public class AddStoreCommand extends Command {
 
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
+
+        if (canteens.size() == 0) {
+            System.out.println(Ui.LINESPACING);
+            System.out.println("There is no canteen yet. Please add a canteen");
+            System.out.println(Ui.LINESPACING);
+            return;
+        }
+
         nusFoodReviews.setCanteenIndex();
         int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
         if (currentCanteenIndex == -1) {
