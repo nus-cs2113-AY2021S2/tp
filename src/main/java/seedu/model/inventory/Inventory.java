@@ -13,6 +13,7 @@ public class Inventory {
         this.quantity = quantity;
 
     }
+
     public void addQuantity(int input) {
         this.quantity += input;
     }
@@ -24,6 +25,7 @@ public class Inventory {
     public String getDrugName() {
         return this.name;
     }
+
     public Double getDoublePrice() {
         return this.price;
     }
@@ -36,12 +38,9 @@ public class Inventory {
     public int getQuantity() {
         return this.quantity;
     }
-    public String getDrugDetails() {
-        return ("Name: " + name + "\n" +
-                "Price: $" + price + "\n" +
-                "Quantity: " + quantity + "\n");
-    }
+
     public String toSaveFormat() {
-        return name + "|" + price + "|" + quantity;
+        return name + "|" + price
+                + "|" + quantity;
     }
 }

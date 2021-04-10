@@ -9,6 +9,7 @@ public class InventoryList extends Command {
     public void execute(seedu.model.inventory.InventoryList inventory, InventoryUI ui) {
         inventory.listDrugs();
     }
+
     @Override
     public boolean isExit() {
         return false;
