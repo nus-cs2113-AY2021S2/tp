@@ -1,5 +1,6 @@
 @startuml
 hide members
+hide circle
 
 package Features {
 
@@ -37,11 +38,13 @@ ExternalLinks --|> Links
 package "Cap Simulator" {
   Class AcademicRecords
   Class CapSimulatorManager
-  Enum ModuleGradeEnum
-  Enum ModuleCreditEnum
+  Enum "<<enumeration>>\nModuleGradeEnum"
+  Enum "<<enumeration>>\nModularCreditEnum"
 
-AcademicRecords --> ModuleCreditEnum
-AcademicRecords --> ModuleGradeEnum
+
+
+AcademicRecords --> "<<enumeration>>\nModularCreditEnum"
+AcademicRecords --> "<<enumeration>>\nModuleGradeEnum"
 CapSimulatorManager --> AcademicRecords
 }
 
