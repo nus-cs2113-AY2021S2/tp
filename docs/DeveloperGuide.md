@@ -177,7 +177,7 @@ The above diagram shows how each component interacts with the other components. 
 
 ### 4.2 UI component
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DG diagram updated.png">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DG UI latest diagram.png">
 
 **API :** `UI.java`
 
@@ -201,6 +201,8 @@ The UI of this program can be found under the package named UI. It consists of `
 ### 4.4 Model component
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/Model.png">
+
+The Model component consists of classes that represents the tasks and things that a nurse has to do in the real world. 
 
 The `Model`, consists of 5 different types of lists.
 
@@ -815,7 +817,7 @@ Invalid Inputs include:
 	- Illegal date format
 	- Duplicate schedules (i.e similar Patient ID and date)
 	
-`add/[Nurse ID]/[Date (DDMMYYYY)]`
+**Format**: `add/[Nurse ID]/[Date (DDMMYYYY)]`
 
 **Checking validity of data input**
 
@@ -852,7 +854,7 @@ Invalid Inputs include:
 	- Illegal Characters
 	- Illegal date format
 	
-`delete/[Nurse ID]/[Date (DDMMYYYY)]`
+**Format**: `delete/[Nurse ID]/[Date (DDMMYYYY)]`
 
 **Checking validity of data input**
 
@@ -883,39 +885,9 @@ Invalid Inputs include:
 >
 	- Any input apart from "all" OR "NurseID"
 
-`list/all`
+**Format**: `list/all`
 
-**Checking validity of data input**
-
-1. If the command recognised is the list command, the number of fields in inputs will first be checked.
-
-**Creating NurseScheduleListCommand object**
-
-2. If the input is valid, a NurseScheduleListCommand object is created.
-
-3. The NurseScheduleListCommand object is returned to `NurseScheduleInstance.runCommandLoopUntilExit()`.
-
-**Viewing Nurse Schedule objects**
-
-4. NurseScheduleInstance then executes the NurseScheduleList Command object to begin the process of displaying Nurse Schedule objects.
-
-5. `NurseScheduleList.execute()` will call the function `NurseScheduleList.listSchedules()` which calls `listAllSchedules()`.
-
-6. `listAllSchedules()` iterates through the arraylist of Nurse Schedule objects, printing all schedules.
-
-
-### 5.4.5 List by Nurse ID
-
-**Implementation**
-
-This function lists specified Nurse Schedule objects, sorted by earliest date. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a NurseScheduleListCommand object is created. NurseScheduleListCommand object will be executed to iterate through the arraylist of Nurse Schedule objects. Nurse Schedule objects will then be displayed.
-
-Invalid Inputs include:
-
->
-	- Any input apart from "all" OR "NurseID"
-
-`list/[Nurse ID]`
+<img src="diagrams/NurseScheduleListSD.png">
 
 **Checking validity of data input**
 
@@ -931,7 +903,39 @@ Invalid Inputs include:
 
 4. NurseScheduleInstance then executes the NurseScheduleListCommand object to begin the process of displaying Nurse Schedule objects.
 
-5. `NurseScheduleList.execute()` will call the function `NurseScheduleList.listSchedules()` which calls `getSchedulesByID`.
+5. `NurseScheduleListCommand.execute()` will call the function `NurseScheduleList.listSchedules()` which calls `listAllSchedules()`.
+
+6. `listAllSchedules()` iterates through the arraylist of Nurse Schedule objects, printing all schedules.
+
+
+### 5.4.5 List by Nurse ID
+
+**Implementation**
+
+This function lists specified Nurse Schedule objects, sorted by earliest date. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a NurseScheduleListCommand object is created. NurseScheduleListCommand object will be executed to iterate through the arraylist of Nurse Schedule objects. Nurse Schedule objects will then be displayed.
+
+Invalid Inputs include:
+
+>
+	- Any input apart from "all" OR "NurseID"
+
+**Format**: `list/[Nurse ID]`
+
+**Checking validity of data input**
+
+1. If the command recognised is the list command, the number of fields in inputs will first be checked.
+
+**Creating NurseScheduleListCommand object**
+
+2. If the input is valid, a NurseScheduleListCommand object is created.
+
+3. The NurseScheduleListCommand object is returned to `NurseScheduleInstance.runCommandLoopUntilExit()`.
+
+**Viewing Nurse Schedule objects**
+
+4. NurseScheduleInstance then executes the NurseScheduleListCommand object to begin the process of displaying Nurse Schedule objects.
+
+5. `NurseScheduleListCommand.execute()` will call the function `NurseScheduleList.listSchedules()` which calls `getSchedulesByID`.
 
 6. `getSchedulesByID` iterates through the arraylist of Nurse Schedule objects, printing schedules of the relevant Nurse ID.
 
