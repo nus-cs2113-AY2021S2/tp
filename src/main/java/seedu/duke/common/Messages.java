@@ -183,6 +183,6 @@ public class Messages {
     public static final String MESSAGE_CLOSE_CHEATSHEET_FIRST = 
             "Please close the existing cheat-sheet first.";
     public static final String TEXT_EDITOR_INSTRUCTION = 
-            "Enter esc to close, ctrl-s to save, ctrl-up to enlarge and ctrl-down to shrink text.";
+            "Press esc to close, ctrl-s to save, ctrl-up to enlarge and ctrl-down to shrink text.";
 
 }
