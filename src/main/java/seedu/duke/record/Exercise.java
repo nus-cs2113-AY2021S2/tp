@@ -77,7 +77,7 @@ public class Exercise extends Record {
     }
 
     private String getCaloriesUnit() {
-        return "cal";
+        return "Kcal";
     }
 
     private int getDurationLength() {
