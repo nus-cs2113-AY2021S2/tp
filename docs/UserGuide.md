@@ -33,9 +33,6 @@ their patients.
 
 1. [User Guide Information](#user-guide-information)
 1. [Quick Start](#quick-start)
-1. [About Command Input](#about-command-input)
-    1. [Spacing](#spacing)
-    1. [Order of Arguments](#order-of-arguments)
 1. [Features](#features)
     1. [Print a help message: `help`](#print-a-help-message-help)
     1. [Adding a patient: `add`](#adding-a-patient-add)
@@ -399,7 +396,7 @@ Click on the commands to navigate to specific feature details.
 | [current](#displaying-the-current-loaded-patient-current)               | `current`                          |
 | [delete](#deleting-a-patient-or-a-patients-consultation-details-delete) | `delete [/p IC_NUMBER]  [/r DATE]` |
 | [exit](#exiting-the-program-exit)                                       | `exit`                             |
-| [help](#print-a-help-message-help)                                      | `help [OPTIONAL_ARGUMENTS]...`     |
+| [help](#print-a-help-message-help)                                      | `help [OPTIONAL_COMMAND]...`       |
 | [list](#listing-all-patients-list)                                      | `list`                             |
 | [load](#loading-a-patients-medical-records-load)                        | `load IC_NUMBER`                   |
 | [record](#recording-a-patients-consultation-details-record)             | `record [DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]`|
