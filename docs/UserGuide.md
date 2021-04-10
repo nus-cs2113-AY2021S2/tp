@@ -1,3 +1,5 @@
+[<== Back to Home](README.md)
+
 <!--@@author ivanchongzhien-->
 # User guide
 
@@ -6,8 +8,6 @@
 If you are having difficulties managing your schedule, lesson links and notes, GULIO is the app for you. With the ability to store lesson details, tasks, notes and more, GULIO is a one-stop solution for all your university scheduling needs.
 
 This guide is written for users like you, for reference when there is a particular feature that you are unsure of how to use. It provides all the necessary information required for you to fully utilize GULIO's capabilities.
-
-[<== Back to Home](README.md)
 
 &nbsp;
 

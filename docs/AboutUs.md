@@ -1,4 +1,6 @@
-# About us
+[<== Back to Home](README.md)
+
+# About Us
 
 Member | Github Profile | Portfolio 
 -----|:--------------:|:---------:
@@ -7,5 +9,3 @@ Ivan Chong Zhi En | [Github](https://github.com/ivanchongzhien) | [Portfolio](te
 Chong Wen Hao | [Github](https://github.com/8kdesign) | [Portfolio](team/8kdesign.md)
 Isa Haron | [Github](https://github.com/isaharon) | [Portfolio](/team/isaharon.md)
 Alicia Tay | [Github](https://github.com/aliciatay-zls/) | [Portfolio](team/aliciatay-zls.md)
-
-[<== Back to Home](README.md)

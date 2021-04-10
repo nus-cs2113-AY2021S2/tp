@@ -1,11 +1,11 @@
+[<== Back to Home](README.md)
+
 <!--@@author ivanchongzhien-->
 # Developer Guide
 
 **GULIO (Get Ur Life In Order)** is a desktop app that provides a single consolidated and personalised workspace for NUS SOC students to organize their modules. It is optimized for use via a Command Line Interface (CLI) which SOC students will be familiar with typing in, instead of a Graphical User Interface (GUI).
 
 This guide is for developers looking to modify GULIO. For users of GULIO, please refer to the User Guide [here](UserGuide.md).
-
-[<== Back to Home](README.md)
 
 &nbsp;
 
