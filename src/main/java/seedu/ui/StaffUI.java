@@ -1,6 +1,29 @@
 package seedu.ui;
 
-import static seedu.duke.Constants.*;
+
+import static seedu.duke.Constants.STAFF_ADD_DESCRIPTION;
+import static seedu.duke.Constants.STAFF_HELP_DESCRIPTION;
+import static seedu.duke.Constants.STAFF_LIST_DESCRIPTION;
+import static seedu.duke.Constants.STAFF_DELETE_DESCRIPTION;
+import static seedu.duke.Constants.STAFF_FIND_DESCRIPTION;
+import static seedu.duke.Constants.HELP_HEADER_DESCRIPTION;
+
+import static seedu.duke.Constants.MARK_BLANK;
+import static seedu.duke.Constants.ADD_COMMAND;
+import static seedu.duke.Constants.LIST_COMMAND;
+import static seedu.duke.Constants.HELP_COMMAND;
+import static seedu.duke.Constants.HELP_HEADER_COMMAND;
+import static seedu.duke.Constants.DELETE_COMMAND;
+import static seedu.duke.Constants.FIND_COMMAND;
+import static seedu.duke.Constants.RETURN_COMMAND;
+import static seedu.duke.Constants.RETURN_DESCRIPTION;
+
+import static seedu.duke.Constants.STAFF_ADD_FORMAT;
+import static seedu.duke.Constants.HELP_HEADER_FORMAT;
+import static seedu.duke.Constants.STAFF_DELETE_FORMAT;
+import static seedu.duke.Constants.STAFF_LIST_FORMAT;
+import static seedu.duke.Constants.STAFF_FIND_FORMAT;
+
 
 public class StaffUI extends UI {
 
@@ -47,7 +70,7 @@ public class StaffUI extends UI {
      */
     public static void staffMenuHeader() {
         UI.showLine();
-        System.out.print("Welcome to Staff Menu!\nType \"help\" for staff menu commands\n\n");
+        System.out.print("Welcome to Staff Menu!\nType \"help\" for staff menu commands\n");
     }
 
     /**

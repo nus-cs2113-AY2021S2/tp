@@ -7,6 +7,7 @@ import seedu.logic.parser.StaffParser;
 import seedu.model.staff.StaffList;
 import seedu.storage.StaffStorage;
 import seedu.ui.StaffUI;
+import seedu.ui.UI;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -46,6 +47,7 @@ public class StaffInstance {
         logger.log(Level.INFO, "Staff instance accessed.");
         while (true) {
             String line;
+            UI.printEmptyLine();
             line = staffUI.getInput("Staff");
             try {
                 Command c = staffParser.commandHandler(line, staffList);
