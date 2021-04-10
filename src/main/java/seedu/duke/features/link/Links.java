@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 
 /**
- * This class deals with the handling of commands in the links menu
+ * This class deals with the handling of commands in the links menu.
  */
 public class Links {
 

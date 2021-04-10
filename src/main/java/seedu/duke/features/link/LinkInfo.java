@@ -51,9 +51,9 @@ public class LinkInfo {
     }
 
     /**
-     * Deletes a LinkInfo object from linksList
-     * @param deleteIndex is the index of the object to be deleted
-     * @throws IndexOutOfBoundsException if the index is out of bounds
+     * Deletes a LinkInfo object from linksList.
+     * @param deleteIndex is the index of the object to be deleted.
+     * @throws IndexOutOfBoundsException if the index is out of bounds.
      */
     public static void deleteLink(int deleteIndex) throws IndexOutOfBoundsException {
         assert deleteIndex >= 0 : "Index is invalid";
