@@ -40,7 +40,7 @@ Given below are my contributions to the project.
   - Maintained issue tracker with creation of some labels
 
 - **Review/Mentoring contributions**:
-  - PR's reviewed: #35, #171, #334, #333
+  - PR's reviewed: #35, #171, #334, #333, #343, #349
 
 - **Contributions beyond the team**:
   - Helped find and reported bugs in other team's application
