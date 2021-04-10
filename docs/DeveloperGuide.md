@@ -182,8 +182,8 @@ Given below is the sequence diagram for the interactions within the main applica
 
 AddCommand class is initialised whenever `Parser` recognises the `add` keyword.
 
-1. The constructor should create a new Food object according to the parsed user input.
-2. The UniqueFoodnameChecker will be called from Fridge class to decide whether to add a new `Food` or edit on existing `Food`.
+1. The constructor should create a new `Food` object according to the parsed user input.
+2. The `UniqueFoodnameChecker` will be called from `Fridge` class to decide whether to add a new `Food` or edit on an existing `Food` object.
 
 Given below is the sequence diagram for the AddCommand workflow.
 
@@ -191,35 +191,30 @@ Given below is the sequence diagram for the AddCommand workflow.
 
 :information_source: Information:
 
-* The `UniqueFoodnameChecker` object will be destructed after use, but the `Food` object and `Fridge` object will still exist after the command finishes.
+* The `UniqueFoodnameChecker` object will be destroyed after use, but the `Food` object and `Fridge` object will still exist after the command finishes.
+* Due to simplicity, some function calls that are not essential to the execution are not covered in this diagram. Hence, the `Command` object will not be destroyed at the end of this diagram.
 * The lifeline for `UniqueFoodnameCheck` should end at the destroy marker. However, due to a limitation of PlantUML, the lifelines reach the end of the diagram.
-* Some function calls such as showResults() in `Command` is not covered in this diagram. So the `Command` object will only be destructed after all function calls on that iteration.
 
 ### Remove Command
 
-When the user specify to remove a portion of a food item in the fridge, the `remove` command
-will execute the remove operation by:
+When the user requests to remove a portion of a food item in the fridge, the `remove` command will execute the remove operation by:
 
-1. Searching of the food item in the fridge by looping through each food item.  
-2. If the food item exist, check if the quantity is greater than the available quantity in the fridge.
-3. If it is greater, an exception will be thrown to FridgeFriend.
+1. Searching for the food item in the fridge by looping through each food item.  
+2. If the food item exists, check if the quantity to be removed is greater than the available quantity in the fridge.
+3. If it is greater, an exception will be thrown to `FridgeFriend`.
 4. Otherwise, check if removing the quantity will reduce the quantity to zero.
 5. If it does not reduce to zero, proceed to remove the required quantity.
 6. If it does reduce to zero, then remove the food item completely.
-7. Afterwards, check that by removing the food, the total quantity of that FoodCategory will not be lower than the minimum quantity.
-8. Return a warning message if the total quantity is lower than the minimum quantity to inform the user .
+7. Afterwards, check that by removing the food, the total quantity of that `FoodCategory` will not be lower than the minimum quantity.
+8. Return a warning message if the total quantity is lower than the minimum quantity.
 
 The sequence diagram below shows how the `remove` operation works:
 
 ![RemoveSequenceDiagram](diagrams/diagram_images/RemoveSequenceDiagram.png)
 
-:information_source: Information:
-
-The lifeline for `Food` should end at the destroy marker. However, due to a limitation of PlantUML, the lifeline reach the end of the diagram.
-
 ### Search Command
 
-When the user specify to search a food item in the fridge, the `search` command will execute
+When the user requests to search a food item in the fridge, the `search` command will execute
 search operation by:
 
 1. Searching the list of foods in the fridge by that contain the food name entered by the user
@@ -234,13 +229,13 @@ The sequence diagram shows how the `search` operation works:
 
 The `runningLow` command is implemented by:
 
-1. Checking the setlimit of each category in the FoodCategory.
-2. If the limit is set to 0, the calculation of the totalQuantity of the category can be omitted.
-3. If all the FoodCategory is set to 0, return disabled message.   
-4. Otherwise, if any of the FoodCategory limit is non-zero, proceed to check the total quantity of that FoodCategory in the fridge.
-5. Follow by comparing with the default minimum number of quantity in each FoodCategory.
-6. Then return all the FoodCategory that has quantity lower than the default minimum number of quantity as a warning message
-7. Otherwise, return stockedUp message.
+1. Checking the limit of each category in the `MinimumQuantity`.
+2. If the limit is set to 0, the calculation of the total quantity of the category can be omitted.
+3. If all the `FoodCategory` are set to 0, return the "disabled message".
+4. Otherwise, if any of the `FoodCategory` limits are non-zero, proceed to check the total quantity of that `FoodCategory` in the fridge.
+5. Follow up by comparing the total quantity with the default minimum number of quantity in each `FoodCategory`.
+6. Then return all the `FoodCategory` that have quantities lower than the default limit in the warning message.
+7. Otherwise, return a "stockedUp message".
 
 The sequence diagram shows how the `runninglow` operation works:
 
@@ -250,9 +245,8 @@ The sequence diagram shows how the `runninglow` operation works:
 
 The `setlimit` command is implemented by:
 
-1. Calling a setter method in MinimumQuantity.
-2. The setter method will change the FoodCategory's predefined minimum number of quantity.
-3. The FoodCategory and new minimum number of quantity is specified by the user.
+1. Calling a setter method in `MinimumQuantity`.
+2. The setter method will change the `FoodCategory`'s predefined minimum number of quantity.
 
 The sequence diagram shows how the `setlimit` operation works:
 
