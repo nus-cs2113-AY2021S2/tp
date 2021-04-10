@@ -383,7 +383,7 @@ Choose from one of the three lesson types: `lecture`,`lab` or `tutorial`. Follow
  
 > 💡 To skip an input, leave a blank in between the field separators. For example, 
 > 
-> `add lesson tutorial ;; ;; ;; Prof Akshay ;; akshay@email.com` 
+> `add lsn tutorial ;; ;; ;; Prof Akshay ;; akshay@email.com` 
 > 
 > will add “Tutorial” to the module's list of lessons with only the given teaching staff name and email. The fields “day & time” and “link” were skipped.
 > 
