@@ -1120,12 +1120,31 @@ This function lists all the Inventories currently in the ArrayList<Inventory> In
 
 ### 5.6 Proposed Features
 
-### 5.6.1
+### 5.6.1 Auto Schedule Generator for Nurses
 
-### 5.6.2
+This feature will be able to generate the daily schedule for individual nurses with the schedules in the database. This will allow nurses to have a clear view of their daily tasks, allowing them to plan their day better. Hence this feature has been proposed as one of the goals of HealthVault is to improve the efficiency of hospital and healthcare information management, something we believe this feature will do.
 
-### 5.6.3
+**Brief Implementation**
 
+1. User specifies which Nurse ID a schedule should be generated for.
+2. Program will sort all schedules tied to specified Nurse ID.
+3. A schedule will be generated based on the earliest schedule.
+
+### 5.6.2 Personalized Account Login
+
+This feature will allow medical personnel to have a personalized account within HealthVault, enabling them to only access relevant functionalities of the app. By cutting down on the unnecessary information one has to deal with, the team believes this will aid medical personnel working in a high-stress environment.
+
+### 5.6.3 Inventory Alerts
+
+This feature will alert nurses whenever an inventory of a drug is low. This ensures that essential drugs will never be unavailable as nurses will always have up to date information on which specific drug needs to be restocked.
+
+**Brief Implementation**
+
+1. User adds a threshold stock quantity for when an alert should be raised.
+2. Program checks inventory database everytime inventory is accessed.
+3. Alert will be raised, reminding the nurses that the drug is low on inventory level.
+
+<br>
 
 ## Appendix A: Product Scope
 
