@@ -2,6 +2,7 @@ package seedu.duke;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.command.RecordCommand;
+import seedu.duke.exception.DataException;
 import seedu.duke.exception.InvalidInputException;
 import seedu.duke.model.Patient;
 import seedu.duke.model.Record;
@@ -22,11 +23,11 @@ class RecordCommandTest {
         data.setPatient(patient);
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "record");
-        arguments.put("payload", "2021-03-31");
+        arguments.put("payload", "31/03/2021");
         arguments.put("s", "coughing");
         Ui ui = new Ui();
         RecordCommand recordCommand = new RecordCommand(ui, data, arguments);
-        Exception exception = assertThrows(InvalidInputException.class, () -> {
+        Exception exception = assertThrows(DataException.class, () -> {
             recordCommand.execute();
         });
         assertEquals(Constants.INVALID_INPUT_NO_PATIENT_LOADED, exception.getMessage());
@@ -43,10 +44,10 @@ class RecordCommandTest {
         arguments.put("payload", "");
         Ui ui = new Ui();
         RecordCommand recordCommand = new RecordCommand(ui, data, arguments);
-        InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
+        DataException dataException = assertThrows(DataException.class, () -> {
             recordCommand.execute();
         });
-        assertEquals(Constants.INVALID_INPUT_EMPTY_DESCRIPTION, invalidInputException.getMessage());
+        assertEquals(Constants.INVALID_INPUT_EMPTY_DESCRIPTION, dataException.getMessage());
     }
 
     @Test
@@ -159,10 +160,10 @@ class RecordCommandTest {
         arguments.put("p", "");
         Ui ui = new Ui();
         RecordCommand recordCommand = new RecordCommand(ui, data, arguments);
-        InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
+        DataException dataException = assertThrows(DataException.class, () -> {
             recordCommand.execute();
         });
-        assertEquals(Constants.INVALID_INPUT_EMPTY_DESCRIPTION, invalidInputException.getMessage());
+        assertEquals(Constants.INVALID_INPUT_EMPTY_DESCRIPTION, dataException.getMessage());
     }
 
 }

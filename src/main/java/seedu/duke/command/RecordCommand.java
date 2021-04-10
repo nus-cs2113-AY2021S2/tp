@@ -4,6 +4,7 @@ import seedu.duke.Common;
 import seedu.duke.Constants;
 import seedu.duke.Data;
 import seedu.duke.Ui;
+import seedu.duke.exception.DataException;
 import seedu.duke.exception.InvalidInputException;
 import seedu.duke.exception.StorageException;
 import seedu.duke.model.Patient;
@@ -25,21 +26,17 @@ public class RecordCommand extends Command {
     }
 
     @Override
-    public void execute() throws InvalidInputException, StorageException {
+    public void execute() throws InvalidInputException, DataException, StorageException {
         assert ui != null : "Ui must not be null";
         assert arguments.containsKey("payload") : "Arguments must contain a value for the `payload` key";
-//        Patient patient = data.currentPatient;
-//        if (patient == null) {
-//            throw new InvalidInputException(InvalidInputException.Type.NO_PATIENT_LOADED);
-//        }
         String dateString = arguments.get(Constants.PAYLOAD_KEY);
         LocalDate date = Common.parseDate(dateString);
-        addRecord(date);
+        String recentDetails = addRecord(date);
+        ui.printMessage(recentDetails);
         data.saveFile();
-//        printNewRecord(patient);
     }
 
-    private void addRecord(LocalDate date) throws InvalidInputException {
+    private String addRecord(LocalDate date) throws DataException {
         String symptom = null;
         String diagnosis = null;
         String prescription = null;
@@ -52,17 +49,7 @@ public class RecordCommand extends Command {
         if (arguments.containsKey(Constants.PRESCRIPTION_KEY)) {
             prescription = arguments.get(Constants.PRESCRIPTION_KEY);
         }
-        boolean containsSymptom = symptom != null && !symptom.isEmpty();
-        boolean containsDiagnosis = diagnosis != null && !diagnosis.isEmpty();
-        boolean containsPrescription = prescription != null && !prescription.isEmpty();
-        if (!containsSymptom && !containsDiagnosis && !containsPrescription) {
-            throw new InvalidInputException(InvalidInputException.Type.EMPTY_DESCRIPTION);
-        }
-        data.addRecord(date, symptom, diagnosis, prescription);
-    }
-
-    private void printNewRecord(Patient patient) {
-        ui.printMessage("Added new record to patient " + patient.getID() + ":");
-        ui.printMessage(patient.recentlyAdded());
+        String recentDetails = data.addRecord(date, symptom, diagnosis, prescription);
+        return recentDetails;
     }
 }

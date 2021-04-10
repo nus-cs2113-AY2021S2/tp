@@ -5,6 +5,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 import seedu.duke.exception.DataException;
+import seedu.duke.exception.InvalidInputException;
 import seedu.duke.exception.StorageException;
 import seedu.duke.model.Patient;
 
@@ -128,13 +129,29 @@ public class Data {
     /**
      * Add medical record(s) to the currently loaded patient.
      *
-     * @param date the date of the patient's consultation
-     * @param symptom symptoms reported by the patient
-     * @param diagnosis diagnosis made by the doctor
+     * @param date         the date of the patient's consultation
+     * @param symptom      symptoms reported by the patient
+     * @param diagnosis    diagnosis made by the doctor
      * @param prescription prescription made by the doctor
+     * @return a string containing a confirmation that the records were added to the patient
      * @throws DataException if there is no loaded patient
      */
-    public void addRecord(LocalDate date, String symptom, String diagnosis, String prescription) throws DataException {
+    public String addRecord(LocalDate date, String symptom, String diagnosis, String prescription)
+            throws DataException {
+        checkLoadedPatient();
+        boolean containsSymptom = symptom != null && !symptom.isEmpty();
+        boolean containsDiagnosis = diagnosis != null && !diagnosis.isEmpty();
+        boolean containsPrescription = prescription != null && !prescription.isEmpty();
+        if (!containsSymptom && !containsDiagnosis && !containsPrescription) {
+            throw new DataException(DataException.Type.EMPTY_DESCRIPTION);
+        }
+        String recentDetails = currentPatient.addRecord(date, symptom, diagnosis, prescription);
+        return recentDetails;
+    }
 
+    private void checkLoadedPatient() throws DataException {
+        if (currentPatient == null) {
+            throw new DataException(DataException.Type.NO_PATIENT_LOADED);
+        }
     }
 }
