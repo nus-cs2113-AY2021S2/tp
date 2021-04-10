@@ -130,18 +130,15 @@ This is to facilitate different manipulations on different food categories.
 
 The Exception component represents a collection of classes that represent potential
 exception events that may occur during the usage of `FridgeFriend`.
-
 The `Exception` component facilitates the return of exceptions to the `UI` class
 in `Utilities`, which will display the corresponding error message to the user.
 
 ![Exception Class Diagram](diagrams/diagram_images/ExceptionClassDiagram.png)
 
 The ***Exception Class Diagram*** given above shows the custom `Exceptions`
-created for the FridgeFriend project, and stored inside the `Exceptions` component.
-
+used by `FridgeFriend`, and stored inside the `Exceptions` component.
 All exceptions extend from the Java default `Exception` class. They only differ with regard
 to the throwable error message.
-
 The `Exceptions` component currently consists of eleven (11) custom Exceptions, as of v2.0:
 
 Among these eleven custom exceptions, the `Exceptions` component can generally be
@@ -173,17 +170,13 @@ The main application logic underlines the main executable conditions that make u
 4. Following that, `FridgeFriend` then self-invokes a method that executes the `Command` object.
 5. In this method, the `Command` object  executes its specified action.
 6. From steps 2 to 5, should there be an error thrown, the `Command` class would construct an `Exception` object.
-7. Lastly, the `Exception` would be thrown back to `FridgeFriend`, which will then use the `Ui` class to display an error message to the user.
+7. The `Exception` would be thrown back to `FridgeFriend`, which will then use the `Ui` class to display an error message to the user.
 
 Given below is the sequence diagram for the interactions within the main application logic.
 
 ![MainLogicSequenceDiagram](diagrams/diagram_images/MainLogicSequenceDiagram.png)
 
-:information_source: Information:
-
-* The lifeline for `Parser`, `Command`, and `Exception` should end at the destroy marker. However, due to a limitation of PlantUML, the three lifelines reach the end of the diagram.
-* Due to the lack of a standard to represent try-catch blocks in UML, the `alt` frame in this diagram is used to indicate a try-catch block.
-  Additionally, while the diagram shows the `Exception` object being initialised by `FridgeFriend`, it is actually initialised in the `Parser` or `Command` class and thrown to `FridgeFriend`
+:information_source: The lifeline for `Ui`, `Parser`, and `Command`, should end at the destroy marker. However, due to a limitation of PlantUML, the three lifelines reach the end of the diagram.
 
 ### Add Command
 
