@@ -7,6 +7,9 @@ import seedu.duke.ui.Ui;
 import java.io.IOException;
 import java.util.logging.Level;
 
+/**
+ * This class deals with the handling of commands in the links menu.
+ */
 public class Links {
 
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -98,16 +101,5 @@ public class Links {
         Ui.printZoomLinks(ZoomLinkInfo.zoomLinksList);
     }
 
-    /**
-     * checks for duplicate links in the links list.
-     * @return true if linkToCheck is a duplicate.
-     */
-    public boolean isDuplicate(String linkToCheck) {
-        for (LinkInfo link : LinkInfo.linksList) {
-            if (linkToCheck.equals(link.getLink())) {
-                return true;
-            }
-        }
-        return false;
-    }
+
 }

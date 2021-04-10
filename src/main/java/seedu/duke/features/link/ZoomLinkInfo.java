@@ -7,11 +7,15 @@ import seedu.duke.ui.Ui;
 import java.util.ArrayList;
 import seedu.duke.features.task.command.AddTask;
 
+/**
+ * This class deals with the ZoomLinkInfo object and the zoomLinkList which is an array of
+ * ZoomLinkInfo objects.
+ */
 public class ZoomLinkInfo {
 
-    private String linkDescription;
+    private final String linkDescription;
     private String moduleCode;
-    private String password;
+    private final String password;
 
     public static ArrayList<ZoomLinkInfo> zoomLinksList = new ArrayList<>();
 
@@ -63,7 +67,8 @@ public class ZoomLinkInfo {
             Ui.printZoomLinksAdded(linkDescription, moduleCode);
             return;
         }
-        Module moduleInfo = ModuleInfo.getModule(moduleCode);
+        Module moduleInfo = getModule(moduleCode);
+        assert moduleInfo != null : "module array is empty";
         moduleInfo.setZoomLink(linkDescription);
         Ui.printZoomLinksAdded(linkDescription, moduleCode);
     }
@@ -76,7 +81,7 @@ public class ZoomLinkInfo {
      */
     public static void deleteZoomLink(int deleteIndex) throws IndexOutOfBoundsException {
         ZoomLinkInfo deletedZoomLink = zoomLinksList.get(deleteIndex);
-        Module moduleInfo = ModuleInfo.getModule(deletedZoomLink.getModuleCode());
+        Module moduleInfo = getModule(deletedZoomLink.getModuleCode());
         try {
             moduleInfo.removeZoomLink();
         } catch (NullPointerException e) {
@@ -97,6 +102,15 @@ public class ZoomLinkInfo {
 
     public String getPassword() {
         return password;
+    }
+
+    public static Module getModule(String description) {
+        for (Module module : ModuleInfo.modules) {
+            if (module.getName().equals(description)) {
+                return module;
+            }
+        }
+        return null;
     }
 
     public static void deleteModuleCode(String moduleToDelete) {

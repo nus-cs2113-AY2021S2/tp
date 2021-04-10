@@ -32,7 +32,10 @@ package Link {
   Class Links
   Class ZoomLinkInfo
 
+
 ExternalLinks --|> Links
+ExternalLinks --> LinkInfo
+Links --> ZoomLinkInfo
 }
 
 package "Cap Simulator" {
@@ -55,7 +58,8 @@ package Module_Info {
 
     ModuleInfo -> Module
     ModuleInfo -> Task
-    ModuleInfo -> ZoomLinkInfo
+
+    ModuleInfo <-> ZoomLinkInfo
     Component -> Module
     Module <- AcademicRecords
 }
