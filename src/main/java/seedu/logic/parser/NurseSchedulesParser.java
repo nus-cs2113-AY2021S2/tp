@@ -51,6 +51,12 @@ public class NurseSchedulesParser {
         }
     }
 
+    /**
+     * Returns array with trimmed inputs.
+     *
+     * @param parts Array of raw user inputs
+     * @return trimmedArray
+     */
     private String[] trimInputs(String[] parts) {
         String[] trimmedArray = new String[parts.length];
         for (int i = 0; i < parts.length; i++) {
@@ -59,6 +65,19 @@ public class NurseSchedulesParser {
         return trimmedArray;
     }
 
+    /**
+     * Splits user input based on command to extract relevant information.
+     *
+     * @param input raw user input
+     * @param command Command to be executed, i.e first word
+     * @return array of valid details
+     * @throws WrongInputsException If any inputs are missing
+     * @throws NoInputException If any inputs are empty
+     * @throws ExcessInputException If too many inputs are included
+     * @throws InsufficientInputException If too little inputs are included
+     * @throws IllegalCharacterException If illegal characters are in inputs
+     * @throws InvalidDateException If date is incorrect
+     */
     public String[] getDetails(String input, String command) throws WrongInputsException, NoInputException,
             ExcessInputException, InsufficientInputException,
             IllegalCharacterException, InvalidDateException {
@@ -100,6 +119,13 @@ public class NurseSchedulesParser {
         return details;
     }
 
+    /**
+     * Formats String date into Date object.
+     *
+     * @param datetime string date
+     * @return Date object
+     * @throws ParseException if string is unparseable
+     */
     public static String formatDate(String datetime) throws ParseException {
         SimpleDateFormat parser = new SimpleDateFormat("ddMMyyyy");
         Date date = parser.parse(datetime);
@@ -108,6 +134,18 @@ public class NurseSchedulesParser {
         return formatter.format(date);
     }
 
+    /**
+     * Returns a command object to be executed.
+     *
+     * @param input raw user input
+     * @param ui Program outputs
+     * @return Command object
+     * @throws NoInputException If any inputs are empty
+     * @throws InsufficientInputException If too little inputs are included
+     * @throws ExcessInputException If too many inputs are included
+     * @throws IllegalCharacterException If illegal characters are in inputs
+     * @throws InvalidDateException If date is incorrect
+     */
     public Command nurseParse(String input, NurseScheduleUI ui) throws NoInputException,
             InsufficientInputException, ExcessInputException,
             IllegalCharacterException, InvalidDateException {

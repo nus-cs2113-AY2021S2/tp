@@ -9,10 +9,21 @@ public class NurseScheduleListCommand extends Command {
 
     private String[] argArr;
 
+    /**
+     * Constructor of NurseScheduleListCommand.
+     *
+     * @param args Array of user inputs
+     */
     public NurseScheduleListCommand(String [] args) {
         argArr = args;
     }
 
+    /**
+     * Lists schedules.
+     *
+     * @param nurseSchedules Arraylist of NurseSchedule objects
+     * @param ui Program outputs
+     */
     @Override
     public void execute(seedu.model.nurseschedule.NurseScheduleList nurseSchedules, NurseScheduleUI ui) {
         try {
@@ -24,6 +35,11 @@ public class NurseScheduleListCommand extends Command {
         }
     }
 
+    /**
+     * Returns true if return command is given.
+     *
+     * @return false
+     */
     @Override
     public boolean isExit() {
         return false;
