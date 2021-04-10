@@ -62,7 +62,7 @@ as well as associated JUnit tests and helper function code.
     - Added Overall Architecture Section ([#94](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/94))
     - Added Exception Section ([#119](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/119))
     - Added Design and Implementation Section ([#129](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/129))
-    - Added Instructions for Manual Testing Section, which includes detailed testing instructions for all features in `FridgeFriend`. ([#142](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/142))
+    - Added Instructions for Manual Testing Section, which includes detailed testing instructions for all features ([#142](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/142))
     - Added List Sequence Diagram and Implementation ([#148](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/148))
 
 ### Contributions to Team-based Tasks
