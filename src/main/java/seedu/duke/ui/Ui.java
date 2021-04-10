@@ -441,8 +441,8 @@ public class Ui {
     }
 
     public static void printModuleComponentPrompt() {
-        System.out.println("Please key in your component and percentage of the component. ");
-        System.out.println("Leave space between component and percentage only.");
+        System.out.println("Please key in your component and weightage of the component. ");
+        System.out.println("Leave space between component and weightage only.");
         System.out.println("Example: FinalExam 20");
     }
 
