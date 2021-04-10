@@ -20,6 +20,11 @@ import static seedu.duke.common.Constant.OPTION_LOAN;
 import static seedu.duke.common.Constant.OPTION_PERSON;
 import static seedu.duke.common.Constant.OPTION_SAVING;
 import static seedu.duke.common.Constant.FILE_DELIMITER_CHAR;
+import static seedu.duke.common.Messages.ERROR_FUTURE_ISSUE_DATE;
+import static seedu.duke.common.Messages.ERROR_INVALID_BORROWER_NAME;
+import static seedu.duke.common.Messages.ERROR_INVALID_OPTION_P;
+import static seedu.duke.common.Messages.ERROR_MISSING_RECORD_OPTIONS;
+import static seedu.duke.common.Messages.ERROR_NON_NUM_AMOUNT;
 import static seedu.duke.common.Validators.validateAmount;
 import static seedu.duke.common.Validators.validateDate;
 
@@ -57,7 +62,6 @@ public class AddCommand extends Command {
         borrowerName = getPerson(arguments);
     }
 
-
     /**
      * Gets the description field.
      *
@@ -80,7 +84,7 @@ public class AddCommand extends Command {
         try {
             return validateAmount(getOptionValue(arguments, COMMAND_ADD, OPTION_AMOUNT));
         } catch (NumberFormatException e) {
-            throw new CommandException("amount contains a non numeric value.", COMMAND_ADD);
+            throw new CommandException(ERROR_NON_NUM_AMOUNT, COMMAND_ADD);
         } catch (CustomException e) {
             throw new CommandException(e.getMessage(), COMMAND_ADD);
         }
@@ -97,7 +101,7 @@ public class AddCommand extends Command {
         try {
             LocalDate issueDate = validateDate(getOptionValue(arguments, COMMAND_ADD, OPTION_DATE));
             if (issueDate.compareTo(LocalDate.now()) > 0) {
-                throw new CommandException("Issue date cannot be in the future!", COMMAND_ADD);
+                throw new CommandException(ERROR_FUTURE_ISSUE_DATE, COMMAND_ADD);
             }
             return issueDate;
         } catch (DateTimeException e) {
@@ -117,12 +121,11 @@ public class AddCommand extends Command {
         if (recordType == RecordType.LOAN) {
             String borrowerName = getOptionValue(arguments, COMMAND_ADD, OPTION_PERSON);
             if (borrowerName.contains(FILE_DELIMITER_CHAR)) {
-                throw new CommandException("Borrower name cannot contain '" + FILE_DELIMITER_CHAR + "' as input.",
-                        COMMAND_ADD);
+                throw new CommandException(ERROR_INVALID_BORROWER_NAME, COMMAND_ADD);
             }
             return borrowerName;
         } else if (hasOption(arguments, OPTION_PERSON)) {
-            throw new CommandException("option -p not valid for this record type.", COMMAND_ADD);
+            throw new CommandException(ERROR_INVALID_OPTION_P, COMMAND_ADD);
         } else {
             return null;
         }
@@ -145,7 +148,7 @@ public class AddCommand extends Command {
             recordType = RecordType.SAVING;
             return OPTION_SAVING;
         } else {
-            throw new CommandException("missing option: [-e | -l | -s]", COMMAND_ADD);
+            throw new CommandException(ERROR_MISSING_RECORD_OPTIONS, COMMAND_ADD);
         }
     }
 
