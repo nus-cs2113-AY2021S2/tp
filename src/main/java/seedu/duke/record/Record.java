@@ -1,7 +1,9 @@
 package seedu.duke.record;
 
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.math.BigDecimal;
+import java.util.Locale;
 
 /**
  * Represents a financial-related record to be stored in a list.
@@ -66,8 +68,9 @@ public abstract class Record {
      */
     @Override
     public String toString() {
-        String formattedDate = "[" + this.issueDate + "]";
+        String formattedDate = "[" + this.issueDate + "] ";
+        String formattedAmount = "[" + NumberFormat.getCurrencyInstance(Locale.US).format(this.amount) + "]";
         String formattedDescription = " " + this.description + " ";
-        return formattedDate + formattedDescription;
+        return formattedDate + formattedAmount + formattedDescription;
     }
 }

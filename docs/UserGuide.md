@@ -195,7 +195,7 @@ Example: `add -e Plain bread loaf -a 2.90 -d 20.3.2021`
 
 Output:
 
-![add expense example output](img/AddExpenseExampleOutput.jpg)
+![add expense example output](img/AddExpenseExampleOutput.png)
 
 
 #### 3.1.2 Add a loan record
@@ -212,7 +212,7 @@ Example: `add -l 1st loan to Mark -a 200 -d 20.3.2021 -p Mark`
 
 Output:
 
-![add loan example output](img/AddLoanExampleOutput.jpg)
+![add loan example output](img/AddLoanExampleOutput.png)
 
 #### 3.1.3 Add a saving record
 
@@ -225,7 +225,7 @@ Example: `add -s Savings from March -a 1000 -d 05/04/2021`
 
 Output:
 
-![add saving example output](img/AddSavingExampleOutput.jpg)
+![add saving example output](img/AddSavingExampleOutput.png)
 
 > 💡 Do note that for an `expense`, you will have to use `-e` as the option. This follows for `loan` with `-l` and
 > `saving` with `-s`.
@@ -243,7 +243,7 @@ Format: `list -e`
 
 Output:
 
-![list example output](img/ListExpenseExampleOutput.jpg)
+![list example output](img/ListExpenseExampleOutput.png)
 
 #### 3.2.2 List all loan records
 
@@ -254,7 +254,7 @@ Format: `list -l`
 
 Output:
 
-![list loan example output](img/ListLoanExampleOutput.jpg)
+![list loan example output](img/ListLoanExampleOutput.png)
 
 #### 3.2.3 List all saving records
 
@@ -264,7 +264,7 @@ Format: `list -s`
 
 Output:
 
-![list saving example output](img/ListSavingExampleOutput.jpg)
+![list saving example output](img/ListSavingExampleOutput.png)
 
 #### 3.2.4 List all records
 
@@ -274,7 +274,7 @@ Format: `list -a`
 
 Output:
 
-![list all example output](img/ListAllExampleOutput.jpg)
+![list all example output](img/ListAllExampleOutput.png)
 
 ### 3.3 View category total amount: `view`
 
@@ -289,7 +289,7 @@ Format: `view -e`
 
 Output:
 
-![view expense example output](img/ViewExpenseExampleOutput.jpg)
+![view expense example output](img/ViewExpenseExampleOutput.png)
 
 #### 3.3.2 View total unreturned loans
 
@@ -301,7 +301,7 @@ Format: `view -l`
 
 Output:
 
-![view loan example output](img/ViewLoanExampleOutput.jpg)
+![view loan example output](img/ViewLoanExampleOutput.png)
 
 #### 3.3.3 View total savings
 
@@ -311,7 +311,7 @@ Format: `view -s`
 
 Output:
 
-![view saving example output](img/ViewSavingExampleOutput.jpg)
+![view saving example output](img/ViewSavingExampleOutput.png)
 
 #### 3.3.4 View total amount in every category
 
@@ -322,7 +322,7 @@ Format: `view -a`
 
 Output:
 
-![view all example output](img/ViewAllExampleOutput.jpg)
+![view all example output](img/ViewAllExampleOutput.png)
 
 ### 3.4 Mark a loan as returned: `return`
 
@@ -344,7 +344,7 @@ Example: `return -i 2 -d 28/03/2021`
 
 Output:
 
-![return example output](img/ReturnExampleOutput.jpg)
+![return example output](img/ReturnExampleOutput.png)
 
 ### 3.5 Remove a record: `remove`
 
@@ -361,7 +361,7 @@ Example: `remove -i 1`
 
 Output:
 
-![remove example output](img/RemoveExampleOutput.jpg)
+![remove example output](img/RemoveExampleOutput.png)
 
 > 💡 To find the index of a record, you can simply `list` the record type (`-e`, `-l`, `-s`) and the number that
 > precedes the record is the index.
@@ -382,7 +382,7 @@ Example: `creditscore mark`
 
 Output:
 
-![creditscore example output](img/CreditScoreExampleOutput.jpg)
+![creditscore example output](img/CreditScoreExampleOutput.png)
 
 > 📝 As of version 2.1, a score of `5` will be added if returned within a week, `10`, `20` and `50` will be deducted
 > when a loan is returned after one week and before the second week, two weeks and before the fourth week and 
@@ -402,7 +402,7 @@ Format: `exit`
 
 Output:
 
-![exit example output](img/ExitExampleOutput.jpg)
+![exit example output](img/ExitExampleOutput.png)
 
 ### 3.8 Help function: `help`
 
@@ -434,7 +434,7 @@ Example: `help remove`
 
 Output:
 
-![help example output](img/HelpExampleOutput.jpg)
+![help example output](img/HelpExampleOutput.png)
 
 ### 3.9 Records storage
 
@@ -455,13 +455,13 @@ Output:
 
 * Expected output for new file creation: <br>
 
-  ![new_file_creation_output](img/NewFileCreationExampleOutput.jpg)
+  ![new_file_creation_output](img/NewFileCreationExampleOutput.png)
 
 * Expected output if successful load: <br>
-  ![load success example output](img/SuccessfulLoadExampleOutput.jpg)
+  ![load success example output](img/SuccessfulLoadExampleOutput.png)
 
 * Expected output if not successfully loaded: <br>
-  ![load fail example output](img/FailedLoadExampleOutput.jpg)
+  ![load fail example output](img/FailedLoadExampleOutput.png)
   
 > ❗ Do **NOT** modify the contents of the `finux.txt` save file.
 

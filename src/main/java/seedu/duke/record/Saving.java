@@ -40,7 +40,7 @@ public class Saving extends Record {
      */
     @Override
     public String toString() {
-        String formattedRecordType = "[" + TYPE_SAVING + "]";
+        String formattedRecordType = "[" + TYPE_SAVING + "] ";
         return formattedRecordType + super.toString();
     }
 }

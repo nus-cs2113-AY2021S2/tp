@@ -8,7 +8,8 @@ import seedu.duke.record.Loan;
 
 import java.io.InputStream;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -16,14 +17,14 @@ import java.util.Scanner;
  * Handles all user interactions and printing of text to the console.
  */
 public class Ui {
-    protected static final String DIVIDER = "=========================================================";
-    private static final String logo = "=========================================================\n"
-            + "||    $$$$$$  $$$$$$  $$    $$  $$    $$   $$    $$    ||\n"
-            + "||    $$        $$    $$$   $$  $$    $$    $$  $$     ||\n"
-            + "||    $$$$$$    $$    $$ $$ $$  $$    $$      $$       ||\n"
-            + "||    $$        $$    $$   $$$  $$    $$    $$  $$     ||\n"
-            + "||    $$      $$$$$$  $$    $$   $$$$$$    $$    $$    ||\n"
-            + "=========================================================";
+    protected static final String DIVIDER = "=====================================================================";
+    private static final String logo = "=====================================================================\n"
+            + "||          $$$$$$  $$$$$$  $$    $$  $$    $$   $$    $$          ||\n"
+            + "||          $$        $$    $$$   $$  $$    $$    $$  $$           ||\n"
+            + "||          $$$$$$    $$    $$ $$ $$  $$    $$      $$             ||\n"
+            + "||          $$        $$    $$   $$$  $$    $$    $$  $$           ||\n"
+            + "||          $$      $$$$$$  $$    $$   $$$$$$    $$    $$          ||\n"
+            + "=====================================================================";
 
     private static final String MESSAGE_GOODBYE =
             "=====================================================================\n"
@@ -39,9 +40,9 @@ public class Ui {
     private static final String MESSAGE_EXPENSE_SUCCESSFULLY_ADDED = "Expense has been added...";
     private static final String MESSAGE_LOAN_SUCCESSFULLY_ADDED = "Loan has been added...";
     private static final String MESSAGE_SAVING_SUCCESSFULLY_ADDED = "Saving has been added...";
-    private static final String MESSAGE_TOTAL_EXPENSE = "The total amount for expense is $";
-    private static final String MESSAGE_TOTAL_LOAN = "The total amount for loan is $";
-    private static final String MESSAGE_TOTAL_SAVING = "The total amount for saving is $";
+    private static final String MESSAGE_TOTAL_EXPENSE = "The total amount for expense is ";
+    private static final String MESSAGE_TOTAL_LOAN = "The total amount for loan is ";
+    private static final String MESSAGE_TOTAL_SAVING = "The total amount for saving is ";
     private static final String MESSAGE_FAILED_INIT = "File or contents corrupted! Bad Init!\nSystem will now exit!";
 
 
@@ -98,8 +99,7 @@ public class Ui {
         }
         int formattedIndex = index - 1;
         System.out.println();
-        printIndex(formattedIndex);
-        System.out.println(recordAdded);
+        System.out.println(getId(formattedIndex) + recordAdded);
         System.out.println();
         System.out.println(DIVIDER);
     }
@@ -157,8 +157,7 @@ public class Ui {
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
             if (currentRecord instanceof Expense) {
-                printIndex(i);
-                System.out.println(currentRecord);
+                System.out.println(getId(i) + currentRecord);
             }
         }
         System.out.println(DIVIDER);
@@ -175,8 +174,7 @@ public class Ui {
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
             if (currentRecord instanceof Loan) {
-                printIndex(i);
-                System.out.println(currentRecord);
+                System.out.println(getId(i) + currentRecord);
             }
         }
         System.out.println(DIVIDER);
@@ -193,8 +191,7 @@ public class Ui {
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
             if (currentRecord instanceof Saving) {
-                printIndex(i);
-                System.out.println(currentRecord);
+                System.out.println(getId(i) + currentRecord);
             }
         }
         System.out.println(DIVIDER);
@@ -210,8 +207,7 @@ public class Ui {
         System.out.println("Here is you Records list:");
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
-            printIndex(i);
-            System.out.println(currentRecord);
+            System.out.println(getId(i) + currentRecord);
         }
         System.out.println(DIVIDER);
     }
@@ -231,7 +227,7 @@ public class Ui {
             }
         }
         assert !(totalAmount.compareTo(BigDecimal.ZERO) == -1) : "Expenses cannot be negative!";
-        System.out.println(MESSAGE_TOTAL_EXPENSE + totalAmount.setScale(2, RoundingMode.HALF_EVEN));
+        System.out.println(MESSAGE_TOTAL_EXPENSE + NumberFormat.getCurrencyInstance(Locale.US).format(totalAmount));
         System.out.println(DIVIDER);
     }
 
@@ -250,7 +246,7 @@ public class Ui {
             }
         }
         assert !(totalAmount.compareTo(BigDecimal.ZERO) == -1) : "Loans cannot be negative!";
-        System.out.println(MESSAGE_TOTAL_LOAN + totalAmount.setScale(2, RoundingMode.HALF_EVEN));
+        System.out.println(MESSAGE_TOTAL_LOAN + NumberFormat.getCurrencyInstance(Locale.US).format(totalAmount));
         System.out.println(DIVIDER);
     }
 
@@ -269,7 +265,7 @@ public class Ui {
             }
         }
         assert !(totalAmount.compareTo(BigDecimal.ZERO) == -1) : "Savings cannot be negative!";
-        System.out.println(MESSAGE_TOTAL_SAVING + totalAmount.setScale(2, RoundingMode.HALF_EVEN));
+        System.out.println(MESSAGE_TOTAL_SAVING + NumberFormat.getCurrencyInstance(Locale.US).format(totalAmount));
         System.out.println(DIVIDER);
     }
 
@@ -298,9 +294,9 @@ public class Ui {
         assert !(totalExpense.compareTo(BigDecimal.ZERO) == -1) : "Expenses cannot be negative!";
         assert !(totalLoan.compareTo(BigDecimal.ZERO) == -1) : "Loans cannot be negative!";
         assert !(totalSaving.compareTo(BigDecimal.ZERO) == -1) : "Savings cannot be negative!";
-        System.out.println(MESSAGE_TOTAL_EXPENSE + totalExpense.setScale(2, RoundingMode.HALF_EVEN));
-        System.out.println(MESSAGE_TOTAL_LOAN + totalLoan.setScale(2, RoundingMode.HALF_EVEN));
-        System.out.println(MESSAGE_TOTAL_SAVING + totalSaving.setScale(2, RoundingMode.HALF_EVEN));
+        System.out.println(MESSAGE_TOTAL_EXPENSE + NumberFormat.getCurrencyInstance(Locale.US).format(totalExpense));
+        System.out.println(MESSAGE_TOTAL_LOAN + NumberFormat.getCurrencyInstance(Locale.US).format(totalLoan));
+        System.out.println(MESSAGE_TOTAL_SAVING + NumberFormat.getCurrencyInstance(Locale.US).format(totalSaving));
         System.out.println(DIVIDER);
     }
 
@@ -309,8 +305,8 @@ public class Ui {
      *
      * @param index is the index of the record.
      */
-    public void printIndex(int index) {
+    public String getId(int index) {
         int formattedIndex = index + 1;
-        System.out.print(formattedIndex + ". ");
+        return "[ID: " + formattedIndex + "] ";
     }
 }

@@ -40,7 +40,7 @@ public class Expense extends Record {
      */
     @Override
     public String toString() {
-        String formattedRecordType = "[" + TYPE_EXPENSE + "]";
+        String formattedRecordType = "[" + TYPE_EXPENSE + "] ";
         return formattedRecordType + super.toString();
     }
 }

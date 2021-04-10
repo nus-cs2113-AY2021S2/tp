@@ -22,35 +22,39 @@ class ViewCommandTest {
 
     @Test
     public void executeViewExpense_viewExpenseCmd_success() {
-        String expectedOutput = "=========================================================" + System.lineSeparator()
+        String expectedOutput = "====================================================================="
+                + System.lineSeparator()
                 + "The total amount for expense is $12.88" + System.lineSeparator()
-                + "=========================================================" + System.lineSeparator();
+                + "=====================================================================" + System.lineSeparator();
         runViewCmdTest("executeViewExpense_viewExpenseCmd_success", "expense", "view -e", expectedOutput);
     }
 
     @Test
     public void executeViewLoan_viewLoanCmd_success() {
-        String expectedOutput = "=========================================================" + System.lineSeparator()
+        String expectedOutput = "====================================================================="
+                + System.lineSeparator()
                 + "The total amount for loan is $14.35" + System.lineSeparator()
-                + "=========================================================" + System.lineSeparator();
+                + "=====================================================================" + System.lineSeparator();
         runViewCmdTest("executeViewLoan_viewLoanCmd_success", "loan", "view -l", expectedOutput);
     }
 
     @Test
     public void executeViewSaving_viewSavingCmd_success() {
-        String expectedOutput = "=========================================================" + System.lineSeparator()
-                + "The total amount for saving is $9876543211.54" + System.lineSeparator()
-                + "=========================================================" + System.lineSeparator();
+        String expectedOutput = "====================================================================="
+                + System.lineSeparator()
+                + "The total amount for saving is $9,876,543,211.54" + System.lineSeparator()
+                + "=====================================================================" + System.lineSeparator();
         runViewCmdTest("executeViewSaving_viewSavingCmd_success", "saving", "view -s", expectedOutput);
     }
 
     @Test
     public void executeViewSaving_viewAllCmd_success() {
-        String expectedOutput = "=========================================================" + System.lineSeparator()
+        String expectedOutput = "====================================================================="
+                + System.lineSeparator()
                 + "The total amount for expense is $2.00" + System.lineSeparator()
                 + "The total amount for loan is $10.60" + System.lineSeparator()
-                + "The total amount for saving is $9876543210.54" + System.lineSeparator()
-                + "=========================================================" + System.lineSeparator();
+                + "The total amount for saving is $9,876,543,210.54" + System.lineSeparator()
+                + "=====================================================================" + System.lineSeparator();
         runViewCmdTest("executeViewSaving_viewAllCmd_success", "all", "view -a", expectedOutput);
     }
 
