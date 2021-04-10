@@ -2,7 +2,7 @@ package seedu.duke;
 
 import java.util.ArrayList;
 
-public class Delivery implements Comparable<Delivery>{
+public class Delivery implements Comparable<Delivery> {
     
     private final String deliveryID;
     private final String address; // todo implement enums?
@@ -77,14 +77,13 @@ public class Delivery implements Comparable<Delivery>{
     public String getDeliveryStatusSymbol() {
         if (this.isComplete) {
             return "[Y]";
-        }
-        else {
+        } else {
             return "[N]";
         }
     }
 
     /**
-     * Marks a delivery as completed and also adds the delivery to the deliveryman's record
+     * Method to mark a delivery as completed and also adds the delivery to the deliveryman's record.
      * @param deliveryman deliveryman that completed the delivery
      * @param deliveryNumber corresponding index of the delivery in the DeliveryList.deliveries
      */
@@ -117,6 +116,8 @@ public class Delivery implements Comparable<Delivery>{
     }
 
     /**
+     * Method to convert Delivery object to proper format for printing.
+     *
      * @return formatted line used in Ui.java methods
      */
     @Override
@@ -132,7 +133,7 @@ public class Delivery implements Comparable<Delivery>{
 
         int compareDistance = compareDelivery.getDistance();
 
-        return this.distance-compareDistance;
+        return this.distance - compareDistance;
 
     }
 }
