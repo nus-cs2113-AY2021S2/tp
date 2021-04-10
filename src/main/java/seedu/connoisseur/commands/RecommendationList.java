@@ -138,7 +138,7 @@ public class RecommendationList {
     }
 
     /**
-     * Check for duplicate recommendation titles in existing recommendation list during editing
+     * Check for duplicate recommendation titles in existing recommendation list during editing.
      *
      * @param title recommendation title input by user.
      * @param index index of title that is being edited by the user.
@@ -172,7 +172,6 @@ public class RecommendationList {
         ui.println(currentRecommendation.getRecommendedBy() + "\n");
         return true;
     }
-
 
     /**
      * Adds a recommendation.

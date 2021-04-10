@@ -557,7 +557,7 @@ public class ReviewList {
     }
 
     /**
-     * Check for duplicate review titles in existing review list during editing
+     * Check for duplicate review titles in existing review list during editing.
      *
      * @param title review title input by user.
      * @param index index of title that is being edited by the user.
