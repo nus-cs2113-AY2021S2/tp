@@ -6,6 +6,9 @@ import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
 import java.io.IOException;
 
+/**
+ * This class deals with the handling of commands in the external links menu.
+ */
 public class ExternalLinks extends Links {
 
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);

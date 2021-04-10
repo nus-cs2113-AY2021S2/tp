@@ -7,6 +7,10 @@ import seedu.duke.ui.Ui;
 import java.util.ArrayList;
 import seedu.duke.features.task.command.AddTask;
 
+/**
+ * This class deals with the ZoomLinkInfo object and the zoomLinkList which is an array of
+ * ZoomLinkInfo objects.
+ */
 public class ZoomLinkInfo {
 
     private final String linkDescription;

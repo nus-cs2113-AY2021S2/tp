@@ -7,6 +7,9 @@ import seedu.duke.ui.Ui;
 import java.io.IOException;
 import java.util.logging.Level;
 
+/**
+ * This class deals with the handling of commands in the links menu
+ */
 public class Links {
 
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
