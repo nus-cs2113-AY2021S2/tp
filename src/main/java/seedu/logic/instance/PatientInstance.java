@@ -37,7 +37,7 @@ public class PatientInstance {
         try {
             patients = new PatientList(patientStorage.loadPatients());
         } catch (HealthVaultException | NumberFormatException e) {
-            logger.log(Level.WARNING, "Patient file corrupted.");
+            logger.log(Level.WARNING, "Patient file corrupted. Access Denied");
             ui.corruptedFileErrorMessage();
             patients = new PatientList();
             return;
@@ -57,7 +57,7 @@ public class PatientInstance {
                 isReturnToStartMenu = c.isExit();
                 if (isReturnToStartMenu) {
                     UI.returningToStartMenuMessage();
-                    logger.info("Exiting nurse schedule instance");
+                    logger.log(Level.INFO, "Exiting patient instance");
                 }
                 ui.lineBreak();
             } catch (NullPointerException e) {
@@ -70,6 +70,7 @@ public class PatientInstance {
                 logger.log(Level.WARNING, "Handling HealthVaultException in patient instance.");
             } catch (NumberFormatException e) {
                 System.out.println("Your age input is not an accepted integer!");
+                ui.lineBreak();
                 logger.log(Level.WARNING, "Handling NumberFormatException.");
             }
         }

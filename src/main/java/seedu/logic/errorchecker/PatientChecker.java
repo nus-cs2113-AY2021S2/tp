@@ -10,10 +10,13 @@ import seedu.exceptions.patient.InvalidIdLengthException;
 import seedu.exceptions.patient.InvalidIdTypeException;
 import seedu.exceptions.patient.InvalidIdValueException;
 import seedu.exceptions.patient.InvalidPatientAgeException;
+import seedu.logger.HealthVaultLogger;
 import seedu.model.patient.PatientList;
 import seedu.model.patient.Patient;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Checks the user input for any characters and format that causes volatility in the program.
@@ -25,6 +28,7 @@ public class PatientChecker extends MainChecker {
     private String[] stringTokens;
     private String command;
     private int numberOfTokens;
+    public Logger logger = HealthVaultLogger.getLogger();
 
     /**
      * Constructor for patient data internally received from parser.
@@ -107,6 +111,7 @@ public class PatientChecker extends MainChecker {
      */
     public void checkStorageLength() throws HealthVaultException {
         if (numberOfTokens != 6) {
+            logger.log(Level.WARNING, "Corrupted patient file.");
             throw new CorruptedFileException("Patient");
         }
     }
@@ -118,11 +123,14 @@ public class PatientChecker extends MainChecker {
      */
     public void checkLength() throws HealthVaultException {
         if (command.equals("add") && numberOfTokens != 7) {
+            logger.log(Level.WARNING, "Incorrect patient add command input fields.");
             throw new InvalidFieldsNumberException(command);
         } else if ((command.equals("delete") || command.equals("find")) && numberOfTokens != 2) {
+            logger.log(Level.WARNING, "Incorrect patient delete or find command input fields.");
             throw new InvalidFieldsNumberException(command);
         } else if ((command.equals("list") || command.equals("return") || command.equals("help"))
                 && numberOfTokens != 1) {
+            logger.log(Level.WARNING, "Incorrect patient list, return or help command input fields.");
             throw new InvalidFieldsNumberException(command);
         }
     }
@@ -135,6 +143,7 @@ public class PatientChecker extends MainChecker {
     private void emptySpaceCheck() throws NoInputException {
         for (int i = 0; i < numberOfTokens; i++) {
             if (stringTokens[i].trim().equals("")) {
+                logger.log(Level.WARNING, "Input field is empty.");
                 throw new NoInputException();
             }
         }
@@ -161,6 +170,7 @@ public class PatientChecker extends MainChecker {
     private void checkAgeRange(String ageString) throws InvalidPatientAgeException {
         int age = Integer.parseInt(ageString);
         if (!(age >= 0 && age <= 150)) {
+            logger.log(Level.WARNING, "Patient age is out of range.");
             throw new InvalidPatientAgeException();
         }
     }
@@ -212,10 +222,13 @@ public class PatientChecker extends MainChecker {
     private void checkValidId(String userID) throws InvalidIdLengthException, InvalidIdTypeException,
             InvalidIdValueException {
         if (userID.length() != 6) {
+            logger.log(Level.WARNING, "Incorrect patient ID length.");
             throw new InvalidIdLengthException("IDLength");
         } else if (!(userID.charAt(0) == 'P')) {
+            logger.log(Level.WARNING, "Incorrect patient ID type.");
             throw new InvalidIdTypeException("IDType");
         } else if (numberOfIntegersInString(userID) != 5) {
+            logger.log(Level.WARNING, "Incorrect patient ID value.");
             throw new InvalidIdValueException("IDValue");
         }
     }
@@ -228,6 +241,7 @@ public class PatientChecker extends MainChecker {
      */
     private void checkIdExistStorage(String userID) throws CorruptedFileException {
         if (isIdTakenStorage(userID)) {
+            logger.log(Level.WARNING, "Duplicate patient ID in storage.");
             throw new CorruptedFileException("Patient");
         }
     }
@@ -261,10 +275,12 @@ public class PatientChecker extends MainChecker {
             DuplicateIDException {
         if (patients.isIdTaken(userID)) {
             if (command.equals("add")) {
+                logger.log(Level.WARNING, "Duplicate patient ID in patient list.");
                 throw new DuplicateIDException("Patient");
             }
         } else {
             if ((command.equals("delete") || command.equals("find"))) {
+                logger.log(Level.WARNING, "Patient ID does not exist.");
                 throw new IDNotFoundException("Patient");
             }
         }
