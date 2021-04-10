@@ -2,6 +2,27 @@
 
 ## Design 
 
+## Table of Contents
+*[Setup](#setup)
+    *[Prerequisites](#prerequisites)
+    *[Get Started](#getting-started)
+
+## **Setup**
+### Prerequisites
++ *JDK `11`* or beyond.
++ Permission rights to create a file and folder in your machine.
++ At least 10Mb of free space on disk.
+
+### Getting-started
+1. Fork this repo and clone it into your computer.
+2. Run Intellij as your IDE (Highly Recommended).
+3. Configure the JDK to JDK 11.
+4. Make sure you have added the following plugins, if disable please re-enable it back by going to `File`>`Settings`>`Plugins`.
+   ![Main Sequence Diagram](./img/plugins.png)
+5. Import the project as a Gradle project by selecting build.gradle. 
+6. Verify the setup: Run the nusfoodreviews and test a few commands. 
+7. Run the gradle Checks and Tests to ensure they all pass.
+
 ##Implementation
 For public users, the list of commands is shown below:
 
