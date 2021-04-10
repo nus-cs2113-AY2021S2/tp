@@ -59,7 +59,7 @@ public class Movie implements Serializable{
 		if(reviews.size()==0) {
 			return "No ratings yet. You can start by adding one!";
 		}else{
-			return Float.toString(calculateOverallRating());
+			return Float.toString(calculateOverallRating()).substring(0, 3);
 		}
 	}
 	

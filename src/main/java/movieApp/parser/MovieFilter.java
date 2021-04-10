@@ -13,23 +13,14 @@ public class MovieFilter {
 
     public static void printMovieList(ArrayList<Movie> MovieList) {
         int i;
-        System.out.println("\n===========================");
-        System.out.println("Movie List:");
-        for (i = 0; i < MovieList.size(); i++) {
-            System.out.println((i + 1) + ". " + MovieList.get(i).getMovieTitle());
-        }
-        System.out.println("===========================\n");
-    }
-
-    public static void printMovieListRating(ArrayList<Movie> MovieList) {
-        int i;
-        System.out.println("\n===========================");
+        System.out.println("\n============================");
         System.out.println("Movie List:");
         for (i = 0; i < MovieList.size(); i++) {
             System.out.println((i + 1) + ". " + MovieList.get(i).getMovieTitle() + " ("
-                    + MovieList.get(i).getOverallRating().substring(0,3) + ")");
+                    + MovieList.get(i).getOverallRating() + ")");
         }
-        System.out.println("===========================\n");
+        System.out.println("To select a single movie, select option 6.");
+        System.out.println("============================\n");
     }
 
     public static int getFilter() {
@@ -116,7 +107,7 @@ public class MovieFilter {
     public static ArrayList<Movie> filterByGenre(ArrayList<Movie> movieList) {
         int i = 0;
         String genre = getGenre();
-        System.out.println("\nThe selected genre is: " + genre);
+        System.out.println("The selected genre is: " + genre);
 
         while (i < movieList.size()) {
             if (!genre.equals(movieList.get(i).getGenre())) {
@@ -152,7 +143,7 @@ public class MovieFilter {
     public static ArrayList<Movie> filterByRating(ArrayList<Movie> movieList) {
         int i = 0;
         float rating = getRating();
-        System.out.println("\nThe selected cut-off rating is: " + rating);
+        System.out.println("The selected cut-off rating is: " + rating);
 
         while (i < movieList.size()) {
             if (movieList.get(i).getReviewSize() == 0 || rating > (movieList.get(i).calculateOverallRating())) {
@@ -250,7 +241,7 @@ public class MovieFilter {
 
         int cineplexID = getCineplex();
         Cineplex cineplex = CineplexDatabase.get(cineplexID);
-        System.out.println("\nThe selected cineplex is: " + cineplex.getCineplexName());
+        System.out.println("The selected cineplex is: " + cineplex.getCineplexName());
         ArrayList<Integer> cineplexMovies = cineplex.getMovieList();
         int i = 0;
 
@@ -274,7 +265,7 @@ public class MovieFilter {
     ////////////////////////////////////////////////////////////////////////////
     public static ArrayList<Movie> filterByTitle(ArrayList<Movie> movieList) {
         String title = getTitle();
-        System.out.println("movies containing " + title);
+        System.out.println("The selected keyword is: " + title);
         int i = 0;
         while (i < movieList.size()) {
             if (!movieList.get(i).getMovieTitle().toLowerCase().contains(title.toLowerCase())) {
@@ -334,8 +325,7 @@ public class MovieFilter {
                 case 2:
                     System.out.println("===== Filter by Rating =====");
                     movieList = filterByRating(movieList);
-                    printMovieListRating(movieList);
-                    continue;
+                    break;
                 case 3:
                     System.out.println("= Filter by Showing Status =");
                     movieList = filterByShowingStatus(movieList);
@@ -371,7 +361,7 @@ public class MovieFilter {
             if (movieList.size() == 0) {
                 System.out.println("\nSorry! We couldn't find any matches.");
                 System.out.println("We have reset the filters.");
-                System.out.println("Would you like to try something else?");
+                System.out.println("Would you like to try something else?\n");
                 movieList = new ArrayList<>(Database.MovieDatabase);
             } else {
                 printMovieList(movieList);

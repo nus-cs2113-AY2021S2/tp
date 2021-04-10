@@ -11,11 +11,8 @@ import java.util.Scanner;
 
 public class AdminMainMenu implements MainMenu {
 
-    private static int currentUserIndex;
-    private static ArrayList<User> user;
-    private static int functionSelection;
-    private static int choice;
     private static final Scanner sc = new Scanner(System.in);
+    private static int functionSelection;
 
     public static int displayMenu(int currentUserIndex, ArrayList<User> user) throws Exception {
         System.out.println("\nWelcome, " + user.get(currentUserIndex).getName());
@@ -25,7 +22,7 @@ public class AdminMainMenu implements MainMenu {
         Movie movie;
 
         do {
-            System.out.println("======== Menu Choice =======");
+            System.out.println("\n======== Menu Choice =======");
             System.out.println(" 1 View Movies");
             System.out.println(" 2 Add Movie");
             System.out.println(" 3 Delete Movie");
@@ -43,7 +40,7 @@ public class AdminMainMenu implements MainMenu {
 
             switch (functionSelection) {
                 case 1:
-                    do{
+                    do {
                         movie = MovieFilter.filter(movieList, Database.CineplexDatabase, user.get(currentUserIndex));
                         if (movie != null) {
                             goBack = MovieMenu.movieAction(movie, user.get(currentUserIndex));

@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class CustomerMainMenu implements MainMenu {
 
     public static int displayMenu(int currentUserIndex, ArrayList<User> user) {
-        System.out.println("Welcome, " + user.get(currentUserIndex).getName());
+        System.out.println("\nWelcome, " + user.get(currentUserIndex).getName());
         getOption(user.get(currentUserIndex));
         return -1;
     }
@@ -24,7 +24,7 @@ public class CustomerMainMenu implements MainMenu {
 
         switch (option) {
             case 1:
-                do{
+                do {
                     movie = MovieFilter.filter(movieList, Database.CineplexDatabase, user);
                     if (movie != null) {
                         goBack = MovieMenu.movieAction(movie, user);
@@ -39,7 +39,6 @@ public class CustomerMainMenu implements MainMenu {
                 getOption(user);
         }
     }
-
 
     public static void exit() {
         System.out.println("\nThank you for your time.");

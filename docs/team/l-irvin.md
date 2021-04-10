@@ -8,3 +8,4 @@ Hi. My name is Leonardo Irvin Pratama. You can call me Irvin. Our group is T10-3
 * Implemented OOP refactoring
 * Implemented Developer guide document
 * Implemented the login and hashing function
+* Implemented test cases for review and showtimes
