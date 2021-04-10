@@ -69,6 +69,8 @@ public class Messages {
 
 
     //Lesson messages
+    public static final String FORMAT_INDEX_LESSON_DETAILS = "%d. %s (%s)";
+
     public static final String MESSAGE_ADDED_LESSON = "Added %s to lesson list.";
     public static final String MESSAGE_REMOVED_LESSON = "Removed %s.";
     public static final String MESSAGE_OPENED_LESSON_LINK = "Opening %s link in browser.";

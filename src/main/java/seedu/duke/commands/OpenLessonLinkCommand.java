@@ -22,6 +22,7 @@ import static seedu.duke.common.Constants.HEAD;
 import static seedu.duke.common.Constants.LINUX_OPEN_COMMAND;
 import static seedu.duke.common.Constants.LOGGER_PATH;
 import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
+import static seedu.duke.common.Messages.FORMAT_INDEX_LESSON_DETAILS;
 import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_LINK;
 import static seedu.duke.common.Messages.MESSAGE_LESSONS_LIST_EMPTY;
 import static seedu.duke.common.Messages.MESSAGE_LESSON_TO_OPEN_LINK;
@@ -84,7 +85,7 @@ public class OpenLessonLinkCommand extends Command {
         for (int index : indices) {
             Lesson lesson = lessonList.get(index - 1);
             String lessonType = lesson.getLessonTypeString();
-            ui.printMessage(String.format(MESSAGE_OPENED_LESSON_LINK, lessonType));
+            ui.printMessage(String.format(MESSAGE_OPENED_LESSON_LINK, lessonType.toLowerCase()));
             String lessonLink = lesson.getOnlineLink();
             validateLessonLink(ui, lessonLink);
         }
@@ -145,7 +146,12 @@ public class OpenLessonLinkCommand extends Command {
         int counter = 1;
         for (Lesson lesson : lessonList) {
             String lessonType = lesson.getLessonTypeString();
-            ui.printMessage(String.format(FORMAT_INDEX_ITEM, counter, lessonType));
+            if (lesson.getDetailsStringIfAny() != null) {
+                String appendString = lesson.getDetailsStringIfAny();
+                ui.printMessage(String.format(FORMAT_INDEX_LESSON_DETAILS, counter, lessonType, appendString));
+            } else {
+                ui.printMessage(String.format(FORMAT_INDEX_ITEM, counter, lessonType));
+            }
             counter++;
         }
     }

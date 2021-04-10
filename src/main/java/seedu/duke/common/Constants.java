@@ -19,6 +19,7 @@ public class Constants {
     public static final String DELIM = ";;";
     public static final String WHITESPACE = " ";
     public static final String EMPTY_STRING = "";
+    public static final String COLON = ": ";
 
     public static final String ADD = "add";
     public static final String DELETE = "delete";

@@ -17,19 +17,20 @@ import static seedu.duke.common.Messages.NEWLINE;
 import static seedu.duke.storage.Writer.recursivelyRemoveFiles;
 
 public class TestUtilAndConstants {
-    
+
+    //@@author H-horizon
     public static final String INPUT_ADD_TASK_DESCRIPTION = "iP submission";
     public static final String INPUT_ADD_TASK_REMARKS = "Remember to attach the jar file.";
     public static final String INPUT_INVALID_IS_GRADED = "no";
 
-    public static final String EXPECTED_ADD_LESSON = "Added tutorial to lesson list." + NEWLINE;
+    public static final String EXPECTED_ADD_LESSON = "Added Tutorial to lesson list." + NEWLINE;
     public static final String EXPECTED_ADD_TASK = "Added iP submission to task list.";
-    public static final String EXPECTED_DELETE_LESSON = "Removed lab." + NEWLINE
-            + "Removed tutorial." + NEWLINE;
+    public static final String EXPECTED_DELETE_LESSON = "Removed Lab." + NEWLINE
+            + "Removed Tutorial." + NEWLINE;
     public static final String EXPECTED_OPEN_LINK = "Opening lab link in browser." + NEWLINE
             + "Opening tutorial link in browser." + NEWLINE;
     public static final String EXPECTED_MODULE_OVERVIEW = "<Overview for CS3235>" + NEWLINE
-            + "lab - Wednesday 9 pm - 10 pm" + NEWLINE + "tutorial - Wednesday 9 am - 10am"
+            + "Lab - Wednesday 9 pm - 10 pm" + NEWLINE + "Tutorial - Wednesday 9 am - 10am"
             + NEWLINE + NEWLINE + MESSAGE_TASKS_TO_LIST_UNDONE + NEWLINE 
             + "1. iP submission (graded) - 3 Mar 2021%s"
             + NEWLINE + INDENTATION + "remember to attach JAR file" + NEWLINE;

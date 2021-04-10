@@ -1,6 +1,10 @@
 package seedu.duke.lesson;
 
+import static seedu.duke.common.Constants.COLON;
 import static seedu.duke.common.Constants.FORMAT_LINK;
+import static seedu.duke.common.Constants.LESSON_FIELD_2_LINK;
+import static seedu.duke.common.Constants.LESSON_FIELD_3_T_NAME;
+import static seedu.duke.common.Constants.LESSON_FIELD_4_T_EMAIL;
 
 public class Lesson {
 
@@ -73,5 +77,24 @@ public class Lesson {
      */
     public static boolean isValidLink(String link) {
         return link.matches(FORMAT_LINK);
+    }
+
+    //@@author aliciatay-zls
+    public String getDetailsStringIfAny() {
+        if (!this.time.isEmpty()) {
+            return this.time;
+        } else if (!this.onlineLink.isEmpty()) {
+            return LESSON_FIELD_2_LINK + COLON + this.onlineLink;
+        } else if (this.teachingStaff != null) {
+            String nameField = this.teachingStaff.getName();
+            String emailField = this.teachingStaff.getEmail();
+            if (!nameField.isEmpty()) {
+                return LESSON_FIELD_3_T_NAME + COLON + nameField;
+            }
+            if (!emailField.isEmpty()) {
+                return LESSON_FIELD_4_T_EMAIL + COLON + emailField;
+            }
+        }
+        return null;
     }
 }

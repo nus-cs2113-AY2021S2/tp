@@ -17,11 +17,11 @@ public enum LessonType {
     public static String getLessonTypeString(LessonType lessonType) {
         switch (lessonType) {
         case LECTURE:
-            return LECTURE_STRING;
+            return LECTURE_STRING.substring(0,1).toUpperCase() + LECTURE_STRING.substring(1);
         case TUTORIAL:
-            return TUTORIAL_STRING;
+            return TUTORIAL_STRING.substring(0,1).toUpperCase() + TUTORIAL_STRING.substring(1);
         default:
-            return LAB_STRING;
+            return LAB_STRING.substring(0,1).toUpperCase() + LAB_STRING.substring(1);
         }
     }
 
