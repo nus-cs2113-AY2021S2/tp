@@ -1,9 +1,7 @@
-# Lee Yang Peng- Project Portfolio Page
+# Lee Yang Peng - Project Portfolio Page
 
 ## Overview
-This is a student project for university software development course.
-
-I am one of the contributors to the FridgeFriend project.
+This is a student project for university software development course. I am one of the contributors to the FridgeFriend project.
 
 ## Project: FridgeFriend
 
@@ -33,43 +31,16 @@ as well as associated JUnit tests and helper function code.
 - Contributed to defensive code by adding logging and assertion statements.
 
 **Version 2.0**
-- Converted Food category into classes
-  - What it does: Reorganizes code architecture internally to differentiate different Food objects into 
-    their various categories.
-  - Justification: Useful for scalability when every food class has different attributes and behaviours, to be 
-    explored in future work.
-  - Pull request: ([#93](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/93))  
-
-- Added the ability to list all Food by Storage Location
-  - What it does: Given a user-specified and valid storage location in the Fridge, the program will display a 
-    list of Food in that storage location.
-  - Justification: Allows the user to view the all items stored in a specific storage location without opening the 
-    fridge.
-  - Pull request: ([#93](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/93))
-
-- Added the ability to view a history of past additions of food to the fridge.
-  - What it does: Displays a log that shows every addition of food to the fridge in chronological order.
-  - Justification: Allows the user to track the food they have added to the fridge, which can help to plan and control 
-    dietary habits.
-  - Pull request: ([#131](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/131)), 
-    ([#143](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/143))
+- Converted Food category into classes ([#93](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/93))  
+- Added the ability to list all Food by Storage Location ([#93](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/93))
+- Added the ability to view a history of past additions of food to the fridge. ([#131](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/131)), ([#143](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/143))
 
 **Version 2.1**
-- Improved the validation of Food Category and Food Storage Location when user inputs data.
-  - What it does: Invalid Food Category or Food Storage Location inputted by users will be rejected.
-  - Justification: Improves clarity in application usage and reduces confusion by users.
-  - Pull request: ([#207](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/207))
+- Improved the validation of Food Category and Food Storage Location when user inputs data. ([#207](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/207))
 
-- Overhauled the `Storage` class in the `Utilities` component to improve input validation
-  - What it does: Loads the data from the `fridgeData.txt`according to the appropriate format.
-  - Justification: Allows users to input a wider range of characters as input strings (Food Name) while
-    protecting the application from unexpected behaviour with modified data files.
-  - Pull request: ([#208](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/208))
+- Overhauled the `Storage` class in the `Utilities` component to improve input validation. ([#208](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/208))
   
-- Fine-tuned the ability to search by 'Others' category or storage location when user invokes `list` command.
-  - What it does: Fixed the issue where user uses `list other` but does not output correct results.
-  - Justification: Improves accuracy in the `list` command.
-  - Pull request: ([#212](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/212))
+- Fine-tuned the ability to search by 'Others' category or storage location when user invokes `list` command. ([#212](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/212))
   
 **Enhancements to existing features**  
 - Created JUnit tests & defensive code for:
@@ -107,17 +78,7 @@ as well as associated JUnit tests and helper function code.
 
 - **Review/Mentoring Contributions**
   - Pull Requests reviewed with non-trivial review comments (non-exhaustive):
-    - [#38](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/38),
-    - [#41](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/41),
-    - [#45](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/45),
-    - [#58](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/58),
-    - [#64](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/64),
-    - [#66](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/66),
-    - [#69](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/69),
-    - [#108](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/108),
-    - [#134](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/134),
-    - [#141](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/141),
-    - [#147](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/147),
+    - [#38](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/38), [#41](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/41), [#45](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/45), [#58](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/58), [#64](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/64), [#66](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/66), [#69](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/69), [#108](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/108), [#134](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/134), [#141](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/141), [#147](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/147),
 - Consolidated issues created during PE-D for the team and labelled issue trackers.
 - Gave suggestions and help debug in weekly meetings
 - Coordinating communications between instructors on MSTeams and teammates
