@@ -25,6 +25,19 @@ Given below are my contributions to the project.
 
 - **Contributions to documentation**:
   - User Guide:
-    - Added documentation for the features `add`, `delete, `list`, `return`, `help` in Schedules for Nurses. [\#196](), [\#188](), [\#187]()
+    - Added documentation for the features `add`, `delete`, `list`, `return`, `help` in Schedules for Nurses. [\#196](), [\#188](), [\#187](), [\#98]()
     - Added command summary. [\#117]()
     - Added application logo
+
+  - Developer Guide:
+    - Added implementation details of Nurse Schedules, including all of its features. [\#330](), [\#305](), [\#288]()
+    - Added User Stories [\#324]()
+    - Added Model Component [\#324]()
+
+- **Contributions to Team-Based Tasks**:
+  - General code enhancements
+  - Fix Java CI
+  - Maintained issue tracker with creation of some labels
+
+- **Contributions beyond the team:
+  - Helped find and reported bugs in other team's application
