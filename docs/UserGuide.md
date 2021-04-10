@@ -768,7 +768,7 @@ Lists all cheat-sheets for the module.
 
 ### Automatic Saving
 
-Data for each module is stored in their respective module’s text file, located in a folder called “Data” created in the same directory as the GULIO.jar file. When moving this folder, please ensure that it is placed in the same directory as your GULIO.jar file. After every modification, changes are automatically saved to the file. 
+Data for each module is stored in their respective module’s text file, located in a folder called `Data` created in the same directory as the `GULIO.jar` file. When moving this folder, please ensure that it is placed in the same directory as your `GULIO.jar` file. After every modification, changes are automatically saved to the file. 
 
 ### Manual Editing Outside of GULIO
 
@@ -798,21 +798,21 @@ Files can be modified outside of the program. Invalid inputs will not be loaded 
 
 # Text Editor
 
-GULIO comes with a built-in text-editor that allows you to edit cheat sheets directly. This text editor can be accessed via the add and edit cheat sheet commands. Cheat-sheets are stored in the “Cheatsheet” directory within their respective module directories as “.txt” files.
+GULIO comes with a built-in text-editor that allows you to edit cheat sheets directly. This text editor can be accessed via the add and edit cheat sheet commands. Cheat-sheets are stored in the `Cheatsheet` directory within their respective module directories as `.txt` files.
 
 <p align="center">
     <img width="400" src="userGuideImages/TextEditor.png" alt="Text Editor"><br>
     Figure 4 - GULIO Text Editor
 </p>
 
-In the text editor, you can type in your notes in the text field. When done, remember to save any changes via the “ctrl-s” shortcut. To close the text editor, simply press the escape key on your keyboard. Using “ctrl-up” and “ctrl-down”, you can enlarge or shrink text respectively.
+In the text editor, you can type in your notes in the text field. When done, remember to save any changes via the `ctrl-s` shortcut. To close the text editor, simply press the escape key on your keyboard. Using `ctrl-up` and `ctrl-down`, you can enlarge or shrink text respectively.
 
 | Shortcuts | Actions |
 | --- | --- |
-| ctrl-s | Save cheat-sheet. | 
-| ctrl-up | Enlarge text. |
-| ctrl-down | Shrink text. |
-| esc | Exit test editor |
+| `ctrl-s` | Save cheat-sheet. | 
+| `ctrl-up` | Enlarge text. |
+| `ctrl-down` | Shrink text. |
+| `esc` | Exit test editor |
 
 > ⚠ Do not include file extension (e.g. ”.txt”) when creating or editing the cheat-sheet.
 
