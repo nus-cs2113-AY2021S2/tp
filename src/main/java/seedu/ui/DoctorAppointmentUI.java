@@ -1,9 +1,26 @@
 package seedu.ui;
 
-import seedu.duke.Constants;
 import seedu.model.doctorappointment.DoctorAppointment;
 
 import java.text.ParseException;
+
+import static seedu.duke.Constants.HELP_HEADER_COMMAND;
+import static seedu.duke.Constants.HELP_COMMAND;
+import static seedu.duke.Constants.HELP_HEADER_DESCRIPTION;
+import static seedu.duke.Constants.HELP_HEADER_FORMAT;
+import static seedu.duke.Constants.APPOINTMENTS_ADD_FORMAT;
+import static seedu.duke.Constants.APPOINTMENTS_DELETE_DESCRIPTION;
+import static seedu.duke.Constants.APPOINTMENTS_DELETE_FORMAT;
+import static seedu.duke.Constants.APPOINTMENTS_ADD_DESCRIPTION;
+import static seedu.duke.Constants.MARK_BLANK;
+import static seedu.duke.Constants.APPOINTMENTS_HELP_DESCRIPTION;
+import static seedu.duke.Constants.ADD_COMMAND;
+import static seedu.duke.Constants.LIST_COMMAND;
+import static seedu.duke.Constants.APPOINTMENTS_LIST_DESCRIPTION;
+import static seedu.duke.Constants.APPOINTMENTS_LIST_FORMAT;
+import static seedu.duke.Constants.DELETE_COMMAND;
+import static seedu.duke.Constants.RETURN_COMMAND;
+import static seedu.duke.Constants.RETURN_DESCRIPTION;
 
 
 public class DoctorAppointmentUI extends UI {
@@ -15,26 +32,13 @@ public class DoctorAppointmentUI extends UI {
         System.out.println("Here is a list of Doctor Appointments Commands: ");
 
         int[] lengthPara = {10, 70, 50};
-        printer(new String[]{
-                Constants.HELP_HEADER_COMMAND, Constants.HELP_HEADER_DESCRIPTION, Constants.HELP_HEADER_FORMAT},
-                lengthPara);
+        printer(new String[]{HELP_HEADER_COMMAND, HELP_HEADER_DESCRIPTION, HELP_HEADER_FORMAT}, lengthPara);
         UI.showLongLine();
-        printer(new String[]{
-                Constants.HELP_COMMAND, Constants.APPOINTMENTS_HELP_DESCRIPTION, Constants.MARK_BLANK},
-                lengthPara);
-        printer(new String[]{
-                Constants.ADD_COMMAND, Constants.APPOINTMENTS_ADD_DESCRIPTION, Constants.APPOINTMENTS_ADD_FORMAT},
-                lengthPara);
-        printer(new String[]{
-                Constants.LIST_COMMAND, Constants.APPOINTMENTS_LIST_DESCRIPTION, Constants.APPOINTMENTS_LIST_FORMAT},
-                lengthPara);
-        printer(new String[]{
-                Constants.DELETE_COMMAND, Constants.APPOINTMENTS_DELETE_DESCRIPTION,
-                        Constants.APPOINTMENTS_DELETE_FORMAT},
-                lengthPara);
-        printer(new String[]{
-                Constants.RETURN_COMMAND, Constants.RETURN_DESCRIPTION, Constants.MARK_BLANK},
-                lengthPara);
+        printer(new String[]{HELP_COMMAND, APPOINTMENTS_HELP_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{ADD_COMMAND, APPOINTMENTS_ADD_DESCRIPTION, APPOINTMENTS_ADD_FORMAT}, lengthPara);
+        printer(new String[]{LIST_COMMAND, APPOINTMENTS_LIST_DESCRIPTION, APPOINTMENTS_LIST_FORMAT}, lengthPara);
+        printer(new String[]{DELETE_COMMAND, APPOINTMENTS_DELETE_DESCRIPTION, APPOINTMENTS_DELETE_FORMAT}, lengthPara);
+        printer(new String[]{RETURN_COMMAND, RETURN_DESCRIPTION, MARK_BLANK}, lengthPara);
         UI.printEmptyLine();
     }
 
