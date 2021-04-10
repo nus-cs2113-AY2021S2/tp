@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DeliverymanTest {
     private Deliveryman deliveryman = new Deliveryman("Obi Wan",
             "HIGHGROUND", "Interceptor", 5);
+
     @Test
     public void updateProfile_success() {
         deliveryman.updateProfile("Mace Windu | Jedi Interceptor | OUTTHEWINDU | 100");

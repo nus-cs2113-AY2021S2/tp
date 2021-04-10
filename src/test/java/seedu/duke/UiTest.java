@@ -1,9 +1,8 @@
 package seedu.duke;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -14,7 +13,6 @@ public class UiTest {
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     private final ArrayList<Item> items = new ArrayList<>();
     private final Ui ui = new Ui();
-    Delivery delivery;
 
     @BeforeEach
     public void setUp() {
@@ -25,8 +23,7 @@ public class UiTest {
         Route.routes = DataManager.loadRoutes();
         // create testing items and delivery
         items.add(new Item(1, 5));
-        delivery = new Delivery("N", "1001", "NTU Hall 1", "Manika", items);
-        listOfDeliveries.add(delivery);
+        listOfDeliveries.add(new Delivery("N", "1001", "NTU Hall 1", "Manika", items));
         DeliveryList.deliveries = listOfDeliveries;
     }
 
