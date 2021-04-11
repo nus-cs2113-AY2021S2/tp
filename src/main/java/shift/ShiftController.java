@@ -131,6 +131,9 @@ public class ShiftController {
 
     public static void assignEmployee(ArrayList<Employee> employees, ArrayList<Shift> shifts) {
         viewAllShifts(shifts);
+        if (shifts.isEmpty()) {
+            return;
+        }
         LocalDate shiftDate = getShiftDate();
         int shiftIndex = getShiftIndex();
         if (getShift(shiftDate, shiftIndex, shifts) != null) {
@@ -162,6 +165,9 @@ public class ShiftController {
 
     public static void unassignEmployee(ArrayList<Employee> employees, ArrayList<Shift> shifts) {
         viewAllShifts(shifts);
+        if (shifts.isEmpty()) {
+            return;
+        }
         LocalDate shiftDate = getShiftDate();
         int shiftIndex = getShiftIndex();
         if (getShift(shiftDate, shiftIndex, shifts) != null) {
@@ -185,7 +191,7 @@ public class ShiftController {
 
     public static void viewAllShifts(ArrayList<Shift> shifts) {
         if (shifts.isEmpty()) {
-            System.out.println("No shifts in database. Please add shift first.");
+            System.out.println("No shift in database. Please add shift first.");
         }
         else {
             for (Shift shift : shifts) {
