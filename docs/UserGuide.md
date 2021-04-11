@@ -762,7 +762,7 @@ For example if favourite data is corrupted, NUSMaz will display:<br>
 **A** : Copy the entire data folder that can be found together with the NUSMaze.jar file on the first computer and copy it over to the same directory where the NUSMaze.jar file 
 can be found on the second computer. <br>
 
-**Q** : What Should I do if I don't know how to travel from one block to another? <br>
+**Q** : What should I do if I don't know how to travel from one block to another? <br>
 **A** : You can refer to this [map](http://map.nus.edu.sg) to view the directions. <br>
 
 --------------------------------------------------------------------------------------------------------------------
