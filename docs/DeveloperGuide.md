@@ -29,7 +29,7 @@ This guide is for developers looking to modify GULIO. For users of GULIO, please
     * [Adding of Lesson](#adding-of-lesson)
     * [Adding of Cheat-Sheet](#adding-of-cheat-sheet)
     * [Loading & Storing of Data](#loading--storing-of-data)
-    * Design Considerations
+    * [Design Considerations](#design-considerations)
     * [Future Features](#future-features)
 * [Appendix: Requirements](#appendix-requirements)
     * [Product Scope](#product-scope)
@@ -56,7 +56,7 @@ This guide is for developers looking to modify GULIO. For users of GULIO, please
 
 #### Icons & labels used in this guide:
 
-💡 - Indicates a tip that may be useful to you.<br>
+💡 - indicates a tip that may be useful to you.<br>
 ⚠ - indicates a warning that you should take note of.<br>
 
 _Italic_ - Indicates that the content is a component.<br>
@@ -93,7 +93,7 @@ _Italic_ - Indicates that the content is a component.<br>
 
 ### Background of GULIO
 
-GULIO is a command line application for NUS SOC students to organize their modules. It has a 2-layer system: dashboard layer and module layer. In both layers, the user has access to a different set of commands.
+GULIO is a command line application for NUS SoC students to organize their modules. It has a 2-layer system: dashboard layer and module layer. In both layers, the user has access to a different set of commands.
 
 On start up, the user will be on the dashboard layer and has an overview of all their modules. They will have access to module management commands such as adding, deleting or opening a particular module. Opening a module then puts them on the module layer where they can interact with the data within the module.
 
@@ -129,13 +129,13 @@ _Duke_ contains the main method which is required by Java to run the application
 
 Apart from _Duke_, the application consists of the following components:
 
-* _UI_: Handles reading and printing
-* _Parser_: Validates and checks user input
-* _Command_: Executes commands
-* _Model_: Consists of data related to the application
-* _Storage_: Handles loading and storing of data into text files
-* _Editor_: Graphical interface for users to type
-* _Common_: collection of classes used by multiple components.
+* _UI_ : Handles reading and printing
+* _Parser_ : Validates and checks user input
+* _Command_ : Executes commands
+* _Model_ : Consists of data related to the application
+* _Storage_ : Handles loading and storing of data into text files
+* _Editor_ : Graphical interface for users to type
+* _Common_ : collection of classes used by multiple components.
 
 
 GULIO is a local application that stores its application data using readable text files, allowing users the flexibility of viewing and editing data locally.
@@ -147,11 +147,11 @@ The way GULIO runs and handles user input can be described as follows:
     Figure 3 - GULIO Sequence Diagram
 </p>
 
-Upon start, the `Duke` (main) class calls `run()` which enters a while loop and reads in user input. In the loop, the _Parser_ component processes the user input into various commands implemented in GULIO. The loop ends when the user enters exit.
+Upon starting up GULIO, the `Duke` (main) class calls `run()` which enters a while loop and reads in user input. In the loop, the _Parser_ component processes the user input into various commands implemented in GULIO. The loop ends when the user enters exit.
 
 &nbsp;
 
-### UI component
+### UI Component
 
 **API**: `UI.java`
 
@@ -163,7 +163,7 @@ Upon start, the `Duke` (main) class calls `run()` which enters a while loop and 
 
 &nbsp;
 
-### Parser component
+### Parser Component
 
 **API**: `Parser.java`
 
@@ -179,7 +179,7 @@ Upon start, the `Duke` (main) class calls `run()` which enters a while loop and 
 
 &nbsp;
 
-### Command component
+### Command Component
 
 <p align="center">
     <img width="973" src="developerGuideImages/command-component-level.png" alt="Dual Layer Command System"><br>
@@ -201,14 +201,14 @@ Steps for command execution:
 
 &nbsp;
 
-### Model component
+### Model Component
 
 <p align="center">
     <img width="973" src="developerGuideImages/designModel.png" alt="Class Diagram of Model"><br>
     Figure 5 - Class Diagram of Model
 </p>
 
-The Model component consists of classes that represent real-world objects related to the program. `ModuleList` represents the various modules that a typical SOC student may be taking within the semester. Each of these modules is encapsulated in the `Module` class which contains an ArrayList of `Lesson` and `Task` objects representing the lessons that would be conducted for the module and tasks that students have to complete for the modules they are taking.
+The Model component consists of classes that represent real-world objects related to the program. `ModuleList` represents the various modules that a typical SoC student may be taking within the semester. Each of these modules is encapsulated in the `Module` class which contains an ArrayList of `Lesson` and `Task` objects representing the lessons that would be conducted for the module and tasks that students have to complete for the modules they are taking.
 
 #### ModuleList:
 
@@ -229,7 +229,7 @@ The `Module` class contains the attributes:
 
 #### Lesson:
 
-In SOC, lessons are conducted by a combination of lectures, tutorials or labs. To enforce this constraint, the Enum class `LessonType` contains a set of constants for lecture, tutorial and lab.
+In SoC, lessons are conducted by a combination of lectures, tutorials or labs. To enforce this constraint, the Enum class `LessonType` contains a set of constants for lecture, tutorial and lab.
 
 The `Lesson` class contains attributes related to a typical course lesson:
 
@@ -261,7 +261,7 @@ The `Task` class contains attributes related to an assignment, deadline or task 
 
 <!--@@author 8kdesign-->
 
-### Storage component
+### Storage Component
 
 <p align="center">
     <img width="973" src="developerGuideImages/storage.png" alt="Storage Structure"><br>
@@ -284,7 +284,7 @@ The _Storage_ component is responsible for creating and loading modules and thei
 
 &nbsp;
 
-### Editor component
+### Editor Component
 
 **API**: `TextEditor.java`
 
@@ -305,7 +305,7 @@ The _Editor_ component is responsible for opening the text editor to add or edit
 
 &nbsp;
 
-### Common classes
+### Common Classes
 
 Classes that are used by multiple components:
 * `CommonMethods`: Stores methods that are used by multiple components
@@ -455,7 +455,7 @@ Efficiently view and update regularly-needed information on modules and deadline
 
 ### User Stories
 
-> 💡 Priorities levels:<br>
+> 💡 Priority levels:<br>
 > `1`: High (Must have)<br>
 > `2`: Medium (Good to have)<br>
 > `3`: Low (Unlikely to have)
@@ -468,9 +468,11 @@ Efficiently view and update regularly-needed information on modules and deadline
 | 1 | busy NUS student | add a task | keep track of assignments and deadlines for a module in an organised to-do list |
 | 1 | NUS student | get an overview of the module / lesson / task list | filter out specific information with a single command |
 | 2 | NUS student | delete a module | store the information only temporarily, e.g. for the semester/term |
-| 2 | NUS SOC student | open a module’s cheat sheet(s) | I have a handy list of tools for the module, tests and exams at my disposal |
-| 2 | NUS SOC student with many team projects | View a module’s project team information and contact details | keep track of the various teams I am in and communicate more efficiently with my teammates |
+| 2 | NUS SoC student | open a module’s cheat sheet(s) | I have a handy list of tools for the module, tests and exams at my disposal |
+| 2 | NUS SoC student with many team projects | View a module’s project team information and contact details | keep track of the various teams I am in and communicate more efficiently with my teammates |
 | 3 | busy NUS student | sort tasks by graded and done status | know which tasks are of highest priority |
+
+_Note: some are features to be implemented in future._
 
 &nbsp;
 
@@ -499,7 +501,7 @@ Efficiently view and update regularly-needed information on modules and deadline
 
 ## Appendix: Instruction for Manual Testing
 
-Due to the 2-layer command system, you will need to identify which layer you are on in order to run the tests correctly.To identify which layer you are on, simply check the tag beside your input, known as the **input label**.
+Due to the 2-layer command system, you will need to identify which layer you are on in order to run the tests correctly. To identify which layer you are on, simply check the tag beside your input, known as the **input label**.
 
 * `GULIO` indicates that you are at the dashboard layer.
 * A module code (e.g. `CS2113T`) indicates that you are within that module.
@@ -525,7 +527,7 @@ Due to the 2-layer command system, you will need to identify which layer you are
 
 1. Shift the file GULIO.jar to your desired directory.
 1. Open command prompt and navigate to the directory.
-1. Enter `Java -jar GULIO.jar` into the command prompt.<br>
+1. Enter `java -jar GULIO.jar` into the command prompt.<br>
    >Expected outcome: Prints welcome message.
 
 
@@ -544,11 +546,11 @@ Due to the 2-layer command system, you will need to identify which layer you are
 1. Ensure that no module is selected. Input label should show `GULIO`.
   1. If you see a module code instead, enter `close` to close the module.<br>
      >Expected outcome: Input label changes to `GULIO`.
-1. Enter `module`.<br>
+1. Enter `mods`.<br>
    >Expected outcome: Lists all existing modules.
 1. Enter `add <module>` where \<module> is a module code that is not in the list.<br>
    >Expected outcome: Prints success message.
-1. Enter `module` again to list all existing modules.<br>
+1. Enter `mods` again to list all existing modules.<br>
    >Expected outcome: New module is added to list.
 
 
@@ -557,11 +559,11 @@ Due to the 2-layer command system, you will need to identify which layer you are
 1. Ensure that no module is selected. Input label should show `GULIO`.
   1. If you see a module code instead, enter `close` to close the module.<br>
      >Expected outcome: Input label changes to `GULIO`.
-1. Enter `delete`.<br>
+1. Enter `del`.<br>
    >Expected outcome: Lists all existing modules and asks for indices to delete.
 1. Enter indices of modules to delete, separated by space.<br>
    >Expected outcome: Prints success message.
-1. Enter `module`.<br>
+1. Enter `mods`.<br>
    >Expected outcome: Specified modules deleted.
 
 ### Opening a Module
@@ -569,7 +571,7 @@ Due to the 2-layer command system, you will need to identify which layer you are
 1. Ensure that no module is selected. Input label should show `GULIO`.
   1. If you see a module code instead, enter `close` to close the module.<br>
      >Expected outcome: Input label changes to `GULIO`.
-1. Enter `modules`.<br>
+1. Enter `mods`.<br>
    >Expected outcome: Lists all existing modules.
 1. Enter `open <module>` where \<module> is a module code in the list.<br>
    >Expected outcome: Prints overview of module and input label changes to module code.
@@ -577,7 +579,7 @@ Due to the 2-layer command system, you will need to identify which layer you are
 ### Closing a Module
 
 1. Check if a module is selected via the input label.
-  1. If the input label shows `GULIO`, enter `modules`.<br>
+  1. If the input label shows `GULIO`, enter `mods`.<br>
      >Expected outcome: Lists all existing modules.
   1. Add a new module if the list is empty. E.g. `add CS2113T`
   1. Open one of the modules. E.g. `open CS2113T`<br><br>
@@ -588,31 +590,31 @@ Due to the 2-layer command system, you will need to identify which layer you are
 ### Adding a Lesson
 
 1. Check if a module is selected via the input label.
-  1. If the input label shows `GULIO`, enter `modules`.<br>
+  1. If the input label shows `GULIO`, enter `mods`.<br>
      >Expected outcome: Lists all existing modules.
   1. Add a new module if the list is empty. E.g. `add CS2113T`
   1. Open one of the modules. E.g. `open CS2113T`<br>
      >Expected outcome: Prints overview of module.
-1. Enter `lessons`.<br>
+1. Enter `lsn`.<br>
    >Expected outcome: Lists all lessons for that module.
-1. Add a new lesson. E.g. `add lesson lecture ;; Friday 6pm`.<br>
+1. Add a new lesson. E.g. `add lsn lecture ;; Friday 6pm`.<br>
    >Expected outcome: Prints success message.
-1. Enter `lessons`.<br>
+1. Enter `lsn`.<br>
    >Expected outcome: New lesson added to list.
 
 ### Deleting a Lesson
 
 1. Check if a module is selected via the input label.
-  1. If the input label shows `GULIO`, enter `modules`.<br>
+  1. If the input label shows `GULIO`, enter `mods`.<br>
      >Expected outcome: Lists all existing modules.
   1. Add a new module if the list is empty. E.g. `add CS2113T`
   1. Open one of the modules. E.g. `open CS2113T`<br>
      >Expected outcome: Prints overview of module.
-1. Enter `delete lesson`.<br>
+1. Enter `del lsn`.<br>
    >Expected outcome: Lists all existing lessons and asks for indices to delete.
 1. Enter indices of lessons to delete, separated by space.<br>
    >Expected outcome: Prints success message.
-1. Enter `lessons`.<br>
+1. Enter `lsn`.<br>
    >Expected outcome: Specified lessons removed from list.
 
 ### Opening a Link
@@ -623,7 +625,7 @@ Due to the 2-layer command system, you will need to identify which layer you are
 1. Add a new module if the list is empty. E.g. `add CS2113T`
 1. Open one of the modules. E.g. `open CS2113T`<br>
    >Expected outcome: Prints overview of module.
-1. Add a new lesson with a link. E.g. `add lesson lecture ;; Friday 4pm ;; https://nus-sg.zoom.us/`. <br>
+1. Add a new lesson with a link. E.g. `add lsn lecture ;; Friday 4pm ;; https://nus-sg.zoom.us/`. <br>
    >Expected outcome: Prints success message.
 1. Enter `link`.<br>
    >Expected outcome: Lists all existing lessons.
