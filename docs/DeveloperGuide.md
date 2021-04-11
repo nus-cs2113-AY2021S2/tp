@@ -1647,9 +1647,9 @@ Error in ID input
 Please input with the following format [D/A] followed by [5 digit ID number]
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.2 **Test case:** ```delete/A12346```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.2 **Test case:** ```delete/A54321```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```DoctorID / Appointment ID: D12345/A12345 has been deleted!```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Appointment ID: A54321 has been deleted!```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `delete/A123`
 
@@ -1679,12 +1679,13 @@ Please input with the following format [D/A] followed by [5 digit ID number]
 	D12345         | A12345         | Alex           | M              | 21/01/2021  
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `list`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `list/a`
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 
 ``` 
-OOPS! There are too few inputs for this command
+Error in ID input
+Please input with the following format [all/D/A] followed by [5 digit ID number]
 ```
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.2 **Test case:** ```list/D12345```
@@ -1702,7 +1703,7 @@ OOPS! There are too few inputs for this command
 
 ``` 
 Error in ID input
-Please input with the following format [D/A] followed by [5 digit ID number]
+Please input with the following format [all/D/A] followed by [5 digit ID number]
 ```
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.3 **Test case:** ```list/A12345 ```
@@ -1710,9 +1711,9 @@ Please input with the following format [D/A] followed by [5 digit ID number]
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 
 	
-	Doctor ID      | Appointment ID | Name           | Gender         | Date          
+	Appointment ID | Name           | Gender         | Date          
 	____________________________________________________________
-	D12345         | A12345         | Alex           | M              | 21/01/2021  
+	A12345         | Alex           | M              | 21/01/2021  
 		
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `list/A111`
 
@@ -1720,7 +1721,7 @@ Please input with the following format [D/A] followed by [5 digit ID number]
 
 ``` 
 Error in ID input
-Please input with the following format [D/A] followed by [5 digit ID number]
+Please input with the following format [all/D/A] followed by [5 digit ID number]
 ```
 	
 <br/>
@@ -1729,7 +1730,7 @@ Please input with the following format [D/A] followed by [5 digit ID number]
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```return```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to start menu!```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to Start Menu!```
 
 <br/>
 
@@ -1745,12 +1746,13 @@ Please input with the following format [D/A] followed by [5 digit ID number]
 	____________________________________________________________________________________________________
 	help      Brings up the list of commands for Doctor Appointments!               -                                                 
 	add       Adds Doctor Appointment details to the database!                      add/[Doctor ID]/[Appointment ID]/[Name]/[Gender]/[Date (DDMMYYYY)]
-	list      Brings up the list of all current Doctors' Appointments in database!  list/[DoctorID/AppointmentID]                     
+	list      Brings up the list of all current Doctors' Appointments in database!  list/[all/DoctorID/AppointmentID]                     
 	delete    Deletes the Appointment with the specified ID from the list!          delete/[DoctorID/Appointment ID]                  
 	return    Returns you to the Start Menu!                   
 	
 
 <br/><br/>
+
 
 ### Choose which feature you want to use from Schedules' Menu	 
 1. Adding a new schedule
