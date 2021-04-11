@@ -365,7 +365,9 @@ to mean components or components and its associated weightage for simplicity.
 > * Old components' weightage will be over written automatically when a component name already exist in the program.  
 > * Parsing is designed such as any inputs after weightage will be ignored. E.g. FinalExam 20 2, '2' will be ignored.  
 
-* Example for adding component and weightage to a module:    
+
+* Example for adding component and weightage to a module: 
+
 ````
 > 5
 Which action would you like to proceed with? Key in 1 or 2.
@@ -422,15 +424,17 @@ From Module object: CS2113T
 
 #### 3.1.6 Add Module's Modular Credits (MC)
 
-Adds modular credits for an existing module.
+Adds modular credits for an existing module.  
 
 >**<span style="color: red"> WARNING! </span>**  
 > You may overwrite the existing modular credits for an existing module.  
 
 > **Note!**  
-> Supported MCs: 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 13, 14, 15, 20; 
+> Supported MCs: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `10`, `12`, `13`, `14`, `15`, `20`; 
 > As these MCs are more common, they are selected to be valid MCs input. 
 > Invalid MCs are not allowed and entries for such inputs will be discarded.  
+> By default, when a new module is added, modular credit is set to zero.  
+
 
 Example for adding modular credits to a module:  
 
@@ -457,6 +461,10 @@ Returning to module information menu...
 #### 3.1.7 Add Module Grade
 
 Adds module grade to an existing module. The module grade added can be used to compute a [simulated CAP](#323-simulate-future-cap).   
+
+> **Note!**  
+> List of accepted grades: `A+`, `A`, `A-`, `B+`, `B`, `B-`, `C+`, `C`, `D+`, `D`, `F`, `SU`  
+> By default, when a new module is added, module grade is `null`.  
 
 Example for adding grade to a module:  
 
@@ -679,7 +687,7 @@ The CAP calculated with be rounded to 2 decimal places.
 
 There are two versions of CAP Simulator:
 - v1.0: This version allows you to simulate CAP base on the grades you have entered before under each
-  [existing module](#312-view-a-module)
+  [existing module](#312-view-a-module).
 - v2.0: This version allows you to simulate CAP from a fresh set of inputs from you.
 
 To begin,
@@ -692,7 +700,7 @@ To begin,
 
 Once done, enter `ok` when prompt with entering a new grade again (for v2.0 only). 
 
-List of accepted grades: `A+`,`A`,`A-`,`B+`,`B`,`B-`,`C+`,`C`,`D+`,`D`,`F`,`SU`
+List of accepted grades: `A+`, `A`, `A-`, `B+`, `B`, `B-`, `C+`, `C`, `D+`, `D`, `F`, `SU`
 
 
 When you enter CAP Simulator, it will welcome you with the following interface!
