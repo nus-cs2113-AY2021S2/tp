@@ -1,4 +1,5 @@
 //@@author {jhjhjajh}
+
 package seedu.connoisseur.commands;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -56,7 +57,7 @@ public class RecommendationListTest {
     public void deleteReview_recommendationExists_removesNormally() {
         Recommendation recommendationA = new Recommendation("superman", "category", "5", "10", "Friend", "NA");
         recommendationList.recommendations.add(recommendationA);
-        int numberOfRecommendationsBeforeRemoval = recommendationList.recommendations.size();
+        final int numberOfRecommendationsBeforeRemoval = recommendationList.recommendations.size();
         String title = "superman";
         recommendationList.deleteRecommendation(title);
         Boolean contains = false;
