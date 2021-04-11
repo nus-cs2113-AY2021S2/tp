@@ -106,10 +106,10 @@ Otherwise, you will be prompted to retry the `add` command.
 :information_source: Additional info:
 
 * Available Food Categories: `MEAT`, `SEAFOOD`, `EGG`, `DAIRY`, `VEGETABLE`, `FRUIT`,
-  `BEVERAGE`, `COOKED_DISH`, `READY_TO_EAT`, `FROZEN`, `OTHERS`
+  `BEVERAGE`, `COOKED_DISH`, `READY_TO_EAT`, `FROZEN`, `OTHER`
 * Available Fridge Location: `FREEZER`, `UPPER_SHELF`, `MIDDLE_SHELF`, `LOWER_SHELF`,
-  `DRAWERS`, `FRIDGE_DOOR`, `OTHERS`
-* The list of available `FOOD_CATEGORY` and `LOCATION_IN_THE_FRIDGE` can be found using the [`help`](#get-help-message-help) command.
+  `DRAWERS`, `FRIDGE_DOOR`, `OTHER`
+* The list of available `FOOD_CATEGORY` and `LOCATION_IN_THE_FRIDGE` can be found using the [help](#get-help-message-help) command.
 
 Example of usage:
 
