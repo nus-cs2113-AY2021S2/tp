@@ -24,5 +24,3 @@ I contributed by adding the table of contents, architecture and overview, archit
 
 #### Review/mentoring contributions
 A PR which I reviewed and merged can be accessed [here](https://github.com/AY2021S2-CS2113-W10-1/tp/pull/123).
-
-
