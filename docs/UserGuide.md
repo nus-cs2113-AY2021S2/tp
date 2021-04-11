@@ -57,6 +57,8 @@ This guide is written for users like you, for reference when there is a particul
 
 ----
 
+<div style="page-break-after: always;"></div>
+
 # How to Use This Guide
 
 #### Icons used in this guide:
@@ -86,6 +88,8 @@ This guide is written for users like you, for reference when there is a particul
 &nbsp;
 
 ----
+
+<div style="page-break-after: always;"></div>
 
 # Quick Start
 
@@ -117,6 +121,8 @@ Java 11 and above<br>
 [🡅 Back to Table of Contents](#table-of-contents)
 
 ----
+
+<div style="page-break-after: always;"></div>
 
 # Features
 
@@ -190,6 +196,8 @@ Additionally, you can store your lecture notes in GULIO using the cheat-sheet fe
 [🡅 Back to Table of Contents](#table-of-contents)
 
 ----
+
+<div style="page-break-after: always;"></div>
 
 ## Dashboard Commands
 These are commands used on the dashboard layer, when no modules have been selected. Commands here deal with the creation of modules, as well as accessing modules.
@@ -308,6 +316,8 @@ Use this command to view all existing modules.
 [🡅 Back to Table of Contents](#table-of-contents)
 
 ----
+
+<div style="page-break-after: always;"></div>
 
 ## Module Commands
 
@@ -786,6 +796,8 @@ Use this command to view the list of cheat-sheets you have for the module.
 
 ----
 
+<div style="page-break-after: always;"></div>
+
 # Data & Storage
 
 ### Automatic Saving
@@ -818,6 +830,8 @@ Files can be modified outside of the program. Invalid inputs will not be loaded 
 
 ----
 
+<div style="page-break-after: always;"></div>
+
 # Text Editor
 
 GULIO comes with a built-in text-editor that allows you to edit cheat sheets directly. This text editor can be accessed via the add and edit cheat sheet commands. Cheat-sheets are stored in the `Cheatsheet` directory within their respective module directories as `.txt` files.
@@ -843,6 +857,8 @@ In the text editor, you can type in your notes in the text field. When done, rem
 [🡅 Back to Table of Contents](#table-of-contents)
 
 ----
+
+<div style="page-break-after: always;"></div>
 
 # FAQ
 
