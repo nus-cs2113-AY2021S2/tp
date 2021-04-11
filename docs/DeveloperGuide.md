@@ -66,7 +66,7 @@ The rest of the App consists of four components.
 ### Model-Component
 
 ### Storage-Component
-![Storage Class Diagram](./img/storage CD.png)
+![Storage Class Diagram](./img/storage%20CD.png)
 
 The `Storage` component,
 * For new user, will first create a new directory and text file.
