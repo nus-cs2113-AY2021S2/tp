@@ -14,7 +14,7 @@ public class ShowCustomAliasCommand extends Command {
     }
 
     /**
-     * This function will show all aliases that have been saved by the user. It calls the showCustomAliases function in
+     * This method will show all aliases that have been saved by the user. It calls the showCustomAliases method in
      * the ui class.
      */
     @Override

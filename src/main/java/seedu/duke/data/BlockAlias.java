@@ -14,14 +14,26 @@ public class BlockAlias {
         this.aliases = new HashMap<>();
     }
 
+    /**
+     * @return The hash map containing all the aliases and block pairs is returned.
+     */
     public HashMap<String, String> getAliasHashMap() {
         return aliases;
     }
 
+    /**
+     * @return A boolean value on whether the alias hashmap is empty is returned.
+     */
     public boolean isEmpty() {
         return aliases.isEmpty();
     }
 
+    /**
+     * This method adds the new alias that was specified by the user into the alias hashmap.
+     * @param block The block name.
+     * @param alias The alias name.
+     * @throws InvalidAliasException If alias is the same as a block or an alias of the same name already exists.
+     */
     public void addAlias(String block, String alias) throws InvalidAliasException {
         if (!isValidAlias(alias)) {
             throw new InvalidAliasException();
@@ -29,6 +41,11 @@ public class BlockAlias {
         aliases.put(alias, block);
     }
 
+    /**
+     * This method returns a boolean value on whether the alias is valid or not.
+     * @param alias The alias that is to be checked if valid.
+     * @return A boolean value of whether the alias is valid.
+     */
     public boolean isValidAlias(String alias) {
         NusMap nusMap = new NusMap();
         return (!aliases.containsKey(alias)
@@ -37,6 +54,13 @@ public class BlockAlias {
                 && !alias.equals(""));
     }
 
+    /**
+     * This method checks and converts the alias name back to the block name when being called in the routing function.
+     * @param from The from block that was input in the routing command by the user.
+     * @param to The to block that was input in the routing command by the user.
+     * @return An array of strings where the converted from block is stored in the first index and the converted to
+     * block is stored in the second index.
+     */
     public String[] changeAliasToBlock(String from, String to) {
         String[] blockNames = {from, to};
         if (aliases.containsKey(from)) {
@@ -48,6 +72,11 @@ public class BlockAlias {
         return blockNames;
     }
 
+    /**
+     * This method deletes the specified alias from the alias hashmap.
+     * @param alias The alias that is to be deleted.
+     * @throws NoAliasNameException If the alias name cannot be found in the alias hashmap.
+     */
     public void deleteAlias(String alias) throws NoAliasNameException {
         if (aliases.containsKey(alias)) {
             aliases.remove(alias);
