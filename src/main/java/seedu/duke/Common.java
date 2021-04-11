@@ -11,6 +11,7 @@ import java.time.format.ResolverStyle;
  * This is a common class providing some miscellaneous functionalities.
  */
 public class Common {
+    //@@author hiongkaihan
     /**
      * Checks whether the patient's ID is valid.
      *
@@ -88,12 +89,13 @@ public class Common {
         return true;
     }
 
+    //@@author brandonfoong
     /**
      * Parses a string in the format dd/MM/yyyy, and returns its corresponding date.
      *
      * @param dateString the string to be parsed
      * @return a LocalDate object corresponding to the input string
-     * @throws DateTimeParseException if the date provided is invalid
+     * @throws InvalidInputException if the date provided is invalid
      */
     public static LocalDate parseDate(String dateString) throws InvalidInputException {
         if (dateString.isEmpty()) {

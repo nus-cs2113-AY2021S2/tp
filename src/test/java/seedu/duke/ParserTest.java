@@ -62,7 +62,7 @@ public class ParserTest {
     @Test
     public void parse_malformedCommand_exceptionThrown() {
         String fullCommand = "malformed";
-        assertThrows(InvalidInputException.class, () -> {
+        assertThrows(UnknownException.class, () -> {
             parser.parse(fullCommand);
         });
     }
@@ -70,7 +70,7 @@ public class ParserTest {
     @Test
     public void parse_invalidCommand_exceptionThrown() {
         String fullCommand = "invalid_command a b c /p x";
-        Exception e = assertThrows(InvalidInputException.class, () -> {
+        InvalidInputException e = assertThrows(InvalidInputException.class, () -> {
             parser.parse(fullCommand);
         });
 

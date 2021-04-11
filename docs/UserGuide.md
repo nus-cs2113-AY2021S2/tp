@@ -15,6 +15,7 @@ ol ol > li:before {
 
 # Patient Manager User Guide
 
+
 Patient Manager is a **Command Line Interface** (CLI) application for **general practitioners** (GP)
 to manage their patient list. Patient Manger allows you to easily register new patients to your clinic with their NRIC
 or FIN number. Once a patient's records have been loaded, you can easily add new medical records and retrieve a summary
@@ -23,13 +24,11 @@ of past records
 With the Patient Manager, GPs will be able to reduce paperwork and have a more efficient way to organize the records of
 their patients.
 
-<!-- TODO: Explain How to use this guide -->
 
 ---
 
 ## Table of Contents
 
-<!-- TODO: Description -->
 
 1. [User Guide Information](#user-guide-information)
 1. [Quick Start](#quick-start)
@@ -47,6 +46,7 @@ their patients.
 1. [Command Summary](#command-summary)
 
 ---
+
 
 ## User Guide Information
 
@@ -66,6 +66,7 @@ Finally, for returning users, you can check [Command Summary](#command-summary) 
 and their input format.
 
 
+
 > Please take note of the following symbols and formatting in this User Guide
 >
 > `Code blocks` are used to denote commands in the command line, user input, output from Patient Manager and file names.
@@ -75,6 +76,7 @@ and their input format.
 > ℹ️ The information symbol highlights useful information to take note of.
 >
 > ❗ The exclamation mark highlights important things to take note of.
+
 
 ---
 
@@ -380,8 +382,8 @@ original device and place it in the folder `PatientManager.jar` is found in on t
 **A**: No, the data is saved automatically after every command that modifies the data.
 
 **Q**: Can I edit the data file? \
-**A**: Patient Manager data is saved as a text file. While it is possible to edit the data file, it is not recommended
-to do so as invalid formats in the data file will result in errors.
+**A**: Patient Manager data is saved as a text file. While it is possible to edit the data file, it is
+recommended not to do so as invalid formats in the data file will result in errors.
 
 ---
 
