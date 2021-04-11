@@ -9,41 +9,70 @@ public class NusMap {
 
     private HashMap<String, Block> map;
 
+    /**
+     * Initializes the map of NUS
+     */
     public NusMap() {
         this.map = new HashMap<>();
         initValidBlocks();
         initRelationships();
     }
 
+    /**
+     * Returns the block object
+     * @param name is the name of the block
+     */
     public Block getBlock(String name) {
         return map.get(name);
     }
 
+    /**
+     * Check if the block is a valid block
+     * @param name  is the block input by the user
+     */
     public void checkIfValidBlock(String name) throws InvalidBlockException {
         if (map.get(name) == null) {
             throw new InvalidBlockException();
         }
     }
 
+    /**
+     * Adds a new block into the map
+     * @param name is the name of the block
+     */
     public void addBlock(String name) {
         map.put(name, new Block(name));
     }
 
+    /**
+     * Adds a bidirectional  edge between two blocks
+     * @param a is one of the blocks
+     * @param b is the other block
+     */
     public void addRelationship(String a, String b) {
         map.get(a).addNeighbour(map.get(b));
         map.get(b).addNeighbour(map.get(a));
     }
 
+    /**
+     * reset all the visited flags for all block objects
+     */
     public void resetVisitedFlag() {
         for (Block block : map.values()) {
             block.setAsNotVisited();
         }
     }
 
+    /**
+     * Gets all the blocks
+     */
     public Collection<Block> getValues() {
         return map.values();
     }
 
+    /**
+     * Add all the blocks
+     */
     public void initValidBlocks() {
         addBlock("E1");
         addBlock("E1A");
@@ -88,6 +117,9 @@ public class NusMap {
         addBlock("STARBUCKS");
     }
 
+    /**
+     * Construct the map by adding edges between all the blocks
+     */
     public void initRelationships() {
         addRelationship("EW1", "E1");
         addRelationship("E1", "LT5");

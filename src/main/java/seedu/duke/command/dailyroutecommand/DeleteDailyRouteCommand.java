@@ -9,6 +9,10 @@ import seedu.duke.ui.DailyRouteUi;
 
 import java.util.ArrayList;
 
+
+/**
+ * Deletes a daily schedule
+ */
 public class DeleteDailyRouteCommand extends Command {
     protected DailyRouteUi ui;
     private static String MESSAGE_SUCCESS = "Got it! Successfully cleared %s's schedule!";
@@ -17,6 +21,10 @@ public class DeleteDailyRouteCommand extends Command {
         this.ui = new DailyRouteUi();
     }
 
+    /**
+     * Gets the day specified by the user and deletes the corresponding schedule entry by mapping an empty array list in dailyRoute
+     * Success message is printed using ui at the end.
+     */
     @Override
     public void execute() {
         try {
