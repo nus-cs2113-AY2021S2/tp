@@ -16,12 +16,12 @@
     2.6. [Data Component](#26-data-component)  
     2.7. [Storage Component](#27-storage-component)  
 3. [Implementation](#3-implementation)  
-    3.1. [Save Feature](#31-save-feature)  
+    3.1. [Finding The Shortest Route Feature](#31-finding-the-shortest-route-feature)  
     3.2. [Daily Route Planning Feature](#32-daily-route-planning-feature)  
-    3.3. [Finding The Shortest Route Feature](#33-finding-the-shortest-route-feature)  
+    3.3. [Favourite Routes Feature](#33-favourite-routes-feature)
     3.4. [Custom Aliases Feature](#34-custom-aliases-feature)  
     3.5. [History Feature](#35-history-feature)  
-    3.6. [Favourite Routes Feature](#36-favourite-routes-feature)
+    3.6. [Save Feature](#36-save-feature)
 4. [Appendix: Requirements](#4-appendix-requirements)  
     4.1. [Product Scope](#41-product-scope)  
     4.2. [User Stories](#42-user-stories)  
@@ -155,60 +155,28 @@ The **Storage Component**:
 ---------------------------------------------------------------------------------------------
 
 ## *3. Implementation*
-### 3.1. Save feature
+### 3.1. Finding The Shortest Route Feature
 #### Current Implementation
-The save mechanism is facilitated by `AliasStorage`, `DailyRouteStorage`, `FavouriteStorage`, `HistoryStorage` and `NotesStorage` subclasses. </br>
-They extend `Storage` (superclass) with a feature to save the blocks' aliases, daily routes, favourite locations, history of visited routes and tagged notes, stored internally as `aliasList`,  `dailyRouteList`, `favouriteList`, `history`, `noteList` text files. <br />
-Additionally, they implement the following operations: <br/>
-- `AliasStorage#saveData()` —  Saves all aliases given by user to blocks into `aliasList`. <br />
-- `AliasStorage#loadData()` —  Restores all aliases given by user to blocks from `aliasList`. <br />
-- `DailyRouteStorage#saveData()` —  Saves all the daily routes that user wants to see for each day of the week into `dailyRouteList`. <br />
-- `DailyRouteStorage#loadData()` —  Restores all the daily routes that user wants to see from `dailyRouteList`. <br />
-- `FavouriteStorage#saveData()` —  Saves the current list of all the routes that the users are interested in keeping in `favouriteList`. <br />
-- `FavouriteStorage#loadData()` —  Restores the previous list of all the routes that the users are interested in keeping from `favouriteList`. <br />
-- `HistoryStorage#saveData()` —  Saves the current list of the 10 most recently visited routes in its history into `history`. <br />
-- `HistoryStorage#loadData()` —  Restores the previous list of the 10 most recently visited routes in its history from `history`. <br />
-- `NotesStorage#saveData()` —  Saves all notes tagged to a location into `noteList`. <br />
-- `NotesStorage#loadData()` —  Restores all notes tagged to a location from `noteList`. <br />
 
-These 'saveData()' operations are exposed in the `DataEncoder` interface as `DataEncoder#encodeAlias(:BlockAlias) `, `DataEncoder#encodeDailyRoute(:DailyRoute)`, `DataEncoder#encodeFavourite(:Favourite)`, `DataEncoder#encodeHistory(:History)` and `DataEncoder#encodeNotes(:NusMap)` respectively.<br />
-These 'loadData()' operations are exposed in the `DataDecoder` interface as `DataDecoder#decodeAliasAndNoteData()`, `DataDecoder#decodeDailyRouteData()` and `DataDecoder#decodeHistoryAndFavouriteData()`.
+The current implementation of finding the shortest route is facilitated by the `Router` class which uses data stored in `NusMap`, `Block`, and `BlockAlias` class to return the shortest path.
 
-Given below is an example usage scenario and how the save mechanism behaves at each step. <br />
-1. The user launches the application for the first time.
-`AliasStorage`, `DailyRouteStorage`, `FavouriteStorage`, `HistoryStorage` and `NotesStorage` objects 
-will be initialized with the filepaths of `aliasList`,  `dailyRouteList`, `favouriteList`, `history` and `noteList` text files respectively. <br>
-The `blockAlias`, `dailyRoute`, `favourite`, `history` or `nusMap` object in `NusMaze` class will be initialised using the initial state of the respective text file, 
-by calling `AliasStorage#loadData()`, `DailyRouteStorage#loadData()`, `FavouriteStorage#loadData()` `HistoryStorage#loadData()` and `NotesStorage#loadData()`. <br> 
-This is done only once for each time the application is launched. <br>
-![img.png](images/SaveFeatureStep1ref1.png)
-![img.png](images/SaveFeatureStep1.png)
-![img.png](images/SaveFeatureStep1ref2.png) <br>
-2. For all valid commands called before the last user input 'bye' or before program is terminated, the following process is executed continuously. <br>
-`AliasStorage#saveData()`, `DailyRouteStorage#saveData()`, `FavouriteStorage#saveData()`, `HistoryStorage#saveData()`, `NotesStorage#saveData()` are called.
-When `#saveData()` for each of the storage objects are called, data from the `blockAlias`, `dailyRoute`, `favourite`, `history` or `nusMap` object is saved into the respective text file. <br>
-![img_1.png](images/SaveFeatureStep2.png)
+The `GoCommand` class extends the `Command` class and overrides the `execute` method to run the routing algorithm.
 
-<div markdown="block" class="alert alert-info">
-**:information_source:** At any point when a command is called, the `AliasStorage#saveData()`, `DailyRouteStorage#saveData()`, `FavouriteStorage#saveData()`, `HistoryStorage#saveData()`, `NotesStorage#saveData()` will be executed,
-but not all text files will be modified. <br>
-* The `history` text file is modified by the `go`, `clear history` and `repeat history` commands. <br>
-* The `aliasList` text file is modified by the `add alias` and `delete alias` commands. <br>
-* The `dailyRouteList` text file is modified by the `add daily route` and `delete daily route` commands. <br>
-* The `noteList` text file is modified by the `add note` and `delete note` commands. <br>
-* The `favouriteList` text file is modified by the `add favourite`, `repeat favourite` and `delete favourite` commands <br>
-</div>
-<br>
+The image below depicts how the `GoCommand` is implemented.
 
-<div markdown="block" class="alert alert-info">
-**:information_source:** If a command fails its execution, it will not call `#saveData()` for all the storage objects,
-so the content from the `nusMap`, `blockAlias`, `history`, `favourite`, or `dailyRoute` objects will not be saved into the text files.
-</div>
+![img.png](images/router.png)
 
-#### Design Consideration
-**Alternative 1 (current choice):** Saves the entire list of block aliases, visited routes, tagged notes, daily routes and favourite locations. <br/>
-- Pros: Easy to implement. <br/>
-- Cons: Only highly effective when limited to use of one user. <br/>
+Given below is an example scenario of how the routing algorithm functions.
+
+1. User executes `GoCommand` and the `RouterUi` reads in the starting location and destination.<br />
+2. `GoCommand` will then check if the second entry is eatery. If it is not "EATERY", step 3 and 4 are skipped for step 5.<br />
+3. `GoCommand` will then create an instance of `EateryList` and invokes its method `sortEateriesByDistance()` which returns a list of eateries in order of the closest distance.<br />
+4. `GoCommand` then takes in the selection of eatery that the user is chosen and sets the destination.<br/>
+5. The Router will then run the `findShortestRoute()` method which is a routing algorithm based on breath-first search. This returns the shortest route as a string<br />
+6. The `RouterUi` will then show the shortest route to the user through `showMessageWithDivider()` method.<br />
+
+Shown below is the sequence diagram when a valid block is entered for the starting location and destination.
+![img.png](images/routersequencediagram.png)
 
 ### 3.2. Daily route planning feature
 #### Current Implementation
@@ -257,28 +225,52 @@ The following image shows the sequence diagram in which the deleteDailyRoute com
 
 ![img.png](images/clearday.png)
 
-### 3.3. Finding The Shortest Route Feature
+### 3.3. Favourite Routes feature
+
 #### Current Implementation
 
-The current implementation of finding the shortest route is facilitated by the `Router` class which uses data stored in `NusMap`, `Block`, and `BlockAlias` class to return the shortest path.
+The favourite routes feature acts as an independent storage of the user's favourites routes,
+allowing the user to call of the route without going through the hassle of the `go` command.
+The start and destination of the favourite routes are saved within an ArrayList named `favourites`.
+The contents of `favourites` will be stored into a text file named `favouritesList.txt` when NUSMaze terminates.
 
-The `GoCommand` class extends the `Command` class and overrides the `execute` method to run the routing algorithm.
+#### Loading of saved favourite routes
 
-The image below depicts how the `GoCommand` is implemented.
+When NUSMaze launches, the contents of the text file `favouritesList.txt` will be read,
+and stored into `favourites`.
+Refer to the section on **Storage** for more information.
 
-![img.png](images/router.png)
+#### Adding of favourite route
 
-Given below is an example scenario of how the routing algorithm functions.
+The command to add a favourite route is `add favourite`.
+Upon calling the `add favourite` command, the user will be prompted to enter the starting block,
+followed by the destination block. If valid blocks are given,
+the route from the starting block to destination block will be added into `favourites`.
+If any invalid block is given, `InvalidBlockException` will be thrown.
 
-1. User executes `GoCommand` and the `RouterUi` reads in the starting location and destination.<br />
-2. `GoCommand` will then check if the second entry is eatery. If it is not "EATERY", step 3 and 4 are skipped for step 5.<br />
-3. `GoCommand` will then create an instance of `EateryList` and invokes its method `sortEateriesByDistance()` which returns a list of eateries in order of the closest distance.<br />
-4. `GoCommand` then takes in the selection of eatery that the user is chosen and sets the destination.<br/>
-5. The Router will then run the `findShortestRoute()` method which is a routing algorithm based on breath-first search. This returns the shortest route as a string<br />
-6. The `RouterUi` will then show the shortest route to the user through `showMessageWithDivider()` method.<br />
+#### Reviewing saved favourite routes
 
-Shown below is the sequence diagram when a valid block is entered for the starting location and destination.
-![img.png](images/routersequencediagram.png)
+The command to display all the saved favourite routes is `show favourite`.
+If there are no saved routes, `EmptyFavouriteException` will be thrown.
+If there are any saved favourite routes, a numbered list of the saved routes will be shown to the user.
+
+#### Repeating favourite route
+
+The command to repeat a favourite route is `repeat favourite`.
+Upon calling the `repeat favourite` command, the user would be shown a numbered list of saved favourite routes.
+Otherwise, `EmptyFavouriteException` will be thrown.
+After the numbered list of saved favourite routes is shown, the user would be prompted to enter the index of the favourite
+route to be executed. Any invalid input such as decimals or alphabets will result in
+`InvalidIndexException` to be thrown.
+
+#### Deleting favourite route
+
+The command to delete a favourite route is `delete favourite`.
+If there are no saved favourite routes, `EmptyFavouriteException` will be thrown.
+If there are any saved favourite routes, a numbered list of the saved routes will be shown to the user.
+The user is then prompted to enter the index of the route to be deleted.
+Any invalid input such as decimals or alphabets will result in
+`InvalidIndexException` to be thrown.
 
 ### 3.4. Custom aliases feature
 #### Current Implementation
@@ -343,52 +335,60 @@ Alternative 2: Place all commands (add, view, delete) as functions in 1 command 
 Pros: Less code to be written and hashmap can be shared by the 3 commands in 1 class.  
 Cons: Might be confusing since there is less distinction between each command.
 
-### 3.6. Favourite Routes feature
-
+### 3.6. Save feature
 #### Current Implementation
+The save mechanism is facilitated by `AliasStorage`, `DailyRouteStorage`, `FavouriteStorage`, `HistoryStorage` and `NotesStorage` subclasses. </br>
+They extend `Storage` (superclass) with a feature to save the blocks' aliases, daily routes, favourite locations, history of visited routes and tagged notes, stored internally as `aliasList`,  `dailyRouteList`, `favouriteList`, `history`, `noteList` text files. <br />
+Additionally, they implement the following operations: <br/>
+- `AliasStorage#saveData()` —  Saves all aliases given by user to blocks into `aliasList`. <br />
+- `AliasStorage#loadData()` —  Restores all aliases given by user to blocks from `aliasList`. <br />
+- `DailyRouteStorage#saveData()` —  Saves all the daily routes that user wants to see for each day of the week into `dailyRouteList`. <br />
+- `DailyRouteStorage#loadData()` —  Restores all the daily routes that user wants to see from `dailyRouteList`. <br />
+- `FavouriteStorage#saveData()` —  Saves the current list of all the routes that the users are interested in keeping in `favouriteList`. <br />
+- `FavouriteStorage#loadData()` —  Restores the previous list of all the routes that the users are interested in keeping from `favouriteList`. <br />
+- `HistoryStorage#saveData()` —  Saves the current list of the 10 most recently visited routes in its history into `history`. <br />
+- `HistoryStorage#loadData()` —  Restores the previous list of the 10 most recently visited routes in its history from `history`. <br />
+- `NotesStorage#saveData()` —  Saves all notes tagged to a location into `noteList`. <br />
+- `NotesStorage#loadData()` —  Restores all notes tagged to a location from `noteList`. <br />
 
-The favourite routes feature acts as an independent storage of the user's favourites routes, 
-allowing the user to call of the route without going through the hassle of the `go` command.
-The start and destination of the favourite routes are saved within an ArrayList named `favourites`.
-The contents of `favourites` will be stored into a text file named `favouritesList.txt` when NUSMaze terminates.
+These 'saveData()' operations are exposed in the `DataEncoder` interface as `DataEncoder#encodeAlias(:BlockAlias) `, `DataEncoder#encodeDailyRoute(:DailyRoute)`, `DataEncoder#encodeFavourite(:Favourite)`, `DataEncoder#encodeHistory(:History)` and `DataEncoder#encodeNotes(:NusMap)` respectively.<br />
+These 'loadData()' operations are exposed in the `DataDecoder` interface as `DataDecoder#decodeAliasAndNoteData()`, `DataDecoder#decodeDailyRouteData()` and `DataDecoder#decodeHistoryAndFavouriteData()`.
 
-#### Loading of saved favourite routes
+Given below is an example usage scenario and how the save mechanism behaves at each step. <br />
+1. The user launches the application for the first time.
+   `AliasStorage`, `DailyRouteStorage`, `FavouriteStorage`, `HistoryStorage` and `NotesStorage` objects
+   will be initialized with the filepaths of `aliasList`,  `dailyRouteList`, `favouriteList`, `history` and `noteList` text files respectively. <br>
+   The `blockAlias`, `dailyRoute`, `favourite`, `history` or `nusMap` object in `NusMaze` class will be initialised using the initial state of the respective text file,
+   by calling `AliasStorage#loadData()`, `DailyRouteStorage#loadData()`, `FavouriteStorage#loadData()` `HistoryStorage#loadData()` and `NotesStorage#loadData()`. <br>
+   This is done only once for each time the application is launched. <br>
+   ![img.png](images/SaveFeatureStep1ref1.png)
+   ![img.png](images/SaveFeatureStep1.png)
+   ![img.png](images/SaveFeatureStep1ref2.png) <br>
+2. For all valid commands called before the last user input 'bye' or before program is terminated, the following process is executed continuously. <br>
+   `AliasStorage#saveData()`, `DailyRouteStorage#saveData()`, `FavouriteStorage#saveData()`, `HistoryStorage#saveData()`, `NotesStorage#saveData()` are called.
+   When `#saveData()` for each of the storage objects are called, data from the `blockAlias`, `dailyRoute`, `favourite`, `history` or `nusMap` object is saved into the respective text file. <br>
+   ![img_1.png](images/SaveFeatureStep2.png)
 
-When NUSMaze launches, the contents of the text file `favouritesList.txt` will be read,
-and stored into `favourites`.
-Refer to the section on **Storage** for more information.
+<div markdown="block" class="alert alert-info">
+**:information_source:** At any point when a command is called, the `AliasStorage#saveData()`, `DailyRouteStorage#saveData()`, `FavouriteStorage#saveData()`, `HistoryStorage#saveData()`, `NotesStorage#saveData()` will be executed,
+but not all text files will be modified. <br>
+* The `history` text file is modified by the `go`, `clear history` and `repeat history` commands. <br>
+* The `aliasList` text file is modified by the `add alias` and `delete alias` commands. <br>
+* The `dailyRouteList` text file is modified by the `add daily route` and `delete daily route` commands. <br>
+* The `noteList` text file is modified by the `add note` and `delete note` commands. <br>
+* The `favouriteList` text file is modified by the `add favourite`, `repeat favourite` and `delete favourite` commands <br>
+</div>
+<br>
 
-#### Adding of favourite route
+<div markdown="block" class="alert alert-info">
+**:information_source:** If a command fails its execution, it will not call `#saveData()` for all the storage objects,
+so the content from the `nusMap`, `blockAlias`, `history`, `favourite`, or `dailyRoute` objects will not be saved into the text files.
+</div>
 
-The command to add a favourite route is `add favourite`. 
-Upon calling the `add favourite` command, the user will be prompted to enter the starting block,
-followed by the destination block. If valid blocks are given,
-the route from the starting block to destination block will be added into `favourites`.
-If any invalid block is given, `InvalidBlockException` will be thrown.
-
-#### Reviewing saved favourite routes
-
-The command to display all the saved favourite routes is `show favourite`.
-If there are no saved routes, `EmptyFavouriteException` will be thrown.
-If there are any saved favourite routes, a numbered list of the saved routes will be shown to the user.
-
-#### Repeating favourite route
-
-The command to repeat a favourite route is `repeat favourite`.
-Upon calling the `repeat favourite` command, the user would be shown a numbered list of saved favourite routes.
-Otherwise, `EmptyFavouriteException` will be thrown.
-After the numbered list of saved favourite routes is shown, the user would be prompted to enter the index of the favourite
-route to be executed. Any invalid input such as decimals or alphabets will result in
-`InvalidIndexException` to be thrown.
-
-#### Deleting favourite route
-
-The command to delete a favourite route is `delete favourite`.
-If there are no saved favourite routes, `EmptyFavouriteException` will be thrown.
-If there are any saved favourite routes, a numbered list of the saved routes will be shown to the user.
-The user is then prompted to enter the index of the route to be deleted.
-Any invalid input such as decimals or alphabets will result in
-`InvalidIndexException` to be thrown.
+#### Design Consideration
+**Alternative 1 (current choice):** Saves the entire list of block aliases, visited routes, tagged notes, daily routes and favourite locations. <br/>
+- Pros: Easy to implement. <br/>
+- Cons: Only highly effective when limited to use of one user. <br/>
 
 ---------------------------------------------------------------------------------------------
 
