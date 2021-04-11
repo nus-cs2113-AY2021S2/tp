@@ -13,7 +13,9 @@
     * [Model Component](#model-component)
     * [Storage Component](#storage-component)
 *  [Implementation](#implementation)
-    *[Main](#main)
+    * [Main](#main)
+    * [Public User Implementation](#public-user)
+    * [Admin User Implementation](#admin-user)
    
 
 ## **Setup**
@@ -85,14 +87,14 @@ There are 2 types of user :
 [**`Public User`**](#public-user)
 [**`Admin User`**](#admin-user)
 
-###Main
+### Main
 ![Main Sequence Diagram](./img/Main.png)
 
 When the application is launched, an Ui object and Parser object is instantiated.
 To instantiate the Parser object, the main NusFoodReviews and Ui object is passed.
 
 
-###Public User
+### Public User
 For public users, the list of commands is shown below:
 
 * Display selected store sample menu: [**`menu`**](#display-menu) 
@@ -103,7 +105,7 @@ For public users, the list of commands is shown below:
 * Goes back to login page: [**`login`**](#login)
 * Exiting the application: [**`exit`**](#exit)
 
-###Display Menu
+### Display Menu
 
 ![DisplayMenus Sequence Diagram](./img/DisplayMenus.png)
 
@@ -115,7 +117,7 @@ into the constructor. `DisplayMenusCommand.execute()` will then call `getMenus()
 store object to get an ArrayList of menus, before passing the ArrayList to the ui object
 to be displayed by calling `Ui#showDisplayMenu()`.
 
-###Display Reviews
+### Display Reviews
 
 ![ReadReviews](./img/ReadReviews.png)
 
