@@ -42,7 +42,6 @@ public class Exercise extends Record {
         setSeparators();
     }
 
-
     public double getCalories() {
         return calories;
     }
