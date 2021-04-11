@@ -369,7 +369,9 @@ to mean components or components and its associated weightage for simplicity.
 > * Old components' weightage will be overwritten automatically when a component name already exist in the program.  
 > * Parsing is designed such as any inputs after weightage will be ignored. E.g. FinalExam 20 2, '2' will be ignored.  
 
-* Example for adding component and weightage to a module:    
+
+* Example for adding component and weightage to a module: 
+
 ````
 > 5
 Which action would you like to proceed with? Key in 1 or 2.
@@ -426,15 +428,17 @@ From Module object: CS2113T
 
 #### 3.1.6 Add Module's Modular Credits (MC)
 
-Adds modular credits for an existing module.
+Adds modular credits for an existing module.  
 
 >**<span style="color: red"> WARNING! </span>**  
 > You may overwrite the existing modular credits for an existing module.  
 
 > **Note!**  
-> Supported MCs: 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 13, 14, 15, 20; 
+> Supported MCs: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `10`, `12`, `13`, `14`, `15`, `20`; 
 > As these MCs are more common, they are selected to be valid MCs input. 
 > Invalid MCs are not allowed and entries for such inputs will be discarded.  
+> By default, when a new module is added, modular credit is set to zero.  
+
 
 Example for adding modular credits to a module:  
 
@@ -461,6 +465,10 @@ Returning to module information menu...
 #### 3.1.7 Add Module Grade
 
 Adds module grade to an existing module. The module grade added can be used to compute a [simulated CAP](#323-simulate-future-cap).   
+
+> **Note!**  
+> List of accepted grades: `A+`, `A`, `A-`, `B+`, `B`, `B-`, `C+`, `C`, `D+`, `D`, `F`, `SU`  
+> By default, when a new module is added, module grade is `null`.  
 
 Example for adding grade to a module:  
 
@@ -608,8 +616,8 @@ Refer to [this section](#346-delete-zoom-link).
 
 ### 3.2 CAP Simulator/Calculator
 
-The CAP Simulator/Calculator allows you to calculate your future CAP
-base on your [current CAP and MCs graded](#321-add-cap-and-number-of-mcs-counted-towards-cap).  
+The CAP Simulator/Calculator feature allows you to calculate your future CAP
+base on your [current CAP and total MCs counted towards CAP](#321-add-cap-and-number-of-mcs-counted-towards-cap).  
 
 To navigate to CAP Simulator/Calculator, type `2` from the [main menu](#3-features).
 
@@ -635,6 +643,7 @@ MCs that counts into your CAP does not include modules with zero grade points.
 > [i.e. negative CAP or CAP > 5.0]   
 > There is no strict restriction to number of MCs user can add and its up to user's discretion.
 
+Example of adding CAP and total MCs counted towards CAP:  
 
 ````
 Please choose which action you would like to do and enter the number:
@@ -658,6 +667,8 @@ Returning to CAP simulator/calculator menu...
 
 Displays current CAP and MCs counted into the CAP from input entered from [3.2.1](#321-add-cap-and-number-of-mcs-counted-towards-cap).
 
+Example of display on CAP and total MCs counted towards CAP:  
+
 ````
 Please choose which action you would like to do and enter the number:
 [1] --- Add CAP and Number of MCs graded taken
@@ -678,11 +689,11 @@ The CAP calculated with be rounded to 2 decimal places.
 
 > **Note!**  
 > All simulated CAP will not be stored as it is a simulation.  
-> You may choose to update you CAP and MCs counted under [3.2.1](#321-add-cap-and-number-of-mcs-counted-towards-cap).  
+> You may choose to update you CAP and MCs counted in [3.2.1](#321-add-cap-and-number-of-mcs-counted-towards-cap).  
 
 There are two versions of CAP Simulator:
 - v1.0: This version allows you to simulate CAP base on the grades you have entered before under each
-  [existing module](#312-view-a-module)
+  [existing module](#312-view-a-module).
 - v2.0: This version allows you to simulate CAP from a fresh set of inputs from you.
 
 To begin,
@@ -695,7 +706,7 @@ To begin,
 
 Once done, enter `ok` when prompt with entering a new grade again (for v2.0 only). 
 
-List of accepted grades: `A+`,`A`,`A-`,`B+`,`B`,`B-`,`C+`,`C`,`D+`,`D`,`F`,`SU`
+List of accepted grades: `A+`, `A`, `A-`, `B+`, `B`, `B-`, `C+`, `C`, `D+`, `D`, `F`, `SU`
 
 
 When you enter CAP Simulator, it will welcome you with the following interface!
@@ -709,6 +720,9 @@ please go back to the HelpGraduation menu and set existing CAP and MCs taken to 
 Key in 1 to simulate your cap base on the grades you have entered before for each module.
 Key in 2 to simulate cap base on your own input.
 ````
+
+Example on CAP simulator:  
+
 ###### Version 1  
 
 ````
@@ -725,7 +739,7 @@ The simulated cumulative average point (rounded to 2 d.p) you have is:
 Returning to CAP simulator/calculator menu...
 ````  
 
-###### Version 2
+###### Version 2  
 
 ````
 > 2
