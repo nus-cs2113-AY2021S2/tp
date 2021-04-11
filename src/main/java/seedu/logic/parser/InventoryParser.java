@@ -10,9 +10,6 @@ import seedu.logic.command.inventory.InventoryReturn;
 import seedu.logic.errorchecker.InventoryChecker;
 import seedu.logic.errorchecker.MainChecker;
 import seedu.ui.UI;
-
-import java.util.Locale;
-
 import static seedu.ui.UI.smartCommandRecognition;
 
 public class InventoryParser {
@@ -33,7 +30,7 @@ public class InventoryParser {
             HealthVaultException {
         String[] stringTokens = fullCommand.trim().split("/");
         int numberOfTokens = stringTokens.length;
-        for(int i = 0; i < numberOfTokens; i++) {
+        for (int i = 0; i < numberOfTokens; i++) {
             stringTokens[i] = stringTokens[i].trim();
         }
         MainChecker.checkNumInput(fullCommand, 4, 1);
