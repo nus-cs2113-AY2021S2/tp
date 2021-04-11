@@ -1,6 +1,7 @@
 package seedu.duke.features.link;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,11 +13,14 @@ import seedu.duke.ui.Ui;
 public class LinkInfo {
 
     public static ArrayList<LinkInfo> linksList = new ArrayList<>();
+    private static boolean isInitialised = false;
 
     private String linkDescription;
     private static final String nusRedditLink = "https://www.reddit.com/r/nus";
     private static final String luminusLink = "https://www.luminus.nus.edu.sg";
     private static final String edurecLink = "https://www.myedurec.nus.edu.sg";
+    private static ArrayList<String> initialisedList = new ArrayList<String>(
+            Arrays.asList(nusRedditLink, luminusLink, edurecLink));
 
     public LinkInfo(String linkDescription) {
         this.linkDescription = linkDescription;
@@ -26,19 +30,18 @@ public class LinkInfo {
      * Populates the linksList with the default links at the start of every app launch.
      */
     public static void initialiseList() {
-        for (LinkInfo link : LinkInfo.linksList) {
-            if (link.getLink().equals(nusRedditLink)
-                || link.getLink().equals(luminusLink)
-                || link.getLink().equals(edurecLink)) {
-                return;
+        for (String defaultLink : initialisedList) {
+            for (LinkInfo link : LinkInfo.linksList) {
+                if (link.getLink().equals(defaultLink)) {
+                    isInitialised = true;
+                    break;
+                }
+                isInitialised = false;
+            }
+            if (!isInitialised) {
+                linksList.add(new LinkInfo(defaultLink));
             }
         }
-        LinkInfo nusLink = new LinkInfo(nusRedditLink);
-        linksList.add(nusLink);
-        LinkInfo luminus = new LinkInfo(luminusLink);
-        linksList.add(luminus);
-        LinkInfo edurec = new LinkInfo(edurecLink);
-        linksList.add(edurec);
     }
 
     public static void addLink(String linkDescription) {
@@ -52,6 +55,7 @@ public class LinkInfo {
 
     /**
      * Deletes a LinkInfo object from linksList.
+     *
      * @param deleteIndex is the index of the object to be deleted.
      * @throws IndexOutOfBoundsException if the index is out of bounds.
      */
@@ -72,12 +76,12 @@ public class LinkInfo {
     // with minor modifications
     public static boolean isValidLink(String linkDescription) {
         String regex =
-            "((http|https)://)"
-                + "(www.)"
-                + "[a-zA-Z0-9@:%._\\+~#?&//=]"
-                + "{2,256}\\.[a-z]"
-                + "{2,6}\\b([-a-zA-Z0-9@:%"
-                + "._\\+~#?&//=]*)";
+                "((http|https)://)"
+                        + "(www.)"
+                        + "[a-zA-Z0-9@:%._\\+~#?&//=]"
+                        + "{2,256}\\.[a-z]"
+                        + "{2,6}\\b([-a-zA-Z0-9@:%"
+                        + "._\\+~#?&//=]*)";
 
         Pattern p = Pattern.compile(regex);
 
