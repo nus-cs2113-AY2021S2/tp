@@ -357,14 +357,14 @@ _Figure X: Storage Class Diagram_
 
 #### Description
 The `storage` component consists of only 1 class called `Storage`. The role of the `Storage` is to translate all
-`records` from the `RecordList` and `creditScoreHashMap` (a `HashMap`) into a text format in a text output file and 
+`records` from the `RecordList` and `CreditScoreReturnedLoansMap` (a `HashMap`) into a text format in a text output file and 
 vice versa.
 
 #### Design
 In the application, `Storage` is instantiated in classes that requires the use of the save or load function, this
 is done through the constructor `new Storage()`. Whenever a new `record` gets added, removed, or marked as returned, 
 the `saveData` method will be called and all `record` up to that point will be converted into a text output
-and saved into the `finux.txt` file. The `creditScoreHashMap` will also be translated into a user readable text format 
+and saved into the `finux.txt` file. The `creditScoreReturnedLoansMap` will also be translated into a user readable text format 
 and stored in the same file as the `records`. The `loadFile` method will do the exact opposite, and load the data from 
 the `finux.txt` file back into the Finux application.
 
@@ -376,7 +376,7 @@ the `finux.txt` file back into the Finux application.
    will also output each individual records in separate lines.
 
 3. `writeCreditScoreMapToSaveFile` will convert all key:value pairs, in this case, `borrowerName`:`creditScore` pairs
-   in the `creditScoreHashMap` into a user readable format and store them in the same `finux.txt` file as the `records`. 
+   in the `creditScoreReturnLoansMap` into a user readable format and store them in the same `finux.txt` file as the `records`. 
   
 4. `loadFile` method does the opposite of the `writeRecordListToSaveFile` method. In the `loadFile` method, a new 
    ArrayList of `record` is instantiated. It will then call the `saveFileExist` method. If the method returns false, 
@@ -849,8 +849,8 @@ user experience, and it will not cause any confusion. The time wasted is negligi
 long-term benefit.
 
 ### 4.6 Storage Feature
-The `storage` feature allows all `records` and `creditScoreHashMap` to be stored locally on the device and for `records` and 
-and `creditScoreHashMap` to be loaded from a saved file into the Finux application. This is the only feature implemented 
+The `storage` feature allows all `record` and `creditScoreReturnedLoansMap` to be stored locally on the device and for `record` and 
+and `creditScoreReturnedLoansMap` to be loaded from a saved file into the Finux application. This is the only feature implemented 
 that does not have an explicit command to call it.
 
 #### 4.6.1 Current Implementation
@@ -920,7 +920,7 @@ the `HashMap` of itself.
 
 ***Step 4***\
 The `start` method in the `Finux` class will then call the `getRecordListData` method to retrieve the loaded 
-`RecordList` from the `Storage` class, this is also the same with the `creditScoreReturnedLoansMap` where the `start`
+`RecordList` from the `Storage` class, this is also the same with the `CreditScoreReturnedLoansMap` where the `start`
 method in the `Finux` class will call the `getMapData` method from the `Storage` class which will then return the
 `HashMap`.
 
@@ -943,8 +943,8 @@ multiple occasions that this can be invoked:
 |After each command call|Guaranteed save after every successful command call, users can "save" the data by simply entering any legal commands|Extraneous calls of save, high coupling, a lot of passing of data around|
 |After any command call that edits data in `RecordList`|Allows data to be saved after every update to the `RecordList`|Some coupling between the methods that updates the `records` and calling the save method.|
 
-> 💡 Note that data in the HashMap `creditScoreHashMap` is related directly to the `Loan` object in the `RecordList`, thus
-> we have omitted the mention of it here as any changes to the `creditScoreHashMap` will also be reflected in the `Loan`
+> 💡 Note that data in the `CreditScoreReturnedLoansMap` is related directly to the `Loan` object in the `RecordList`, thus
+> we have omitted the mention of it here as any changes to the `CreditScoreReturnedLoansMap` will also be reflected in the `Loan`
 > object which is a part of the `RecordList`.
 
 After considering the above approaches, we have decided to adopt the third approach even though there might be more
