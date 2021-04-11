@@ -322,8 +322,8 @@ public class ModuleInfo {
             logger.log(Level.WARNING, "This will delete your old review. This cannot be undone.");
             int yesOrNo = 2;
             while (yesOrNo == 2) {
+                System.out.println("WARNING: This will delete your old review. This cannot be undone.");
                 System.out.println("Would you like to replace this with another review? [Y/N]");
-                System.out.println("This will delete your old review. This cannot be undone.");
                 String command = Ui.readCommand();
                 yesOrNo = readYN(command);
                 if (yesOrNo == 0) {
@@ -334,6 +334,7 @@ public class ModuleInfo {
             }
         }
         System.out.println("Type '/end' to finish reviewing.");
+        System.out.println("WARNING: Anything typed after '/end' will be erased!");
         System.out.println("Enter your review for " + module.getName() + " below: ");
         return readReview();
     }
@@ -344,12 +345,13 @@ public class ModuleInfo {
             String input = Ui.readReviewLine();
             review.append(input);
             review.append("\n");
-            if (input.contains("/end")) {
+            if (input.toLowerCase().contains("/end")) {
                 break;
             }
         }
         //drop everything after "/end"
-        String reviewString = review.toString().split("/end")[0];
+        //case insensitive '/end'
+        String reviewString = review.toString().split("(?i)/end")[0];
         if (!reviewString.trim().isEmpty()) {
             printReviewAddedMessage(reviewString.trim());
             return reviewString.trim();
@@ -550,6 +552,7 @@ public class ModuleInfo {
                 }
                 while (true) {
                     logger.log(Level.WARNING, "You are deleting a review. This cannot be undone.");
+                    System.out.println("WARNING: You are deleting a review. This cannot be undone.");
                     System.out.println("Are you sure you want to delete this review? [Y/N]\n"
                             + "For " + module.getName() + ":\n"
                             + "Review:\n" + module.getReview());
