@@ -22,13 +22,7 @@ public class Parser {
     public static final String DELIMITER = " ";
 
     public static final String[] forbiddenSubstrings = {
-        Constants.ID_DELIMITER,
-        Constants.DATE_DELIMITER,
-        Constants.SYMPTOM_DELIMITER,
-        Constants.DIAGNOSIS_DELIMITER,
-        Constants.PRESCRIPTION_DELIMITER,
-        Constants.RECORDS_DELIMITER,
-        Constants.DETAILS_DELIMITER
+        "~", "`", "%", "#", "@", "!"
     };
 
     protected Ui ui;

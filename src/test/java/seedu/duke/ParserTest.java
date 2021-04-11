@@ -60,6 +60,17 @@ public class ParserTest {
     }
 
     @Test
+    public void parse_forbiddenSubstrings_exceptionThrown() {
+        // Everything should throw exception
+        for (String string : Parser.forbiddenSubstrings) {
+            InvalidInputException e = assertThrows(InvalidInputException.class, () -> {
+                parser.parse("echo " + string);
+            });
+            assertEquals(Constants.INVALID_INPUT_FORBIDDEN_SUBSTRING, e.getMessage());
+        }
+    }
+
+    @Test
     public void parse_malformedCommand_exceptionThrown() {
         String fullCommand = "malformed";
         assertThrows(UnknownException.class, () -> {

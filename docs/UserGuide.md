@@ -32,21 +32,21 @@ their patients.
 
 1. [User Guide Information](#user-guide-information)
 1. [Quick Start](#quick-start)
+1. [Limitations](#limitations)
 1. [Features](#features)
-    1. [Print a help message: `help`](#print-a-help-message-help)
-    1. [Adding a patient: `add`](#adding-a-patient-add)
-    1. [Deleting a patient or a patient's consultation details: `delete`](#deleting-a-patient-or-a-patients-consultation-details-delete)
-    1. [Listing all patients: `list`](#listing-all-patients-list)
-    1. [Loading a patient's medical records: `load`](#loading-a-patients-medical-records-load)
-    1. [Displaying the current loaded patient: `current`](#displaying-the-current-loaded-patient-current)
-    1. [Recording a patient's consultation details: `record`](#recording-a-patients-consultation-details-record)
-    1. [Retrieving a patient's consultation details: `retrieve`](#retrieving-a-patients-consultation-details-retrieve)
-    1. [Exiting the program: `exit`](#exiting-the-program-exit)
+   1. [Print a help message: `help`](#print-a-help-message-help)
+   1. [Adding a patient: `add`](#adding-a-patient-add)
+   1. [Loading a patient's medical records: `load`](#loading-a-patients-medical-records-load)
+   1. [Deleting a patient or a patient's consultation details: `delete`](#deleting-a-patient-or-a-patients-consultation-details-delete)
+   1. [Listing all patients: `list`](#listing-all-patients-list)
+   1. [Displaying the current loaded patient: `current`](#displaying-the-current-loaded-patient-current)
+   1. [Recording a patient's consultation details: `record`](#recording-a-patients-consultation-details-record)
+   1. [Retrieving a patient's consultation details: `retrieve`](#retrieving-a-patients-consultation-details-retrieve)
+   1. [Exiting the program: `exit`](#exiting-the-program-exit)
 1. [Frequently Asked Questions](#frequently-asked-questions)
 1. [Command Summary](#command-summary)
 
 ---
-
 
 ## User Guide Information
 
@@ -65,8 +65,6 @@ for a list of common questions.
 Finally, for returning users, you can check [Command Summary](#command-summary) for a table of valid commands
 and their input format.
 
-
-
 > Please take note of the following symbols and formatting in this User Guide
 >
 > `Code blocks` are used to denote commands in the command line, user input, output from Patient Manager and file names.
@@ -77,14 +75,13 @@ and their input format.
 >
 > ❗ The exclamation mark highlights important things to take note of.
 
-
 ---
 
 ## Quick Start
 
 > ℹ️ Patient Manager is a Command-Line application, and all commands need to be run from the
 > console (e.g. Terminal/Command Prompt/PowerShell). For reference, a guide to open the Windows
-> Powershell in Windows 10 is shown below:
+> PowerShell in Windows 10 is shown below:
 >
 > <img src="./images/WindowsPowerShell.png" width="600">
 
@@ -101,6 +98,17 @@ and their input format.
 1. Once the welcome message appears, simply type in a command (e.g. [`help`](#print-a-help-message-help))
    and hit `ENTER` at the end to execute the command.
 1. Please refer to [Features](#features) below for more detailed explanations and usage of the available commands.
+
+## Limitations
+
+Before you start using our application, you may want to know about some of its assumptions and limitations.
+
+1. We assume that one patient will not visit the same GP for more than one time per day. Each visit record
+   is identified by its date and there will be no way to differentiate two visits in a single day.
+1. Our application, in the current stage, works offline. Data is not synchronized for different GPs, as well
+   as not for different devices of the same GP.
+1. In our current iteration, there is no way to delete a single line in a record. The only way is deleting the
+   entire record, and create again.
 
 ## Features
 
@@ -130,19 +138,19 @@ and their input format.
 >
 > - Due to how Patient Manager stores its records to disk, the following ASCII characters are not allowed
 > to be used as part of any input:\
-```
-~`%#@!
-```
+> ```
+> ~ ` % # @ !
+> ```
 > If any of these characters are used as an input value, they will be replaced with a space when saving to
 > disk, and will not show up if Patient Manager is closed and reopened.
 > - Dates must be specified in the format `dd/mm/yyyy` with leading zeroes, for example, `05/03/2021`.
 > All dates given must be valid, according to the rules of the
 > [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar).
-<!-- TODO: Order | explain why help command is the 1st -->
 
 ### Print a help message: `help`
 
-If you need help at any point in time, you may use the `help` command. \
+This is put as the first command introduced since it can be very helpful for you along your way
+of using this product. If you need help at any point in time, you may use the `help` command.
 This prints out the help message with a brief explanation of the available commands.
 
 Furthermore, you may request for the help messages for specific command(s) by

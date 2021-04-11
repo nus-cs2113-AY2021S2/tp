@@ -2,31 +2,31 @@
 
 ## Table of Contents
 
-* [Introduction](#introduction)
-* [Setting up the project in your computer](#setting-up-the-project-in-your-computer)
-* [Design & Implementation](#design--implementation)
-  * [Architecture](#architecture)
-    * [How the architecture components interact with each other](#how-the-architecture-components-interact-with-each-other)
-  * [UI Component](#ui-component)
-  * [Logic Component](#logic-component)
-  * [Model Component](#model-component)
-  * [Storage Component](#storage-component)
-  * [Exception Component](#exception-component)
-  * [Commons](#commons)
-* [Implementation](#implementation)
-  * [Parsing User Input and Initializing Command Class](#parsing-user-input-and-initializing-command-class)
-  * [Exception Handling](#exception-handling)
-* [Appendix A: Product scope](#appendix-a-product-scope)
-  * [Target user profile](#target-user-profile)
-  * [Value proposition](#value-proposition)
-* [Appendix B: User Stories](#appendix-b-user-stories)
-* [Appendix C: Non-Functional Requirements](#appendix-c-non-functional-requirements)
-* [Appendix D: Glossary](#appendix-d-glossary)
-* [Appendix E: Instructions for Manual Testing](#appendix-e-instructions-for-manual-testing)
-  * [Launch, Help and Shutdown](#launch-help-and-shutdown)
-  * [Adding and Loading Patients](#adding-and-loading-patients)
-  * [Adding, Viewing and Deleting a Patient's Visit Records](#adding-viewing-and-deleting-a-patients-visit-records)
-  * [Saving Data](#saving-data)
+1. [Introduction](#introduction)
+1. [Setting up the project in your computer](#setting-up-the-project-in-your-computer)
+1. [Design & Implementation](#design--implementation)
+   1. [Architecture](#architecture)
+      1. [How the architecture components interact with each other](#how-the-architecture-components-interact-with-each-other)
+   1. [UI Component](#ui-component)
+   1. [Logic Component](#logic-component)
+   1. [Model Component](#model-component)
+   1. [Storage Component](#storage-component)
+   1. [Exception Component](#exception-component)
+   1. [Commons](#commons)
+1. [Implementation](#implementation)
+   1. [Parsing User Input and Initializing Command Class](#parsing-user-input-and-initializing-command-class)
+   1. [Exception Handling](#exception-handling)
+1. [Appendix A: Product scope](#appendix-a-product-scope)
+   1. [Target user profile](#target-user-profile)
+   1. [Value proposition](#value-proposition)
+1. [Appendix B: User Stories](#appendix-b-user-stories)
+1. [Appendix C: Non-Functional Requirements](#appendix-c-non-functional-requirements)
+1. [Appendix D: Glossary](#appendix-d-glossary)
+1. [Appendix E: Instructions for Manual Testing](#appendix-e-instructions-for-manual-testing)
+   1. [Launch, Help and Shutdown](#launch-help-and-shutdown)
+   1. [Adding and Loading Patients](#adding-and-loading-patients)
+   1. [Adding, Viewing and Deleting a Patient's Visit Records](#adding-viewing-and-deleting-a-patients-visit-records)
+   1. [Saving Data](#saving-data)
 <!-- ^ The above table of content is auto generated -->
 <!-- * [Instructions for manual testing](#instructions-for-manual-testing) -->
 
@@ -198,6 +198,10 @@ record 01/05/2021 /s coughing, fever /p panadol Paracetamol 500mg*20
 
 This is broken into a few steps:
 
+1. Check whether the command contains any forbidden characters. Currently, they are these characters:
+   ```
+   ~ ` % # @ !
+   ```
 1. Initialize an empty hashmap, called `arguments`.
 1. Tokenize using **any number of consecutive white spaces**.
 1. Taken out the first token as command, i.e. `record`. Push it into the hash map using **key** `command`.
