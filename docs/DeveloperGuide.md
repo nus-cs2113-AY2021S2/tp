@@ -709,14 +709,14 @@ Whenever a user input is given to the Doctor Appointment Menu, the following ste
 
 **Launching Doctor Appointment Menu**
 
-1. `ToDoctorAppointment.execute()` will create and call `DoctorAppointmentInstance.run()`
+1. `ToDoctorAppointmentInstance.execute()` will be created and call upon `DoctorAppointmentInstance.run()`.
 2. `DoctorAppointmentInstance.run()` will start by loading/creating the DoctorAppointment data .txt file for database records. It will check for any signs of corrupted file when loading. Exception will be thrown if any corruption occurs.
 3. `DoctorAppointmentInstance.run()` will then repeatedly call `DoctorAppointmentParser.parse()`.
 
 **Getting User Input**
 
 4. `DoctorAppointmentInstance.run()` will repeatedly, requesting for user input and calling `DoctorAppointmentParser.parse()`.
-5. `parse()` will call the `smartCommandRecognition()` to assess the given user input and determine which command is most similar to the input
+5. `parse()` will call the `smartCommandRecognition()` to assess the given user input and determine which command is most similar to the input.
 6. Based on the recognised command by the system, the relevant commands will be carried out.
 
 <br>
@@ -798,7 +798,7 @@ Invalid Input includes:
 **Creating DoctorAppointmentDelete command**
 
 2. A DoctorAppointmentDelete Command object is created if the inputs are valid. 
-3. The Command object is returned to `DoctorAppointmentInstance.run()`
+3. The Command object is returned to `DoctorAppointmentInstance.run()`.
 
 **Deleting DoctorAppointment Object using User Input**
 
@@ -832,7 +832,7 @@ Invalid Input includes:
 **Creating DoctorAppointmentList command**
 
 2. A DoctorAppointmentList Command object is created if the inputs are valid.
-3. The Command object is returned to `DoctorAppointmentInstance.run()`
+3. The Command object is returned to `DoctorAppointmentInstance.run()`.
 
 **Viewing DoctorAppointment Objects**
 
@@ -862,7 +862,7 @@ Invalid Input includes:
 **Creating DoctorAppointmentList command**
 
 2. A DoctorAppointmentList Command object is created if the inputs are valid.
-3. The Command object is returned to `DoctorAppointmentInstance.run()`
+3. The Command object is returned to `DoctorAppointmentInstance.run()`.
 
 **Viewing DoctorAppointment Objects**
 
