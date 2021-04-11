@@ -58,18 +58,18 @@ public class UI {
         List<String> list = Arrays.asList(commands);
 
         // If the input exactly matches any command in the list of commands
-        if( list.contains(input)) {
+        if (list.contains(input)) {
             return input;
         }
         // If the input is too large/too small
-        if (input.length() >= maxLengthCommand+ALLOWANCE || input.length() < 1) {
+        if (input.length() >= maxLengthCommand + ALLOWANCE || input.length() < 1) {
             return UNKNOWN_COMMAND;
         }
 
         int temp;
         for (int i = 0; i < commands.length; i++) {
             temp = checkCommandDifference(commands[i], input);
-            if (temp < diff ) {
+            if (temp < diff) {
                 diff = temp;
                 index = i;
             }
@@ -100,7 +100,7 @@ public class UI {
         Arrays.sort(first);
         Arrays.sort(second);
         int numDiff = 0;
-        int lengthDiff = abs(first.length -second.length);
+        int lengthDiff = abs(first.length - second.length);
         if (lengthDiff > 2) {
             return LARGE_NUMBER;
         }
@@ -115,7 +115,8 @@ public class UI {
         } else {
             while (i < second.length - 1) {
                 if (first[i] != (second[i]) && lengthDiff > 0) {
-                    i++; numDiff++;
+                    i++;
+                    numDiff++;
                     lengthDiff--;
                     continue;
                 } else if (first[i] != second[i]) {
@@ -146,6 +147,7 @@ public class UI {
     public static void showLine() {
         System.out.println(Constants.LINEBREAK);
     }
+
     public static void showLongLine() {
         System.out.println(Constants.LISTLINEBREAK);
     }
@@ -185,6 +187,7 @@ public class UI {
     public static void returningToStartMenuMessage() {
         System.out.println("Returning to start menu!");
     }
+
     public static void unidentifiedErrorMessage() {
         System.out.println("Something went wrong!\n");
     }
@@ -199,15 +202,14 @@ public class UI {
     }
 
     public static void printer(String[] string, int[] length) {
-        for (int i=0; i<length.length; i++) {
+        for (int i = 0; i < length.length; i++) {
             System.out.print(prettyPrint(string[i], length[i]));
         }
         System.out.print("\n");
     }
 
-
     public static boolean isTypo(String command) {
-        System.out.println("Do you mean \"" + command +"\" (y/n)");
+        System.out.println("Do you mean \"" + command + "\" (y/n)");
         return scanInput().equals("y");
     }
 

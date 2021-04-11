@@ -75,7 +75,7 @@ public class StaffParser {
         case ("find"):
             logger.log(Level.INFO, "Find Command recognised");
             MainChecker.checkNumInput(line,2,2);
-            c = new StaffFindCommand(line);
+            c = new StaffFindCommand(line.split("/")[1].trim());
             logger.log(Level.INFO, "Staff Find Command executed");
             break;
 

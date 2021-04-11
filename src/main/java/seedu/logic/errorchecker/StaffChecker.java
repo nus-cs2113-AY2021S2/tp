@@ -231,7 +231,7 @@ public class StaffChecker extends MainChecker {
     public String checkDeleteCommand(String line) throws ExcessInputException,
             InsufficientInputException, WrongStaffIdException {
         checkNumInput(line.split("/"),2,2);
-        String input = line.split("/")[1];
+        String input = line.split("/")[1].trim();
         checkStaffID(input);
         return input;
     }
