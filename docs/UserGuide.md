@@ -39,6 +39,7 @@
    &nbsp;&nbsp;&nbsp;&nbsp; 4.8.4. [Deleting favourite route](#484-deleting-favourite-route) <br>
    4.9. [Exiting the application](#49-exiting-the-application) <br>
    4.10. [Saving the Data](#410-saving-the-data) <br>
+   4.11. [Loading Past Data](#411-loading-past-data) <br>
 5. [FAQ](#5-faq) <br>
 6. [Command summary](#6-command-summary) <br>
 
@@ -268,7 +269,8 @@ Route: E2 -> E3 -> E4 -> E5 -> LT3 -> CHINESE LIBRARY -> CENTRAL LIBRARY -> AS6 
 </div>
   
 <div markdown="block" class="alert alert-warning">
-:warning: Both parameters must be one of the Engineering or Computing venues.
+:warning: Both parameters must be one of the Engineering or Computing venues. <br>
+:warning: The `STARTING_BLOCK` and the `DESTINATION_BLOCK` cannot be the same.
 </div>
 
 #### 4.3.2 Routing to an eatery
@@ -392,7 +394,7 @@ Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
 
 - Followed by a prompt asking for the `REPEAT_ENTRY` index that you want to repeat.
 
-<div markdown="block" class="alert alert-warning">
+<div class="block" class="alert alert-warning">
 :warning: `REPEAT_ENTRY` must be an integer that is within the bounds of the history list shown.
 </div>
 
@@ -414,7 +416,7 @@ Got it! Successfully added FOOD as TECHNO EDGE's alias
 ------------------------------------------------------------------------------------------------------------
 ```
 <div markdown="block" class="alert alert-warning">
-:warning: Aliases cannot be used in the `Daily route feature`.
+:warning: Aliases cannot be used in the `Daily route feature` and `favourite feature`.
 </div>
 
 - When `add alias` command is called, NUSMaze will prompt for the `BLOCK` that you
@@ -423,6 +425,8 @@ Got it! Successfully added FOOD as TECHNO EDGE's alias
 - NUSMaze then prompts you to input a desired `ALIAS_NAME`.
 
 - Note that there cannot be multiple blocks sharing the same alias.
+
+:information_source: Alias is **case-insensitive** for all commands 
 
 #### 4.5.2 Viewing all aliases
 Lists all aliases that are currently active.<br>
@@ -649,6 +653,9 @@ Destination Block:
 Got it! Successfully added new favourite route!
 ------------------------------------------------------------------------------------------------------------
 ```
+:information_source: All the parameters for the Favourite feature are **case-insensitive**. <br>
+:warning: The `STARTING_BLOCK` and the `DESTINATION_BLOCK` cannot be the same. <br>
+:warning: Aliases cannot be used in this feature.<br>
 
 #### 4.8.2 Show stored favourites
 You can request NUSMaze to display all the saved favourites, if you have stored at least one route to favourites.<br>
@@ -680,6 +687,7 @@ Select Entry to Repeat:
 Route: EA -> E2 -> E3 -> E4
 ------------------------------------------------------------------------------------------------------------
 ```
+:warning: `ROUTE_INDEX` must be an integer within the bounds of the favourite list. <br>
 
 #### 4.8.4 Deleting favourite route
 You can delete a favourite route if it is not frequently used anymore.<br>
@@ -698,6 +706,7 @@ Select Entry to delete:
 Got it! Successfully deleted favourite route :)
 ------------------------------------------------------------------------------------------------------------
 ```
+:warning: `ROUTE_INDEX` must be an integer within the bounds of the favourite list. <br>
 
 ### 4.9 Exiting the application
 
@@ -714,7 +723,38 @@ Bye. Hope to see you again soon!
 
 ### 4.10 Saving the Data
 
-NUSMaze data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+NUSMaze data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.<br>
+Your saved data can be found in the *data folder* within your *home folder* of **NUSMaze**. <br>
+
+In the data folder you will find 5 text files as shown below.<br>
+![image.png](images/textfiles.png)
+
+:warning: It is highly recommended that you do not edit the saved data as it can cause loading issues in future sessions! <br>
+
+### 4.11 Loading Past Data
+
+NUSMaze automatically loads your past data when the application is launched.<br>
+NUSMaze will inform you whether the data has been successfully loaded by displaying the below message after the NUSMaze Logo.<br>
+```
+------------------------------------------------------------------------------------
+[X] Alias data has been successfully loaded!
+[X] History data has been successfully loaded!
+[X] Favourite data has been successfully loaded!
+[X] Daily Route data has been successfully loaded!
+[X] Note data has been successfully loaded!
+------------------------------------------------------------------------------------
+```
+:information_source: If the saved data is corrupted, NUSMaze will automatically clear the data for that feature.<br>
+For example if favourite data is corrupted, NUSMaz will display:<br> 
+```
+------------------------------------------------------------------------------------
+[X] Alias data has been successfully loaded!
+[X] History data has been successfully loaded!
+[ ] An Error occurred while loading Favourite data. It has been cleared to default!
+[X] Daily Route data has been successfully loaded!
+[X] Note data has been successfully loaded!
+------------------------------------------------------------------------------------
+```
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -727,7 +767,8 @@ NUSMaze data is saved in the hard disk automatically after any command that chan
 **A** : Copy the entire data folder that can be found together with the NUSMaze.jar file on the first computer and copy it over to the same directory where the NUSMaze.jar file
 can be found on the second computer.
 
-
+**Q** : What Should I do if I don't know how to travel from one block to another?
+**A** : You can refer to this [map](http://map.nus.edu.sg) to view the directions.
 
 --------------------------------------------------------------------------------------------------------------------
 ## 6. Command summary
