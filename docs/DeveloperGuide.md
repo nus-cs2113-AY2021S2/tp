@@ -329,29 +329,94 @@ Given below are instructions to test the app manually.
 
    &nbsp;i. Ensure that you have **Java 11** or above installed.
 
-   &nbsp;ii. Download the latest version of **Connoisseur** here (add link later)
+   &nbsp;ii. Download the latest version of
+   **Connoisseur** [here](https://github.com/AY2021S2-CS2113T-F08-3/tp/releases/tag/v2.1).
 
    &nbsp;iii. Copy the downloaded Connoisseur.jar into your **Desktop**.
 
    &nbsp;iv. Open terminal and enter `cd Desktop`.
 
-   &nbsp;v. Then, enter `java -jar Connoisseur.jar`. &nbsp;&nbsp;**Expected**: Shows the command line interface with
-   welcome message.
+   &nbsp;v. Then, enter `java -jar Connoisseur.jar`.
+
+   &nbsp;**Expected**: Shows the command line interface with welcome message.
 
 
 2. Shutdown Connoisseur
 
-i. Enter `exit` or `bye` into terminal while **Connoisseur** is running.
+   &nbsp;i. Enter `exit` or `bye` into terminal while **Connoisseur** is running.
 
 &nbsp; **Expected**: A farewell message by Connoisseur will be shown.
 
-**Help**
-Guide on the use of Connoisseur
-1. **Test case**: `help`
-   **Expected**: A guide on how to use Connoisseur will be shown.
+**Deleting a review or recommendation**
+
+Delete an unwanted review or recommendation.
+
+1. **Test case**: `delete <review/recommendation title>` (case insensitive, review/ recommendation exist)
+
+   **Expected** *(review)*: `<review title> has been deleted.`
    
-2. **Test case**: 'help aaaa`
+   **Expected** *(recommendation)*: `<recommendation title> has been deleted.`
+
+2. **Test case**: `delete <review/recommendation title>` (review/ recommendation does not exist)
+
+   **Problem**: An attempt at deleting an entry that does not exist.
+
+   **Expected** *(review)*: `Specified review does not exist`
+
+   **Expected** *(recommendation)*: `Specified review does not exist`
+
+**Viewing the full details of a review**
+
+Viewing a review details with review descriptions.
+
+**Prerequisite**: Connoisseur is in `reco` mode. This can be accomplished with the command `reco`.
+
+1. **Test case**: `view <review title>` (case insensitive)
+
+   **Expected**: Details of the task with the title in the review list is shown.
+
+2. **Test case**: `view <review title that does not exist in list>`
+
+   **Problem**: An attempt at viewing a title that does not exist.
+
+   **Expected**: `Specified review does not exist`
+
+**Data Storage**
+
+Storage of user data (reviews and recommendations)
+
+Test if Connoisseur is able to handle corrupted data files.
+
+**Prerequisite**: Open connoisseur.json located at `data\`.
+
+1. **Test case**: Remove all the contents in the JSON file, leaving it blank.
+
+   **Problem**: File is corrupted and not in JSON format.
+
+   **Expected**: The error is handled by program. The commandline interface with welcome message will be shown.
+
+2. **Test case**: Remove one of the commas (`,`) from the file if connoisseur.json is not empty.
+
+   **Problem**: File is corrupted and not in JSON format.
+
+   **Expected**: The error message `Data file corrupted. Please remove the corrupted data file and try again.` is
+   shown.
+
+**Help**
+
+Guide on the use of Connoisseur
+
+1. **Test case**: `help`
+   
+   **Expected**: A guide on how to use Connoisseur will be shown.
+
+2. **Test case**: `help aaaa`
+   
    **Expected**: `Invalid help command!`
+
+3. **Test case**: `help <command>`
+   
+   **Expected**: A guide on how to use specific commands on Connoisseur will be shown.
 
 ### Appendix E: Other Guides: Documentation, Testing, Dev-ops
 

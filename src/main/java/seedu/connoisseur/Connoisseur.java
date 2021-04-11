@@ -21,9 +21,7 @@ public class Connoisseur {
         try {
             new Connoisseur();
         } catch (JSONException je) {
-            System.out.println("Data file corrupted. Please delete the file and try again.");
-        } catch (NoSuchElementException ne) {
-            System.out.println("test");
+            System.out.println("Data file corrupted. Please remove the corrupted data file and try again.");
         }
     }
 
