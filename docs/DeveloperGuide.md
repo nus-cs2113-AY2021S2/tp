@@ -114,6 +114,8 @@ This document describes the software architecture and software design decisions 
 
 ----
 
+<div style="page-break-after: always;"></div>
+
 <!--@@author isaharon-->
 
 ## Design
@@ -135,7 +137,7 @@ Apart from _Duke_, the application consists of the following components:
 * _Model_ : Consists of data related to the application
 * _Storage_ : Handles loading and storing of data into text files
 * _Editor_ : Graphical interface for users to type
-* _Common_ : collection of classes used by multiple components.
+* _Common_ : collection of classes used by multiple components
 
 
 GULIO is a local application that stores its application data using readable text files, allowing users the flexibility of viewing and editing data locally.
@@ -178,6 +180,8 @@ Upon starting up GULIO, the `Duke` (main) class calls `run()` which enters a whi
 * Returns a new `Command` object with all the necessary attributes filled
 
 &nbsp;
+
+<div style="page-break-after: always;"></div>
 
 ### Command Component
 
@@ -259,6 +263,8 @@ The `Task` class contains attributes related to an assignment, deadline or task 
 
 &nbsp;
 
+<div style="page-break-after: always;"></div>
+
 <!--@@author 8kdesign-->
 
 ### Storage Component
@@ -294,7 +300,7 @@ The _Editor_ component is responsible for opening the text editor to add or edit
 
 * Sets up the text editor
 * Loads existing file from Cheatsheet directory within a module for the edit cheat-sheet command
-* Flushes out the text from the editor when a different or new file is opened.
+* Flushes out the text from the editor when a different or new file is opened
 * Adjusts the font size of the text within the editor
 * Detects mouse input to change font style and save the text
 * Saves the text from the text editor into a file
@@ -313,12 +319,15 @@ Classes that are used by multiple components:
 * `Messages`: Stores strings that are printed by the `UI`
 * `DashboardCommands`: Enum of commands that can be used outside a module
 * `ModuleCommands`: Enum of commands that can be used inside a module
+* `InputValidator`: Validates user input such as file name
 
 &nbsp;
 
 [🡅 Back to Table of Contents](#table-of-contents)
 
 ----
+
+<div style="page-break-after: always;"></div>
 
 ## Implementation
 
@@ -435,6 +444,8 @@ If the `Loader` failed to load the file, null would be returned. If null is not 
 
 ----
 
+<div style="page-break-after: always;"></div>
+
 ## Appendix: Requirements
 
 ### Product Scope
@@ -498,6 +509,8 @@ _Note: some are features to be implemented in future._
 [🡅 Back to Table of Contents](#table-of-contents)
 
 ----
+
+<div style="page-break-after: always;"></div>
 
 ## Appendix: Instruction for Manual Testing
 
@@ -638,6 +651,8 @@ Due to the 2-layer command system, you will need to identify which layer you are
 [🡅 Back to Table of Contents](#table-of-contents)
 
 ----
+
+<div style="page-break-after: always;"></div>
 
 # Command Summary
 
