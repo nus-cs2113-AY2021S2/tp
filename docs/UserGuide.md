@@ -52,34 +52,34 @@ Welcome to the User Guide of **NUSMaze**!
 Computer Engineering students’ journey** from one point to another within the NUS
 Engineering and Computing buildings. The application allows users to find the shortest route
 from one block to another, locate the nearest eatery, add personal notes to the location and
-many more.
+many more. <br>
 
 NUSMaze uses Command Line Interface (CLI); this means that you operate the application by typing commands
 into a Command Box. If your typing speed is fast, you can operate the application faster than other Graphical User Interface
-(GUI) applications; GUI applications allow users to interact with the application through graphical icons such as buttons.
+(GUI) applications; GUI applications allow users to interact with the application through graphical icons such as buttons. <br>
 
 You do not have to worry at all even if you are new to CLI applications as this user guide will take you through step by
-step on how various features of the NUSMaze can be utilised, all geared towards providing the best possible experience to the user
+step on how various features of the NUSMaze can be utilised, all geared towards providing the best possible experience to the user. <br>
 
 If you are interested, jump to [Section 2 - Quick Start](#2-quick-start) to learn how to navigate around the campus using 
-**NUSMaze**.
+**NUSMaze**. <br>
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## 2. Quick start
 
-This section gives you step-by-step instructions on how to download and open the application.
+This section gives you step-by-step instructions on how to download and open the application. <br>
 
-1. Ensure you have **Java 11** or above installed in your Computer. You may install it [here](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html).
+1. Ensure you have **Java 11** or above installed in your Computer. You may install it [here](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html). <br>
 
-2. Download the latest **NUSMaze.jar** from [here](https://github.com/AY2021S2-CS2113T-T09-2/tp/releases).
+2. Download the latest **NUSMaze.jar** from [here](https://github.com/AY2021S2-CS2113T-T09-2/tp/releases). <br>
 
-3. Copy the file to the folder you want to use as the _home folder_ of **NUSMaze**.
+3. Copy the file to the folder you want to use as the _home folder_ of **NUSMaze**. <br>
 
 4. Open your command line or terminal and navigate into the file directory where you saved the application. <br>
 
 <div markdown="block" class="alert alert-info">
-:information_source: An easy way to do so is shown below for both Mac and Windows<br>
+:information_source: An easy way to do so is shown below for both Mac and Windows <br>
 </div>
 
 ![img.png](images/howtolaunch.png)
@@ -139,22 +139,22 @@ The table below explains the general syntax used throughout the user guide.
 The following points explain the format of a command.
 More examples will be provided for each command in [Section 4 - Features](#4-features).
 
-1. Words in `UPPER_CASE` are parameters to be supplied by you.
+1. Words in `UPPER_CASE` are parameters to be supplied by you. <br>
 
-2. In all formats shown in features, → denotes a prompt from the CLI. A user input is expected after the prompt.
+2. In all formats shown in features, → denotes a prompt from the CLI. A user input is expected after the prompt. <br>
 
-3. All the examples provided below are simulation scenarios of expected user commands and outputs by NUSMaze.
+3. All the examples provided below are simulation scenarios of expected user commands and outputs by NUSMaze. <br>
 
-4. In each example, lines starting with > signifies user command.
+4. In each example, lines starting with > signifies user command. <br>
 
-5. In each example, lines starting with * signifies a user input after being prompted by NUSMaze.
+5. In each example, lines starting with * signifies a user input after being prompted by NUSMaze. <br>
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## 4. Features
 
 This section contains all the information about the features of **NUSMaze**.
-You may enter a command into the CLI to use each feature.
+You may enter a command into the CLI to use each feature. 
 
 ### 4.1 Viewing Help
 
@@ -240,7 +240,7 @@ Eateries:
 ```
 
 <div markdown="block" class="alert alert-info">
-:information_source: These are the venue names that can be used in the features below. 
+:information_source: These are the venue names that can be used in the features below. <br>
 </div>
 
 
@@ -263,15 +263,15 @@ Route: E2 -> E3 -> E4 -> E5 -> LT3 -> CHINESE LIBRARY -> CENTRAL LIBRARY -> AS6 
 --------------------------------------------------------------------------------------------
 ```
 - When the `go` command is given NUSMaze will prompt you for the `STARTING_BLOCK`
-  followed by the `DESTINATION BLOCK`.
+  followed by the `DESTINATION BLOCK`. <br>
 
 <div markdown="block" class="alert alert-info">
-:information_source: All the parameters for the Routing feature are **case-insensitive**. 
+:information_source: All the parameters for the Routing feature are **case-insensitive**. <br>
 </div>
   
 <div markdown="block" class="alert alert-warning">
 :warning: Both parameters must be one of the Engineering or Computing venues. <br>
-:warning: The `STARTING_BLOCK` and the `DESTINATION_BLOCK` cannot be the same.
+:warning: The `STARTING_BLOCK` and the `DESTINATION_BLOCK` cannot be the same. <br>
 </div>
 
 #### 4.3.2 Routing to an eatery
@@ -293,10 +293,10 @@ Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
 
 - By entering the name of the eatery that you wish to go to in the `EATERY_NAME` parameter,
   NUSMaze will display the shortest route to go from the `STARTING_BLOCK` to the
-  desired eatery.
+  desired eatery. <br>
 
 <div markdown="block" class="alert alert-warning">
-:warning: The `STARTING_BLOCK` must be one of the Engineering or Computing buildings.
+:warning: The `STARTING_BLOCK` must be one of the Engineering or Computing buildings. <br>
 </div>
 
 #### 4.3.3 Routing to the closest eatery
@@ -328,13 +328,13 @@ Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
 --------------------------------------------------------------------------------------------
 ```
 
-- By entering `eatery` as `DESTINATION_BLOCK` parameter, you can see the list of eatery to choose from. 
+- By entering `eatery` as `DESTINATION_BLOCK` parameter, you can see the list of eatery to choose from. <br>
 
-- NUSMaze then prompts for the index of the eatery that you wish to go to. This is when you can enter `EATERY_ENTRY`.
+- NUSMaze then prompts for the index of the eatery that you wish to go to. This is when you can enter `EATERY_ENTRY`. <br>
 
 <div markdown="block" class="alert alert-warning">
 :warning: The `STARTING_BLOCK` must be one of the Engineering or Computing buildings. <br>
-:warning: `EATERY_ENTRY` must be an integer from 1 to 7.
+:warning: `EATERY_ENTRY` must be an integer from 1 to 7. <br>
 </div>
 
 ### 4.4 History
@@ -355,7 +355,7 @@ Starting Block:
 Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
 ------------------------------------------------------------------------------------------------------------
 ```
-:information_source: NUSMaze will automatically update your history to the most recent 10 searches.
+:information_source: NUSMaze will automatically update your history to the most recent 10 searches.<br>
 
 
 #### 4.4.2 Clearing History
@@ -391,9 +391,9 @@ Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
 --------------------------------------------------------------------------------------------
 ```
 
-- When the `repeat history` command is entered, NUSMaze will show a list of past route searches.
+- When the `repeat history` command is entered, NUSMaze will show a list of past route searches. <br>
 
-- Followed by a prompt asking for the `REPEAT_ENTRY` index that you want to repeat.
+- Followed by a prompt asking for the `REPEAT_ENTRY` index that you want to repeat. <br>
 
 <div class="block" class="alert alert-warning">
 :warning: `REPEAT_ENTRY` must be an integer that is within the bounds of the history list shown.
@@ -417,17 +417,17 @@ Got it! Successfully added FOOD as TECHNO EDGE's alias
 ------------------------------------------------------------------------------------------------------------
 ```
 <div markdown="block" class="alert alert-warning">
-:warning: Aliases cannot be used in the `Daily route feature` and `favourite feature`.
+:warning: Aliases cannot be used in the `Daily route feature` and `favourite feature`. <br>
 </div>
 
 - When `add alias` command is called, NUSMaze will prompt for the `BLOCK` that you
-  wish to set the alias for.
+  wish to set the alias for. <br>
 
-- NUSMaze then prompts you to input a desired `ALIAS_NAME`.
+- NUSMaze then prompts you to input a desired `ALIAS_NAME`. <br>
 
-- Note that there cannot be multiple blocks sharing the same alias.
+- Note that there cannot be multiple blocks sharing the same alias. <br>
 
-:information_source: Alias is **case-insensitive** for all commands 
+:information_source: Alias is **case-insensitive** for all commands <br>
 
 #### 4.5.2 Viewing all aliases
 Lists all aliases that are currently active.<br>
@@ -492,18 +492,18 @@ Enter location of the next activity of the day: (Enter "end" to stop)
 Got it! Successfully added MONDAY's schedule!
 ------------------------------------------------------------------------------------------------------------
 ```
-- You will be prompted to select the `DAY_ENTRY` of the day which you want to schedule.
+- You will be prompted to select the `DAY_ENTRY` of the day which you want to schedule. <br>
 
 - You will then be prompted to enter the location of the activities(`BLOCK`) of the day one at
-  a time.
+  a time. <br>
 
-- NUSMaze will continuously ask for locations until you input `end`.
+- NUSMaze will continuously ask for locations until you input `end`. <br>
 
 <div markdown="block" class="alert alert-warning">
 :warning: `DAY_ENTRY` must be an integer between 1 and 7, each representing a day of the week
-(1 represents Monday and 7 represents Sunday).
-:warning: There must be at least one block entered for the schedule.
-:warning: Entries must be the original block names. Aliases are not allowed.
+(1 represents Monday and 7 represents Sunday). <br>
+:warning: There must be at least one block entered for the schedule. <br> 
+:warning: Entries must be the original block names. Aliases are not allowed. <br>
 
 </div>
 
@@ -533,11 +533,11 @@ Route: E7 -> E6 -> EW2 -> E4A -> E4 -> E3 -> E2 -> EA
 ------------------------------------------------------------------------------------------------------------
 ```
 - When the `show daily route` command is entered, the application will display the list of available days
-  for which daily routes have been saved.
+  for which daily routes have been saved. <br>
 
-- NUSMaze will then prompt you for a `DAY_NUMBER`.
+- NUSMaze will then prompt you for a `DAY_NUMBER`. <br>
 
-:warning: The `DAY_NUMBER` must be the index of one of the available days which has been displayed.
+:warning: The `DAY_NUMBER` must be the index of one of the available days which has been displayed. <br>
 
 
 #### 4.6.3 Deleting daily route
@@ -561,11 +561,11 @@ Got it! Successfully cleared MONDAY's schedule!
 ------------------------------------------------------------------------------------------------------------
 ```
 - When the `delete daily route` command is entered, the application will display the list of available days
-  for which daily routes have been saved.
+  for which daily routes have been saved. <br>
 
-- NUSMaze will then prompt you for a `DAY_NUMBER`.
+- NUSMaze will then prompt you for a `DAY_NUMBER`. <br>
 
-:warning: The `DAY_NUMBER` must be the index of one of the available days which has been displayed.
+:warning: The `DAY_NUMBER` must be the index of one of the available days which has been displayed. <br>
 
 ### 4.7 Notes
 #### 4.7.1 Adding notes
@@ -584,11 +584,11 @@ Enter the Note:
 Got it! Successfully added and tagged note to STARBUCKS
 ------------------------------------------------------------------------------------------------------------
 ```
-- When the `add note` command is entered, NUSMaze will prompt you for a `BLOCK`.
-- After a valid location is keyed in,  NUSMaze will prompt you for a `NOTE` to be tagged to the location.
+- When the `add note` command is entered, NUSMaze will prompt you for a `BLOCK`. <br>
+- After a valid location is keyed in,  NUSMaze will prompt you for a `NOTE` to be tagged to the location. <br>
   
 :warning: The `BLOCK` must be one of the Engineering or Computing buildings. <br>
-:warning: The `NOTE` will be invalid if it is empty.
+:warning: The `NOTE` will be invalid if it is empty. <br>
 
 #### 4.7.2 Viewing notes
 Lists all notes which had been tagged to the given location, if it exists.<br/>
@@ -605,9 +605,9 @@ Here is the list of notes:
 1. give myself a treat of the new caramel macchiato flavour! :))
 ------------------------------------------------------------------------------------------------------------
 ```
-- When the `show note` command is entered, NUSMaze will prompt you for a `BLOCK`.
+- When the `show note` command is entered, NUSMaze will prompt you for a `BLOCK`. <br>
   
-:warning: The `BLOCK` must be one of the Engineering or Computing buildings.
+:warning: The `BLOCK` must be one of the Engineering or Computing buildings. <br>
 
 #### 4.7.3 Delete note
 Delete the specified note based on index number tagged to the given existing location.<br/>
@@ -629,18 +629,18 @@ Select Entry to delete:
 Got it! Successfully deleted note tagged to STARBUCKS
 ------------------------------------------------------------------------------------------------------------
 ```
-- When the `delete note` command is entered, NUSMaze will then prompt you for a `BLOCK`.
+- When the `delete note` command is entered, NUSMaze will then prompt you for a `BLOCK`. <br>
 - After a valid location is keyed in,  NUSMaze will prompt you for a `NOTE_INDEX` of the note to be deleted,
-  which is the index of the note in the location's notes list.
+  which is the index of the note in the location's notes list. <br>
   
-:warning: The `BLOCK` must be one of the Engineering or Computing buildings.
+:warning: The `BLOCK` must be one of the Engineering or Computing buildings. <br>
 
-:warning: The `NOTE_INDEX` must be an integer within the total number of notes that the location has.
+:warning: The `NOTE_INDEX` must be an integer within the total number of notes that the location has. <br>
 
 ### 4.8 Favourite Routes
 #### 4.8.1 Adding Favourite Route
 You can add a route to favourites to easily access it in the future.<br>
-Format : `add favourite` → `STARTING_BLOCK` → `DESTINATION_BLOCK`
+Format : `add favourite` → `STARTING_BLOCK` → `DESTINATION_BLOCK` <br>
 Example :
 ```
 ------------------------------------------------------------------------------------------------------------
@@ -660,7 +660,7 @@ Got it! Successfully added new favourite route!
 
 #### 4.8.2 Show stored favourites
 You can request NUSMaze to display all the saved favourites, if you have stored at least one route to favourites.<br>
-Format : `show favourite`
+Format : `show favourite` <br>
 Example :
 ```
 ------------------------------------------------------------------------------------------------------------
@@ -673,7 +673,7 @@ Here are your favourite routes:
 
 #### 4.8.3 Repeating favourite route
 You can execute and obtain the route to take for your favourite routes.<br>
-Format : `repeat favourite` → `ROUTE_INDEX`
+Format : `repeat favourite` → `ROUTE_INDEX` <br>
 Example :
 ```
 ------------------------------------------------------------------------------------------------------------
@@ -692,7 +692,7 @@ Route: EA -> E2 -> E3 -> E4
 
 #### 4.8.4 Deleting favourite route
 You can delete a favourite route if it is not frequently used anymore.<br>
-Format : `delete favourite` → `ROUTE_INDEX`
+Format : `delete favourite` → `ROUTE_INDEX` <br>
 Example :
 ```
 ------------------------------------------------------------------------------------------------------------
@@ -712,7 +712,7 @@ Got it! Successfully deleted favourite route :)
 ### 4.9 Exiting the application
 
 Exits the application.<br>
-Format : `bye`
+Format : `bye` <br>
 Example :
 ```
 ------------------------------------------------------------------------------------------------------------
@@ -762,14 +762,14 @@ For example if favourite data is corrupted, NUSMaz will display:<br>
 ## 5. FAQ
 
 **Q** : Do I lose all my personalised routes and preferences when I close the application? <br>
-**A** : Aliases, daily scheduled routes, history and notes are all stored once you exit the app and loaded upon next entry, so you do not lose any data.
+**A** : Aliases, daily scheduled routes, history and notes are all stored once you exit the app and loaded upon next entry, so you do not lose any data. <br>
 
 **Q** : How do I transfer my personalised routes and preferences to another computer? <br>
-**A** : Copy the entire data folder that can be found together with the NUSMaze.jar file on the first computer and copy it over to the same directory where the NUSMaze.jar file
-can be found on the second computer.
+**A** : Copy the entire data folder that can be found together with the NUSMaze.jar file on the first computer and copy it over to the same directory where the NUSMaze.jar file 
+can be found on the second computer. <br>
 
-**Q** : What Should I do if I don't know how to travel from one block to another?
-**A** : You can refer to this [map](http://map.nus.edu.sg) to view the directions.
+**Q** : What Should I do if I don't know how to travel from one block to another? <br>
+**A** : You can refer to this [map](http://map.nus.edu.sg) to view the directions. <br>
 
 --------------------------------------------------------------------------------------------------------------------
 ## 6. Command summary
