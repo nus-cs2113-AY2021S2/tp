@@ -49,7 +49,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5 Pin a Task](#335-pin-a-task)  
 
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4 Links](#34-links-menu)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1. External Links](#341-external-links)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1. External Links Menu](#341-external-links-menu)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.2. Add an External Link](#342-add-external-link)    
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.3. Remove an External Link](#343-remove-external-link)   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4. View all Links](#344-view-external-links)  
@@ -366,7 +366,7 @@ to mean components or components and its associated weightage for simplicity.
 
 > **Note!**  
 > * Components' weightages is only accepting integer values which is usually the convention.  
-> * Old components' weightage will be over written automatically when a component name already exist in the program.  
+> * Old components' weightage will be overwritten automatically when a component name already exist in the program.  
 > * Parsing is designed such as any inputs after weightage will be ignored. E.g. FinalExam 20 2, '2' will be ignored.  
 
 * Example for adding component and weightage to a module:    
@@ -689,7 +689,7 @@ To begin,
 1. Ensure your current CAP and MCs counted is up to date. You may update it under [3.2.1](#321-add-cap-and-number-of-mcs-counted-towards-cap).
 2. Choose the choice of your simulation. 
    * If your choice is v1.0, v1.0 CAP Simulator will calculate from the grades present in existing modules
-     and returns back to CAP Simulator/Calculator menu once simulation is completed.
+     and returns to CAP Simulator/Calculator menu once simulation is completed.
    * If your choice is v2.0, v2.0 CAP Simulator will prompt you for a grade, 
    follow by a prompt for MCs.
 
@@ -909,7 +909,7 @@ Returning back to the menu now!
 > Please enter a valid time format.
 > ````
 
-After adding a task, you will return back to the module you accessed this feature from. This feature can be accessed
+After adding a task, you will return to the module you accessed this feature from. This feature can be accessed
 from both the Task Manager and [Module Information](#31-module-information) menus. 
 
 #### 3.3.2 Mark/Unmark a Task as Done
@@ -1370,9 +1370,9 @@ Features|Menu | Command to enter from the Main Menu
 [Add a Review](#318-add-a-review) | Module Information | 1, 8
 [View All Reviews](#319-view-all-reviews) | Module Information | 1, 9
 [Delete a Review](#3110-delete-a-review) | Module Information | 1, 10
-[Add CAP and Number of MCs counted towards CAP](#321-add-cap-and-number-of-mcs-counted-towards-cap) | Cap Simulator / Calculator | 2,1
-[View CAP and Number of MCs counted towards CAP](#322-view-cap-and-number-of-mcs-counted-towards-cap) | Cap Simulator / Calculator | 2,2
-[Simulate future CAP](#323-simulate-future-cap) | Cap Simulator / Calculator | 2.3
+[Add CAP and Number of MCs counted towards CAP](#321-add-cap-and-number-of-mcs-counted-towards-cap) | Cap Simulator / Calculator | 2, 1
+[View CAP and Number of MCs counted towards CAP](#322-view-cap-and-number-of-mcs-counted-towards-cap) | Cap Simulator / Calculator | 2, 2
+[Simulate future CAP](#323-simulate-future-cap) | Cap Simulator / Calculator | 2, 3
 [Add a new Task](#331-add-new-task) | Task Manager | 3, 1 or 1, 11
 [Mark/Unmark a Task as Done](#332-markunmark-a-task-as-done) | Task Manager | 3, 2
 [Delete a new Task](#333-delete-a-task) | Task Manager | 3, 3 or 1, 12
