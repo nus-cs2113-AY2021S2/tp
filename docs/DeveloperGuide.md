@@ -337,7 +337,7 @@ Cons: Might be confusing since there is less distinction between each command.
 
 ### 3.6. Save feature
 #### Current Implementation
-The save mechanism is facilitated by `AliasStorage`, `DailyRouteStorage`, `FavouriteStorage`, `HistoryStorage` and `NotesStorage` subclasses. </br>
+The save mechanism is facilitated by `AliasStorage`, `DailyRouteStorage`, `FavouriteStorage`, `HistoryStorage` and `NotesStorage` subclasses. <br>
 They extend `Storage` (superclass) with a feature to save the blocks' aliases, daily routes, favourite locations, history of visited routes and tagged notes, stored internally as `aliasList`,  `dailyRouteList`, `favouriteList`, `history`, `noteList` text files. <br />
 Additionally, they implement the following operations: <br/>
 - `AliasStorage#saveData()` —  Saves all aliases given by user to blocks into `aliasList`. <br />

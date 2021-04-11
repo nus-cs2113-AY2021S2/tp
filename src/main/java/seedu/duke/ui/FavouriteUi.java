@@ -12,7 +12,7 @@ public class FavouriteUi extends UiManager {
     }
 
     /**
-     * This method displays all the stored favourite routes to the user, in the format of an indexed list.
+     * Displays all the stored favourite routes to the user, in the format of an indexed list.
      * If there are no stored favourite routes, the EmptyFavouriteException is thrown.
      * This method further calls the getSpecificEntry() method.
      *

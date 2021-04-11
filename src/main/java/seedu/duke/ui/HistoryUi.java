@@ -32,7 +32,7 @@ public class HistoryUi extends UiManager {
     }
 
     /**
-     * This method prompts the user to enter an index of a stored entry in history.
+     * Prompts the user to enter an index of a stored entry in history.
      * If an invalid input is provided, the InvalidIndexException is thrown.
      *
      * @return the index of the stored search to repeat.
