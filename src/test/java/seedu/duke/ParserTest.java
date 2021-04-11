@@ -60,6 +60,17 @@ public class ParserTest {
     }
 
     @Test
+    public void parse_forbiddenSubstrings_exceptionThrown() {
+        // Everything should throw exception
+        for (String string : Parser.forbiddenSubstrings) {
+            InvalidInputException e = assertThrows(InvalidInputException.class, () -> {
+                parser.parse("echo " + string);
+            });
+            assertEquals(Constants.INVALID_INPUT_FORBIDDEN_SUBSTRING, e.getMessage());
+        }
+    }
+
+    @Test
     public void parse_malformedCommand_exceptionThrown() {
         String fullCommand = "malformed";
         assertThrows(UnknownException.class, () -> {
@@ -125,8 +136,9 @@ public class ParserTest {
     /**
      * This test case tests single payload (without any parameters).
      */
+    @Test
     public void parse_singlePayload_parsedSuccessfully() {
-        String words = "Hi! This is PatientManager!";
+        String words = "Hi, This is PatientManager.";
         String fullCommand = "echo " + words;
         assertDoesNotThrow(() -> {
             Command command = parser.parse(fullCommand);
@@ -137,7 +149,7 @@ public class ParserTest {
             System.setOut(new PrintStream(myOut));
             command.execute();
             final String string = myOut.toString();
-            assertEquals(words, string);
+            assertEquals(words + System.lineSeparator(), string);
         });
     }
 
@@ -146,7 +158,7 @@ public class ParserTest {
      */
     @Test
     public void parse_customData_parsedSuccessfully() {
-        String fullCommand = "echo Hi!";
+        String fullCommand = "echo Hi.";
         SortedMap<String, Patient> patients = new TreeMap<>();
 
         String nric = "S1234567D";

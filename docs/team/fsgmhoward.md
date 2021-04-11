@@ -38,7 +38,7 @@ https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?breakdown=true&search=fsgmho
 
 ### Contribution to User Guide
 
-* The part that explains how white spaces and order of input arguments affect command output
+* Limitations of the application
 * General formatting and fixing
 
 ### Contribution to Developer Guide

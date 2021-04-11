@@ -83,6 +83,9 @@ public class Constants {
     public static final String INVALID_INPUT_EMPTY_DATE_ARGUMENT = "Please key in a date of record to delete";
     public static final String INVALID_INPUT_PATIENT_NOT_FOUND = "Patient with this IC number does not exist!";
     public static final String INVALID_INPUT_END_OF_FILE = "End of file reached, exiting application.";
+    public static final String INVALID_INPUT_FORBIDDEN_SUBSTRING =
+            "These substrings are not allowed in the input command:\n"
+            + "~   `   %   #   @   !";
 
     public static final String STORAGE = "Something wrong happen when trying to save/load data";
     public static final String STORAGE_FILE_CREATION_FAIL = "Failed to create a save file.";
