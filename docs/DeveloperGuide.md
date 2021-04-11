@@ -158,7 +158,7 @@ The main `Connoisseur` class initializes the other components in the application
 
 `Parser` will decipher the input and make the corresponding method calls in `Commands`. Depending on whether Connoisseur is in review or recommendation mode, the `Commands` class will execute the respective commands in the `ReviewList` and `RecommendationList` classes of the `Model` component. 
 
-In the case of a storing data, `Commands` will interact directly with the `Storage` class to save the data. 
+In the case of storing data, `Commands` will interact directly with the `Storage` class to save the data. 
 
 The `ReviewList` class has sorting functions which requires `Sorter`. All the reviews will be passed to `Sorter` to be sorted, which then returns the sorted reviews back to `ReviewList`. 
 
@@ -322,8 +322,22 @@ A general explanation of how this feature works:
 3. `RecommendationList#convertRecommendation` continues with the chosen `Recommendation` object and removes it from the ArrayList `recommendations`.
 
 ### 5.4 Storage
+The `Storage` class is responsible for loading data from memory and saving data to memory. The location of this data can be found at *./data/connoisseur.json* and serves to retain all the information of the user after the application has exited. Other than the reviews and recommendations, it also saves the preferences of the user such as the sorting method as well as the display type. 
 ### 5.4.1 Storage Format
+The information is saved as a JSON Object in the data file. It consists of two strings, the sort method and display type, as well as two JSON Arrays which hold the reviews and recommendations. 
+To facilitate easier conversion between the raw data and JSON object, a `ConnoisseurData` class was created to store all the data as a single object before conversion. 
 ### 5.4.2 Implementation
+The following is a Sequence diagram to illustrate how Connoisseur saves data on exit. 
+![saving_sequence](./diagrams/Save_Sequence_Diagram.png)
+
+1. When the `exit()` method is called, `saveConnoisseurData()` will be called to save the data before exiting. 
+2. `Storage#saveReviews` is called to convert the reviews to a JSON Array. 
+3. `Storage#saveRecommendations` is called to convert the recommendations to a JSON Array. 
+4. These are then combined with the sort method and display type and written to *connoisseur.json*. 
+5. If there is an error writing to the file, an exception will be raised and the user will be notified. 
+6. Finally, the exit message will be printed and connoisseur will exit. 
+
+
 ### 5.5 Error handling
 #### Invalid Input Format
 #### Invalid File
