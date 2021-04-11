@@ -151,6 +151,7 @@ It reads the app's data from the **Text File component** and writes the app's da
 The **Storage Component**:
 - loads the app's data from the relevant text file using the `filepath` into the `nusMap`, `blockAlias`, `history`, `favourite`, or `dailyRoute` objects.
 - saves the app's data from `nusMap`, `blockAlias`, `history`, `favourite`, or `dailyRoute` objects into the relevant text file using the `filepath`.
+
 ---------------------------------------------------------------------------------------------
 
 ## *3. Implementation*
