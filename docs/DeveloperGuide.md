@@ -17,8 +17,8 @@
     2.7. [Storage Component](#27-storage-component)  
 3. [Implementation](#3-implementation)  
     3.1. [Finding The Shortest Route Feature](#31-finding-the-shortest-route-feature)  
-    3.2. [Daily Route Planning Feature](#32-daily-route-planning-feature)  
-    3.3. [Favourite Routes Feature](#33-favourite-routes-feature)  
+    3.2. [Daily Route Planning Feature](#32-daily-route-planning-feature)
+    3.3. [Favourite Routes Feature](#33-favourite-routes-feature)
     3.4. [Custom Aliases Feature](#34-custom-aliases-feature)  
     3.5. [History Feature](#35-history-feature)  
     3.6. [Save Feature](#36-save-feature)
@@ -429,6 +429,11 @@ Below is our analysis of our target user and the importance in which he/she woul
 ### 4.5. Glossary
 
 * *CLI* - Command Line Interface
+* *IntelliJ* - An Integrated Development Environment (IDE) designed for Java software development.
+* *UML* - Unified Modeling Language.
+* *Terminal/PowerShell* - Any operating system shell with a command-line interface.
+* *Mainstream OS* - Windows, mainstream distributions of Linux, and macOS.
+* *JDK* - Java Development Kit.
 
 ---------------------------------------------------------------------------------------------
 
