@@ -1,0 +1,37 @@
+@startuml ModelComponent
+hide circle
+!define LIGHTGREEN
+!includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+skinparam classAttributeIconSize 0
+
+rectangle Model #Khaki {
+    class RecommendationList
+    class ReviewList
+}
+
+class RecommendationList #Gold {
+    - ui : Ui
+    + recommendations : ArrayList<Recommendation>
+    + addRecommendation()
+    + listRecommendations()
+    + editRecommendation()
+    + deleteRecommendation()
+    + convertRecommendation()
+}
+
+class ReviewList #Gold {
+    - ui : Ui
+    + reviews : ArrayList<Reviews>
+    - displayStars : boolean
+    + addReview()
+    + sortReviews()
+    + listReviews()
+    + viewReview()
+    + editReview()
+    + deleteReview()
+    + changeDisplay()
+}
+
+RecommendationList - ReviewList : converts to >
+
+@enduml

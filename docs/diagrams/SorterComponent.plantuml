@@ -1,0 +1,30 @@
+@startuml SorterComponent
+hide circle
+!define LIGHTGREEN
+!includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+skinparam Linetype ortho
+
+Rectangle ReviewList #Gold
+Rectangle Sorter #NavajoWhite
+
+rectangle Sorters #NavajoWhite {
+    rectangle SortByCategory #MistyRose
+    rectangle SortByEarliest #MistyRose
+    rectangle SortByLatest #MistyRose
+    rectangle SortByRating #MistyRose
+    rectangle SortByTitle #MistyRose
+}
+
+SortByTitle -[hidden]right-> SortByCategory
+SortByCategory -[hidden]right-> SortByEarliest
+SortByEarliest -[hidden]right-> SortByLatest
+SortByLatest -[hidden]right-> SortByRating
+
+Sorter <--> SortByTitle
+Sorter <--> SortByCategory
+Sorter <--> SortByEarliest
+Sorter <--> SortByLatest
+Sorter <--> SortByRating
+ReviewList <--> Sorter : sortReviews(sortMethod)
+
+@enduml
