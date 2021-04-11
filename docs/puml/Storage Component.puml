@@ -43,37 +43,27 @@ package Storage <<rectangle>> {
 }
 
 
-
-class NusMaze NUSMAZE_COLOR {
-}
-
-
 "{abstract}\nStorage" ..up|> DataEncoder
 "{abstract}\nStorage" ..up|> DataDecoder
-AliasStorage --up|> "{abstract}\nStorage"
-DailyRouteStorage --up|> "{abstract}\nStorage"
-FavouriteStorage --up|> "{abstract}\nStorage"
-HistoryStorage --up|> "{abstract}\nStorage"
-NotesStorage --up|> "{abstract}\nStorage"
-
-AliasStorage "**1**" <.. NusMaze : creates <
-DailyRouteStorage "**1**" <.. NusMaze : creates <
-FavouriteStorage  "**1**" <.. NusMaze : creates <
-HistoryStorage  "**1**" <.. NusMaze : creates <
-NotesStorage  "**1**" <.. NusMaze : creates <
-
-AliasStorage --down[ARROW_DATA_COLOR]> Data
-DailyRouteStorage --down[ARROW_DATA_COLOR]> Data
-FavouriteStorage --down[ARROW_DATA_COLOR]> Data
-HistoryStorage --down[ARROW_DATA_COLOR]> Data
-NotesStorage --down[ARROW_DATA_COLOR]> Data
+AliasStorage ---up|> "{abstract}\nStorage"
+DailyRouteStorage ---up|> "{abstract}\nStorage"
+FavouriteStorage ---up|> "{abstract}\nStorage"
+HistoryStorage ---up|> "{abstract}\nStorage"
+NotesStorage ---up|> "{abstract}\nStorage"
 
 
-AliasStorage --left[ARROW_FILES_COLOR]> aliasList
-DailyRouteStorage --left[ARROW_FILES_COLOR]> dailyRouteList
-FavouriteStorage --left[ARROW_FILES_COLOR]> favouriteList
-HistoryStorage --left[ARROW_FILES_COLOR]> history
-NotesStorage --left[ARROW_FILES_COLOR]> noteList
+AliasStorage ---down[ARROW_DATA_COLOR]> Data
+DailyRouteStorage ---down[ARROW_DATA_COLOR]> Data
+FavouriteStorage ---down[ARROW_DATA_COLOR]> Data
+HistoryStorage ---down[ARROW_DATA_COLOR]> Data
+NotesStorage ---down[ARROW_DATA_COLOR]> Data
+
+
+AliasStorage --right[ARROW_FILES_ALIASLIST_COLOR]> aliasList
+DailyRouteStorage --right[ARROW_FILES_DAILYROUTELIST_COLOR]> dailyRouteList
+FavouriteStorage --right[ARROW_FILES_FAVLIST_COLOR]> favouriteList
+HistoryStorage --right[ARROW_FILES_HISTORY_COLOR]> history
+NotesStorage --right[ARROW_FILES_NOTELIST_COLOR]> noteList
 
 skinparam classAttributeIconSize 0
 hide AliasStorage attributes
@@ -81,7 +71,6 @@ hide DailyRouteStorage attributes
 hide FavouriteStorage attributes
 hide HistoryStorage attributes
 hide NotesStorage attributes
-hide NusMaze members
 hide AliasStorage members
 hide DailyRouteStorage members
 hide FavouriteStorage members
