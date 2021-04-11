@@ -577,10 +577,10 @@ These files are `fridgeData.txt`, `limitsData.txt`, and `historyData.txt`, and a
 Details of Files:
 
 * Are automatically loaded when `FridgeFriend` starts, with the exception of `historyData.txt` which is loaded only when `history` command is invoked.
-* Are updated when the `FridgeFriend` application is terminated using the `bye` command, with the exception of `historyData.txt` which is updated whenever a successful add command is executed.
-* Both `fridgeData.txt` and `limitsData.txt` will **not** be updated if `FridgeFriend` is not terminated with the `bye` command, such as when the runtime is interrupted with `Ctrl+C`.
+* Are updated when the `FridgeFriend` application is terminated using the `bye` command, with the exception of `historyData.txt` which is only updated whenever a successful add command is executed.
+* Both `fridgeData.txt` and `limitsData.txt` will also be updated after every command is successfully executed.
 * _Missing data file_: A new, blank file will automatically be created upon launching `FridgeFriend`.
-The fridge at program launch will be empty, and the limits of all food categories will be reset to the default of 500 . No further action needed.
+The fridge at program launch will be empty, and the limits of all food categories will be reset to the default of 500. No further action needed.
 * _Corrupted data file_: The table below outlines the different behaviours according to different cases.
 
 |Corruption Type| Error Message| Behaviour|
