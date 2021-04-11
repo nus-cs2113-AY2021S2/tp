@@ -4,7 +4,7 @@
 
 ## Overview
 
-GULIO is a module planner designed for efficiency when used by someone that can type fast. It is capable of storing lessons and tasks for individual modules, as well as lesson notes via cheat-sheets. 
+GULIO is a module planner designed for efficiency for people that can type fast. It is capable of storing lessons and tasks for individual modules, as well as lesson notes via cheat-sheets. 
 
 ## Summary of Contributions
 
@@ -12,10 +12,9 @@ GULIO is a module planner designed for efficiency when used by someone that can 
 
 ### Enchancements Contributed:
 
-1. Implemented storage system, excluding cheat-sheets.<br>
-   > I implemented the Writer, Loader and ModuleList class. To ensure that the storage work reliably even as the others change their parts, I implemented my own code to split and read the data.
+1. Implemented ModuleList class and storage system, excluding cheat-sheets.<br>
 1. Implemented shortcut listener for text editor.
-   > Using KeyListener, I implemented shortcuts such as "esc" to close and "ctrl-s" to save. The shortcuts would call methods that Hemrish created in the TextEditor class.
+   > Using KeyListener, I implemented shortcuts such as "ctrl-s" to save. The shortcuts would call methods that Hemrish created in the TextEditor class.
 1. Cleaned up code for most components.<br>
    > I cleaned up the code after we merged our parts for V1.0 as there were inconsistencies and duplicates. This includes shifting of constants and messages to their respective classes, removing of duplicate methods, etc...
 1. Added days remaining for undone task and used it for sorting.
@@ -24,23 +23,21 @@ GULIO is a module planner designed for efficiency when used by someone that can 
 
 1. Added data & storage section.
 1. Created skeleton for the command section.
-   > I had to change the "Example" table's format of all commands multiple times.
 1. Converted user guide from Google Docs into Markdown.
-   > The team originally worked on the user guide on a Google Docs file. I converted it to markdown before we split it up and pushed our respective portions. It was tedious, but not difficult.
+   > The team originally did the user guide on Google Docs. I converted it to markdown before we split it up and pushed our portions. It was tedious, but not difficult.
 
 ### Contributions to Developer Guide:
 
-1. Created the architecture diagram, as well as sequence diagrams for storage.
-   >  In the design section, I did the architecture diagram, and the storage part. For the implementation section, I did the part on loading and storing of data, including the sequence diagrams.
+1. Created the architecture diagram and did the parts relating to storage.
 1. Added instruction for manual testing.
 1. Converted developer guide from Google Docs into Markdown.
-   > Like the user guide, we did the developer guide on Google Docs. I converted it into markdown before splitting it up with the others. Again, this was tedious, but not difficult.
+   > Like the user guide, we did the developer guide on Google Docs. I converted it into markdown before splitting it up with the others.
 
 ### Contribution to Team-Based Tasks:
 
 1. Did the release for V1.0.
 1. Fixed minor bugs for some components.
-   > Examples include [fixing the formatting of data printed out by the various list commands](https://github.com/AY2021S2-CS2113T-W09-3/tp/pull/74/files), as well as [getting focus for the text editor](https://github.com/AY2021S2-CS2113T-W09-3/tp/pull/130/files).  
+   > Examples include [fixing the formatting of various list commands](https://github.com/AY2021S2-CS2113T-W09-3/tp/pull/74/files), as well as [getting focus for the text editor](https://github.com/AY2021S2-CS2113T-W09-3/tp/pull/130/files).  
 1. Created issues and added labels on the issue tracker.
 
 ### Review/mentoring contributions:
