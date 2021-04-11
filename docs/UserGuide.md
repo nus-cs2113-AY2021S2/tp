@@ -133,8 +133,8 @@ and their input format.
 ```
 ~`%#@!
 ```
-> If any of these characters are used as an input value, they will be replaced with a space when saving to
-> disk, and will not show up if Patient Manager is closed and reopened.
+> If any of these characters are used as an input value, Patient Manager will show a warning that these
+> characters are not allowed and prevent the command from running.
 > - Dates must be specified in the format `dd/mm/yyyy` with leading zeroes, for example, `05/03/2021`.
 > All dates given must be valid, according to the rules of the
 > [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar).
