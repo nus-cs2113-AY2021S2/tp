@@ -12,7 +12,10 @@
     * [Logic Component](#logic-component)
     * [Model Component](#model-component)
     * [Storage Component](#storage-component)
-
+*  [Implementation](#implementation)
+    *[Main](#main)
+    *[Public User Implementation](#public-user)
+    *[Admin User Implementation](#admin-user)
 ## **Setup**
 ### Prerequisites
 + *JDK `11`* or beyond.
@@ -75,15 +78,53 @@ The `Storage` component,
 * If it is an existing user, it will only loads data from the text file into in-App data.  
 
 
-##Implementation
+## **Implementation** 
+This section describes some noteworthy details on how certain features are implemented.
+There are 2 types of user :
+[**`Public User`**](#public-user)
+[**`Admin User`**](#admin-user)
+
+### Main 
+![Main Sequence Diagram](./img/Main.png)
+
+When the application is launched, an Ui object and Parser object is instantiated.
+To instantiate the Parser object, the main NusFoodReviews and Ui object is passed.
+
+
+### Public User
 For public users, the list of commands is shown below:
 
-* Display selected store sample menu: `menu`
-* Display all reviews of the selected store : `reviews`
-* Add a new review of the selected store: `add`
-* Goes back to home page to select canteen: `home`
-* Display all the stores of the selected canteen: `list`
-* Exiting the application: `exit`
+* Display selected store sample menu: [**`menu`**](#display-menu) 
+* Display all reviews of the selected store : [**`reviews`**](#display-reviews)
+* Add a new review of the selected store: `add`[**`add`**](#add-reviews)
+* Goes back to home page to select canteen: `home` [**`home`**](#home)
+* Display all the stores of the selected canteen: `list` [**`list`**](#display-stores)
+* Goes back to login page: `login` [**`login`**](#login)
+* Exiting the application: `exit`  [**`exit`**](#exit)
+
+###Display Menu
+![DisplayMenus Sequence Diagram](./img/DisplayMenus.png)
+
+To display menus, `DisplayMenusCommand.execute()` is called, passing in
+an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
+
+When DisplayMenusCommand was first instantiated, the relevant Store object was passed
+into the constructor. `DisplayMenusCommand.execute()` will then call `getMenus()` on the
+store object to get an ArrayList of menus, before passing the ArrayList to the ui object
+to be displayed by calling `Ui#showDisplayMenu()`.
+
+###Display Reviews
+![ReadReviews](./img/ReadReviews.png)
+
+To read reviews, `ReadReviewsCommand.execute()` is called passing in an ArrayList of
+canteens and the Ui object instantiated in nusFoodReviews.
+
+When ReadReviewsCommand was first instantiated, the relevant Store object was passed
+into the constructor. `ReadReviewsCommand.execute()` will then call `getReviews()` on the
+store object to get an ArrayList of reviews, then calling `getAverageRating()` to get the
+average rating of the store. After that, `getStoreName()` is also called to get the store
+name of the store. These parameters are then passed to the ui object to be displayed by calling
+`Ui.showReviews()`
 
 
 For admin, the list of commands is shown below:
@@ -97,8 +138,6 @@ For admin, the list of commands is shown below:
  7. Exit
 
 
-<!-- NOT TOO SURE HOW THIS PART FITS IN
-
 #### Sequence Diagram for `admin`
 When the user enters `2` to go into the admin page, the AdminVerification() is called. It will ask the user to input 
 the password. Then it will check the input against the set password. If fails then the user have to enter again or enter
@@ -106,44 +145,10 @@ the password. Then it will check the input against the set password. If fails th
 --> 
 
 
-### Main NusFoodReviews
-
-#### Implementation
-![Main Sequence Diagram](./img/Main.png)
-
-When the application is launched, a Ui object and Parser object is instantiated.
-To instantiate the Parser object, the main NusFoodReviews and Ui object is passed.
-
-### [Public user] Display Menus Feature
-#### Implementation
-![DisplayMenus Sequence Diagram](./img/DisplayMenus.png)
-
-To display menus, `DisplayMenusCommand.execute()` is called, passing in
-an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
-
-When DisplayMenusCommand was first instantiated, the relevant Store object was passed 
-into the constructor. `DisplayMenusCommand.execute()` will then call `getMenus()` on the 
-store object to get an ArrayList of menus, before passing the ArrayList to the ui object 
-to be displayed by calling `Ui#showDisplayMenu()`.
 
 
-###[Public user] Read reviews feature
-#### Implementation
-
-![ReadReviews](./img/ReadReviews.png)
-
-To read reviews, `ReadReviewsCommand.execute()` is called passing in an ArrayList of
-canteens and the Ui object instantiated in nusFoodReviews.
-
-When ReadReviewsCommand was first instantiated, the relevant Store object was passed
-into the constructor. `ReadReviewsCommand.execute()` will then call `getReviews()` on the
-store object to get an ArrayList of reviews, then calling `getAverageRating()` to get the 
-average rating of the store. After that, `getStoreName()` is also called to get the store
-name of the store. These parameters are then passed to the ui object to be displayed by calling 
-`Ui.showReviews()`
 
 ### Reset Store Feature
-#### Implementation
 ![DisplayMenus Sequence Diagram](./img/ResetStore.png)
 
 To reset the store index in nusFoodReviews, `ResetStoreCommand#execute()` is called, 
@@ -153,7 +158,6 @@ When `ResetStoreCommand` is first called, we pass the main NusFoodReviews object
 constructor. This allows the `Command` to interact with the main object when `execute` is called.
 
 ### Home Feature
-#### Implementation
 ![DisplayMenus Sequence Diagram](./img/HomeCommand.png)
 
 To reset the store and canteen index in nusFoodReviews, `HomeCommand#execute()` is called,
@@ -164,7 +168,6 @@ constructor. This allows the `Command` to interact with the main object when `ex
 
 
 ### Admin Capabilities
-#### Implementation
 ![Admin Sequence Diagram](./img/Admin.png)
 
 Once admin is verified in NusFoodReviews, `Parser#parseAdminCommand()` is called.
@@ -174,7 +177,6 @@ To add a new canteen, the user must enter '2'.
 <!--can someone add switch case and separate refs for each switch case maybe-->
 
 ### [Admin] Add Canteen
-#### Implementation
 ![AddCanteen Sequence Diagram](./img/AddCanteen.png)
 
 <!--this part should be in the switchcase ref-->
@@ -191,7 +193,6 @@ A new Canteen object is then instantiated, and added to the ArrayList of canteen
 `Ui#showAddCanteenSuccess()` is called to display canteen added confirmation.
 
 ### [Admin] Add Store
-#### Implementation
 ![AddCanteen Sequence Diagram](./img/AddStore.png)
 
 
@@ -203,7 +204,6 @@ A new Store object is then instantiated, and added to the Canteen's ArrayList of
 
 
 ### [Admin] Delete Canteen
-#### Implementation
 ![DeleteCanteen Sequence Diagram](./img/DeleteCanteen.png)
 
 To delete a canteen, `DeleteCanteenCommand#execute()` is called, passing in
@@ -213,8 +213,6 @@ The canteen object is removed from the canteens ArrayList.
 `Ui#showCanteenDeleted()` is called to display the canteen deleted message.
 
 ### [Admin] Delete Stores
-#### Implementation
-
 ![DeleteStores](./img/DeleteStores.png)
 
 When DeleteStoreCommand was first instantiated, the relevant canteen index 
@@ -224,8 +222,6 @@ NusFoodReviews.`DeleteStoreCommand.execute()`will then call `get(canteenIndex)` 
 to get the current Canteen before calling deleteStore(storeIndex) to delete the store.
 
 ### [Admin] Delete Reviews
-#### Implementation
-
 ![DeleteReviews](img/DeleteReviews.png)
 
 When DeleteReviewCommand was first instantiated, the relevant canteen index, review,
