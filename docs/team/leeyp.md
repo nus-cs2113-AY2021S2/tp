@@ -20,7 +20,7 @@ as well as associated JUnit tests and helper function code.
 
 `v2.1 tasks`: Feature enhancements by fixing bugs in the application.
 
-**Code contributed**: More than 1300 lines of code: [RepoSense Link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=leeyp)
+**Code contributed**: More than 1200 lines of code: [RepoSense Link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=leeyp)
 
 ### Enhancements Implemented
 
@@ -40,6 +40,8 @@ as well as associated JUnit tests and helper function code.
 - Overhauled the `Storage` class in the `Utilities` component to improve input validation. ([#208](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/208))
 - Fine-tuned the ability to search by 'Others' category or storage location when user invokes `list` command. ([#212](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/212))
 
+<br/>
+<br/>
 **Enhancements to existing features**  
 - Created JUnit tests & defensive code (for Add Command, List Command, Search Command, History Command).
 - Refactored and improved Code Quality (for Storage Class, Add Command, List Command).
