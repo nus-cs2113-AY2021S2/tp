@@ -21,3 +21,4 @@ data/Patients.txt
 data/Staff.txt
 data/logs/HealthVaultLogs.log
 data/NurseSchedule.txt
+data/logs/HealthVaultLogs.log.lck

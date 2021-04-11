@@ -2,14 +2,13 @@ package seedu.logic.errorchecker;
 
 import seedu.exceptions.CorruptedFileException;
 import seedu.exceptions.DuplicateIdException;
+import seedu.exceptions.ExcessInputException;
 import seedu.exceptions.HealthVaultException;
 import seedu.exceptions.IdNotFoundException;
+import seedu.exceptions.InsufficientInputException;
 import seedu.exceptions.NoInputException;
-import seedu.exceptions.patient.InvalidFieldsNumberException;
-import seedu.exceptions.patient.InvalidIdLengthException;
-import seedu.exceptions.patient.InvalidIdTypeException;
-import seedu.exceptions.patient.InvalidIdValueException;
 import seedu.exceptions.patient.InvalidPatientAgeException;
+import seedu.exceptions.patient.InvalidPatientIdException;
 import seedu.logger.HealthVaultLogger;
 import seedu.model.patient.PatientList;
 import seedu.model.patient.Patient;
@@ -64,7 +63,7 @@ public class PatientChecker extends MainChecker {
      *
      * @throws HealthVaultException collection of exceptions from checks.
      */
-    public void checkStorage() throws HealthVaultException {
+    public void checkStorage() throws HealthVaultException, NumberFormatException {
         emptySpaceCheck();
         checkStorageLength();
         checkIdStorage();
@@ -119,19 +118,33 @@ public class PatientChecker extends MainChecker {
     /**
      * Checks if the number of tokens in the split input from the storage is acceptable for the given command.
      *
-     * @throws InvalidFieldsNumberException when the number of input fields is incorrect.
+     * @throws ExcessInputException when the number of input fields is in excess.
+     * @throws InsufficientInputException when the number of input fields is insufficient.
      */
-    public void checkLength() throws HealthVaultException {
-        if (command.equals("add") && numberOfTokens != 7) {
-            logger.log(Level.WARNING, "Incorrect patient add command input fields.");
-            throw new InvalidFieldsNumberException(command);
-        } else if ((command.equals("delete") || command.equals("find")) && numberOfTokens != 2) {
-            logger.log(Level.WARNING, "Incorrect patient delete or find command input fields.");
-            throw new InvalidFieldsNumberException(command);
+    public void checkLength() throws ExcessInputException, InsufficientInputException{
+        if (command.equals("add") && numberOfTokens > 7) {
+            logger.log(Level.WARNING, "Incorrect patient add command input fields, excess fields.");
+            throw new ExcessInputException();
+        } else if ((command.equals("delete") || command.equals("find")) && numberOfTokens > 2) {
+            logger.log(Level.WARNING, "Incorrect patient delete or find command input fields, excess fields.");
+            throw new ExcessInputException();
         } else if ((command.equals("list") || command.equals("return") || command.equals("help"))
-                && numberOfTokens != 1) {
-            logger.log(Level.WARNING, "Incorrect patient list, return or help command input fields.");
-            throw new InvalidFieldsNumberException(command);
+                && numberOfTokens > 1) {
+            logger.log(Level.WARNING, "Incorrect patient list, "
+                    + "return or help command input fields, excess fields.");
+            throw new ExcessInputException();
+        } else if (command.equals("add") && numberOfTokens < 7) {
+            logger.log(Level.WARNING, "Incorrect patient add command input fields, insufficient fields.");
+            throw new InsufficientInputException();
+        } else if ((command.equals("delete") || command.equals("find")) && numberOfTokens < 2) {
+            logger.log(Level.WARNING, "Incorrect patient delete or find command "
+                    + "input fields, insufficient fields.");
+            throw new InsufficientInputException();
+        } else if ((command.equals("list") || command.equals("return") || command.equals("help"))
+                && numberOfTokens < 1) {
+            logger.log(Level.WARNING, "Incorrect patient list, return or help command "
+                    + "input fields, insufficient fields.");
+            throw new InsufficientInputException();
         }
     }
 
@@ -215,21 +228,18 @@ public class PatientChecker extends MainChecker {
      * Checks if the ID is of the proper format.
      *
      * @param userID the string containing the ID of the patient.
-     * @throws InvalidIdLengthException when the length of the ID is unacceptable.
-     * @throws InvalidIdTypeException when the type of the ID is unacceptable.
-     * @throws InvalidIdValueException when the value of the ID is unacceptable.
+     * @throws InvalidPatientIdException when the characters in the patient ID are unacceptable.
      */
-    private void checkValidId(String userID) throws InvalidIdLengthException, InvalidIdTypeException,
-            InvalidIdValueException {
+    private void checkValidId(String userID) throws InvalidPatientIdException{
         if (userID.length() != 6) {
             logger.log(Level.WARNING, "Incorrect patient ID length.");
-            throw new InvalidIdLengthException("IDLength");
+            throw new InvalidPatientIdException();
         } else if (!(userID.charAt(0) == 'P')) {
             logger.log(Level.WARNING, "Incorrect patient ID type.");
-            throw new InvalidIdTypeException("IDType");
+            throw new InvalidPatientIdException();
         } else if (numberOfIntegersInString(userID) != 5) {
             logger.log(Level.WARNING, "Incorrect patient ID value.");
-            throw new InvalidIdValueException("IDValue");
+            throw new InvalidPatientIdException();
         }
     }
 
