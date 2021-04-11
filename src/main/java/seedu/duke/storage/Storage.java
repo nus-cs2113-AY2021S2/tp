@@ -2,7 +2,6 @@ package seedu.duke.storage;
 
 import seedu.duke.command.CreditScoreReturnedLoansMap;
 import seedu.duke.common.Constant;
-import seedu.duke.common.Messages;
 import seedu.duke.exception.FileLoadingException;
 import seedu.duke.exception.InvalidFileInputException;
 import seedu.duke.record.Expense;
@@ -31,6 +30,9 @@ import static seedu.duke.common.Constant.MAX_CREDIT_SCORE;
 import static seedu.duke.common.Constant.MIN_CREDIT_SCORE;
 import static seedu.duke.common.Constant.FILE_DELIMITER_CHAR;
 import static seedu.duke.common.Constant.FINUX_LOGGER;
+import static seedu.duke.common.Messages.ERROR_FILE_CREATION;
+import static seedu.duke.common.Messages.ERROR_FILE_INPUT;
+import static seedu.duke.common.Messages.ERROR_SAVE_DATA;
 
 public class Storage {
     private static final Path SAVED_FILE_PATH = Paths.get("finux.txt");
@@ -77,7 +79,7 @@ public class Storage {
             writeRecordListToSaveFile(recordList);
             writeMapToSaveFile(creditScoreReturnedLoansMap);
         } catch (IOException e) {
-            System.out.println(Messages.ERROR_SAVE_DATA);
+            System.out.println(ERROR_SAVE_DATA);
         }
     }
 
@@ -138,8 +140,8 @@ public class Storage {
     private void initSaveFile() throws IOException {
         File newSaveFile = new File(String.valueOf(SAVED_FILE_PATH));
         if (!newSaveFile.createNewFile()) {
-            FINUX_LOGGER.logWarning(Messages.ERROR_FILE_CREATION);
-            throw new IOException(Messages.ERROR_FILE_CREATION);
+            FINUX_LOGGER.logWarning(ERROR_FILE_CREATION);
+            throw new IOException(ERROR_FILE_CREATION);
         }
         Ui.printSuccessfulFileCreation();
     }
@@ -154,7 +156,7 @@ public class Storage {
         } else if (Pattern.matches(REGEX_PATTERN_MAP_ENTRY_RAW_DATA, rawData)) {
             return loadMapEntryRawData(rawData);
         } else {
-            FINUX_LOGGER.logWarning(Messages.ERROR_FILE_INPUT);
+            FINUX_LOGGER.logWarning(ERROR_FILE_INPUT);
             throw new InvalidFileInputException();
         }
     }
