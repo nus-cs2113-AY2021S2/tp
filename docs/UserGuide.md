@@ -107,7 +107,7 @@ Java 11 and above<br>
 1. Open command prompt (for Windows users) or Terminal (for Mac and Linux users),
 1. Navigate to the directory of your GULIO.jar file.
 1. Run the command “java -jar gulio.jar” to start GULIO.
-> 💡 The file name is not case-sensitive, so both gulio.jar and GULIO.jar works here.
+    > 💡 The file name is not case-sensitive, so both `gulio.jar` and `GULIO.jar` works.
 
 &nbsp;
 
