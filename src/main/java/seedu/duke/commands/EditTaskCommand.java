@@ -107,6 +107,9 @@ public class EditTaskCommand extends Command {
     }
 
     private void editTaskField(UI ui, int fieldIndex) {
+        //assumption: invalid indices should have been filtered out (1-based indexing)
+        assert false : fieldIndex;
+        
         ui.printMessage(String.format(PROMPT_ENTER_FIELD_DETAILS, fields[fieldIndex - 1].toLowerCase()));
         switch (fieldIndex) {
         case 1:
