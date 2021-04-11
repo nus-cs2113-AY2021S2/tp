@@ -17,7 +17,7 @@ import static seedu.duke.command.Utils.validateOptions;
 import static seedu.duke.common.Constant.OPTION_DATE;
 import static seedu.duke.common.Constant.OPTION_INDEX;
 import static seedu.duke.common.Validators.validateDate;
-import static seedu.duke.common.Validators.validateIndex;
+import static seedu.duke.common.Validators.validateId;
 import static seedu.duke.command.Utils.getDaysDifference;
 import static seedu.duke.command.Utils.computeCreditScore;
 
@@ -70,7 +70,7 @@ public class ReturnCommand extends Command {
      */
     private int getIndexInInteger(ArrayList<String> arguments, RecordList recordList) throws CommandException {
         try {
-            int index = validateIndex(getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX), recordList);
+            int index = validateId(getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX), recordList);
             Record currentRecord = recordList.getRecordAt(index);
             if (!(currentRecord instanceof Loan)) {
                 throw new CommandException("Index \"" + recordNumberStr + "\" is not an index of Loan!",
@@ -78,9 +78,9 @@ public class ReturnCommand extends Command {
             }
             return index;
         } catch (NumberFormatException e) {
-            throw new CommandException("Index \"" + recordNumberStr + "\" is not an integer!", COMMAND_RETURN);
+            throw new CommandException("\"" + recordNumberStr + "\" is not an integer!", COMMAND_RETURN);
         } catch (IndexOutOfBoundsException e) {
-            throw new CommandException("Index \"" + recordNumberStr + "\" is out of bounds!", COMMAND_RETURN);
+            throw new CommandException("ID: \"" + recordNumberStr + "\" is out of bounds!", COMMAND_RETURN);
         }
     }
 
