@@ -2,7 +2,7 @@
 
 ## Overview
 
-GULIO is a CLI-based module planner designed for efficiency when used by someone that can type fast. It is capable of storing lessons and tasks for individual modules, as well as lesson notes via cheat-sheets. 
+GULIO is a CLI-based module planner designed for efficiency when used by someone that can type fast. It is meant for NUS SoC students and capable of storing lessons and tasks for individual modules, as well as lesson notes via cheat-sheets. 
 
 ## Summary of Contributions
 
