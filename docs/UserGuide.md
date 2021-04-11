@@ -9,7 +9,7 @@ ol ol > li {
     display: block
 }
 ol ol > li:before {
-    content: counters(item, ".") ". "; counter-increment: item
+    content: counters(item, ".") ". ";
 }
 </style>
 
