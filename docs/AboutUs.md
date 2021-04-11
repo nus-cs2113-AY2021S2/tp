@@ -7,7 +7,7 @@ We are a team based in [School of Computing, National University of Singapore](h
 Display | Name | Github Profile | Portfolio
 ----------|:------:|:--------------:|:---------:
 
-![Hu Wen Qi](team/profile_pictures/hwq_pic.png) | Hu Wenqi | [Github](https://github.com/Vinci-Hu) | [Portfolio](team/wenqihu.md)
+![Hu Wen Qi](team/profile_pictures/hwq_pic.png) | Hu Wenqi | [Github](https://github.com/Vinci-Hu) | [Portfolio](team/vinci-hu.md)
 
 ![Kim Joohwan](team/profile_pictures/jw_pic.png) | Kim Joohwan | [Github](https://github.com/joohwan58) | [Portfolio](team/joohwan.md)
 
