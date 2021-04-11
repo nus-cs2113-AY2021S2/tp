@@ -44,7 +44,6 @@ We designed GULIO, a CLI-based module planner intended to help users keep track 
 
 2. Example of reviews where I communicated with teammates on Github:
    1. [Communication with Alicia and Hemrish regarding my PR](https://github.com/AY2021S2-CS2113T-W09-3/tp/pull/77)
-   1. [Review Isa's changes to Parser class](https://github.com/AY2021S2-CS2113T-W09-3/tp/pull/124)
    1. [Review on Wen Hao's PR to use singleton class](https://github.com/AY2021S2-CS2113T-W09-3/tp/pull/123)
 
 ### Contributions beyond the project team
@@ -53,9 +52,33 @@ We designed GULIO, a CLI-based module planner intended to help users keep track 
 
 <div style="page-break-after: always;"></div>
 
-## [Optional] Contributions to UG and DG (Extracts)
-### Contributions to Developer Guide
+## [Optional] Contribution to User Guide
+Extract of contributions:
 
+### Editing a lesson : _edit lsn_
+
+Lists all lessons for the module and asks the user for the index of the lesson to edit. Then, lists all editable fields and asks the user for the indices of the fields to edit. Lastly, for each selected field, the user inputs a new value.
+
+**Format:**<br>
+`edit lsn`
+
+**Example:**
+
+| Step | When You Enter This: | You Get This: |
+| --- | --- | --- |
+| 1 | edit lsn | Which lessons would you like to edit?<br>1. lecture - Wed 10am<br>&nbsp;&nbsp;&nbsp;&nbsp;www.zoom.com <br>&nbsp;&nbsp;&nbsp;&nbsp;Prof Isa<br>&nbsp;&nbsp;&nbsp;&nbsp;isa@gmail.com |
+| 2 | 1 | Editing: LECTURE<br>Which fields would you like to edit?<br>1. Time and day<br>2. Lesson link<br>3. Teaching staff name<br>4. Teaching staff email<br><br>Separate indices with a blank space. |
+| 3 | 1 2 | Enter new time and day: |
+| 4 | Thursday 9am | Updated time and day.<br>Enter new lesson link: |
+| 5 | www.googleclassroom.com | Updated lesson link. |
+
+**Result** - Edits time and day, as well as lesson link of "lecture".
+
+> 💡 While only one lesson can be edited at a time, you can edit multiple fields simultaneously. As such, separate multiple indices with a space. Invalid indices will be ignored.
+
+<div style="page-break-after: always;"></div>
+
+## [Optional] Contributions to Developer Guide
 Extract of contributions:
 
 ### Model component
@@ -128,29 +151,3 @@ The `AddLessonCommand` class is responsible for the creation and addition of a n
 </p>
 
 The creation process is facilitated by the `Parser` class, which parses the appropriate arguments from the user input and initialises the `Lesson` object attributes with the parsed values.
-
-<div style="page-break-after: always;"></div>
-
-### Contributions to the User Guide
-Extract of contributions:
-
-### Editing a lesson : _edit lsn_
-
-Lists all lessons for the module and asks the user for the index of the lesson to edit. Then, lists all editable fields and asks the user for the indices of the fields to edit. Lastly, for each selected field, the user inputs a new value.
-
-**Format:**<br>
-`edit lsn`
-
-**Example:**
-
-| Step | When You Enter This: | You Get This: |
-| --- | --- | --- |
-| 1 | edit lsn | Which lessons would you like to edit?<br>1. lecture - Wed 10am<br>&nbsp;&nbsp;&nbsp;&nbsp;www.zoom.com <br>&nbsp;&nbsp;&nbsp;&nbsp;Prof Isa<br>&nbsp;&nbsp;&nbsp;&nbsp;isa@gmail.com |
-| 2 | 1 | Editing: LECTURE<br>Which fields would you like to edit?<br>1. Time and day<br>2. Lesson link<br>3. Teaching staff name<br>4. Teaching staff email<br><br>Separate indices with a blank space. |
-| 3 | 1 2 | Enter new time and day: |
-| 4 | Thursday 9am | Updated time and day.<br>Enter new lesson link: |
-| 5 | www.googleclassroom.com | Updated lesson link. |
-
-**Result** - Edits time and day, as well as lesson link of "lecture".
-
-> 💡 While only one lesson can be edited at a time, you can edit multiple fields simultaneously. As such, separate multiple indices with a space. Invalid indices will be ignored.
