@@ -204,9 +204,9 @@ to parse a user input, the ParserHandler calls the method `getParseInput` and re
    trimmed input to the start of the next option index. This is the argument tagged after the option.Afterward, 
    the checking mechanism will loop until no valid next options are left in the input before calling `extractFinalPart`.
    * Any leading or trailing white space of the argument field will be removed.
-   * If no argument is provided, the argument would be stored an empty string.
-4. `extractFinalPart` will check if the last trimmed input ends with option. If yes, extract the option and
-   add an empty string as the argument, else just add the last trimmed input to the ArrayList<String>.
+   * If no argument is provided, the argument would be stored as an empty string.
+4. `extractFinalPart` will check if the final input ends with option. If yes, extract the option and
+   add an empty string as the argument, else just add the final input to the ArrayList<String>.
 5. Finally, after the extraction to ArrayList<String> is complete, `extractFinalPart` will
    call `checkFirstBlock` for the final check to parse any `help` or `creditscore` in the first argument block.
    
