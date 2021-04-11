@@ -40,7 +40,7 @@ public class ZoomLinkInfo {
         if (!ModuleInfo.modules.isEmpty()) {
             Ui.printChooseModule();
             moduleCode = AddTask.printAndGetModule();
-            if (searchListForExistingLink(moduleCode)) {
+            if (isExist(moduleCode)) {
                 Ui.printModuleAlreadyHasZoomLink();
                 return;
             }
@@ -113,6 +113,10 @@ public class ZoomLinkInfo {
         return null;
     }
 
+    /**
+     * Changes the module code attribute of the ZoomLinkInfo object to mark it as deleted.
+     * @param moduleToDelete is the module code to be deleted.
+     */
     public static void deleteModuleCode(String moduleToDelete) {
         for (ZoomLinkInfo link : zoomLinksList) {
             if (link.getModuleCode().equals(moduleToDelete)) {
@@ -121,6 +125,11 @@ public class ZoomLinkInfo {
         }
     }
 
+    /**
+     * This method is called when the module list is empty.
+     * Prompts the user to add a new module.
+     * @return the module code as a String.
+     */
     public static String addModuleWhenModuleIsEmpty() {
         String moduleCode;
         Ui.printNoModulesMessage();
@@ -134,7 +143,12 @@ public class ZoomLinkInfo {
         return moduleCode;
     }
 
-    public static boolean searchListForExistingLink(String linkToCompare) {
+    /**
+     * Determines if the module code already has a zoom link tagged to it.
+     * @param linkToCompare is the module code
+     * @return true if the module code already has a zoom link.
+     */
+    public static boolean isExist (String linkToCompare) {
         for (ZoomLinkInfo link : zoomLinksList) {
             if (link.moduleCode.equals(linkToCompare)) {
                 return true;
