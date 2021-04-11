@@ -1,16 +1,17 @@
+[Home](README.md)
+
 # Healthier Developer Guide
 
-Group `F10-2`  
-Last update on `31 Mar 2021`
+Group `CS2113-F10-2`  
+Last update on `12 Apr 2021`
 ---
 
 ## Table of Contents
 
 - [Getting Started](#getting-started)
 - [Design](#design)
-    - []()
-    - []()
-    - []()
+    - [Architecture](#architecture)
+    - [Components](#components)
 - [Implementation](#implementation)
     - []()
     - []()
@@ -34,13 +35,70 @@ Last update on `31 Mar 2021`
 1. Import the repo in your Java IDE as project
 1. Start hacking!
 
-> Note that you are strongly recommended choosing Intellij IDEA as your IDE.
+> 💡 You are advised to choose JetBrain's Intellij IDEA as your IDE.
 
 [**Get back to Table of Contents**](#table-of-contents)
 
 ---
 
 ## Design
+
+This section describes design details of the app Healthier.
+
+### Architecture
+
+![architecture](./diagrams/DG_Images/architecture.png)
+<h5 align="center">Figure 1: Architecture Diagram</h5>
+The high-level design of Healthier is shown in *Figure 1: Architecture Diagram* given above.
+
+`Healthier` corresponds to the main class that coordinates the execution of this application. It is where the `main`
+method is located. It is responsible for,
+
+* When app starts: Initializes essential data objects from stored files and displays basic information about the status
+  of the app by utilizing the UI component.
+* When app is running: Handles user input and coordinates corresponding operations by invoking methods from `Parser`
+  and `Command` classes.
+* When app ends: Terminates the execution of this app.
+
+`Common` contains classes that can be repeatedly used by other components.
+
+In addition to that, the app also consists of following components:
+
+* `UI`: Handles the display of ui messages as well as user input.
+* `Parser`: Processes the raw user input with validations and passes usable info to `Command` components.
+* `Command`: Performs operations according to the command that the user input.
+* `Storage`: Handles the read & write of various data files created/stored locally.
+* `Account`: Manages the user accounts.
+* `Entity`: Contains data objects that are essential to thi app.
+
+> 💡Healthier is an application that runs locally without Internet connections.  
+> Data files will be stored in the format of plain-text documents for easy inspection and test.
+
+Each of the components has corresponding Java classes that
+
+* Define data attributes and methods in different levels of abstraction.
+* Provide various APIs (i.e. public members) that can be utilized by other classes.
+
+More information about the components will be discussed in the [Components](#components) section.
+
+#### The interaction between major components
+
+We will take how Healthier handles user's input as an representative example to illustrate the internal logic of this
+application.
+
+The *Sequence Diagram* of the operation is given below:
+![Sequence diagram of handling user input](./diagrams/DG_Images/handleUserInput.png)
+<h5 align="center">Figure 2: Sequence Diagram of handling user input</h5>
+
+After initialization, `Healthier` calls the `loopCommand()` method, which gets user input in a while loop which
+terminates only when the command is `exit`, i.e. `"exit"` is received.  
+Inside the loop, `UI` will handle the read of user input, and pass the raw input in `String` to `CommandParser`, where
+the input will be validated and a corresponding instance of `Command` will be created.  
+After that, the `execute` command will be invoked and the returned result in `String` will be printed by `UI`. At the
+end of the loop, the `store()` method of `Storage` will be called to update the local files to reflect any changes, and
+the parsed parameters in `CommandParser` will be cleared to get ready for next parse.
+
+### Components
 
 [**Get back to Table of Contents**](#table-of-contents)
 
@@ -180,4 +238,5 @@ desktop applications follow.
 
 ## Instructions for manual testing
 
-[**Get back to Table of Contents**](#table-of-contents)
+[**Get back to Table of Contents**](#table-of-contents)  
+[Home](README.md)
