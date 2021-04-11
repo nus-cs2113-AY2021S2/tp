@@ -91,6 +91,7 @@ When the application is launched, an Ui object and Parser object is instantiated
 To instantiate the Parser object, the main NusFoodReviews and Ui object is passed.
 
 
+
 ### Public User
 For public users, the list of commands is shown below:
 
