@@ -193,7 +193,11 @@ Main Menu:
 The Module Information feature allows you to add/delete modules,  
 and add information to the module of your choice.
 
-Module Information menu:
+**Navigating to the Module Information Menu**  
+
+Input `1` from the main menu to enter the Module Information menu.  
+
+Module Information menu:  
 
 ```
 > 1
@@ -222,12 +226,12 @@ Please choose which action you would like to do and enter the number:
 [15] --- Exit to main menu
 ----------------------
 ```
+  
+#### 3.1.1 Add a Module  
 
-#### 3.1.1 Add a Module
-
-Adds a new module to the modules list.
-> **Note!**   
-> Module name and description cannot be empty.   
+Adds a new module to the modules list.  
+> **Note!**    
+> Module name and description cannot be empty.    
 > You **cannot** modify a module's name or description.   
 >> If you entered an incorrect name or description, please **delete** the module and  
 >> add a new `module` with the correct name and description. 
@@ -308,17 +312,18 @@ Here are the modules in your Modules List:
 --------------------------------------------  
 ```  
 
-#### 3.1.4 Delete a Module
+#### 3.1.4 Delete a Module  
 
-Deletes a module from the list of modules.
+Deletes a module from the list of modules.  
 >**<span style="color: red"> WARNING! </span>**  
-> Deleted modules cannot be retrieved.
-* Format: enter the index (integer) of the module that you want to delete.
+> Deleted modules cannot be retrieved.   
+  
+* Format: enter the index (integer) of the module that you want to delete.  
 
-Example for deleting a module:
+Example for deleting a module:  
 > **Note!**  
 > In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.  
-> Reviews for these modules have already been added through the [add a review](#318-add-a-review) feature.
+> Reviews for these modules have already been added through the [add a review](#318-add-a-review) feature.  
 
 ```
 > 4  
@@ -330,9 +335,8 @@ Here are the modules in your Modules List:
 --------------------------------------------  
 Enter the module number to be deleted:  
 > 1  
-Are you sure you want to delete CS3243? [Y/N]  
-Mar 31, 2021 3:04:34 AM seedu.duke.features.moduleinfo.ModuleInfo deleteModule  
-WARNING: You are making a change that cannot be undone.  
+--------------------------------------------
+Are you sure you want to delete CS3243? [Y/N]
 > Y  
 You've deleted this: CS3243   
 NOTE: You are deleting your module description  
@@ -345,7 +349,7 @@ Overall: 5/5
 Returning to module information menu...  
 ```
 
-#### 3.1.5 Add/View Components and Their Weightages
+#### 3.1.5 Add/View Components and Their Weightages  
 
 This command allows you to add or view components, 
 and their weightages that adds up to 100 for an existing module.
@@ -501,15 +505,15 @@ Here are the modules in your Modules List:
 --------------------------------------------    
 Please choose which module you would like to review and enter the number:  
 > 1  
+--------------------------------------------  
 You have already added a review:  
 Very very very difficult for me:( But, very important to know!  
 5/5  
 
-Would you like to replace this with another review? [Y/N]  
-Mar 31, 2021 3:08:31 AM seedu.duke.features.moduleinfo.ModuleInfo printAlreadyAddedReviewMessage  
-WARNING: You will delete your old review. This cannot be undone.  
+Would you like to replace this with another review? [Y/N]
+This will delete your old review. This cannot be undone.
 > Y  
-  
+--------------------------------------------  
 Type '/end' to finish reviewing.  
 Enter your review for CS3243 below:  
 > The lectures were very entertaining. I have learnt a lot of   
@@ -570,8 +574,6 @@ Here are the modules in your Modules List:
 Enter the module number to delete review:  
 > 1  
 --------------------------------------------  
-Mar 31, 2021 3:15:51 AM seedu.duke.features.moduleinfo.ModuleInfo deleteReview  
-WARNING: You are making a change that cannot be undone.  
 Are you sure you want to delete this review? [Y/N]  
 For CS2113T:  
 Review:  
@@ -580,7 +582,8 @@ Assignments and quizzes helped me learn concepts faster.
 Overall: 5/5    
 > Y  
 --------------------------------------------  
-You've deleted this review:  
+For this module: CS2113T - 
+You've deleted this review: 
 The lectures were very entertaining. I have learnt a lot of important algorithms.   
 Assignments and quizzes helped me learn concepts faster.   
 Overall: 5/5  
