@@ -197,7 +197,7 @@ allow Connoisseur to use the saved _sort method_ (refer to [4.1.3](#413-sort-rev
 * `earliest`
 * `latest`
   
-<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed after the commmand. If blank spaces are
+<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed after the command. If blank spaces are
   typed before the command, Connoisseur will detect it as an invalid command.
 
 <span>&#10071;</span> The command 'list' is case-insensitive. On the other hand, when inputting sorting method ensure it is in lower case.<br>
