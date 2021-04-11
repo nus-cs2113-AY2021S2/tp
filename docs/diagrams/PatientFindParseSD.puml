@@ -1,25 +1,32 @@
 @startuml
 
+hide footbox
+
+participant ":PatientParser"
+participant ":MainChecker"
+participant ":UI"
+participant ":PatientChecker"
+
 mainframe <b> sub diagram </b> parsing user input in patient instance
 
-    PatientParser -> MainChecker: checkNumInput()
+    ":PatientParser" -> ":MainChecker": checkNumInput()
 
-    MainChecker --> PatientParser
+    ":MainChecker" --> ":PatientParser"
 
-    PatientParser -> UI :smartCommandRecognition()
+    ":PatientParser" -> ":UI" :smartCommandRecognition()
 
-    UI --> PatientParser :String_Intended_Command
+    ":UI" --> ":PatientParser" :String_Intended_Command
 
-    create PatientChecker
+    create ":PatientChecker"
 
-    PatientParser -> PatientChecker : checkFind()
+    ":PatientParser" -> ":PatientChecker" : checkFind()
 
-    PatientChecker -> PatientChecker : emptySpaceCheck()
+    ":PatientChecker" -> ":PatientChecker" : emptySpaceCheck()
 
-    PatientChecker -> PatientChecker : checkLength()
+    ":PatientChecker" -> ":PatientChecker" : checkLength()
 
-    PatientChecker -> PatientChecker : illegalCharacterChecker()
+    ":PatientChecker" -> ":PatientChecker" : illegalCharacterChecker()
 
-    PatientChecker --> PatientParser
+    ":PatientChecker" --> ":PatientParser"
 
 @enduml

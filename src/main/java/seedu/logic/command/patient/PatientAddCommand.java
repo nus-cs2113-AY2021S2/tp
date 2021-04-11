@@ -5,7 +5,7 @@ import seedu.model.patient.PatientList;
 import seedu.ui.PatientUI;
 
 /**
- *
+ * Represents a command that allows users to add a new patient to the list of patients.
  */
 public class PatientAddCommand extends Command {
 

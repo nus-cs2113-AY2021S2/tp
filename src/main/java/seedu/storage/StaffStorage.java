@@ -103,8 +103,7 @@ public class StaffStorage {
         try {
             File myObj = new File(filePath);
             saveFile.getParentFile().mkdirs();
-            if (myObj.createNewFile()) {
-            }
+            myObj.createNewFile();
             logger.log(Level.INFO, "New Staff file and directory created");
         } catch (IOException e) {
             System.out.println("OOPS! I can't create the directory or file!");

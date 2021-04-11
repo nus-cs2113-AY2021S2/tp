@@ -5,7 +5,11 @@ import seedu.exceptions.NoInputException;
 import seedu.exceptions.nurseschedules.InvalidiDTypeException;
 import seedu.logic.errorchecker.NurseScheduleChecker;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 class NurseScheduleCheckerTest {
 
@@ -38,8 +42,7 @@ class NurseScheduleCheckerTest {
     @Test
     void testCheckEmptyInput() {
         String input = "";
-        assertThrows(NoInputException.class,
-                () ->NurseScheduleChecker.checkEmptyInput(input));
+        assertThrows(NoInputException.class, () -> NurseScheduleChecker.checkEmptyInput(input));
     }
 
     @Test
@@ -51,42 +54,36 @@ class NurseScheduleCheckerTest {
     @Test
     void testInvalidNurseID_WrongLength() {
         String userID = "N123456789";
-        assertThrows(InvalidiDTypeException.class,
-                () -> NurseScheduleChecker.checkValidNurseID(userID));
+        assertThrows(InvalidiDTypeException.class, () -> NurseScheduleChecker.checkValidNurseID(userID));
     }
 
     @Test
     void testInvalidNurseID_WrongIdentifier() {
         String userID = "A12345";
-        assertThrows(InvalidiDTypeException.class,
-                () -> NurseScheduleChecker.checkValidNurseID(userID));
+        assertThrows(InvalidiDTypeException.class, () -> NurseScheduleChecker.checkValidNurseID(userID));
     }
 
     @Test
     void testInvalidNurseID_WrongData() {
         String userID = "NABCDE";
-        assertThrows(InvalidiDTypeException.class,
-                () -> NurseScheduleChecker.checkValidNurseID(userID));
+        assertThrows(InvalidiDTypeException.class, () -> NurseScheduleChecker.checkValidNurseID(userID));
     }
 
     @Test
     void testInvalidPatientID_WrongLength() {
         String userID = "P123456789";
-        assertThrows(InvalidiDTypeException.class,
-                () -> NurseScheduleChecker.checkValidNurseID(userID));
+        assertThrows(InvalidiDTypeException.class, () -> NurseScheduleChecker.checkValidNurseID(userID));
     }
 
     @Test
     void testInvalidPatientID_WrongIdentifier() {
         String userID = "A12345";
-        assertThrows(InvalidiDTypeException.class,
-                () -> NurseScheduleChecker.checkValidNurseID(userID));
+        assertThrows(InvalidiDTypeException.class, () -> NurseScheduleChecker.checkValidNurseID(userID));
     }
 
     @Test
     void testInvalidPatientID_WrongData() {
         String userID = "PABCDE";
-        assertThrows(InvalidiDTypeException.class,
-                () -> NurseScheduleChecker.checkValidNurseID(userID));
+        assertThrows(InvalidiDTypeException.class, () -> NurseScheduleChecker.checkValidNurseID(userID));
     }
 }

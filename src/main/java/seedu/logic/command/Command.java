@@ -1,6 +1,6 @@
 package seedu.logic.command;
 
-import seedu.exceptions.DuplicateIDException;
+import seedu.exceptions.DuplicateIdException;
 import seedu.exceptions.inventory.InvalidQuantityException;
 import seedu.exceptions.nurseschedules.NurseIdNotFound;
 import seedu.exceptions.nurseschedules.InvalidiDTypeException;
@@ -25,6 +25,9 @@ import seedu.ui.StaffUI;
 
 import java.io.IOException;
 
+/**
+ * Abstract class that represents a command to be executed.
+ */
 public abstract class Command {
 
     public Command() {
@@ -47,7 +50,7 @@ public abstract class Command {
     }
 
     public void execute(NurseScheduleList nurseSchedule, NurseScheduleUI ui) throws NurseIdNotFound,
-            InvalidiDTypeException, NurseCrossValidationError, DuplicateIDException, PatientIdNotFound,
+            InvalidiDTypeException, NurseCrossValidationError, DuplicateIdException, PatientIdNotFound,
             PatientCrossValidationError, DuplicateScheduleException {
     }
 

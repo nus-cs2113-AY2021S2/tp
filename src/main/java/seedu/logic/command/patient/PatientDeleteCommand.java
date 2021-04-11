@@ -4,6 +4,9 @@ import seedu.logic.command.Command;
 import seedu.model.patient.PatientList;
 import seedu.ui.PatientUI;
 
+/**
+ * Represents a command that allows users to delete an existing patient from the list of patients.
+ */
 public class PatientDeleteCommand extends Command {
 
     private String args;

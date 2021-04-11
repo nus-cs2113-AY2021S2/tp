@@ -1,16 +1,19 @@
 package seedu.logic.errorchecker;
 
 import seedu.duke.Constants;
+import seedu.exceptions.CorruptedFileException;
+import seedu.exceptions.DuplicateIdException;
 import seedu.exceptions.EmptyListException;
 import seedu.exceptions.HealthVaultException;
-import seedu.exceptions.IDNotFoundException;
-import seedu.exceptions.CorruptedFileException;
-import seedu.exceptions.InvalidDateException;
-import seedu.exceptions.DuplicateIDException;
-import seedu.exceptions.doctorappointment.DocIdNotFoundException;
-import seedu.exceptions.doctorappointment.InvalidGenderException;
+import seedu.exceptions.IdNotFoundException;
 import seedu.exceptions.IllegalCharacterException;
-import seedu.exceptions.doctorappointment.WrongAptIDFormatException;
+import seedu.exceptions.InvalidDateException;
+import seedu.exceptions.InvalidIdException;
+import seedu.exceptions.InvalidGenderException;
+import seedu.exceptions.doctorappointment.DocIdNotFoundException;
+import seedu.exceptions.doctorappointment.WrongAptIdFormatException;
+import seedu.exceptions.doctorappointment.WrongIdFormatException;
+import seedu.exceptions.InvalidIntegerException;
 import seedu.logger.HealthVaultLogger;
 import seedu.model.doctorappointment.AppointmentList;
 import seedu.model.doctorappointment.DoctorAppointment;
@@ -31,7 +34,7 @@ public class DoctorAppointmentChecker extends MainChecker {
     private static String doctorID;
     private static String appointmentID;
     private static String name;
-    private static String ID;
+    private static String id;
     private static String gender;
     private static String date;
     public static Logger logger = HealthVaultLogger.getLogger();
@@ -54,7 +57,7 @@ public class DoctorAppointmentChecker extends MainChecker {
             throw new DocIdNotFoundException(doctorID);
         }
         if (!isValidAppointmentID(appointmentID)) {
-            throw new IDNotFoundException(appointmentID);
+            throw new IdNotFoundException(appointmentID);
         }
         illegalCharacterChecker(name, "name");
         if (!isValidGender(gender)) {
@@ -70,13 +73,18 @@ public class DoctorAppointmentChecker extends MainChecker {
      * @throws HealthVaultException If the data to execute list command does not fit the parameters.
      */
     public static void checkValidDataForList(String[] input) throws HealthVaultException {
-        ID = input[1];
+        id = input[1];
 
-        if (AppointmentList.appointmentList.size() == 0) throw new EmptyListException();
-        if (ID.equals("all")) return;
+        if (AppointmentList.appointmentList.size() == 0) {
+            throw new EmptyListException();
+        }
+        if (id.equals("all")) {
+            return;
+        }
+        checkIdDuringParse(id);
         logger.log(Level.INFO, "Checking for Valid data after list command");
-        if (!isValidDocID(ID) && !isValidListAppointmentID(ID)) {
-            throw new seedu.exceptions.InvalidIDException();
+        if (!isValidDocID(id) && !isValidListAppointmentID(id)) {
+            throw new InvalidIdException();
         }
     }
 
@@ -84,14 +92,15 @@ public class DoctorAppointmentChecker extends MainChecker {
      * Checks the data is valid to execute the Delete command.
      *
      * @param input String Array from Input.
-     * @throws seedu.exceptions.InvalidIDException If the data to execute delete command does not fit the parameters.
+     * @throws InvalidIdException If the data to execute delete command does not fit the parameters.
      */
 
-    public static void checkValidDataForDelete(String[] input) throws seedu.exceptions.InvalidIDException {
-        ID = input[1];
+    public static void checkValidDataForDelete(String[] input) throws HealthVaultException {
+        id = input[1];
+        checkIdDuringParse(id);
         logger.log(Level.INFO, "Checking for Valid data after delete command");
-        if (!isValidIdToDelete(ID)) {
-            throw new seedu.exceptions.InvalidIDException();
+        if (!isValidIdToDelete(id)) {
+            throw new InvalidIdException();
         }
     }
 
@@ -99,18 +108,37 @@ public class DoctorAppointmentChecker extends MainChecker {
      * Checks if the Appointment ID is in the correct format.
      *
      * @param id The input Appointment Id.
-     * @throws WrongAptIDFormatException If the data does not fit the parameters.
+     * @throws WrongAptIdFormatException If the data does not fit the parameters.
      */
 
-    public static void checkAptID(String id) throws WrongAptIDFormatException {
+    public static void checkAptID(String id) throws WrongAptIdFormatException {
         try {
             Integer.parseInt(id.substring(1));
             logger.log(Level.INFO, "Checking for Valid Appointment ID");
         } catch (NumberFormatException e) {
-            throw new WrongAptIDFormatException();
+            throw new WrongAptIdFormatException();
         }
         if (!(id.charAt(0) == 'A') || (id.length()) != 6) {
-            throw new WrongAptIDFormatException();
+            throw new WrongAptIdFormatException();
+        }
+    }
+
+    /**
+     * Checks if the ID is in the correct format.
+     *
+     * @param id The input.
+     * @throws WrongIdFormatException If the data does not fit the parameters.
+     */
+
+    public static void checkIdDuringParse(String id) throws HealthVaultException {
+        try {
+            Integer.parseInt(id.substring(1));
+            logger.log(Level.INFO, "Testing if the input is in the format.");
+        } catch (NumberFormatException e) {
+            throw new WrongIdFormatException();
+        }
+        if ((!(id.charAt(0) == 'A') && !(id.charAt(0) == 'D')) || (id.length()) != 6) {
+            throw new WrongIdFormatException();
         }
     }
 
@@ -145,7 +173,7 @@ public class DoctorAppointmentChecker extends MainChecker {
     }
 
     /**
-     * Checks data that is being read from storage
+     * Checks data that is being read from storage.
      *
      * @param input       input
      * @param storageList Current loaded files of data.
@@ -227,7 +255,7 @@ public class DoctorAppointmentChecker extends MainChecker {
                     }
                 }
             }
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException | InvalidIntegerException e) {
             System.out.println(e.getMessage());
         }
         return false;
@@ -250,7 +278,7 @@ public class DoctorAppointmentChecker extends MainChecker {
         if (character[0].equals("A")) {
             for (DoctorAppointment id : AppointmentList.appointmentList) {
                 if (id.getAppointmentId().equals(appointmentID)) {
-                    throw new DuplicateIDException(appointmentID);
+                    throw new DuplicateIdException(appointmentID);
                 }
             }
             return true;
@@ -312,20 +340,20 @@ public class DoctorAppointmentChecker extends MainChecker {
     /**
      * Checks if the input date is valid.
      *
-     * @param Id appointment/doctor Id to be checked.
-     * @return true if the corresponding Id exists in teh appointmentList.
+     * @param id appointment/doctor iD to be checked.
+     * @return true if the corresponding iD exists in teh appointmentList.
      */
-    public static boolean isValidIdToDelete(String Id) {
-        String[] IdKeyword = Id.split("");
+    public static boolean isValidIdToDelete(String id) {
+        String[] idKeyword = id.split("");
         logger.log(Level.INFO, "Checking Validity of Doctor/ Appointment ID to be deleted");
 
         for (DoctorAppointment doc : AppointmentList.appointmentList) {
-            if (IdKeyword[0].equals("A")) {
-                if (doc.getAppointmentId().equals(Id)) {
+            if (idKeyword[0].equals("A")) {
+                if (doc.getAppointmentId().equals(id)) {
                     return true;
                 }
-            } else if (IdKeyword[0].equals("D")) {
-                if (doc.getDoctorId().equals(Id)) {
+            } else if (idKeyword[0].equals("D")) {
+                if (doc.getDoctorId().equals(id)) {
                     return true;
                 }
             }

@@ -11,7 +11,7 @@ public class UnrecognizedCommandException extends HealthVaultException {
      * @return Error Message.
      */
     public String getMessage() {
-        return "OOPS! Your command may not be valid! \n" +
-                "Please check the list of available commands using \"help\"";
+        return "OOPS! Your command may not be valid! \n"
+                + "Please check the list of available commands using \"help\"";
     }
 }

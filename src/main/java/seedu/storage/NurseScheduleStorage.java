@@ -49,17 +49,17 @@ public class NurseScheduleStorage {
      * Reads NurseSchedule.txt.
      *
      * @return arraylist populated with valid data
-     * @throws NurseIdNotFound if nurseID does not exist
-     * @throws InvalidiDTypeException if ID is invalid
-     * @throws FileNotFoundException if file does not exist
-     * @throws NurseCrossValidationError if Staff.txt cannot be loaded
-     * @throws PatientIdNotFound if patientID does not exit
+     * @throws NurseIdNotFound             if nurseID does not exist
+     * @throws InvalidiDTypeException      if ID is invalid
+     * @throws FileNotFoundException       if file does not exist
+     * @throws NurseCrossValidationError   if Staff.txt cannot be loaded
+     * @throws PatientIdNotFound           if patientID does not exit
      * @throws PatientCrossValidationError if Patients.txt cannot be loaded
-     * @throws InvalidDateException if date is invalid
+     * @throws InvalidDateException        if date is invalid
      */
     private ArrayList<NurseSchedule> readFile() throws NurseIdNotFound, InvalidiDTypeException,
             FileNotFoundException, NurseCrossValidationError, PatientIdNotFound,
-            PatientCrossValidationError, InvalidDateException {
+            PatientCrossValidationError, InvalidDateException, NumberFormatException {
         FileInputStream file = new FileInputStream(FILE_PATH);
         Scanner sc = new Scanner(file);
 
@@ -72,7 +72,7 @@ public class NurseScheduleStorage {
             NurseScheduleChecker.isValidDate(details[2]);
             nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
         }
-        logger.log(Level.INFO,"Nurse Schedule file loaded");
+        logger.log(Level.INFO, "Nurse Schedule file loaded");
         return nurseSchedules;
     }
 
@@ -91,7 +91,7 @@ public class NurseScheduleStorage {
             }
             writer.close();
         } catch (IOException e) {
-            logger.log(Level.WARNING,"Error writing to NurseSchedule.txt");
+            logger.log(Level.WARNING, "Error writing to NurseSchedule.txt");
         }
         logger.log(Level.INFO, "Nurse Schedule file saved");
     }
@@ -100,13 +100,13 @@ public class NurseScheduleStorage {
      * Function creates, read and loads NurseSchedule.txt.
      *
      * @return populated arraylist
-     * @throws NurseIdNotFound if nurseID does not exist
-     * @throws InvalidiDTypeException if ID is invalid
-     * @throws FileNotFoundException if file does not exist
-     * @throws NurseCrossValidationError if Staff.txt cannot be loaded
-     * @throws PatientIdNotFound if patientID does not exit
+     * @throws NurseIdNotFound             if nurseID does not exist
+     * @throws InvalidiDTypeException      if ID is invalid
+     * @throws FileNotFoundException       if file does not exist
+     * @throws NurseCrossValidationError   if Staff.txt cannot be loaded
+     * @throws PatientIdNotFound           if patientID does not exit
      * @throws PatientCrossValidationError if Patients.txt cannot be loaded
-     * @throws InvalidDateException if date is invalid
+     * @throws InvalidDateException        if date is invalid
      */
     public ArrayList<NurseSchedule> load() throws FileNotFoundException, InvalidiDTypeException,
             NurseIdNotFound, NurseCrossValidationError, PatientIdNotFound,
@@ -122,25 +122,29 @@ public class NurseScheduleStorage {
      * @return populated patientlist
      * @throws FileNotFoundException if file not found
      */
-    public static ArrayList<Patient> loadPatientFile() throws FileNotFoundException {
+    public static ArrayList<Patient> loadPatientFile() throws FileNotFoundException, PatientCrossValidationError {
         ArrayList<Patient> patientList = new ArrayList<>();
 
         File fileName = new File(PATIENT_FILE_PATH);
         Scanner fileReader = new Scanner(fileName);
 
-        while (fileReader.hasNextLine()) {
-            String input = fileReader.nextLine();
-            String[] data = input.trim().split("\\|");
-            int numberOfTokens = data.length;
-            ArrayList<String> cleanString = new ArrayList<>();
-            for (int i = 0; i < numberOfTokens; i++) {
-                cleanString.add(NurseScheduleUI.cleanseInput(data[i]).trim());
+        try {
+            while (fileReader.hasNextLine()) {
+                String input = fileReader.nextLine();
+                String[] data = input.trim().split("\\|");
+                int numberOfTokens = data.length;
+                ArrayList<String> cleanString = new ArrayList<>();
+                for (int i = 0; i < numberOfTokens; i++) {
+                    cleanString.add(NurseScheduleUI.cleanseInput(data[i]).trim());
+                }
+                Patient tempPatient = new Patient(data[0].trim(), data[1].trim(),
+                        Integer.parseInt(data[2].trim()), data[3], data[4], data[5]);
+                patientList.add(tempPatient);
             }
-            Patient tempPatient = new Patient(data[0].trim(), data[1].trim(),
-                    Integer.parseInt(data[2].trim()), data[3], data[4], data[5]);
-            patientList.add(tempPatient);
+            fileReader.close();
+        } catch (NumberFormatException e) {
+            throw new PatientCrossValidationError();
         }
-        fileReader.close();
         return patientList;
     }
 }

@@ -24,11 +24,6 @@ public class Constants {
     public static final String SCHEDULES_FILE_PATH = "data/NurseSchedule.txt";
 
     public static final String HEALTHVAULT_LOGS_FILE_PATH = "data/logs/HealthVaultLogs.log";
-    public static final String PATIENT_LOGS_FILE_PATH = "";
-    public static final String APPOINTMENT_LOGS_FILE_PATH = "";
-    public static final String INVENTORY_LOGS_FILE_PATH = "";
-    public static final String STAFF_LOGS_FILE_PATH = "";
-    public static final String SCHEDULES_LOGS_FILE_PATH = "data/logs/NurseSchedules.log";
 
     public static final String TO_STAFF_INSTANCE = "staff";
     public static final String TO_PATIENT_INSTANCE = "patient";
@@ -56,7 +51,6 @@ public class Constants {
     public static final String[] VALID_GENDER_INPUT = {"m", "f", "others"};
 
     // Miscellaneous
-    public static final String BLANK = "";
     public static final String MARK_BLANK = "-";
     public static final String RETURN_DESCRIPTION = "Returns you to the Start Menu!";
 
@@ -121,7 +115,7 @@ public class Constants {
     public static final String PATIENT_DELETE_FORMAT = "delete/[Patient ID]";
     public static final String APPOINTMENTS_DELETE_FORMAT = "delete/[DoctorID/Appointment ID]";
     public static final String SCHEDULES_DELETE_FORMAT = "delete/[Nurse ID]/[Date (DDMMYYYY)]";
-    public static final String INVENTORY_DELETE_FORMAT = "delete/[Drug Name]";
+    public static final String INVENTORY_DELETE_FORMAT = "delete/[Drug Name]/[Quantity]";
 
 
     // FIND FUNCTION DESCRIPTION

@@ -3,17 +3,17 @@ package seedu.exceptions;
 /**
  * Exception to handle duplicate ID when adding objects.
  */
-public class DuplicateIDException extends HealthVaultException {
+public class DuplicateIdException extends HealthVaultException {
 
-    private String IDType;
+    private String idType;
 
     /**
      * Constructor for DuplicateIDException.
      *
-     * @param IDType Type of ID (Nurse/Doctor/Patient) input.
+     * @param idType Type of ID (Nurse/Doctor/Patient) input.
      */
-    public DuplicateIDException(String IDType) {
-        this.IDType = IDType;
+    public DuplicateIdException(String idType) {
+        this.idType = idType;
     }
 
 
@@ -23,6 +23,6 @@ public class DuplicateIDException extends HealthVaultException {
      * @return Error Message.
      */
     public String getMessage() {
-        return "The " + IDType + " ID has already been taken! Use a different ID!";
+        return "The " + idType + " ID has already been taken! Use a different ID!";
     }
 }

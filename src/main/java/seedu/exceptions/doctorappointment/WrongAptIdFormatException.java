@@ -5,7 +5,7 @@ import seedu.exceptions.HealthVaultException;
 /**
  * Exception to handle invalid Appointment Id Format.
  */
-public class WrongAptIDFormatException extends HealthVaultException {
+public class WrongAptIdFormatException extends HealthVaultException {
     /**
      * Returns the error message.
      *

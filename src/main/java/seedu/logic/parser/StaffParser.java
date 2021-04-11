@@ -3,7 +3,12 @@ package seedu.logic.parser;
 import seedu.exceptions.HealthVaultException;
 import seedu.logger.HealthVaultLogger;
 import seedu.logic.command.Command;
-import seedu.logic.command.staff.*;
+import seedu.logic.command.staff.StaffAddCommand;
+import seedu.logic.command.staff.StaffDeleteCommand;
+import seedu.logic.command.staff.StaffListCommand;
+import seedu.logic.command.staff.StaffReturnCommand;
+import seedu.logic.command.staff.StaffFindCommand;
+import seedu.logic.command.staff.StaffHelpCommand;
 import seedu.logic.errorchecker.MainChecker;
 import seedu.logic.errorchecker.StaffChecker;
 import seedu.model.staff.StaffList;
@@ -70,7 +75,7 @@ public class StaffParser {
         case ("find"):
             logger.log(Level.INFO, "Find Command recognised");
             MainChecker.checkNumInput(line,2,2);
-            c = new StaffFindCommand(line);
+            c = new StaffFindCommand(line.split("/")[1].trim());
             logger.log(Level.INFO, "Staff Find Command executed");
             break;
 

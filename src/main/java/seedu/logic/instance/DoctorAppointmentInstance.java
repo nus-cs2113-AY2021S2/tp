@@ -71,7 +71,8 @@ public class DoctorAppointmentInstance {
         while (!isReturnToStartMenu) {
             try {
                 String input = ui.getInput("Appointment");
-                UI.showLine(); // show the divider line ("_______")
+                //UI.showLine(); // show the divider line ("_______")
+                UI.printEmptyLine();
                 Command c = DoctorAppointmentParser.parse(input, details);
                 c.execute(details, ui);
                 isReturnToStartMenu = c.isExit();
@@ -89,7 +90,7 @@ public class DoctorAppointmentInstance {
                 System.out.println(e.getMessage());
                 DoctorAppointmentUI.printNewLine();
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                System.out.println("OOPS! Something went wrong!");
                 logger.log(Level.SEVERE, "Something went wrong that is not handled by Healthvault exception");
                 DoctorAppointmentUI.printNewLine();
             }

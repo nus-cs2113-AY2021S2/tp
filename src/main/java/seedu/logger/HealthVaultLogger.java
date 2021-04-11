@@ -8,6 +8,9 @@ import java.util.logging.SimpleFormatter;
 
 import static seedu.duke.Constants.HEALTHVAULT_LOGS_FILE_PATH;
 
+/**
+ * Main logger of HealthVault.
+ */
 public class HealthVaultLogger {
     public static HealthVaultLogger hvLogger = null;
     private Logger logger;
@@ -32,6 +35,11 @@ public class HealthVaultLogger {
         }
     }
 
+    /**
+     * Returns the common logger to the calling class.
+     *
+     * @return the main HealthVault logger.
+     */
     public static Logger getLogger() {
         if (hvLogger == null) {
             hvLogger = new HealthVaultLogger();

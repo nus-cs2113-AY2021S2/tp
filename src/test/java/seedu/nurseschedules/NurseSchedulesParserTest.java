@@ -11,22 +11,26 @@ import seedu.logic.parser.NurseSchedulesParser;
 
 import java.text.ParseException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class NurseSchedulesParserTest {
 
     @Test
     void testGetFirstWord() {
         NurseSchedulesParser parser = new NurseSchedulesParser();
-        assertEquals("test", parser.getFirstWord("test get first word"));
+        assertEquals("test", parser.getFirstWord("test/get/first/word"));
     }
 
     @Test
-    void testGetDetails() throws WrongInputsException, NoInputException, InsufficientInputException, ExcessInputException, IllegalCharacterException, InvalidDateException {
+    void testGetDetails() throws WrongInputsException, NoInputException,
+            InsufficientInputException, ExcessInputException,
+            IllegalCharacterException, InvalidDateException {
         NurseSchedulesParser parser = new NurseSchedulesParser();
         String[] details;
-        details = parser.getDetails("add test details padding", "add");
-        assertEquals("test", details[0]);
+        details = parser.getDetails("ADD/N12345/P12345/30012020", "add");
+        assertNull(details[0]);
     }
 
     @Test

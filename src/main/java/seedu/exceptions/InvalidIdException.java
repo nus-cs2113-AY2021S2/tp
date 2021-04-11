@@ -3,7 +3,7 @@ package seedu.exceptions;
 /**
  * Exception to handle invalid ID format.
  */
-public class InvalidIDException extends HealthVaultException{
+public class InvalidIdException extends HealthVaultException {
 
     /**
      * Returns invalid ID format error message.

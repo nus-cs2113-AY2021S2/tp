@@ -1,10 +1,11 @@
 package seedu.exceptions.staff;
+
 import seedu.exceptions.HealthVaultException;
 
 /**
  * Exception to handle invalid Staff ID input when adding Staff.
  */
-public class WrongStaffIDException extends HealthVaultException {
+public class WrongStaffIdException extends HealthVaultException {
 
     /**
      * Returns the invalid Staff ID error message.

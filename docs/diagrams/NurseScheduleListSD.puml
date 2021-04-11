@@ -1,0 +1,48 @@
+@startuml
+hide footbox
+
+actor user
+
+participant ":NurseScheduleInstance" as NurseScheduleInstance
+participant ":NurseScheduleParser" as NurseScheduleParser
+participant ":UI" as UI
+participant ":NurseScheduleChecker" as NurseScheduleChecker
+participant ":Command" as Command
+participant ":NurseScheduleList" as NurseScheduleList
+
+user -> NurseScheduleInstance: "list"
+
+NurseScheduleInstance -> NurseScheduleParser: nurseParse()
+
+NurseScheduleParser -> UI: smartCommandRecognition()
+
+UI --> NurseScheduleParser: String intended_command
+
+NurseScheduleParser -> NurseScheduleParser: getDetails()
+
+NurseScheduleParser -> NurseScheduleChecker: checkEmptyInput()
+
+NurseScheduleChecker --> NurseScheduleParser
+
+NurseScheduleParser -> NurseScheduleChecker: isValidDate()
+
+NurseScheduleChecker --> NurseScheduleParser
+
+NurseScheduleParser -> NurseScheduleChecker: checkNumInput()
+
+NurseScheduleChecker --> NurseScheduleParser
+
+NurseScheduleParser -> NurseScheduleChecker: illegalCharacterChecker()
+
+NurseScheduleChecker --> NurseScheduleParser
+
+NurseScheduleParser --> NurseScheduleInstance: NurseScheduleListCommand
+
+NurseScheduleInstance -> Command: execute()
+
+Command -> NurseScheduleList: listSchedules()
+
+NurseScheduleList -> NurseScheduleList: printSchedules()
+
+NurseScheduleList --> NurseScheduleInstance
+@enduml

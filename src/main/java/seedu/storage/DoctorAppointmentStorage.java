@@ -3,11 +3,16 @@ package seedu.storage;
 import seedu.duke.Constants;
 import seedu.exceptions.CorruptedFileException;
 import seedu.exceptions.HealthVaultException;
+import seedu.exceptions.InvalidIntegerException;
 import seedu.logger.HealthVaultLogger;
 import seedu.model.doctorappointment.AppointmentList;
 import seedu.logic.errorchecker.DoctorAppointmentChecker;
+
+import static seedu.logic.errorchecker.MainChecker.checkNumericInput;
+
 import seedu.model.doctorappointment.DoctorAppointment;
 import seedu.model.staff.Staff;
+import seedu.ui.DoctorAppointmentUI;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,10 +27,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DoctorAppointmentStorage {
-    private final static String staticFilePath = Constants.APPOINTMENT_FILE_PATH;
+    private static final String staticFilePath = Constants.APPOINTMENT_FILE_PATH;
     private final String filePath;
     private final File file;
-    private final static String STAFF_FILE_PATH = Constants.STAFF_FILE_PATH;
+    private static final String STAFF_FILE_PATH = Constants.STAFF_FILE_PATH;
     public static Logger logger = HealthVaultLogger.getLogger();
 
     /**
@@ -112,7 +117,7 @@ public class DoctorAppointmentStorage {
      * @throws FileNotFoundException if the file does not exists.
      */
 
-    public static ArrayList<Staff> loadDoctorFile() throws FileNotFoundException {
+    public static ArrayList<Staff> loadDoctorFile() throws FileNotFoundException, InvalidIntegerException {
         ArrayList<Staff> loadDoctorList = new ArrayList<>();
 
         File fileName = new File(STAFF_FILE_PATH);
@@ -121,10 +126,10 @@ public class DoctorAppointmentStorage {
         while (fileReader.hasNextLine()) {
             String input = fileReader.nextLine();
             String[] data = input.split("\\|");
+            checkNumericInput(data[2]);
             loadDoctorList.add(new Staff(data));
         }
         fileReader.close();
         return loadDoctorList;
     }
-
 }

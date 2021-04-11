@@ -7,8 +7,8 @@ import seedu.logic.parser.StaffParser;
 import seedu.model.staff.StaffList;
 import seedu.storage.StaffStorage;
 import seedu.ui.StaffUI;
+import seedu.ui.UI;
 
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -37,7 +37,7 @@ public class StaffInstance {
     public void run() {
         try {
             staffStorage.fileHandling(staffList);
-        } catch (HealthVaultException e) {
+        } catch (HealthVaultException | NumberFormatException | ArrayIndexOutOfBoundsException e) {
             logger.log(Level.WARNING, "Staff file corrupted.");
             StaffUI.corruptedFileErrorMessage();
             return;
@@ -46,26 +46,32 @@ public class StaffInstance {
         logger.log(Level.INFO, "Staff instance accessed.");
         while (true) {
             String line;
+            UI.printEmptyLine();
             line = staffUI.getInput("Staff");
             try {
                 Command c = staffParser.commandHandler(line, staffList);
-                if (c == null){
+                if (c == null) {
                     continue;
                 }
                 c.execute(staffList, staffUI, staffStorage);
+                UI.printEmptyLine();
                 if (c.isExit()) {
-                    System.out.println("Returning to start Menu!\n");
+                    System.out.println("Returning to Start Menu!\n");
                     logger.log(Level.WARNING, "Handling HealthVaultException.");
                     break;
                 }
             } catch (HealthVaultException e) {
                 System.out.println(e.getMessage());
+                UI.printEmptyLine();
                 logger.log(Level.WARNING, "Handling HealthVaultException.");
             } catch (NumberFormatException e) {
                 StaffUI.invalidNumericErrorMessage();
+                UI.printEmptyLine();
                 logger.log(Level.WARNING, "Handling NumberFormatException.");
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+                System.out.println("OOPS! Something went wrong!");
+                logger.log(Level.WARNING, "Something went wrong that is not handled by Healthvault exception");
+                UI.printEmptyLine();
             }
         }
     }

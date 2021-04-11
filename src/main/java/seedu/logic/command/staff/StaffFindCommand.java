@@ -4,7 +4,6 @@ import seedu.logic.command.Command;
 import seedu.model.staff.StaffList;
 import seedu.storage.StaffStorage;
 import seedu.ui.StaffUI;
-import seedu.ui.UI;
 
 import java.io.IOException;
 
@@ -18,10 +17,10 @@ public class StaffFindCommand extends Command {
     /**
      * Constructor for StaffFind command.
      *
-     * @param line Inputs to find Staff object.
+     * @param input Inputs to find Staff object.
      */
-    public StaffFindCommand(String line) {
-        this.input = line;
+    public StaffFindCommand(String input) {
+        this.input = input;
     }
 
     /**
@@ -33,8 +32,7 @@ public class StaffFindCommand extends Command {
      */
     @Override
     public void execute(StaffList staffList, StaffUI staffUI, StaffStorage staffStorage) throws IOException {
-        staffList.find(this.input.split("/")[1]);
-        UI.printEmptyLine();
+        staffList.find(this.input);
     }
 
     /**

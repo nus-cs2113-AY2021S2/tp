@@ -16,9 +16,18 @@ import java.util.Locale;
 import static seedu.ui.UI.cleanseInput;
 import static seedu.ui.UI.smartCommandRecognition;
 
+/**
+ * Parses the commands in the start menu into a format usable by the program.
+ */
 public class StartMenuParser {
     static final String[] COMMANDS = {"staff", "patient", "appointments", "schedules", "inventory", "help", "exit"};
 
+    /**
+     * Converts the user's input into a format that is usable and non-volatile.
+     *
+     * @param userInput string that the user has inputted.
+     * @return command specific to the request of the user.
+     */
     public Command startMenuParse(String userInput) {
         assert userInput != null : "user input should not be null";
         assert !(userInput.isEmpty()) : "user input should not be empty";

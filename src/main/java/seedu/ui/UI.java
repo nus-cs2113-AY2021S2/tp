@@ -4,10 +4,30 @@ import seedu.duke.Constants;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
-import static seedu.duke.Constants.*;
+
+import static seedu.duke.Constants.EXIT_COMMAND;
+import static seedu.duke.Constants.EXIT_COMMAND_DESCRIPTION;
+import static seedu.duke.Constants.HELP_COMMAND;
+import static seedu.duke.Constants.HELP_COMMAND_DESCRIPTION;
+import static seedu.duke.Constants.HELP_HEADER_COMMAND;
+import static seedu.duke.Constants.HELP_HEADER_DESCRIPTION;
+import static seedu.duke.Constants.HELP_HEADER_FORMAT;
+import static seedu.duke.Constants.MARK_BLANK;
+
+import static seedu.duke.Constants.TO_APPOINTMENTS_INSTANCE;
+import static seedu.duke.Constants.TO_APPOINTMENTS_INSTANCE_DESCRIPTION;
+import static seedu.duke.Constants.TO_INVENTORY_INSTANCE;
+import static seedu.duke.Constants.TO_INVENTORY_INSTANCE_DESCRIPTION;
+import static seedu.duke.Constants.TO_PATIENT_INSTANCE;
+import static seedu.duke.Constants.TO_PATIENT_INSTANCE_DESCRIPTION;
+import static seedu.duke.Constants.TO_SCHEDULES_INSTANCE;
+import static seedu.duke.Constants.TO_SCHEDULES_INSTANCE_DESCRIPTION;
+
+import static seedu.duke.Constants.TO_STAFF_INSTANCE;
+import static seedu.duke.Constants.TO_STAFF_INSTANCE_DESCRIPTION;
+
 
 public class UI {
     static final int LARGE_NUMBER = 100; // Just a large number
@@ -19,15 +39,24 @@ public class UI {
         return scanner.nextLine().trim();
     }
 
+
+    /**
+     * This function scans the user input and returns it to the calling function.
+     *
+     * @param requestMenu the Menu that accepts the input from the user.
+     * @return the user input that has been cleared of all greedy white spaces.
+     */
     public String getInput(String requestMenu) {
         System.out.print(requestMenu + " --> ");
         String input = scanner.nextLine();
 
+        //clears empty inputs
         while (input.trim().isEmpty()) {
             System.out.print(requestMenu + " --> ");
             input = scanner.nextLine();
         }
 
+        //clears greedy white spaces
         return input.replaceAll("\\s+", " ").trim();
     }
 
@@ -49,18 +78,18 @@ public class UI {
         List<String> list = Arrays.asList(commands);
 
         // If the input exactly matches any command in the list of commands
-        if( list.contains(input)) {
+        if (list.contains(input)) {
             return input;
         }
         // If the input is too large/too small
-        if (input.length() >= maxLengthCommand+ALLOWANCE || input.length() < 1) {
+        if (input.length() >= maxLengthCommand + ALLOWANCE || input.length() < 1) {
             return UNKNOWN_COMMAND;
         }
 
         int temp;
         for (int i = 0; i < commands.length; i++) {
             temp = checkCommandDifference(commands[i], input);
-            if (temp < diff ) {
+            if (temp < diff) {
                 diff = temp;
                 index = i;
             }
@@ -91,7 +120,7 @@ public class UI {
         Arrays.sort(first);
         Arrays.sort(second);
         int numDiff = 0;
-        int lengthDiff = abs(first.length -second.length);
+        int lengthDiff = abs(first.length - second.length);
         if (lengthDiff > 2) {
             return LARGE_NUMBER;
         }
@@ -106,7 +135,8 @@ public class UI {
         } else {
             while (i < second.length - 1) {
                 if (first[i] != (second[i]) && lengthDiff > 0) {
-                    i++; numDiff++;
+                    i++;
+                    numDiff++;
                     lengthDiff--;
                     continue;
                 } else if (first[i] != second[i]) {
@@ -137,6 +167,7 @@ public class UI {
     public static void showLine() {
         System.out.println(Constants.LINEBREAK);
     }
+
     public static void showLongLine() {
         System.out.println(Constants.LISTLINEBREAK);
     }
@@ -151,8 +182,6 @@ public class UI {
     }
 
     public static void printStartMenu() {
-
-        UI.printEmptyLine();
 
         UI.printEmptyLine();
         int[] lengthPara = {15,40,10};
@@ -174,12 +203,12 @@ public class UI {
     }
 
     public static void returningToStartMenuMessage() {
-        System.out.println("Returning to start menu!");
+        System.out.println("Returning to Start Menu!");
     }
+
     public static void unidentifiedErrorMessage() {
         System.out.println("Something went wrong!\n");
     }
-
 
     public void showLoadingError() {
         System.out.println("OOPS! There was an error loading the file!");
@@ -190,15 +219,14 @@ public class UI {
     }
 
     public static void printer(String[] string, int[] length) {
-        for (int i=0; i<length.length; i++) {
+        for (int i = 0; i < length.length; i++) {
             System.out.print(prettyPrint(string[i], length[i]));
         }
         System.out.print("\n");
     }
 
-
     public static boolean isTypo(String command) {
-        System.out.println("Do you mean \"" + command +"\" (y/n)");
+        System.out.println("Do you mean \"" + command + "\" (y/n)");
         return scanInput().equals("y");
     }
 
