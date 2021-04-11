@@ -5,7 +5,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.connoisseur.review.Review;
-import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,15 +12,12 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.io.PrintStream;
 import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
 
 public class CommandsTest {
 
     private final PrintStream originalOut = System.out;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     Ui ui = new Ui();
-    Storage storage = new Storage(ui);
-    Commands commands = new Commands(ui, storage);
     ReviewList reviewList = new ReviewList(ui);
 
     @BeforeEach
@@ -55,9 +51,4 @@ public class CommandsTest {
         System.setOut(originalOut);
     }
 
-    @Test
-    void checkAndPrintDuplicate() {
-        reviewList.reviews = new ArrayList<Review>();
-        assertFalse(reviewList.checkAndPrintDuplicateReview("Avengers"));
-    }
 }

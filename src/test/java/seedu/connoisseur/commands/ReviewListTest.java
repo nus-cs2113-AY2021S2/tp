@@ -1,10 +1,12 @@
+//@@author {jhjhjajh}
 package seedu.connoisseur.commands;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.connoisseur.review.Review;
-import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -13,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ReviewListTest {
 
     Ui ui = new Ui();
-    Storage storage = new Storage(ui);
     ReviewList reviewList = new ReviewList(ui);
 
     @Test
@@ -58,4 +59,14 @@ public class ReviewListTest {
         reviewList.reviews.add(reviewb);
         assertEquals(0, reviewList.viewReview("superman"));
     }
+
+    @Test
+    void checkAndPrintDuplicate() {
+        reviewList.reviews = new ArrayList<Review>();
+        assertFalse(reviewList.checkAndPrintDuplicateReview("Avengers"));
+        Review reviewa = new Review("superman", "category", 5, "description");
+        reviewList.reviews.add(reviewa);
+        assertTrue(reviewList.checkAndPrintDuplicateReview("sUperMan"));
+    }
+
 }
