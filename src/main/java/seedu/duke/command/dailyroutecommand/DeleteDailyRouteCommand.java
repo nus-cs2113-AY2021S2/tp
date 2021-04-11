@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 
 /**
- * Deletes a daily schedule
+ * Deletes a daily schedule.
  */
 public class DeleteDailyRouteCommand extends Command {
     protected DailyRouteUi ui;
@@ -22,7 +22,7 @@ public class DeleteDailyRouteCommand extends Command {
     }
 
     /**
-     * Gets the day specified by the user and deletes the corresponding schedule entry by mapping an empty array list in dailyRoute
+     * Gets the day specified by the user and deletes the corresponding schedule entry by mapping an empty array list in dailyRoute.
      * Success message is printed using ui at the end.
      */
     @Override

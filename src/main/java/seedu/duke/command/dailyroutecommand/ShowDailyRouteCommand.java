@@ -12,7 +12,7 @@ import seedu.duke.router.Router;
 import java.util.ArrayList;
 
 /**
- * Shows a daily schedule
+ * Shows a daily schedule.
  */
 public class ShowDailyRouteCommand extends Command {
     protected DailyRouteUi ui;

@@ -23,9 +23,9 @@ public class DailyRoute {
 
 
     /**
-     * maps the day to the inputted schedule
-     * @param day is the day input from the user
-     * @param blocks is the schedule input from the user
+     * maps the day to the inputted schedule.
+     * @param day is the day input from the user.
+     * @param blocks is the schedule input from the user.
      */
     public void addDailyRoute(String day, ArrayList<String> blocks) {
         dailyRoutes.replace(day, blocks);
@@ -34,8 +34,8 @@ public class DailyRoute {
     }
 
     /**
-     * Returns the schedule to the inputted day
-     * @param day  is the day input from the user
+     * Returns the schedule to the inputted day.
+     * @param day  is the day input from the user.
      */
     public ArrayList<String> getDailyRoute(String day) {
         return dailyRoutes.get(day);
@@ -55,7 +55,7 @@ public class DailyRoute {
     }
 
     /**
-     * Returns the days in the week
+     * Returns the days in the week.
      */
     public ArrayList<String> getValidDays() {
         return days;

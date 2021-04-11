@@ -12,10 +12,10 @@ import java.util.LinkedList;
 public class Router {
 
     /**
-     * Returns a route between 2 locations
-     * @param nusMap is the initialized NUS map
-     * @param from is the block to route from
-     * @param to is the block to route to
+     * Returns a route between 2 locations.
+     * @param nusMap is the initialized NUS map.
+     * @param from is the block to route from.
+     * @param to is the block to route to.
      */
     public String execute(NusMap nusMap, String from, String to) {
         assert from != null : "From block cannot be null";
@@ -27,10 +27,10 @@ public class Router {
 
     /**
      * This prepares data for the routing algorithm and the blocks returned from the algorithm to route.
-     * @param nusMap is the initialized NUS map
-     * @param route holds the route from the routing algorithm
-     * @param from is the block to route from
-     * @param to is the block to route to
+     * @param nusMap is the initialized NUS map.
+     * @param route holds the route from the routing algorithm.
+     * @param from is the block to route from.
+     * @param to is the block to route to.
      */
     public void findShortestRoute(NusMap nusMap, LinkedList<Block> route, String from, String to) {
         nusMap.resetVisitedFlag();
@@ -49,10 +49,10 @@ public class Router {
 
     /**
      * This is the modified BFS routing algorithm.
-     * @param nusMap is the initialized NUS map
-     * @param predecessor previously visited blocks
-     * @param start is the block to route from
-     * @param destination is the block to route to
+     * @param nusMap is the initialized NUS map.
+     * @param predecessor previously visited blocks.
+     * @param start is the block to route from.
+     * @param destination is the block to route to.
      */
     public static void bfs(NusMap nusMap, HashMap<Block, Block> predecessor, Block start, Block destination) {
         LinkedList<Block> queue = new LinkedList<>();
@@ -75,7 +75,7 @@ public class Router {
     }
 
     /**
-     * This returns the route as a string
+     * This returns the route as a string.
      * @param route is the arraylist of blocks in the route.
      */
     public String getRouteAsString(LinkedList<Block> route) {

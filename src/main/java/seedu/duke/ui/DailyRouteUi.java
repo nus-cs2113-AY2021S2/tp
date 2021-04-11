@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class DailyRouteUi extends UiManager {
 
     /**
-     * This prompts the user for the schedule of the day until the user enters "end"
+     * This prompts the user for the schedule of the day until the user enters "end".
      */
     public ArrayList<String> getScheduleInfo() {
         ArrayList<String> dailyBlocks = new ArrayList<>();
@@ -47,8 +47,8 @@ public class DailyRouteUi extends UiManager {
     }
 
     /**
-     * This gets the entry of a block and ensure it is not the same as the previous block
-     * @param previousBlock this is the name of the previous block
+     * This gets the entry of a block and ensure it is not the same as the previous block.
+     * @param previousBlock this is the name of the previous block.
      */
     public String getBlockEntry(String previousBlock) throws InvalidBlockException, RepeatedBlockException {
         String block = getUserInput().toUpperCase();
@@ -62,8 +62,8 @@ public class DailyRouteUi extends UiManager {
     }
 
     /**
-     * This checks if the block is a valid block
-     * @param block is the block entered
+     * This checks if the block is a valid block.
+     * @param block is the block entered.
      */
     public boolean isValidBlock(String block) {
         NusMap nusMap = new NusMap();
@@ -72,7 +72,7 @@ public class DailyRouteUi extends UiManager {
 
     /**
      * This prompts the user to select the day and returns the index of the day selected.
-     * @param selectableDays is the days the user can choose
+     * @param selectableDays is the days the user can choose.
      */
     public int getDayEntry(ArrayList<String> selectableDays) throws InvalidIndexException, EmptyDailyRouteException {
         showListOfDays(selectableDays);
@@ -83,8 +83,8 @@ public class DailyRouteUi extends UiManager {
     }
 
     /**
-     * This shows the list of selectable days
-     * @param days is the selectable days
+     * This shows the list of selectable days.
+     * @param days is the selectable days.
      */
     public void showListOfDays(ArrayList<String> days) throws EmptyDailyRouteException {
         if (days.size() == 0) {
@@ -98,8 +98,8 @@ public class DailyRouteUi extends UiManager {
     }
 
     /**
-     * This takes in the user's day selection input
-     * @param days is the selectable days
+     * This takes in the user's day selection input.
+     * @param days is the selectable days.
      */
     public int getEntryFromUser(ArrayList<String> days) throws InvalidIndexException {
         try {
@@ -114,9 +114,9 @@ public class DailyRouteUi extends UiManager {
     }
 
     /**
-     * This prints the daily route
-     * @param schedule is the schedule for the day
-     * @param routedSchedules is the routes between blocks in schedule
+     * This prints the daily route.
+     * @param schedule is the schedule for the day.
+     * @param routedSchedules is the routes between blocks in schedule.
      */
     public void showDailyRoute(ArrayList<String> schedule, ArrayList<String> routedSchedules) {
         for (int i = 0; i < schedule.size(); i++) {

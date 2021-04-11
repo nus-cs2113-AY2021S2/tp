@@ -26,8 +26,8 @@ public class RouterUi extends UiManager {
     }
 
     /**
-     * This prompts the user to select an eatery from the list
-     * @param eateries  is the list of eateries in order of distance
+     * This prompts the user to select an eatery from the list.
+     * @param eateries  is the list of eateries in order of distance.
      */
     public int getEateryIndex(Block[] eateries) throws InvalidIndexException {
         showMessage("Here are the list of eateries(from closest to furthest):");

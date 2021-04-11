@@ -11,7 +11,7 @@ import seedu.duke.ui.DailyRouteUi;
 import java.util.ArrayList;
 
 /**
- * Adds a daily schedule
+ * Adds a daily schedule.
  */
 public class AddDailyRouteCommand extends Command {
 
