@@ -14,27 +14,27 @@ The codes that I have contributed to the team can be found
 ### Enhancements Implemented
 Shown below are some features/aspects that I have contributed to the team.<br>
 
-####Routing feature
+#### Routing feature
 
 * Collaborated with Bowen(simbowen) to implement the routing algorithm.  
 * Collaborated with Bowen(simbowen) to construct the map of the Engineering and Computing campus.
 * Implemented eatery feature which shows the user a list of eateries to choose from.
 
-####Favourite feature
+#### Favourite feature
 
 * Collaborated with Shuhao(Rye98) to implement the favourite feature, which allows user to store favourite routes.
 
-####Storage
+#### Storage
 
 * Collaborated with Bowen(simbowen), Kimberley(kimideas8) and Rizavur(rizavur) to implement the saving feature.
 * Designed the `DataDecoder` and `DataEncoder` class to encode and decode data. 
 * Added in exceptions to find corrupted data while loading past data. 
 
-####UI
+#### UI
 
 * Collaborated with Rizavur(rizavur) to develop the UI of NUSMaze.
 
-####Command Classes
+#### Command Classes
 
 * Collaborated with Rizavur(rizavur) to form the `Parser` for user commands as well the overall OOP structure for the 
 command classes.
