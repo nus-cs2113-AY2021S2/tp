@@ -353,6 +353,7 @@ is thrown back to the `CommandHandler`.
 
 ### 3.6 RecordList Component
 ![RecordList](img/RecordListClassDiagram.png)
+_Figure 11: **RecordList** Class Diagram_
 
 #### Description
 The `RecordList` component consists of only one class which is the `RecordList`. The role of the `RecordList` 
@@ -564,7 +565,7 @@ The `list` feature allows the users to display the record's information of the r
 
 #### 4.2.1 Current Implementation
 The `list` feature is supported by the `ListCommand`. The user will enter `list` and followed up with the available
-options, `{-e, -l, -s, -a}`, and the `ParserHandler` will parse the input for `CommandHandler` to create the
+options, `{-e | -l | -s | -a}`, and the `ParserHandler` will parse the input for `CommandHandler` to create the
 `ListCommand` object. The program then proceeds to call the `execute()` method, and the record's information will be
 displayed on the screen.
 
@@ -576,7 +577,7 @@ _Figure 14: Sequence Diagram for `ListCommand`_
 Given below is an example usage scenario of how `ListCommand` behaves at each step.
 
 ***Step 1:***\
-The user execute the `list` command with one of the available options, `{-e, -l, -s, -a}`. The program 
+The user execute the `list` command with one of the available options, `{-e | -l | -s | -a}`. The program 
 invokes `ParserHandler#getParseInput()` to provide the parsed input to `CommandHandler#createCommand()`. This checks 
 for the command type, `list`, and proceeds to validate the parsed input in the `ListCommand()` constructor 
 before returning the constructed `ListCommand` object to `Finux`.
@@ -638,7 +639,7 @@ category of *expense*, *loan*, and *saving* of the added records.
 #### 4.3.1 Current Implementation
 
 The `view` feature is facilitated by `ViewCommand`. By typing in `view` and followed up with the available options, 
-`{-e, -l, -s, -a}`, the `ParserHandler` will parse the input for `CommandHandler` to create the `ViewCommand` object.
+`{-e | -l | -s | -a}`, the `ParserHandler` will parse the input for `CommandHandler` to create the `ViewCommand` object.
 By calling the `execute()` method, the total amount will be printed onto the console with the help of `Ui`.
 
 ![ViewFeatureSequenceDiagram](img/ViewFeatureSequenceDiagram.png)\
@@ -723,9 +724,9 @@ Given below is an example usage scenario of how `ReturnCommand` behaves at each 
 
 ***Step 1:***\
 User executes the command `return -i 1 -d 2021-03-28`. The application invokes `CommandHandler#createCommand()`, and 
-since the command type is `return`, the `createCommand` constructs a `ReturnCommand` object. The parameter validation 
+since the command type is `return`, the `CommandHandler#createCommand()` constructs a `ReturnCommand` object. The parameter validation 
 of the constructed `ReturnCommand` is done in the constructor. The validation is done by invoking the commands: 
-`ReturnCommand#getIndexInString`, `ReturnCommand#getIndexInInteger` and `ReturnCommand#getDate`. The created command is 
+`ReturnCommand#getIndexInString()`, `ReturnCommand#getIndexInInteger()` and `ReturnCommand#getDate()`. The created command is 
 then returned to `Finux`.
 
 ***Step 2:***\
@@ -1015,7 +1016,7 @@ CreditScoreCommand. Upon successful creation, the execute() method of the instan
 display the credit score of the borrower.
 
 ![CreditscoreFeatureSequenceDiagram](img/CreditScoreFeatureSequenceDiagram.png)
-_Figure x: Sequence Diagram for `CreditScoreCommand`_
+_Figure 20: Sequence Diagram for `CreditScoreCommand`_
 
 ***Step 1***\
 User enters the command “creditscore Mark”. Finux class invokes ParserHandler#getParseInput() to provide the parsed
@@ -1082,10 +1083,8 @@ is a small price to pay compared to the benefit it brings to the user when enhan
 * Computing students
 * Students with background in CLI interface
 * Students that prefer typing in CLI over traditional GUI clicking
-* Students that need to track expenditure and saving
-* Students that lent some money to their friends
-* Students that need to track borrowings and loans
-* Students that are good with typing
+* Students that need to track their expenses, loans, and savings
+* Students that lend money to their friends
 
 ### A.2 Value proposition
 
@@ -1105,10 +1104,10 @@ Problems faced by students that Finux aim to assist with.
 
 #### A.2.2 Value Adding
 
-Finux aims to integrate the process of managing and keeping track of finance movements without the need to access online
-websites and using different applications to keep track various movement such as loans and expenditure. Finux
+Finux aims to integrate the process of managing and keeping track of financial status without the need to access online
+websites and using different applications to keep track of different loans and expenditures. Finux
 provides an all-in-one platform for students who are usually in front of their computers. The student's expertise in 
-coding and typing can speed up the process of their finance management through familiarity with the CLI interface.
+coding and typing can speed up the process of their finance management through the CLI interface.
 
 > ❗ Finux does not provide any finance advise.
 
