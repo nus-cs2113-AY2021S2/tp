@@ -9,8 +9,8 @@ public class FavouriteUi extends UiManager {
 
     /**
      * This method gets the routing information to be saved as favourites by calling the router ui class.
-     * @return A pair of starting and destination blocks are returned, where starting block is stored in the first index of
-     * the array and the destination block is stored in the second index of the array.
+     * @return A pair of starting and destination blocks are returned, where starting block is stored in the first index
+     *          of the array and the destination block is stored in the second index of the array.
      * @throws SameBlockException If the same start and destination blocks are entered by the user.
      */
     public String[] getFavouriteInfo() throws SameBlockException {

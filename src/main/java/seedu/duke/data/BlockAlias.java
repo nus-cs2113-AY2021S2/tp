@@ -15,6 +15,7 @@ public class BlockAlias {
     }
 
     /**
+     * Returns the hash map containing all the aliases and block pairs.
      * @return The hash map containing all the aliases and block pairs is returned.
      */
     public HashMap<String, String> getAliasHashMap() {
@@ -22,6 +23,7 @@ public class BlockAlias {
     }
 
     /**
+     * Returns the boolean value on whether the alias hashmap is empty.
      * @return A boolean value on whether the alias hashmap is empty is returned.
      */
     public boolean isEmpty() {
@@ -42,7 +44,7 @@ public class BlockAlias {
     }
 
     /**
-     * This method returns a boolean value on whether the alias is valid or not.
+     * Returns a boolean value on whether the alias is valid or not.
      * @param alias The alias that is to be checked if valid.
      * @return A boolean value of whether the alias is valid.
      */
@@ -59,7 +61,7 @@ public class BlockAlias {
      * @param from The from block that was input in the routing command by the user.
      * @param to The to block that was input in the routing command by the user.
      * @return An array of strings where the converted from block is stored in the first index and the converted to
-     * block is stored in the second index.
+     *          block is stored in the second index.
      */
     public String[] changeAliasToBlock(String from, String to) {
         String[] blockNames = {from, to};

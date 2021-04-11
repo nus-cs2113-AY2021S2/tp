@@ -14,7 +14,7 @@ public class AliasUi extends UiManager {
      * This method obtains user input and returns an array of strings which contains the user input for the alias and
      * block names.
      * @return A string array of size 2 where the first index contains the block name and second index contains the
-     * alias name.
+     *          alias name.
      * @throws InvalidAliasException If alias is the same as a block or an alias of the same name already exists.
      */
     public String[] getAliasInfo() throws InvalidAliasException {
