@@ -12,6 +12,8 @@ man taking into account the number of deliveries per location and distances betw
 efficiency of deliveries. This app aims to be a one stop solution and more for to meet all the needs of a deliverymen.  
 
 ## Design 
+
+### Architecture
 ![Architecture](diagrams/ArchitectureDiagram.png)
 
 ### Overview
