@@ -37,7 +37,7 @@ Given below are my contributions to the project
   - Justification: Allows for personalisation of fridge, since different users have differing requirements and preferences for the quantity of each food category
   - Pull request: ([#115](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/115))
 
-- Code contributed: more than 2000 lines of code ([RepoSense](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=kwokyto))
+- Code contributed: more than 2000 lines of code ([RepoSense](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=kwokyto&sort=groupTitle&sortWithin=title&since=2021-03-05&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false&tabOpen=true&tabType=authorship&tabAuthor=kwokyto&tabRepo=AY2021S2-CS2113-T10-1%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code~other))
 
 ### Enhancements to Existing Features
 
@@ -57,6 +57,7 @@ Given below are my contributions to the project
   - Standardised input/output format for existing documentation of all features ([#75](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/75/))
   - Added documentation for the features `runninglow` and `setlimit` ([#106](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/106))
   - Fixed bugs ([#204](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/204), [#215](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/215))
+
 - [Developer Guide](../DeveloperGuide.md)
   - Added implementation details of the `Utilities` component ([#106](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/106))
     - [Utilities Class Diagram](../diagrams/diagram_images/UtilitiesClassDiagram.png)
@@ -67,6 +68,7 @@ Given below are my contributions to the project
   - Adjusted diagram sizes ([#134](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/134), [#215](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/215))
   - Fixed bugs ([#204](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/204), [#215](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/215))
   - Applied cosmetic changes to improve readability ([#215](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/215))
+
 - [README.md](../README.md)
   - Wrote all project details and contents ([#134](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/134))
 

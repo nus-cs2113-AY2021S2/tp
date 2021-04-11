@@ -158,7 +158,8 @@ classified into three broad categories:
 
 This section covers the application flow and more specific interactions between classes and their methods. A overview of the main application logic would be covered first, before addressing several specific application commands.
 
-:information_source: For simplicity, where there are exceptions being thrown, they will be represented in the diagrams as comments. In the actual implementation, exception objects are being initialised and executed.
+:information_source: For clarity within diagrams, where there are exceptions being thrown, they will be represented in the diagrams as comments. In the actual implementation, exception objects are being initialised and executed.
+
 :information_source: Due to simplicity, some function calls that are not essential to the execution of commmands are not covered in the diagram. Hence, the `Command` objects will not be destroyed at the end of the diagrams.
 
 ### Main Logic
