@@ -847,13 +847,13 @@ user experience, and it will not cause any confusion. The time wasted is negligi
 long-term benefit.
 
 ### 4.6 Storage Feature
-The `storage` feature allows all `record` and `creditScoreReturnedLoansMap` to be stored locally on the device and for `record` and 
+The `storage` feature allows all `record` and `creditScoreReturnedLoansMap` to be stored locally on the device and for `record` 
 and `creditScoreReturnedLoansMap` to be loaded from a saved file into the Finux application. This is the only feature implemented 
 that does not have an explicit command to call it.
 
 #### 4.6.1 Current Implementation
 As the saving and loading methods have no explicit command calls, these methods are invoked by methods from the other
-classes. During the launch of the Finux application, in the `start` method, `getRecordListData` is called to load the
+classes. During the launch of the Finux application, in the `start()` method, `getRecordListData()` is called to load the
 data from the saved file: `finux.txt`. 
 
 ![SavingFeatureSequenceDiagram](img/StorageSequenceDiagramSave.png)
@@ -971,34 +971,34 @@ Credit score for Tom is 90
 ### A.1 Target User Profile
 
 * Computing students
-* Background in CLI interface
-* Prefer typing in CLI over traditional GUI clicking
-* Need to track expenditure and saving
-* Borrowed some money to their friends
-* Need to track borrowings and loans 
-* Good with typing
+* Students with background in CLI interface
+* Students that prefer typing in CLI over traditional GUI clicking
+* Students that need to track expenditure and saving
+* Students that lent some money to their friends
+* Students that need to track borrowings and loans
+* Students that are good with typing
 
 ### A.2 Value proposition
 
 #### A.2.1 Problem Identification
 Problems faced by students that Finux aim to assist with.
-> * [Problem] Wastage of time due to poor connection/latency issues when accessing finance tracking website.
-> * [Solution] Provide a non website dependent application.
+* [Problem] Wastage of time due to poor connection/latency issues when accessing finance tracking website.
+* [Solution] Provide a non website dependent application.
 
-> * [Problem] Hassle to use different applications to keep track of various stuff.
-> * [Solution] Provide an integrated platform to record any expenses, loans, or saving.
+* [Problem] Hassle to use different applications to keep track of various stuff.
+* [Solution] Provide an integrated platform to record any expenses, loans, or saving.
 
-> * [Problem] Disorganization issues arising from keep multiple tracking applications.
-> * [Solution] Provide the option to view each category of records within an integrated platform.
+* [Problem] Disorganization issues arising from keep multiple tracking applications.
+* [Solution] Provide the option to view each category of records within an integrated platform.
 
-> * [Problem] Spending additional time to gauge whether to lend money to a friend.
-> * [Solution] Provide a soft gauge through credit score meter.
+* [Problem] Spending additional time to gauge whether to lend money to a friend.
+* [Solution] Provide a soft gauge through credit score meter.
 
 #### A.2.2 Value Adding
 
 Finux aims to integrate the process of managing and keeping track of finance movements without the need to access online
 websites and using different applications to keep track various movement such as loans and expenditure. Finux
-provide an all-in-one platform for students who are usually in front of their computers. The student's expertises in 
+provides an all-in-one platform for students who are usually in front of their computers. The student's expertise in 
 coding and typing can speed up the process of their finance management through familiarity with the CLI interface.
 
 > ❗ Finux does not provide any finance advise.
@@ -1081,14 +1081,14 @@ will be ready for use.
 1. Prerequisite: None.
 1. Test case: `add -s Savings from March -a 1000 -d 29/03/2021`
    Expected: Adds a `saving` with the description '`Savings from March`' with an amount of `1000` dollars on `29th March 2021`.
-1. Test case: `add -s Savings from April -a 1200 -d 29/04/2021`
+1. Test case: `add -s Savings from April -a 1200 -d 29/03/2021`
    Expected: Adds a `saving` with the description '`Savings from April`' with an amount of `1200` dollars on `29th April 2021`.
 1. Other incorrect commands to try:
    1. `add`
    1. `add -s`
    1. `add -s -a`
    1. `add -s -a -d`
-   1. `add -s Savings from Intern -a x -d 30/05/2021`
+   1. `add -s Savings from Intern -a x -d 30/03/2021`
       (where `x` is a negative number or a word)
    
 ### D.5 Listing expense(s) in the record list
