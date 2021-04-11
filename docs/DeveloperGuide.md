@@ -176,7 +176,7 @@ The above diagram shows how each component interacts with the other components. 
 
 **Storage Component:** Manages all file I/O.
 
-
+<br>
 
 ### 4.2 UI component
 
@@ -194,6 +194,7 @@ The UI of this program can be found under the package named UI. It consists of `
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Is responsible for handling all input and output of the program. 
 
+<br>
 
 ### 4.3 Logic Component
 
@@ -242,15 +243,15 @@ The following class diagram illustrates the group of Commands under the `doctora
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/UML Model.png">
 
-The Model component consists of classes that represents the tasks and things that a nurse has to do in the real world. 
+The Model component consists of classes that represents the collection of objects that a nurse has to interact with.
 
-The `Model`, consists of 5 different types of lists.
+The `Model`, consists of 5 different types of arraylists.
 
-- AppointmentList stores DoctorAppointment objects. AppointmentList also has methods needed to modify the list with objects.
-- InventoryList stores Inventory objects. InventoryList also has methods to modify the list with objects.
-- NurseScheduleList stores NurseSchedule objects. NurseScheduleList also has methods to modify the list with objects.
-- PatientList stores Patient objects. PatientList also has methods to modify the list with objects.
-- StaffList stores Staff objects. StaffList also has methods to modify the list with objects.
+- AppointmentList stores DoctorAppointment objects. AppointmentList also has methods needed to interact with objects in the arraylist.
+- InventoryList stores Inventory objects. InventoryList also has methods needed to interact with objects in the arraylist.
+- NurseScheduleList stores NurseSchedule objects. NurseScheduleList also has methods needed to interact with objects in the arraylist.
+- PatientList stores Patient objects. PatientList also has methods needed to interact with objects in the arraylist.
+- StaffList stores Staff objects. StaffList also has methods needed to interact with objects in the arraylist.
 
 <br>
 
@@ -262,7 +263,7 @@ The Storage component consists of classes that individually reads data from, and
 The `Storage`, consists of 5 different types of classes:
 
 - DoctorApointmentStorage implements `writeToFile()` to write information regarding doctorID, name, date, appointmentID, and gender into DoctorAppointment.txt file. `loadFile()`loads the data in the DoctorAppointment.txt file into an array list to be returned. `loadDoctorFile()` loads the doctor information from the staff database.
-- IventoryStorage implements `storeInventory()` to write information regarding drug name, price, and quantity into Inventory.txt file. `loadInventory()`loads the data in the Inventory.txt file into an array list to be returned.
+- InventoryStorage implements `storeInventory()` to write information regarding drug name, price, and quantity into Inventory.txt file. `loadInventory()`loads the data in the Inventory.txt file into an array list to be returned.
 - NurseScheduleStorage implements `writeToFile()` to write information regarding nurseID, patientID, date into NurseSchedule.txt file. `loadPatientFile()` loads the patient information from the patient database.
 - StaffStorage implements `writeToFile()` to write information regarding staffID, name, age, and specialisation into Staff.txt file. `loadFile()`loads the data in the Patients.txt file into an array list to be returned.
 - PatientStorage implements `storePatients()` to write information regarding patientID, name, age, gender, illness, and drugsNeeded into Patient.txt file. `loadPatients()`loads the data in the Patient.txt file into an array list to be returned.
@@ -284,7 +285,7 @@ Whenever a user input is given to the Staff Menu, the following steps will occur
 **Launching Staff Menu**
 
 1. `ToStaffInstance.execute()` will create and call `StaffInstance.run()`
-2. `StaffInstance.run()` will start by loading/creating the Staff data .txt file for Staff database records. It will check for any signs of corrupted file when loading. Exception will be thrown if any corruption occurs.
+2. `StaffInstance.run()` will start by loading/creating the Staff data .txt file for Staff database records. It will check for any signs of corrupted file when loading. An Exception will be thrown if any corruption occurs.
 3. `StaffInstance.run()` will then repeatedly call `commandHandler()`.
 
 **Getting User Input**
@@ -299,7 +300,7 @@ Whenever a user input is given to the Staff Menu, the following steps will occur
 
 **Implementation:**
 
-The function Add takes in 4 compulsory fields (Staff ID, Name, Age, Specialisation) to create the Staff Object and adds it to an aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. A StaffAdd Command object is created. StaffAdd command object will be executed to create the Staff Object which will be added to the aggregation of Staff Objects.
+The function Add takes in 4 compulsory fields (Staff ID, Name, Age, Specialisation) to create the Staff Object and adds it to an aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. A StaffAddCommand object is created. StaffAddCommand object will be executed to create the Staff Object which will be added to the aggregation of Staff Objects.
 
 Invalid Input includes:
 
@@ -325,14 +326,14 @@ Invalid Input includes:
 	- checkBlankInput2()
 	- invalidCharactersStaffChecker()
 
-**Creating StaffAdd command**
+**Creating StaffAddCommand object**
 
-3. If the input data is valid, a StaffAdd Command object is created. Else a relevant error is thrown.
-4. The StaffAdd Command object is returned to `StaffInstance.run()`
+3. If the input data is valid, a StaffAddCommand object is created. Else a relevant error is thrown.
+4. The StaffAddCommand object is returned to `StaffInstance.run()`
 
 **Creating Staff Object with User Input**
 
-5. StaffInstance then executes the StaffAdd Command object to begin the process of creating the Staff object
+5. StaffInstance then executes the StaffAddCommand object to begin the process of creating the Staff object
 
 6. `StaffAdd.execute()` will call the function in `StaffList.add()`
 
@@ -1205,7 +1206,7 @@ This feature will alert nurses whenever an inventory of a drug is low. This ensu
 **Target user profile:**
 <br>
 HealtVault primarily targets nurses. Its features optimize it for users seeking:
-* Speed in recording down new details relating to critical healthcare services like nurse schedules and doctors appointments.
+* Efficiency in recording down new details relating to critical healthcare services like nurse schedules and doctors appointments.
 * A cohesive database that records the critical information of everyone in the hospital, staff and patients included.
 * A desktop CLI application that has a minimalistic GUI.
 
@@ -1216,15 +1217,14 @@ HealthVault aspires to help its users achieve the following results:
 * Improve working speed of healthcare staff, as they can store and retrieve critical information quickly and accurately.
 * Minimize administrative errors with its inbuilt cross validation.
 * Easy implementation within a hospital environment with minimal setup steps and data reusability.
-<br>
-  
+
 Every second matters in the healthcare industry when patient lives are at stake. We believe that HealthVault can help
 its users save those precious seconds.
 
 ## Appendix B: User Stories
 
 | Priority | As a... |                          I want to...                         |                 So that I can...                 |
-|:--------:|:-------:|:-------------------------------------------------------------:|:------------------------------------------------:|
+|:--------:|:--------:|:-------------------------------------------------------------:|:------------------------------------------------:|
 |   * * *  |  nurse  |              quickly refer to usage instructions              |      quickly get on track with the workflow      |
 |   * * *  |  nurse  |                    add a new staff/patient                    |                                                  |
 |   * * *  |  nurse  |                     delete staff/patients                     |          remove entries i no longer need         |
