@@ -4,7 +4,9 @@ Welcome to the Patient Manager.
 
 Please input a command: 
 ----------------------------------------------------------------------
-Invalid command provided.
+Input command and/or arguments are invalid:
+	Invalid command provided.
+
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Patient S7654321F has been added!
@@ -24,6 +26,7 @@ List of patients (in alphanumeric order):
 ----------------------------------------------------------------------
 Input command and/or arguments are invalid:
 	NRIC does not pass the checksum test, please ensure NRIC is valid eg. G1234567X
+
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Patient S1234567D has been added!
@@ -35,11 +38,15 @@ List of patients (in alphanumeric order):
 3. S7654321F
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
-Please use exactly one of /p or /r to indicate whether to delete a patient or a record.
-You may use the help command for more clarification.
+Input command and/or arguments are invalid:
+	Please use exactly one of /p or /r to indicate whether to delete a patient or a record.
+	You may use the help command for more clarification.
+
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
-The patient with this IC number does not exist.
+Input command and/or arguments are invalid:
+	The patient with this IC number does not exist.
+
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Patient S7654321F has been deleted!

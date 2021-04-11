@@ -24,7 +24,7 @@ public abstract class BaseException extends Exception {
         String errorMessage = getMessage();
         String[] errorLines = errorMessage.split("\n");
         for (String errorLine : errorLines) {
-            errorString += Constants.INDENT + errorLine;
+            errorString += Constants.INDENT + errorLine + System.lineSeparator();
         }
         return errorString;
     }
