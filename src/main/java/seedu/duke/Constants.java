@@ -74,6 +74,9 @@ public class Constants {
             "Kindly use /p or /r to indicate patient or record, refer to help for more clarification";
     public static final String INVALID_INPUT_PATIENT_NOT_FOUND = "Patient with this IC number does not exist!";
     public static final String INVALID_INPUT_END_OF_FILE = "End of file reached, exiting application.";
+    public static final String INVALID_INPUT_FORBIDDEN_SUBSTRING =
+            "These substrings are not allowed in the input command:\n"
+            + "~~    ``    %%    ##    !R!    !D!";
 
     public static final String STORAGE = "Something wrong happen when trying to save/load data";
     public static final String STORAGE_FILE_CREATION_FAIL = "Failed to create a save file.";

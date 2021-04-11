@@ -15,7 +15,8 @@ public class InvalidInputException extends BaseException {
         FUTURE_DATE(Constants.INVALID_FUTURE_DATE),
         UNKNOWN_DELETE_ARGUMENT(Constants.INVALID_INPUT_UNKNOWN_DELETE_ARGUMENT),
         PATIENT_NOT_FOUND(Constants.INVALID_INPUT_PATIENT_NOT_FOUND),
-        END_OF_FILE(Constants.INVALID_INPUT_END_OF_FILE);
+        END_OF_FILE(Constants.INVALID_INPUT_END_OF_FILE),
+        FORBIDDEN_SUBSTRING(Constants.INVALID_INPUT_FORBIDDEN_SUBSTRING);
 
         public final String message;
 

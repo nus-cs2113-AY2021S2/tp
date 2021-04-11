@@ -23,7 +23,14 @@ public abstract class BaseException extends Exception {
 
         String errorMessage = getMessage();
         String[] errorLines = errorMessage.split("\n");
+        Boolean first = true;
         for (String errorLine : errorLines) {
+            // Add a new line character for 2nd and subsequent rows
+            if (first) {
+                first = false;
+            } else {
+                errorString += System.lineSeparator();
+            }
             errorString += Constants.EXCEPTION_INDENT + errorLine;
         }
 

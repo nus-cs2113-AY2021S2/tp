@@ -21,6 +21,16 @@ public class Parser {
      */
     public static final String DELIMITER = " ";
 
+    public static final String[] forbiddenSubstrings = {
+        Constants.ID_DELIMITER,
+        Constants.DATE_DELIMITER,
+        Constants.SYMPTOM_DELIMITER,
+        Constants.DIAGNOSIS_DELIMITER,
+        Constants.PRESCRIPTION_DELIMITER,
+        Constants.RECORDS_DELIMITER,
+        Constants.DETAILS_DELIMITER
+    };
+
     protected Ui ui;
     protected Data data;
 
@@ -55,6 +65,7 @@ public class Parser {
      * @see Command
      */
     public Command parse(String fullCommand) throws InvalidInputException, UnknownException {
+        checkDelimiters(fullCommand);
         String[] tokens = fullCommand.split("\\s+");
 
         // If tokenized command returns an empty array (entered a string with only white spaces),
@@ -113,6 +124,19 @@ public class Parser {
             // Some other weird error occurred here (e.g. dev bugs)
             // We should NEVER reach this block, if we do, log under the highest level
             throw new UnknownException(exception);
+        }
+    }
+
+    /**
+     * This methods check whether the input full command contains forbidden substrings.
+     * @param fullCommand user-input command
+     * @throws InvalidInputException when forbidden substrings are found
+     */
+    private void checkDelimiters(String fullCommand) throws InvalidInputException {
+        for (String string : forbiddenSubstrings) {
+            if (fullCommand.contains(string)) {
+                throw new InvalidInputException(InvalidInputException.Type.FORBIDDEN_SUBSTRING);
+            }
         }
     }
 }
