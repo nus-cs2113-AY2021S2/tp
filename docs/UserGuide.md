@@ -1090,6 +1090,8 @@ Please choose which action you would like to do and enter the number:
 
 Adds an external link that follows the format to the external links list.
 
+The application checks for duplicate links, so any duplicates that you add will be automatically removed!
+
 Format: `<scheme>://www.<domain name>.<TLD>`
 
 Supported schemes include: https, http only
@@ -1099,7 +1101,7 @@ Supported Top Level Domain(TLD) include: .com, .org, .sg, .edu, .gov
 > **Note!**  
 > 1. While using other TLDs that have not been included in the list above might work, the intended behaviour is not guaranteed and might vary in such cases.
 > 2. This feature accepts uppercase characters too and converts it to lowercase for your convenience. Hence, a link like: `HTTPS//WWW.YOUTUBE.COM` would become `https://www.youtube.com`
-> 3. The application checks for duplicate links, so any duplicates that you add will be automatically removed!
+
 
 Example for adding an external link:
 
@@ -1184,7 +1186,8 @@ Adds a zoom link, and tags it to a module of your choice together with the meeti
 available).
 
 **Note!**
-> The system currently only allows you to add one zoom link per module.
+> 1. The system currently only allows you to add one zoom link per module.
+> 2. Please ensure that you enter the correct Zoom Link as the app is unable to verify it. You can always delete it later if it is wrong by using Feature 3.4.6
 
 Example for adding a zoom link:
 
