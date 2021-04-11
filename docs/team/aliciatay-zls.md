@@ -4,7 +4,7 @@
 
 ## Overview
 
-GULIO is a university module manager designed for efficiency when used by fast typists. It is capable of storing lessons and tasks for individual modules, as well as lesson notes via cheat-sheets.
+GULIO is a university module manager designed for efficiency when used by fast typists. It is capable of storing lessons and tasks for individual modulesand lesson notes via cheat-sheets.
 
 ## Summary of Contributions
 
@@ -52,7 +52,6 @@ Click **[here](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=&sort=
 
 ### Review/Mentoring Contributions
 
-Some examples:
 1. Code enhancements.
    * [Suggestion to Ivan implemented, to remove loop for EditLessonCommand and EditTaskCommand. Worked together to standardise printing.](https://github.com/AY2021S2-CS2113T-W09-3/tp/pull/161)
 1. Provide checks for PRs with many LOC changed.
