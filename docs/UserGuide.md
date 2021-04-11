@@ -37,8 +37,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.14. Delete Zoom Link](#3114-delete-zoom-link)   
 
 &nbsp;&nbsp;&nbsp;&nbsp;[3.2 CAP Simulator/Calculator](#32-cap-simulatorcalculator)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.1 Add CAP and Number of MCs graded taken](#321-add-cap-and-number-of-mcs-graded-taken)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.2 View CAP and Number of MCs graded taken](#322-view-cap-and-number-of-mcs-graded-taken)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.1 Add CAP and Number of MCs counted towards CAP](#321-add-cap-and-number-of-mcs-counted-towards-cap)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.2 View CAP and Number of MCs counted towards CAP](#322-view-cap-and-number-of-mcs-counted-towards-cap)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.3 Simulate future CAP](#323-simulate-future-cap)  
 
 &nbsp;&nbsp;&nbsp;&nbsp;[3.3 Task Manager](#33-task-manager)  
@@ -49,7 +49,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5 Pin a Task](#335-pin-a-task)  
 
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4 Links](#34-links-menu)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1. External Links](#341-external-links)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1. External Links Menu](#341-external-links-menu)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.2. Add an External Link](#342-add-external-link)    
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.3. Remove an External Link](#343-remove-external-link)   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4. View all Links](#344-view-external-links)  
@@ -101,6 +101,8 @@ E.g. `> user input`
 > **<span style="color: red"> WARNING! </span>**   
 > This is a warning section. Any user interaction with UniTracker that may result in issues or unintended results will be written in sections such as this one.
 
+→ Go To [Table of Contents](#table-of-contents)  
+→ Go To [Command Summary](#5-command-summary)
 ---
 
 ## 2. Quick Start
@@ -138,6 +140,9 @@ Next, ensure that Java 11 is installed on your computer. You can download the la
 4. Navigate to the folder you stored your Jar file in. 
    - You can open a folder by typing `cd` followed by space then the name of your folder.  
 5. Once you are in the folder, enter `java -jar duke.jar` to run the application.
+
+→ Go To [Table of Contents](#table-of-contents)  
+→ Go To [Command Summary](#5-command-summary)
 
 ### 2.2 Start Up
 
@@ -193,7 +198,11 @@ Main Menu:
 The Module Information feature allows you to add/delete modules,  
 and add information to the module of your choice.
 
-Module Information menu:
+**Navigating to the Module Information Menu**  
+
+Input `1` from the main menu to enter the Module Information menu.  
+
+Module Information menu:  
 
 ```
 > 1
@@ -222,12 +231,14 @@ Please choose which action you would like to do and enter the number:
 [15] --- Exit to main menu
 ----------------------
 ```
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)    
 
-#### 3.1.1 Add a Module
+#### 3.1.1 Add a Module  
 
-Adds a new module to the modules list.
-> **Note!**   
-> Module name and description cannot be empty.   
+Adds a new module to the modules list.  
+> **Note!**    
+> Module name and description cannot be empty.    
 > You **cannot** modify a module's name or description.   
 >> If you entered an incorrect name or description, please **delete** the module and  
 >> add a new `module` with the correct name and description. 
@@ -249,6 +260,8 @@ Software Engineering and OOP
 --------------------------------------------  
 Returning to module information menu...  
 ```  
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.1.2 View a Module
 
@@ -289,6 +302,8 @@ These are your tasks:
 --------------------------------------------  
 Returning to module information menu...  
 ```  
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.1.3 View all Modules
 
@@ -307,18 +322,21 @@ Here are the modules in your Modules List:
 [2] --- CS2113T   
 --------------------------------------------  
 ```  
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
-#### 3.1.4 Delete a Module
+#### 3.1.4 Delete a Module  
 
-Deletes a module from the list of modules.
+Deletes a module from the list of modules.  
 >**<span style="color: red"> WARNING! </span>**  
-> Deleted modules cannot be retrieved.
-* Format: enter the index (integer) of the module that you want to delete.
+> Deleted modules cannot be retrieved.   
+  
+* Format: enter the index (integer) of the module that you want to delete.  
 
-Example for deleting a module:
+Example for deleting a module:  
 > **Note!**  
 > In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.  
-> Reviews for these modules have already been added through the [add a review](#318-add-a-review) feature.
+> Reviews for these modules have already been added through the [add a review](#318-add-a-review) feature.  
 
 ```
 > 4  
@@ -330,9 +348,8 @@ Here are the modules in your Modules List:
 --------------------------------------------  
 Enter the module number to be deleted:  
 > 1  
-Are you sure you want to delete CS3243? [Y/N]  
-Mar 31, 2021 3:04:34 AM seedu.duke.features.moduleinfo.ModuleInfo deleteModule  
-WARNING: You are making a change that cannot be undone.  
+--------------------------------------------
+Are you sure you want to delete CS3243? [Y/N]
 > Y  
 You've deleted this: CS3243   
 NOTE: You are deleting your module description  
@@ -344,11 +361,14 @@ Overall: 5/5
 --------------------------------------------  
 Returning to module information menu...  
 ```
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
-#### 3.1.5 Add/View Components and Their Weightages
+#### 3.1.5 Add/View Components and Their Weightages  
 
-This command allows you to add or view components, 
+Adds or displays components, 
 and their weightages that adds up to 100 for an existing module.
+
 In this sub-section, the word, "components", will be use interchangeably
 to mean components or components and its associated weightage for simplicity.
 
@@ -361,10 +381,12 @@ to mean components or components and its associated weightage for simplicity.
 
 > **Note!**  
 > * Components' weightages is only accepting integer values which is usually the convention.  
-> * Old components' weightage will be over written automatically when a component name already exist in the program.  
+> * Old components' weightage will be overwritten automatically when a component name already exist in the program.  
 > * Parsing is designed such as any inputs after weightage will be ignored. E.g. FinalExam 20 2, '2' will be ignored.  
 
-* Example for adding component and weightage to a module:    
+
+* Example for adding component and weightage to a module: 
+
 ````
 > 5
 Which action would you like to proceed with? Key in 1 or 2.
@@ -419,18 +441,24 @@ From Module object: CS2113T
 {FinalExam=40}
 ````
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 #### 3.1.6 Add Module's Modular Credits (MC)
 
-This command allows you to add modular credits for an existing module.
+Adds modular credits for an existing module.  
 
 >**<span style="color: red"> WARNING! </span>**  
 > You may overwrite the existing modular credits for an existing module.  
 
 > **Note!**  
-> Supported MCs: 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 13, 14, 15, 20; 
+> Supported MCs: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `10`, `12`, `13`, `14`, `15`, `20`; 
 > As these MCs are more common, they are selected to be valid MCs input. 
 > Invalid MCs are not allowed and entries for such inputs will be discarded.  
+> By default, when a new module is added, modular credit is set to zero.  
 
+
+Example for adding modular credits to a module:  
 
 ```
 > 6
@@ -452,16 +480,18 @@ Overwriting current MCs for CS2040C to: 1
 Returning to module information menu...
 ```
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 #### 3.1.7 Add Module Grade
 
-This command allows you to add module grade to an existing module. 
-The module grade added can be used to compute a [simulated CAP](#323-simulate-future-cap).   
-
-Example for adding grade to a module:  
+Adds module grade to an existing module. The module grade added can be used to compute a [simulated CAP](#323-simulate-future-cap).   
 
 > **Note!**  
-> In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.  
+> List of accepted grades: `A+`, `A`, `A-`, `B+`, `B`, `B-`, `C+`, `C`, `D+`, `D`, `F`, `SU`  
+> By default, when a new module is added, module grade is `null`.  
 
+Example for adding grade to a module:  
 
 ````
 > 7
@@ -477,6 +507,9 @@ Please choose which module you would like to assign a grade and enter the number
 Enter the grade for this module:
 > A
 ````
+
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.1.8 Add a review
 
@@ -501,15 +534,15 @@ Here are the modules in your Modules List:
 --------------------------------------------    
 Please choose which module you would like to review and enter the number:  
 > 1  
+--------------------------------------------  
 You have already added a review:  
 Very very very difficult for me:( But, very important to know!  
 5/5  
 
-Would you like to replace this with another review? [Y/N]  
-Mar 31, 2021 3:08:31 AM seedu.duke.features.moduleinfo.ModuleInfo printAlreadyAddedReviewMessage  
-WARNING: You will delete your old review. This cannot be undone.  
+Would you like to replace this with another review? [Y/N]
+This will delete your old review. This cannot be undone.
 > Y  
-  
+--------------------------------------------  
 Type '/end' to finish reviewing.  
 Enter your review for CS3243 below:  
 > The lectures were very entertaining. I have learnt a lot of   
@@ -524,6 +557,9 @@ Overall: 5/5
   
 Returning to module information menu...  
 ```
+
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.1.9 View all reviews
 
@@ -551,6 +587,9 @@ Overall: 5/5
 Returning to module information menu...  
 ```
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 #### 3.1.10 Delete a Review
 
 Deletes any existing reviews of existing modules.  
@@ -570,8 +609,6 @@ Here are the modules in your Modules List:
 Enter the module number to delete review:  
 > 1  
 --------------------------------------------  
-Mar 31, 2021 3:15:51 AM seedu.duke.features.moduleinfo.ModuleInfo deleteReview  
-WARNING: You are making a change that cannot be undone.  
 Are you sure you want to delete this review? [Y/N]  
 For CS2113T:  
 Review:  
@@ -580,13 +617,17 @@ Assignments and quizzes helped me learn concepts faster.
 Overall: 5/5    
 > Y  
 --------------------------------------------  
-You've deleted this review:  
+For this module: CS2113T - 
+You've deleted this review: 
 The lectures were very entertaining. I have learnt a lot of important algorithms.   
 Assignments and quizzes helped me learn concepts faster.   
 Overall: 5/5  
 --------------------------------------------  
 Returning to module information menu...  
 ```
+
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.1.11 Add New Task
 
@@ -604,14 +645,18 @@ Refer to [this section](#345-add-zoom-link).
 
 Refer to [this section](#346-delete-zoom-link).
 
+
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 ---
 
 ### 3.2 CAP Simulator/Calculator
 
-The CAP Simulator/Calculator allows you to calculate your future CAP base on your current CAP and
-modules you have taken before.  
+The CAP Simulator/Calculator feature allows you to calculate your future CAP
+base on your [current CAP and total MCs counted towards CAP](#321-add-cap-and-number-of-mcs-counted-towards-cap).  
 
-To enter CAP Simulator/Calculator, type `2` from the main menu.
+To navigate to CAP Simulator/Calculator, type `2` from the [main menu](#3-features).
 
 CAP Simulator/Calculator menu:
 
@@ -622,14 +667,22 @@ Please choose which action you would like to do and enter the number:
 [3] --- Simulate future CAP
 [4] --- Exit
 ````
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
-#### 3.2.1 Add CAP and Number of MCs graded taken
+#### 3.2.1 Add CAP and Number of MCs counted towards CAP
 
-This feature allows you to add current CAP and MCs counted into the CAP.  
-The program exits program if CAP is invalid.  
-[i.e. negative CAP or CAP > 5.0]  
-There is no strict restriction to number of MCs user can add and its up to user's discretion.
+Adds current CAP and MCs counted into the CAP.  
 
+MCs that counts into your CAP does not include modules with zero grade points.  
+
+> **Note!**  
+> CAP entered is rounded to 2 decimal places (2dp).  
+> The program exits back to CAP Simulator/Calculator menu if CAP is invalid.    
+> [i.e. negative CAP or CAP > 5.0]   
+> There is no strict restriction to number of MCs user can add and its up to user's discretion.
+
+Example of adding CAP and total MCs counted towards CAP:  
 
 ````
 Please choose which action you would like to do and enter the number:
@@ -642,16 +695,22 @@ Please choose which action you would like to do and enter the number:
 Please key in your current CAP: [e.g. 4.33]
 > 4.5
 --------------------------------------------
-Please key in the number of MCs graded you have taken so far: 
+Please key in the total MCs completed (excluding modules you have S/U-ed and CS/CU modules)
 > 20
 --------------------------------------------
-Current CAP: 4.5
-Number of Graded MCs Taken: 20
+Current CAP: 4.50 (rounded to 2dp)
+Number of MCs completed: 20
 Returning to CAP simulator/calculator menu...
-````
-#### 3.2.2 View CAP and Number of MCs graded taken
+````  
 
-This feature allows you to view current CAP and MCs counted into the CAP.
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
+#### 3.2.2 View CAP and Number of MCs counted towards CAP
+
+Displays current CAP and MCs counted into the CAP from input entered from [3.2.1](#321-add-cap-and-number-of-mcs-counted-towards-cap).
+
+Example of display on CAP and total MCs counted towards CAP:  
 
 ````
 Please choose which action you would like to do and enter the number:
@@ -661,19 +720,40 @@ Please choose which action you would like to do and enter the number:
 [4] --- Exit
 > 2
 --------------------------------------------
-Current CAP: 4.5
-Number of Graded MCs Taken: 20
+Current CAP: 4.50 (rounded to 2dp)
+Number of MCs completed: 20
 Returning to CAP simulator/calculator menu...
 ````
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 #### 3.2.3 Simulate future CAP
 
-This feature simulates future CAP base on the current CAP and MCs counted into the CAP. The CAP calculated with be rounded to 2 decimal places.   
-Once done, enter `ok` when prompt with entering a new grade again.
+Simulates future CAP base on the current CAP and MCs counted into the CAP.
+The CAP calculated with be rounded to 2 decimal places.  
+
+> **Note!**  
+> All simulated CAP will not be stored as it is a simulation.  
+> You may choose to update you CAP and MCs counted in [3.2.1](#321-add-cap-and-number-of-mcs-counted-towards-cap).  
 
 There are two versions of CAP Simulator:
- - v1.0: This version allows you to simulate CAP base on the grades you have entered before in each module.
- - v2.0: This version allows you to simulate CAP from a fresh set of inputs from you.
+- v1.0: This version allows you to simulate CAP base on the grades you have entered before under each
+  [existing module](#312-view-a-module).
+- v2.0: This version allows you to simulate CAP from a fresh set of inputs from you.
+
+To begin,
+1. Ensure your current CAP and MCs counted is up to date. You may update it under [3.2.1](#321-add-cap-and-number-of-mcs-counted-towards-cap).
+2. Choose the choice of your simulation. 
+   * If your choice is v1.0, v1.0 CAP Simulator will calculate from the grades present in existing modules
+     and returns to CAP Simulator/Calculator menu once simulation is completed.
+   * If your choice is v2.0, v2.0 CAP Simulator will prompt you for a grade, 
+   follow by a prompt for MCs.
+
+Once done, enter `ok` when prompt with entering a new grade again (for v2.0 only). 
+
+List of accepted grades: `A+`, `A`, `A-`, `B+`, `B`, `B-`, `C+`, `C`, `D+`, `D`, `F`, `SU`
+
 
 When you enter CAP Simulator, it will welcome you with the following interface!
 
@@ -686,54 +766,57 @@ please go back to the HelpGraduation menu and set existing CAP and MCs taken to 
 Key in 1 to simulate your cap base on the grades you have entered before for each module.
 Key in 2 to simulate cap base on your own input.
 ````
+
+Example on CAP simulator:  
+
 ###### Version 1  
 
 ````
 > 1
 --------------------------------------------
-Calculating on the following entries entered: 
-Grades entered: [A, A, SU]
-MCs entered: [4, 6, 4]
-Current CAP: 4.5
+Welcome to CAP Simulator Version 1!
+Calculating on the following entries: 
+Grades: [SU, A, null]
+MCs: [4, 8, 1]
+Current CAP: 4.50
 Current Graded MCs taken: 20
-The simulated cumulative average point you have is: 
-4.666666666666667
+The simulated cumulative average point (rounded to 2 d.p) you have is: 
+4.64
 Returning to CAP simulator/calculator menu...
 ````  
 
-###### Version 2
+###### Version 2  
 
 ````
+> 2
+--------------------------------------------
 Welcome to CAP Simulator Version 2!
 You have chosen to simulate CAP base on your input.
 THINGS TO NOTE: 
-You may key in 'q' to quit and 'ok' after finishing your inputs.
+When prompted to key in grade, you may key in 'q' to quit and 'ok' to generate simulated CAP.
 You may key in your letter grades follow by MCs associated with the letter grade after each prompt. 
 
 Key in a grade: [e.g. A+, B, B-]
-A+
+> A
 --------------------------------------------
 Key in MCs for the associated module: 
-6
+> 6
 --------------------------------------------
 Key in a grade: [e.g. A+, B, B-]
-B+
+> ok
 --------------------------------------------
-Key in MCs for the associated module: 
-4
---------------------------------------------
-Key in a grade: [e.g. A+, B, B-]
-ok
---------------------------------------------
-Calculating on the following entries entered: 
-Grades entered: [A+, B+]
-MCs entered: [6, 4]
-Current CAP: 4.5
+Calculating on the following entries: 
+Grades: [A]
+MCs: [6]
+Current CAP: 4.50
 Current Graded MCs taken: 20
-The simulated cumulative average point you have is: 
-4.533333333333333
-Key in a grade: [e.g. A+, B, B-]
+The simulated cumulative average point (rounded to 2 d.p) you have is: 
+4.62
+Returning to CAP simulator/calculator menu...
 ````  
+
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 ---
 
@@ -784,6 +867,8 @@ Please choose which action you would like to do and enter the number:
 [5] --- Pin a Task
 [6] --- Exit
 ````
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.3.1 Add New Task
 
@@ -889,8 +974,11 @@ Returning back to the menu now!
 > Please enter a valid time format.
 > ````
 
-After adding a task, you will return back to the module you accessed this feature from. This feature can be accessed
-from both the Task Manager and [Module Information](#31-module-information) menus. 
+After adding a task, you will return to the module you accessed this feature from. This feature can be accessed
+from both the Task Manager and [Module Information](#31-module-information) menus.  
+
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.3.2 Mark/Unmark a Task as Done
 
@@ -963,6 +1051,9 @@ Returning back to TaskManager menu now!
 > Invalid input! Please enter a valid integer from the list.
 > ````
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 #### 3.3.3 Delete a Task
 
 Deletes a task of type `normal task`, `assignment`, `midterm` or `final exam` from the task list.
@@ -999,6 +1090,8 @@ Example for deleting a task of type `normal task` with the task description of `
 > Invalid input! Please enter a valid integer from the list.
 > ````
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.3.4 View All Tasks
 
@@ -1027,6 +1120,9 @@ Example:
 
   This is the list of your final exams:  
   ````  
+
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.3.5 Pin a Task
 
@@ -1096,6 +1192,9 @@ Main Menu:
 [5] Exit Program
 ````
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 ---
 
 ### 3.4 Links Menu
@@ -1115,6 +1214,9 @@ Please choose which action you would like to do and enter the number:
 [3] --- View Zoom links
 [4] --- Exit to main menu
 ````
+
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.4.1 External Links Menu
 
@@ -1137,6 +1239,8 @@ Please choose which action you would like to do and enter the number:
 [4] --- exit to links menu
 ````
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.4.2 Add External Link
 
@@ -1176,6 +1280,9 @@ Please choose which action you would like to do and enter the number:
 [4] --- Exit to links menu
 ````
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 #### 3.4.3 Remove External Link
 
 Removes an external link from the external links list.
@@ -1206,6 +1313,9 @@ Please choose which action you would like to do and enter the number:
 [4] --- exit to links menu
 ````
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 #### 3.4.4 View External Links
 
 Allows you to view all external links stored in the application.
@@ -1231,6 +1341,9 @@ Please choose which action you would like to do and enter the number:
 [4] --- exit to links menu
 
 ````
+
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.4.5 Add Zoom Link
 
@@ -1278,6 +1391,9 @@ Please choose which action you would like to do and enter the number:
 [5] --- Exit to main menu
 ````
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 #### 3.4.6 Delete Zoom Link
 
 Deletes a zoom link of your choice
@@ -1304,6 +1420,9 @@ Please choose which action you would like to do and enter the number:
 [5] --- Exit to main menu
 ````
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 #### 3.4.7 View Zoom Links
 
 View all zoom links stored in the application
@@ -1327,6 +1446,9 @@ Please choose which action you would like to do and enter the number:
 [5] --- Exit to main menu
 ````
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 ---
 ## 4. Frequently Asked Questions (FAQ)  
 
@@ -1334,6 +1456,7 @@ Please choose which action you would like to do and enter the number:
 **A:** Yes, you can! Firstly, locate the UniTracker Jar file on your desired computer. If the folder already contains a 'UniTracker Data' folder, delete it.
 Then, copy the 'UniTracker Data' folder over from your current computer to the folder containing the Jar file on your desired computer.
 
+→ Go To [Table of Contents](#table-of-contents)
 
 ---
 ## 5. Command Summary
@@ -1350,9 +1473,9 @@ Features|Menu | Command to enter from the Main Menu
 [Add a Review](#318-add-a-review) | Module Information | 1, 8
 [View All Reviews](#319-view-all-reviews) | Module Information | 1, 9
 [Delete a Review](#3110-delete-a-review) | Module Information | 1, 10
-[Add CAP and Number of MCs graded taken](#321-add-cap-and-number-of-mcs-graded-taken) | Cap Simulator / Calculator | 2,1
-[View CAP and Number of MCs graded taken](#322-view-cap-and-number-of-mcs-graded-taken) | Cap Simulator / Calculator | 2,2
-[Simulate future CAP](#323-simulate-future-cap) | Cap Simulator / Calculator | 2.3
+[Add CAP and Number of MCs counted towards CAP](#321-add-cap-and-number-of-mcs-counted-towards-cap) | Cap Simulator / Calculator | 2, 1
+[View CAP and Number of MCs counted towards CAP](#322-view-cap-and-number-of-mcs-counted-towards-cap) | Cap Simulator / Calculator | 2, 2
+[Simulate future CAP](#323-simulate-future-cap) | Cap Simulator / Calculator | 2, 3
 [Add a new Task](#331-add-new-task) | Task Manager | 3, 1 or 1, 11
 [Mark/Unmark a Task as Done](#332-markunmark-a-task-as-done) | Task Manager | 3, 2
 [Delete a new Task](#333-delete-a-task) | Task Manager | 3, 3 or 1, 12

@@ -62,8 +62,8 @@ public enum ModuleGradeEnum {
     }
 
     public static boolean checkPassFailGrade(String grade) {
-        if (grade == null) {
-            return false;
+        if (grade.equals("null")) {
+            return true;
         }
 
         if (grade.equalsIgnoreCase("SU")) {
