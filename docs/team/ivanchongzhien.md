@@ -51,7 +51,10 @@ We designed GULIO, a CLI-based module planner intended to help users keep track 
 1. [Raised question on forum](https://github.com/nus-cs2113-AY2021S2/forum/issues/15)
 1. [Reported bugs during PE Dry Run](https://github.com/ivanchongzhien/ped/issues)
 
-### Contributions to the Developer Guide (Extracts)
+<div style="page-break-after: always;"></div>
+
+## [Optional] Contributions to UG and DG (Extracts)
+### Contributions to Developer Guide
 
 Extract of contributions:
 
@@ -126,7 +129,9 @@ The `AddLessonCommand` class is responsible for the creation and addition of a n
 
 The creation process is facilitated by the `Parser` class, which parses the appropriate arguments from the user input and initialises the `Lesson` object attributes with the parsed values.
 
-## Contributions to the User Guide (Extracts)
+<div style="page-break-after: always;"></div>
+
+### Contributions to the User Guide
 Extract of contributions:
 
 ### Editing a lesson : _edit lsn_
