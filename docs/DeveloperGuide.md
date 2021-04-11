@@ -243,10 +243,8 @@ This feature allows user to add a recommendation for any of the activities that 
 <span>&#10071;</span> Title of a new recommendation cannot exist in current list of reviews. An error message would be printed out.
 
 The mechanism to add a recommendation is facilitated by the `RecommendationList` class. The user is able to add in a new recommendation using `new` or `add` command.
-`addRecommendation#execute` and `addRecommendationDetails#execute` are called.
-`Recommendation` add by the user would be added into `recommendations`
-
-The following is the Sequence diagram to `add a recommendation`.
+T
+he following is the Sequence diagram to `add a recommendation`.
 
 ![add reco seq](./diagrams/Add_Reco_Sequence_Diagram.png)
 <p align="center">Figure !!. Sequence Diagram for add recommendations</p>
@@ -254,8 +252,26 @@ The following is the Sequence diagram to `add a recommendation`.
 ![add_reco](./images/ug/add_reco.png)
 <p align="center">Figure !!. Adding a Recommendation</p>
 
-The
-When the user attempts to add a new recommendation, 
+A general explanation of add recommendation works:
+   `Ui` will read in user command, calls `Paser#determineCommand()` to determine the input.
+
+   `Paser` calls for `Commands#add` if input enter is `new` or `add` command.
+
+   `Commands` calls for `RecommendationList#addReccomendation` to prompt and read respective information such as  `title`, `category`, `price range`,`recommendedby` and `location`.
+
+`title` - string with 20char limit, that will call [`RecommendationList#checkAndPrintDuplicateRecommendation`]() to check for duplicates. 
+
+`category`, `recommendedby` and `location` - string with 15char limit, that cannot be whitespace or null.
+
+`price range`- string, that will call `RecommendationList#checkPriceValidity` and restrict it to 2 decimal places.
+violation of any constraints for each attribute will print an error message from `ui` and be promoted to re-enter a valid input.
+
+When all fields are valid, fields are added into a `Recommendation` class.
+
+The new `Recommendation` is added into an arrayList `recommendations`.
+
+
+
 ### 5.3.2 List Recommendation Feature
 ### 5.3.3 Edit a Recommendation Feature
 ### 5.3.4 Delete a Recommendation Feature
