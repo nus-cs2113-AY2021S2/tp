@@ -709,14 +709,14 @@ Whenever a user input is given to the Doctor Appointment Menu, the following ste
 
 **Launching Doctor Appointment Menu**
 
-1. `ToDoctorAppointment.execute()` will create and call `DoctorAppointmentInstance.run()`
+1. `ToDoctorAppointmentInstance.execute()` will be created and call upon `DoctorAppointmentInstance.run()`.
 2. `DoctorAppointmentInstance.run()` will start by loading/creating the DoctorAppointment data .txt file for database records. It will check for any signs of corrupted file when loading. Exception will be thrown if any corruption occurs.
 3. `DoctorAppointmentInstance.run()` will then repeatedly call `DoctorAppointmentParser.parse()`.
 
 **Getting User Input**
 
-4. `DoctorAppointmentInstance.run()` will repeatedly, requesting for user input and calling `DoctorAppointmentParser.parse()`.
-5. `parse()` will call the `smartCommandRecognition()` to assess the given user input and determine which command is most similar to the input
+4. `DoctorAppointmentInstance.run()` will repeatedly request for user input and call `DoctorAppointmentParser.parse()`.
+5. `parse()` will call the `smartCommandRecognition()` to assess the given user input and determine which command is most similar to the input.
 6. Based on the recognised command by the system, the relevant commands will be carried out.
 
 <br>
@@ -749,7 +749,9 @@ Invalid Input includes:
 1. If the command recognised is the add command, `DoctorAppointmentParser.parse()` calls `MainChecker.checkNumInput()` and `DoctorAppointmentChecker.checkValidDataForAdd()` to ensure data entered is valid.
 2. `checkValidDataForAdd()` will call the following function in sequence:
 
-	- isValidDocID()	
+	- checkDoctorIDFormat()
+	- isValidDocId()
+	- checkAptIdFormat()	
 	- isValidAppointmentID()
 	- illegalCharacterChecker()
 	- isValidGender()
@@ -758,11 +760,11 @@ Invalid Input includes:
 **Creating DoctorAppointmentAdd command**
 
 3. If the input data is valid, a DoctorAppointment Command object is created. Otherwise a relevant error will be thrown.
-4. The Command object is returned to `DoctorAppoitmentInstance.run()`
+4. The Command object is returned to `DoctorAppointmentInstance.run()`
 
 **Creating DoctorAppointment Object with User Input**
 
-5. DoctorAppointmentInstance then executes the DoctorAppointment Add Command object by running `DoctorAppointmentAdd.execute()`.
+5. DoctorAppointmentInstance then executes the DoctorAppointment Add Command object by running `DoctorAppointmentAddCommand.execute()`.
 6. `AppointmentList.addAppointment()` will be called in which a DoctorAppointment object will be created and added into the ArrayList<DoctorAppointment> appointmentList, which contains all the DoctorAppointment Objects. 
 
 **Saving DoctorAppointment Objects into .txt file**
@@ -795,20 +797,25 @@ Invalid Input includes:
 
 1. If the command is recognised as the delete command, `DoctorAppointmentParser.parse()` calls `MainChecker.checkNumInput()` and `DoctorAppointmentChecker.checkValidDataForDelete()` to ensure that the inputs are valid.
 
+2. `checkValidDataForDelete()` will call the following function in sequence:
+
+	- checkIdDuringParse()
+	- isValidIdToDelete()
+
 **Creating DoctorAppointmentDelete command**
 
-2. A DoctorAppointmentDelete Command object is created if the inputs are valid. 
-3. The Command object is returned to `DoctorAppointmentInstance.run()`
+3. A DoctorAppointmentDelete Command object is created if the inputs are valid. 
+4. The Command object is returned to `DoctorAppointmentInstance.run()`.
 
 **Deleting DoctorAppointment Object using User Input**
 
-4. DoctorAppointmentInstance then executes the DoctorAppointmentDelete Command object by running `DoctorAppointmentDelete.execute()`.
-5. `AppointmentList.deleteAppointment()` is called, which iterates through the objects in ArrayList<DoctorAppointment> appointmentList. The DoctorAppointment Object matching the input given by the user will be removed from the array list.
+5. DoctorAppointmentInstance then executes the DoctorAppointmentDelete Command object by running `DoctorAppointmentDeleteCommand.execute()`.
+6. `AppointmentList.deleteAppointment()` is called, which iterates through the objects in ArrayList<DoctorAppointment> appointmentList. The DoctorAppointment Object matching the input given by the user will be removed from the array list.
 
 **Saving changed DoctorAppointment Objects into .txt file**
 
-6. `AppointmentList.deleteAppointment()` then calls `DoctorAppointmentStorage.writeToFile()` which rewrites the updated appointmentList into the DoctorAppointment.txt file.
-7. Control is then returned to StaffInstance.
+7. `AppointmentList.deleteAppointment()` then calls `DoctorAppointmentStorage.writeToFile()` which rewrites the updated appointmentList into the DoctorAppointment.txt file.
+8. Control is then returned to DoctorAppointmentInstance.
 
 <br>
 
@@ -829,17 +836,23 @@ Invalid Input includes:
 
 1. If the command recognised is the list command, `DoctorAppointmentParser.parse()` calls `MainChecker.checkNumInput()` and `DoctorAppointmentChecker.checkValidDataForList()` to check and verify the validity of inputs accompanied by the list command, if any.
 
+2. `checkValidDataForList()` will call the following function in sequence:
+
+	- checkIdDuringParse()
+	- isValidDocId()
+	- isValidListAppointmentID()
+	
 **Creating DoctorAppointmentList command**
 
-2. A DoctorAppointmentList Command object is created if the inputs are valid.
-3. The Command object is returned to `DoctorAppointmentInstance.run()`
+3. A DoctorAppointmentList Command object is created if the inputs are valid.
+4. The Command object is returned to `DoctorAppointmentInstance.run()`.
 
 **Viewing DoctorAppointment Objects**
 
-4. DoctorAppointmentInstance then executes the DoctorAppointmentList Command object by running `DoctorAppointmentList.execute()`.
-5. `AppointmentList.listAppointment()` is called, and will iterate through the objects in ArrayList<DoctorAppointment> appointmentList.
-6. All DoctorAppointment Objects in the array list will be displayed.
-7. Control is then returned to DoctorAppointmentInstance.
+5. DoctorAppointmentInstance then executes the DoctorAppointmentList Command object by running `DoctorAppointmentListCommand.execute()`.
+6. `AppointmentList.listAppointment()` is called, and will iterate through the objects in ArrayList<DoctorAppointment> appointmentList.
+7. All DoctorAppointment Objects in the array list will be displayed.
+8. Control is then returned to DoctorAppointmentInstance.
 
 <br>
 
@@ -862,11 +875,11 @@ Invalid Input includes:
 **Creating DoctorAppointmentList command**
 
 2. A DoctorAppointmentList Command object is created if the inputs are valid.
-3. The Command object is returned to `DoctorAppointmentInstance.run()`
+3. The Command object is returned to `DoctorAppointmentInstance.run()`.
 
 **Viewing DoctorAppointment Objects**
 
-4. DoctorAppointmentInstance then executes the DoctorAppointmentList Command object by running `DoctorAppointmentList.execute()`.
+4. DoctorAppointmentInstance then executes the DoctorAppointmentList Command object by running `DoctorAppointmentListCommand.execute()`.
 5. `AppointmentList.listAppointment()` is called, and will iterate through the objects in ArrayList<DoctorAppointment> appointmentList.
 6. DoctorAppointment Objects matching the user input present in the array list will be displayed.
 7. Control is then returned to DoctorAppointmentInstance.
@@ -1647,9 +1660,9 @@ Error in ID input
 Please input with the following format [D/A] followed by [5 digit ID number]
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.2 **Test case:** ```delete/A12346```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.2 **Test case:** ```delete/A54321```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```DoctorID / Appointment ID: D12345/A12345 has been deleted!```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Appointment ID: A54321 has been deleted!```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `delete/A123`
 
@@ -1679,12 +1692,13 @@ Please input with the following format [D/A] followed by [5 digit ID number]
 	D12345         | A12345         | Alex           | M              | 21/01/2021  
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `list`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `list/a`
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 
 ``` 
-OOPS! There are too few inputs for this command
+Error in ID input
+Please input with the following format [all/D/A] followed by [5 digit ID number]
 ```
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.2 **Test case:** ```list/D12345```
@@ -1702,7 +1716,7 @@ OOPS! There are too few inputs for this command
 
 ``` 
 Error in ID input
-Please input with the following format [D/A] followed by [5 digit ID number]
+Please input with the following format [all/D/A] followed by [5 digit ID number]
 ```
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.3 **Test case:** ```list/A12345 ```
@@ -1710,9 +1724,9 @@ Please input with the following format [D/A] followed by [5 digit ID number]
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 
 	
-	Doctor ID      | Appointment ID | Name           | Gender         | Date          
+	Appointment ID | Name           | Gender         | Date          
 	____________________________________________________________
-	D12345         | A12345         | Alex           | M              | 21/01/2021  
+	A12345         | Alex           | M              | 21/01/2021  
 		
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `list/A111`
 
@@ -1720,7 +1734,7 @@ Please input with the following format [D/A] followed by [5 digit ID number]
 
 ``` 
 Error in ID input
-Please input with the following format [D/A] followed by [5 digit ID number]
+Please input with the following format [all/D/A] followed by [5 digit ID number]
 ```
 	
 <br/>
@@ -1729,7 +1743,7 @@ Please input with the following format [D/A] followed by [5 digit ID number]
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```return```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to start menu!```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to Start Menu!```
 
 <br/>
 
@@ -1745,12 +1759,13 @@ Please input with the following format [D/A] followed by [5 digit ID number]
 	____________________________________________________________________________________________________
 	help      Brings up the list of commands for Doctor Appointments!               -                                                 
 	add       Adds Doctor Appointment details to the database!                      add/[Doctor ID]/[Appointment ID]/[Name]/[Gender]/[Date (DDMMYYYY)]
-	list      Brings up the list of all current Doctors' Appointments in database!  list/[DoctorID/AppointmentID]                     
+	list      Brings up the list of all current Doctors' Appointments in database!  list/[all/DoctorID/AppointmentID]                     
 	delete    Deletes the Appointment with the specified ID from the list!          delete/[DoctorID/Appointment ID]                  
 	return    Returns you to the Start Menu!                   
 	
 
 <br/><br/>
+
 
 ### Choose which feature you want to use from Schedules' Menu	 
 1. Adding a new schedule
