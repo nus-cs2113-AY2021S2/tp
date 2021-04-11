@@ -58,6 +58,10 @@ public class Constants {
     public static final String INVALID_INPUT_EMPTY_STRING = "Please enter a command for me to process.";
     public static final String INVALID_INPUT_UNKNOWN_COMMAND = "Invalid command provided.";
     public static final String INVALID_INPUT_INVALID_NRIC = "Please key in a valid NRIC number.";
+    public static final String INVALID_INPUT_INVALID_NRIC_FIRST_LETTER =
+            "Please ensure that NRIC starts with S,T,F or G";
+    public static final String INVALID_INPUT_INVALID_NRIC_CHECKSUM =
+            "NRIC does not pass the checksum test, please ensure NRIC is valid eg. G1234567X";
     public static final String INVALID_INPUT_PATIENT_EXISTED = "Patient already exists.";
     public static final String INVALID_INPUT_INVALID_DATE =
             "Please provide a valid date (format: dd/MM/yyyy).\n"
@@ -66,6 +70,8 @@ public class Constants {
     public static final String INVALID_INPUT_UNKNOWN_DELETE_ARGUMENT =
             "Please use exactly one of /p or /r to indicate whether to delete a patient or a record.\n"
                     + "You may use the help command for more clarification.";
+    public static final String INVALID_INPUT_EMPTY_NRIC_ARGUMENT = "Please key in NRIC number of patient to delete";
+    public static final String INVALID_INPUT_EMPTY_DATE_ARGUMENT = "Please key in a date of record to delete";
     public static final String INVALID_INPUT_END_OF_FILE = "End of file reached, exiting application.";
 
     public static final String DATA_NO_RECORD_FOUND = "No records found for the specified date.";

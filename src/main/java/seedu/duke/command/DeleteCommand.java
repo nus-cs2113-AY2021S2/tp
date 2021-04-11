@@ -43,7 +43,7 @@ public class DeleteCommand extends Command {
             deletePatient(id);
         } else {
             String dateString = arguments.get(Constants.RECORD_KEY);
-            if (date.equals("")) {
+            if (dateString.equals("")) {
                 throw new InvalidInputException(InvalidInputException.Type.EMPTY_DATE_ARGUMENT);
             }
             LocalDate date = Common.parseDate(dateString);

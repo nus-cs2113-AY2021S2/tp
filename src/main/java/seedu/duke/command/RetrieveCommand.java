@@ -1,6 +1,7 @@
 package seedu.duke.command;
 
 import seedu.duke.Common;
+import seedu.duke.Constants;
 import seedu.duke.Data;
 import seedu.duke.Ui;
 import seedu.duke.exception.DataException;

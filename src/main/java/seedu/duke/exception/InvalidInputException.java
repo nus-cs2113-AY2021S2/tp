@@ -14,6 +14,8 @@ public class InvalidInputException extends BaseException {
         INVALID_DATE(Constants.INVALID_INPUT_INVALID_DATE),
         FUTURE_DATE(Constants.INVALID_FUTURE_DATE),
         UNKNOWN_DELETE_ARGUMENT(Constants.INVALID_INPUT_UNKNOWN_DELETE_ARGUMENT),
+        EMPTY_NRIC_ARGUMENT(Constants.INVALID_INPUT_EMPTY_NRIC_ARGUMENT),
+        EMPTY_DATE_ARGUMENT(Constants.INVALID_INPUT_EMPTY_DATE_ARGUMENT),
         END_OF_FILE(Constants.INVALID_INPUT_END_OF_FILE);
 
         public final String message;
