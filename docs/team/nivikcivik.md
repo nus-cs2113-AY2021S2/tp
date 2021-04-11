@@ -67,8 +67,14 @@ Here are my implementations and the links to the following sections of our Devel
 1. [Delete a Review](https://ay2021s2-cs2113t-f08-4.github.io/tp/DeveloperGuide.html#406-delete-a-review)
 1. [Instructions for manual testing](https://ay2021s2-cs2113t-f08-4.github.io/tp/DeveloperGuide.html#9-instructions-for-manual-testing)
 
-The following are the diagrams I have added:
+The following are the diagrams I have added:  
 
+![Diagram](../diagrams/moduleInfo/module/addNewModule.png)  
+*Figure 1* Add New Module (Click [here](https://ay2021s2-cs2113t-f08-4.github.io/tp/DeveloperGuide.html#401-add-new-module) for link to this section of DG)  
+
+
+![Diagram](../diagrams/moduleInfo/addNewReview.png)  
+*Figure 2* Add New Review (Click [here](https://ay2021s2-cs2113t-f08-4.github.io/tp/DeveloperGuide.html#405-add-new-review) for link to this section of DG)  
 
 ### Contributions to team-based tasks
 
