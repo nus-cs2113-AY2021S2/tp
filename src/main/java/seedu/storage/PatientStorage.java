@@ -3,7 +3,7 @@ package seedu.storage;
 import seedu.exceptions.CorruptedFileException;
 import seedu.exceptions.HealthVaultException;
 import seedu.logger.HealthVaultLogger;
-import seedu.logic.errorchecker.PatientChecker;
+import seedu.logic.errorchecker.patientchecker.PatientChecker;
 import seedu.model.patient.Patient;
 import seedu.model.patient.PatientList;
 import seedu.ui.PatientUI;

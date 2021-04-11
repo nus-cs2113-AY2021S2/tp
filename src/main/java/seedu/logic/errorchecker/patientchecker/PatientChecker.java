@@ -1,4 +1,4 @@
-package seedu.logic.errorchecker;
+package seedu.logic.errorchecker.patientchecker;
 
 import seedu.exceptions.CorruptedFileException;
 import seedu.exceptions.DuplicateIdException;
@@ -7,9 +7,12 @@ import seedu.exceptions.HealthVaultException;
 import seedu.exceptions.IdNotFoundException;
 import seedu.exceptions.InsufficientInputException;
 import seedu.exceptions.NoInputException;
+import seedu.exceptions.UnrecognizedCommandException;
 import seedu.exceptions.patient.InvalidPatientAgeException;
 import seedu.exceptions.patient.InvalidPatientIdException;
 import seedu.logger.HealthVaultLogger;
+import seedu.logic.errorchecker.MainChecker;
+import seedu.logic.errorchecker.patientchecker.utils.CommandInputTypeLength;
 import seedu.model.patient.PatientList;
 import seedu.model.patient.Patient;
 
@@ -120,30 +123,67 @@ public class PatientChecker extends MainChecker {
      *
      * @throws ExcessInputException when the number of input fields is in excess.
      * @throws InsufficientInputException when the number of input fields is insufficient.
+     * @throws UnrecognizedCommandException when the command is unrecognized.
      */
-    public void checkLength() throws ExcessInputException, InsufficientInputException {
-        if (command.equals("add") && numberOfTokens > 7) {
-            logger.log(Level.WARNING, "Incorrect patient add command input fields, excess fields.");
+    public void checkLength() throws ExcessInputException, InsufficientInputException, UnrecognizedCommandException {
+        CommandInputTypeLength c = commandLengthClassifier();
+        switch(c) {
+        case MULTI:
+            inputLengthCheck(7, numberOfTokens);
+            break;
+        case DUAL:
+            inputLengthCheck(2, numberOfTokens);
+            break;
+        case SINGLE:
+            inputLengthCheck(1, numberOfTokens);
+            break;
+        default:
+            throw new UnrecognizedCommandException();
+        }
+    }
+
+    /**
+     * Identifies the appropriate allows length for a particular command.
+     *
+     * @return CommandInputTypeLength which shows represents the desired length of the command.
+     * @throws UnrecognizedCommandException when the command is unrecognized.
+     */
+    public CommandInputTypeLength commandLengthClassifier() throws UnrecognizedCommandException{
+        CommandInputTypeLength commandLength;
+        switch (command) {
+        case "add":
+            commandLength = CommandInputTypeLength.MULTI;
+            break;
+        case "delete":
+        case "find":
+            commandLength = CommandInputTypeLength.DUAL;
+            break;
+        case "list":
+        case "help":
+        case "return":
+            commandLength = CommandInputTypeLength.SINGLE;
+            break;
+        default:
+            throw new UnrecognizedCommandException();
+        }
+        return commandLength;
+    }
+
+    /**
+     * Checks if the given command has greater or fewer than the required number of inputs.
+     *
+     * @param correctNumberInputs the ideal number of inputs for this particular command
+     * @param numberOfTokens the number of inputs currently in the command
+     * @throws ExcessInputException when the number of input fields is in excess.
+     * @throws InsufficientInputException when the number of input fields is insufficient.
+     */
+    public void inputLengthCheck(int correctNumberInputs, int numberOfTokens) throws ExcessInputException,
+            InsufficientInputException {
+        if (numberOfTokens > correctNumberInputs) {
+            logger.log(Level.WARNING, "Incorrect patient input fields, excess fields.");
             throw new ExcessInputException();
-        } else if ((command.equals("delete") || command.equals("find")) && numberOfTokens > 2) {
-            logger.log(Level.WARNING, "Incorrect patient delete or find command input fields, excess fields.");
-            throw new ExcessInputException();
-        } else if ((command.equals("list") || command.equals("return") || command.equals("help"))
-                && numberOfTokens > 1) {
-            logger.log(Level.WARNING, "Incorrect patient list, "
-                    + "return or help command input fields, excess fields.");
-            throw new ExcessInputException();
-        } else if (command.equals("add") && numberOfTokens < 7) {
-            logger.log(Level.WARNING, "Incorrect patient add command input fields, insufficient fields.");
-            throw new InsufficientInputException();
-        } else if ((command.equals("delete") || command.equals("find")) && numberOfTokens < 2) {
-            logger.log(Level.WARNING, "Incorrect patient delete or find command "
-                    + "input fields, insufficient fields.");
-            throw new InsufficientInputException();
-        } else if ((command.equals("list") || command.equals("return") || command.equals("help"))
-                && numberOfTokens < 1) {
-            logger.log(Level.WARNING, "Incorrect patient list, return or help command "
-                    + "input fields, insufficient fields.");
+        } else if (numberOfTokens < correctNumberInputs) {
+            logger.log(Level.WARNING, "Incorrect patient input fields, insufficient fields.");
             throw new InsufficientInputException();
         }
     }
