@@ -9,6 +9,10 @@ import seedu.duke.ui.NoteUi;
 
 import java.util.ArrayList;
 
+/**
+ * Execution for show note command. A <code>ShowNoteCommand</code> object corresponds to
+ * a response to each input by the user for every 'show notes' command.
+ */
 public class ShowNoteCommand extends Command {
 
     protected NoteUi ui;
@@ -17,6 +21,11 @@ public class ShowNoteCommand extends Command {
         this.ui = new NoteUi();
     }
 
+    /**
+     * Shows notes from a block's list, based on user input of selected block, if block exists.
+     * Returns error message if block doesn't exist or list of block is empty.
+     *
+     */
     @Override
     public void execute() {
         String showBlockInfo = ui.getBlockInfo();

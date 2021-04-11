@@ -6,6 +6,9 @@ import seedu.duke.exception.SameBlockException;
 
 public class RouterUi extends UiManager {
 
+    /**
+     * This prompts the user for the block to route from and the block to route to.
+     */
     public String[] getRoutingInfo() throws SameBlockException {
         String[] startAndDestination = new String[2];
 
@@ -22,6 +25,10 @@ public class RouterUi extends UiManager {
         return startAndDestination;
     }
 
+    /**
+     * This prompts the user to select an eatery from the list.
+     * @param eateries  is the list of eateries in order of distance.
+     */
     public int getEateryIndex(Block[] eateries) throws InvalidIndexException {
         showMessage("Here are the list of eateries(from closest to furthest):");
         for (int i = 0; i < eateries.length; i++) {

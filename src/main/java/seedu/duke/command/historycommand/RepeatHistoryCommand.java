@@ -16,6 +16,12 @@ public class RepeatHistoryCommand extends Command {
     }
 
     @Override
+    /**
+     * This method will attempt to repeat a "go" search using existing entries stored in history.
+     * This method then prompts user for their input of the INDEX of stored history searches.
+     *
+     * This method further calls Router class' execute() method.
+     */
     public void execute()  {
         try {
             ui.showHistory(history);

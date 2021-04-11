@@ -6,6 +6,17 @@ import seedu.duke.exception.InvalidIndexException;
 
 public class HistoryUi extends UiManager {
 
+
+    /**
+     * Displays all available entries stored in history to the user, in the form of an indexed list.
+     * If there are no stored entries, the EmptyHistoryException will be thrown.
+     * When this method is called from "Repeat History" command, the user will also be prompted to enter
+     * the index of stored entries, by calling the getRepeatIndex() method.
+     *
+     * @param history class
+     * @throws InvalidIndexException for invalid input by user
+     * @throws EmptyHistoryException for empty history before this function is called.
+     */
     public void showHistory(History history) throws InvalidIndexException, EmptyHistoryException {
         assert history != null : "History must be initialized before, cannot be null";
         if (history.isEmpty()) {
@@ -20,6 +31,13 @@ public class HistoryUi extends UiManager {
         }
     }
 
+    /**
+     * This method prompts the user to enter an index of a stored entry in history.
+     * If an invalid input is provided, the InvalidIndexException is thrown.
+     *
+     * @return the index of the stored search to repeat.
+     * @throws InvalidIndexException when invalid input is provided by user.
+     */
     public int getRepeatIndex() throws InvalidIndexException {
         try {
             showMessage("Select Entry to Repeat:");

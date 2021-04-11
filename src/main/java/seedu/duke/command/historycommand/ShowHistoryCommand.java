@@ -15,6 +15,9 @@ public class ShowHistoryCommand extends Command {
     }
 
     @Override
+    /**
+     * This method will display all records stored inside history to the user.
+     */
     public void execute() {
         try {
             ui.showHistory(history);
