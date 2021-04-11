@@ -36,7 +36,7 @@ public class NurseScheduleStorage {
     /**
      * Creates new file.
      */
-    private static void createFile() {
+    public static void createFile() {
         try {
             File file = new File(FILE_PATH);
             file.createNewFile();
@@ -57,7 +57,7 @@ public class NurseScheduleStorage {
      * @throws PatientCrossValidationError if Patients.txt cannot be loaded
      * @throws InvalidDateException        if date is invalid
      */
-    private ArrayList<NurseSchedule> readFile() throws NurseIdNotFound, InvalidiDTypeException,
+    public ArrayList<NurseSchedule> readFile() throws NurseIdNotFound, InvalidiDTypeException,
             FileNotFoundException, NurseCrossValidationError, PatientIdNotFound,
             PatientCrossValidationError, InvalidDateException, NumberFormatException {
         FileInputStream file = new FileInputStream(FILE_PATH);
