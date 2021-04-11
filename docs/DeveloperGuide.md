@@ -98,7 +98,7 @@ GULIO is a command line application for NUS SoC students to organize their modul
 On start up, the user will be on the dashboard layer and has an overview of all their modules. They will have access to module management commands such as adding, deleting or opening a particular module. Opening a module then puts them on the module layer where they can interact with the data within the module.
 
 <p align="center">
-    <img width="973" src="userGuideImages/2-layer.jpg" alt="2-Layer System"><br>
+    <img width="600" src="userGuideImages/2-layer.png" alt="2-Layer System"><br>
     Figure 1 - Visualisation of GULIO’s 2-layer system
 </p>
 
