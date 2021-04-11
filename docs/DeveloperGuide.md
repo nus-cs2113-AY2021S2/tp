@@ -1760,6 +1760,8 @@ eg. N12345 or P67891
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `list/N1`
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** `NurseID does not exist! Please check Staff List and try again!`
+
+<br>
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.2 **Positive Test case:** ```list/all```
 
