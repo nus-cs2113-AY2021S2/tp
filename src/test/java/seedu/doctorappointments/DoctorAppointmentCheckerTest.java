@@ -13,7 +13,7 @@ public class DoctorAppointmentCheckerTest {
     @Test
     public void testValidAppointmentId() {
         String id = "A12345";
-        assertDoesNotThrow(() -> DoctorAppointmentChecker.checkAptID(id));
+        assertDoesNotThrow(() -> DoctorAppointmentChecker.checkAptIdFormat(id));
     }
 
     @Test

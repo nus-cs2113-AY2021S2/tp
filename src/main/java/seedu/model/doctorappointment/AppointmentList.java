@@ -60,7 +60,6 @@ public class AppointmentList {
     public static void listAppointment(String input) throws HealthVaultException, EmptyListException, ParseException {
 
         String indicator = "A";
-        String doctorID;
         String[] inputArray = input.split("");
         String id = inputArray[0];
         if (appointmentList.size() == 0) {

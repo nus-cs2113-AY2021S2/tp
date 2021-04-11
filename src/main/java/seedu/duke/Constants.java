@@ -96,7 +96,7 @@ public class Constants {
 
     // LIST FUNCTION FORMATTING
     public static final String STAFF_LIST_FORMAT = "list/<input>, where input == doctor or nurse";
-    public static final String APPOINTMENTS_LIST_FORMAT = "list/[DoctorID/AppointmentID]";
+    public static final String APPOINTMENTS_LIST_FORMAT = "list/[all/DoctorID/AppointmentID]";
     public static final String SCHEDULES_LIST_FORMAT = "list/[NurseID/all]";
     public static final String INVENTORY_LIST_FORMAT = "list";
 
