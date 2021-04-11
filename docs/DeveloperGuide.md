@@ -138,7 +138,7 @@ As shown in the diagram above, `Router` is used by the following classes:
 ![img.png](images/DataComponent.png)
 
 The **Data Component** is where all the data that are needed to execute a command is stored. For example when `"go"`
-command is executed, the `GoCommand`object will use data stored in `NusMap`, `EateryList` and `BlockAlias` in order to find
+command is executed, the `GoCommand` object will use data stored in `NusMap`, `EateryList` and `BlockAlias` in order to find
 the shortest route.
 
 On the other hand, the **Storage Component** is responsible for saving from and loading data into stored in the **Data Component**. This will be
@@ -386,7 +386,7 @@ so the content from the `nusMap`, `blockAlias`, `history`, `favourite`, or `dail
 </div>
 
 #### Design Consideration
-**Alternative 1 (current choice):** Saves the entire list of block aliases, visited routes, tagged notes, daily routes and favourite locations. <br/>
+**Current choice:** Saves the entire list of block aliases, visited routes, tagged notes, daily routes and favourite locations. <br/>
 - Pros: Easy to implement. <br/>
 - Cons: Only highly effective when limited to use of one user. <br/>
 
