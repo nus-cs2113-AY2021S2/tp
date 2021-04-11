@@ -153,6 +153,8 @@ Upon starting up GULIO, the `Duke` (main) class calls `run()` which enters a whi
 
 &nbsp;
 
+<div style="page-break-after: always;"></div>
+
 ### UI Component
 
 **API**: `UI.java`
@@ -204,6 +206,8 @@ Steps for command execution:
 
 
 &nbsp;
+
+<div style="page-break-after: always;"></div>
 
 ### Model Component
 
@@ -443,8 +447,6 @@ If the `Loader` failed to load the file, null would be returned. If null is not 
 [🡅 Back to Table of Contents](#table-of-contents)
 
 ----
-
-<div style="page-break-after: always;"></div>
 
 ## Appendix: Requirements
 
