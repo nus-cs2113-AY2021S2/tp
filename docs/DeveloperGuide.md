@@ -39,12 +39,16 @@ functions allows the app to be moderated and maintained by the person in charge.
 
 ### Architecture
 ![Architecture Diagram](./img/architecture%20diagram.png)
+
 The Architecture Diagram shown above explains the high-level design of NusFoodReviews Application. The following is a brief overview of each component.
 
 *Main* is responsible for,
 + At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 + At shut down: Shuts down the components and invokes cleanup methods where necessary.
+
 *Commons* represents a collection of classes used by multiple other components.
+  
+
   
 The rest of the App consists of four components.
 * [**`UI`**](#ui-component): The UI of the App. 
