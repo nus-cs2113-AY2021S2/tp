@@ -23,8 +23,6 @@ public class DeleteCanteenCommand extends Command {
 
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
-
-
         int numCanteens = canteens.size();
         if (numCanteens > 0) {
             ui.showDisplaySelectCanteens(canteens, "delete");

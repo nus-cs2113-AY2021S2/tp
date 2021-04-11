@@ -12,11 +12,11 @@ package Model <<Rectangle>> {
 
 class "Canteen" {
   - canteenName: String
-  - stores: ArrayList
+  - stores: ArrayList<Store>
 
   + getCanteenName() : String
   + getStore(int) : Store
-  + getStores() : ArrayList
+  + getStores() : ArrayList<Store>
   + getNumStores() : int
   + addStore(String) : void
   + deleteStore(int) : void
@@ -24,15 +24,16 @@ class "Canteen" {
 
 class "Store" {
   - storeName: String
-  - menus: ArrayList
+  - menus: ArrayList<Menu>
+  - reviews: ArrayList<Review>
 
   + displayStore() : void
   + getStoreName() : String
-  + getReviews() : ArrayList
+  + getReviews() : ArrayList<Review>
   + addReview(Review) : void
   + deleteReview(int) : void
   + getAverageRating() : double
-  + getMenus() : ArrayList
+  + getMenus() : ArrayList<Menu>
   + getMenuCount() : int
   + addMenu(Menu) : void
   + deleteMenu(int) : void

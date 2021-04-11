@@ -174,30 +174,18 @@ To add a new canteen, the user must enter '2'.
 #### Implementation
 ![AddCanteen Sequence Diagram](./img/AddCanteen.png)
 
-<!--this part should be in the switchcase ref-->
+To add a canteen, `AddCanteenCommand#execute()` is called, passing in
+an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
+
 `Ui#showAddCanteen()` is called to display the add canteen prompt.
-User input for canteen name will then be read using `Ui#readCommand()`.
-A new AddCanteenCommand object is instantiated, with the canteen name passed into the constructor.
-`Parser#parseAdminCommand()` returns the AddCanteenCommand object.
-<!--this part should be in the switchcase ref-->
+The program will then wait for user input, looping continuously if a valid Canteen name is not entered.
+Invalid names include: existing canteen names.
+If the user inputs 'cancel', the loop is exited and the program returns from `AddCanteenCommand`.
 
-To add a canteen, `AddCanteenCommand#execute()` is called, passing in 
-an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
+Once a valid CanteenName is entered, a new Canteen object is instantiated and added to the ArrayList of canteens.
+`Ui#showAddCanteenSuccess()` is then called to display canteen added confirmation.
 
-A new Canteen object is then instantiated, and added to the ArrayList of canteens.
-`Ui#showAddCanteenSuccess()` is called to display canteen added confirmation.
-
-### [Admin] Add Store
-#### Implementation
-![AddCanteen Sequence Diagram](./img/AddStore.png)
-
-
-To add a store, `AddStoreCommand#execute()` is called, passing in
-an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
-
-A new Store object is then instantiated, and added to the Canteen's ArrayList of stores.
-`Ui#printStoreAdded()` is called to display store added confirmation.
-
+Additionally, the static method `Storage#saveCanteen()` is called to update the canteen in storage.
 
 ### [Admin] Delete Canteen
 #### Implementation
@@ -206,8 +194,42 @@ A new Store object is then instantiated, and added to the Canteen's ArrayList of
 To delete a canteen, `DeleteCanteenCommand#execute()` is called, passing in
 an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
 
-The canteen object is removed from the canteens ArrayList. 
-`Ui#showCanteenDeleted()` is called to display the canteen deleted message.
+The program first checks if the ArrayList of canteens has more than 0 canteens.
+If there are, the program will continue with the canteen deletion process. 
+If there are no canteens yet, a short message is printed and the program returns from `DeleteCanteenCommand`.
+
+The remaining canteen deletion process is as follows: 
+`Ui#showDisplaySelectCanteens()` is first called to display canteens for the user to select.
+The program waits for user input with`Ui#readCommand()`. If the input is 'cancel', 
+`Ui#showCanteenNotDeleted()` is called and the program returns from `DeleteCanteenCommand`.
+Otherwise, `Parser#parseInt()` is called to check if the user input is a valid index of the canteens array.
+The canteen is then removed from the canteens ArrayList, 
+and `Ui#showCanteenDeleted()` is called to display the canteen deleted message.
+
+The static method `Storage#save()` is also called to update the storage.
+
+### [Admin] Add Store
+#### Implementation
+![AddCanteen Sequence Diagram](./img/AddStore.png)
+
+To add a store, `AddStoreCommand#execute()` is called, passing in
+an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
+
+When `AddStoreCommand` is instantiated, the reference to the main program nusFoodReviews is passed.
+`NusFoodReviews#setCanteenIndex()` will first be called to prompt the user on which canteen they wish to look at.
+The result for this is saved as a private int in `NusFoodReviews`, 
+and can be accessed by calling `NusFoodReviews#getCanteenIndex()`.
+
+`Ui#showDisplayStores` and `Ui#showAddCanteen()` is called to display the stores and the add store prompt.
+The program will then wait for user input, looping continuously if a valid Store name is not entered.
+Invalid names include: existing store names.
+If the user inputs 'cancel', the loop is exited and the program returns from `AddStoreCommand`.
+
+Once a valid StoreName is entered, `Canteen#addStore()` will be called to instantiate the Store object 
+and append it to the ArrayList of Stores stored in the relevant Canteen object.
+`Ui#printStoreAdded()` is then called to display store added confirmation.
+
+The static method `Storage#saveStore()` is also called to update the store in storage.
 
 ### [Admin] Delete Stores
 #### Implementation

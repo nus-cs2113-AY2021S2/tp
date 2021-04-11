@@ -29,6 +29,7 @@ public class AddStoreCommand extends Command {
             return;
         }
 
+        //get canteen where user wants to add store in
         nusFoodReviews.setCanteenIndex();
         int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
         if (currentCanteenIndex == -1) {
