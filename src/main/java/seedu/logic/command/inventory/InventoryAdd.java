@@ -22,8 +22,8 @@ public class InventoryAdd extends Command {
 
     /**
      * Adds an Inventory object or increases quantity of Inventory object.
-     * @param drugs
-     * @param ui
+     * @param drugs Inventory list.
+     * @param ui Instance of InventoryUI used.
      */
     public void execute(InventoryList drugs, InventoryUI ui) {
         drugs.addDrugs(argArr);
