@@ -29,7 +29,6 @@ import static seedu.duke.Constants.RETURN_DESCRIPTION;
 public class PatientUI extends UI {
 
     public static void printPatientHelpList() {
-        UI.printEmptyLine();
         System.out.println("Here is a list of Patient commands: ");
 
         UI.printEmptyLine();
@@ -42,7 +41,6 @@ public class PatientUI extends UI {
         printer(new String[]{DELETE_COMMAND, PATIENT_DELETE_DESCRIPTION, PATIENT_DELETE_FORMAT}, lengthPara);
         printer(new String[]{FIND_COMMAND, PATIENT_FIND_DESCRIPTION, PATIENT_FIND_FORMAT}, lengthPara);
         printer(new String[]{RETURN_COMMAND, RETURN_DESCRIPTION, MARK_BLANK}, lengthPara);
-        UI.printEmptyLine();
     }
 
     public static void patientListHeader() {
