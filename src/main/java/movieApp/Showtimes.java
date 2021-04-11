@@ -48,6 +48,10 @@ public class Showtimes implements Serializable {
         return movieID;
     }
 
+    public Movie getMovie() {
+        return mv;
+    }
+
     public String getMovieTitle() {
         return movieTitle;
     }

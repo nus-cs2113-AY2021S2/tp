@@ -12,6 +12,7 @@ import movieApp.user.User;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 
 public class MovieMenu {
@@ -42,25 +43,24 @@ public class MovieMenu {
 	}
 
 
-	public static void bookTicket(ArrayList<Movie> MovieDatabase, ArrayList<Cineplex> CineplexDatabase,
-								  int movieID, User user) {
+	public static void bookTicket(Movie movie, ArrayList<Cineplex> CineplexDatabase, User user) {
 		ArrayList<Showtimes> ShowtimeDatabase = Database.ShowtimesDatabase;
-		String ms = "NOT FOUND";
-		for (Movie movie : MovieDatabase) {
-			if (movie.getMovieID() == movieID) {
-				ms = movie.getShowingStatus();
-				break;
-			}
-		}
+		String ms = movie.getShowingStatus();
+
+		//System.out.println(movie.getMovieTitle());
+
 		if(!ms.equals("PREORDER") && !ms.equals("NOWSHOWING")) {
 			System.out.println("The movie is not available for sale. Status: " + ms);
 			return; 
 		}
 			
 		int n = 0;
+		boolean gotShowtime = false;
 		ArrayList<Integer> showtime_index = new ArrayList<>();
 		for(int i=0; i<ShowtimeDatabase.size(); i++) {
-			if(ShowtimeDatabase.get(i).getMovieID() == movieID) {
+			//System.out.println(ShowtimeDatabase.get(i).getMovieTitle());
+			if(ShowtimeDatabase.get(i).getMovieID()==movie.getMovieID()) {
+				gotShowtime = true;
 				System.out.println("\nEnter "+ n + " for the timing below: ");
 				System.out.println("--------------------------");
 				Calendar d = ShowtimeDatabase.get(i).getDateTime();
@@ -70,6 +70,10 @@ public class MovieMenu {
 				showtime_index.add(i); 
 				n++; 
 			}
+		}
+		if(!gotShowtime){
+			System.out.println("Waiting for administrator to add the showtime. Please come back later.");
+			return;
 		}
 		
 		Scanner sc = new Scanner(System.in);
@@ -100,7 +104,11 @@ public class MovieMenu {
 		System.out.printf("%02d:%02d%n", d.get(Calendar.HOUR_OF_DAY), d.get(Calendar.MINUTE) );
 		System.out.println("[Location] Cineplex: " + CineplexDatabase.get(cineplexID).getCineplexName()+ " -> " +"Cinema: " + (cinemaID+1));
 
-		 
+		if(checkIfCurrDateOverBookingDate(ShowtimeDatabase.get(index_st).getDateTime())){
+			System.out.println("Booking failed. Showtime for this timing is over.");
+			return;
+		}
+
 		int num_tic = -1;
 		while (num_tic < 1 || num_tic > ShowtimeDatabase.get(index_st).getEmptySeats()) {
 			System.out.println("There are " + ShowtimeDatabase.get(index_st).getEmptySeats() + " empty seats.");
@@ -226,6 +234,16 @@ public class MovieMenu {
 		Database.updateDatabase();
 	}
 
+	private static boolean checkIfCurrDateOverBookingDate(Calendar showingDate) {
+		Date currentDate = new Date();
+		Date showDate = showingDate.getTime();
+		if (currentDate.compareTo(showDate) > 0) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 	private static boolean checkForBackKeyword(Scanner sc) {
 		if(sc.next().trim().toLowerCase().equals("back")){
 			return true;
@@ -279,7 +297,7 @@ public class MovieMenu {
 			case 1:
 				action = -1;
 					System.out.println("\n======== Book Ticket ========");
-					bookTicket(Database.MovieDatabase, Database.CineplexDatabase, movie.getMovieID(), user);
+					bookTicket(movie, Database.CineplexDatabase, user);
 				break;	
 			case 2:
 				action = -1;
