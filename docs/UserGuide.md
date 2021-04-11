@@ -94,6 +94,7 @@ This section gives you step-by-step instructions on how to download and open the
 
 
 ![img.png](images/howtolaunch.png)
+
 | Windows |  Mac |
 |:----------:|-------------|
 |Key in `cmd` and press enter.|Right click on the folder and click on "New Terminal at Folder"|
