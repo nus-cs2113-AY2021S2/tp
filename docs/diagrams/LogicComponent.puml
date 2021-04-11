@@ -46,8 +46,8 @@ PQRParser .up.> PQRCommand : creates >
 package instance {
 Class ABCInstance
 note left: ABCInstance = DoctorAppointmentInstance, \n InventoryInstance, \n NurseScheduleInstance, \n StaffInstance, \n StartMenuInstance
-ABCInstance .RIGHT.> PQRParser : creates >
-ABCInstance .RIGHT.> Command : executes >
+ABCInstance .up.> PQRParser : creates >
+ABCInstance .up.> Command : executes >
 }
 
 }
