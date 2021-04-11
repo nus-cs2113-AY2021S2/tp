@@ -88,6 +88,8 @@
 9. [Appendix](#appendix)
 
    Appendix A: [Product Scope](#appendix-a-product-scope)
+    * [Target User Profile](#target-user-profile)
+    * [Value Proposition](#value-proposition)
 
    Appendix B: [User Stores](#appendix-b-user-stories)
 
@@ -95,9 +97,23 @@
 
    Appendix D: [Non-Functional Requirements](#appendix-d-non-functional-requirements)
 
-   Appendix E: [Glossary](#appendix-e-glossary)
+   Appendix E: [Instructions for manual testing](#appendix-e-glossary)
+   <ul>Launch and Shutdown</ul>
+   <ul>Adding a Review</ul>
+   <ul>Editing a Review</ul>
+   <ul>Listing Reviews</ul>
+   <ul>Sorting Reviews</ul>
+   <ul>Deleting a review</ul>
+   <ul>Viewing the full details of a review</ul>
+   <ul>Adding a Recommendation</ul>
+   <ul>Editing a Recommendation</ul>
+   <ul>Listing Recommendations</ul>
+   <ul>Deleting a Recommendation</ul>
+   <ul>Marking a Recommendation as Done</ul>
+   <ul>Help</ul>
+   <ul>Data storage</ul>
 
-   Appendix F: [Instructions for manual testing](#appendix-e-glossary)
+   Appendix F: [Glossary](#appendix-f-glossary)
 
 ## 1. Preface
 
@@ -269,6 +285,18 @@ returns true. This error will be caught in the addRecommendation() method.
 
 ### Appendix A: Product Scope
 
+**Target User Profile**
+
+* is a university student
+* has a desire to record a significant number of experiences
+* wants to manage a bucket list
+* can type fast and prefers typing over mouse interactions
+* is comfortable using the command line interface
+
+**Value Proposition**
+
+* Connoisseur helps users to consolidate their experiences in an organised way. The user just needs to
+
 ### Appendix B: User Stories
 
 |Version| As a ... | I want to ... | So that I can ...|
@@ -283,28 +311,47 @@ returns true. This error will be caught in the addRecommendation() method.
 |v2.0|forgetful user|be prompted of an existing review|avoid duplicates in my list|
 |v2.0|lazy user|have my sorting preferences saved|avoid having to input my preferred sorting method all the time|
 
-### Appendix C: Use Cases
+### Appendix C: Non-Functional Requirements
 
-### Appendix D: Non-Functional Requirements
+1. Should work on any *mainstream OS* as long as it has `Java 11` installed.
+2. A user with above average typing speed for regular English text should be able to use the features of Connoisseur
+   faster than by using the mouse.
 
-### Appendix E: Glossary
+3. A user who wants to modify the save file can do so by using an application that is able to edit JSON files.
 
-### Appendix F: Instructions for manual testing
-Given below are instructions to test the app manually. 
+### Appendix D: Instructions for manual testing
+
+Given below are instructions to test the app manually.
+
+**Launch and Shutdown**
+
 1. Initial launch
-   
+
    &nbsp;i. Ensure that you have **Java 11** or above installed.
-   
+
    &nbsp;ii. Download the latest version of **Connoisseur** here (add link later)
 
    &nbsp;iii. Copy the downloaded Connoisseur.jar into your **Desktop**.
 
    &nbsp;iv. Open terminal and enter `cd Desktop`.
 
-   &nbsp;v. Then, enter `java -jar Connoisseur.jar`.
-   &nbsp;&nbsp;**Expected**: Shows the command line interface with welcome message.
-   
+   &nbsp;v. Then, enter `java -jar Connoisseur.jar`. &nbsp;&nbsp;**Expected**: Shows the command line interface with
+   welcome message.
 
-2. Shutdown Connoisseur
-   &nbsp;i. Enter `exit` or `bye` into terminal while **Connoisseur** is running.
-   &nbsp;&nbsp;**Expected**: A farewell message by Connoisseur will be shown.
+
+2. Shutdown Connoisseur &nbsp;i. Enter `exit` or `bye` into terminal while **Connoisseur** is running. &nbsp;&nbsp;**
+   Expected**: A farewell message by Connoisseur will be shown.
+
+### Appendix E: Other Guides: Documentation, Testing, Dev-ops
+This section contains links to other relevant guides that may be of use.
+* [Documentation guide](DocumentationGuide.md)
+* [Testing guide](TestingGuide.md)
+* [Dev-ops guide](DevopsGuide.md)
+
+### Appendix F: Glossary
+
+* Mainstream OS: Windows, Linux, Unix, OS-X
+* Review: An experience a user has experienced, and intends to record. It could be a movie, restaurant, activity, etc.
+* Recommendation: An experience a user wishes to experience, and wishes to record. It could be a movie, restaurant,
+  activity, etc. It can be converted to a review after a user marks it as done.
+* Command: An instruction meant to update the ReviewList or RecommendationList in a certain way.
