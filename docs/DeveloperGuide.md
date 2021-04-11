@@ -13,9 +13,11 @@
     * [Model Component](#model-component)
     * [Storage Component](#storage-component)
 *  [Implementation](#implementation)
-    *[Main](#main)
-    *[Public User Implementation](#public-user)
-    *[Admin User Implementation](#admin-user)
+   *[Main](#main)
+   *[Public User Implementation](#public-user)
+   *[Admin User Implementation](#admin-user)
+   
+
 ## **Setup**
 ### Prerequisites
 + *JDK `11`* or beyond.
@@ -80,6 +82,7 @@ The `Storage` component,
 
 ## **Implementation** 
 This section describes some noteworthy details on how certain features are implemented.
+
 There are 2 types of user :
 [**`Public User`**](#public-user)
 [**`Admin User`**](#admin-user)
@@ -97,13 +100,14 @@ For public users, the list of commands is shown below:
 
 * Display selected store sample menu: [**`menu`**](#display-menu) 
 * Display all reviews of the selected store : [**`reviews`**](#display-reviews)
-* Add a new review of the selected store: `add`[**`add`**](#add-reviews)
-* Goes back to home page to select canteen: `home` [**`home`**](#home)
-* Display all the stores of the selected canteen: `list` [**`list`**](#display-stores)
-* Goes back to login page: `login` [**`login`**](#login)
-* Exiting the application: `exit`  [**`exit`**](#exit)
+* Add a new review of the selected store: [**`add`**](#add-reviews)
+* Goes back to home page to select canteen: [**`home`**](#home)
+* Display all the stores of the selected canteen: [**`list`**](#display-stores)
+* Goes back to login page: [**`login`**](#login)
+* Exiting the application: [**`exit`**](#exit)
 
 ###Display Menu
+
 ![DisplayMenus Sequence Diagram](./img/DisplayMenus.png)
 
 To display menus, `DisplayMenusCommand.execute()` is called, passing in
@@ -115,6 +119,7 @@ store object to get an ArrayList of menus, before passing the ArrayList to the u
 to be displayed by calling `Ui#showDisplayMenu()`.
 
 ###Display Reviews
+
 ![ReadReviews](./img/ReadReviews.png)
 
 To read reviews, `ReadReviewsCommand.execute()` is called passing in an ArrayList of
