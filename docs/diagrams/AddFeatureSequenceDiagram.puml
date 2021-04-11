@@ -9,6 +9,10 @@ Participant ":RecordList" as RecordList
 Participant ":Storage" as Storage
 Participant ":Ui" as UI
 
+note right of AddCommand
+    Some parameters are omitted for brevity.
+end note
+
 [-> AddCommand : execute()
 activate AddCommand
 
