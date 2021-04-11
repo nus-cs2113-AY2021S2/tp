@@ -61,6 +61,8 @@ GULIO is a module planner designed for efficiency when used by someone that can 
 1. [Sharing useful information in the forum](https://github.com/nus-cs2113-AY2021S2/forum/issues/26#issuecomment-770166991)
 1. [Bugs reported in other team's products during dry-run](https://github.com/H-horizon/ped)
 
+<div style="page-break-after: always;"></div>
+
 ### Contributions to the Developer Guide (Extracts)[Optional]
 
 Extract of contributions:
