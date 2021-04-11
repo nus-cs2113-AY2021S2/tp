@@ -11,4 +11,7 @@ public class Messages {
     public static final String ERROR_INVALID_BORROWER_NAME = "Borrower name cannot contain '"
             + FILE_DELIMITER_CHAR + "' as input.";
     public static final String ERROR_INVALID_DATE_SF = "input \"%s\" is an invalid date.";
+    public static final String ERROR_SAVE_DATA = "Error in saving data!";
+    public static final String ERROR_FILE_CREATION = "File creation unsuccessful!";
+    public static final String ERROR_FILE_INPUT = "Invalid File Inputs!";
 }

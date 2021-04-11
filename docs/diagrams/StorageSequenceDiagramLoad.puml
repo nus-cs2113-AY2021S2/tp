@@ -17,7 +17,7 @@ Finux -> Storage : loadFile()
 activate Storage
 Storage -> Storage : parseRawData(rawData)
 activate Storage
-Storage -> Storage : processParsedObject(parsedObject)
+Storage --> Storage : processParsedObject(parsedObject)
 deactivate Storage
 alt is instance of Record
     Storage -> RecordList : add(Record)
@@ -38,6 +38,8 @@ Finux -> Storage : getRecordListData()
 Storage --> Finux : recordList : RecordList
 Finux -> Storage : getMapData()
 Storage --> Finux : creditScoreReturnedLoansMap : creditScoreReturnedLoansMap
+deactivate Storage
+Storage -[hidden]> Storage
 destroy Storage
 
 @enduml

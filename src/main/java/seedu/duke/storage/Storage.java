@@ -1,6 +1,8 @@
 package seedu.duke.storage;
 
 import seedu.duke.command.CreditScoreReturnedLoansMap;
+import seedu.duke.common.Constant;
+import seedu.duke.common.Messages;
 import seedu.duke.exception.FileLoadingException;
 import seedu.duke.exception.InvalidFileInputException;
 import seedu.duke.record.Expense;
@@ -47,6 +49,7 @@ public class Storage {
     private static final int INDEX_OF_IS_RETURN = 4;
     private static final int INDEX_OF_NAME = 5;
     private static final int INDEX_OF_RETURN_DATE = 6;
+    private static final String NULL_STRING = "null";
     private ArrayList<Record> recordList;
     private HashMap<String, Integer> creditScoreReturnedLoansMap;
     private Path dataFilePath;
@@ -74,7 +77,7 @@ public class Storage {
             writeRecordListToSaveFile(recordList);
             writeMapToSaveFile(creditScoreReturnedLoansMap);
         } catch (IOException e) {
-            System.out.println("Error in saving data!");
+            System.out.println(Messages.ERROR_SAVE_DATA);
         }
     }
 
@@ -135,8 +138,8 @@ public class Storage {
     private void initSaveFile() throws IOException {
         File newSaveFile = new File(String.valueOf(SAVED_FILE_PATH));
         if (!newSaveFile.createNewFile()) {
-            FINUX_LOGGER.logWarning("File creation unsuccessful!");
-            throw new IOException("File creation unsuccessful!");
+            FINUX_LOGGER.logWarning(Messages.ERROR_FILE_CREATION);
+            throw new IOException(Messages.ERROR_FILE_CREATION);
         }
         Ui.printSuccessfulFileCreation();
     }
@@ -151,7 +154,7 @@ public class Storage {
         } else if (Pattern.matches(REGEX_PATTERN_MAP_ENTRY_RAW_DATA, rawData)) {
             return loadMapEntryRawData(rawData);
         } else {
-            FINUX_LOGGER.logWarning("Invalid File Inputs!");
+            FINUX_LOGGER.logWarning(Messages.ERROR_FILE_INPUT);
             throw new InvalidFileInputException();
         }
     }
@@ -172,7 +175,8 @@ public class Storage {
 
         try {
             amount = new BigDecimal(extractArg(rawData, INDEX_OF_AMOUNT));
-            issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE), DateTimeFormatter.ofPattern("yyyy-M-d"));
+            issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE),
+                    DateTimeFormatter.ofPattern(Constant.DATE_TIME_PATTERN));
         } catch (NumberFormatException | DateTimeParseException e) {
             FINUX_LOGGER.logWarning("[E] Invalid data format!");
             throw new InvalidFileInputException();
@@ -192,12 +196,13 @@ public class Storage {
         try {
             amount = new BigDecimal(extractArg(rawData, INDEX_OF_AMOUNT));
             isReturn = Integer.parseInt(extractArg(rawData, INDEX_OF_IS_RETURN)) == 1;
-            issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE), DateTimeFormatter.ofPattern("yyyy-M-d"));
-            if (extractArg(rawData, INDEX_OF_RETURN_DATE).equals("null")) {
+            issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE),
+                    DateTimeFormatter.ofPattern(Constant.DATE_TIME_PATTERN));
+            if (extractArg(rawData, INDEX_OF_RETURN_DATE).equals(NULL_STRING)) {
                 returnDate = null;
             } else {
                 returnDate = LocalDate.parse(extractArg(rawData, INDEX_OF_RETURN_DATE),
-                        DateTimeFormatter.ofPattern("yyyy-M-d"));
+                        DateTimeFormatter.ofPattern(Constant.DATE_TIME_PATTERN));
             }
         } catch (NumberFormatException | DateTimeParseException e) {
             FINUX_LOGGER.logWarning("[L] Invalid data format!");
@@ -214,7 +219,8 @@ public class Storage {
 
         try {
             amount = new BigDecimal(extractArg(rawData, INDEX_OF_AMOUNT));
-            issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE), DateTimeFormatter.ofPattern("yyyy-M-d"));
+            issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE),
+                    DateTimeFormatter.ofPattern(Constant.DATE_TIME_PATTERN));
         } catch (NumberFormatException | DateTimeParseException e) {
             FINUX_LOGGER.logWarning("[S] Invalid data format!");
             throw new InvalidFileInputException();
