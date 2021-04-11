@@ -24,7 +24,8 @@ public class CustomerMainMenu implements MainMenu {
         switch (option) {
             case 1:
                 do {
-                    movie = MovieFilter.filter(Database.MovieDatabase, Database.CineplexDatabase, user);
+                    ArrayList<Movie> movieList = new ArrayList<>(Database.MovieDatabase);
+                    movie = MovieFilter.filter(movieList, Database.CineplexDatabase, user);
                     if (movie != null) {
                         goBack = MovieMenu.movieAction(movie, user);
                     }
