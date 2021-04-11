@@ -26,7 +26,7 @@ public class InventoryUI extends UI {
      * @param addedItemName Item name.
      * @param addedItemQuantity Quantity of Item.
      */
-    public static void itemAddedMessage(String addedItemName, String addedItemQuantity) {
+    public static void itemAddedMessage(String addedItemName, int addedItemQuantity) {
         System.out.println(addedItemQuantity + " " + addedItemName + " is added into Inventory!");
     }
 

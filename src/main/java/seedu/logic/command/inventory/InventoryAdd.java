@@ -27,7 +27,7 @@ public class InventoryAdd extends Command {
      */
     public void execute(InventoryList items, InventoryUI ui) {
         items.addItems(argArr);
-        ui.itemAddedMessage(argArr[0], argArr[2]);
+        ui.itemAddedMessage(argArr[0], Integer.parseInt(argArr[2]));
     }
 
     @Override

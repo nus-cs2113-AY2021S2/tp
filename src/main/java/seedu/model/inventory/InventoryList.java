@@ -1,5 +1,6 @@
 package seedu.model.inventory;
 
+import seedu.duke.Constants;
 import seedu.exceptions.inventory.InvalidQuantityException;
 import seedu.ui.InventoryUI;
 import java.util.ArrayList;
@@ -70,9 +71,7 @@ public class InventoryList {
         if (numberOfItems != 0) {
             System.out.print(System.lineSeparator());
             ui.inventoryListHeader();
-            for (int i = 0; i < 60; i++) {
-                System.out.print("-");
-            }
+            System.out.println(Constants.LISTLINEBREAK);
             System.out.print(System.lineSeparator());
             for (Inventory inventory : list) {
                 display(inventory);
