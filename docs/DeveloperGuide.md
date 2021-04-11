@@ -347,7 +347,43 @@ If violations occur at any point of the input validation, the `Command` is not c
 is thrown back to the `CommandHandler`.
 
 ### 3.6 RecordList Component
-The `recordlist` class maintains an internal arraylist of record objects used throughout Finux's execution.
+![RecordList](img/RecordListClassDiagram.png)
+
+#### Description
+The `RecordList` component consists of only one class which is the `RecordList`. The role of the `RecordList` 
+is to maintain an internal `ArrayList` of `Record` objects created throughout `Finux`’s execution. 
+
+#### Design
+This maintenance is achieved through the traditional Object Oriented Programming (OOP) style, where operations
+relating to the list can only be performed through the interfaces defined in the `RecordList` class. Doing so allows
+us to restrict the access to the internal `ArrayList` from the outside world, successfully achieving the information
+hiding aspect under the Encapsulation concept of OOP.
+
+When `Finux` starts up, `Finux` instantiates the `RecordList` with data loaded from the save file, `finux.txt`. This is done
+by the `Finux` class calling the constructor `RecordList(ArrayList)`, passing in the `ArrayList` returned from the method
+call `storage.getRecordListData()`. This `ArrayList` returned from `storage.getRecordListData()` is loaded from the save file
+by a prior method call `storage.loadFile()`, also performed by the `Finux` class. For more information on `Storage` component,
+refer to [section 3.7](#37-storage-component).
+
+When any of the commands of the listed features in [section 4](#4-implementation) are requested to run, `Finux` will pass
+the `RecordList` into the `execute()` method call of the respective commands’ classes for their intended operations. 
+During runtime, any executions of the `execute()` method of `AddCommand` will instantiate either an `Expense`, `Loan` or
+`Saving` object to be added to the `RecordList` via the `addRecord()` method call of the `RecordList` class. 
+Conversely, any executions of the `execute()` method of `RemoveCommand` will remove the requested `Record` object from 
+the `RecordList` via the `deleteRecordAt(recordIndex)` method call of the `RecordList` class, where `recordIndex` refers
+to the index of the requested `Record` to delete. Upon successful addition or deletion, the state of the `RecordList` 
+will be saved into the save file via the method call `storage.saveData(recordList, creditScoreReturnedLoansMap)`
+
+When any of the `Finux`’s components is required to retrieve a `Record` object from the `RecordList`, the following methods
+are utilized:
+* `getRecordAt(recordIndex)` method is used to retrieve a `Record` object from the `RecordList` at the specified `recordIndex`.
+* `getRecordCount()` method is used to retrieve the number of `Record` objects stored within the `RecordList`.
+
+Combining the above two methods, one can loop through the entire `RecordList` in a ‘for loop’ fashion as shown in the
+following snippet of pseudo code:
+> LOOP FROM i←0 to i<getRecordCount()-1 \
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PRINT  getRecordAt(i)\
+> END LOOP
 
 
 ### 3.7 Storage Component
@@ -953,20 +989,86 @@ compared to the second approach, the third approach minimises the coupling withi
 
 
 ### 4.7 Credit Score Feature
-The `creditscore` feature aims to provide users with a computation of borrowers' credibility via a point scoring system.
+The credit score feature aims to provide users with a way to assess the credibility of his/her borrowers through
+a point scoring system. On a high level view, credit score ranges from 0 to 100 inclusive, and is generally computed
+based on the following pseudo code:
 
-`creditscore <borrower_name>`
+> IF DAYS_TAKEN_TO_RETURN < 7: \
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CREDIT_SCORE += 5 \
+> ELSE IF DAYS_TAKEN_TO_RETURN <= 14: \
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CREDIT_SCORE -= 10 \
+> ELSE IF DAYS_TAKEN_TO_RETURN <= 28: \
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CREDIT_SCORE -= 20 \
+> ELSE: \
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CREDIT_SCORE -= 50
 
-With this score, Finux users can view and assess the credibility of the borrowers.
 
-Example:
+#### 4.7.1 Current Implementation
+The credit score feature is facilitated by the CreditScoreCommand. By providing the name of a borrower as an argument
+to the CreditScoreCommand, the ParserHandler will parse the input for CommandHandler to create an instance of
+CreditScoreCommand. Upon successful creation, the execute() method of the instance will be called to compute and
+display the credit score of the borrower.
 
-`creditscore Tom`
+![CreditscoreFeatureSequenceDiagram](img/CreditScoreFeatureSequenceDiagram.png)
+_Figure x: Sequence Diagram for `CreditScoreCommand`_
 
-Output:
+***Step 1***\
+User enters the command “creditscore Mark”. Finux class invokes ParserHandler#getParseInput() to provide the parsed
+input to CommandHandler#createCommand().  Since the command requested by the user in this case is the
+CreditScoreCommand, an instance of the CreditScoreCommand is created and returned by createCommand() to the Finux
+class. Validation of the input provided to CreditScoreCommand is performed by the constructor new CreditScoreCommand()
+during the creation of this instance.
 
-Credit score for Tom is 90
+***Step 2***\
+Finux class executes the CreditScoreCommand#execute() to compute and display the credit score of the borrower.
 
+***Step 3***\
+Within the execute() of the CreditScoreCommand class, the method first retrieves the borrower’s credit score via
+CreditScoreReturnedLoansMap#getCreditScoreOf(). This retrieved score is computed based on the list of confirmed
+returned loans made by the borrower and is not the final score. Data stored within CreditScoreReturnedLoansMap are
+computed by the ReturnCommand, when a loan is marked as returned.
+
+***Step 4***\
+Continuing the computation from the score retrieved in step 3, the method proceeds to loop through the entire RecordList.
+
+***Step 5***\
+Within each iteration, a Record object is first retrieved via RecordList#getRecordAt(). If this retrieved Record
+object is an instance of the Loan class, the method will proceed to check if the loan represented by this loan object
+is being loaned to the specified borrower (in this example, Mark) and has not yet returned.
+
+***Step 6***\
+If true, the method will proceed to call the method Utils#getDaysDifference(), which will  compute the difference in
+days between the current date and the issue date of the loan.
+
+***Step 7***\
+Next, Utils#computeCreditScore() will be used to compute a new credit score of the borrower. This computation is
+cumulative to the score retrieved in step 3 and takes into account the value computed in step 6. The formula used
+by Utils#computeCreditScore() is as described above in the description section.
+
+***Step 8***\
+Lastly after the loop mentioned in step 3 ends, the final score is displayed on the console via the UI component.
+
+
+#### 4.7.2 Design Consideration
+This section shows the design considerations taken when implementing the Credit Score Feature.
+
+Aspect: **How can we preserve the accuracy of the credit score system?**
+
+As the credit score calculation is calculated based on the loan records of a person, the following methods of
+calculation can be implemented:
+* Calculating the credit score at run time based on the current record list
+* Persisting the credit score of returned loans and storing into the save file
+
+|Approach|Pros|Cons|
+|--------|----|----|
+|Non-persistent|Straight forward and no additional resources needed|Credit score is bias towards the current record list and does not factor in any borrowing history|
+|Persistent|Provide more accurate credit score based on the history regardless of the current record list|Additional resources required to save each person’s current score when exiting the program|
+
+Having considered the two approaches, we have decided to adopt the second approach.
+To preserve the integrity of the credit score system, persisting the credit score of each person throughout the
+application lifetime from the first instance of loan is important. This will ensure that the loan history is kept
+and persisted on every new start up. Even though there is the downside arising from the extra memory space needed, it
+is a small price to pay compared to the benefit it brings to the user when enhancing their decision.
 
 ## Appendix A: Product Scope
 
