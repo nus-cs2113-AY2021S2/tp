@@ -14,6 +14,47 @@ efficiency of deliveries. This app aims to be a one stop solution and more for t
 ## Design 
 ![Architecture](diagrams/ArchitectureDiagram.png)
 
+### Overview
+Our application implements multiple layers of abstraction, enabling individual components to be self contained while being able to function with other components. Each component has been absracted and grouped together according to its function and purpose in the system. The diagram above indicates how each component interacts with one another, with directed arrows representing the direction in which functions of each component is called and used. Below is a brief description of each component in the system.
+
+* UI: The user interface of the application. Controls and handles all input and output of the application.
+* Model: Consists of the base objects and respective collections.
+* Logic: Consists of various sub-components listed below.
+  ** Parser: Parses user's input to obtain control flow decisions.
+  ** Command: Command class objects that executes actions specified by the user's input.
+  ** Exceptions: Every possible exception handling identified.
+* Main: Represents the Main class of the application. On launch, it initializes the components in sequence and connects them up with each other, and on shut down, collapses the components.
+
+### UI Component
+The UI of this program can be found under the package named UI. The UI class allows the program to have a pool of methods that are reusable in each functionality. The UI component interacts with the Parser class the most. The UI component executes user commands in tandem with the ‘Logic’ component and is responsible for handling all input and output of the program.
+
+### Logic Component
+The Logic component is responsible for running each instance of the application that accepts and processes user inputs in order to access various functions. It helps convert user inputs into data that is readable and usable by the program, and ultimately executes the Command based on interpreted data. The sequence of steps utilised by the Logic component is highlighted below:
+
+1. Interpreting user input: The Main class runs an instance of the program to accept user input and creates a Parser class to interpret user inputs.
+2. Checking User Input: The Parser component checks through the user input for any erroneous and unacceptable inputs and throws any exceptions during error handlign.
+3. Creating respective Command: After checking the input, the Parser component then creates the Command that corresponds to the user input.
+4. Executing Command: With the interpreted Command processed from the Parser, the  application instance then executes the Command accordingly.
+
+### Model Component
+The Model component consists of classes that represents the tasks that the deliveryman can do. 
+![Model Component](diagrams/ModelComponent.png)
+
+Delivery contains an arraylist of Item ojects and the corresponding unique delivery ID, address and recipient name. It also has methods to modify the Class information.
+DeliveryList consists of Delivery and Item objects and also has methods to modify the list of objects.
+Route contains an arraylist of various routes with their corresponding delivery fees and relative distance for unique delivery locations.
+
+### Storage Component
+The Storage component consists of DataManager class that individually reads data from and writes data to three different .txt files, and consists of the following classes:
+
+* `loadProfile()` loads deliveryman details from a .txt file. The method class also implements `createNewFile()` to create new .txt files for delivery and routes if the user is new.
+* `saveProfile()` implements `FileWriter()` to save the deliveryman's personal details - allowing accessibility on next startup.
+* `saveDeliveries()` implements `FileWriter()` to save all the deliveries - required in order to reflect the updated status `isComplete`.
+* `loadDeliveryList()` loads list of deliveries.
+* `loadRoutes()` loads list of routes.
+* `saveRoutes()` implements `FileWriter()` to save the Routes data.
+* `saveAll()` to save the deliveries, profile and routes data, given the deliveryman object.
+
 ## Implementation
 
 ### [Implementation] : Recording Completed Deliveries
