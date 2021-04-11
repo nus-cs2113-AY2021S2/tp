@@ -20,15 +20,26 @@ import static seedu.duke.Constants.RETURN_COMMAND;
 import static seedu.duke.Constants.RETURN_DESCRIPTION;
 
 public class InventoryUI extends UI {
-
+    /**
+     * Displays an output after adding a Inventory object.
+     *
+     * @param addedDrugName Drug name.
+     * @param addedDrugQuantity Quantity of Drug.
+     */
     public static void drugAddedMessage(String addedDrugName, String addedDrugQuantity) {
         System.out.println(addedDrugQuantity + " " + addedDrugName + " is added into Inventory!");
     }
 
+    /**
+     * Displays an output when Inventory List is empty.
+     */
     public static void emptyInventoryListMessage() {
         System.out.println("You do not have any Drugs in your inventory:(");
     }
 
+    /**
+     * Displays an output header for the list command.
+     */
     public static void inventoryListHeader() {
         System.out.println(
                 UI.prettyPrint("DrugName", 15) + " | "
@@ -36,6 +47,9 @@ public class InventoryUI extends UI {
                         + UI.prettyPrint("Quantity", 5));
     }
 
+    /**
+     * Displays an output for Help Message.
+     */
     public static void printInventoryHelpMessage() {
 
         UI.printEmptyLine();
@@ -50,18 +64,28 @@ public class InventoryUI extends UI {
         printer(new String[]{LIST_COMMAND, INVENTORY_LIST_DESCRIPTION, INVENTORY_LIST_FORMAT}, lengthPara);
         printer(new String[]{DELETE_COMMAND, INVENTORY_DELETE_DESCRIPTION, INVENTORY_DELETE_FORMAT}, lengthPara);
         printer(new String[]{RETURN_COMMAND, RETURN_DESCRIPTION, MARK_BLANK}, lengthPara);
-        UI.printEmptyLine();
-
     }
 
+    /**
+     * Displays an output after deleting quantity of Inventory object.
+     *
+     * @param deletedDrug Drug name
+     * @param deletedDrugQuantity Quantity of Drug
+     */
     public static void deleteDrugMessage(String deletedDrug, String deletedDrugQuantity) {
         System.out.println("Noted. I've removed " + deletedDrugQuantity + " " + deletedDrug);
     }
 
+    /**
+     * Displays an output when accessing the Inventory Menu.
+     */
     public static void inventoryMenuHeader() {
         System.out.print("Welcome to Inventory Menu!\nType \"help\" for Inventory menu commands\n");
     }
 
+    /**
+     * Displays an error message when file data is corrupted.
+     */
     public void corruptedFileErrorMessage() {
         System.out.println("The file (" + INVENTORY_FILE_PATH + ") is corrupted!\n"
                 + "Please exit the program and delete the corrupted file before trying to access Inventory Menu!");
