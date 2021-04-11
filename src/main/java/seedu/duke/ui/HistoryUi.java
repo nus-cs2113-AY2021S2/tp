@@ -13,9 +13,9 @@ public class HistoryUi extends UiManager {
      * When this method is called from "Repeat History" command, the user will also be prompted to enter
      * the index of stored entries, by calling the getRepeatIndex() method.
      *
-     * @param history
-     * @throws InvalidIndexException
-     * @throws EmptyHistoryException
+     * @param history class
+     * @throws InvalidIndexException for invalid input by user
+     * @throws EmptyHistoryException for empty history before this function is called.
      */
     public void showHistory(History history) throws InvalidIndexException, EmptyHistoryException {
         assert history != null : "History must be initialized before, cannot be null";
@@ -36,7 +36,7 @@ public class HistoryUi extends UiManager {
      * If an invalid input is provided, the InvalidIndexException is thrown.
      *
      * @return the index of the stored search to repeat.
-     * @throws InvalidIndexException
+     * @throws InvalidIndexException when invalid input is provided by user.
      */
     public int getRepeatIndex() throws InvalidIndexException {
         try {

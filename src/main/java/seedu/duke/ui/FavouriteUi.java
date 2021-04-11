@@ -16,9 +16,9 @@ public class FavouriteUi extends UiManager {
      * If there are no stored favourite routes, the EmptyFavouriteException is thrown.
      * This method further calls the getSpecificEntry() method.
      *
-     * @param favourite
-     * @throws EmptyFavouriteException
-     * @throws InvalidIndexException
+     * @param favourite class
+     * @throws EmptyFavouriteException for empty favourites before the method is called
+     * @throws InvalidIndexException for invalid input by the user
      */
     public void showFavourites(Favourite favourite) throws EmptyFavouriteException, InvalidIndexException {
         if (favourite.isEmpty()) {
