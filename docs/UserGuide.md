@@ -501,9 +501,9 @@ Got it! Successfully added MONDAY's schedule!
 
 <div markdown="block" class="alert alert-warning">
 :warning: `DAY_ENTRY` must be an integer between 1 and 7, each representing a day of the week
-(1 represents Monday and 7 represents Sunday).
-:warning: There must be at least one block entered for the schedule.
-:warning: Entries must be the original block names. Aliases are not allowed.
+(1 represents Monday and 7 represents Sunday).<br>
+:warning: There must be at least one block entered for the schedule.<br>
+:warning: Entries must be the original block names. Aliases are not allowed.<br>
 
 </div>
 
@@ -779,7 +779,7 @@ can be found on the second computer.
 |[**Viewing help**](#41-viewing-help)        | `help` | 
 |[**Viewing all venues**](#42-viewing-all-venues)        | `show venues` | 
 |[**Finding the route**](#431-routing-between-blocks)       | `go` → `STARTING_BLOCK` → `DESTINATION_BLOCK`|
-|[**Finding the route**](#433-routing-to-the-closest-eatery)       | `go` → `STARTING_BLOCK` → `eatery` → `EATERY_ENTRY` |
+|[**Routing to the closest eatery**](#433-routing-to-the-closest-eatery)       | `go` → `STARTING_BLOCK` → `eatery` → `EATERY_ENTRY` |
 |[**Viewing history**](#441-viewing-history)     | `history` | 
 |[**Clearing history**](#442-clearing-history)       | `clear history` |
 |[**Repeating history**](#443-repeating-history)       | `repeat history` → `REPEAT_ENTRY` |
