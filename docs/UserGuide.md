@@ -28,15 +28,15 @@
    &nbsp;&nbsp;&nbsp;&nbsp; 4.6.1. [Adding a daily route](#461-adding-a-daily-route) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.6.2. [Viewing daily route](#462-viewing-daily-route) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.6.3. [Deleting daily route](#463-deleting-daily-route) <br>
-   4.7. [Notes](#47-notes) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.1. [Adding notes](#471-adding-notes) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.2. [Viewing notes](#472-viewing-notes) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.3. [Delete note](#473-delete-note) <br>
-   4.8. [Favourite Routes](#48-favourite-routes) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.8.1. [Adding Favourite route](#481-adding-favourite-route) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.8.2. [Show stored favourites](#482-show-stored-favourites) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.8.3. [Repeating favourite route](#483-repeating-favourite-route) <br> 
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.8.4. [Deleting favourite route](#484-deleting-favourite-route) <br>
+   4.7. [Favourite Routes](#47-favourite-routes) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.1. [Adding Favourite route](#471-adding-favourite-route) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.2. [Show stored favourites](#472-show-stored-favourites) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.3. [Repeating favourite route](#473-repeating-favourite-route) <br> 
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.4. [Deleting favourite route](#474-deleting-favourite-route) <br>
+   4.8. [Notes](#48-notes) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.8.1. [Adding notes](#481-adding-notes) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.8.2. [Viewing notes](#482-viewing-notes) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.8.3. [Delete note](#478-delete-note) <br>
    4.9. [Exiting the application](#49-exiting-the-application) <br>
    4.10. [Saving the Data](#410-saving-the-data) <br>
    4.11. [Loading Past Data](#411-loading-past-data) <br>
@@ -83,12 +83,6 @@ This section gives you step-by-step instructions on how to download and open the
 :information_source: An easy way to do so is shown below for both Mac and Windows <br>
 </div>
 
-![img.png](images/howtolaunch.png)
-
-| Windows |  Mac |
-|:----------:|-------------|
-|Key in `cmd` and press enter.|Right click on the folder and click on "New Terminal at Folder"|
-
 5. Key in `java -jar NUSMaze.jar` and press enter to launch the NUSMaze application.<br>
 6. A CLI similar to Figure 1 below should appear in a few seconds.  <br>
    ![img.png](images/NUSMazecli.png)
@@ -98,6 +92,11 @@ This section gives you step-by-step instructions on how to download and open the
 
 8. Refer to [Section 4 - Features](#4-features) for details on the commands you can use for each feature. <br> <br>
 
+
+![img.png](images/howtolaunch.png)
+| Windows |  Mac |
+|:----------:|-------------|
+|Key in `cmd` and press enter.|Right click on the folder and click on "New Terminal at Folder"|
 
 --------------------------------------------------------------------------------------------------------------------
 ## 3. About
@@ -240,9 +239,9 @@ Eateries:
 ------------------------------------------------------------------------------------------------------------
 ```
 
-<div markdown="block" class="alert alert-info">
+
 :information_source: These are the venue names that can be used in the features below. <br>
-</div>
+
 
 
 ### 4.3 Routing
@@ -266,14 +265,11 @@ Route: E2 -> E3 -> E4 -> E5 -> LT3 -> CHINESE LIBRARY -> CENTRAL LIBRARY -> AS6 
 - When the `go` command is given NUSMaze will prompt you for the `STARTING_BLOCK`
   followed by the `DESTINATION BLOCK`. <br>
 
-<div markdown="block" class="alert alert-info">
+
 :information_source: All the parameters for the Routing feature are **case-insensitive**. <br>
-</div>
-  
-<div markdown="block" class="alert alert-warning">
 :warning: Both parameters must be one of the Engineering or Computing venues. <br>
 :warning: The `STARTING_BLOCK` and the `DESTINATION_BLOCK` cannot be the same. <br>
-</div>
+
 
 #### 4.3.2 Routing to an eatery
 It is also possible to find the shortest route to an eatery using the go feature.<br>
@@ -296,9 +292,9 @@ Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
   NUSMaze will display the shortest route to go from the `STARTING_BLOCK` to the
   desired eatery. <br>
 
-<div markdown="block" class="alert alert-warning">
+
 :warning: The `STARTING_BLOCK` must be one of the Engineering or Computing buildings. <br>
-</div>
+
 
 #### 4.3.3 Routing to the closest eatery
 NUSMaze can also provide you with a list of eateries from closest to furthest if you are unsure which eatery to go.<br>
@@ -333,10 +329,10 @@ Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
 
 - NUSMaze then prompts for the index of the eatery that you wish to go to. This is when you can enter `EATERY_ENTRY`. <br>
 
-<div markdown="block" class="alert alert-warning">
+
 :warning: The `STARTING_BLOCK` must be one of the Engineering or Computing buildings. <br>
 :warning: `EATERY_ENTRY` must be an integer from 1 to 7. <br>
-</div>
+
 
 ### 4.4 History
 #### 4.4.1 Viewing History
@@ -380,9 +376,9 @@ Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
 
 - Followed by a prompt asking for the `REPEAT_ENTRY` index that you want to repeat. <br>
 
-<div class="block" class="alert alert-warning">
+
 :warning: `REPEAT_ENTRY` must be an integer that is within the bounds of the history list shown.
-</div>
+
 
 #### 4.4.3 Clearing History
 
@@ -497,12 +493,11 @@ Got it! Successfully added MONDAY's schedule!
 
 - NUSMaze will continuously ask for locations until you input `end`. <br>
 
-<div markdown="block" class="alert alert-warning">
 :warning: `DAY_ENTRY` must be an integer between 1 and 7, each representing a day of the week
 (1 represents Monday and 7 represents Sunday).<br>
 :warning: There must be at least one block entered for the schedule.<br>
 :warning: Entries must be the original block names. Aliases are not allowed.<br>
-</div>
+
 
 #### 4.6.2 Viewing daily route
 Shows the generated route for the schedule of the selected day, if applicable.<br>
@@ -564,10 +559,83 @@ Got it! Successfully cleared MONDAY's schedule!
 
 :warning: The `DAY_NUMBER` must be the index of one of the available days which has been displayed. <br>
 
-### 4.7 Notes
-#### 4.7.1 Adding notes
+### 4.7 Favourite Routes
+#### 4.7.1 Adding Favourite Route
+You can add a route to favourites to easily access it in the future.<br>
+Format : `add favourite` → `STARTING_BLOCK` → `DESTINATION_BLOCK` <br>
+Example :
+```
+------------------------------------------------------------------------------------------------------------
+> add favourite
+------------------------------------------------------------------------------------------------------------
+Starting Block:
+* EA
+Destination Block:
+* E4
+------------------------------------------------------------------------------------------------------------
+Got it! Successfully added new favourite route!
+------------------------------------------------------------------------------------------------------------
+```
+:information_source: All the parameters for the Favourite feature are **case-insensitive**. <br>
+:warning: The `STARTING_BLOCK` and the `DESTINATION_BLOCK` cannot be the same. <br>
+:warning: Aliases cannot be used in this feature.<br>
+
+
+#### 4.7.2 Show stored favourites
+You can request NUSMaze to display all the saved favourites, if you have stored at least one route to favourites.<br>
+Format : `show favourite` <br>
+Example :
+```
+------------------------------------------------------------------------------------------------------------
+> show favourite
+------------------------------------------------------------------------------------------------------------
+Here are your favourite routes:
+1. EA -> E4
+------------------------------------------------------------------------------------------------------------
+```
+
+#### 4.7.3 Repeating favourite route
+You can execute and obtain the route to take for your favourite routes.<br>
+Format : `repeat favourite` → `ROUTE_INDEX` <br>
+Example :
+```
+------------------------------------------------------------------------------------------------------------
+> repeat favourite
+------------------------------------------------------------------------------------------------------------
+Here are your favourite routes:
+1. EA -> E4
+------------------------------------------------------------------------------------------------------------
+Select Entry to Repeat:
+* 1
+------------------------------------------------------------------------------------------------------------
+Route: EA -> E2 -> E3 -> E4
+------------------------------------------------------------------------------------------------------------
+```
+:warning: `ROUTE_INDEX` must be an integer within the bounds of the favourite list. <br>
+
+#### 4.7.4 Deleting favourite route
+You can delete a favourite route if it is not frequently used anymore.<br>
+Format : `delete favourite` → `ROUTE_INDEX` <br>
+Example :
+```
+------------------------------------------------------------------------------------------------------------
+> delete favourite
+------------------------------------------------------------------------------------------------------------
+Here are your favourite routes:
+1. EA -> E4
+------------------------------------------------------------------------------------------------------------
+Select Entry to delete:
+* 1
+------------------------------------------------------------------------------------------------------------
+Got it! Successfully deleted favourite route :)
+------------------------------------------------------------------------------------------------------------
+```
+:warning: `ROUTE_INDEX` must be an integer within the bounds of the favourite list. <br>
+
+### 4.8 Notes
+#### 4.8.1 Adding notes
 Tags a note to a particular existing location of your choice.<br/>
-Format : `add note` → `BLOCK` → `NOTE` <br> 
+Format : `add note` → `BLOCK` → `NOTE` <br>
 Example :
 ```
 ------------------------------------------------------------------------------------------------------------
@@ -583,11 +651,11 @@ Got it! Successfully added and tagged note to STARBUCKS
 ```
 - When the `add note` command is entered, NUSMaze will prompt you for a `BLOCK`. <br>
 - After a valid location is keyed in,  NUSMaze will prompt you for a `NOTE` to be tagged to the location. <br>
-  
+
 :warning: The `BLOCK` must be one of the Engineering or Computing buildings. <br>
 :warning: The `NOTE` will be invalid if it is empty. <br>
 
-#### 4.7.2 Viewing notes
+#### 4.8.2 Viewing notes
 Lists all notes which had been tagged to the given location, if it exists.<br/>
 Format : `show note` → `BLOCK` <br>
 Example :
@@ -603,10 +671,10 @@ Here is the list of notes:
 ------------------------------------------------------------------------------------------------------------
 ```
 - When the `show note` command is entered, NUSMaze will prompt you for a `BLOCK`. <br>
-  
+
 :warning: The `BLOCK` must be one of the Engineering or Computing buildings. <br>
 
-#### 4.7.3 Delete note
+#### 4.8.3 Delete note
 Delete the specified note based on index number tagged to the given existing location.<br/>
 Format : `delete note` → `BLOCK` → `NOTE_INDEX` <br>
 Example :
@@ -629,83 +697,11 @@ Got it! Successfully deleted note tagged to STARBUCKS
 - When the `delete note` command is entered, NUSMaze will then prompt you for a `BLOCK`. <br>
 - After a valid location is keyed in,  NUSMaze will prompt you for a `NOTE_INDEX` of the note to be deleted,
   which is the index of the note in the location's notes list. <br>
-  
+
 :warning: The `BLOCK` must be one of the Engineering or Computing buildings. <br>
 
 :warning: The `NOTE_INDEX` must be an integer within the total number of notes that the location has. <br>
 
-### 4.8 Favourite Routes
-#### 4.8.1 Adding Favourite Route
-You can add a route to favourites to easily access it in the future.<br>
-Format : `add favourite` → `STARTING_BLOCK` → `DESTINATION_BLOCK` <br>
-Example :
-```
-------------------------------------------------------------------------------------------------------------
-> add favourite
-------------------------------------------------------------------------------------------------------------
-Starting Block:
-* EA
-Destination Block:
-* E4
-------------------------------------------------------------------------------------------------------------
-Got it! Successfully added new favourite route!
-------------------------------------------------------------------------------------------------------------
-```
-:information_source: All the parameters for the Favourite feature are **case-insensitive**. <br>
-:warning: The `STARTING_BLOCK` and the `DESTINATION_BLOCK` cannot be the same. <br>
-:warning: Aliases cannot be used in this feature.<br>
-
-
-#### 4.8.2 Show stored favourites
-You can request NUSMaze to display all the saved favourites, if you have stored at least one route to favourites.<br>
-Format : `show favourite` <br>
-Example :
-```
-------------------------------------------------------------------------------------------------------------
-> show favourite
-------------------------------------------------------------------------------------------------------------
-Here are your favourite routes:
-1. EA -> E4
-------------------------------------------------------------------------------------------------------------
-```
-
-#### 4.8.3 Repeating favourite route
-You can execute and obtain the route to take for your favourite routes.<br>
-Format : `repeat favourite` → `ROUTE_INDEX` <br>
-Example :
-```
-------------------------------------------------------------------------------------------------------------
-> repeat favourite
-------------------------------------------------------------------------------------------------------------
-Here are your favourite routes:
-1. EA -> E4
-------------------------------------------------------------------------------------------------------------
-Select Entry to Repeat:
-* 1
-------------------------------------------------------------------------------------------------------------
-Route: EA -> E2 -> E3 -> E4
-------------------------------------------------------------------------------------------------------------
-```
-:warning: `ROUTE_INDEX` must be an integer within the bounds of the favourite list. <br>
-
-#### 4.8.4 Deleting favourite route
-You can delete a favourite route if it is not frequently used anymore.<br>
-Format : `delete favourite` → `ROUTE_INDEX` <br>
-Example :
-```
-------------------------------------------------------------------------------------------------------------
-> delete favourite
-------------------------------------------------------------------------------------------------------------
-Here are your favourite routes:
-1. EA -> E4
-------------------------------------------------------------------------------------------------------------
-Select Entry to delete:
-* 1
-------------------------------------------------------------------------------------------------------------
-Got it! Successfully deleted favourite route :)
-------------------------------------------------------------------------------------------------------------
-```
-:warning: `ROUTE_INDEX` must be an integer within the bounds of the favourite list. <br>
 
 ### 4.9 Exiting the application
 
@@ -779,20 +775,20 @@ can be found on the second computer. <br>
 |[**Finding the route**](#431-routing-between-blocks)       | `go` → `STARTING_BLOCK` → `DESTINATION_BLOCK`|
 |[**Routing to the closest eatery**](#433-routing-to-the-closest-eatery)       | `go` → `STARTING_BLOCK` → `eatery` → `EATERY_ENTRY` |
 |[**Viewing history**](#441-viewing-history)     | `history` | 
-|[**Clearing history**](#442-clearing-history)       | `clear history` |
-|[**Repeating history**](#443-repeating-history)       | `repeat history` → `REPEAT_ENTRY` |
+|[**Clearing history**](#442-repeating-history)       | `clear history` |
+|[**Repeating history**](#443-clearing-history)       | `repeat history` → `REPEAT_ENTRY` |
 |[**Adding alias for block names**](#451-adding-an-alias-for-block-name)| `add alias` → `BLOCK` → `ALIAS_NAME` | 
 |[**Showing all aliases**](#452-viewing-all-aliases)  | `show alias` | 
 |[**Deleting alias**](#453-deleting-aliases)       | `delete alias` → `ALIAS_NAME` |
 |[**Adding a daily route**](#461-adding-a-daily-route)     | `add daily route` → `DAY_NUMBER` → `BLOCK` → … → `BLOCK` → `end` | 
 |[**Showing a daily route**](#462-viewing-daily-route)       | `show daily route` → `DAY_NUMBER` |
 |[**Deleting a daily route**](#463-deleting-daily-route)       | `delete daily route` → `DAY_NUMBER` |
-|[**Adding notes**](#471-adding-notes)       | `add note` → `BLOCK` → `NOTE` |
-|[**Viewing notes**](#472-viewing-notes)      | `show note` → `BLOCK` | 
-|[**Deleting notes**](#473-delete-note)       | `delete note` → `BLOCK` → `NOTE_INDEX` |
-|[**Adding Favourite Route**](#481-adding-favourite-route)       | `add favourite` → `STARTING_BLOCK` → `DESTINATION_BLOCK` |
-|[**Show stored favourites**](#482-show-stored-favourites)       | `show favourite` |
-|[**Repeating favourite route**](#483-repeating-favourite-route)       | `repeat favourite` → `ROUTE_INDEX` |
-|[**Deleting favourite route**](#484-deleting-favourite-route)       | `delete favourite` → `ROUTE_INDEX` |
+|[**Adding Favourite Route**](#471-adding-favourite-route)       | `add favourite` → `STARTING_BLOCK` → `DESTINATION_BLOCK` |
+|[**Show stored favourites**](#472-show-stored-favourites)       | `show favourite` |
+|[**Repeating favourite route**](#473-repeating-favourite-route)       | `repeat favourite` → `ROUTE_INDEX` |
+|[**Deleting favourite route**](#474-deleting-favourite-route)       | `delete favourite` → `ROUTE_INDEX` |
+|[**Adding notes**](#481-adding-notes)       | `add note` → `BLOCK` → `NOTE` |
+|[**Viewing notes**](#482-viewing-notes)      | `show note` → `BLOCK` | 
+|[**Deleting notes**](#483-delete-note)       | `delete note` → `BLOCK` → `NOTE_INDEX` |
 |[**Exiting the application**](#49-exiting-the-application)       | `bye` |
 
