@@ -37,7 +37,7 @@ public class NurseScheduleChecker extends MainChecker {
         try {
             LocalDate.parse(date,
                     DateTimeFormatter.ofPattern("ddMMuuuu")
-                        .withResolverStyle(ResolverStyle.STRICT));
+                            .withResolverStyle(ResolverStyle.STRICT));
         } catch (DateTimeParseException e) {
             throw new InvalidDateException();
         }
@@ -62,7 +62,7 @@ public class NurseScheduleChecker extends MainChecker {
      * checks if nurseID exists in staff database.
      *
      * @param nurseID id to be checked
-     * @throws NurseIdNotFound if id does not exist
+     * @throws NurseIdNotFound           if id does not exist
      * @throws NurseCrossValidationError if staff database cannot be loaded
      */
     public static void checkNurseiDExist(String nurseID) throws NurseIdNotFound, NurseCrossValidationError {
@@ -87,7 +87,7 @@ public class NurseScheduleChecker extends MainChecker {
      * checks if patientID exists in patient database.
      *
      * @param patientID id to be checked
-     * @throws PatientIdNotFound if id does not exist
+     * @throws PatientIdNotFound           if id does not exist
      * @throws PatientCrossValidationError if patient database cannot be loaded
      */
     public static void checkPatientiDExist(String patientID) throws PatientIdNotFound, PatientCrossValidationError {
@@ -134,7 +134,7 @@ public class NurseScheduleChecker extends MainChecker {
     public static void checkValidPatientID(String userID) throws InvalidiDTypeException {
         if (userID.length() != 6) {
             throw new InvalidiDTypeException();
-        }  else if (!(userID.charAt(0) == 'P')) {
+        } else if (!(userID.charAt(0) == 'P')) {
             throw new InvalidiDTypeException();
         } else if (numberOfIntegersInString(userID) != 5) {
             throw new InvalidiDTypeException();
@@ -160,7 +160,7 @@ public class NurseScheduleChecker extends MainChecker {
     /**
      * checks if patientID is duplicated.
      *
-     * @param id patient id
+     * @param id   patient id
      * @param date date of schedule
      * @param list arraylist of nurseschedules
      * @throws DuplicateScheduleException if patient already has a schedule on that date
@@ -185,7 +185,7 @@ public class NurseScheduleChecker extends MainChecker {
      * Checks if nurseID exists within schedules.
      *
      * @param nurseSchedules List of all schedules
-     * @param id NurseID to check
+     * @param id             NurseID to check
      * @return boolean
      * @throws NurseIdNotFound if id does not exist
      */

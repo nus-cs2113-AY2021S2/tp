@@ -7,9 +7,12 @@ import seedu.exceptions.InvalidIntegerException;
 import seedu.logger.HealthVaultLogger;
 import seedu.model.doctorappointment.AppointmentList;
 import seedu.logic.errorchecker.DoctorAppointmentChecker;
+
 import static seedu.logic.errorchecker.MainChecker.checkNumericInput;
+
 import seedu.model.doctorappointment.DoctorAppointment;
 import seedu.model.staff.Staff;
+import seedu.ui.DoctorAppointmentUI;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -124,11 +127,9 @@ public class DoctorAppointmentStorage {
             String input = fileReader.nextLine();
             String[] data = input.split("\\|");
             checkNumericInput(data[2]);
-
             loadDoctorList.add(new Staff(data));
         }
         fileReader.close();
         return loadDoctorList;
     }
-
 }

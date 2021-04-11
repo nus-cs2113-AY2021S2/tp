@@ -39,7 +39,9 @@ public class NurseScheduleInstance {
         ui = new NurseScheduleUI();
     }
 
-    /** Reads the user command and executes it, until the user issues the exit command. */
+    /**
+     * Reads the user command and executes it, until the user issues the exit command.
+     */
     public void runCommandLoopUntilExit() {
         try {
             nurseSchedules = new NurseScheduleList(storage.load());
@@ -50,11 +52,11 @@ public class NurseScheduleInstance {
             return;
         } catch (NurseCrossValidationError e) {
             System.out.println(e.getMessage());
-            logger.log(Level.WARNING,"Error loading Staff.txt");
+            logger.log(Level.WARNING, "Error loading Staff.txt");
             return;
         } catch (PatientCrossValidationError e) {
             System.out.println(e.getMessage());
-            logger.log(Level.WARNING,"Error loading Patients.txt");
+            logger.log(Level.WARNING, "Error loading Patients.txt");
             return;
         }
         ui.printNurseScheduleWelcomeMessage();
