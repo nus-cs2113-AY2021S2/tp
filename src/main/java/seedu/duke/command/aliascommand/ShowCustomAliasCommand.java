@@ -13,6 +13,10 @@ public class ShowCustomAliasCommand extends Command {
         this.ui = new AliasUi();
     }
 
+    /**
+     * This method will show all aliases that have been saved by the user. It calls the showCustomAliases method in
+     * the ui class.
+     */
     @Override
     public void execute() {
         try {
