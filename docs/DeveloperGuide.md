@@ -1709,9 +1709,19 @@ Please input with the following format [D/N][5 digit ID number]
 >3. Any input fields in HealthVault only accepts space and alphanumeric characters.
 >4. HealhVault currently only allows the adding of **1** schedule per patient per day.
     
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```add/N12345/P12345/30012020```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Positive Test case:** ```add/N12345/P12345/30012020```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Trip to P12345 on 30/01/2020 added!```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `add/N1/P12345/30012020`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+
+```
+OOPS! Looks like your ID value is incorrect! 
+Please ensure that the ID includes 5 numbers after "N" or "P" 
+eg. N12345 or P67891
+```
 	
 <br/>
  
@@ -1725,6 +1735,10 @@ Please input with the following format [D/N][5 digit ID number]
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```delete/N12345/30012020```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Trip to P12345 on 30/01/2020 has been cancelled!```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `delete/N1/30012020`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** `NurseID does not exist! Please check Staff List and try again!`
 
 <br/>
 
@@ -1743,6 +1757,9 @@ Please input with the following format [D/N][5 digit ID number]
 	____________________________________________________________
 	N12345     | P12345     | 30/01/2020 
 	
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `list/N1`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** `NurseID does not exist! Please check Staff List and try again!`
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.2 **Test case:** ```list/all```
 
@@ -1753,7 +1770,15 @@ Please input with the following format [D/N][5 digit ID number]
 	N12345     | P12345     | 30/01/2020
 	N55555     | P55555     | 30/01/2020   
 	
-		
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `list`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+
+```
+OOPS! Please check to see if your command is properly formatted!
+Please input with the following format: list/[NurseID/all]
+```
+
 <br/>
 
 4. Returning to Start Menu
