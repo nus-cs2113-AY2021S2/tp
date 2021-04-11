@@ -61,6 +61,7 @@ public class FridgeFriend {
                 Ui.printExceptionMessage(exception);
                 LoggingHandler.logInfo("Error found.", exception);
             }
+            Storage.save(fridge);
         }
         LoggingHandler.logInfo("Main programme loop exited.");
     }
@@ -77,7 +78,6 @@ public class FridgeFriend {
         String interruptMessage = "Application has been interrupted.\n"
                 + "Exiting application...";
         Ui.printMessage(interruptMessage);
-        Storage.save(fridge);
         System.exit(0);
     }
 
