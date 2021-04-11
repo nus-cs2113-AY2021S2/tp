@@ -195,7 +195,7 @@ This is an example of the welcome screen for Staff Menu.
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `D54321`
 >   
 >2. Any input field in HealthVault only accepts space and alphanumeric characters
->3. The age field input should be a positive integer starting from 0 but less than 150
+>3. The age field input should be a positive integer starting from 18 to inclusive of 150
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:<br/>
@@ -347,8 +347,8 @@ When you first enter the Patient menu, you will be greeted with the following we
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `P12345`, `P54321`
 >
 >2. Any input field in HealthVault only accepts space and alphanumeric characters
->3. The gender field input should only be "M", "F" or "Others"
->4. The age field input should be a positive integer starting from 0 but less than 150
+>3. The gender field input is case-insensitive but should only be "M", "F" or "Others" or any other upper and lower case versions.
+>4. The age field input should be a positive integer starting from 0 to inclusive of 150
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
@@ -412,7 +412,7 @@ When you first enter the Patient menu, you will be greeted with the following we
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `find/[Keyword/Phrase]`
 
 >:information_source: Important notes about the input format
->1. Any keyword input will be searched through every field of Patient details. i.e. It can be used to search Patient ID, name, age, illness, medication required.
+>1. Any keyword inputted will be searched through every field of Patient details. i.e. It can be used to search Patient ID, name, age, illness, medication required.
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `find/19`, `find/P12345`
 > 
@@ -849,7 +849,7 @@ This is an example of the welcome screen for the Inventory Menu.
 
 **Q**: Why is HealthVault telling me there is a Corrupted File?
 
-**A**: Corrupted Files are a result of editing the text file manually and causing unpermissible inputs into the data fields. As a result HealthVault is unable process and retrieve the data.
+**A**: Corrupted Files are a result of editing the text file manually and causing impermissible inputs into the data fields. As a result HealthVault is unable process and retrieve the data.
 
 
 **Q**: What do i do when HealthVault tells me there is a Corrupted File?
