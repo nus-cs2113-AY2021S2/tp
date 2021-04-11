@@ -57,9 +57,9 @@ public class Ui {
     }
 
     public static void printLinksMessage() {
-        System.out.println("Welcome to the links menu ^~^\n"
+        System.out.println("Welcome to the Links menu ^~^\n"
                 + "Please choose which action you would like to do and enter the number:\n"
-                + "[1] --- External links menu\n"
+                + "[1] --- External Links menu\n"
                 + "[2] --- Add Zoom links\n"
                 + "[3] --- Delete Zoom links\n"
                 + "[4] --- View Zoom links\n"
@@ -209,7 +209,6 @@ public class Ui {
 
     public static void printAddedTaskMessage(Task task) {
         System.out.println("You've added this: " + task.toString());
-        System.out.println("Returning back to the menu now!");
         printHorizontalLine();
     }
 
@@ -230,19 +229,16 @@ public class Ui {
     public static void printMarkedTaskMessage(Task task) {
         System.out.println("You've marked this as done: " + task.toString());
         System.out.println("NOTE: " + task.getMessage());
-        System.out.println("Returning back to TaskManager menu now!");
         printHorizontalLine();
     }
 
     public static void printUnmarkedTaskMessage(Task task) {
         System.out.println("You've marked this as not done: " + task.toString());
-        System.out.println("Returning back to TaskManager menu now!");
         printHorizontalLine();
     }
 
     public static void printDeletedTaskMessage(Task task) {
         System.out.println("You've deleted this: " + task.toString());
-        System.out.println("Returning back to the menu now!");
         printHorizontalLine();
     }
 
@@ -268,7 +264,6 @@ public class Ui {
 
     public static void printPinnedTaskMessage(Task task) {
         System.out.println("You've pinned this: " + task.toString());
-        System.out.println("Returning back to TaskManager menu now!");
         printHorizontalLine();
     }
 
@@ -278,8 +273,7 @@ public class Ui {
     }
 
     public static void printTaskListIsEmptyMessage() {
-        System.out.println("Task list is empty!\n"
-                + "Returning back to the menu now...");
+        System.out.println("Task list is empty!");
         printHorizontalLine();
     }
 
@@ -362,16 +356,25 @@ public class Ui {
     }
 
     public static void printExternalLinksMessage() {
-        System.out.println("Welcome to the external links menu!\n"
+        System.out.println("Welcome to the External Links menu!\n"
                 + "Please choose which action you would like to do and enter the number:\n"
                 + "[1] --- Add link\n"
                 + "[2] --- Remove link\n"
                 + "[3] --- View links\n"
-                + "[4] --- Exit to links menu");
+                + "[4] --- Exit to Links menu");
+    }
+
+    public static void printReturnToLinks() {
+        System.out.println("Returning to the Links menu...\n");
+    }
+
+    public static void printReturnToExternalLinks() {
+        System.out.println("Returning to the External Links menu...\n");
     }
 
     public static void printAddLinkMessage(String description) {
         System.out.println("Alright! I have added the following link ---  " + description);
+        System.out.println("Returning to the External Links menu...\n");
     }
 
     public static void printEnterLinkMessage() {
@@ -469,13 +472,11 @@ public class Ui {
         System.out.println("");
     }
 
-    public static void printNoInputDetected() {
-        System.out.println("Sorry! I didn't catch that. Please try again");
-    }
 
     public static void printZoomLinksAdded(String zoomLink, String moduleCode) {
         System.out.println("Woohoo~ Zoom link added:");
         System.out.println(zoomLink + " for " + moduleCode + "\n");
+        System.out.println("Returning to the Links menu...\n");
     }
 
     public static void printTaskList(ArrayList<Task> tasks) {
@@ -613,6 +614,7 @@ public class Ui {
 
     public static void printLinkDeleted(LinkInfo deletedLink) {
         System.out.println("You have deleted --- " + deletedLink.getLink());
+        System.out.println("Returning to the External Links menu...\n");
     }
 
     public static void printCapSimulatorPrompt() {
@@ -667,6 +669,7 @@ public class Ui {
 
     public static void printZoomLinkDeleted(ZoomLinkInfo zoomLink) {
         System.out.println("You have deleted --- " + zoomLink.getDescription());
+        System.out.println("Returning to the Links menu...\n");
     }
 
     public static void printModuleNumberDoesNotExistMessage() {

@@ -26,15 +26,16 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[4.05 Add Module Components](#405-add-module-components)  
 &nbsp;&nbsp;&nbsp;&nbsp;[4.06 View Module Components](#406-view-module-components)  
 &nbsp;&nbsp;&nbsp;&nbsp;[4.07 Add new Review](#407-add-new-review)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.08 Delete a Review](#408-delete-a-review)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.09 Add CAP and number of MCs counted towards CAP](#409-add-cap-and-number-of-mcs-counted-towards-cap)   
-&nbsp;&nbsp;&nbsp;&nbsp;[4.10 Add new Task](#410-add-new-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.11 Mark/Unmark a Task as Done](#411-markunmark-a-task-as-done)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.12 Delete a Task](#412-delete-a-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.13 View all Task](#413-view-all-tasks)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.14 Pin a Task](#414-pin-a-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.15 Add Zoom Link](#415-add-zoom-link)
-&nbsp;&nbsp;&nbsp;&nbsp;[4.16 Add External Links](#416-add-external-links)
+&nbsp;&nbsp;&nbsp;&nbsp;[4.08 View all Reviews](#408-view-all-reviews)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.09 Delete a Review](#409-delete-a-review)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.10 Add CAP and number of MCs counted towards CAP](#410-add-cap-and-number-of-mcs-counted-towards-cap)   
+&nbsp;&nbsp;&nbsp;&nbsp;[4.11 Add new Task](#411-add-new-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.12 Mark/Unmark a Task as Done](#412-markunmark-a-task-as-done)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.13 Delete a Task](#413-delete-a-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.14 View all Task](#414-view-all-tasks)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.15 Pin a Task](#415-pin-a-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.16 Add Zoom Link](#416-add-zoom-link)
+&nbsp;&nbsp;&nbsp;&nbsp;[4.17 Add External Links](#417-add-external-links)  
 
 [5. Product scope](#5-product-scope)    
 
@@ -263,7 +264,8 @@ Improvement: the total weightage (in whole numbers) of the module should not exc
 This feature allows user to `add a review` for any of the modules they have taken.
 
 > 📝 **Note!**  
-> This action will **overwrite** any existing reviews with the new review.
+> This action will **overwrite** any existing reviews with the new review.  
+> **Also, anything typed after '/end' will be erased!**
 
 
 ```
@@ -286,8 +288,17 @@ the `/end` symbol. Anything typed after this `/end` symbol will be erased.
 **When overwriting this review with a new review**: The old review will be printed for user
 reference. The user will also be alerted that this action will delete his/her old review.
 
+### 4.08 View all Reviews  
 
-### 4.08 Delete a Review
+This feature prints each `review` *String* of all `modules` in the `ArrayList` of `modules`.  
+
+A brief explanation of how this works:  
+
+After checking if the modules list is empty, a '`for`' loop is used to go through the list of `modules`. The `review` *String* attribute is printed through the getReview() function within the `Module` class.  
+
+
+### 4.09 Delete a Review
+
 This feature allows user to delete a `review` from the `module`.
 
 A general explanation of how this feature works:
@@ -299,7 +310,8 @@ of:
 If this default string value already existed when `deleteAReview` is called (i.e. if the user has not reviewed the module yet),
 this same string will be printed out as a warning to the user.
 
-### 4.09 Add CAP and Number of MCs counted towards CAP
+### 4.10 Add CAP and Number of MCs counted towards CAP  
+
 This feature allows user to add cumulative average point, that ranges between 0 - 5,
 with 2 decimal places of precision, and total number of graded modular credits.
 
@@ -318,7 +330,8 @@ Step 1.
 
 Step 2.
 
-### 4.10 Add New Task
+
+### 4.11 Add New Task
 
 This feature allows the user to add tasks of type `normal task`, `assignment`, `midterm`, `final exam` to a
 task list.
@@ -349,7 +362,7 @@ user. Using the example above,
 signalling completion.
 5. This new task will then be stored into an `ArrayList` for its task type for future reference.
 
-### 4.11 Mark/Unmark a Task as Done
+### 4.12 Mark/Unmark a Task as Done
 
 This feature allows the user to mark or unmark tasks of type `task`, `assignment`, `midterm`, `final exam` as done.
 
@@ -365,8 +378,7 @@ input the index of the task they want to mark/unmark.
 3. Depending on the current status of the task, the user will be informed of the current status of the task and be asked if they want to change it.
 4. Upon marking a task as done, the message that the user inputted upon creation of this particular task will then be printed out.
 
-
-### 4.12 Delete a Task
+### 4.13 Delete a Task
 
 This feature allows the user to delete a task of type `normal task`, `assignment`, `midterm`, `final exam`
 from a task list.
@@ -382,7 +394,7 @@ type__ (`normal task`, `assignment`, `midterm`, `final exam`) of the task they w
 input the index of the task they want to delete. 
 3. The task they select will then be deleted from the `ArrayList`.
 
-### 4.13 View All Tasks
+### 4.14 View All Tasks
 
 This feature allows the user to view all their existing tasks for all task types.
 
@@ -394,7 +406,7 @@ A general explanation of how this feature works:
 1. When the user calls this feature, the application will first iterate through and print out the pinned task list.
 2. This is then followed by the `normal task` list, `assignment` list, `midterm` list and `final exam` list.
 
-### 4.14 Pin a Task
+### 4.15 Pin a Task
 
 This feature allows the user to pin a task of type `normal task`, `assignment`, `midterm`, `final exam`
 from a task list.
@@ -412,7 +424,7 @@ input the index of the task they want to pin.
 The task the user selected will then be added to the respective pinned task
 ArrayList corresponding to the __task type__ they chose.
 
-### 4.15 Add Zoom Link
+### 4.16 Add Zoom Link  
 
 Given below is the sequence diagram for the feature:  
 ![Diagram](diagrams/links/addZoomLink.png)
@@ -436,7 +448,7 @@ the module object which is stored in the ModuleInfo class.
 Step 4. Module#setZoomLink then sets the `zoomLink` attribute of the module object to the zoom link
 that was entered.
 
-### 4.16 Add External Links 
+### 4.17 Add External Links  
 
 This feature allows users to add and store their favourite links.
 
@@ -455,7 +467,6 @@ Step 2. If the link is valid and is not a duplicate, then LinkInfo#addLink() is 
 > For example: https://www.youtube.com or http://www.imf.org would be accepted. Other variations that do not follow these guidelines might not work!
 
 The program checks for duplicates by doing a simple linear search of all LinkInfo objects in the links list. If the object can be found within the list, then a duplicate link must exist.
-
 
 ---
 

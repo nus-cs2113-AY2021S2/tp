@@ -58,6 +58,7 @@ public class ExternalLinks extends Links {
                 break;
             case VIEW_LINK_COMMAND:
                 viewLinks();
+                Ui.printReturnToExternalLinks();
                 break;
             case EXIT_COMMAND:
                 Ui.printReturnToLinkMenuMessage();

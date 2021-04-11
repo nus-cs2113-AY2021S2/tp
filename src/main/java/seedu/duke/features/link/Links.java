@@ -54,6 +54,7 @@ public class Links {
             case VIEW_ZOOM_LINK_COMMAND:
                 // view zoom links
                 viewLinks();
+                Ui.printReturnToLinks();
                 break;
             case EXIT_COMMAND:
                 // exit
