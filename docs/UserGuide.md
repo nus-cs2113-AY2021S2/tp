@@ -145,7 +145,7 @@ Whereas the general output format for loan record is:
 > * return_status
 >    * This field is only applicable to loan records.
 >    * A character denoting the return status of the loan record.
->    * `v` for returned loan record and ` ` (an empty space) for unreturned loan record.
+>    * `[v]` for returned loan record and `[ ]` (an empty space) for unreturned loan record.
 
 For example, lets say you bought a plain loaf of bread for $2.75 on 3rd March 2021. The output format of this *expense* record 
 will be:
@@ -291,7 +291,7 @@ Output:
 
 You can also view your total **unreturned** loan using `view` and the option `-l`.
 
-> 📝 The total amount shown only includes the unreturn loans
+> 📝 The total amount shown only includes the unreturned loans.
 
 Format: `view -l`
 
@@ -370,7 +370,7 @@ Output:
 ---
 
 Let's say that Mark wants to borrow money from you again, but you will want to know his "credit-worthiness" 
-(`creditScore`) before lending him money again, you can simply enter his _name_ after the `creditScore` command.
+before lending him money again, you can simply enter his _name_ after the `creditScore` command.
 
 Format: `creditscore <person>`
 
