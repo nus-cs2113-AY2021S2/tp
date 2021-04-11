@@ -159,7 +159,7 @@ After Mark returns this loan to you, the output format of this *returned loan* r
 
 `[L][2021-03-20][500] 1st loan to Mark [v]`
 
-For the `add` and `list` commands, each displayed record will be preceded with a number, referred to as the *index* of
+For the `add` and `list` commands, each displayed record will be preceded with a number, referred to as the *record ID* of
 the record with respect to the combined list of expense, loan, and saving records. Let's say you have added the records
 shown above to Finux one after another, then doing a `list -l` operation will display the above loan record to you as
 follows:
@@ -327,11 +327,11 @@ Output:
 
 Let's say Mark returns the loan he borrowed on 20th March 2021, and his `loan` record is the second record in the 
 combined list of expense, loan and saving records.
-Then to mark this loan as *returned*, the `index_of_loan` to be included in this case is `2` and the `return_date` is 
+Then to mark this loan as *returned*, the `record_id` to be included in this case is `2` and the `return_date` is 
 the date of return which is `28/03/21`.
 
-Format: `return -i <index_of_loan> -d <return_date>`
-* `<index_of_loan>` refers to the index number shown on the [displayed list of loans](#322-list-all-loan-records).
+Format: `return -i <record_id> -d <return_date>`
+* `<record_id>` refers to the record_ID displayed in the [list command output](#322-list-all-loan-records).
 * `<return_date>` refers to the date on which the borrower has returned the loan.
 
 Example: `return -i 2 -d 28/03/2021`
@@ -345,11 +345,11 @@ Output:
 ---
 
 In a scenario that you realised that the `expense` record of Plain bread loaf added on 20th March 2021 was wrong,
-you can `remove` the record by entering the `remove` command with the _index_ of the `expense`, this is case, it would
+you can `remove` the record by entering the `remove` command with the _record ID_ of the `expense`, this is case, it would
 be the first record in the list.
 
-Format: `remove -i <index>`
-* `<index>` refers to the index number shown on the record list.
+Format: `remove -i <record_id>`
+* `<record_id>` refer to the record ID displayed in list command.
 
 Example: `remove -i 1`
 
@@ -357,8 +357,10 @@ Output:
 
 ![remove example output](img/RemoveExampleOutput.png)
 
-> 💡 To find the index of a record, you can simply `list` the record type (`-e`, `-l`, `-s`) and the number that
-> precedes the record is the index.
+> 💡 To find the record ID of a record, you can simply `list` the record type (`-e`, `-l`, `-s`, `-a`) and the number that
+> precedes the record is the record ID.
+> 📝 After removing a record from the application, you will have to use the list command again to retrieve the latest 
+> updated record IDs.
 
 ### 3.6 Check a person's credit score: `creditscore`
 
@@ -496,8 +498,8 @@ Output:
 | View total expense                     | `view -e`                                                | -                                                    |
 | View total unreturned loans            | `view -l`                                                | -                                                    |
 | View total savings                     | `view -s`                                                | -                                                    |
-| Mark a loan as returned                | `return -i <index_of_loan> -d <return_date>`             | `return -i 2 -d 28/03/2021`                          |
-| Remove a record (expense/savings/loan) | `remove -i <index>`                                      | `remove -i 1`                                        |
+| Mark a loan as returned                | `return -i <record_id> -d <return_date>`                 | `return -i 2 -d 28/03/2021`                          |
+| Remove a record (expense/savings/loan) | `remove -i <record_id>`                                  | `remove -i 1`                                        |
 | Check a person's credit score          | `creditscore <person>`                                   | `creditscore mark`                                   |
 | Exit the application                   | `exit`                                                   | -                                                    |
 | Help (detailed)                        | `help <feature>`                                         | `help remove`                                        |

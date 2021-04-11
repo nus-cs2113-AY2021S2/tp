@@ -37,7 +37,7 @@ public class HelpPage {
     private static final String MAN_OPTION_DATE_RETURN_DESCRIPTION = "[ARGUMENT] date of loan return";
     private static final String MAN_OPTION_INDEX = "-i";
     private static final String MAN_OPTION_INDEX_DESCRIPTION = "[ARGUMENT] positive non zero integer "
-            + "used to reference to index in program";
+            + "refer to the record ID displayed in list command";
     private static final String MAN_OPTION_PERSON = "-p ";
     private static final String MAN_OPTION_PERSON_DESCRIPTION = "[ARGUMENT] the person name";
     private static final String MAN_OPTION_PERSON_IN_ADD_DESCRIPTION = ", use only with '-l' option";
@@ -46,8 +46,8 @@ public class HelpPage {
     private static final String MAN_FORMAT_ADD = "add {-e | -l | -s} <description> -a <amount> -d <date>";
     private static final String MAN_FORMAT_LIST = "list {-e | -l | -s | -a}";
     private static final String MAN_FORMAT_VIEW = "view {-e | -l | -s | -a}";
-    private static final String MAN_FORMAT_RETURN = "return -i <index_of_loan> -d <return_date>";
-    private static final String MAN_FORMAT_REMOVE = "remove -i <index>";
+    private static final String MAN_FORMAT_RETURN = "return -i <record_id> -d <return_date>";
+    private static final String MAN_FORMAT_REMOVE = "remove -i <record_id>";
     private static final String MAN_FORMAT_CREDITSCORE = "creditscore <person>";
     private static final String MAN_FORMAT_EXIT = "exit";
     private static final String MAN_HEADER_HELP = "see feature details";
