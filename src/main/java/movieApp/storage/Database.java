@@ -4,12 +4,18 @@ import movieApp.Cineplex;
 import movieApp.Movie;
 import movieApp.Review;
 import movieApp.Showtimes;
+import movieApp.generator.CineplexList;
+import movieApp.generator.MovieList;
+import movieApp.generator.ShowtimeList;
 import movieApp.parser.MovieFilter;
 import movieApp.user.Admin;
 import movieApp.user.Customer;
 import movieApp.user.User;
+import movieApp.generator.UserList;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -23,8 +29,67 @@ public class Database {
     public static ArrayList<Showtimes> ShowtimesDatabase;
     public static ArrayList<User> users;
 
+    public static Path dataDirectory = Path.of(System.getProperty("user.dir") + "\\data");
+    public static Path movieListDirectory = Path.of(System.getProperty("user.dir") + "\\data" + "\\movieList.txt");
+    public static Path cineplexListDirectory = Path.of(System.getProperty("user.dir") + "\\data"
+            + "\\cineplexList.txt");
+    public static Path showtimeListDirectory = Path.of(System.getProperty("user.dir") + "\\data"
+            + "\\showtimeList.txt");
+    public static Path userListDirectory = Path.of(System.getProperty("user.dir") + "\\data"
+            + "\\userSerialList.txt");
+
     public Database() throws Exception {
+        checkIfDirectoryExists();
+        checkIfMovieListExists();
+        checkIfCineplexListExists();
+        checkIfShowtimeListExists();
+        checkIfUserListExists();
         importDatabase();
+    }
+
+    private static void checkIfUserListExists() throws IOException{
+        if(!Files.exists(userListDirectory)){
+            File newFile = new File(String.valueOf(userListDirectory));
+            newFile.createNewFile();
+            writeToFile("data/userSerialList.txt", UserList.getDefaultUsers());
+        }
+    }
+
+    private static void checkIfShowtimeListExists() throws IOException{
+        if(!Files.exists(showtimeListDirectory)){
+            File newFile = new File(String.valueOf(showtimeListDirectory));
+            newFile.createNewFile();
+            writeToFile("data/showtimeList.txt", ShowtimeList.getDefaultShowtimes());
+        }
+    }
+
+    private static void checkIfCineplexListExists() throws IOException{
+        if(!Files.exists(cineplexListDirectory)){
+            File newFile = new File(String.valueOf(cineplexListDirectory));
+            newFile.createNewFile();
+            writeToFile("data/cineplexList.txt", CineplexList.getDefaultCineplexes());
+        }
+    }
+
+    private static void checkIfMovieListExists() throws IOException{
+        if(!Files.exists(movieListDirectory)){
+            File newFile = new File(String.valueOf(movieListDirectory));
+            newFile.createNewFile();
+            writeToFile("data/movieList.txt", MovieList.getDefaultMovieList());
+        }
+    }
+
+    private static void checkIfDirectoryExists() throws IOException {
+        if(!Files.exists(dataDirectory)){
+            Files.createDirectory(dataDirectory);
+        }
+    }
+
+    private static void checkIfFileExists(Path databaseFile) throws IOException {
+        if(!Files.exists(databaseFile)){
+            File newFile = new File(String.valueOf(databaseFile));
+            newFile.createNewFile();
+        }
     }
 
     private static void importDatabase() throws Exception {
@@ -34,6 +99,8 @@ public class Database {
         users = importUserDatabaseUsingSerialization();
     }
 
+    // TODO: THIS CHUNK OF CODE IS NO LONGER USED, KEEP FOR REFERENCE
+    /*
     private static ArrayList<User> importUserDatabaseUsingFileReader() throws Exception {
         File f_user = new File("data/userList.txt");
         FileReader r_user = new FileReader(f_user);
@@ -61,6 +128,7 @@ public class Database {
         r_user.close();
         return users;
     }
+    */
 
     private static ArrayList<User> importUserDatabaseUsingSerialization() throws Exception {
         File f_movie = new File("data/userSerialList.txt");

@@ -1,4 +1,0 @@
-admin|ADMIN1|6lcnRS7gdK90CYsb3mIu9A==~TzgBIVrD5za8LiAWhZGSgg==
-admin|ADMIN2|tq1sdgFW/U0AS68g/lP1lg==~XhTSGfbTSjKxZ42BpkCIpw==
-user|CUSTOMER1|6lcnRS7gdK90CYsb3mIu9A==~TzgBIVrD5za8LiAWhZGSgg==
-user|CUSTOMER2|tq1sdgFW/U0AS68g/lP1lg==~XhTSGfbTSjKxZ42BpkCIpw==

@@ -14,7 +14,7 @@ public class Showtimes implements Serializable {
     private final String movieTitle;
     private final Seat[][] seatPlan; //true means taken, false means empty
 
-    Showtimes(int id, Calendar date, Cinema cinema, Movie movie) {
+    public Showtimes(int id, Calendar date, Cinema cinema, Movie movie) {
         int r = cinema.getR();
         int c = cinema.getC();
         this.seatPlan = new Seat[r][c];
