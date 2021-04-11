@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.Before;
 import org.junit.After;
 
-import seedu.connoisseur.commands.Commands;
-import seedu.connoisseur.commands.ReviewList;
 import seedu.connoisseur.review.Review;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
