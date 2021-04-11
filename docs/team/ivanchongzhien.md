@@ -13,24 +13,19 @@ We designed GULIO, a CLI-based module planner intended to help users keep track 
 ### Enhancements contributed
 
 1. Implemented a parser to parse inputs to GULIO
-   > I implemented the Parser class. 
-   > This is the class responsible for determining the command being entered by the user and returning the correct Command object to then be called by the main class.
-   > For some of our commands which required arguments from the user, I implemented the parser to obtain all the necessary arguments, check the validity of the arguments, and forming the necessary objects before returning the properly formed objects to the respective classes.
-   > This meant that other classes did not have to repeatedly handle malformed or invalid arguments as everything would be checked at the parser.
+   > This is the class that determines the command being entered by the user and returns the correct Command object to be executed by the main class.
+   > Some of our commands required arguments from the user, so I implemented the parser to obtain and check the validity of all necessary arguments.
+   > The parser also forms the necessary objects, then returns the objects (e.g. new Task object) to the respective classes.
    > 
-   > Since the Parser class had a rather large scope where many other classes relied on it, I only focused on the Parser for v1.0 as I wanted to ensure that the initial version of the Parser is working reliably before we expanded our program.
-   > As we made progress and the parser seemed stable, I also refactored the parser code to improve its flow and logic. 
-   > There were multiple long and messy methods as well as magic strings which were refactored. 
-   > As our program grew, Isa also helped with refactoring a few Parser methods and added the ParserUtil class to differentiate the different Parser methods.
-   > 
-   > Since we had multiple commands which required user to enter indices, I also implemented the `checkIndices` method to 'sanitize' (remove out of bound values, duplicates and non-integers) and sort the indices entered.
-
+   > Since the Parser class had a rather large scope where many other classes relied on it, I only focused on the Parser for v1.0 to ensure that the Parser was working reliably before we proceeded with more features.
+   > As we made progress and the parser seemed stable, I also refactored the parser code with Isa to improve its flow and logic.
+   
 1. Implemented the edit lesson functionality
    > For version 2.0, I implemented the edit lesson command which allowed users to edit the values of previously entered lessons.
-   > The team agreed to do it in the style which prompted the user for changes field by field, hence I had to communicate with Alicia to ensure that the UI was consistent as she implemented the edit task command which used the same style of prompts.
+   > To keep the UI for edit lesson consistent with edit task, I constantly communicated with Alicia who was responsible for implementing edit task.
 1. Shortened GULIO commands
    > For version 2.1, we decided that some commands were too long and slowed the process of navigating and using GULIO.
-   > I shortened several of the long commands words ("cheat-sheets" to "cs", "lesson" to "lsn") to improve the efficiency and speed at which the user can enter inputs to GULIO.
+   > I shortened several of the long commands words ("cheat-sheets" to "cs", "lesson" to "lsn") to improve the speed at which the user can enter inputs.
 
 ### Contributions to Documentation
 1. As the one who implemented the edit lesson command, I covered the explanations and sample inputs for the edit lesson instruction.
@@ -59,7 +54,6 @@ We designed GULIO, a CLI-based module planner intended to help users keep track 
 
 ### Contributions beyond the project team
 1. [Raised question on forum](https://github.com/nus-cs2113-AY2021S2/forum/issues/15)
-1. [Completed code quality PR Review](https://github.com/nus-cs2113-AY2021S2/ip/pull/31#pullrequestreview-581980950)
 1. [Reported bugs during PE Dry Run](https://github.com/ivanchongzhien/ped/issues)
 
 ### Contributions to the Developer Guide (Extracts)
