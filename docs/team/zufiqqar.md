@@ -1,23 +1,24 @@
 # Zufiqqar - Project Portfolio Page
 
 ## Overview
-Hi. My name is Muhammad Zufiqqar bin Jamal. You can call me Zul. Our group is T10-3 and, we are doing Movie Booking System as part of the tp.
+MovieApp is a desktop app for users to see the upcoming shows, book a movie and read movie reviews.
+The app is optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).
 
 ### Summary of Contributions
-* Implemented Login functions for Admins and Customers
-* Implemented milestones and issues for v2.0, v2.1
-* Implemented View Booking function
-* Implemented Cancel Booking function
-* Implemented View Movie Details function
-* Implemented UpdateDatabase function
-* Fixed Various Issues/Errors/Bugs
-* Refactoring of Codes
-
-Guidelines
-Code contributed: Give a link to your code on tP Code Dashboard. The link is available in the Project List Page -- linked to the  icon under your profile picture.
-Enhancements implemented: A summary of the enhancements you implemented.
-Contributions to documentation: Which sections did you contribute to the UG?
-Contributions to the DG: Which sections did you contribute to the DG? Which UML diagrams did you add/updated?
-Contributions to team-based tasks :
-Review/mentoring contributions: Links to PRs reviewed, instances of helping team members in other ways
-Contributions beyond the project team:
+Given below are my contributions to the project.
+* Code contributed: [RepoSense link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&since=&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false&tabOpen=true&tabType=authorship&tabAuthor=Zufiqqar&tabRepo=AY2021S2-CS2113-T10-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
+* Enhancements implemented: \
+  Implemented the `Login` and `Booking` features.
+  Fixed the bugs in `View Booking` and `Cancel Movie` features after PE-D.
+* Contributions to UG:\
+  Added `markdowns` to ensure it is nicely layout for readability purpose.
+* Contributions to the DG: \
+  Updated `Product Scope` and `User Stories`
+  Added sequence diagrams for `Login` feature.
+* Contributions to team-based tasks:\
+  Generated sequence diagrams using plantuml.
+  Created `milestones` for `v2.0` and `v2.1`
+  Created issues to complete and rectify.
+  Released `v1.0` jar file.
+* Review/mentoring contributions:\
+  Help review and test each other works.

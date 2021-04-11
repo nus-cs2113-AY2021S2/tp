@@ -17,7 +17,7 @@ public class CineplexList {
         temp.add(2);
         temp.add(3);
         temp.add(4);
-        Cineplex tempCineplex = new Cineplex(1, "Jurong Point", temp);
+        Cineplex tempCineplex = new Cineplex(0, "Jurong Point", temp);
         returnList.add(tempCineplex);
 
         temp = new ArrayList<Integer>();
@@ -25,7 +25,7 @@ public class CineplexList {
         temp.add(6);
         temp.add(7);
         temp.add(8);
-        tempCineplex = new Cineplex(2, "VivoCity", new ArrayList<Integer>());
+        tempCineplex = new Cineplex(1, "VivoCity", temp);
         returnList.add(tempCineplex);
 
         temp = new ArrayList<Integer>();
@@ -33,7 +33,7 @@ public class CineplexList {
         temp.add(2);
         temp.add(9);
         temp.add(10);
-        tempCineplex = new Cineplex(3, "Bishan", new ArrayList<Integer>());
+        tempCineplex = new Cineplex(2, "Bishan", temp);
         returnList.add(tempCineplex);
 
         /*
