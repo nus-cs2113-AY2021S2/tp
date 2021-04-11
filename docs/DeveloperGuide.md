@@ -13,9 +13,7 @@
     * [Model Component](#model-component)
     * [Storage Component](#storage-component)
 *  [Implementation](#implementation)
-   *[Main](#main)
-   *[Public User Implementation](#public-user)
-   *[Admin User Implementation](#admin-user)
+    *[Main](#main)
    
 
 ## **Setup**
@@ -87,15 +85,14 @@ There are 2 types of user :
 [**`Public User`**](#public-user)
 [**`Admin User`**](#admin-user)
 
-### Main 
+###Main
 ![Main Sequence Diagram](./img/Main.png)
 
 When the application is launched, an Ui object and Parser object is instantiated.
 To instantiate the Parser object, the main NusFoodReviews and Ui object is passed.
 
 
-
-### Public User
+###Public User
 For public users, the list of commands is shown below:
 
 * Display selected store sample menu: [**`menu`**](#display-menu) 
