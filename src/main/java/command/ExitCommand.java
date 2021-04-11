@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 /**
- * Represents an executor that will exit the application
+ * Represents an executor that will exit the application.
  */
 public class ExitCommand extends Command {
 

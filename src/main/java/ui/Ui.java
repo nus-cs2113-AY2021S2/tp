@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Represents the main class that interacts with the user through the command line interface
+ * Represents the main class that interacts with the user through the command line interface.
  */
 public class Ui {
     public static final String LINESPACING = "====================================================";
