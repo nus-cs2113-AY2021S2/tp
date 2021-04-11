@@ -159,6 +159,8 @@ public class ModuleInfo {
                 System.out.println("Enter module description:");
                 String moduleDescription = Ui.readCommand();
                 if (!Ui.userCommandIsEmpty(moduleDescription)) {
+                    moduleName = checkAndRemoveDelimiter(moduleName);
+                    moduleDescription = checkAndRemoveDelimiter(moduleDescription);
                     modules.add(new Module(moduleName, moduleDescription));
                     System.out.println("New module added:\n" + moduleName + ":\n" + moduleDescription);
                     Ui.printHorizontalLine();
@@ -349,9 +351,10 @@ public class ModuleInfo {
                 break;
             }
         }
-        //drop everything after "/end"
+        //drop everything after '/end'
         //case insensitive '/end'
         String reviewString = review.toString().split("(?i)/end")[0];
+        reviewString = checkAndRemoveDelimiter(reviewString);
         if (!reviewString.trim().isEmpty()) {
             printReviewAddedMessage(reviewString.trim());
             return reviewString.trim();
@@ -359,6 +362,18 @@ public class ModuleInfo {
             System.out.println("You entered an empty review.");
             return EMPTY_REVIEW_MESSAGE;
         }
+    }
+
+    public static String checkAndRemoveDelimiter(String input) {
+        String output = input;
+        if (input.contains(" ~~ ")) {
+            System.out.println("A restricted character sequence, ' ~~ ' (including the whitespaces) has been entered.");
+            System.out.println("This sequence will be replaced with ' -- '.\n");
+            output = input.replaceAll(" ~~ ", " -- ");
+        }
+
+        return output;
+
     }
 
     public static void printReviewAddedMessage(String review) {
