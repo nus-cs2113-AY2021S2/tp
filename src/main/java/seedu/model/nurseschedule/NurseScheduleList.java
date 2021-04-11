@@ -13,7 +13,6 @@ import seedu.logic.errorchecker.NurseScheduleChecker;
 import seedu.ui.NurseScheduleUI;
 import seedu.ui.UI;
 
-import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,7 +38,7 @@ public class NurseScheduleList {
      */
     public NurseScheduleList(ArrayList<NurseSchedule> load) {
         nurseSchedules = load;
-        logger.log(Level.INFO,"Creating a NurseSchedule list");
+        logger.log(Level.INFO, "Creating a NurseSchedule list");
     }
 
     public NurseScheduleList() {
@@ -56,12 +55,12 @@ public class NurseScheduleList {
      * adds schedule to arraylist.
      *
      * @param details array of relevant information
-     * @throws NurseIdNotFound if nurseID does not exist
-     * @throws InvalidiDTypeException if ID is invalid
-     * @throws NurseCrossValidationError if Staff.txt cannot be loaded
-     * @throws PatientIdNotFound if patientID does not exit
+     * @throws NurseIdNotFound             if nurseID does not exist
+     * @throws InvalidiDTypeException      if ID is invalid
+     * @throws NurseCrossValidationError   if Staff.txt cannot be loaded
+     * @throws PatientIdNotFound           if patientID does not exit
      * @throws PatientCrossValidationError if Patients.txt cannot be loaded
-     * @throws DuplicateScheduleException if schedules are duplicated
+     * @throws DuplicateScheduleException  if schedules are duplicated
      */
     public void addSchedule(String[] details) throws NurseIdNotFound, InvalidiDTypeException,
             NurseCrossValidationError, PatientIdNotFound, PatientCrossValidationError, DuplicateScheduleException {
@@ -149,7 +148,7 @@ public class NurseScheduleList {
      * finds and stores all schedules of specified nurse id.
      *
      * @param nurseSchedules arraylist of nurseschedules
-     * @param id specified nurse id to be found
+     * @param id             specified nurse id to be found
      */
     private void getNurseSchedulesByID(List<NurseSchedule> nurseSchedules, String id) {
         int i = 0;
@@ -185,7 +184,7 @@ public class NurseScheduleList {
      * checks if nurse has been found.
      *
      * @param nurseSchedules arraylist of nurse schedules
-     * @param i index
+     * @param i              index
      * @return boolean for found or not
      */
     private boolean isNurseDone(List<NurseSchedule> nurseSchedules, int i) {
@@ -201,7 +200,7 @@ public class NurseScheduleList {
      * Checks if nurseID exists within schedules.
      *
      * @param nurseSchedules List of all schedules
-     * @param id NurseID to check
+     * @param id             NurseID to check
      * @return boolean
      * @throws NurseIdNotFound if id does not exist
      */
@@ -220,8 +219,8 @@ public class NurseScheduleList {
      * checks if schedule is valid to be deleted.
      *
      * @param nurseSchedules arraylist of nurse schedules
-     * @param id specified id
-     * @param date specified date
+     * @param id             specified id
+     * @param date           specified date
      * @return boolean if its valid
      * @throws InvalidScheduleException if schedule does not exist
      */

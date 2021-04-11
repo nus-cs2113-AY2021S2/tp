@@ -24,13 +24,13 @@ public class InventoryDelete extends Command {
     /**
      * Deletes quantity of Inventory object from the Inventory list.
      *
-     * @param drugs Inventory objects in Inventory list.
+     * @param items Inventory objects in Inventory list.
      * @param ui Instance of InventoryUI used.
      * @throws InvalidQuantityException If input quantity is invalid.
      */
-    public void execute(InventoryList drugs, InventoryUI ui) throws InvalidQuantityException {
-        drugs.deleteDrugs(argArr);
-        ui.deleteDrugMessage(argArr[1], argArr[2]);
+    public void execute(InventoryList items, InventoryUI ui) throws InvalidQuantityException {
+        items.deleteItems(argArr);
+        ui.deleteItemMessage(argArr[1], argArr[2]);
     }
 
     @Override

@@ -22,7 +22,7 @@ public class StaffChecker extends MainChecker {
     /**
      * Compares an Integer and String to check if the numeric value is the same.
      *
-     * @param a  Integer a.
+     * @param a Integer a.
      * @param b String b.
      * @return boolean If String of b is an integer with value same as a.
      */
@@ -39,10 +39,10 @@ public class StaffChecker extends MainChecker {
      * Returns an array of inputs that were delimited by "/"
      * and removes all trailing and leading whitespaces.
      *
-     * @param line  String input of entire command given.
+     * @param line String input of entire command given.
      * @return array Array of Strings used as input fields.
-     * @throws InsufficientInputException  If number of input fields is less than 5.
-     * @throws ExcessInputException  If number of input fields is more than 5.
+     * @throws InsufficientInputException If number of input fields is less than 5.
+     * @throws ExcessInputException       If number of input fields is more than 5.
      */
     public String[] getTrimInput(String line) throws InsufficientInputException, ExcessInputException {
         String[] array = line.trim().split("/");
@@ -57,10 +57,10 @@ public class StaffChecker extends MainChecker {
     /**
      * Calls various checker functions to determine the validity of inputs for Add command.
      *
-     * @param line  String input of entire command given.
+     * @param line      String input of entire command given.
      * @param staffList StaffList object that is an aggregation of all Staff Objects.
      * @return array String Array from getTrimInput()
-     * @throws HealthVaultException  If any input field is invalid.
+     * @throws HealthVaultException If any input field is invalid.
      */
     public String[] checkValidDataForAdd(String line, StaffList staffList) throws HealthVaultException {
         logger.log(Level.INFO, "Checking Staff Data before adding.");
@@ -77,13 +77,13 @@ public class StaffChecker extends MainChecker {
      * Calls various checker functions to determine the validity of data
      * when loading data from text files.
      *
-     * @param line  String input of entire command given.
+     * @param line String input of entire command given.
      * @param list ArrayList that is an aggregation of all Staff Objects to be loaded.
-     * @throws HealthVaultException  If any input field from sata files is corrupted.
+     * @throws HealthVaultException If any input field from sata files is corrupted.
      */
     public void checkValidDataFromStorage(String line, ArrayList<Staff> list) throws HealthVaultException {
         logger.log(Level.INFO, "Checking Staff Data before loading.");
-        checkDataNumInput(line,4,4);
+        checkDataNumInput(line, 4, 4);
         checkStaffID(line.split("\\|")[0]);
         checkDuplicateStaffID(line.split("\\|")[0], list);
         checkStaffAge(line.split("\\|")[2]);
@@ -93,9 +93,9 @@ public class StaffChecker extends MainChecker {
     /**
      * Checks if Staff ID given is already found in the ArrayList.
      *
-     * @param id  String of ID to be checked against the ArrayList.
+     * @param id   String of ID to be checked against the ArrayList.
      * @param list ArrayList containing data for Staff objects.
-     * @throws DuplicateIdException  If id is found in list
+     * @throws DuplicateIdException If id is found in list
      */
     public void checkDuplicateStaffID(String id, ArrayList<Staff> list) throws DuplicateIdException {
         logger.log(Level.INFO, "Checking Duplicated Staff ID.");
@@ -109,8 +109,8 @@ public class StaffChecker extends MainChecker {
     /**
      * Checks if a given String id has valid Staff ID format.
      *
-     * @param id  String of Staff ID
-     * @throws WrongStaffIdException  If the format of Staff ID is not valid ([D/N][5 digit integer])
+     * @param id String of Staff ID
+     * @throws WrongStaffIdException If the format of Staff ID is not valid ([D/N][5 digit integer])
      */
     public void checkStaffID(String id) throws WrongStaffIdException {
         logger.log(Level.INFO, "Checking Staff ID.");
@@ -134,9 +134,9 @@ public class StaffChecker extends MainChecker {
      * Checks if a given String input has is valid to be used as Staff Age.
      *
      * @param number String of age.
-     * @throws NumberFormatException  If input is not numeric.
+     * @throws NumberFormatException    If input is not numeric.
      * @throws InvalidIntegerException  If integer is < 0.
-     * @throws InvalidStaffAgeException  If age does nat fall within the range of 18 <= age <= 150.
+     * @throws InvalidStaffAgeException If age does nat fall within the range of 18 <= age <= 150.
      */
     public void checkStaffAge(String number) throws NumberFormatException,
             InvalidIntegerException, InvalidStaffAgeException {
@@ -150,8 +150,8 @@ public class StaffChecker extends MainChecker {
     /**
      * Checks if any input has illegal characters (Non alphanumeric and non whitespace) for Add command.
      *
-     * @param array  Array of inputs.
-     * @throws IllegalCharacterException  If any illegal characters is present.
+     * @param array Array of inputs.
+     * @throws IllegalCharacterException If any illegal characters is present.
      */
     public void invalidCharactersStaffChecker(String[] array) throws IllegalCharacterException {
         logger.log(Level.INFO, "Checking Illegal Characters in Staff input.");
@@ -166,10 +166,10 @@ public class StaffChecker extends MainChecker {
      * from data storage before loading, to prevent corrupted data from loading.
      *
      * @param line String of data from storage.
-     * @throws IllegalCharacterException  If any illegal characters is present.
+     * @throws IllegalCharacterException If any illegal characters is present.
      */
     public String[] invalidCharactersStaffCheckerForStorage(String line) throws IllegalCharacterException {
-        String [] cleanArray = line.split("\\|");
+        String[] cleanArray = line.split("\\|");
         String[] field = {"ID", "name", "age", "specialisation"};
         for (int i = 0; i < (cleanArray.length); i++) {
             illegalCharacterChecker(cleanArray[i], field[i]);
@@ -201,11 +201,11 @@ public class StaffChecker extends MainChecker {
      * Checks validity of the list command.
      * Returns String array that contains input fields for StaffList command.
      *
-     * @param line  Entire command input.
+     * @param line Entire command input.
      * @return array of inputs for StaffList command.
-     * @throws WrongListInputException  If zone is <= 0.
-     * @throws InsufficientInputException  If number of input fields is less than 1.
-     * @throws ExcessInputException  If number of input fields is more than 2.
+     * @throws WrongListInputException    If zone is <= 0.
+     * @throws InsufficientInputException If number of input fields is less than 1.
+     * @throws ExcessInputException       If number of input fields is more than 2.
      */
     public String[] checkListCommand(String line) throws WrongListInputException,
             ExcessInputException, InsufficientInputException {
@@ -214,7 +214,7 @@ public class StaffChecker extends MainChecker {
                 && !(isEqualNurses(array[1]) || isEqualDoctors(array[1]))) {
             throw new WrongListInputException();
         }
-        MainChecker.checkNumInput(array,2,1);
+        MainChecker.checkNumInput(array, 2, 1);
         return array;
     }
 
@@ -222,15 +222,15 @@ public class StaffChecker extends MainChecker {
      * Checks validity of the delete command.
      * Returns String of the Staff ID to be deleted.
      *
-     * @param line  Entire delete command input.
+     * @param line Entire delete command input.
      * @return Staff ID to be deleted.
-     * @throws WrongStaffIdException  If zone is <= 0.
-     * @throws InsufficientInputException  If number of input fields is less than 2.
-     * @throws ExcessInputException  If number of input fields is more than 2.
+     * @throws WrongStaffIdException      If zone is <= 0.
+     * @throws InsufficientInputException If number of input fields is less than 2.
+     * @throws ExcessInputException       If number of input fields is more than 2.
      */
     public String checkDeleteCommand(String line) throws ExcessInputException,
             InsufficientInputException, WrongStaffIdException {
-        checkNumInput(line.split("/"),2,2);
+        checkNumInput(line.split("/"), 2, 2);
         String input = line.split("/")[1].trim();
         checkStaffID(input);
         return input;

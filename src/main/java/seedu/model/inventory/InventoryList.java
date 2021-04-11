@@ -26,10 +26,10 @@ public class InventoryList {
      *
      * @param argArr array of inputs for Inventory object.
      */
-    public void addDrugs(String[] argArr) {
+    public void addItems(String[] argArr) {
         for (int i = 0; i < list.size(); i++) {
             Inventory inventoryTemp = list.get(i);
-            String tempName = inventoryTemp.getDrugName();
+            String tempName = inventoryTemp.getItemName();
             Double tempPrice = inventoryTemp.getDoublePrice();
             if (tempName.equals(argArr[0]) && tempPrice.equals(Double.parseDouble(argArr[1]))) {
                 inventoryTemp.addQuantity(Integer.parseInt(argArr[2]));
@@ -46,12 +46,12 @@ public class InventoryList {
      * @param argArr array of inputs for Inventory object.
      * @throws InvalidQuantityException when Quantity input is invalid.
      */
-    public void deleteDrugs(String[] argArr) throws InvalidQuantityException {
+    public void deleteItems(String[] argArr) throws InvalidQuantityException {
         for (int i = 0; i < list.size(); i++) {
             String name = argArr[1];
             String quantityDelete = argArr[2];
             Inventory inventoryTemp = list.get(i);
-            String tempName = inventoryTemp.getDrugName();
+            String tempName = inventoryTemp.getItemName();
             int tempQuantity = inventoryTemp.getQuantity();
             if (tempName.equals(name) && tempQuantity >= Integer.parseInt(quantityDelete)) {
                 inventoryTemp.removeQuantity(Integer.parseInt(quantityDelete));
@@ -65,9 +65,9 @@ public class InventoryList {
     /**
      * Displays information of all relevant Inventory objects.
      */
-    public void listDrugs() {
-        int numberOfDrugs = list.size();
-        if (numberOfDrugs != 0) {
+    public void listItems() {
+        int numberOfItems = list.size();
+        if (numberOfItems != 0) {
             System.out.print(System.lineSeparator());
             ui.inventoryListHeader();
             for (int i = 0; i < 60; i++) {
@@ -88,10 +88,10 @@ public class InventoryList {
      * @param inputString Inventory object name.
      * @return true or false.
      */
-    public boolean isDrugStored(String inputString) {
+    public boolean isItemStored(String inputString) {
         for (Inventory inventory : list) {
-            String drugName = inventory.getDrugName();
-            if (drugName.equals(inputString)) {
+            String itemName = inventory.getItemName();
+            if (itemName.equals(inputString)) {
                 return true;
             }
         }
@@ -105,7 +105,7 @@ public class InventoryList {
      */
     public static void display(Inventory inventory) {
         System.out.println(
-                prettyPrint(inventory.getDrugName(), 15) + " | "
+                prettyPrint(inventory.getItemName(), 15) + " | "
                         + prettyPrint(inventory.getStringPrice(), 10) + " | "
                         + prettyPrint(Integer.toString(inventory.getQuantity()), 5));
     }

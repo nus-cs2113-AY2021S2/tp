@@ -1,6 +1,8 @@
 package seedu.logic.command.doctorappointment;
 
 
+import seedu.exceptions.HealthVaultException;
+import seedu.exceptions.doctorappointment.AppointmentIdDoesNotExistException;
 import seedu.exceptions.doctorappointment.DoctorIdDoesNotExistException;
 import seedu.model.doctorappointment.AppointmentList;
 import seedu.logic.command.Command;
@@ -36,7 +38,7 @@ public class DoctorAppointmentDeleteCommand extends Command {
      */
 
     @Override
-    public void execute(AppointmentList appointment, DoctorAppointmentUI ui) throws IOException, DoctorIdDoesNotExistException {
+    public void execute(AppointmentList appointment, DoctorAppointmentUI ui) throws IOException, HealthVaultException {
         AppointmentList.deleteAppointment(id);
     }
 
