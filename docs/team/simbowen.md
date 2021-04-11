@@ -13,7 +13,7 @@ The link to the code contributed by me can be found
 [here](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=09&sort=groupTitle&sortWithin=title&since=2021-03-05&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false&tabOpen=true&tabType=zoom&zA=SimBowen&zR=AY2021S2-CS2113T-T09-2%2Ftp%5Bmaster%5D&zACS=130.65156794425087&zS=2021-03-05&zFS=09&zU=2021-04-06&zMG=undefined&zFTF=commit&zFGS=groupByRepos&zFR=false&zFT=docs~functional-code~test-code~other&until=2021-04-06).
 
 ### Enhancements Implemented
-####Routing
+#### Routing
 I implemented the basic routing functionality together with Choi Wonjae (wjChoi0712).<br>
 
 **What it does:** <br>
@@ -23,7 +23,7 @@ The user may use the `go` command to activate the routing feature. Upon activati
 The routing feature is the main reason for the creation of NUSMaze. The name of the app came about due to our focus on navigation throughout the campus. The routing feature is useful for all users who are unsure of how to travel between the Engineering and Computing faculties. 
 <br>
 
-####Daily Route
+#### Daily Route
 
 I implemented the daily route feature of NUSMaze.<br>
 
@@ -51,7 +51,7 @@ I vetted issues and assigned to members accordingly. <br>
 I maintained the cohesiveness in language and formatting of the documentations. <br>
 I contributed to developer testing for NUSMaze by creating JUnit tests to ensure that the behaviour of the application does not defer from intended.
 
-###Review contributions
+### Review contributions
 The link to PR reviews by me can be found [here](https://github.com/AY2021S2-CS2113T-T09-2/tp/pulls?q=is%3Apr+is%3Aclosed+reviewed-by%3ASimBowen+).
 
 ### Contributions beyond the project team:
