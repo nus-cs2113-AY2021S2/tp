@@ -23,7 +23,18 @@ import seedu.duke.command.notecommand.ShowNoteCommand;
 import seedu.duke.command.routecommand.GoCommand;
 import seedu.duke.exception.InvalidCommandException;
 
+/**
+ * Parses user input.
+ */
 public class Parser {
+
+    /**
+     * Parses user input into command for execution.
+     *
+     * @param userInput full user input string
+     * @return the command based on the user input
+     * @throws InvalidCommandException if user command is not one of the command type that the program can execute
+     */
     public static Command prepareForCommandExecution(String userInput) throws InvalidCommandException {
         assert userInput != null : "User input cannot be null";
         Command command;

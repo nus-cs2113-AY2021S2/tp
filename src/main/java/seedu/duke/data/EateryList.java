@@ -5,6 +5,9 @@ import seedu.duke.router.Router;
 
 import java.util.LinkedList;
 
+/**
+ * Represents a list of eateries in {@link NusMap}.
+ */
 public class EateryList {
     private Block[] eateries;
 
@@ -14,10 +17,18 @@ public class EateryList {
         setEateries(nusMap);
     }
 
+    /** Returns the list of eateries. */
     public Block[] getEateries() {
         return eateries;
     }
 
+    /**
+     * Returns a eatery at specific index.
+     *
+     * @param index eatery index to be returned
+     * @return the eatery at specific index
+     * @throws InvalidIndexException if the index is greater than 7 or smaller than 0
+     */
     public Block getSpecificEatery(int index) throws InvalidIndexException {
         if (index > 7 || index < 0) {
             throw new InvalidIndexException();
@@ -26,6 +37,7 @@ public class EateryList {
         }
     }
 
+    /** Sets the distance from Starting block to a particular eatery. */
     public void setRouteLengths(NusMap nusMap, String from) {
         new Router().findShortestRoute(nusMap, new LinkedList<>(), from, "TECHNO EDGE CANTEEN");
         new Router().findShortestRoute(nusMap, new LinkedList<>(), from, "CHEERS MINIMART");
@@ -37,6 +49,7 @@ public class EateryList {
 
     }
 
+    /** Sets the eatery list. */
     public void setEateries(NusMap nusMap) {
         eateries[0] = nusMap.getBlock("TECHNO EDGE CANTEEN");
         eateries[1] = nusMap.getBlock("CHEERS MINIMART");
@@ -47,6 +60,9 @@ public class EateryList {
         eateries[6] = nusMap.getBlock("STARBUCKS");
     }
 
+    /**
+     * Sorts the eatery list using the {@link Block#getDistanceFromStart()} values.
+     */
     public void sortEateriesByDistance() {
         for (int i = 0; i < eateries.length - 1; i++) {
             for (int j = 0; j < eateries.length - 1 - i; j++) {

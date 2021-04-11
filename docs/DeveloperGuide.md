@@ -302,7 +302,7 @@ Given below is an example usage scenario and how the add/view/delete mechanism b
 Shown below is the sequence diagram when a valid block name and alias are added:
 ![img.png](images/AliasFeatureSequence.png)
 ### 3.5. History feature
-
+![img.png](images/history.png)
 #### Current Implementation
 Whenever the user inputs the `go` command, and enters a valid start and destination address, a String consisting the start and end block is created and stored in `historyList`. 
 The contents of the `historyList` will be stored into a text file named `historyList.txt` when NUSMaze terminates.
@@ -337,7 +337,7 @@ Cons: Might be confusing since there is less distinction between each command.
 
 ### 3.6. Save feature
 #### Current Implementation
-The save mechanism is facilitated by `AliasStorage`, `DailyRouteStorage`, `FavouriteStorage`, `HistoryStorage` and `NotesStorage` subclasses. </br>
+The save mechanism is facilitated by `AliasStorage`, `DailyRouteStorage`, `FavouriteStorage`, `HistoryStorage` and `NotesStorage` subclasses. <br>
 They extend `Storage` (superclass) with a feature to save the blocks' aliases, daily routes, favourite locations, history of visited routes and tagged notes, stored internally as `aliasList`,  `dailyRouteList`, `favouriteList`, `history`, `noteList` text files. <br />
 Additionally, they implement the following operations: <br/>
 - `AliasStorage#saveData()` —  Saves all aliases given by user to blocks into `aliasList`. <br />
@@ -429,6 +429,11 @@ Below is our analysis of our target user and the importance in which he/she woul
 ### 4.5. Glossary
 
 * *CLI* - Command Line Interface
+* *IntelliJ* - An Integrated Development Environment (IDE) designed for Java software development.
+* *UML* - Unified Modeling Language.
+* *Terminal/PowerShell* - Any operating system shell with a command-line interface.
+* *Mainstream OS* - Windows, mainstream distributions of Linux, and macOS.
+* *JDK* - Java Development Kit.
 
 ---------------------------------------------------------------------------------------------
 

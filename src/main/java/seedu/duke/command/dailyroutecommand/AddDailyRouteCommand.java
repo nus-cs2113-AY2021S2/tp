@@ -10,6 +10,9 @@ import seedu.duke.ui.DailyRouteUi;
 
 import java.util.ArrayList;
 
+/**
+ * Adds a daily schedule.
+ */
 public class AddDailyRouteCommand extends Command {
 
     protected DailyRouteUi ui;
@@ -19,6 +22,11 @@ public class AddDailyRouteCommand extends Command {
         this.ui = new DailyRouteUi();
     }
 
+
+    /**
+     * Gets the day and schedule specified by the user and maps it in dailyRoute
+     * Success message is printed using ui at the end.
+     */
     @Override
     public void execute() {
         ArrayList<String> validDays = dailyRoute.getValidDays();

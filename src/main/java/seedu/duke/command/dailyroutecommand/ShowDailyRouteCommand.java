@@ -11,6 +11,9 @@ import seedu.duke.router.Router;
 
 import java.util.ArrayList;
 
+/**
+ * Shows a daily schedule.
+ */
 public class ShowDailyRouteCommand extends Command {
     protected DailyRouteUi ui;
 
@@ -18,6 +21,10 @@ public class ShowDailyRouteCommand extends Command {
         this.ui = new DailyRouteUi();
     }
 
+    /**
+     * Gets the day specified by the user outputs the routes to the locations.
+     * Routes are printed using ui at the end.
+     */
     @Override
     public void execute() {
         try {

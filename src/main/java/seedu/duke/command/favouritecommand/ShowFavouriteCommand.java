@@ -15,6 +15,9 @@ public class ShowFavouriteCommand extends Command {
         this.ui = new FavouriteUi();
     }
 
+    /**
+     * This method displays the current list of favourite routes to the user.
+     */
     public void execute() {
         try {
             ui.showFavourites(favourite);

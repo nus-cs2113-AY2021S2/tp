@@ -9,6 +9,11 @@ import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidIndexException;
 import seedu.duke.ui.NoteUi;
 
+
+/**
+ * Execution for delete note command. A <code>DeleteNoteCommand</code> object corresponds to
+ * a response to each input by the user for every 'delete notes' command.
+ */
 public class DeleteNoteCommand extends Command {
 
     protected NoteUi ui;
@@ -18,6 +23,11 @@ public class DeleteNoteCommand extends Command {
         this.ui = new NoteUi();
     }
 
+    /**
+     * Removes notes from a block's list, based on user input of selected note, if note and block exists.
+     * Returns error message if block doesn't exist or if note does not exist or index of note out of bounds.
+     *
+     */
     @Override
     public void execute() {
         String deleteBlockInfo = ui.getBlockInfo();
