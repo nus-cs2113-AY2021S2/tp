@@ -56,6 +56,16 @@ The user may use the `delete alias` command to activate the delete alias feature
 The user can use their custom defined alias instead of the pre-defined block names when calling the `go` command so as to save time as they would have to type less and the alias might make more sense to them as compared to the pre-defined block names.
 <br>
 
+#### *User Data Storage*
+I implemented the data storage feature of NUSMaze with Sim Bowen (simbowen), Kimberley (kimideas8) and Choi Wonjae (wjChoi0712). More specifically, I was in charge of the storages for alias and favourites features.<br>
+
+**What it does:** <br>
+The storage feature ensures that the user's data for the respective features are saved in the computers memory and can be retrieved even if the user exits and reopens NUSMaze.
+
+**Justification:** <br>
+The user can use their saved data to continue customising their NUSMaze experience from where they had previously left off. 
+<br>
+
 ### Contributions to the UG
 I contributed to the information about the alias features namely `Add alias`, `Show alias` and `Delete alias`.
 
