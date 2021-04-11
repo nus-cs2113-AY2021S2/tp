@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static ui.Ui.LINESPACING;
 
 public class AddReviewCommand extends Command {
     private Store store;
@@ -76,6 +77,7 @@ public class AddReviewCommand extends Command {
             rating = Double.parseDouble(line);
             if (rating < 1.0 || rating > 5.0) {
                 System.out.println("Please enter valid rating");
+                System.out.println(LINESPACING);
                 return;
             }
         }

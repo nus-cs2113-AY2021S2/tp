@@ -6,6 +6,9 @@ import ui.Ui;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * Represents an executor that will exit the application.
+ */
 public class ExitCommand extends Command {
 
     public ExitCommand() {
