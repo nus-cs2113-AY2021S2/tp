@@ -259,11 +259,11 @@ A general explanation of add recommendation works:
 
 `Commands` calls for `RecommendationList#addReccomendation` to prompt and read respective information such as  `title`, `category`, `price range`,`recommendedby` and `location`.
 
-`title` - string with 20char limit, that will call [`RecommendationList#checkAndPrintDuplicateRecommendation`]() to check for duplicates. 
-
-`category`, `recommendedby` and `location` - string with 15char limit, that cannot be whitespace or null.
-
-`price range`- string, that will call `RecommendationList#checkPriceValidity` and restrict it to 2 decimal places.
+   `title` - string with 20char limit, that will call [`RecommendationList#checkAndPrintDuplicateRecommendation`]() to check for duplicates. 
+   
+   `category`, `recommendedby` and `location` - string with 15char limit, that cannot be whitespace or null.
+   
+   `price range`- string, that will call `RecommendationList#checkPriceValidity` and restrict it to 2 decimal places.
 
 The violation of any constraints for each attribute will print an error message from `ui` and be promoted to re-enter a valid input.
 
@@ -274,14 +274,28 @@ The new `Recommendation` is added into an ArrayList `recommendations`.
 ### 5.3.2 List Recommendation Feature
 This feature prints out `title`, `category`, `price range`,`recommendedby` and `location` String attributes for each `Recommendation` class in the ArrayList `recommendations`.
 
-The mechanism to add a recommendation is facilitated by the `RecommendationList` class. The user is able to add in a new recommendation using `list` command.
+The mechanism to add a recommendation is facilitated by the `RecommendationList` class. The user is able to list all recommendations using `list` command.
 
 The following is the Sequence diagram to `list a recommendation`.
 ![List_Reco_seq](./diagrams/List_Reco_Sequence_Diagram.png)
 
-`RecommendationList` calls itself `displayRecommendations` to get and print `Recommendation` in `recommendations`.
+`Commands` calls `RecommendationList#listRecommendations` to retrieve `Recommendation` in `recommendations`
+`RecommendationList` calls itself `displayRecommendations` to print `Recommendation` in `recommendations`.
 
 ### 5.3.3 Edit a Recommendation Feature
+This feature allows the user to edit their fields in a specific `Recommendation` Class in the ArrayList `recommendations`.
+
+The mechanism to add a recommendation is facilitated by the `RecommendationList` class. The user is able to edit in an existing recommendation using `edit [TITLE]` command.
+
+The following is the Sequence diagram to `edit a recommendation`.
+![Edit_Reco_seq](./diagrams/Edit_Reco_Sequence_Diagram.png)
+
+`Commands` will call `RecommendationList#editRecommendation` to determine which `Recommendation` from the ArrayList `recommendatios` should be editied.
+
+`RecommendationList` then calls itself, `editRecommendationFields`.
+Similar to [adding a recommendation](#531-add-a-recommendation-feature), edit will take in either `title`, `category`, `price range`,`recommendedby` and `location` String attributes for that specific `Recommendation` class and replace previous String stored with new user input.
+After checking for duplicates, the violation of any constraints for each attribute will print an error message from `ui` and prompt for a valid input.
+
 ### 5.3.4 Delete a Recommendation Feature
 ### 5.3.5 Review a Recommendation Feature
 

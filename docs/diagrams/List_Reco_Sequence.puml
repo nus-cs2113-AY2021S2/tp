@@ -6,7 +6,6 @@ skinparam style strictuml
 participant Ui #Turquoise
 participant Parser #PaleGreen
 participant Commands #PaleGreen
-participant ReviewList #Gold
 participant RecommendationList #Gold
 
 activate Ui #Turquoise
