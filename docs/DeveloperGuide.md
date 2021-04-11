@@ -41,7 +41,7 @@
 
 **Greetings from Finux!**
 
-**Finux** is a CLI Style application that allows the user to make better financial
+**Finux** is a Command-Line-Interface (CLI) Style application that allows the user to make better financial
 decisions based on the information recorded in the application. If you’re familiar
 with the CLI command interface, you will enjoy the benefit of speeding up your
 finance management rather than using the traditional management system.
@@ -62,13 +62,17 @@ the `v2.1` release.
 Throughout the guide, you might encounter several icons, refer to the following consolidate
 list of icons:
 
-> 💡 It indicates that this is an important piece of information.\
-> ❗  It indicates that this is a warning and you should be aware of it while developing.\
-> 📝 It indicates that this is a tip and you may find it useful when using our application or guide.
+>  Icon | Meaning 
+> ------|------------------------------------------------------------------------------------------------
+> 💡    | It indicates that this is an important piece of information.
+> ❗     | It indicates that this is a warning and you should be aware of it while developing.
+> 📝    | It indicates that this is a tip and you may find it useful when using our application or guide.
 
 > 📝 Text that are blue like this [example(jumps to 1.2)](#12-using-this-guide), are clickable links
 > that will move you to the relevant section of the guide.\
-> 📝 Records refer to either expenses, loans or savings.
+> 📝 Records refer to either expenses, loans or savings.\
+> 📝 Pressing the `Home` button on your keyboard will bring you to the top of the Developer's Guide when you want to
+> refer to the table of content at any time.
 
 ## 2. Setting Up
 
@@ -92,9 +96,10 @@ If you plan to use IntelliJ IDEA:
       matches the JDK being used for the project.
    1. Wait for the importing process to finish (it could take a few minutes).
 1. **Verify the setup.**
-   1. After importing successfully, locate the `src/main/java/seedu.duke/Duke.java` file, right click it, 
+   1. After importing successfully, locate the `src/main/java/seedu.duke/Finux.java` file, right click it, 
       and choose `Run...`. If the setup is correct, you should see the following:
-   ![Login_Page](img/NewFileCreationExampleOutput.png)
+   ![Login_Page](img/LoginPageExampleOutput.png)
+      (This screenshot is taken on `IntelliJ IDEA Community Edition 2020.3.1`)
 
 ### 2.2 Before writing code
 
@@ -126,22 +131,22 @@ _Figure 1: **Finux** Architecture Diagram_
 > The `.puml` files can be found in the [diagrams](https://github.com/AY2021S2-CS2113T-W09-1/tp/tree/master/docs/diagrams) folder and
 > the generated picture diagrams are in the [img](https://github.com/AY2021S2-CS2113T-W09-1/tp/tree/master/docs/img) folder.
 
-The _**Architecture Diagram**_ above details the high-level design of the **Finux** Application.
+The _**Architecture Diagram**_ above details the high-level design of the **Finux** application.
 Brief explanations of the components involved are given below.
 
 The `Finux` component is the object class itself, It is responsible for,
 * At launch: Initializes the components in the correct sequence and attempts to load data from file.  
 * At shut down: Shuts down the components and invokes cleanup method where necessary.
 
-The rest of the Application consists of six main components.
-* `Ui`: The user interface (Ui) of the Application which handles all user input and Application output.
+The rest of the application consists of six main components.
+* `Ui`: The user interface (Ui) of the application which handles all user input and application output.
 * `Parser`: The user input parser of the CLI.
 * `CommandHandler`: The handler of parsed arguments for conversion into appropriate `Commands`.
 * `Command`: The appropriate command to be executed.
-* `RecordList`: The list of records of the Application stored in-memory.
+* `RecordList`: The list of records of the application stored in memory.
 * `Storage`: The storage manager that handles the saving of data, or data retrieval to/from file. 
 
-Given below are sequence diagrams describing the general Application flow and how the different objects
+Given below are sequence diagrams describing the general application flow and how the different objects
 interact with each other.
 
 ![Initialization](img/InitializationSequenceDiagram.png)\
@@ -184,25 +189,25 @@ The role of `ParserHandler` can be interpreted as a "manager" or "middle man" to
 the user input from the console into an `ArrayList<String>` format.
 
 #### Design
-In the main program, `ParserHandler` is instantiated through the constructor `new ParserHandler()`,
-finalizing the startOptionArray, endOptionArray, and middleOptionArray. Whenever the program needs
-to parse a user input, the ParserHandler calls the method `getParseInput` and returns an `ArrayList<String>`.
+In the main program, `ParserHandler` is instantiated through the constructor `new ParserHandler()`. Whenever the 
+program needs to parse a user input, the ParserHandler calls the method `getParseInput()` and returns an 
+`ArrayList<String>`.
 
-1. `getParseInput` will trim the leading white space before calling `startExtraction`.
+1. `getParseInput()` will trim the leading white space before calling `startExtraction()`.
 2. `startExtraction` will check if the trimmed input starts with option. If yes, extract the option and
-   remove the option from the trimmed input before calling `extractSubsequencePart`.
-3. `extractSubsequencePart` will check for the next option index and extract whatever is in between the start of the
-   trimmed input to the start of the next option index. This is the argument tagged after the option.Afterward, 
-   the checking mechanism will loop until no valid next options are left in the input before calling `extractFinalPart`.
+   remove the option from the trimmed input before calling `extractSubsequentPart()`.
+3. `extractSubsequentPart()` will check for the next option index and extract whatever is in between the start of the
+   trimmed input to the start of the next option index. This is the argument tagged after the option. Afterward, 
+   the checking mechanism will loop until no valid next options are left in the input before calling `extractFinalPart()`.
    * Any leading or trailing white space of the argument field will be removed.
    * If no argument is provided, the argument would be stored as an empty string.
-4. `extractFinalPart` will check if the final input ends with option. If yes, extract the option and
+4. `extractFinalPart()` will check if the final input ends with option. If yes, extract the option and
    add an empty string as the argument, else just add the final input to the ArrayList<String>.
-5. Finally, after the extraction to ArrayList<String> is complete, `extractFinalPart` will
-   call `checkFirstBlock` for the final check to parse any `help` or `creditscore` in the first argument block.
+5. Finally, after the extraction to ArrayList<String> is complete, `extractFinalPart()` will
+   call `checkFirstBlock()` for the final check to parse any `help` or `creditscore` in the first argument block.
    
 #### Parser Component Design Consideration
-1. Leading and trailing whitespace should be considered carefully especially with options involve.
+1. Leading and trailing whitespace should be considered carefully especially with options involved.
    * Input starting with valid option should consider the possibility of multiple leading whitespaces, 
    thus `stripLeading()` should be applied.
    * Input ending with valid option should also be considered with possibility of multiple trailing whitespaces,
@@ -222,16 +227,16 @@ to parse a user input, the ParserHandler calls the method `getParseInput` and re
    * `StringUtils.indexOfAny()`    - detection of during processing option with non-fixed order.
 4. As multiple whitespaces is allowed, options and arguments should be fully trimmed (leading and trailing).
 5. As the ArrayList<String> is passed back to the main program and is being used by CommandHandler,
-   the argument field should compulsory and appended with empty string if empty to facilitate validations and option-argument
-   pairwise logic.
-6. `getParseInput(String)` should always return a new ArrayList<String> per new input.
+   the argument field should be compulsory and appended with an empty string if it is empty to facilitate validations 
+   and option-argument pairwise logic.
+6. `getParseInput()` should always return a new ArrayList<String> per new input.
 
 
 ### 3.4 CommandHandler Component
 ![CommandHandlerClassDiagram](img/CommandHandlerClassDiagram.png)\
-_Figure 6: CommandHandler Class Diagram_\
+_Figure 6: **CommandHandler** Class Diagram_\
 ![CommandHandlerSequenceDiagram](img/CommandHandlerSequenceDiagram.png)\
-_Figure 7: CommandHandler Sequence Diagram_
+_Figure 7: **CommandHandler** Sequence Diagram_
 
 #### Description
 The `CommandHandler` component is the object class itself.
@@ -262,17 +267,19 @@ proceeding to call `end()` to exit the Application.
 
 ### 3.5 Command Component
 ![CommandClassDiagram](img/CommandClassDiagram.png)\
-_Figure 8: Command Class Diagram (Part 1)_
+_Figure 8: **Command** Class Diagram (Part 1)_
 
 ![CommandClassDiagram2](img/CommandClassDiagram2.png)\
-_Figure 9: Command Class Diagram (Part 2)_
+_Figure 9: **Command** Class Diagram (Part 2)_
 
 All Commands contain a command word constant named as `COMMAND_*` (as underlined in _Figure 8 & 9_),\
 e.g. `protected static final String COMMAND_XYZ = "xyz";`\
 These constants are used by the `CommandHandler` to map to each `Command`.
 
+#### 3.5.1 Add Command
+
 ![AddCommandClassDiagram](img/AddCommandClassDiagram.png)\
-_Figure 10: AddCommand Class Diagram_
+_Figure 10: **Add Command** Class Diagram_
 
 In the case of `AddCommand` in the above _Figure 10_,\
 the resultant constant is `...final String COMMAND_ADD = "add";`.
@@ -313,7 +320,7 @@ The child classes of `Command` are the `AddCommand`, `CreditScoreCommand`, `View
 The only `abstract` method of `Command` is `execute(...)`, where it is called by `Finux` everytime a `Command`
 object is successfully created. Most of the input validation is done in the constructor of each Command object. 
 1. Firstly, arguments are checked for validity (if any):
-   1. Valid options: options only for each `Command`. E.g. `-a` for the amount `add` is valid.
+   1. Valid options: options accepted by each `Command`. E.g. `-a` indicating the amount is valid for the command `add`.
    2. No duplicate options: options are not repeated. E.g. `-a 200 -a 200` or `-l -l` is invalid.
    3. No conflict options: mutually exclusive options, options that cannot be input at the same time.
       E.g. ViewCommand implements `{-e | -l | -s | -a}` options, `view -s -l` is considered a conflict of options.
@@ -353,86 +360,86 @@ The `recordlist` class maintains an internal arraylist of record objects used th
 ### 3.7 Storage Component
 
 ![StorageClassDiagram](img/StorageClassDiagram.png)\
-_Figure X: Storage Class Diagram_
+_Figure 12: **Storage** Class Diagram_
 
 #### Description
-The `storage` component consists of only 1 class called `Storage`. The role of the `Storage` is to translate all
-`records` from the `RecordList` and `creditScoreHashMap` (a `HashMap`) into a text format in a text output file and 
+The `Storage` component consists of only one class called `Storage`. The role of the `Storage` is to translate all
+`Record` from the `RecordList` and `creditScoreHashMap` (a `HashMap`) into a text format in a text output file and 
 vice versa.
 
 #### Design
 In the application, `Storage` is instantiated in classes that requires the use of the save or load function, this
-is done through the constructor `new Storage()`. Whenever a new `record` gets added, removed, or marked as returned, 
-the `saveData` method will be called and all `record` up to that point will be converted into a text output
+is done through the constructor `new Storage()`. Whenever a new `Record` gets added, removed, or marked as returned, 
+the `saveData` method will be called and all `Record` up to that point will be converted into a text output
 and saved into the `finux.txt` file. The `creditScoreHashMap` will also be translated into a user readable text format 
-and stored in the same file as the `records`. The `loadFile` method will do the exact opposite, and load the data from 
+and stored in the same file as the records. The `loadFile` method will do the exact opposite, and load the data from 
 the `finux.txt` file back into the Finux application.
 
-1. `saveData` is the method that is called after any `records` are added, deleted, or marked as returned. It 
-   will then call the `writeToSaveFile` method.
+1. `saveData()` is the method that is called after any `Record` are added, deleted, or marked as returned. It 
+   will then call the `writeToSaveFile()` method.
 
-2. `writeRecordListToSaveFile` will add the currently addressed `recordList` and all its stored `records` into the 
-   `finux.txt` file after calling the `convertFileFormat` method from the Record class. The `writeToSaveFile` method 
+2. `writeRecordListToSaveFile` will add the currently addressed `RecordList` and all its stored records into the 
+   `finux.txt` file after calling the `convertFileFormat` method from the Record class. The `writeToSaveFile()` method 
    will also output each individual records in separate lines.
 
-3. `writeCreditScoreMapToSaveFile` will convert all key:value pairs, in this case, `borrowerName`:`creditScore` pairs
-   in the `creditScoreHashMap` into a user readable format and store them in the same `finux.txt` file as the `records`. 
+3. `writeCreditScoreMapToSaveFile()` will convert all key:value pairs, in this case, `borrowerName`:`creditScore` pairs
+   in the `creditScoreHashMap()` into a user readable format and store them in the same `finux.txt` file as the records. 
   
-4. `loadFile` method does the opposite of the `writeRecordListToSaveFile` method. In the `loadFile` method, a new 
-   ArrayList of `record` is instantiated. It will then call the `saveFileExist` method. If the method returns false, 
-   `initSaveFile` method will be called and a new `finux.txt` will be created in the same directory of the FINUX 
-   application. The `loadFile` method will then return a new and empty ArrayList of `record` back to the `start` method 
-   in the `Duke` class. Should the `saveFileExist` returns true, for each line of text in the `finux.txt` file will be 
-   parsed into the `parseRecord` method which will call the individual load methods `loadExpense`, `loadLoan`, 
-   `loadSaving` based on a REGEX expression of the text data. Should the pattern be unrecognisable, or the file is 
-   unable to be read, an exception will be thrown to the `start` method and FINUX will terminate. If all the text data 
-   is properly loaded, the `loadFile` method will return the ArrayList of `record` to the `RecordList` object in the 
-   `start` method.
+4. `loadFile` method does the opposite of the `writeRecordListToSaveFile()` method. In the `loadFile()` method, a new 
+   ArrayList of `Record` is instantiated. It will then call the `saveFileExist()` method. If the method returns false, 
+   `initSaveFile()` method will be called and a new `finux.txt` will be created in the same directory of the FINUX 
+   application. The `loadFile()` method will then return a new and empty ArrayList of `Record` back to the `start()` method 
+   in the `Finux` class. Should the `saveFileExist()` returns true, for each line of text in the `finux.txt` file will be 
+   parsed into the `parseRecord()` method which will call the individual load methods `loadExpense()`, `loadLoan()`, 
+   `loadSaving()` based on a REGEX expression of the text data. Should the pattern be unrecognisable, or the file is 
+   unable to be read, an exception will be thrown to the `start()` method and FINUX will terminate. If all the text data 
+   is properly loaded, the `loadFile()` method will return the ArrayList of `Record` to the `RecordList` object in the 
+   `start()` method.
    
-5. `initSaveFile` method will create a new `finux.txt` specified by the constant `SAVED_FILE_PATH`. It will call 
-   `Ui#printSuccessfulFileCreation` on a successful creation of the file, but will throw an `IOExcpetion` if there was
+5. `initSaveFile()` method will create a new `finux.txt` specified by the constant `SAVED_FILE_PATH`. It will call 
+   `Ui#printSuccessfulFileCreation()` on a successful creation of the file, but will throw an `IOExcpetion` if there was
    an error in creating the file.
 
-6. `parseRawData` method will compare the pattern of the text in the `finux.txt` and call the respective methods 
-   `loadExpense`, `loadLoan`, `loadSaving`, `loadCreditScoreRawData` based on the pattern that matches the `Expense`, 
-   `Loan`, `Saving`, or the `creditScore` pattern in the saved file. This method will throw an exception back to 
-   the `loadFile` method if any of the REGEX pattern does not match. (Add stuff here!)
+6. `parseRawData()` method will compare the pattern of the text in the `finux.txt` and call the respective methods 
+   `loadExpense()`, `loadLoan()`, `loadSaving()`, `loadCreditScoreRawData()` based on the pattern that matches the 
+   `Expense`, `Loan`, `Saving`, or the `creditScore` pattern in the saved file. This method will throw an exception 
+   back to the `loadFile()` method if any of the REGEX pattern does not match.
    
-7. `extractArg` is a "micro" parser component of the `Storage` class. This method simply splits the raw data from the 
+7. `extractArg()` is a "micro" parser component of the `Storage` class. This method simply splits the raw data from the 
    `finux.txt` file into an array and returns the argument that is referenced by the index to its caller method with 
    their leading and trailing white spaces removed.
 
-8. `loadExpense` will extract the individual components from the raw data parsed into it. This method will call the
-   `extractArg` method which returns the components that are addressed by the index after splitting up the raw save
+8. `loadExpense()` will extract the individual components from the raw data parsed into it. This method will call the
+   `extractArg()` method which returns the components that are addressed by the index after splitting up the raw save
    file. The `amount` object in this method will be converted into a `BigInteger` type and the `issueDate` will be 
    parsed in the `localDate` type. An exception will be thrown if either `amount` or `issueDate` is not in the right 
    format which prevents them from being parsed into their respective types. It will then return a new `Expense` object
-   to the `parseRecord` method.
+   to the `parseRecord()` method.
    
-9. `loadSaving` works similar to `loadExpense` method, where the only difference is that it returns a new `Saving`
-   object to the `parseRecord` method.
+9. `loadSaving()` works similar to `loadExpense()` method, where the only difference is that it returns a new `Saving`
+   object to the `parseRecord()` method.
    
-10. `loadLoan` also works similar to both `loadExpense` and `loadSaving` method, but in the `loadLoan` method, 
+10. `loadLoan()` also works similar to both `loadExpense()` and `loadSaving()` method, but in the `loadLoan()` method, 
    it has a few extra parameters. The first being a boolean `isReturn`, where `1` signifies returned and `0` not 
     returned. The `borrowerName` is the next variable in the `Loan` object. And lastly, the `returnDate`, the 
     `returnDate` will only return not null if the `isReturn` boolean has a value of `true`. This method then returns a 
-    new `Loan` object to the `parseRecord` method.
+    new `Loan` object to the `parseRecord()` method.
    
 #### Storage Component Design Consideration
 
 1. Regex pattern has to be strictly adhered to.
    * Spacings between the `|` and components have to be separated clearly.
-   * Components in the `finux.txt` file should not contain any extraneous `|`.
-   * Each component's index must be the same regardless of the instance of the object.
+   * Record components in the `finux.txt` file should not contain any extraneous `|`.
+   * Each record's regex pattern must be the same regardless of the type of the record.
    
 2. Save file has to exist.
    * `finux.txt` has to be created upon the first time start of the application .
    * `finux.txt` is to be checked if exist before loading or creating a new file.
 
-3. Variable components of each `record` object has to be parsed properly.
-   * As the save function saves these `record` in a particular regex pattern and type, users who edit the save file
+3. Variable components of each `Record` object has to be parsed properly.
+   * As the save function saves these `Record` in a particular regex pattern and type, users who edit the save file
    directly may enter ambiguous characters like the `|`, thus each variable has to be parsed without any error thrown. 
-   * Error has to be thrown if the saved text is unable to be parsed, as by allowing ambiguous values to be parsed into
+   * Error has to be thrown if the saved text is unable to be parsed, as allowing ambiguous values to be parsed into
    the application may cause unknown and unwanted outputs.
 
 ## 4. Implementation
@@ -441,10 +448,10 @@ This section introduces the specific implementation details and design thought p
 of some features in **Finux**.
 
 ### 4.1 Add Feature
-The `add` feature aims to allow users to add *expense*, *loan*, and *saving* records.
+The `Add` feature aims to allow users to add *expense*, *loan*, and *saving* records.
 
 #### 4.1.1 Current Implementation
-The `add` feature is facilitated by `AddCommand`.\
+The `Add` feature is facilitated by `AddCommand`.\
 When adding an expense `add -e bread loaf -a 2.50 -d today`, or\
 adding a savings `add -s week's savings -a 100 -d 28/03/2021`, or\
 adding a loan `add -l loan to gerard -a 200 -d 12012021 -p Gerard`,
@@ -457,7 +464,7 @@ By calling the `execute()` method,
 * Finally, a notification is printed onto the console with the help of `Ui`.
 
 ![AddFeatureSequenceDiagram](img/AddFeatureSequenceDiagram.png)\
-_Figure x: Sequence Diagram for `AddCommand`_
+_Figure 13: Sequence Diagram for `AddCommand`_
 
 > 📝 The sequence diagram starts from Step 2 onward.
 
@@ -482,7 +489,7 @@ the `Record` object.
 > ✔️ `SAVING` type creates a `new Saving(String,LocalDate,String)`
 
 ***Step 4:***\
-The `Record` object is added to into the `RecordList` object by invoking `RecordList#addRecord(Record)`.
+The `Record` object is added into the `RecordList` object by invoking `RecordList#addRecord(Record)`.
 
 ***Step 5:***\
 The `RecordList` object is written to file by invoking `Storage#saveData(RecordList, CreditScoreReturnedLoansMap)`.
@@ -494,7 +501,7 @@ Lastly, a successful add message is printed by invoking `Ui#printSuccessfulAdd(R
 #### 4.1.2 Design Consideration
 This section shows the design considerations taken when implementing the add feature.
 
-Aspect: **How to manage so many different options**
+Aspect: **How to manage multiple different options**
 
 For record types such as `Expense` and `Saving`, they do not require additional options.
 But for `Loan` record type, it requires an extra option `-p` for the borrower name. Since the `add` command
@@ -506,8 +513,8 @@ The two choices to consider would be:
 
 |Approach | Pros | Cons| 
 |---------|------|-----|
-|Regular expressions|Less complicated validation procedure.|May need a very complicated regex String or multiple ones, for each Command|
-|Systematic validation|Option validation methods can be shared with other Commands|Many option violations to check|
+|Regular expressions|Less complicated validation procedure.|May need a very complicated regex String or multiple ones, for each Command.|
+|Systematic validation|Option validation methods can be shared with other Commands.|Many option violations to check.|
 
 Having considered two of the approaches, we have decided to adopt the second approach.
 Systematic validation is better in the long run. It allows for code re-usability and addition for more
@@ -522,17 +529,17 @@ The `list` feature allows the users to display the record's information of the r
 *expense*, *loan*, and *saving* of the added records.
 
 #### 4.2.1 Current Implementation
-The `list` feature is supported by the `Listcommand`. The user will enter `list` and followed up with the available
+The `list` feature is supported by the `ListCommand`. The user will enter `list` and followed up with the available
 options, `{-e, -l, -s, -a}`, and the `ParserHandler` will parse the input for `CommandHandler` to create the
 `ListCommand` object. The program then proceeds to call the `execute()` method, and the record's information will be
-displayed onto the screen.
+displayed on the screen.
 
 ![ListFeatureSequenceDiagram](img/ListFeatureSequenceDiagram.png)\
-_Figure x: Sequence Diagram for `ListCommand`_
+_Figure 14: Sequence Diagram for `ListCommand`_
 
 > 📝 The sequence diagram starts from Step 2 onward.
 
-Given below is an example usage scenario of how `ViewCommand` behaves at each step.
+Given below is an example usage scenario of how `ListCommand` behaves at each step.
 
 ***Step 1:***\
 The user execute the `list` command with one of the available options, `{-e, -l, -s, -a}`. The program 
@@ -558,7 +565,7 @@ called. The following are the supported types found in `RecordType` enumeration:
 ***Step 4:***\
 The `Ui` will handle the respective invocation call. The basis for the four methods utilizes the `for` loop to
 iterate through the `recordList`. For each iteration, `instanceof` was called to check for the respective record types.
-If the record types is valid according to the respective methods call, their record's information will be printed on
+If the record types are valid according to the respective method calls, their record's information will be printed on
 to the screen.
 
 ***Step 5:***\
@@ -571,10 +578,10 @@ methods.
 
 This section shows the design considerations taken when implementing the list feature.
 
-Aspect: **Whether to print as record ID or indexes**
+Aspect: **Whether to print as record ID or indices**
 
-Since we plan to allow the user to remove or return a record, need a way to identify the record. Below are two proposed
-printout ideas:
+Since we plan to allow the user to remove or return a record, we need a way to identify the record. Below are two 
+proposed printout ideas:
 * Index, e.g. `1. [E] [2021-01-01] [$1,000.00] Record 1` 
 * Record ID, e.g. `[ID: 1] [E] [2021-01-01] [$1,000.00] Record 1`
 
@@ -584,9 +591,9 @@ printout ideas:
 |Record ID|Creates a better intuition|New method call is necessary for formatting the printout|
 
 Having considered two of the approaches, we have decided to adopt the second approach.
-As our remove and return features takes in the number based on the listed records, it will be better to highlight the
+As our remove and return features take in the number based on the listed records, it will be better to highlight the
 record ID rather than just a single number printout to provide the user a better intuition. Although a new method call
-`getId()` is needed, the price to pay is very little compared to confusing the user as index can be interpreted
+`getId()` is needed, the price to pay is very little compared to confusing the user as indices can be interpreted
 differently by different people.
 
 
@@ -601,7 +608,7 @@ The `view` feature is facilitated by `ViewCommand`. By typing in `view` and foll
 By calling the `execute()` method, the total amount will be printed onto the console with the help of `Ui`.
 
 ![ViewFeatureSequenceDiagram](img/ViewFeatureSequenceDiagram.png)\
-_Figure x: Sequence Diagram for `ViewCommand`_
+_Figure 15: Sequence Diagram for `ViewCommand`_
 
 > 📝 The sequence diagram starts from Step 2 onward.
 
@@ -672,7 +679,7 @@ parameters, our `CommandHandler` will construct the `ReturnCommand` object which
 the validated parameters that will be used in the execute function.
 
 ![ReturnFeatureSequenceDiagram](img/ReturnFeatureSequenceDiagram.png)\
-*Figure x: Sequence Diagram for `return -i 1 -d 2021-03-28`
+_Figure 16: Sequence Diagram for `ReturnCommand`_
 
 The sequence diagram presented above depicts the interaction between the components for running the command.
 `return -i 1 -d 2021-03-28`.
@@ -773,7 +780,7 @@ parameters, our `CommandHandler` will construct the `RemoveCommand` object which
 validated parameters that will be used in the execute function.
 
 ![RemoveFeatureSequenceDiagram](img/RemoveFeatureSequenceDiagram.png)\
-_Figure x: Sequence Diagram for `RemoveCommand`_
+_Figure 17: Sequence Diagram for `RemoveCommand`_
 
 The sequence diagram presented above depicts the interaction between the components for running the command.
 `remove -i 1`.
@@ -859,7 +866,7 @@ classes. During the launch of the Finux application, in the `start` method, `get
 data from the saved file: `finux.txt`. 
 
 ![SavingFeatureSequenceDiagram](img/StorageSequenceDiagramSave.png)
-_Figure x: Sequence Diagram for Storage's save function_
+_Figure 18: Sequence Diagram for Storage's save function_
 
 Saving of data works differently, the data will be automatically saved into `finux.txt` only with a few 
 particular command calls, these calls are the commands that will alter the `records` in the `RecordList`. As
@@ -897,7 +904,7 @@ The `writeRecordListToSaveFile()` will repeat Steps 2 to 4 until the last `recor
 ---
 
 ![LoadingFeatureSequenceDiagram](img/StorageSequenceDiagramLoad.png)
-*Figure x: Sequence Diagram for Storage's load function*
+*Figure 19: Sequence Diagram for Storage's load function*
 
 Finux will automatically load the data from the save file: `finux.txt`. When the Finux application is launched, the
 data from the file will be loaded during the initialising phase, even before the welcome message is printed. The error
