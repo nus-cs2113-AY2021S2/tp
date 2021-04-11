@@ -14,6 +14,7 @@ import static seedu.duke.common.Constant.OPTION_EXPENSE;
 import static seedu.duke.common.Constant.OPTION_LOAN;
 import static seedu.duke.common.Constant.OPTION_SAVING;
 import static seedu.duke.common.Constant.OPTION_ALL;
+import static seedu.duke.common.Messages.ERROR_MISSING_RECORD_OPTIONS_2;
 
 import java.util.ArrayList;
 
@@ -57,7 +58,7 @@ public class ListCommand extends Command {
         } else if (hasOption(arguments, OPTION_ALL)) {
             recordType = RecordType.ALL;
         } else {
-            throw new CommandException("missing option: [-e | -l | -s | -a]", COMMAND_LIST);
+            throw new CommandException(ERROR_MISSING_RECORD_OPTIONS_2, COMMAND_LIST);
         }
     }
 
