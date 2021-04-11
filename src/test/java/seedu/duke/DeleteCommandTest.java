@@ -2,6 +2,7 @@ package seedu.duke;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.command.DeleteCommand;
+import seedu.duke.exception.InvalidInputException;
 import seedu.duke.model.Patient;
 
 import java.time.LocalDate;
@@ -128,10 +129,10 @@ public class DeleteCommandTest {
         arguments.put("p", "");
         DeleteCommand deleteCommand = new DeleteCommand(ui, data, arguments);
 
-        Exception exception = assertThrows(Exception.class, () -> {
+        InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
             deleteCommand.execute();
         });
-        assertEquals(Constants.INVALID_INPUT_EMPTY_NRIC_ARGUMENT, exception.getMessage());
+        assertEquals(Constants.INVALID_INPUT_EMPTY_NRIC_ARGUMENT, invalidInputException.getMessage());
     }
 
     @Test
@@ -146,9 +147,9 @@ public class DeleteCommandTest {
         Ui ui = new Ui();
         DeleteCommand deleteCommand = new DeleteCommand(ui, data, arguments);
 
-        Exception exception = assertThrows(Exception.class, () -> {
+        InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
             deleteCommand.execute();
         });
-        assertEquals(Constants.INVALID_INPUT_EMPTY_DATE_ARGUMENT, exception.getMessage());
+        assertEquals(Constants.INVALID_INPUT_EMPTY_DATE_ARGUMENT, invalidInputException.getMessage());
     }
 }
