@@ -70,8 +70,8 @@ Other contributions to the UG are:
 ---
 
 ### Contributions to the DG
-I have documented the section on ParserHandler Component and ViewCommand Implementation. This includes the UML class,
-object and sequence diagrams.
+I have documented the section on ParserHandler Component, ListCommand and ViewCommand Implementation. This includes 
+the UML class, object and sequence diagrams.
 
 Other contributions to the DG are:
 * Appendix A consisting of Target User Profile and Value Proposition
