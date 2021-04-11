@@ -19,7 +19,7 @@ GULIO is a module planner designed for efficiency when used by someone that can 
 1. Implemented ViewTeachingStaffCommand
    > I implemented the command needed to view the tutor's name and email address for a particular lesson.
 1. Implemented ModuleInfoCommand
-   > I implemented this command to print a summary about a module. The overview consists mainly of the lessons and tasks for that particular module.   
+   > I implemented this command to print a summary about a module. 
 1. Implemented commands involved in manipulating Cheat-sheet files.<br>
    > I implemented AddCheatSheetCommand, DeleteCheatSheetCommand, EditCheatSheetCommand and ListCheatSheetCommand to add, remove, edit and view Cheat-sheet files of a particular module.
 1. Implemented TextEditor.
@@ -30,13 +30,11 @@ GULIO is a module planner designed for efficiency when used by someone that can 
 1. Documented Lesson and Cheat-sheet commands
    > For each command I implemented, I added a brief description, the command format, a sample input and the expected output.
 1. Added text editor section.
-   > As the one responsible for the text editor, I did the part explaining to the user how GULIO's text editor works and what he/she can do with it. WenHao added the information about the shortcuts available.
+   > As the one responsible for the text editor, I did the part explaining to the user how GULIO's text editor works and what he/she can do with it. 
 
 ### Contributions to Developer Guide:
 1. Text Editor component in Design section.
    >I wrote the description for the text editor component under Design in the DG as I was the one who implemented it in our codebase.
-1.  Class diagram for the Model component in Design section.
-   > I collaborated with Ivan to help him draw the class diagram for the Model component.
 1. Add lesson command class in Implementation section.
    > I worked with Ivan on describing the implementation of the add lesson command under the Implementation section.
    > I drew two of the sequence diagrams for this implementation.
@@ -51,11 +49,6 @@ GULIO is a module planner designed for efficiency when used by someone that can 
 
 ### Review/mentoring contributions:
 1. Full list of PRs approved or commented on by me can be found [here](https://github.com/AY2021S2-CS2113T-W09-3/tp/pulls?q=is%3Apr+reviewed-by%3AH-horizon+is%3Aclosed+).
-
-1. Example of reviews where I communicated with teammates on Github:
-    1. [Communication with Wen Hao regarding my PR](https://github.com/AY2021S2-CS2113T-W09-3/tp/pull/129)
-    1. [Recommend some test cases to Ivan to test his implementation](https://github.com/AY2021S2-CS2113T-W09-3/tp/pull/92)
-    1. [Review on Wen Hao's PR to use singleton class](https://github.com/AY2021S2-CS2113T-W09-3/tp/pull/123)
 
 ### Contributions Beyond the Team
 1. [Sharing useful information in the forum](https://github.com/nus-cs2113-AY2021S2/forum/issues/26#issuecomment-770166991)
