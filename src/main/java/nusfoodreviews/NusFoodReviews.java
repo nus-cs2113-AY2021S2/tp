@@ -5,6 +5,7 @@ import canteens.Canteen;
 import command.Command;
 import exceptions.DukeExceptions;
 import parser.Parser;
+import storage.ReadFiles;
 import storage.Storage;
 import stores.Store;
 import ui.Ui;
@@ -29,8 +30,8 @@ public class NusFoodReviews {
     public NusFoodReviews(BufferedReader reader) throws IOException {
         ui = new Ui();
         parser = new Parser(this, ui);
-        storage = new Storage(reader);
-        canteens = storage.load();
+        storage = new ReadFiles(reader);
+        canteens = storage.execute();
     }
 
     /**

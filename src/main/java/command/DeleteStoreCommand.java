@@ -5,6 +5,7 @@ import exceptions.DukeExceptions;
 import nusfoodreviews.NusFoodReviews;
 import parser.Parser;
 import storage.Storage;
+import storage.UpdateFile;
 import ui.Ui;
 
 import java.io.FileWriter;
@@ -51,6 +52,6 @@ public class DeleteStoreCommand extends Command {
         String storeName = currentCanteen.getStore(storeIndex).getStoreName();
         currentCanteen.deleteStore(storeIndex);
         ui.showDeleteStore(storeName);
-        Storage.save(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH),canteens);
+        UpdateFile.deleteObjInFile(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH),canteens);
     }
 }

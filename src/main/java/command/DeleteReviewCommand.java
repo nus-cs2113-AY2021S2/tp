@@ -6,6 +6,7 @@ import nusfoodreviews.NusFoodReviews;
 import parser.Parser;
 import reviews.Review;
 import storage.Storage;
+import storage.UpdateFile;
 import stores.Store;
 import ui.Ui;
 
@@ -59,7 +60,7 @@ public class DeleteReviewCommand extends Command {
             Store store = currentCanteen.getStore(currentStoreIndex);
             store.deleteReview(reviewNumber);
             ui.reviewDeleted();
-            Storage.save(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH), canteens);
+            UpdateFile.deleteObjInFile(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH), canteens);
         } else {
             System.out.println(LINESPACING);
             System.out.println("There are no canteens for you to delete reviews for any stores!");
