@@ -430,10 +430,10 @@ Below is our analysis of our target user and the importance in which he/she woul
 
 * *CLI* - Command Line Interface
 * *IntelliJ* - An Integrated Development Environment (IDE) designed for Java software development.
-* *UML* - Unified Modeling Language
+* *UML* - Unified Modeling Language.
 * *Terminal/PowerShell* - Any operating system shell with a command-line interface.
 * *Mainstream OS* - Windows, mainstream distributions of Linux, and macOS.
-* *JDK* - Java Development Kit
+* *JDK* - Java Development Kit.
 
 ---------------------------------------------------------------------------------------------
 
