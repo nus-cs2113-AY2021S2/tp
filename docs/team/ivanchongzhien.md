@@ -20,7 +20,7 @@ We designed GULIO, a CLI-based module planner intended to help users keep track 
    > For version 2.0, I implemented the command which allowed users to edit the values of previously entered lessons.
 1. Shortened GULIO commands
    > For version 2.1, we decided that some commands were too long and slowed the process of navigating and using GULIO.
-   > I shortened several of the long commands words ("cheat-sheets" to "cs", "lesson" to "lsn") to improve the speed at which the user can enter inputs.
+   > I shortened several of the long commands words (e.g. "lesson" to "lsn") to improve the speed at which the user can enter inputs.
 
 ### Contributions to Documentation
 1. As the one who implemented the edit lesson command, I covered the explanations and sample inputs for the edit lesson instruction.
