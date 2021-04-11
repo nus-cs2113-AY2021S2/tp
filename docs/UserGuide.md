@@ -10,10 +10,9 @@ If you can type fast, MovieApp can help you view and book movies conveniently.
 ## Quick Start
 
 1. Ensure that you have Java 11 or above installed.
-2. Download the latest version of `MovieApp` from [here](https://github.com/AY2021S2-CS2113-T10-3/tp/releases/tag/v2.0).
-3. Copy the file to the folder you want to use as the home folder for your MovieApp.
-4. Download the data.zip and unzip it in the same directory as `MovieApp` from [here](https://github.com/AY2021S2-CS2113-T10-3/tp/releases/tag/v2.0).
-5. Open your terminal / command prompt. Direct it to the folder which contains MovieApp file. Type `java -jar tp.jar` to run the app. This interface should appear if you successfully run it.
+2. Download the latest version of `MovieApp` from [here](https://github.com/AY2021S2-CS2113-T10-3/tp/releases/tag/v2.1).
+3. Copy the file to the directory you want to use as the home directory for your MovieApp.
+4. Open your terminal / command prompt. Direct it to the folder which contains MovieApp file. Type `java -jar tp.jar` to run the app. This interface should appear if you successfully run it.
 ```
 ___  ___           _       ___                    
 |  /  |          (_)     / _                  
@@ -27,21 +26,9 @@ _|  |_/___/ _/ |_|____| |_/ .__/| .__/
 Enter Name: (input "out" to quit the application)
 ```
 
-6. To use the app, follow the instructions given in the app and type the menu of your choice. e.g
-```
-======== Menu Choice =======
- 1 View Movies
- 2 Exit
-============================
-Please indicate your choice:
-```
-The following will execute if you type:
+5. Launching the application for the first time will automatically create four new files in the current directory.
 
-* `1` : View all movies and choose a search filter.
-
-* `2` : Exit from the application.
-
-
+6. Enter the credentials to utilize the application as either an admin or a customer using the sample below.
 
 ## Features
 ### General User Guide
@@ -209,45 +196,51 @@ Filter movies by genre.
 **Display:**
 
 ```
-===========================
-Movie List:
-1. Alita: Battle Angel
-2. Avengers: Endgame
-3. Toy Story 4
-4. Joker
-5. Frozen 2
->
-===== Filter by Genre ======  
-======= Select Genre =======   
-1 Sci-fi  
-2 Action   
-3 Comedy   
-4 Family   
-5 Horror  
-6 Romance  
-7 Drama  
-============================   
 Please indicate your choice:
+1
+===== Filter by Genre ======
+======= Select Genre =======
+ 1 Sci-fi
+ 2 Action
+ 3 Comedy
+ 4 Family
+ 5 Horror
+ 6 Romance
+ 7 Drama
+============================
 ```
 
 
 **Example**:
 
-    5 
+    2 
 
 **Display:**
 
 ```
-The selected genre is: Horror
->
->
-===========================   
+===== Filter by Genre ======
+======= Select Genre =======
+ 1 Sci-fi
+ 2 Action
+ 3 Comedy
+ 4 Family
+ 5 Horror
+ 6 Romance
+ 7 Drama
+============================
+Please indicate your choice:
+2
+The selected genre is: Action
+
+============================
 Movie List:
-1. It Chapter Two
-2. Midsommar
-3. The Addams Family
-4. Annabelle Comes Home
-===========================
+1. Tenet (5.0)
+2. Wonder Woman 1984 (3.0)
+3. Birds of Prey (3.3)
+4. Avengers: Endgame (3.0)
+5. Charlie's Angels (1.0)
+To select a single movie, select "6 Select movie" from the Movie Filter menu below.
+============================
 ```
 
 
@@ -259,11 +252,9 @@ Filter movie by the rating .
 **Display**:
 
 ```
-===========================   Movie List:
-1. Alita: Battle Angel
-2. Incredibles 2    
-===========================  
-===== Filter by Rating =====   
+Please indicate your choice:
+2
+===== Filter by Rating =====
 Select the cut-off rating (0-5):
 ```
 
@@ -275,17 +266,22 @@ Select the cut-off rating (0-5):
 **Display:**
 
 ```
-The selected cut-off rating is: 3.0     
-===========================   
+===== Filter by Rating =====
+Select the cut-off rating (0-5): 
+3
+The selected cut-off rating is: 3.0
+
+============================
 Movie List:
-1. Alita: Battle Angel
-2. Avengers: Endgame
-3. Toy Story 4
-4. Joker
-5. Frozen 2
-6. Charlie's Angels
-7. The Lion King    
-===========================
+1. Tenet (5.0)
+2. Soul (4.0)
+3. Wonder Woman 1984 (3.0)
+4. Birds of Prey (3.3)
+5. The Invisible Man (3.0)
+6. Avengers: Endgame (3.0)
+7. Toy Story 4 (5.0)
+To select a single movie, select "6 Select movie" from the Movie Filter menu below.
+============================
 ```
 
 **3. Filter by status: `3`**  
@@ -295,27 +291,46 @@ Filter by show status (Coming Soon, Pre-Order, Now Showing, End of Showing).
 **Display**:
 
 ```
-= Filter by Showing Status =  
-======= Select Genre =======  
-===Select Showing Status ===   
-1 Coming Soon   
-2 Pre-Order   
-3 Now Showing   
-4 End of Showing  
-============================   
+= Filter by Showing Status =
+======= Select Genre =======
+== Select Showing Status ===
+ 1 Coming Soon
+ 2 Pre-Order
+ 3 Now Showing
+ 4 End of Showing
+============================
 Please indicate your choice:
 ```
 
 **Example**:
 
-    2 
+    3 
 
 
 **Display:**
 
-The selected showing status is: PREORDER      
-Sorry! We couldn't find any matches.
-Would you like to try something else?
+```
+= Filter by Showing Status =
+======= Select Genre =======
+== Select Showing Status ===
+ 1 Coming Soon
+ 2 Pre-Order
+ 3 Now Showing
+ 4 End of Showing
+============================
+Please indicate your choice:
+3
+
+The selected showing status is: NOWSHOWING
+
+============================
+Movie List:
+1. Tenet (5.0)
+2. Soul (4.0)
+3. Wonder Woman 1984 (3.0)
+To select a single movie, select "6 Select movie" from the Movie Filter menu below.
+============================
+```
 
 **4. Filter by cineplex: `4`**  
 Filter by cinema location (Coming Soon, Pre-Order, Now Showing, End of Showing).
@@ -324,11 +339,13 @@ Filter by cinema location (Coming Soon, Pre-Order, Now Showing, End of Showing).
 **Display:**
 
 ```
-==== Filter by Cineplex ====   
-1 Jurong Point   
-2 VivoCity   
-3 Bishan  
-============================   
+Please indicate your choice:
+4
+==== Filter by Cineplex ====
+ 1 Jurong Point
+ 2 VivoCity
+ 3 Bishan
+============================
 Please indicate your choice:
 ```
 
@@ -340,16 +357,23 @@ Please indicate your choice:
 **Display**:
 
 ```
-The selected cineplex is: VivoCity     
-===========================   
+==== Filter by Cineplex ====
+ 1 Jurong Point
+ 2 VivoCity
+ 3 Bishan
+============================
+Please indicate your choice:
+1
+The selected cineplex is: Jurong Point
+
+============================
 Movie List:
-1. Toy Story 4
-2. Joker
-3. The Lion King
-4. Jumanji: The Next Level
-5. Aladdin
-6. Maleficent: Mistress of Evil    
-===========================
+1. Tenet (5.0)
+2. Soul (4.0)
+3. Wonder Woman 1984 (3.0)
+4. Birds of Prey (3.3)
+To select a single movie, select "6 Select movie" from the Movie Filter menu below.
+============================
 ```
 
 
@@ -360,32 +384,30 @@ Filter movie by title keyword.
 **Display:**
 
 ```
-===========================
-Movie List:
-1. Toy Story 4
-2. Joker
-3. The Lion King
-4. Jumanji: The Next Level
-5. Aladdin
-6. Maleficent: Mistress of Evil  
-===========================  
-===== Filter by Title ======   
-Search:
+Please indicate your choice:
+5
+===== Filter by Title ======
+Search: 
 ```
 
 **Example:**
 
-    next
+    The
 
 
 **Display:**
 
 ```
-movies containing next     
-===========================   
+===== Filter by Title ======
+Search: 
+The
+The selected keyword is: The
+
+============================
 Movie List:
-1. Jumanji: The Next Level    
-===========================
+1. The Invisible Man (3.0)
+To select a single movie, select "6 Select movie" from the Movie Filter menu below.
+============================
 ```
 
 **6. Select a movie: `6`**  
@@ -395,80 +417,122 @@ Select a movie to view information about the movie and book the code.
 **Display**:
 
 ```
-===========================   
+Please indicate your choice:
+6
+======= Select Movie =======
+
+============================
 Movie List:
-1. Alita: Battle Angel
-2. Avengers: Endgame
-3. Toy Story 4
-4. Joker
-5. Frozen 2
-6. Charlie's Angels
-7. The Lion King
-8. Jumanji: The Next Level
-9. It Chapter Two    
-===========================  
-======= Select Movie =======   
+1. Tenet (5.0)
+2. Soul (4.0)
+3. Wonder Woman 1984 (3.0)
+4. Birds of Prey (3.3)
+5. The Invisible Man (3.0)
+6. Avengers: Endgame (3.0)
+7. Toy Story 4 (5.0)
+8. Joker (No ratings yet. You can start by adding one!)
+9. Frozen 2 (No ratings yet. You can start by adding one!)
+10. Charlie's Angels (1.0)
+To select a single movie, select "6 Select movie" from the Movie Filter menu below.
+============================
+
 Please indicate your choice:
 ```
 
 **Example:**
 
-    5  
+    1  
 
 Display:
 
 ```
-===========================   
-Movie List:
-Frozen 
-===========================
+======= Select Movie =======
 
-======== Menu Choice ====== 
-1. Buy ticket   
-2. View movie details
-3. Add review   
-4. Go back  
-============================   
+============================
+Movie List:
+1. Tenet (5.0)
+2. Soul (4.0)
+3. Wonder Woman 1984 (3.0)
+4. Birds of Prey (3.3)
+5. The Invisible Man (3.0)
+6. Avengers: Endgame (3.0)
+7. Toy Story 4 (5.0)
+8. Joker (No ratings yet. You can start by adding one!)
+9. Frozen 2 (No ratings yet. You can start by adding one!)
+10. Charlie's Angels (1.0)
+To select a single movie, select "6 Select movie" from the Movie Filter menu below.
+============================
+
+Please indicate your choice:
+1
+
+======== Menu Choice =======
+ 1 Buy ticket
+ 2 View movie details
+ 3 Add review
+ 4 Go back
+============================
 Please indicate your choice:
 ```
-
-**7. Clear all filters:  `7`**  
-Select a movie to view information about the movie and book the code.
+**7. List all filtered movies:  `7`**  
+List movies based on the filters performed.
 
 **Format:** `7`  
 **Display:**
 
 
 ```
-===========================   
+Please indicate your choice:
+7
+
+============================
 Movie List:
-1. Alita: Battle Angel
-2. Avengers: Endgame
-3. Toy Story 4
-4. Joker
-5. Frozen 2
-6. Charlie's Angels
-7. The Lion King
-8. Jumanji: The Next Level
-9. It Chapter Two
-10. Captain Marvel
-11. Midsommar
-12. Little Women
-13. The Addams Family
-14. Aladdin
-15. Annabelle Comes Home
-16. Maleficent: Mistress of Evil
-17. Spider-Man: Far From Home
-18. Incredibles 2
-19. Black Panther
-20. A Star Is Born    
-===========================
+1. Tenet (5.0)
+2. Soul (4.0)
+3. Wonder Woman 1984 (3.0)
+4. Birds of Prey (3.3)
+5. The Invisible Man (3.0)
+6. Avengers: Endgame (3.0)
+7. Toy Story 4 (5.0)
+8. Joker (No ratings yet. You can start by adding one!)
+9. Frozen 2 (No ratings yet. You can start by adding one!)
+10. Charlie's Angels (1.0)
+To select a single movie, select "6 Select movie" from the Movie Filter menu below.
+============================
 ```
 
-**8. Go back to main menu: `8`**  
+
+**8. Clear all filters:  `8`**  
+Clear all selected filters.
+
+**Format:** `8`  
+**Display:**
+
+
+```
+Please indicate your choice:
+8
+
+============================
+Movie List:
+1. Tenet (5.0)
+2. Soul (4.0)
+3. Wonder Woman 1984 (3.0)
+4. Birds of Prey (3.3)
+5. The Invisible Man (3.0)
+6. Avengers: Endgame (3.0)
+7. Toy Story 4 (5.0)
+8. Joker (No ratings yet. You can start by adding one!)
+9. Frozen 2 (No ratings yet. You can start by adding one!)
+10. Charlie's Angels (1.0)
+To select a single movie, select "6 Select movie" from the Movie Filter menu below.
+============================
+```
+
+**10. Go back to main menu: `10`**  
 Go back to access the main menu.
 
-**Format**: `8`  
+**Format**: `10`  
 **Display**:
 [Customer]
 
