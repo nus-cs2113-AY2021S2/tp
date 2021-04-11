@@ -59,7 +59,7 @@ public class NurseScheduleStorage {
      */
     private ArrayList<NurseSchedule> readFile() throws NurseIdNotFound, InvalidiDTypeException,
             FileNotFoundException, NurseCrossValidationError, PatientIdNotFound,
-            PatientCrossValidationError, InvalidDateException {
+            PatientCrossValidationError, InvalidDateException, NumberFormatException {
         FileInputStream file = new FileInputStream(FILE_PATH);
         Scanner sc = new Scanner(file);
 
@@ -122,25 +122,29 @@ public class NurseScheduleStorage {
      * @return populated patientlist
      * @throws FileNotFoundException if file not found
      */
-    public static ArrayList<Patient> loadPatientFile() throws FileNotFoundException {
+    public static ArrayList<Patient> loadPatientFile() throws FileNotFoundException, PatientCrossValidationError {
         ArrayList<Patient> patientList = new ArrayList<>();
 
         File fileName = new File(PATIENT_FILE_PATH);
         Scanner fileReader = new Scanner(fileName);
 
-        while (fileReader.hasNextLine()) {
-            String input = fileReader.nextLine();
-            String[] data = input.trim().split("\\|");
-            int numberOfTokens = data.length;
-            ArrayList<String> cleanString = new ArrayList<>();
-            for (int i = 0; i < numberOfTokens; i++) {
-                cleanString.add(NurseScheduleUI.cleanseInput(data[i]).trim());
+        try {
+            while (fileReader.hasNextLine()) {
+                String input = fileReader.nextLine();
+                String[] data = input.trim().split("\\|");
+                int numberOfTokens = data.length;
+                ArrayList<String> cleanString = new ArrayList<>();
+                for (int i = 0; i < numberOfTokens; i++) {
+                    cleanString.add(NurseScheduleUI.cleanseInput(data[i]).trim());
+                }
+                Patient tempPatient = new Patient(data[0].trim(), data[1].trim(),
+                        Integer.parseInt(data[2].trim()), data[3], data[4], data[5]);
+                patientList.add(tempPatient);
             }
-            Patient tempPatient = new Patient(data[0].trim(), data[1].trim(),
-                    Integer.parseInt(data[2].trim()), data[3], data[4], data[5]);
-            patientList.add(tempPatient);
+            fileReader.close();
+        } catch (NumberFormatException e) {
+            throw new PatientCrossValidationError();
         }
-        fileReader.close();
         return patientList;
     }
 }
