@@ -507,6 +507,7 @@ can keep track of commonly accessed information while keeping track of the tasks
 * Mainstream OS: Windows, Linux, macOS  
 * Domain name: The actual name of the website. For example, 'google' in 'google.com' is the domain name  
 * Top-level domain: .com , .net, .org , .edu etc.  
+
 ---
 
 ## 9. Instructions for manual testing

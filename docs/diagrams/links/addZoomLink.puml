@@ -5,6 +5,10 @@ hide footbox
 activate ":ZoomLinkInfo"
 
 opt !ModuleInfo.modules.isEmpty()
+":ZoomLinkInfo" -> ":Ui" : printChooseModule()
+activate ":Ui"
+":Ui" -> ":ZoomLinkInfo"
+deactivate ":Ui"
 ":ZoomLinkInfo" -> ":AddTask" : printAndGetModule()
 activate ":AddTask"
 ":AddTask" --> ":ZoomLinkInfo"
