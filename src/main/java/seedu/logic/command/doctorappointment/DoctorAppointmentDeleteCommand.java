@@ -1,6 +1,7 @@
 package seedu.logic.command.doctorappointment;
 
 
+import seedu.exceptions.doctorappointment.DoctorIdDoesNotExistException;
 import seedu.model.doctorappointment.AppointmentList;
 import seedu.logic.command.Command;
 import seedu.ui.DoctorAppointmentUI;
@@ -35,7 +36,7 @@ public class DoctorAppointmentDeleteCommand extends Command {
      */
 
     @Override
-    public void execute(AppointmentList appointment, DoctorAppointmentUI ui) throws IOException {
+    public void execute(AppointmentList appointment, DoctorAppointmentUI ui) throws IOException, DoctorIdDoesNotExistException {
         AppointmentList.deleteAppointment(id);
     }
 
