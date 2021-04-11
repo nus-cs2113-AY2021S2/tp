@@ -3,23 +3,30 @@
 !includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
 skinparam style strictuml
 
-activate Ui
+participant Ui #Turquoise
+participant Parser #PaleGreen
+participant Commands #PaleGreen
+participant ReviewList #Gold
+participant RecommendationList #Gold
+participant Sorter #NavajoWhite
+
+activate Ui #Turquoise
 Ui -> Parser : determineCommand()
-activate Parser
+activate Parser #PaleGreen
 
 Parser -> Commands : sort()
-activate Commands
+activate Commands #PaleGreen
 
 alt isReviewMode
     Commands -> ReviewList : sortReviews(sortType)
-    activate ReviewList
+    activate ReviewList #Gold
 
     alt sortType == null || sortType.isBlank()
         ReviewList --> Ui : printCurrentSortMethod()
 
     else validSortMethod
         ReviewList -> Sorter : changeSortmethod()
-        activate Sorter
+        activate Sorter #NavajoWhite
         Sorter --> ReviewList
         deactivate Sorter
 

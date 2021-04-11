@@ -18,19 +18,15 @@
     
     4.1 [Architecture: High Level View](#41-architecture-high-level-view)
     
-    4.2 [UI and Messages component](#42-ui-and-component)
+    4.2 [UI component](#42-ui-component)
     
-    4.3 [Parser component](#43-parser-component)
+    4.3 [Logic component](#43-logic-component)
     
-    4.4 [Review component](#44-review-componenet)
+    4.4 [Model component](#44-model-componenet)
     
-    4.5 [Recommendation component](#45-review-componenet)
+    4.5 [Sorter component](#45-sorter-component)
     
-    4.6 [Commands component](#46-commands-component)
-    
-    4.7 [Sorter component](#47-sorter-component)
-    
-    4.8 [Storage component](#48-storage-component)
+    4.6 [Storage component](#46-storage-component)
     
 5. [Implementation](#5-implementation)
 
@@ -98,7 +94,7 @@
        
     Appendix F: [Instructions for manual testing](#appendix-e-glossary)
    
-##1. Preface
+## 1. Preface
 Connoisseur is a desktop application for managing and storing a list of personal reviews on experiences, and a list of 
 recommendations to try next.
 
@@ -106,21 +102,21 @@ The Developer Guide for Connoisseur v2.1 is designed for developers intending to
 or perhaps adding entirely new features. It explains how the project is set up, the architecture used, and the code 
 style you should adopt when contributing code to the project.
 
-##2. How to use this document
+## 2. How to use this document
 
 //TODO//
 
-##3. Setting up
+## 3. Setting up
 The following section describes how to set up the coding environment on your own computer, in order to start writing 
 code to improve Connoisseur.
 
-###3.1 Prerequisites
+### 3.1 Prerequisites
 1. JDK 11 <br>
    [Download JDK 11](#https://www.oracle.com/sg/java/technologies/javase-jdk11-downloads.html)
 2.  *Recommended integrated development environment for coding* : IntelliJ IDEA<br>
    [Download IntelliJ IDEA](#https://www.jetbrains.com/idea/)
    
-###3.2 Setting up the project in your computer
+### 3.2 Setting up the project in your computer
 ><p>&#10071 Follow the steps in the following guide precisely. Things will not work out if you deviate in some steps.
 
 1. **Fork** this repo, and **clone** the fork into your computer.
@@ -133,97 +129,106 @@ code to improve Connoisseur.
 6. Click **`Open as Project`**.
 7. Click **`OK`** to accept the default settings.
 
-###3.3 Verifying the setup
+### 3.3 Verifying the setup
 
-###3.4 Configure Coding style
+### 3.4 Configure Coding style
 If using IDEA, follow the guide [[se-edu/guides] IDEA: Configuring the code style](https://se-education.org/guides/tutorials/intellijCodeStyle.html)
 to set up IDEA’s coding style to match ours.
 
 >Optionally, you can follow the guide [[se-edu/guides] Using Checkstyle](https://se-education.org/guides/tutorials/checkstyle.html)
 >to find how to use the CheckStyle within IDEA e.g., to report problems as you write code.
 
-##4. Design
+## 4. Design
 The following section describes the design and implementation of the product. We use UML diagrams and code snippets
 to explain some aspects of the code. If you are unfamiliar with UML, the diagrams should still be fairly
 understandable. However, you may wish to consult [[CS2113/T] Modeling](https://nus-cs2113-ay2021s1.github.io/website/se-book-adapted/chapters/modeling.html) for a quick introduction to UML.
 
-###4.1 Architecture: High Level View
+### 4.1 Architecture: High Level View
 
 **How the architecture components interact with each other**
 
 The following Figure 1, provides a rough overview of how **Connoisseur** is built.<br>
 
-![Class_Diagram.png](./diagrams/Class_Diagram.png)<br>
-Figure 1. Class Diagram of Connoisseur <br>
+![Architecture.png](./diagrams/Architecture.png)<br>
+Figure 1. Architecture of Connoisseur <br>
 
-Figure 1. Architecture Diagram of Connoisseur <br>
-//TODO ADD PLANTUML DIAGRAM !missing! sorter component// <br>
+As shown in Figure 1, the user interacts with `UI`, which takes in commands and displays output to the user. 
 
-As shown in Figure 1, the user interacts with the`UI` component and types in input. Messages displayed to the user by the `UI` component comes from the `Messages` component.
-Input from user is passed to the `parser` component, which is interpreted as a command and passed to the `Commands` component.
-Either `Storage`, `ReviewList` or `RecommendationList` component executes the command input by the user. These components 
-may produce outputs which are passed to the `UI` component and seen by the user. This is explained in more detail in the following sections.
+The main `Connoisseur` class initializes the other components in the application. It passes the input received from the user to the logic component, which consists of `Parser` and `Commands`. 
 
-###4.2 UI and Messages component
+`Parser` will decipher the input and make the corresponding method calls in `Commands`. Depending on whether Connoisseur is in review or recommendation mode, the `Commands` class will execute the respective commands in the `ReviewList` and `RecommendationList` classes of the `Model` component. 
 
-The user interface of Connoisseur is provided by the classes UI & Messages.
-It is instantiated once in the connoisseur() method.<br>
-//can add code snippet here// 
-* The ui.printGreeting() method is called to display the welcome message to the user.
-* The ui.println(COMMAND_PROMPT) method is called to prompt the user for input, where COMMAND_PROMPT is a message from 
-  the `Messages` component
-* The ui.readCommand() method reads the input which is then passed on to the `parser` component
+In the case of a storing data, `Commands` will interact directly with the `Storage` class to save the data. 
 
-###4.3. Parser component
+The `ReviewList` class has sorting functions which requires `Sorter`. All the reviews will be passed to `Sorter` to be sorted, which then returns the sorted reviews back to `ReviewList`. 
 
-###4.4. Review component
-###4.5. Recommendation component
-###4.6. Commands component
-###4.7. Sorter component
-###4.8. Storage component
+`RecommendationList` also interacts with `ReviewList` for converting Recomendations to Reviews. 
 
-##5. Implementation
-###5.1 Mode Switch Feature
-###5.2 Review Mode
-###5.2.1 Add a Review Feature
-###5.2.2 List Reviews Feature 
-###5.2.3 Sort Reviews Feature
-###5.2.4 View a Review Feature
-###5.2.5 Edit a Review Feature
+### 4.2 UI component
+
+The UI component of Connoisseur consists of the classes `UI` and `Messages`.
+It is instantiated in the connoisseur() method and serves two main purposes:
+* Read user input from the console.
+* Print program output to the console. 
+
+The *ui.readCommand()* method reads the input which is then passed on to the `Logic` component. 
+
+The *ui.println(output)* method prints output to the console. Default output messages are stored as static String constants in the `Messages` class, while commonly used output messages are made methods by themselves. *ui.printGreeting()* is one such method and is called to display the welcome message to the user. 
+
+
+### 4.3. Logic component
+
+![LogicComponent.png](./diagrams/LogicComponent.png)<br>
+Figure 2. Logic Component of Connoisseur <br>
+
+The Logic component of Connoisseur consists of the classes `Parser` and `Commands`. 
+It is instantiated in the connoisseur() method and serves to translate user input into commands which are recognised by the application. 
+
+The *determineCommand()* method of the `Parser` class deciphers the command word of the input, calling the respective command's method in `Commands`. 
+
+Each method in `Commands` will then check the arguments provided with the commands to make sure that they are valid, before executing the command in `Storage`, `ReviewList` or `RecommendationList`. 
+
+
+### 4.4. Model component
+
+![ModelComponent.png](./diagrams/ModelComponent.png)<br>
+Figure 2. Model Component of Connoisseur <br>
+
+The Model component of Connoisseur consists of the classes `ReviewList` and `RecommendationList`. 
+It is instantiated in the connoissuer() method and serves to store data as the program runs. 
+
+Both the classes in the Model component contain methods which modify the content of their respective ArrayLists, which consist of either Reviews or Recommendations. 
+
+### 4.5. Sorter component
+
+![SorterComponent.png](./diagrams/SorterComponent.png)<br>
+Figure 3. Sorter Component of Connoisseur <br>
+
+The Sorter component is a separate component which serves to sort the reviews based on a few sorting methods. 
+
+When the *sortReviews()* method is called in the `ReviewList`, a sortMethod parameter is passed together with it to the `Sorter`, which then determines which of the Sorts to sort the reviews by. If the sortMethod parameter is empty, `Sorter` will use the default sortMethod saved. The sorted reviews are then passed back to `ReviewList`. 
+
+### 4.6. Storage component
+
+The Storage component serves to implement the storage functions of Connoisseur. It saves and loads data represented as a JSON file in the *./data* folder so that data can be retained after exiting Connoisseur. 
+
+On startup, Connoisseur checks if there is a *connoisseur.json* file in the *./data* folder. If they exist, the data will be loaded via the *loadConnoisseurData()* method and used to initialize classes in the `Model` component. If the file and folder do not exist, they will be created and new instances of the classes in the `Model` component will be initialized instead. 
+
+Before exiting, Connoissuer will save the data from the `Model` component and write them to *connoisseur.json* located in the *./data* folder. 
+
+## 5. Implementation
+### 5.1 Mode Switch Feature
+### 5.2 Review Mode
+### 5.2.1 Add a Review Feature
+### 5.2.2 List Reviews Feature 
+### 5.2.3 Sort Reviews Feature
+### 5.2.4 View a Review Feature
+### 5.2.5 Edit a Review Feature
 ###5.2.6 Delete a Review Feature
 
 
-###5.3 Recommendation Mode
-
-This section provides details on the implementation of the various commands that occurs in the recommendation mode.
-This mode allows users to keep a list of recommendations that they have not tried/completed.
-This mode implements the following features:
-
-*`add`/`new` - Add a Recommendation
-*`list` - List Recommendations
-*`edit [TITLE_OF_RECOMMENDATION]` - Edit a Recommendation
-*`delete [TITLE_OF_RECOMMENDATION]` - Delete a Recommendation
-*`done [TITLE_OF_RECOMMENDATION]` - Review a Recommendation
-
-###5.3.1 Add a Recommendation Feature
-
-This feature allows user to add a recommendation for any of the activities that they have not completed.
-
-<span>&#10071;</span> Title of a new recommendation cannot exist in current list of reviews. An error message would be printed out.
-
-The mechanism to add a recommendation is facilitated by the `RecommendationList` class. The user is able to add in a new recommendation using `new` or `add` command.
-`addRecommendation#execute` and `addRecommendationDetails#execute` are called.
-`Recommendation` add by the user would be added into `recommendations`
-
-The following is the Sequence diagram to `add a recommendation`.
-
-![add reco seq](./diagrams/Add_Reco_Sequence_Diagram.png)
-<p align="center">Figure !!. Sequence Diagram for add recommendations</p>
-
-![add_reco](./images/ug/add_reco.png)
-<p align="center">Figure !!. Adding a Recommendation</p>
-
-The 
+### 5.3 Recommendation Mode
+### 5.3.1 Add a Recommendation Feature
 
 When the user attempts to add a new recommendation, 
 ### 5.3.2 List Recommendation Feature

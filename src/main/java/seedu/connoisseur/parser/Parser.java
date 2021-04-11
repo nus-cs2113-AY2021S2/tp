@@ -21,10 +21,10 @@ public class Parser {
      * @return true if exit command, false otherwise
      */
     public boolean determineCommand(String input) {
-        String command = input.split(" ", 2)[0].toLowerCase().trim();
+        String command = (input.trim()).split(" ", 2)[0].toLowerCase().trim();
         String arguments;
         try {
-            arguments = input.split(" ", 2)[1].trim();
+            arguments = (input.trim()).split(" ", 2)[1].trim();
         } catch (ArrayIndexOutOfBoundsException e) {
             arguments = null;
         }

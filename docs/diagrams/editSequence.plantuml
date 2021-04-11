@@ -3,16 +3,22 @@
 !includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
 skinparam style strictuml
 
-activate Ui
+participant Ui #Turquoise
+participant Parser #PaleGreen
+participant Commands #PaleGreen
+participant ReviewList #Gold
+participant RecommendationList #Gold
+
+activate Ui #Turquoise
 Ui -> Parser : determineCommand()
-activate Parser
+activate Parser #PaleGreen
 
 Parser -> Commands : edit()
-activate Commands
+activate Commands #PaleGreen
 
 alt isReviewMode
     Commands -> ReviewList : editReview(title)
-    activate ReviewList
+    activate ReviewList #Gold
 
     alt missing title
         ReviewList --> Ui : missing title
@@ -28,7 +34,7 @@ alt isReviewMode
 
 else !isReviewMode
     Commands --> RecommendationList : editRecommendation()
-    activate RecommendationList
+    activate RecommendationList #Gold
 
     alt missing title
         RecommendationList --> Ui : missing title
