@@ -55,12 +55,10 @@ public class Constants {
     public static final String INDENT = "\t";
 
     public static final String INVALID_INPUT = "Input command and/or arguments are invalid";
-
     public static final String INVALID_INPUT_EMPTY_STRING = "Please enter a command for me to process.";
     public static final String INVALID_INPUT_UNKNOWN_COMMAND = "Invalid command provided.";
     public static final String INVALID_INPUT_INVALID_NRIC = "Please key in a valid NRIC number.";
     public static final String INVALID_INPUT_PATIENT_EXISTED = "Patient already exists.";
-
     public static final String INVALID_INPUT_INVALID_DATE =
             "Please provide a valid date (format: dd/MM/yyyy).\n"
                     + "It should also be a valid date in the Gregorian calendar.";
@@ -88,10 +86,12 @@ public class Constants {
     // Number constants
     public static final int ID_NUMBER_OF_CHARACTERS = 9;
     public static final int INDEX_OF_FIRST_CHARACTER = 0;
+    public static final int INDEX_OF_SECOND_CHARACTER = 1;
+    public static final int INDEX_OF_EIGHTH_CHARACTER = 7;
     public static final int INDEX_OF_LAST_CHARACTER = 8;
 
     public static final int CHECKSUM_MOD = 11;
-    public static final int CHECKSUM_DIGIT = 4;
+    public static final int CHECKSUM_NUMBER = 4;
     public static final int FIRST_DIGIT = 1;
     public static final int SECOND_DIGIT = 2;
     public static final int THIRD_DIGIT = 3;

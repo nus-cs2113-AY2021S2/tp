@@ -109,11 +109,8 @@ public class Parser {
         } catch (ClassNotFoundException classNotFoundException) {
             // *Command class cannot be found!
             throw new InvalidInputException(InvalidInputException.Type.UNKNOWN_COMMAND, classNotFoundException);
-        } catch (NoSuchMethodException noSuchMethodException) {
-            // *Command class can be found, but doesn't contain a constructor
-            throw new InvalidInputException(InvalidInputException.Type.UNKNOWN_COMMAND, noSuchMethodException);
         } catch (Exception exception) {
-            // Some other weird error occurred here
+            // Some other weird error occurred here (e.g. dev bugs)
             // We should NEVER reach this block, if we do, log under the highest level
             throw new UnknownException(exception);
         }

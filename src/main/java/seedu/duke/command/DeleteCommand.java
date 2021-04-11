@@ -36,10 +36,16 @@ public class DeleteCommand extends Command {
         }
         if (isDeletePatient) {
             String id = arguments.get(Constants.PATIENT_KEY);
+            if (id.equals("")) {
+                throw new InvalidInputException(InvalidInputException.Type.EMPTY_NRIC_ARGUMENT);
+            }
             id = id.toUpperCase();
             deletePatient(id);
         } else {
             String dateString = arguments.get(Constants.RECORD_KEY);
+            if (date.equals("")) {
+                throw new InvalidInputException(InvalidInputException.Type.EMPTY_DATE_ARGUMENT);
+            }
             LocalDate date = Common.parseDate(dateString);
             deleteRecord(date);
         }

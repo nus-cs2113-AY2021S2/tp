@@ -114,4 +114,37 @@ public class DeleteCommandTest {
         });
         assertEquals(Constants.DATA_NO_RECORD_FOUND, dataException.getMessage());
     }
+
+    @Test
+    public void executeDeleteCommand_emptyNricArgument() {
+        Data data = new Data();
+        Ui ui = new Ui();
+        HashMap<String, String> arguments = new HashMap<>();
+        arguments.put("command", "delete");
+        arguments.put("p", "");
+        DeleteCommand deleteCommand = new DeleteCommand(ui, data, arguments);
+
+        InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
+            deleteCommand.execute();
+        });
+        assertEquals(Constants.INVALID_INPUT_EMPTY_NRIC_ARGUMENT, invalidInputException.getMessage());
+    }
+
+    @Test
+    public void executeDeleteCommand_emptyRecordArgument() {
+        Data data = new Data();
+        Patient patient = new Patient("S1234567D");
+        data.setPatient(patient);
+        data.loadCurrentPatient(patient.getID());
+        HashMap<String, String> arguments = new HashMap<>();
+        arguments.put("command", "delete");
+        arguments.put("r", "");
+        Ui ui = new Ui();
+        DeleteCommand deleteCommand = new DeleteCommand(ui, data, arguments);
+
+        InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
+            deleteCommand.execute();
+        });
+        assertEquals(Constants.INVALID_INPUT_EMPTY_DATE_ARGUMENT, invalidInputException.getMessage());
+    }
 }

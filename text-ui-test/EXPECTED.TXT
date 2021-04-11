@@ -22,7 +22,8 @@ List of patients (in alphanumeric order):
 2. S7654321F
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
-Please key in a valid NRIC number.
+Input command and/or arguments are invalid:
+	NRIC does not pass the checksum test, please ensure NRIC is valid eg. G1234567X
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Patient S1234567D has been added!
