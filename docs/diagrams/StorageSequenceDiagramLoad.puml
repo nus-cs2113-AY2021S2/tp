@@ -22,22 +22,22 @@ deactivate Storage
 alt is instance of Record
     Storage -> RecordList : add(Record)
     activate RecordList
-    Storage -[#white]> RecordList
-    Storage -[#white]> RecordList
+    deactivate RecordList
+    Storage -[hidden]> RecordList
     destroy RecordList
 
 else instance of CreditScore
     Storage -> CSRLM : put(BorrowerName)
     activate CSRLM
-    Storage -[#white]> CSRLM
-    Storage -[#white]> CSRLM
+    deactivate CSRLM
+    Storage -[hidden]> CSRLM
     destroy CSRLM
 end
 
 Finux -> Storage : getRecordListData()
-Storage -> Finux : recordList : RecordList
+Storage --> Finux : recordList : RecordList
 Finux -> Storage : getMapData()
-Storage -> Finux : creditScoreReturnedLoansMap : creditScoreReturnedLoansMap
+Storage --> Finux : creditScoreReturnedLoansMap : creditScoreReturnedLoansMap
 destroy Storage
 
 @enduml
