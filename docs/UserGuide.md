@@ -43,6 +43,7 @@
 5. [FAQ](#5-faq) <br>
 6. [Command summary](#6-command-summary) <br>
 
+--------------------------------------------------------------------------------------------------------------------
 
 ## 1. Introduction
 
@@ -210,9 +211,9 @@ List all the venues in Engineering and Computing campus. <br>
 Format : `show venues` <br>
 Example :
 ```
---------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 > show venues
---------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 Venues in Engineering faculty:
 1. E1   | 7.  E4  | 13. EW1  | 19. LT6         | 
 2. E1A  | 8.  E4A | 14. EW1A | 20. LT7         | 
@@ -236,7 +237,7 @@ Eateries:
 2. CHEERS MINIMART     | 6. MAXX COFFEE     | 
 3. ARISE & SHINE       | 7. STARBUCKS       | 
 4. PLATYPUS FOOD BAR   | 
---------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 ```
 
 <div markdown="block" class="alert alert-info">
@@ -251,16 +252,16 @@ Finds the shortest route to go from one block to another.<br>
 Format : `go` → `STARTING_BLOCK` → `DESTINATION_BLOCK` <br>
 Example :
 ```
---------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 > go
---------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 Starting Block:
 * e2
 Destination Block:
 * com1
---------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 Route: E2 -> E3 -> E4 -> E5 -> LT3 -> CHINESE LIBRARY -> CENTRAL LIBRARY -> AS6 -> COM1
---------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 ```
 - When the `go` command is given NUSMaze will prompt you for the `STARTING_BLOCK`
   followed by the `DESTINATION BLOCK`.
@@ -279,16 +280,16 @@ It is also possible to find the shortest route to an eatery using the go feature
 Format : `go` → `STARTING_BLOCK` → `EATERY_NAME` <br>
 Example : 
 ```
---------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 > go
---------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 Starting Block:
 * e1
 Destination Block:
 * starbucks
---------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
---------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 ```
 
 - By entering the name of the eatery that you wish to go to in the `EATERY_NAME` parameter,
@@ -304,14 +305,14 @@ NUSMaze can also provide you with a list of eateries from closest to furthest if
 Format : `go` → `STARTING_BLOCK` → `eatery` → `EATERY_ENTRY` <br>
 Example :
 ```
---------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 > go
---------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 Starting Block:
 * e1
 Destination Block:
 * eatery
---------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 Here are the list of eateries(from closest to furthest):
 1. TECHNO EDGE CANTEEN
 2. CHEERS MINIMART
@@ -320,12 +321,12 @@ Here are the list of eateries(from closest to furthest):
 5. STARBUCKS
 6. ARISE & SHINE
 7. MAXX COFFEE
---------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 Select entry to go:
 * 5
---------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
---------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 ```
 
 - By entering `eatery` as `DESTINATION_BLOCK` parameter, you can see the list of eatery to choose from. 
@@ -737,24 +738,24 @@ In the data folder you will find 5 text files as shown below.<br>
 NUSMaze automatically loads your past data when the application is launched.<br>
 NUSMaze will inform you whether the data has been successfully loaded by displaying the below message after the NUSMaze Logo.<br>
 ```
-------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 [X] Alias data has been successfully loaded!
 [X] History data has been successfully loaded!
 [X] Favourite data has been successfully loaded!
 [X] Daily Route data has been successfully loaded!
 [X] Note data has been successfully loaded!
-------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 ```
 :information_source: If the saved data is corrupted, NUSMaze will automatically clear the data for that feature.<br>
 For example if favourite data is corrupted, NUSMaz will display:<br> 
 ```
-------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 [X] Alias data has been successfully loaded!
 [X] History data has been successfully loaded!
 [ ] An Error occurred while loading Favourite data. It has been cleared to default!
 [X] Daily Route data has been successfully loaded!
 [X] Note data has been successfully loaded!
-------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 ```
 
 --------------------------------------------------------------------------------------------------------------------
@@ -768,7 +769,7 @@ For example if favourite data is corrupted, NUSMaz will display:<br>
 **A** : Copy the entire data folder that can be found together with the NUSMaze.jar file on the first computer and copy it over to the same directory where the NUSMaze.jar file
 can be found on the second computer.
 
-**Q** : What Should I do if I don't know how to travel from one block to another?
+**Q** : What Should I do if I don't know how to travel from one block to another? <br>
 **A** : You can refer to this [map](http://map.nus.edu.sg) to view the directions.
 
 --------------------------------------------------------------------------------------------------------------------
