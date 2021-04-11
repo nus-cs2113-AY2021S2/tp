@@ -23,16 +23,22 @@ public class DeleteStoreCommand extends Command {
 
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
+
         if (canteens.size() == 0) {
             System.out.println(Ui.LINESPACING);
             System.out.println("There are no canteens for you to delete any stores.");
             System.out.println(Ui.LINESPACING);
             return;
         }
+
         nusFoodReviews.setCanteenIndex();
         int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
-        Canteen currentCanteen = canteens.get(currentCanteenIndex);
-        ui.showDisplaySelectStores(currentCanteen);
+
+        if (canteens.get(currentCanteenIndex).getStores().size() == 0) {
+            throw new DukeExceptions("There are current no stores in the canteen");
+        }
+
+        ui.showDisplaySelectStores(canteens.get(currentCanteenIndex));
         String line = ui.readCommand();
         if (line.equals("cancel")) {
             ui.showStoreNotDeleted();
@@ -40,8 +46,9 @@ public class DeleteStoreCommand extends Command {
         }
         int storeIndex = parser.parseInt(line, 1,
                 canteens.get(currentCanteenIndex).getNumStores()) - 1;
-        Store store = currentCanteen.getStore(storeIndex);
-        String storeName = store.getStoreName();
+
+        Canteen currentCanteen = canteens.get(currentCanteenIndex);
+        String storeName = currentCanteen.getStore(storeIndex).getStoreName();
         currentCanteen.deleteStore(storeIndex);
         ui.showDeleteStore(storeName);
         UpdateFile.deleteAndUpdateFile(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH),canteens);
