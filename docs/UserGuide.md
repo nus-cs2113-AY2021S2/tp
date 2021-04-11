@@ -131,7 +131,7 @@ Java 11 and above<br>
 GULIO has a 2-layer system, consisting of the dashboard layer, and the module layer. In both layers, you have access to a different set of commands. 
 
 <p align="center">
-    <img width="973" src="userGuideImages/2-layer.jpg" alt="2-Layer System"><br>
+    <img width="600" src="userGuideImages/2-layer.png" alt="2-Layer System"><br>
     Figure 2 - Visualisation of GULIO’s 2-layer system
 </p>
 
