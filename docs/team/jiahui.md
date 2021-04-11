@@ -40,7 +40,7 @@ project: [RepoSense Link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?se
     * Made some edits to the README Page to give a more comprehensive overview of Connoisseur.
 
 * Developer Guide
-    * Fixed links in the documentation to ensure that they are working.
+    * Fixed links and some formatting in the documentation to ensure that they are working.
     * Added user stories from previous drafts.
     * Added Error Handling.
     * Added Appendix (e.g. product scope, user stories, non-functional requirements, other guides, instructions for
@@ -48,9 +48,14 @@ project: [RepoSense Link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?se
 
 #### Contributions to team-based tasks :
 
-* Reviewed teammates PRs, approved and merged PRs.
-* Helped to fix major/ minor bugs that were found.
-    * Fixed bugs in parser and commands.
+* Reviewed teammates PRs, approved and merged PRs: [PR67](https://github.com/AY2021S2-CS2113T-F08-3/tp/pull/67)
+  , [PR70](https://github.com/AY2021S2-CS2113T-F08-3/tp/pull/70)
+  , [PR72](https://github.com/AY2021S2-CS2113T-F08-3/tp/pull/72)
+  , [PR75](https://github.com/AY2021S2-CS2113T-F08-3/tp/pull/75),
+  [PR83](https://github.com/AY2021S2-CS2113T-F08-3/tp/pull/83)
+  , [PR148](https://github.com/AY2021S2-CS2113T-F08-3/tp/pull/148)
+* Helped to fix other bugs that were found.
+    * Fixed bugs in parser.
 * Helped to re-organise code in commands, from Commands to RecommendationList and ReviewList.
 
 ### Contributions beyond the project team:
