@@ -10,7 +10,7 @@ GULIO is a module planner designed for efficiency when used by someone that can 
 
 [Click here to view code contribution.](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=CS2113T-W09-3&sort=groupTitle&sortWithin=title&since=&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false&tabOpen=true&tabType=authorship&tabAuthor=H-horizon&tabRepo=AY2021S2-CS2113T-W09-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
 
-### Enchancements Contributed:
+### Enhancements Contributed:
 
 1. Implemented commands involved in manipulating Lesson objects, excluding edit lesson.<br>
    > I implemented AddLessonCommand, DeleteLessonCommand and ListLessonsCommand to add, remove and view lesson objects.
@@ -23,13 +23,15 @@ GULIO is a module planner designed for efficiency when used by someone that can 
 1. Implemented commands involved in manipulating Cheat-sheet files.<br>
    > I implemented AddCheatSheetCommand, DeleteCheatSheetCommand, EditCheatSheetCommand and ListCheatSheetCommand to add, remove, edit and view Cheat-sheet files of a particular module.
 1. Implemented TextEditor.
-   > I implemented the TextEditor class to allow the user to input and edit cheat-sheets. The initial version of text editor had a colour button, a font style dropbox, a font size input box and a save icon. For version 2.0, we decided remove the colour option after experiencing some undefined behaviours when editCheatSheetCommand was called. WenHao then implemented some shortcuts functionality to allow the user to continuously use the keyword. We then scraped-off the font size input box as it was no longer required. For version 2.1, we decided to remove the font style as we didn't deem it a necessary feature. A problem I faced when implementing the editor was that if the editor was used multiple times for one Gulio Session, it didn't flush data from previous files after they were closed. I then had to append the text area to null each time the text editor was invoked.
+   > I implemented the TextEditor class to allow the user to input and edit cheat-sheets. A problem I faced when implementing the editor was that if the editor was used multiple times for one Gulio Session, it didn't flush data from previous files after they were closed. I then had to append the text area to null each time the text editor was invoked.
+
 ### Contributions to Documentation:
 
 1. Documented Lesson and Cheat-sheet commands
    > For each command I implemented, I added a brief description, the command format, a sample input and the expected output.
 1. Added text editor section.
    > As the one responsible for the text editor, I did the part explaining to the user how GULIO's text editor works and what he/she can do with it. WenHao added the information about the shortcuts available.
+
 ### Contributions to Developer Guide:
 1. Text Editor component in Design section.
    >I wrote the description for the text editor component under Design in the DG as I was the one who implemented it in our codebase.
@@ -59,7 +61,9 @@ GULIO is a module planner designed for efficiency when used by someone that can 
 1. [Sharing useful information in the forum](https://github.com/nus-cs2113-AY2021S2/forum/issues/26#issuecomment-770166991)
 1. [Bugs reported in other team's products during dry-run](https://github.com/H-horizon/ped)
 
-### Contributions to the Developer Guide (Extracts)
+<div style="page-break-after: always;"></div>
+
+### Contributions to the Developer Guide (Extracts)[Optional]
 
 Extract of contributions:
 
@@ -100,7 +104,7 @@ The newly created `Lesson` object is then passed to a new `AddLessonCommand` obj
 
 &nbsp;
 
-## Contributions to the User Guide (Extracts)
+## Contributions to the User Guide (Extracts)[Optional]
 Extract of contributions:
 
 ### Showing module information : _info_
