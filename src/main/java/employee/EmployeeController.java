@@ -97,7 +97,7 @@ public class EmployeeController {
         }
     }
 
-    public boolean isEmployeeFound(String name, ArrayList<Employee> employees) {
+    public static boolean isEmployeeFound(String name, ArrayList<Employee> employees) {
         for (Employee person : employees) {
             if (person.getName().equals(name)) {
                 return true;

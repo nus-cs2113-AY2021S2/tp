@@ -35,7 +35,7 @@ public class Employee {
         }
     }
 
-    private boolean isScheduleValid(String schedule) {
+    public static boolean isScheduleValid(String schedule) {
         if (schedule.length() != 10) {
             return false;
         }
