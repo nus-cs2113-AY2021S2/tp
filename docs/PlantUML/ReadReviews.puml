@@ -10,12 +10,22 @@ activate ":ReadReviewsCommand"
 ":ReadReviewsCommand"->":Store":getReviews()
 activate ":Store"
 ":Store"-->":ReadReviewsCommand":reviews
-":Store"->":Store":getAverageRating()
-":Store"-->":ReadReviewsCommand":averageRating
-":Store"->":Store":getStoreName()
-return storeName
-":ReadReviewsCommand"->":Ui":showReviews(storeName,reviews,averageRating)
-":Ui"-->":ReadReviewsCommand"
-<--":ReadReviewsCommand"
+deactivate ":Store"
+opt reviews.size()>0
+    ":ReadReviewsCommand"->":Store":getAverageRating()
+    activate ":Store"
+    ":Store"-->":ReadReviewsCommand":averageRating
+    deactivate ":Store"
+    ":ReadReviewsCommand"->":Store":getStoreName()
+    activate ":Store"
+    return storeName
+    deactivate ":Store"
+    ":ReadReviewsCommand"->":Ui":showReviews(storeName,reviews,averageRating)
+    activate ":Ui"
+    ":Ui"-->":ReadReviewsCommand"
+     deactivate ":Ui"
+    <--":ReadReviewsCommand"
+end
+deactivate ":ReadReviewsCommand"
 
 @enduml

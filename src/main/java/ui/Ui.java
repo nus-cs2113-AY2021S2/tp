@@ -8,11 +8,17 @@ import stores.Store;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Represents the main class that interacts with the user through the command line interface.
+ */
 public class Ui {
     public static final String LINESPACING = "====================================================";
     private static Scanner userInputScanner;
     private static String line;
 
+    /**
+     * Constructor of class. Creates a scanner to collect user input
+     */
     public Ui() {
         userInputScanner = new Scanner(System.in);
     }
@@ -143,7 +149,8 @@ public class Ui {
         } else {
             ArrayList<Store> stores = canteen.getStores();
             System.out.println("Here's a list of the stores in the canteen: " + canteen.getCanteenName());
-            System.out.println("Please select one of the following stores:");
+            System.out.println("Please select one of the following stores:"
+                    + " (Enter 'login' to go back to login page)");
             for (int i = 0; i < stores.size(); i++) {
                 System.out.print((i + 1) + ". ");
                 stores.get(i).displayStore();
@@ -262,6 +269,7 @@ public class Ui {
         System.out.println("You are now viewing the store: " + storeName + " in the canteen: " + canteenName);
         System.out.println("Please enter your command:");
         System.out.println("If you need help, enter 'help' to view all the commands");
+        System.out.println("Enter 'login' if you want to go back to login page");
         System.out.println(LINESPACING);
     }
 
