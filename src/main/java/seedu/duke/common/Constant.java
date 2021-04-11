@@ -13,4 +13,5 @@ public class Constant {
     public static final long MAX_CREDIT_SCORE = 100;
     public static final long MIN_CREDIT_SCORE = 0;
     public static final FinuxLogger FINUX_LOGGER = new FinuxLogger("Finux Logger");
+    public static final String DATE_TIME_PATTERN = "yyyy-M-d";
 }

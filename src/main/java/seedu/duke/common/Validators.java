@@ -13,6 +13,12 @@ import org.apache.commons.lang3.StringUtils;
 import seedu.duke.exception.CustomException;
 import seedu.duke.record.RecordList;
 import static seedu.duke.common.Constant.FINUX_LOGGER;
+import static seedu.duke.common.Messages.ERROR_INVALID_DATE_SF;
+import static seedu.duke.common.Messages.ERROR_AMOUNT_LESS_THAN_ZERO;
+import static seedu.duke.common.Messages.ERROR_AMOUNT_MORE_THAN_2DP;
+import static seedu.duke.common.Messages.ERROR_DOLLAR_AMOUNT_MISSING;
+import static seedu.duke.common.Messages.ERROR_CENT_AMOUNT_MISSING;
+
 
 public class Validators {
     private static final String KEYWORD_TODAY = "today";
@@ -82,7 +88,7 @@ public class Validators {
                 return date;
             }
         }
-        throw new DateTimeException("input \"" + dateInput + "\" is an invalid date.");
+        throw new DateTimeException(String.format(ERROR_INVALID_DATE_SF, dateInput));
     }
 
     /**
@@ -116,10 +122,10 @@ public class Validators {
             CustomException {
         BigDecimal amount = new BigDecimal(stringAmount);
         if (!(amount.compareTo(new BigDecimal("0")) == 1)) {
-            throw new CustomException("amount must be greater than 0.");
+            throw new CustomException(ERROR_AMOUNT_LESS_THAN_ZERO);
         }
         if (amount.scale() > 2) {
-            throw new CustomException("amount should be at most 2 decimal place.");
+            throw new CustomException(ERROR_AMOUNT_MORE_THAN_2DP);
         }
         if (StringUtils.countMatches(stringAmount,".") == 1) {
             validateDollarAndCent(stringAmount);
@@ -135,10 +141,10 @@ public class Validators {
     private static void validateDollarAndCent(String stringAmount) throws CustomException {
         int decimalIndex = StringUtils.indexOf(stringAmount,".");
         if (decimalIndex == 0) {
-            throw new CustomException("please enter the dollar amount.");
+            throw new CustomException(ERROR_DOLLAR_AMOUNT_MISSING);
         }
         if (decimalIndex == stringAmount.length() - 1) {
-            throw new CustomException("please enter the cent amount.");
+            throw new CustomException(ERROR_CENT_AMOUNT_MISSING);
         }
     }
 }

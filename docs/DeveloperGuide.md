@@ -286,6 +286,7 @@ the resultant constant is `...final String COMMAND_ADD = "add";`.
 
 Below shows the command format the user has to type into the Application.
 
+#### Command Format
 > _**Commands in Finux follow these argument orders (depending on the command):**_
 > * `CMD -OPT <FIELD> [-OPT <FIELD>...]`
 > * `CMD -OPT`
@@ -305,9 +306,6 @@ Below shows the command format the user has to type into the Application.
 > _**Non-strict argument order:**_\
 > The `add` and `return` commands do not require strict ordering for options.\
 > E.g. For the case of `add`, option `-a` can come before/after option `-d`.
-
-
-_Figure 11: Command Input Format and Argument Types_
 
 More on the different types of commands and usages, please refer to our [User Guide](UserGuide.md).
 
@@ -363,16 +361,16 @@ The `recordlist` class maintains an internal arraylist of record objects used th
 _Figure 12: **Storage** Class Diagram_
 
 #### Description
-The `Storage` component consists of only one class called `Storage`. The role of the `Storage` is to translate all
-`Record` from the `RecordList` and `creditScoreHashMap` (a `HashMap`) into a text format in a text output file and 
+The `storage` component consists of only 1 class called `Storage`. The role of the `Storage` is to translate all
+`records` from the `RecordList` and `CreditScoreReturnedLoansMap` (a `HashMap`) into a text format in a text output file and
 vice versa.
 
 #### Design
 In the application, `Storage` is instantiated in classes that requires the use of the save or load function, this
-is done through the constructor `new Storage()`. Whenever a new `Record` gets added, removed, or marked as returned, 
-the `saveData` method will be called and all `Record` up to that point will be converted into a text output
-and saved into the `finux.txt` file. The `creditScoreHashMap` will also be translated into a user readable text format 
-and stored in the same file as the records. The `loadFile` method will do the exact opposite, and load the data from 
+is done through the constructor `new Storage()`. Whenever a new `record` gets added, removed, or marked as returned, 
+the `saveData` method will be called and all `record` up to that point will be converted into a text output
+and saved into the `finux.txt` file. The `creditScoreReturnedLoansMap` will also be translated into a user readable text format 
+and stored in the same file as the `records`. The `loadFile` method will do the exact opposite, and load the data from
 the `finux.txt` file back into the Finux application.
 
 1. `saveData()` is the method that is called after any `Record` are added, deleted, or marked as returned. It 
@@ -381,9 +379,9 @@ the `finux.txt` file back into the Finux application.
 2. `writeRecordListToSaveFile` will add the currently addressed `RecordList` and all its stored records into the 
    `finux.txt` file after calling the `convertFileFormat` method from the Record class. The `writeToSaveFile()` method 
    will also output each individual records in separate lines.
-
-3. `writeCreditScoreMapToSaveFile()` will convert all key:value pairs, in this case, `borrowerName`:`creditScore` pairs
-   in the `creditScoreHashMap()` into a user readable format and store them in the same `finux.txt` file as the records. 
+   
+3. `writeCreditScoreMapToSaveFile` will convert all key:value pairs, in this case, `borrowerName`:`creditScore` pairs
+   in the `creditScoreReturnLoansMap` into a user readable format and store them in the same `finux.txt` file as the `records`.
   
 4. `loadFile` method does the opposite of the `writeRecordListToSaveFile()` method. In the `loadFile()` method, a new 
    ArrayList of `Record` is instantiated. It will then call the `saveFileExist()` method. If the method returns false, 
@@ -615,7 +613,7 @@ _Figure 15: Sequence Diagram for `ViewCommand`_
 Given below is an example usage scenario of how `ViewCommand` behaves at each step.
 
 ***Step 1:***\
-The user execute the `view` command with one of the available options, `{-e, -l, -s, -a}`. The program invokes 
+The user execute the `view` command with one of the available options, `{-e | -l | -s | -a}`. The program invokes 
 `ParserHandler#getParseInput()` to provide the parsed input to `CommandHandler#createCommand()`. This checks 
 for the command type, `view`, and proceeds to validate the parsed input in the `ViewCommand()` constructor 
 before returning the constructed `ViewCommand` object to `Finux`.
@@ -856,13 +854,13 @@ user experience, and it will not cause any confusion. The time wasted is negligi
 long-term benefit.
 
 ### 4.6 Storage Feature
-The `storage` feature allows all `records` and `creditScoreHashMap` to be stored locally on the device and for `records` and 
-and `creditScoreHashMap` to be loaded from a saved file into the Finux application. This is the only feature implemented 
+The `storage` feature allows all `record` and `creditScoreReturnedLoansMap` to be stored locally on the device and for `record` 
+and `creditScoreReturnedLoansMap` to be loaded from a saved file into the Finux application. This is the only feature implemented 
 that does not have an explicit command to call it.
 
 #### 4.6.1 Current Implementation
 As the saving and loading methods have no explicit command calls, these methods are invoked by methods from the other
-classes. During the launch of the Finux application, in the `start` method, `getRecordListData` is called to load the
+classes. During the launch of the Finux application, in the `start()` method, `getRecordListData()` is called to load the
 data from the saved file: `finux.txt`. 
 
 ![SavingFeatureSequenceDiagram](img/StorageSequenceDiagramSave.png)
@@ -927,7 +925,7 @@ the `HashMap` of itself.
 
 ***Step 4***\
 The `start` method in the `Finux` class will then call the `getRecordListData` method to retrieve the loaded 
-`RecordList` from the `Storage` class, this is also the same with the `creditScoreReturnedLoansMap` where the `start`
+`RecordList` from the `Storage` class, this is also the same with the `CreditScoreReturnedLoansMap` where the `start`
 method in the `Finux` class will call the `getMapData` method from the `Storage` class which will then return the
 `HashMap`.
 
@@ -950,8 +948,8 @@ multiple occasions that this can be invoked:
 |After each command call|Guaranteed save after every successful command call, users can "save" the data by simply entering any legal commands|Extraneous calls of save, high coupling, a lot of passing of data around|
 |After any command call that edits data in `RecordList`|Allows data to be saved after every update to the `RecordList`|Some coupling between the methods that updates the `records` and calling the save method.|
 
-> 💡 Note that data in the HashMap `creditScoreHashMap` is related directly to the `Loan` object in the `RecordList`, thus
-> we have omitted the mention of it here as any changes to the `creditScoreHashMap` will also be reflected in the `Loan`
+> 💡 Note that data in the `CreditScoreReturnedLoansMap` is related directly to the `Loan` object in the `RecordList`, thus
+> we have omitted the mention of it here as any changes to the `CreditScoreReturnedLoansMap` will also be reflected in the `Loan`
 > object which is a part of the `RecordList`.
 
 After considering the above approaches, we have decided to adopt the third approach even though there might be more
@@ -980,34 +978,34 @@ Credit score for Tom is 90
 ### A.1 Target User Profile
 
 * Computing students
-* Background in CLI interface
-* Prefer typing in CLI over traditional GUI clicking
-* Need to track expenditure and saving
-* Borrowed some money to their friends
-* Need to track borrowings and loans 
-* Good with typing
+* Students with background in CLI interface
+* Students that prefer typing in CLI over traditional GUI clicking
+* Students that need to track expenditure and saving
+* Students that lent some money to their friends
+* Students that need to track borrowings and loans
+* Students that are good with typing
 
 ### A.2 Value proposition
 
 #### A.2.1 Problem Identification
 Problems faced by students that Finux aim to assist with.
-> * [Problem] Wastage of time due to poor connection/latency issues when accessing finance tracking website.
-> * [Solution] Provide a non website dependent application.
+* [Problem] Wastage of time due to poor connection/latency issues when accessing finance tracking website.
+* [Solution] Provide a non website dependent application.
 
-> * [Problem] Hassle to use different applications to keep track of various stuff.
-> * [Solution] Provide an integrated platform to record any expenses, loans, or saving.
+* [Problem] Hassle to use different applications to keep track of various stuff.
+* [Solution] Provide an integrated platform to record any expenses, loans, or saving.
 
-> * [Problem] Disorganization issues arising from keep multiple tracking applications.
-> * [Solution] Provide the option to view each category of records within an integrated platform.
+* [Problem] Disorganization issues arising from keep multiple tracking applications.
+* [Solution] Provide the option to view each category of records within an integrated platform.
 
-> * [Problem] Spending additional time to gauge whether to lend money to a friend.
-> * [Solution] Provide a soft gauge through credit score meter.
+* [Problem] Spending additional time to gauge whether to lend money to a friend.
+* [Solution] Provide a soft gauge through credit score meter.
 
 #### A.2.2 Value Adding
 
 Finux aims to integrate the process of managing and keeping track of finance movements without the need to access online
 websites and using different applications to keep track various movement such as loans and expenditure. Finux
-provide an all-in-one platform for students who are usually in front of their computers. The student's expertises in 
+provides an all-in-one platform for students who are usually in front of their computers. The student's expertise in 
 coding and typing can speed up the process of their finance management through familiarity with the CLI interface.
 
 > ❗ Finux does not provide any finance advise.
@@ -1090,14 +1088,14 @@ will be ready for use.
 1. Prerequisite: None.
 1. Test case: `add -s Savings from March -a 1000 -d 29/03/2021`
    Expected: Adds a `saving` with the description '`Savings from March`' with an amount of `1000` dollars on `29th March 2021`.
-1. Test case: `add -s Savings from April -a 1200 -d 29/04/2021`
+1. Test case: `add -s Savings from April -a 1200 -d 29/03/2021`
    Expected: Adds a `saving` with the description '`Savings from April`' with an amount of `1200` dollars on `29th April 2021`.
 1. Other incorrect commands to try:
    1. `add`
    1. `add -s`
    1. `add -s -a`
    1. `add -s -a -d`
-   1. `add -s Savings from Intern -a x -d 30/05/2021`
+   1. `add -s Savings from Intern -a x -d 30/03/2021`
       (where `x` is a negative number or a word)
    
 ### D.5 Listing expense(s) in the record list

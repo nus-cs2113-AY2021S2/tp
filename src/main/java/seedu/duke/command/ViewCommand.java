@@ -16,6 +16,7 @@ import static seedu.duke.common.Constant.OPTION_EXPENSE;
 import static seedu.duke.common.Constant.OPTION_LOAN;
 import static seedu.duke.common.Constant.OPTION_SAVING;
 import static seedu.duke.common.Constant.OPTION_ALL;
+import static seedu.duke.common.Messages.ERROR_MISSING_RECORD_OPTIONS_2;
 
 /**
  * Handles all operations related to the view command.
@@ -57,7 +58,7 @@ public class ViewCommand extends Command {
         } else if (hasOption(arguments, OPTION_ALL)) {
             recordType = RecordType.ALL;
         } else {
-            throw new CommandException("missing option: [-e | -l | -s | -a]", COMMAND_VIEW);
+            throw new CommandException(ERROR_MISSING_RECORD_OPTIONS_2, COMMAND_VIEW);
         }
     }
 
