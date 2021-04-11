@@ -608,7 +608,7 @@ _Figure x: Sequence Diagram for `ViewCommand`_
 Given below is an example usage scenario of how `ViewCommand` behaves at each step.
 
 ***Step 1:***\
-The user execute the `view` command with one of the available options, `{-e, -l, -s, -a}`. The program invokes 
+The user execute the `view` command with one of the available options, `{-e | -l | -s | -a}`. The program invokes 
 `ParserHandler#getParseInput()` to provide the parsed input to `CommandHandler#createCommand()`. This checks 
 for the command type, `view`, and proceeds to validate the parsed input in the `ViewCommand()` constructor 
 before returning the constructed `ViewCommand` object to `Finux`.
