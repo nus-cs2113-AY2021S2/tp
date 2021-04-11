@@ -19,8 +19,8 @@ public class PatientParserTest {
     @Test
     public void testAddPatientNegative() throws HealthVaultException {
         String input = "add X12345 Johnny 30 M Covid19 Paracetamol";
-        String expected = "OOPS! Looks like your ID type is incorrect! \n" +
-                "Please ensure that the ID starts with \"P\"!";
+        String expected = "OOPS! Looks like your ID type is incorrect! \n"
+                + "Please ensure that the ID starts with \"P\"!";
         Command output = parser.patientParse(input, patients);
     }
 

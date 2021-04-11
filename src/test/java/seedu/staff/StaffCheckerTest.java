@@ -37,10 +37,9 @@ public class StaffCheckerTest {
     }
 
     @Test
-    public void checkStaffID_negativeNumberSectionInID_WrongStaffIDExceptionReturned() {
-        WrongStaffIdException exception = assertThrows(WrongStaffIdException.class, () -> {
-            staffChecker.checkStaffID("D-1234");
-        });
+    public void checkStaffId_negativeNumberSectionInId_WrongStaffIDExceptionReturned() {
+        WrongStaffIdException exception = assertThrows(WrongStaffIdException.class,
+                () -> staffChecker.checkStaffID("D-1234"));
 
         assertEquals(exception.getMessage(), "Error in Staff ID input\n"
                 + "Please input with the following format [D/N][5 digit ID number]");
@@ -49,9 +48,8 @@ public class StaffCheckerTest {
     @Test
     public void checkStaffDataForStorage_insufficientStaffID_HealthVaultReturned() {
         ArrayList<Staff> list = new ArrayList<>();
-        HealthVaultException exception = assertThrows(HealthVaultException.class, () -> {
-            staffChecker.checkValidDataFromStorage("D1234|Owen|23|Surgeon", list);
-        });
+        HealthVaultException exception = assertThrows(HealthVaultException.class,
+                () -> staffChecker.checkValidDataFromStorage("D1234|Owen|23|Surgeon", list));
 
         assertEquals(exception.getMessage(), "Error in Staff ID input\n"
                 + "Please input with the following format [D/N][5 digit ID number]");
@@ -60,9 +58,8 @@ public class StaffCheckerTest {
     @Test
     public void checkStaffDataForStorage_blankInput_HealthVaultReturned() {
         ArrayList<Staff> list = new ArrayList<>();
-        HealthVaultException exception = assertThrows(HealthVaultException.class, () -> {
-            staffChecker.checkValidDataFromStorage("D1234| |23|Surgeon", list);
-        });
+        HealthVaultException exception = assertThrows(HealthVaultException.class,
+                () -> staffChecker.checkValidDataFromStorage("D1234| |23|Surgeon", list));
 
         assertEquals(exception.getMessage(), "Error in Staff ID input\n"
                 + "Please input with the following format [D/N][5 digit ID number]");
