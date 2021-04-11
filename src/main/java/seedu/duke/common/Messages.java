@@ -10,4 +10,5 @@ public class Messages {
     public static final String ERROR_MISSING_RECORD_OPTIONS_2 = "missing option: {-e | -l | -s | -a}";
     public static final String ERROR_INVALID_BORROWER_NAME = "Borrower name cannot contain '"
             + FILE_DELIMITER_CHAR + "' as input.";
+    public static final String ERROR_INVALID_DATE_SF = "input \"%s\" is an invalid date.";
 }

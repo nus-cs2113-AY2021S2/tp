@@ -13,6 +13,8 @@ Participant ":Ui" as UI
 [-> AddCommand : execute()
 activate AddCommand
 
+AddCommand -> AddCommand : createRecord()
+activate AddCommand
 alt EXPENSE
     create Expense
     AddCommand -> Expense : Expense(amount, issueDate, description)
@@ -32,6 +34,8 @@ else SAVING
     Saving --> AddCommand : record : Record
     deactivate Saving
 end
+AddCommand --> AddCommand : record : Record
+deactivate AddCommand
 
 AddCommand -> RecordList : addRecord(record)
 activate RecordList
@@ -50,5 +54,10 @@ deactivate UI
 
 [<-- AddCommand
 deactivate AddCommand
+[<-[hidden]- AddCommand
+destroy AddCommand
+destroy Expense
+destroy Loan
+destroy Saving
 
 @enduml
