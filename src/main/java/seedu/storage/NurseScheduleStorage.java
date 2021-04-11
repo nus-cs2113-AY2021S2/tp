@@ -49,13 +49,13 @@ public class NurseScheduleStorage {
      * Reads NurseSchedule.txt.
      *
      * @return arraylist populated with valid data
-     * @throws NurseIdNotFound if nurseID does not exist
-     * @throws InvalidiDTypeException if ID is invalid
-     * @throws FileNotFoundException if file does not exist
-     * @throws NurseCrossValidationError if Staff.txt cannot be loaded
-     * @throws PatientIdNotFound if patientID does not exit
+     * @throws NurseIdNotFound             if nurseID does not exist
+     * @throws InvalidiDTypeException      if ID is invalid
+     * @throws FileNotFoundException       if file does not exist
+     * @throws NurseCrossValidationError   if Staff.txt cannot be loaded
+     * @throws PatientIdNotFound           if patientID does not exit
      * @throws PatientCrossValidationError if Patients.txt cannot be loaded
-     * @throws InvalidDateException if date is invalid
+     * @throws InvalidDateException        if date is invalid
      */
     public ArrayList<NurseSchedule> readFile() throws NurseIdNotFound, InvalidiDTypeException,
             FileNotFoundException, NurseCrossValidationError, PatientIdNotFound,
@@ -72,7 +72,7 @@ public class NurseScheduleStorage {
             NurseScheduleChecker.isValidDate(details[2]);
             nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
         }
-        logger.log(Level.INFO,"Nurse Schedule file loaded");
+        logger.log(Level.INFO, "Nurse Schedule file loaded");
         return nurseSchedules;
     }
 
@@ -91,7 +91,7 @@ public class NurseScheduleStorage {
             }
             writer.close();
         } catch (IOException e) {
-            logger.log(Level.WARNING,"Error writing to NurseSchedule.txt");
+            logger.log(Level.WARNING, "Error writing to NurseSchedule.txt");
         }
         logger.log(Level.INFO, "Nurse Schedule file saved");
     }
@@ -100,13 +100,13 @@ public class NurseScheduleStorage {
      * Function creates, read and loads NurseSchedule.txt.
      *
      * @return populated arraylist
-     * @throws NurseIdNotFound if nurseID does not exist
-     * @throws InvalidiDTypeException if ID is invalid
-     * @throws FileNotFoundException if file does not exist
-     * @throws NurseCrossValidationError if Staff.txt cannot be loaded
-     * @throws PatientIdNotFound if patientID does not exit
+     * @throws NurseIdNotFound             if nurseID does not exist
+     * @throws InvalidiDTypeException      if ID is invalid
+     * @throws FileNotFoundException       if file does not exist
+     * @throws NurseCrossValidationError   if Staff.txt cannot be loaded
+     * @throws PatientIdNotFound           if patientID does not exit
      * @throws PatientCrossValidationError if Patients.txt cannot be loaded
-     * @throws InvalidDateException if date is invalid
+     * @throws InvalidDateException        if date is invalid
      */
     public ArrayList<NurseSchedule> load() throws FileNotFoundException, InvalidiDTypeException,
             NurseIdNotFound, NurseCrossValidationError, PatientIdNotFound,
