@@ -127,7 +127,7 @@ public class PatientChecker extends MainChecker {
      */
     public void checkLength() throws ExcessInputException, InsufficientInputException, UnrecognizedCommandException {
         CommandInputTypeLength c = commandLengthClassifier();
-        switch(c) {
+        switch (c) {
         case MULTI:
             inputLengthCheck(7, numberOfTokens);
             break;
@@ -148,7 +148,7 @@ public class PatientChecker extends MainChecker {
      * @return CommandInputTypeLength which shows represents the desired length of the command.
      * @throws UnrecognizedCommandException when the command is unrecognized.
      */
-    public CommandInputTypeLength commandLengthClassifier() throws UnrecognizedCommandException{
+    public CommandInputTypeLength commandLengthClassifier() throws UnrecognizedCommandException {
         CommandInputTypeLength commandLength;
         switch (command) {
         case "add":
