@@ -31,51 +31,51 @@ public class ParserHandler {
     /**
      * Check if first block starts of option, then continue with extracting the input.
      * @param extracted ArrayList of String containing the initial parsed option or argument.
-     * @param trimmedInput contains the remaining input that is needed to be parse.
+     * @param frontTrimmedInput contains the remaining input that is needed to be parse.
      * @return a ArrayList of String containing trimmed options and arguments.
      */
-    private ArrayList<String> startExtraction(ArrayList<String> extracted, String trimmedInput) {
-        if (checkOptionStartWith(trimmedInput)) {
-            extracted.add(trimmedInput.substring(0,2));
-            trimmedInput = trimmedInput.substring(2);
+    private ArrayList<String> startExtraction(ArrayList<String> extracted, String frontTrimmedInput) {
+        if (checkOptionStartWith(frontTrimmedInput)) {
+            extracted.add(frontTrimmedInput.substring(0,2));
+            frontTrimmedInput = frontTrimmedInput.substring(2);
         }
-        return extractSubsequentPart(extracted, trimmedInput);
+        return extractSubsequentPart(extracted, frontTrimmedInput);
     }
 
     /**
      * parse the remaining trimmed input before checking for last block.
      * @param extracted ArrayList of String containing the initial parsed option or argument.
-     * @param trimmedInput contains the remaining input that is needed to be parse.
+     * @param subsequentInput contains the remaining input that is needed to be parse.
      * @return a ArrayList of String containing trimmed options and arguments.
      */
-    private ArrayList<String> extractSubsequentPart(ArrayList<String> extracted, String trimmedInput) {
-        int optionIndex = getNextOptionIndex(trimmedInput);
+    private ArrayList<String> extractSubsequentPart(ArrayList<String> extracted, String subsequentInput) {
+        int optionIndex = getNextOptionIndex(subsequentInput);
         while (optionIndex != -1) {
-            String argument = trimmedInput.substring(0,optionIndex).trim();
+            String argument = subsequentInput.substring(0,optionIndex).trim();
             extracted.add(argument);
-            trimmedInput = trimmedInput.substring(optionIndex).stripLeading();
-            extracted.add(trimmedInput.substring(0,2));
-            trimmedInput = trimmedInput.substring(2);
-            optionIndex = getNextOptionIndex(trimmedInput);
+            subsequentInput = subsequentInput.substring(optionIndex).stripLeading();
+            extracted.add(subsequentInput.substring(0,2));
+            subsequentInput = subsequentInput.substring(2);
+            optionIndex = getNextOptionIndex(subsequentInput);
         }
-        return extractFinalPart(extracted, trimmedInput);
+        return extractFinalPart(extracted, subsequentInput);
     }
 
     /**
      * Check and parse if last block in ArrayList of String ends with option.
      * Add a empty string after the last block if last block ends with option.
      * @param extracted ArrayList of String containing the parsed option or argument.
-     * @param trimmedInput contains the final remaining input that is needed to be parse.
+     * @param finalInput contains the final remaining input that is needed to be parse.
      * @return a ArrayList of String containing trimmed options and arguments.
      */
-    private ArrayList<String> extractFinalPart(ArrayList<String> extracted, String trimmedInput) {
-        if (checkOptionEndWith(trimmedInput)) {
-            String argument = trimmedInput.substring(0, (trimmedInput.length() - 2)).trim();
+    private ArrayList<String> extractFinalPart(ArrayList<String> extracted, String finalInput) {
+        if (checkOptionEndWith(finalInput)) {
+            String argument = finalInput.substring(0, (finalInput.length() - 2)).trim();
             extracted.add(argument);
-            extracted.add(trimmedInput.substring(trimmedInput.length() - 2).trim());
+            extracted.add(finalInput.substring(finalInput.length() - 2).trim());
             extracted.add("");
         } else {
-            extracted.add(trimmedInput.trim());
+            extracted.add(finalInput.trim());
         }
         return checkFirstBlock(extracted);
     }
@@ -87,17 +87,17 @@ public class ParserHandler {
      * @return the final parsed ArrayList of String containing the options and arguments.
      */
     private ArrayList<String> checkFirstBlock(ArrayList<String> extracted) {
-        String firstblock = extracted.get(0);
-        if (StringUtils.startsWithAny(firstblock, "help ", "creditscore ")) {
-            String[] splitBlock = firstblock.split(" ", 2);
+        String firstBlock = extracted.get(0);
+        if (StringUtils.startsWithAny(firstBlock, "help ", "creditscore ")) {
+            String[] splitBlock = firstBlock.split(" ", 2);
             extracted.remove(0);
             extracted.add(splitBlock[0]);
             extracted.add(splitBlock[1].trim());
         }
-        if (StringUtils.startsWith(firstblock, "help") && firstblock.length() == 4) {
+        if (StringUtils.startsWith(firstBlock, "help") && firstBlock.length() == 4) {
             extracted.add(1,"all");
         }
-        if (StringUtils.startsWith(firstblock, "creditscore") && firstblock.length() == 11) {
+        if (StringUtils.startsWith(firstBlock, "creditscore") && firstBlock.length() == 11) {
             extracted.add(1,"");
         }
         return extracted;
