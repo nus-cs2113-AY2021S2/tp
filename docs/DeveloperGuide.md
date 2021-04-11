@@ -11,7 +11,10 @@ With the rise of demand for deliveryman due to the pandemic, this app optimises 
 man taking into account the number of deliveries per location and distances between locations, we improve the time and 
 efficiency of deliveries. This app aims to be a one stop solution and more for to meet all the needs of a deliverymen.  
 
-## Design & implementation
+## Design 
+![Architecture](diagrams/Architecture diagram.png "System Architecture Diagram")
+
+## Implementation
 
 ### [Implementation] : Recording Completed Deliveries
 
