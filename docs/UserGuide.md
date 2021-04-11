@@ -73,16 +73,16 @@ and their input format.
 >
 > :bulb: The light bulb denotes tips and tricks for using Patient Manager.
 >
-> ℹ️ The information symbol highlights useful information to take note of.
+> :information_source: The information symbol highlights useful information to take note of.
 >
-> ❗ The exclamation mark highlights important things to take note of.
+> :warning: The exclamation mark highlights important things to take note of.
 
 
 ---
 
 ## Quick Start
 
-> ℹ️ Patient Manager is a Command-Line application, and all commands need to be run from the
+> :information_source: Patient Manager is a Command-Line application, and all commands need to be run from the
 > console (e.g. Terminal/Command Prompt/PowerShell). For reference, a guide to open the Windows
 > Powershell in Windows 10 is shown below:
 >
@@ -95,7 +95,7 @@ and their input format.
    > `java -version` into your console and then pressing `ENTER`.
 1. Obtain a copy of the latest version of Patient Manager (`PatientManager.jar`) from
    [here](https://github.com/AY2021S2-CS2113T-W09-4/tp/releases) and place it in an empty folder.
-   > ❗ The folder must not be read-only. Otherwise, Patient Manager may encounter issues when saving
+   > :warning: The folder must not be read-only. Otherwise, Patient Manager may encounter issues when saving
    > records to disk.
 1. Open the console, enter `java -jar PatientManager.jar`, and press `ENTER` to start Patient Manager.
 1. Once the welcome message appears, simply type in a command (e.g. [`help`](#print-a-help-message-help))
@@ -104,7 +104,7 @@ and their input format.
 
 ## Features
 
-> ℹ️ Notes about the command format:
+> :information_source: Notes about the command format:
 >
 > - Words in `UPPER_CASE` are parameters supplied by the user.\
 > e.g. in `add IC_NUMBER`, `IC_NUMBER` is a parameter that has to be specified.\
@@ -126,7 +126,7 @@ and their input format.
 > e.g. if the command given is `list 123`, it will be interpreted as `list`.
 
 
-> ❗ Notes on valid and invalid user input:
+> :warning: Notes on valid and invalid user input:
 >
 > - Due to how Patient Manager stores its records to disk, the following ASCII characters are not allowed
 > to be used as part of any input:\
@@ -185,7 +185,7 @@ it will display a message to inform you that the patient already exists in the s
 
 <!-- So that ..., This means that ... -->
 
-> ❗ Note: Patient Manager will automatically validate the NRIC/FIN number based on the check digit
+> :warning: Note: Patient Manager will automatically validate the NRIC/FIN number based on the check digit
 > before it adds the patient. For testing purposes, you may want to use an NRIC/FIN number generator to
 > create valid NRIC/FIN numbers, like [this one](https://samliew.com/nric-generator).
 
@@ -234,7 +234,7 @@ The `/p` flag is used to delete patients based on their NRIC/FIN number, while t
 is used to delete records from a certain date. Exactly one of the `/p` or `/r` flags and their 
 corresponding arguments must be specified.
 
-> ❗ Note: Before deleting a patient's record, you must have previously loaded a patient with the
+> :warning: Note: Before deleting a patient's record, you must have previously loaded a patient with the
 > [`load`](#loading-a-patients-medical-records-load) command. If no patient has been loaded, Patient Manager
 > will print an error message.
 
@@ -306,7 +306,7 @@ An optional `DATE` argument may be provided to modify previous visit records, or
 specified date. This date has to be equal to or earlier than the current system date. If the no date is specified,
 Patient Manager will execute the command with the current system date. 
 
-> ❗ Note: Before adding a medical record to a patient, you must have previously loaded a patient with the
+> :warning: Note: Before adding a medical record to a patient, you must have previously loaded a patient with the
 > [`load`](#loading-a-patients-medical-records-load) command. If no patient has been loaded, Patient Manager
 > will print an error message.
 
@@ -334,7 +334,7 @@ Retrieves all consultation details of a patient.
 An optional `DATE` argument may be provided to retrieve the records from a specific date. If no records were
 found for the patient at the specified date, Patient Manager will inform you that no records were found.
 
-> ❗ Note: Before retrieving the  medical record(s) to a patient, you must have previously loaded a patient
+> :warning: Note: Before retrieving the  medical record(s) to a patient, you must have previously loaded a patient
 > with the [`load`](#loading-a-patients-medical-records-load) command. If no patient has been loaded, Patient
 > Manager will print an error message.
 
