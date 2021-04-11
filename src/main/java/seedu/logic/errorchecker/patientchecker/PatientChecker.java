@@ -193,7 +193,7 @@ public class PatientChecker extends MainChecker {
      *
      * @throws NoInputException when the user has omitted a required field.
      */
-    private void emptySpaceCheck() throws NoInputException {
+    public void emptySpaceCheck() throws NoInputException {
         for (int i = 0; i < numberOfTokens; i++) {
             if (stringTokens[i].trim().equals("")) {
                 logger.log(Level.WARNING, "Input field is empty.");
@@ -209,7 +209,7 @@ public class PatientChecker extends MainChecker {
      * @throws NumberFormatException when the input from the user is not an integer.
      * @throws HealthVaultException collection of exceptions from checks.
      */
-    private void checkAge(String stringToken) throws NumberFormatException, HealthVaultException {
+    public void checkAge(String stringToken) throws NumberFormatException, HealthVaultException {
         checkNumericInput(stringToken);
         checkAgeRange(stringToken);
     }
@@ -220,7 +220,7 @@ public class PatientChecker extends MainChecker {
      * @param ageString the age of the patient.
      * @throws InvalidPatientAgeException when the patient's age is not acceptable.
      */
-    private void checkAgeRange(String ageString) throws InvalidPatientAgeException {
+    public void checkAgeRange(String ageString) throws InvalidPatientAgeException {
         int age = Integer.parseInt(ageString);
         if (!(age >= 0 && age <= 150)) {
             logger.log(Level.WARNING, "Patient age is out of range.");
@@ -254,7 +254,7 @@ public class PatientChecker extends MainChecker {
      * @param userInput the user input to be checked.
      * @return the number of integers in the user input.
      */
-    private int numberOfIntegersInString(String userInput) {
+    public int numberOfIntegersInString(String userInput) {
         int numberOfIntegers = 0;
         for (int i = 0; i < userInput.length(); i++) {
             if (Character.isDigit(userInput.charAt(i))) {
@@ -270,7 +270,7 @@ public class PatientChecker extends MainChecker {
      * @param userID the string containing the ID of the patient.
      * @throws InvalidPatientIdException when the characters in the patient ID are unacceptable.
      */
-    private void checkValidId(String userID) throws InvalidPatientIdException {
+    public void checkValidId(String userID) throws InvalidPatientIdException {
         if (userID.length() != 6) {
             logger.log(Level.WARNING, "Incorrect patient ID length.");
             throw new InvalidPatientIdException();
@@ -289,7 +289,7 @@ public class PatientChecker extends MainChecker {
      * @param userID the string containing the ID of the patient.
      * @throws CorruptedFileException when file is corrupted.
      */
-    private void checkIdExistStorage(String userID) throws CorruptedFileException {
+    public void checkIdExistStorage(String userID) throws CorruptedFileException {
         if (isIdTakenStorage(userID)) {
             logger.log(Level.WARNING, "Duplicate patient ID in storage.");
             throw new CorruptedFileException("Patient");
@@ -302,7 +302,7 @@ public class PatientChecker extends MainChecker {
      * @param userID the string containing the ID of the patient.
      * @return true if the ID is taken already and false if the ID is new.
      */
-    private boolean isIdTakenStorage(String userID) {
+    public boolean isIdTakenStorage(String userID) {
         for (Patient patient : patientArrayList) {
             String patientID = patient.getPatientID();
             if (patientID.equals(userID)) {
@@ -321,7 +321,7 @@ public class PatientChecker extends MainChecker {
      * @throws IdNotFoundException when the ID does not exist in the patient list
      * @throws DuplicateIdException when there is already an existing ID in the patient list.
      */
-    private void checkIdExist(String userID, PatientList patients, String command) throws IdNotFoundException,
+    public void checkIdExist(String userID, PatientList patients, String command) throws IdNotFoundException,
             DuplicateIdException {
         if (patients.isIdTaken(userID)) {
             if (command.equals("add")) {
