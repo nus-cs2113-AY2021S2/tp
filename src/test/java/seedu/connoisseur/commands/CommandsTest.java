@@ -2,8 +2,7 @@ package seedu.connoisseur.commands;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.Before;
-import org.junit.After;
+import org.junit.jupiter.api.AfterEach;
 
 import seedu.connoisseur.review.Review;
 import seedu.connoisseur.storage.Storage;
@@ -27,6 +26,7 @@ public class CommandsTest {
 
     @BeforeEach
     public void setUp() {
+        System.setOut(new PrintStream(outContent));
         Review reviewa = new Review("superman", "category", 5, "description");
         Review reviewb = new Review("avengers", "category", 5, "description");
         reviewList.reviews.add(reviewa);
@@ -50,25 +50,17 @@ public class CommandsTest {
         assertEquals(numberOfReviewsBeforeRemoval - 1, numberOfReviewsAfterRemoval);
     }
 
-
-    @Before
-    public void setUpStreams() {
-        System.setOut(new PrintStream(outContent));
-    }
-
-    @After
+    @AfterEach
     public void restoreStreams() {
         System.setOut(originalOut);
     }
 
     @Test
     public void listReview_noReviewsExist() {
-
-        setUpStreams();
+        setUp();
         System.out.print("You have no reviews, type 'new' to start!");
         assertEquals("You have no reviews, type 'new' to start!", outContent.toString());
         restoreStreams();
-
     }
 
     @Test
