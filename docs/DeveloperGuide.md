@@ -433,29 +433,30 @@ Below is our analysis of our target user and the importance in which he/she woul
 ## *5. Appendix: Instructions for manual testing*
 
 ### 5.1 Launch and shutdown
-1. Initial launch  
-    1.1. Download the latest jar file from [here](https://github.com/AY2021S2-CS2113T-T09-2/tp/releases/tag/v1.0)
-   and copy it into an empty folder.  
-    1.2. Open the terminal/powershell console and navigate to the folder in which the `.jar` file was saved.  
-   Expected: Greeting message of NUSMaze  to be shown
-2. Exiting the application
-    2.1 Type 'bye' and press enter  
-    Expected: The application shows thank you message and exits successfully.
+1. Initial launch<br>
+    1.1. Download the latest jar file from [here](https://github.com/AY2021S2-CS2113T-T09-2/tp/releases/tag/v1.0) and copy it into an empty folder.  
+    1.2. Open the terminal/powershell console and navigate to the folder in which the `.jar` file was saved.<br>
+   Expected: Greeting message of NUSMaze  to be shown<br>
+2. Exiting the application<br>
+    2.1 Type 'bye' and press enter<br>
+    Expected: The application shows thank you message and exits successfully.<br>
+   
+
 ### 5.2 Routing
-1. Routing with valid blocks  
-    1.1 Launch the application and type 'Go' followed by the enter key.    
-    1.2 Test case: Starting block → `E1`, Destination block → `E7`  
-    Expected:  `Route: E1 -> LT5 -> E3 -> E4 -> E4A -> EW2 -> E6 -> E7` should be displayed   
-    1.3 Test case: Starting block → `e4`, Destination block → `techno edge`  
-    Expected:  `Route: E4 -> E3 -> LT5 -> TECHNO EDGE` should be displayed
-2. Routing with invalid blocks  
-    2.1 Test case: Starting block → `E10`, Destination block → `E7`  
-    Expected:  `Invalid block! Please enter the command again to retry!` should be displayed  
-    2.2 Test case: Starting block → `Invalid block`, Destination block → `Invalid block`  
-    Expected:  Similar to previous  
-3. Routing to an eatery
-    3.1 Test case: Starting block → `e3`, Destination block → `eatery`, Select entry to go → `5`  
-    Expected: `Route: E3 -> E2 -> EA -> SPINELLI COFFEE` should be displayed  
-    3.2 Test case: Starting block → `e3`, Destination block → `spinelli coffee`
-    Expected: Similar to previous  
+1. Routing with valid blocks<br>
+    1.1 Launch the application and type 'Go' followed by the enter key.<br>
+    1.2 Test case: Starting block → `E1`, Destination block → `E7`<br>
+    Expected:  `Route: E1 -> LT5 -> E3 -> E4 -> E4A -> EW2 -> E6 -> E7` should be displayed<br>
+    1.3 Test case: Starting block → `e4`, Destination block → `techno edge`<br>
+    Expected:  `Route: E4 -> E3 -> LT5 -> TECHNO EDGE` should be displayed<br>
+2. Routing with invalid blocks<br>
+    2.1 Test case: Starting block → `E10`, Destination block → `E7`<br>
+    Expected:  `Invalid block! Please enter the command again to retry!` should be displayed<br>
+    2.2 Test case: Starting block → `Invalid block`, Destination block → `Invalid block`<br>
+    Expected:  Similar to previous<br>
+3. Routing to an eatery<br>
+    3.1 Test case: Starting block → `e3`, Destination block → `eatery`, Select entry to go → `5`<br>
+    Expected: `Route: E3 -> E2 -> EA -> SPINELLI COFFEE` should be displayed<br>
+    3.2 Test case: Starting block → `e3`, Destination block → `spinelli coffee`<br>
+    Expected: Similar to previous<br>
    
