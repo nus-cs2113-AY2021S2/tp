@@ -28,6 +28,7 @@ Given below are my contributions to the project
     - User Guide:
         - Added documentation for the features `add`, `delete`, `list`, `return`, `help` in Doctors' Appointment. [\#9710558](), [\#51fa4c6](), [\#0e513a6](), [\#943977e]()
         - Edited command summary. [\#2c516c9]()
+        - Added the FAQ section for documentation.
 
     - Developer Guide:
         - Added implementation details of Doctors' Appointment, including all of its features. [\#1b1a7c2](), [\#6d353a7]()

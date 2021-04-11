@@ -12,22 +12,22 @@ The purpose of this User Guide is to assist you in the usage of the application.
 
 ## Content Page
 1. [Introduction](#1-introduction)
-	1. [What is HealthVault?](#11-what-is-healthvault)
-	2. [About the User Guide](#12-about-the-user-guide)
+    1. [What is HealthVault?](#11-what-is-healthvault)
+    2. [About the User Guide](#12-about-the-user-guide)
 2. [How to use this guide](#2-how-to-use-the-guide)
-	1. [Technical terms](#21-technical-terms)
-	2. [Symbols & Icons](#22-symbols--icons)
+    1. [Technical terms](#21-technical-terms)
+    2. [Symbols & Icons](#22-symbols--icons)
 3. [Getting Started](#3-getting-started)
-	1. [Introduction to Command Line Interface (CLI)](#31-introduction-to-command-line-interface-cli)
-	2. [Installation Guide](#-32-installation-guide)
+    1. [Introduction to Command Line Interface (CLI)](#31-introduction-to-command-line-interface-cli)
+    2. [Installation Guide](#-32-installation-guide)
 4. [Start Menu](#4-start-menu)
-	1. [Interpreting help commands](#41-interpreting-help-commands)
+    1. [Interpreting help commands](#41-interpreting-help-commands)
 5. [Features](#5-features)
-	1. [Staff](#51-staff)
-	2. [Patient](#52-patient)
-	3. [Doctor's Appointment](#53-doctors-appointment)
-	4. [Schedules for Nurses](#54-schedules-for-nurses)
-	5. [Inventory](#55-inventory)
+    1. [Staff](#51-staff)
+    2. [Patient](#52-patient)
+    3. [Doctor's Appointment](#53-doctors-appointment)
+    4. [Schedules for Nurses](#54-schedules-for-nurses)
+    5. [Inventory](#55-inventory)
 6. [FAQ](#6-faq)
 7. [Command Summary](#7-command-summary)
 
@@ -121,16 +121,16 @@ After keying in their input, the most common way to enter the response into the 
 2. Download the latest JAR file from this [website](https://github.com/AY2021S2-CS2113T-F08-2/tp/releases)
 
 3. Open the command window
-	- Click the search icon in the bottom left side of the screen
-	- Type ‘command prompt’ in the search bar
-	- Select the application called ‘Command Prompt’
+    - Click the search icon in the bottom left side of the screen
+    - Type ‘command prompt’ in the search bar
+    - Select the application called ‘Command Prompt’
 
 4. `cd` into the folder containing the JAR file
-	- Locate the file path of the JAR file that you have downloaded
-	- For example:  (C:\Users\JohnDoe\Downloads), where JohnDoe is the user’s name
-	- Then, run the following command: `cd [File Path]`
-	- Example: `cd C:\Users\JohnDoe\Downloads`
-	- Run the following command: `java -jar [JAR file name]`
+    - Locate the file path of the JAR file that you have downloaded
+    - For example:  (C:\Users\JohnDoe\Downloads), where JohnDoe is the user’s name
+    - Then, run the following command: `cd [File Path]`
+    - Example: `cd C:\Users\JohnDoe\Downloads`
+    - Run the following command: `java -jar [JAR file name]`
 
 :information_source: HealthVault is optimized for screen sizes with the following specifications: 1450px (width) x 600px (height).
 Using smaller screen sizes and dimensions may result in a suboptimal viewing experience for various functionalities.
