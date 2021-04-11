@@ -1,0 +1,39 @@
+@startuml List_Sequence_Diagram
+!define LIGHTBLUE
+!includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+skinparam style strictuml
+
+participant Ui #Turquoise
+participant Parser #PaleGreen
+participant Commands #PaleGreen
+participant ReviewList #Gold
+participant RecommendationList #Gold
+
+activate Ui #Turquoise
+Ui -> Parser : determineCommand()
+activate Parser #PaleGreen
+
+Parser -> Commands : list()
+activate Commands #PaleGreen
+
+
+    Commands -> RecommendationList : listRecommendations()
+    activate RecommendationList #Gold
+
+    alt recommendations.size() == 0
+        RecommendationList --> Ui : printEmptyRecommendationListMessage()
+
+    else else
+        RecommendationList -> RecommendationList : displayRecommendations()
+    end
+
+RecommendationList --> Commands
+deactivate RecommendationList
+
+
+Commands --> Parser
+deactivate Commands
+Parser --> Ui
+deactivate Parser
+
+@enduml
