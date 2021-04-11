@@ -20,7 +20,7 @@ import seedu.duke.exception.UnknownException;
 import seedu.duke.model.Patient;
 
 public class ParserTest {
-    Parser defaultParser = new Parser(new Ui(), new Data());
+    Parser parser = new Parser(new Ui(), new Data());
     HashMap<String, String> sampleArguments = new HashMap<>();
 
     /**
@@ -36,7 +36,7 @@ public class ParserTest {
 
     private void checkAgainstSampleArguments(String fullCommand) {
         assertDoesNotThrow(() -> {
-            Command command = defaultParser.parse(fullCommand);
+            Command command = parser.parse(fullCommand);
             assertTrue(command instanceof EchoCommand);
             assertTrue(((EchoCommand) command).getArguments().equals(sampleArguments));
         });
@@ -48,22 +48,22 @@ public class ParserTest {
         // Test out a string with only white spaces
         String fullCommand2 = "     ";
 
-        InvalidInputException e1 = assertThrows(InvalidInputException.class, () -> {
-            defaultParser.parse(fullCommand1);
+        InvalidInputException invalidInputException1 = assertThrows(InvalidInputException.class, () -> {
+            parser.parse(fullCommand1);
         });
-        InvalidInputException e2 = assertThrows(InvalidInputException.class, () -> {
-            defaultParser.parse(fullCommand2);
+        InvalidInputException invalidInputException2 = assertThrows(InvalidInputException.class, () -> {
+            parser.parse(fullCommand2);
         });
 
-        assertEquals(Constants.INVALID_INPUT_EMPTY_STRING, e1.getMessage());
-        assertEquals(Constants.INVALID_INPUT_EMPTY_STRING, e2.getMessage());
+        assertEquals(Constants.INVALID_INPUT_EMPTY_STRING, invalidInputException1.getMessage());
+        assertEquals(Constants.INVALID_INPUT_EMPTY_STRING, invalidInputException2.getMessage());
     }
 
     @Test
     public void parse_malformedCommand_exceptionThrown() {
         String fullCommand = "malformed";
-        assertThrows(UnknownException.class, () -> {
-            defaultParser.parse(fullCommand);
+        assertThrows(InvalidInputException.class, () -> {
+            parser.parse(fullCommand);
         });
     }
 
@@ -71,7 +71,7 @@ public class ParserTest {
     public void parse_invalidCommand_exceptionThrown() {
         String fullCommand = "invalid_command a b c /p x";
         Exception e = assertThrows(InvalidInputException.class, () -> {
-            defaultParser.parse(fullCommand);
+            parser.parse(fullCommand);
         });
 
         assertEquals(Constants.INVALID_INPUT_UNKNOWN_COMMAND, e.getMessage());
@@ -129,15 +129,15 @@ public class ParserTest {
         String words = "Hi! This is PatientManager!";
         String fullCommand = "echo " + words;
         assertDoesNotThrow(() -> {
-            Command command = defaultParser.parse(fullCommand);
+            Command command = parser.parse(fullCommand);
             assertTrue(command instanceof EchoCommand);
 
             // Capture standard output
             final ByteArrayOutputStream myOut = new ByteArrayOutputStream();
             System.setOut(new PrintStream(myOut));
             command.execute();
-            final String standardOutput = myOut.toString();
-            assertEquals(words, standardOutput);
+            final String string = myOut.toString();
+            assertEquals(words, string);
         });
     }
 
@@ -162,7 +162,7 @@ public class ParserTest {
         });
 
         assertDoesNotThrow(() -> {
-            Command command = defaultParser.parse(fullCommand);
+            Command command = this.parser.parse(fullCommand);
             assertTrue(command instanceof EchoCommand);
             Data compareData = ((EchoCommand) command).getData();
             assertTrue(compareData.getPatient(nric) == null);

@@ -58,12 +58,12 @@ public class Ui {
     }
 
     /**
-     * Prints the exception message specified in @param.
+     * Prints a detailed error message for the exception specified in @param.
      *
-     * @param e Exception to be printed
+     * @param exception Exception to be printed
      */
-    public void printException(Exception e) {
-        printMessage(e.toString());
+    public void printException(Exception exception) {
+        printMessage(exception.toString());
     }
 
     /**

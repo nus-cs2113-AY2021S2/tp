@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ListCommandTest {
@@ -17,7 +18,7 @@ public class ListCommandTest {
         Ui ui = new Ui();
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "list");
-        
+
         ListCommand listCommand = new ListCommand(ui, data, arguments);
 
         final ByteArrayOutputStream myOut = new ByteArrayOutputStream();
@@ -43,13 +44,11 @@ public class ListCommandTest {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(bos));
 
-        try {
+        assertDoesNotThrow(() -> {
             listCommand.execute();
-        } catch (Exception exception) {
-            System.out.println("An error occurred while running tests");
-        }
+        });
 
-        assertEquals("List of patients (in alphanumeric order):\n"
+        assertEquals("List of patients (in alphanumeric order):" + System.lineSeparator()
                 + "1. S1234567D" + System.lineSeparator(), bos.toString());
         System.setOut(originalOut);
     }
