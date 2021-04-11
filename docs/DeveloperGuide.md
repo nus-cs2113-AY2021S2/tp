@@ -549,7 +549,7 @@ the user during testing.
 Therefore, user testers should manually compare the results of the `history` command with their actual input
 during testing, and see if they correspond.
 
-1. Prerequisites: Only the input in the above [add command](adding-food) was added to the list.
+1. Prerequisites: Only the input in the above [add command](#adding-food) was added to the list.
    No other food was added to the list.
     * Note: To reset the history, use `history clear`.
     * `add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 100`
