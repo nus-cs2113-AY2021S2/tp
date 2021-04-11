@@ -4,7 +4,7 @@
 
 ## Overview
 
-GULIO is a university module manager designed for efficiency when used by fast typists. It is capable of storing lessons and tasks for individual modulesand lesson notes via cheat-sheets.
+GULIO is a university module manager designed for efficiency when used by fast typists. It is capable of storing lessons and tasks for individual modules and lesson notes via cheat-sheets.
 
 ## Summary of Contributions
 
