@@ -3,7 +3,6 @@ package command;
 import canteens.Canteen;
 import exceptions.DukeExceptions;
 import parser.Parser;
-import storage.Storage;
 import storage.UpdateFile;
 import ui.Ui;
 
@@ -39,7 +38,7 @@ public class DeleteCanteenCommand extends Command {
             assert canteenIndex >= 0 && canteenIndex < canteens.size() : "DeleteCanteenCommand canteenIndex invalid";
             Canteen removedCanteen = canteens.remove(canteenIndex);
             ui.showCanteenDeleted(removedCanteen, canteens.size());
-            UpdateFile.deleteObjInFile(new FileWriter(savePath), canteens);
+            UpdateFile.deleteAndUpdateFile(new FileWriter(savePath), canteens);
         } else {
             System.out.println(LINESPACING);
             System.out.println("There are no canteens left!");

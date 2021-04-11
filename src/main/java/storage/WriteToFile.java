@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class WriteToFile extends Storage {
 
     private static String separator = "<>";
+    private static ArrayList<Canteen> canteens;
 
     public WriteToFile(){
 
@@ -42,6 +43,6 @@ public class WriteToFile extends Storage {
 
     @Override
     public ArrayList<Canteen> execute() throws IOException {
-        return null;
+        return canteens;
     }
 }

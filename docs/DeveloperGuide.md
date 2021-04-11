@@ -38,13 +38,16 @@ password is `Password`. When run as admin the user is able to `add` or `remove` 
 functions allows the app to be moderated and maintained by the person in charge. 
 
 ### Architecture
-![Architecture Diagram](./img/architecture%20diagram.png)
+![architecture diagram](./img/architecture%20diagram.png)
 
 The Architecture Diagram shown above explains the high-level design of NusFoodReviews Application. The following is a brief overview of each component.
 
 `Main` is responsible for,
 + At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 + At shut down: Shuts down the components and invokes cleanup methods where necessary.
+
+`Resources` contains the bundled resource(database file) of the application. When user run the application for the first time, 
+it will read from this resource and copy it to the local machine. Return user will not need to read from this resource anymore. 
 
 `Commons` represents a collection of classes used by multiple other components.
   
@@ -63,6 +66,17 @@ The rest of the App consists of four components.
 ### Model-Component
 
 ### Storage-Component
+![Storage Class Diagram](./img/storage CD.PNG)
+
+The `Storage` component,
+* For new user, will first create a new directory and text file.
+* Next, will load the data from resource and store it into the newly created text file.
+* At the same time, it will also load into the in-app data.
+* If it is an existing user, it will only loads data from the text file into in-App data.  
+
+
+
+
 
 ##Implementation
 For public users, the list of commands is shown below:

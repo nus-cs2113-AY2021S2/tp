@@ -12,12 +12,13 @@ import java.util.ArrayList;
 public class UpdateFile extends Storage {
 
     private static String separator = "<>";
+    private static ArrayList<Canteen> canteens;
 
     public UpdateFile(){
 
     }
 
-    public static void deleteObjInFile(FileWriter fw, ArrayList<Canteen> canteens) throws IOException {
+    public static void deleteAndUpdateFile(FileWriter fw, ArrayList<Canteen> canteens) throws IOException {
 
         for (Canteen canteen :canteens) {
             //print canteen
@@ -42,6 +43,6 @@ public class UpdateFile extends Storage {
 
     @Override
     public ArrayList<Canteen> execute() throws IOException {
-        return null;
+        return canteens;
     }
 }

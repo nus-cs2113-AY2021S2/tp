@@ -30,14 +30,14 @@ public class ReadFiles extends Storage {
         return canteens;
     }
 
-    private static void readFiles(BufferedReader reader) throws IOException {
+    private void readFiles(BufferedReader reader) throws IOException {
         String line;
         if (new File(DEFAULT_STORAGE_FILEPATH).exists()) {
             Ui.showDirectoryFound();
             Scanner sc = new Scanner(new File(DEFAULT_STORAGE_FILEPATH));
             while (sc.hasNextLine()) {
                 line = sc.nextLine();
-                readFunc(line);
+                filterLine(line);
             }
         } else {
             File d = new File(DEFAULT_STORAGE_DIRECTORY);
@@ -47,13 +47,13 @@ public class ReadFiles extends Storage {
             PrintWriter pw = new PrintWriter(DEFAULT_STORAGE_FILEPATH);
             while ((line = reader.readLine()) != null) {
                 pw.println(line);
-                readFunc(line);
+                filterLine(line);
             }
             pw.close();
         }
     }
 
-    private static void readFunc(String line) {
+    private void filterLine(String line) {
         Canteen canteen;
         Store store;
         String[] storedLine = line.split("<>");
@@ -65,7 +65,7 @@ public class ReadFiles extends Storage {
             break;
         case 2:
             //check if canteen exist
-            canteen = findCanteen(storedLine[0]);
+            canteen = findDuplicateCanteen(storedLine[0]);
             //add new store to canteen
             store = new Store(storedLine[1]);
             canteen.getStores().add(store);
@@ -73,16 +73,16 @@ public class ReadFiles extends Storage {
         case 3:
             String[] reviewDetails = storedLine[2].split("//");
             //check if canteen exist
-            canteen = findCanteen(storedLine[0]);
+            canteen = findDuplicateCanteen(storedLine[0]);
             //check if store exist
-            store = findStore(canteen, storedLine[1]);
+            store = findDuplicateStore(canteen, storedLine[1]);
             store.addReview(new Review(reviewDetails[0], Double.parseDouble(reviewDetails[1]), reviewDetails[2]));
             break;
         case 4:
             //check if canteen exist
-            canteen = findCanteen(storedLine[0]);
+            canteen = findDuplicateCanteen(storedLine[0]);
             //check if store exist
-            store = findStore(canteen, storedLine[1]);
+            store = findDuplicateStore(canteen, storedLine[1]);
             store.addMenu(new Menu(storedLine[2], Double.parseDouble(storedLine[3])));
             break;
         default:
@@ -90,7 +90,7 @@ public class ReadFiles extends Storage {
         }
     }
 
-    private static Store findStore(Canteen canteen, String storeName) {
+    private Store findDuplicateStore(Canteen canteen, String storeName) {
         Store store = null;
         boolean hasStore = false;
 
@@ -109,7 +109,7 @@ public class ReadFiles extends Storage {
         return store;
     }
 
-    private static Canteen findCanteen(String canteenName) {
+    private Canteen findDuplicateCanteen(String canteenName) {
         Canteen canteen = null;
         boolean hasCanteen = false;
 

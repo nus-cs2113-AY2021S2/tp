@@ -9,7 +9,6 @@ public abstract class Storage {
 
     public static final String DEFAULT_STORAGE_FILEPATH = "data/DoNotEdit.txt";
 
-
     public Storage() {
     }
 

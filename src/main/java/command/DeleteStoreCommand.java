@@ -52,6 +52,6 @@ public class DeleteStoreCommand extends Command {
         String storeName = currentCanteen.getStore(storeIndex).getStoreName();
         currentCanteen.deleteStore(storeIndex);
         ui.showDeleteStore(storeName);
-        UpdateFile.deleteObjInFile(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH),canteens);
+        UpdateFile.deleteAndUpdateFile(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH),canteens);
     }
 }
