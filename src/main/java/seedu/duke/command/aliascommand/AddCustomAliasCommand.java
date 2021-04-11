@@ -16,6 +16,11 @@ public class AddCustomAliasCommand extends Command {
         this.ui = new AliasUi();
     }
 
+    /**
+     * This function executes the adding of an alias to a block. The user input for the alias to be added is obtained
+     * by calling the getAliasInfo function in the ui class which will then be checked to determine if its valid. The
+     * alias is then added into the hashlist in the BlockAlias class if it was valid.
+     */
     @Override
     public void execute() {
         try {

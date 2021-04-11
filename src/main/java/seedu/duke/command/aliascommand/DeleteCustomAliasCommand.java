@@ -15,6 +15,10 @@ public class DeleteCustomAliasCommand extends Command {
         this.ui = new AliasUi();
     }
 
+    /**
+     * This function executes the delete alias command. It gets the user's input for the alias to be deleted by calling
+     * the ui class and after which calls the deleteAlias function in the BlockAlias class to delete it.
+     */
     @Override
     public void execute() {
         try {
