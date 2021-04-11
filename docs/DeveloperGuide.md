@@ -249,55 +249,77 @@ The following is the Sequence diagram to `add a recommendation`.
 ![add reco seq](./diagrams/Add_Reco_Sequence_Diagram.png)
 <p align="center">Figure !!. Sequence Diagram for add recommendations</p>
 
-![add_reco](./images/ug/add_reco.png)
-<p align="center">Figure !!. Adding a Recommendation</p>
-
 A general explanation of add recommendation works:
-`Ui` will read in user command, calls `Paser#determineCommand()` to determine the input.
+1. `Ui` will read in user command, calls `Paser#determineCommand()` to determine the input.
 
-`Paser` calls for `Commands#add` if input enter is `new` or `add` command.
+2. `Paser` calls for `Commands#add` if input enter is `new` or `add` command.
 
-`Commands` calls for `RecommendationList#addReccomendation` to prompt and read respective information such as  `title`, `category`, `price range`,`recommendedby` and `location`.
+3. `Commands` calls for `RecommendationList#addReccomendation` to prompt and read respective information such as  `title`, `category`, `price range`,`recommendedby` and `location`.
+   1.`title` - string with 20char limit, that will call [`RecommendationList#checkAndPrintDuplicateRecommendation`]() to check for duplicates in both ArrayLists `reviews` and `recommendations`.
+   2. `category`, `recommendedby` and `location` - string with 15char limit, that cannot be whitespace or null.
+   3. `price range`- string, that will call `RecommendationList#checkPriceValidity` and restrict it to 2 decimal places.
 
-   `title` - string with 20char limit, that will call [`RecommendationList#checkAndPrintDuplicateRecommendation`]() to check for duplicates. 
-   
-   `category`, `recommendedby` and `location` - string with 15char limit, that cannot be whitespace or null.
-   
-   `price range`- string, that will call `RecommendationList#checkPriceValidity` and restrict it to 2 decimal places.
+4. The violation of any constraints for each attribute will print an error message from `ui` and be promoted to re-enter a valid input.
 
-The violation of any constraints for each attribute will print an error message from `ui` and be promoted to re-enter a valid input.
+5. When all fields are valid, fields are added into a `Recommendation` Class.
 
-When all fields are valid, fields are added into a `Recommendation` Class.
-
-The new `Recommendation` is added into an ArrayList `recommendations`.
+6. The new `Recommendation` is added into an ArrayList `recommendations`.
 
 ### 5.3.2 List Recommendation Feature
 This feature prints out `title`, `category`, `price range`,`recommendedby` and `location` String attributes for each `Recommendation` class in the ArrayList `recommendations`.
 
-The mechanism to add a recommendation is facilitated by the `RecommendationList` class. The user is able to list all recommendations using `list` command.
+The mechanism to list recommendations is facilitated by the `RecommendationList` class. The user is able to list all recommendations using `list` command.
 
 The following is the Sequence diagram to `list a recommendation`.
 ![List_Reco_seq](./diagrams/List_Reco_Sequence_Diagram.png)
 
-`Commands` calls `RecommendationList#listRecommendations` to retrieve `Recommendation` in `recommendations`
-`RecommendationList` calls itself `displayRecommendations` to print `Recommendation` in `recommendations`.
+A general explanation of how this feature works:
+
+1. `Commands` calls `RecommendationList#listRecommendations` to retrieve `Recommendation` in `recommendations`
+2. `RecommendationList` calls itself `displayRecommendations` to iterate through and print `Recommendation` in `recommendations`.
 
 ### 5.3.3 Edit a Recommendation Feature
-This feature allows the user to edit their fields in a specific `Recommendation` Class in the ArrayList `recommendations`.
+This feature allows the user to change the fields in a specific `Recommendation` Class in the ArrayList `recommendations`.
 
-The mechanism to add a recommendation is facilitated by the `RecommendationList` class. The user is able to edit in an existing recommendation using `edit [TITLE]` command.
+The mechanism to edit a recommendation is facilitated by the `RecommendationList` class. The user is able to edit in an existing recommendation using `edit [TITLE]` command.
 
 The following is the Sequence diagram to `edit a recommendation`.
 ![Edit_Reco_seq](./diagrams/Edit_Reco_Sequence_Diagram.png)
+ 
+A general explaination of how this feature works:
 
-`Commands` will call `RecommendationList#editRecommendation` to determine which `Recommendation` from the ArrayList `recommendatios` should be editied.
+1. `Commands` will call `RecommendationList#editRecommendation` to determine which `Recommendation` from the ArrayList `recommendatios` should be editied.
 
-`RecommendationList` then calls itself, `editRecommendationFields`.
+2. `RecommendationList` then calls itself, `editRecommendationFields`.
 Similar to [adding a recommendation](#531-add-a-recommendation-feature), edit will take in either `title`, `category`, `price range`,`recommendedby` and `location` String attributes for that specific `Recommendation` class and replace previous String stored with new user input.
 After checking for duplicates, the violation of any constraints for each attribute will print an error message from `ui` and prompt for a valid input.
 
 ### 5.3.4 Delete a Recommendation Feature
+This feature allows the user to remove a specific `Recommendation` from the ArrayList `recommendations`.
+
+The mechanism to remove a recommendation is facilitated by the `RecommendationList` class. The user is able to delete in an existing recommendation using `delete [TITLE]` command.
+
+The following is the Sequence diagram to `delete a recommendation`.
+![Delete_Reco_seq](./diagrams/Delete_Reco_Sequence_Diagram.png)
+
+A general explanation of how this feature works:
+
+1. `Commands` calls for `RecommendationList#deleteRecommendation`, Connoisseur will check if the title given exists.
+2. If title exists, Connoisseur will remove it from the ArrayList `recommendations`.
+
 ### 5.3.5 Review a Recommendation Feature
+This feature allows the user to change a specific `Recommendation` to a `Review` class, removing it from the ArrayList `recommendations` and adding it to the ArrayList `reviws`.
+
+The mechanism to review a recommendation is facilitated by the `RecommendationList` class. The user is able to review in an existing recommendation using `done [TITLE]` command.
+
+The following is the Sequence diagram to `review a recommendation`.
+![Review_a_Reco_seq](./diagrams/Done_Sequence_Diagram.png)
+
+A general explanation of how this feature works:
+
+1. `Commands` calls for `RecommendationList#convertRecommendation`, which retrieves fields from the `Recommendation` that is required by and creates a new `Review` Object.
+2. `RecommendationList` then calls for `ReviewList#receiveConvert` with the new `Review` and inserts it into the ArrayList `reviews`.
+3. `RecommendationList#convertRecommendation` continues with the chosen `Recommendation` object and removes it from the ArrayList `recommendations`.
 
 ### 5.4 Storage
 ### 5.4.1 Storage Format
