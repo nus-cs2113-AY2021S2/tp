@@ -20,17 +20,17 @@ loop while not exit
     UI --> Finux : rawInput : String
     deactivate UI
 
-    Finux -> ParserHandler : getParseInput(rawInput)
+    Finux -> ParserHandler : getParseInput(rawInput : String)
     activate ParserHandler
     ParserHandler --> Finux : parsedArguments : ArrayList<String>
     deactivate ParserHandler
 
-    Finux -> CommandHandler : parseCommand(parsedArguments)
+    Finux -> CommandHandler : parseCommand(parsedArguments : ArrayList<String>)
     activate CommandHandler
-    CommandHandler -> CommandHandler :createCommand(parsedArguments)
+    CommandHandler -> CommandHandler :createCommand(parsedArguments : ArrayList<String>)
     activate CommandHandler
     create Command
-    CommandHandler -> Command : Command(parsedArguments)
+    CommandHandler -> Command : Command(parsedArguments : ArrayList<String>)
     activate Command
     Command --> CommandHandler
     deactivate Command
