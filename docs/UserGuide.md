@@ -71,7 +71,7 @@ and their input format.
 >
 > `Code blocks` are used to denote commands in the command line, user input, output from Patient Manager and file names.
 >
-> 💡 The light bulb denotes tips and tricks for using Patient Manager.
+> :bulb: The light bulb denotes tips and tricks for using Patient Manager.
 >
 > ℹ️ The information symbol highlights useful information to take note of.
 >
@@ -91,7 +91,7 @@ and their input format.
 1. Ensure that you have Java 11 installed on your local computer. If you do not have the correct version of Java
    installed, Java 11 can be downloaded from
    [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html). \
-   > 💡 You can check the version of Java installed on your local computer by entering\
+   > :bulb: You can check the version of Java installed on your local computer by entering\
    > `java -version` into your console and then pressing `ENTER`.
 1. Obtain a copy of the latest version of Patient Manager (`PatientManager.jar`) from
    [here](https://github.com/AY2021S2-CS2113T-W09-4/tp/releases) and place it in an empty folder.
