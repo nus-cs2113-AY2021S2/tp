@@ -11,6 +11,7 @@ activate ModuleInfo
         ModuleInfo -> Ui++ : readCommandToInt()
         return moduleNumber
         ref over ModuleInfo : readReview()
+        ref over ModuleInfo : checkAndRemoveDelimiter()
         ModuleInfo -> Module++ : setReview(reviewString)
         return
     return
