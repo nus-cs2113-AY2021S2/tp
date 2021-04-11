@@ -5,6 +5,7 @@ import seedu.duke.Data;
 import seedu.duke.Ui;
 
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 
 public class HelpCommand extends Command {
     /**
@@ -19,10 +20,15 @@ public class HelpCommand extends Command {
 
     @Override
     public void execute() {
-        String[] commands = arguments.get("payload").toLowerCase().split(" ");
-        if (commands[0].isEmpty()) {
+        String[] payload = arguments.get("payload").toLowerCase().split(" ");
+        if (payload[0].isEmpty()) {
             ui.printMessage(Constants.COMMAND_LIST_MESSAGE);
         } else {
+            LinkedHashSet<String> commands = new LinkedHashSet<>();
+            for (String command : payload) {
+                commands.add(command);
+            }
+
             for (String command : commands) {
                 switch (command) {
                 case "add":
