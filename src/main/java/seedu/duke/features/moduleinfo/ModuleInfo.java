@@ -576,7 +576,7 @@ public class ModuleInfo {
 
     public static void printDeletedReviewMessage(Module module) {
         System.out.println("For this module: " + module.getName()
-                + " -\nYou've deleted this review: " + module.getReview());
+                + " -\nYou've deleted this review:\n" + module.getReview());
         Ui.printHorizontalLine();
     }
 
