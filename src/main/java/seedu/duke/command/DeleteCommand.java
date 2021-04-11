@@ -30,7 +30,7 @@ public class DeleteCommand extends Command {
 
         if (arguments.containsKey(Constants.PATIENT_KEY)) {
             String id = arguments.get(Constants.PATIENT_KEY);
-            if (id == "") {
+            if (id.equals("")) {
                 throw new InvalidInputException(InvalidInputException.Type.EMPTY_NRIC_ARGUMENT);
             }
             id = id.toUpperCase();
@@ -42,7 +42,7 @@ public class DeleteCommand extends Command {
                 throw new InvalidInputException(InvalidInputException.Type.NO_PATIENT_LOADED);
             }
             String date = arguments.get(Constants.RECORD_KEY);
-            if (date == "") {
+            if (date.equals("")) {
                 throw new InvalidInputException(InvalidInputException.Type.EMPTY_DATE_ARGUMENT);
             }
             deleteRecord(patient, date);

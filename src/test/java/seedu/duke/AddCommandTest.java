@@ -43,10 +43,10 @@ class AddCommandTest {
         arguments.put("payload", "S12345677A");
         AddCommand addCommand = new AddCommand(ui, data, arguments);
 
-        Exception exception = assertThrows(Exception.class, () -> {
+        InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
             addCommand.execute();
         });
-        assertEquals(Constants.INVALID_INPUT_INVALID_NRIC, exception.getMessage());
+        assertEquals(Constants.INVALID_INPUT_INVALID_NRIC, invalidInputException.getMessage());
     }
 
     @Test
@@ -58,10 +58,10 @@ class AddCommandTest {
         arguments.put("payload", "P1234567A");
         AddCommand addCommand = new AddCommand(ui, data, arguments);
 
-        Exception exception = assertThrows(Exception.class, () -> {
+        InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
             addCommand.execute();
         });
-        assertEquals(Constants.INVALID_INPUT_INVALID_NRIC_FIRST_LETTER, exception.getMessage());
+        assertEquals(Constants.INVALID_INPUT_INVALID_NRIC_FIRST_LETTER, invalidInputException.getMessage());
     }
 
     @Test
@@ -73,10 +73,10 @@ class AddCommandTest {
         arguments.put("payload", "S1234567A");
         AddCommand addCommand = new AddCommand(ui, data, arguments);
 
-        Exception exception = assertThrows(Exception.class, () -> {
+        InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
             addCommand.execute();
         });
-        assertEquals(Constants.INVALID_INPUT_INVALID_NRIC_CHECKSUM, exception.getMessage());
+        assertEquals(Constants.INVALID_INPUT_INVALID_NRIC_CHECKSUM, invalidInputException.getMessage());
     }
 
     @Test
