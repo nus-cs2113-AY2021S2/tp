@@ -52,7 +52,7 @@ public class DoctorAppointmentChecker extends MainChecker {
         date = input[5];
         logger.log(Level.INFO, "Checking for Valid data after add command");
         checkDoctorIDFormat(doctorID);
-        if (!isValidDocID(doctorID)) {
+        if (!isValidDocId(doctorID)) {
             throw new DocIdNotFoundException(doctorID);
         }
         checkAptIdFormat(appointmentID);
@@ -83,7 +83,7 @@ public class DoctorAppointmentChecker extends MainChecker {
         }
         checkIdDuringParse(id, "list");
         logger.log(Level.INFO, "Checking for Valid data after list command");
-        if (!isValidDocID(id) && !isValidListAppointmentID(id)) {
+        if (!isValidDocId(id) && !isValidListAppointmentID(id)) {
             throw new IdNotFoundException(id);
         }
     }
@@ -271,7 +271,7 @@ public class DoctorAppointmentChecker extends MainChecker {
      * @throws FileNotFoundException If staff file does not exists.
      */
 
-    public static boolean isValidDocID(String doctorID) {
+    public static boolean isValidDocId(String doctorID) {
         try {
             final String[] character = doctorID.split("");
             logger.log(Level.INFO, "Checking Validity Doctor ID during program commands ");

@@ -715,7 +715,7 @@ Whenever a user input is given to the Doctor Appointment Menu, the following ste
 
 **Getting User Input**
 
-4. `DoctorAppointmentInstance.run()` will repeatedly, requesting for user input and calling `DoctorAppointmentParser.parse()`.
+4. `DoctorAppointmentInstance.run()` will repeatedly request for user input and call `DoctorAppointmentParser.parse()`.
 5. `parse()` will call the `smartCommandRecognition()` to assess the given user input and determine which command is most similar to the input.
 6. Based on the recognised command by the system, the relevant commands will be carried out.
 
@@ -749,7 +749,9 @@ Invalid Input includes:
 1. If the command recognised is the add command, `DoctorAppointmentParser.parse()` calls `MainChecker.checkNumInput()` and `DoctorAppointmentChecker.checkValidDataForAdd()` to ensure data entered is valid.
 2. `checkValidDataForAdd()` will call the following function in sequence:
 
-	- isValidDocID()	
+	- checkDoctorIDFormat()
+	- isValidDocId()
+	- checkAptIdFormat()	
 	- isValidAppointmentID()
 	- illegalCharacterChecker()
 	- isValidGender()
@@ -758,11 +760,11 @@ Invalid Input includes:
 **Creating DoctorAppointmentAdd command**
 
 3. If the input data is valid, a DoctorAppointment Command object is created. Otherwise a relevant error will be thrown.
-4. The Command object is returned to `DoctorAppoitmentInstance.run()`
+4. The Command object is returned to `DoctorAppointmentInstance.run()`
 
 **Creating DoctorAppointment Object with User Input**
 
-5. DoctorAppointmentInstance then executes the DoctorAppointment Add Command object by running `DoctorAppointmentAdd.execute()`.
+5. DoctorAppointmentInstance then executes the DoctorAppointment Add Command object by running `DoctorAppointmentAddCommand.execute()`.
 6. `AppointmentList.addAppointment()` will be called in which a DoctorAppointment object will be created and added into the ArrayList<DoctorAppointment> appointmentList, which contains all the DoctorAppointment Objects. 
 
 **Saving DoctorAppointment Objects into .txt file**
@@ -795,20 +797,25 @@ Invalid Input includes:
 
 1. If the command is recognised as the delete command, `DoctorAppointmentParser.parse()` calls `MainChecker.checkNumInput()` and `DoctorAppointmentChecker.checkValidDataForDelete()` to ensure that the inputs are valid.
 
+2. `checkValidDataForDelete()` will call the following function in sequence:
+
+	- checkIdDuringParse()
+	- isValidIdToDelete()
+
 **Creating DoctorAppointmentDelete command**
 
-2. A DoctorAppointmentDelete Command object is created if the inputs are valid. 
-3. The Command object is returned to `DoctorAppointmentInstance.run()`.
+3. A DoctorAppointmentDelete Command object is created if the inputs are valid. 
+4. The Command object is returned to `DoctorAppointmentInstance.run()`.
 
 **Deleting DoctorAppointment Object using User Input**
 
-4. DoctorAppointmentInstance then executes the DoctorAppointmentDelete Command object by running `DoctorAppointmentDelete.execute()`.
-5. `AppointmentList.deleteAppointment()` is called, which iterates through the objects in ArrayList<DoctorAppointment> appointmentList. The DoctorAppointment Object matching the input given by the user will be removed from the array list.
+5. DoctorAppointmentInstance then executes the DoctorAppointmentDelete Command object by running `DoctorAppointmentDeleteCommand.execute()`.
+6. `AppointmentList.deleteAppointment()` is called, which iterates through the objects in ArrayList<DoctorAppointment> appointmentList. The DoctorAppointment Object matching the input given by the user will be removed from the array list.
 
 **Saving changed DoctorAppointment Objects into .txt file**
 
-6. `AppointmentList.deleteAppointment()` then calls `DoctorAppointmentStorage.writeToFile()` which rewrites the updated appointmentList into the DoctorAppointment.txt file.
-7. Control is then returned to StaffInstance.
+7. `AppointmentList.deleteAppointment()` then calls `DoctorAppointmentStorage.writeToFile()` which rewrites the updated appointmentList into the DoctorAppointment.txt file.
+8. Control is then returned to DoctorAppointmentInstance.
 
 <br>
 
@@ -829,17 +836,23 @@ Invalid Input includes:
 
 1. If the command recognised is the list command, `DoctorAppointmentParser.parse()` calls `MainChecker.checkNumInput()` and `DoctorAppointmentChecker.checkValidDataForList()` to check and verify the validity of inputs accompanied by the list command, if any.
 
+2. `checkValidDataForList()` will call the following function in sequence:
+
+	- checkIdDuringParse()
+	- isValidDocId()
+	- isValidListAppointmentID()
+	
 **Creating DoctorAppointmentList command**
 
-2. A DoctorAppointmentList Command object is created if the inputs are valid.
-3. The Command object is returned to `DoctorAppointmentInstance.run()`.
+3. A DoctorAppointmentList Command object is created if the inputs are valid.
+4. The Command object is returned to `DoctorAppointmentInstance.run()`.
 
 **Viewing DoctorAppointment Objects**
 
-4. DoctorAppointmentInstance then executes the DoctorAppointmentList Command object by running `DoctorAppointmentList.execute()`.
-5. `AppointmentList.listAppointment()` is called, and will iterate through the objects in ArrayList<DoctorAppointment> appointmentList.
-6. All DoctorAppointment Objects in the array list will be displayed.
-7. Control is then returned to DoctorAppointmentInstance.
+5. DoctorAppointmentInstance then executes the DoctorAppointmentList Command object by running `DoctorAppointmentListCommand.execute()`.
+6. `AppointmentList.listAppointment()` is called, and will iterate through the objects in ArrayList<DoctorAppointment> appointmentList.
+7. All DoctorAppointment Objects in the array list will be displayed.
+8. Control is then returned to DoctorAppointmentInstance.
 
 <br>
 
@@ -866,7 +879,7 @@ Invalid Input includes:
 
 **Viewing DoctorAppointment Objects**
 
-4. DoctorAppointmentInstance then executes the DoctorAppointmentList Command object by running `DoctorAppointmentList.execute()`.
+4. DoctorAppointmentInstance then executes the DoctorAppointmentList Command object by running `DoctorAppointmentListCommand.execute()`.
 5. `AppointmentList.listAppointment()` is called, and will iterate through the objects in ArrayList<DoctorAppointment> appointmentList.
 6. DoctorAppointment Objects matching the user input present in the array list will be displayed.
 7. Control is then returned to DoctorAppointmentInstance.
