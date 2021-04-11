@@ -6,28 +6,28 @@
 
 ## Opening Words
 
- Welcome to HealthVault application's User Guide!					 
+Welcome to HealthVault application's User Guide!
 
 The purpose of this User Guide is to assist you in the usage of the application. You will be able to utilize all the features of the HealthVault application to create the most efficient healthcare environment!
 
 ## Content Page
 1. [Introduction](#1-introduction)
-	1. [What is HealthVault?](#11-what-is-healthvault)
-	2. [About the User Guide](#12-about-the-user-guide)
+    1. [What is HealthVault?](#11-what-is-healthvault)
+    2. [About the User Guide](#12-about-the-user-guide)
 2. [How to use this guide](#2-how-to-use-the-guide)
-	1. [Technical terms](#21-technical-terms)
-	2. [Symbols & Icons](#22-symbols--icons)
+    1. [Technical terms](#21-technical-terms)
+    2. [Symbols & Icons](#22-symbols--icons)
 3. [Getting Started](#3-getting-started)
-	1. [Introduction to Command Line Interface (CLI)](#31-introduction-to-command-line-interface-cli)
-	2. [Installation Guide](#-32-installation-guide)
+    1. [Introduction to Command Line Interface (CLI)](#31-introduction-to-command-line-interface-cli)
+    2. [Installation Guide](#-32-installation-guide)
 4. [Start Menu](#4-start-menu)
- 	1. [Interpreting help commands](#41-interpreting-help-commands)
+    1. [Interpreting help commands](#41-interpreting-help-commands)
 5. [Features](#5-features)
-	1. [Staff](#51-staff)
-	2. [Patient](#52-patient)
-	3. [Doctor's Appointment](#53-doctors-appointment)
-	4. [Schedules for Nurses](#54-schedules-for-nurses)
-	5. [Inventory](#55-inventory)
+    1. [Staff](#51-staff)
+    2. [Patient](#52-patient)
+    3. [Doctor's Appointment](#53-doctors-appointment)
+    4. [Schedules for Nurses](#54-schedules-for-nurses)
+    5. [Inventory](#55-inventory)
 6. [FAQ](#6-faq)
 7. [Command Summary](#7-command-summary)
 
@@ -35,13 +35,13 @@ The purpose of this User Guide is to assist you in the usage of the application.
 
 ### 1.1 What is HealthVault?
 
-To save a life is the top priority of any healthcare worker. 
+To save a life is the top priority of any healthcare worker.
 In such a precarious situation, every second matters and nurses cannot afford to waste time when they need to store or view critical information.
 
 Introducting HealthVault, a hospital information recording system made for nurses. HealthVault is a desktop app for managing doctor, nurse, patient and inventory information, optimised for use through the command line interface. If the user can type fast, HealthVault brings both convenience and speed for nurses to view and store critical information.
 
 
-In this application there are 5 main features that are provided for the user. 
+In this application there are 5 main features that are provided for the user.
 * **Staff:** Keeps record of and allows you to access staff information.
 * **Patient:** Keeps record of and allows you to access patient information.
 * **Doctor Appointments:** Keeps record of and allows you to create and view Doctor Appointments.
@@ -71,7 +71,7 @@ This user guide will cover the following:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Command Line Interface** - Accessing the functionalities of a computer program in the form of lines of text.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Graphical User Interface** - Allows users to interact with the functionalities of a computer program through graphical icons 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Graphical User Interface** - Allows users to interact with the functionalities of a computer program through graphical icons
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and audio indicators, instead of text-based user interfaces, typed command labels or text navigation.
 
@@ -94,7 +94,7 @@ This user guide will cover the following:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :information_source: This icon denotes a important information to note.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :exclamation: Warning sign to inform user against doing certain actions. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :exclamation: Warning sign to inform user against doing certain actions.
 
 <br/><br/>
 
@@ -120,17 +120,17 @@ After keying in their input, the most common way to enter the response into the 
 
 2. Download the latest JAR file from this [website](https://github.com/AY2021S2-CS2113T-F08-2/tp/releases)
 
-3. Open the command window 
-   - Click the search icon in the bottom left side of the screen 
-   - Type ‘command prompt’ in the search bar
-   - Select the application called ‘Command Prompt’
+3. Open the command window
+    - Click the search icon in the bottom left side of the screen
+    - Type ‘command prompt’ in the search bar
+    - Select the application called ‘Command Prompt’
 
 4. `cd` into the folder containing the JAR file
-   - Locate the file path of the JAR file that you have downloaded
-   - For example:  (C:\Users\JohnDoe\Downloads), where JohnDoe is the user’s name
-   - Then, run the following command: `cd [File Path]`
-   - Example: `cd C:\Users\JohnDoe\Downloads`
-   - Run the following command: `java -jar [JAR file name]`
+    - Locate the file path of the JAR file that you have downloaded
+    - For example:  (C:\Users\JohnDoe\Downloads), where JohnDoe is the user’s name
+    - Then, run the following command: `cd [File Path]`
+    - Example: `cd C:\Users\JohnDoe\Downloads`
+    - Run the following command: `java -jar [JAR file name]`
 
 :information_source: HealthVault is optimized for screen sizes with the following specifications: 1450px (width) x 600px (height).
 Using smaller screen sizes and dimensions may result in a suboptimal viewing experience for various functionalities.
@@ -138,14 +138,14 @@ Using smaller screen sizes and dimensions may result in a suboptimal viewing exp
 
 ## 4. Start Menu
 
-The Start Menu is the first menu you will encounter upon running the application after following the installation guide in [section 3](#section3). 
+The Start Menu is the first menu you will encounter upon running the application after following the installation guide in [section 3](#section3).
 
 Here is an example of how the welcome screen of HealthVault will look like.
 <img src="images/Start Menu.PNG" >
 
 The Start Menu allows you to access various Menus in the application based on the feature that you would like to access.
 
-For example, the Staff Menu allows you to access the Staff feature within the database. 
+For example, the Staff Menu allows you to access the Staff feature within the database.
 
 The welcome screen of HealthVault presents you with the basic commands and a description of their functionalities.
 
@@ -158,7 +158,7 @@ Input any command to access the respective features and input the `exit` command
 This is an example of a typical help command in the application.
 <img src="images/StaffHelp.PNG" >
 
-The **Commands** column gives the command that allows you to accomplish a certain action with the relevant features. 
+The **Commands** column gives the command that allows you to accomplish a certain action with the relevant features.
 For example, the `add` command allows you to add a new staff and their relevant details into the database.
 
 The **Description** column gives you an explaination on the usage and purpose of the command.
@@ -171,13 +171,13 @@ The detailed explaination of each command will be explained in the subsequent se
 
 <br/><br/>
 
-## 5. Features 
+## 5. Features
 
- :exclamation: **WARNING: You are recommended not to edit any text files generated by HealthVault manually.**
+:exclamation: **WARNING: You are recommended not to edit any text files generated by HealthVault manually.**
 
 ### 5.1 Staff
 
-The functions in Staff menu allow you, the nurse, to access and modify the details of each staff in the hospital. 
+The functions in Staff menu allow you, the nurse, to access and modify the details of each staff in the hospital.
 (Note for Staff ID: D/N = Doctor/Nurse)
 
 This is an example of the welcome screen for Staff Menu.
@@ -186,17 +186,17 @@ This is an example of the welcome screen for Staff Menu.
 <br/><br/>
 
 #### Adding a new staff: `add`
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adds a new doctor or nurse to the respective staff lists. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adds a new doctor or nurse to the respective staff lists.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `add/[Staff ID]/[Name]/[Age]/[Specialisation]` 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `add/[Staff ID]/[Name]/[Age]/[Specialisation]`
 
 >:information_source: Important notes about the input format
 >1. Make sure that the inputted user ID starts with a D (for doctor ID) or N (for nurse ID)  and has **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `D54321`
->   
+>
 >2. Any input field in HealthVault only accepts space and alphanumeric characters
 >3. The age field input should be a positive integer starting from 18 to inclusive of 150
 >4. Specialisation is able to take in integer values but not illegal characters.
@@ -213,7 +213,7 @@ This is an example of the welcome screen for Staff Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/StaffAdd.PNG" width = "850" >
 
 <br/><br/>
- 
+
 #### Deleting a staff: `delete`
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Deletes a staff from the staff list.
@@ -223,10 +223,10 @@ This is an example of the welcome screen for Staff Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `delete/[Staff ID]`
 
 >:information_source: Important notes about the input format
->1. Make sure that the inputted user ID starts with a D (for doctor ID) or N (for nurse ID)  and has **exactly** 5 digits in the number following! 
+>1. Make sure that the inputted user ID starts with a D (for doctor ID) or N (for nurse ID)  and has **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `D54321`
->   
+>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
@@ -340,13 +340,13 @@ When you first enter the Patient menu, you will be greeted with the following we
 #### Adding a new patient: `add`
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adds a new patient to the patient list.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `add/[Patient ID]/[Name]/[Age]/[Gender]/[Illness]/[Drugs needed]`
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted user ID starts with a P and has **exactly** 5 digits in the number following! 
+>1. Make sure that the inputted user ID starts with a P and has **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `P12345`, `P54321`
 >
@@ -356,7 +356,7 @@ When you first enter the Patient menu, you will be greeted with the following we
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adding a Patient Sam (Age 40, Male who is having a fever and needs Paracetamol) with the Patient ID of P55555. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adding a Patient Sam (Age 40, Male who is having a fever and needs Paracetamol) with the Patient ID of P55555.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` Patient --> add/P55555/Sam/40/M/Fever/Paracetamol```
 
@@ -369,13 +369,13 @@ When you first enter the Patient menu, you will be greeted with the following we
 #### Deleting a patient: `delete`
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Deletes a patient from the patient list.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `delete/[Patient ID]`
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted user ID starts with a P and has **exactly** 5 digits in the number following! 
+>1. Make sure that the inputted user ID starts with a P and has **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `P12345`, `P54321`
 >
@@ -394,7 +394,7 @@ When you first enter the Patient menu, you will be greeted with the following we
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lists all patients in the patient list.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `list`
 
@@ -411,7 +411,7 @@ When you first enter the Patient menu, you will be greeted with the following we
 #### Finding a patient: `find`
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Finds a patient currently in the patient list.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `find/[Keyword/Phrase]`
 
@@ -419,9 +419,9 @@ When you first enter the Patient menu, you will be greeted with the following we
 >1. Any keyword inputted will be searched through every field of Patient details. i.e. It can be used to search Patient ID, name, age, illness, medication required.
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `find/19`, `find/P12345`
-> 
+>
 > The keyword input can be case insensitive and still find matches in the database.
-> 
+>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `find/john` is able to match with a name field "John" or "JOHN"
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
@@ -478,13 +478,13 @@ This is an example of the welcome screen for Doctors' Appointment Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]` 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]`
 
 >:information_source: Important notes about the input format
->1. Make sure that the inputted doctor/appointment ID starts with a D/A and have **exactly** 5 digits in the number following! 
+>1. Make sure that the inputted doctor/appointment ID starts with a D/A and have **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `D12345`, `A54321`
->   
+>
 >2. Any input fields in HealthVault only accepts space and alphanumeric characters
 >3. The gender field input should only be "M", "F".
 >4. This function **allows** the adding of past appointments, **Example**: `add/D12345/A12345/Alex/M/21011998`.
@@ -507,13 +507,13 @@ This is an example of the welcome screen for Doctors' Appointment Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `delete/[DoctorID/ Appointment ID]` 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `delete/[DoctorID/ Appointment ID]`
 
 >:information_source: Important notes about the input format
->1. Make sure that the inputted doctor/appointment ID starts with a D/A and have **exactly** 5 digits in the number following! 
+>1. Make sure that the inputted doctor/appointment ID starts with a D/A and have **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `D12345`, `A54321`
-> 
+>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage (Doctor ID)**:<br/>
 
@@ -542,14 +542,14 @@ This is an example of the welcome screen for Doctors' Appointment Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `list/[all/ DoctorID/ Appointment ID]` 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `list/[all/ DoctorID/ Appointment ID]`
 
 >:information_source: Important notes about the input format
 >1. Make sure the input `all` is lower caps.
->2. Make sure that the inputted doctor/appointment ID starts with a D/A and have **exactly** 5 digits in the number following! 
+>2. Make sure that the inputted doctor/appointment ID starts with a D/A and have **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `D12345`, `A54321`
-> 
+>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage (All)**:<br/>
 
@@ -610,13 +610,13 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adds a new schedule to the list of nurse schedules.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `add/[Nurse ID]/[Patient ID]/[Date (DDMMYYYY)]`
 
 >:information_source: Important notes about the input format
 >1. Make sure Nurse ID exists in Staff and Patient ID exists in Patients before adding.
->2. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and have **exactly** 5 digits in the number following! 
+>2. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and have **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `P54321`
 >
@@ -639,13 +639,13 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 #### Deleting a schedule: `delete`
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Deletes a schedule from the list of nurse schedules.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `delete/[Nurse ID]/[Date (DDMMYYYY)]`
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted Nurse ID starts with a N for Nurse, and have **exactly** 5 digits in the number following! 
+>1. Make sure that the inputted Nurse ID starts with a N for Nurse, and have **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `P54321`
 >
@@ -666,13 +666,13 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 #### Listing schedules: `list`
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List either all schedules or specified Nurse ID's schedule.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `list/[Nurse ID/all]`
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted Nurse ID starts with a N for Nurse, and have **exactly** 5 digits in the number following! 
+>1. Make sure that the inputted Nurse ID starts with a N for Nurse, and have **exactly** 5 digits in the number following!
 >
 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `P54321`
 
@@ -730,7 +730,7 @@ This is an example of the welcome screen for the Inventory Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adds a new item or increase the quantity of an existing item in the inventory.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `add/[Name]/[Price]/[Quantity]`
 
@@ -739,7 +739,7 @@ This is an example of the welcome screen for the Inventory Menu.
 >1. Make sure that the inputted price is valid and does not have more than 2 decimal places!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `3`, `3.0`, `3.00`
->   
+>
 >2. Any input fields in HealthVault only accepts space and alphanumeric characters!
 >
 >3. Note that the examples for adding a new item and increasing the quantity of an existing item are related!
@@ -788,7 +788,7 @@ This is an example of the welcome screen for the Inventory Menu.
 >
 >2. Avoid using uppercase letters
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `delete/[Name]/[Quantity]`
 
@@ -813,7 +813,7 @@ This is an example of the welcome screen for the Inventory Menu.
 #### Listing Inventory: `list`
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lists all the item in the inventory.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `list`
 
@@ -848,7 +848,7 @@ This is an example of the welcome screen for the Inventory Menu.
 
 ## 6. FAQ
 
-**Q**: How do I transfer my data to another computer? 
+**Q**: How do I transfer my data to another computer?
 
 **A**: Navigate to where the TP jar file is located and identify the data folder. Simply copy this data folder and transfer it via thumbdrive or other means to your other computer. When setting up the jar file in a new folder in your other computer, move the data folder into the new folder in which you have set up the jar before starting the application. You're now good to go to start accessing the data on your new computer!
 
