@@ -38,6 +38,7 @@ The Logic component is responsible for running each instance of the application 
 
 ### Model Component
 The Model component consists of classes that represents the tasks that the deliveryman can do. 
+
 ![Model Component](diagrams/ModelComponent.png)
 
 Delivery contains an arraylist of Item ojects and the corresponding unique delivery ID, address and recipient name. It also has methods to modify the Class information.
