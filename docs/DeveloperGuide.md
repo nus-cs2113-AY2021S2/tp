@@ -13,6 +13,7 @@
    3.2 [Setting up the project in your computer](#32-setting-up-the-project-in-your-computer)
 
    3.3 [Verifying the setup](#33-verifying-the-setup)
+
    3.4 [Configure coding style](#34-configure-the-coding-style)
 
 4. [Design](#4-design)
@@ -93,11 +94,9 @@
 
    Appendix B: [User Stores](#appendix-b-user-stories)
 
-   Appendix C: [Use Cases](#appendix-c-use-cases)
+   Appendix C: [Non-Functional Requirements](#appendix-c-non-functional-requirements)
 
-   Appendix D: [Non-Functional Requirements](#appendix-d-non-functional-requirements)
-
-   Appendix E: [Instructions for manual testing](#appendix-e-glossary)
+   Appendix D: [Instructions for manual testing](#appendix-d-instructions-for-manual-testing)
    <ul>Launch and Shutdown</ul>
    <ul>Adding a Review</ul>
    <ul>Editing a Review</ul>
@@ -112,6 +111,8 @@
    <ul>Marking a Recommendation as Done</ul>
    <ul>Help</ul>
    <ul>Data storage</ul>
+
+   Appendix E: [Other Guides: Documentation, Testing, Dev-ops](#appendix-e-other-guides-documentation-testing-dev-ops)
 
    Appendix F: [Glossary](#appendix-f-glossary)
 
@@ -267,20 +268,6 @@ returns true. This error will be caught in the addRecommendation() method.
 
 ## 6. Planned Features
 
-## 7. Documentation
-
-### 7.1 Setting up and maintaining the project website
-
-### 7.2 Style guidance
-
-### 7.3 Diagrams
-
-## 8. Testing
-
-### 8.1 Running tests
-
-### 8.2 Types of tests
-
 ## Appendix
 
 ### Appendix A: Product Scope
@@ -290,12 +277,20 @@ returns true. This error will be caught in the addRecommendation() method.
 * is a university student
 * has a desire to record a significant number of experiences
 * wants to manage a bucket list
-* can type fast and prefers typing over mouse interactions
+* can type fast and prefers typing to mouse interactions
 * is comfortable using the command line interface
 
 **Value Proposition**
 
-* Connoisseur helps users to consolidate their experiences in an organised way. The user just needs to
+* Connoisseur helps users to consolidate their experiences, `review` and bucket lists, `recommendation` in an organised
+  way. The user just needs to input their experiences or what they wish to experience, and Connoisseur will help to
+  consolidate them.
+* These `review` and `recommendation` can be edited or deleted as the user wishes.
+* A `recommendation` can be turned into a `review` once the user marks it as done, making it convenient for the user to
+  record their experiences.
+* Connoisseur also allows users to have a consolidated view `review` and `recommendation` lists. Connoisseur even offers
+  the option to sort `review` lists according to the user preference, namely by date earliest, date latest, ratings and
+  category.
 
 ### Appendix B: User Stories
 
@@ -307,16 +302,21 @@ returns true. This error will be caught in the addRecommendation() method.
 |v1.0|busy user|be able to do quick ratings|save time|
 |v1.0|user|delete selected items that I no longer wish to recommend|edit my list according to my liking|
 |v1.0|busy user|have a template to guide my reviews|input my reviews quickly|
-|v2.0|indecisive user|change my review and opinnions on things|record my opinions accurately at all times|
+|v1.0|forgetful user|remember the places I have visited and my feelings towards them|avoid visiting those places I dislike again|
+|v1.0|user who values convenience|do quick ratings by entering the number of stars|I can rate the experience I had|
+|v1.0|user who values privacy|access my person reviews of places private|keep them safe on my device offline|
+|v1.0|user|be able to see the number of reviews or recommendations I have in my inventory|have a consolidation of my experiences and what I want to experience|
+|v2.0|indecisive user|change my review and opinions on things|record my opinions accurately at all times|
 |v2.0|forgetful user|be prompted of an existing review|avoid duplicates in my list|
 |v2.0|lazy user|have my sorting preferences saved|avoid having to input my preferred sorting method all the time|
+|v2.0|user|store my files in JSON format|they can be exported as other file formats easily if required|
+|v2.0|adventurous user|have a recommendation feature (bucket list equivalent)|track my list and convert them to reviews when accomplished|
 
 ### Appendix C: Non-Functional Requirements
 
 1. Should work on any *mainstream OS* as long as it has `Java 11` installed.
 2. A user with above average typing speed for regular English text should be able to use the features of Connoisseur
    faster than by using the mouse.
-
 3. A user who wants to modify the save file can do so by using an application that is able to edit JSON files.
 
 ### Appendix D: Instructions for manual testing
@@ -339,11 +339,17 @@ Given below are instructions to test the app manually.
    welcome message.
 
 
-2. Shutdown Connoisseur &nbsp;i. Enter `exit` or `bye` into terminal while **Connoisseur** is running. &nbsp;&nbsp;**
-   Expected**: A farewell message by Connoisseur will be shown.
+2. Shutdown Connoisseur
+
+i. Enter `exit` or `bye` into terminal while **Connoisseur** is running.
+
+&nbsp; **Expected**: A farewell message by Connoisseur will be shown.
+
 
 ### Appendix E: Other Guides: Documentation, Testing, Dev-ops
+
 This section contains links to other relevant guides that may be of use.
+
 * [Documentation guide](DocumentationGuide.md)
 * [Testing guide](TestingGuide.md)
 * [Dev-ops guide](DevopsGuide.md)
