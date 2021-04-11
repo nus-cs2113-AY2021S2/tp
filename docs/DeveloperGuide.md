@@ -54,15 +54,11 @@
 
 ## 1. Introduction
 
-- UniTracker is a one-stop application for NUS students to keep track of their work in school.
+UniTracker is a one-stop application for NUS students to keep track of their work in school.
+It comprises 4 key features (ModuleInfo, SU Calculator/Simulator, TaskManager, Links) that helps to organise all information they need in one place. 
+Users are allowed to add and edit module information, tasks, zoom links to suit their needs.
 
-- It comprises 4 key features (ModuleInfo, SU Calculator/Simulator, TaskManager, Links) that helps
-  to organise all information they need in one place.
-
-- Users are allowed to add and edit module information, tasks, zoom links to suit their needs.
-
-- This product is optimal for NUS students who prefer Command Line Interface (CLI) over Graphical
-  User Interface (GUI).
+This product is optimal for NUS students who prefer Command Line Interface (CLI) over Graphical User Interface (GUI).
 
 ### 1.1 About This Developer Guide
 
@@ -72,7 +68,7 @@ all the information you need to use UniTracker alongside detailed diagrams on th
 ### 1.2 How to Use This Developer Guide
 
 Firstly, refer to [Section 2. Setting Up](#2-setting-up) for instructions on setting up UniTracker
-on and IDE on your local computer.
+on an IDE on your local computer.
 
 Once UniTracker is up and running, you can refer to the [table of contents](#table-of-contents) to
 navigate to specific sections to explore and learn about our different features and how they were implemented.
@@ -158,7 +154,7 @@ Given below are quick overviews of UniTracker's 4 main components:
 
 ### 3.2 UI Component
 
-![Diagram](diagrams/uiArchitecture.png)    
+![Diagram](diagrams/uiArchitecture1.png)    
 *Figure 2*
 
 The class diagram of the Ui component can be seen in figure 2.
@@ -172,7 +168,7 @@ The Ui class handles user input and also contains the methods for user interface
 
 ### 3.3 Features Component
 
-![Diagram](diagrams/featuresArchitecture.png)
+![Diagram](diagrams/featuresArchitecture1.png)
 *Figure 3*
 
 The class diagram for our features component can be seen in figure 3.
@@ -180,7 +176,7 @@ The class diagram for our features component can be seen in figure 3.
 
 ### 3.4 Storage Component
 
-![Diagram](diagrams/storageArchitecture.png)    
+![Diagram](diagrams/storageArchitecture1.png)    
 *Figure 4*
 
 The storage component, as seen in figure 3, stores data in a folder named `UniTracker Data` on the user's hard disk.
@@ -195,9 +191,13 @@ It also loads the data upon startup.
 
 ### 4.01 Add New Module
 This feature is for users to add any modules from their university course into the list of modules.  
+
 All modules are stored in an `ArrayList` called `modules`.  
+
 Given below is the sequence diagram for the feature:  
 ![Diagram](diagrams/moduleInfo/module/addNewModule.png)  
+*Figure 5*
+
 A general explanation of how this feature works:  
 
 1. When user types in a `module name`, it will be checked for:
@@ -227,7 +227,8 @@ existing module.
 
 Given below is the sequence diagram of the feature:  
 
-![Diagram](diagrams/moduleInfo/addComponent.png)  
+![Diagram](diagrams/moduleInfo/addComponent1.png)  
+*Figure 6*
 
 A general 2-step explanation of how this feature works is shown below:
 
@@ -280,6 +281,8 @@ Returning to module information menu...
   ```
 Given below is the sequence diagram for the feature:  
 ![Diagram](diagrams/moduleInfo/addNewReview.png)    
+*Figure 7*
+
 A general explanation of how this feature works:
 
 A `while` loop is used to take in multiple lines of input until the input contains
@@ -317,7 +320,8 @@ with 2 decimal places of precision, and total number of graded modular credits.
 
 Given below is the sequence diagram for the feature:
 
-![Diagram](diagrams/capCalculator/addCapAndMcs.png)
+![Diagram](diagrams/capCalculator/addCapAndMcs1.png)  
+*Figure 8*
 
 How the feature works:
 The feature is facilitated by the `AddCapAndMcs` method in the `HelpGraduationManager` class, and a call to the class is performed
@@ -346,13 +350,16 @@ creation:
 5) Message <br> Example: `Good job!`  
 
 Given below is the sequence diagram for the feature:  
-![Diagram](diagrams/tasks/addNewTask1.png)
+![Diagram](diagrams/tasks/addNewTask2.png)  
+*Figure 9*
 
 A general explanation of how this feature works:
 
 1. When the user calls this feature, the application will prompt them to input the arguments required
 for task creation.
-2. If there are no existing modules, the user can either exit the command or create a new module. Otherwise, the user can select the module from the existing list of modules. ![Diagram](diagrams/tasks/getModuleListRef1.png)  *Figure ?*
+2. If there are no existing modules, the user can either exit the command or create a new module. Otherwise, the user can select the module from the existing list of modules.  
+   ![Diagram](diagrams/tasks/getModuleListRef2.png)  
+   *Figure 10*
 3. The user has to input a valid format for the __date__ and __time__ field (refer to section 3.3.1 of User
 Guide or the example above), and our application will convert it to a more readable format for the
 user. Using the example above,
@@ -364,10 +371,11 @@ signalling completion.
 
 ### 4.12 Mark/Unmark a Task as Done
 
-This feature allows the user to mark or unmark tasks of type `task`, `assignment`, `midterm`, `final exam` as done.
+This feature allows the user to mark or unmark tasks of type `normal task`, `assignment`, `midterm`, `final exam` as done.
 
 Given below is the sequence diagram for this feature:
-![Diagram](diagrams/tasks/markUnmarkTask1.png)
+![Diagram](diagrams/tasks/markUnmarkTask2.png)  
+*Figure 11*
 
 A general explanation of how this feature works:
 
@@ -384,7 +392,8 @@ This feature allows the user to delete a task of type `normal task`, `assignment
 from a task list.
 
 Given below is the sequence diagram for this feature:
-![Diagram](diagrams/tasks/deleteATask1.png)
+![Diagram](diagrams/tasks/deleteATask2.png)  
+*Figure 12*
 
 A general explanation of how this feature works:
 
@@ -398,13 +407,14 @@ input the index of the task they want to delete.
 
 This feature allows the user to view all their existing tasks for all task types.
 
-Given below is the sequence diagram for this feature:
-![Diagram](diagrams/tasks/viewAllTasks1.png)
+Given below is the sequence diagram for this feature:  
+![Diagram](diagrams/tasks/viewAllTasks2.png)  
+*Figure 13*
 
 A general explanation of how this feature works:
 
-1. When the user calls this feature, the application will first iterate through and print out the pinned task list.
-2. This is then followed by the `normal task` list, `assignment` list, `midterm` list and `final exam` list.
+1. When the user calls this feature, the application will iterate through and print out the all the task list.
+2. It starts with the pinned tasks, then followed by the `normal task` list, `assignment` list, `midterm` list and `final exam` list.
 
 ### 4.15 Pin a Task
 
@@ -412,7 +422,8 @@ This feature allows the user to pin a task of type `normal task`, `assignment`, 
 from a task list.
 
 Given below is the sequence diagram for this feature:
-![Diagram](diagrams/tasks/pinTask1.png)
+![Diagram](diagrams/tasks/pinTask2.png)  
+*Figure 14*
 
 A general explanation of how this feature works:
 
@@ -427,7 +438,8 @@ ArrayList corresponding to the __task type__ they chose.
 ### 4.16 Add Zoom Link  
 
 Given below is the sequence diagram for the feature:  
-![Diagram](diagrams/links/addZoomLink.png)
+![Diagram](diagrams/links/addZoomLink.png)  
+*Figure 15*
 
 A general 4-step explanation of how this feature works is shown below:
 
@@ -453,7 +465,8 @@ that was entered.
 This feature allows users to add and store their favourite links.
 
 Given below is the sequence diagram for the feature:
-![Diagram](diagrams/links/addLink.png)
+![Diagram](diagrams/links/addLink.png)  
+*Figure 16*
 
 A general 2-step explanation of how this feature works is shown below:
 
@@ -480,7 +493,7 @@ deadlines. This product is for users who prefer CLI to GUI.
 ### 5.2 Value proposition
 
 Our product is user-specific as it allows users to customize and personalize their own module
-information and deadlines to suit their needs. Our product allows users to organize their own daily
+information and deadlines to suit their needs. Our product also allows users to organize their own 
 schedules and keep track of their deadlines all on one platform.
 
 Information and materials of our various modules are on varying platforms; some could be on Luminus,
@@ -505,8 +518,8 @@ can keep track of commonly accessed information while keeping track of the tasks
 |v1.0|student|categorize my tasks|know whether a task is a normal task, assignment or exam  
 |v1.0|student|add messages that will print when I complete a task|encourage or remind myself of what I need to do next    
 |v1.0|student|add personal reviews on modules I have taken|know what to recommend to my peers  
-|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list    
-|v2.0|user| store my information | view them later without having to re-type them again  
+|v2.0|student| store my information | view them later without having to re-type them again  
+|v2.0|impatient student|use an application that doesn't crash|trust it to store my module information   
 
 ---
 
