@@ -4,8 +4,6 @@
 
 ## Table of Content
 
----
-
 1. [Introduction](#1-introduction)\
    1.1 [Purpose](#11-purpose)\
    1.2 [Using this Guide](#12-using-this-guide)
@@ -41,8 +39,6 @@
 
 ## 1. Introduction
 
----
-
 **Greetings from Finux!**
 
 **Finux** is a CLI Style application that allows the user to make better financial
@@ -75,8 +71,6 @@ list of icons:
 > 📝 Records refer to either expenses, loans or savings.
 
 ## 2. Setting Up
-
----
 
 ### 2.1 Setting up the project in your computer
 
@@ -122,8 +116,6 @@ Before starting to write any code, we recommend that you have a look at Finux's 
 [Finux's Architecture](#31-architecture) section.
 
 ## 3. Design
-
----
 
 ### 3.1 Architecture
 
@@ -445,8 +437,6 @@ the `finux.txt` file back into the Finux application.
 
 ## 4. Implementation
 
----
-
 This section introduces the specific implementation details and design thought processes
 of some features in **Finux**.
 
@@ -596,7 +586,7 @@ printout ideas:
 Having considered two of the approaches, we have decided to adopt the second approach.
 As our remove and return features takes in the number based on the listed records, it will be better to highlight the
 record ID rather than just a single number printout to provide the user a better intuition. Although a new method call
-`getID()` is needed, the price to pay is very little compared to confusing the user as index can be interpreted
+`getId()` is needed, the price to pay is very little compared to confusing the user as index can be interpreted
 differently by different people.
 
 
@@ -1018,8 +1008,6 @@ coding and typing can speed up the process of their finance management through f
 
 ## Appendix B: User Stories
 
----
-
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
 |v1.0|user|be able to add a record (expense) with dates|record each expense into the app.|
@@ -1036,16 +1024,12 @@ coding and typing can speed up the process of their finance management through f
 
 ## Appendix C: Non-Functional Requirements
 
----
-
 1. The application should be responsive.
 1. The application should work on most operating systems (OS) such as Windows and Linux with `Java 11` installed.
 1. Users who can type fast should be able to complete equivalent tasks faster as compared to using a mouse.
 1. Users should be able to use the application with ease with the help of the User Guide (UG) and the Developer's Guide (DG).
 
 ## Appendix D: Instructions for manual testing
-
----
 
 ### D.1: Launch and Shutdown
 

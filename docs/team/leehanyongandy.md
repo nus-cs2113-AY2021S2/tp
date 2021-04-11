@@ -3,14 +3,14 @@
 ---
 
 ## Overview
-Finux is a Command-Line Interface (CLI) application that allows you to record your expenses, savings and loans all 
-in one consolidated platform. With these information made readily available at your fingertips, it will allow you to 
-better adjust your expenditure or work harder towards your savings goal. Finux also includes a way for you to keep 
+Finux is a Command-Line Interface (CLI) application that allows you to record your expenses, savings and loans all
+in one consolidated platform. With these information made readily available at your fingertips, it will allow you to
+better adjust your expenditure or work harder towards your savings goal. Finux also includes a way for you to keep
 track of the loans you have made to your friends, or the tabs for the dinners you have paid for first.
 
-As the Finux application is inspired entirely by the *Nix operating systems, and if you are familiar with the CLI 
-command interface, you will definitely enjoy the benefits of the application. You will also be able to speed up your 
-financial management and planning with the Finux application as compared to the traditional finance management 
+As the Finux application is inspired entirely by the *Nix operating systems, and if you are familiar with the CLI
+command interface, you will definitely enjoy the benefits of the application. You will also be able to speed up your
+financial management and planning with the Finux application as compared to the traditional finance management
 applications in the market.
 
 ---
@@ -27,20 +27,20 @@ Contributions can be found on [RepoSense](https://nus-cs2113-ay2021s2.github.io/
 
 #### ParserHandler
 During the discussion phase, Mark and I have decided that the ParserHandler logic will contain no form of validation.
-The validation will be done when we are creating each command object itself. Following this approach, we reduce the 
-coupling arising from validation to only under the command creation period via the constructor. Fore seeing future 
-development of Finux, I have decided to follow the pairwise logic of how a command line interface would work. 
-The pairwise logic ensure that, every option is followed by an argument with an empty string to indicate no 
-argument provided. This will facilitate the validation process. I have also decided to use a third-party 
+The validation will be done when we are creating each command object itself. Following this approach, we reduce the
+coupling arising from validation to only under the command creation period via the constructor. Fore seeing future
+development of Finux, I have decided to follow the pairwise logic of how a command line interface would work.
+The pairwise logic ensure that, every option is followed by an argument with an empty string to indicate no
+argument provided. This will facilitate the validation process. I have also decided to use a third-party
 API, [Apache Commons Lang 3.11](https://mvnrepository.com/artifact/org.apache.commons/commons-lang3/3.11),
 as it was easier to detect a collection of string containing the options.
 
 #### ViewCommand
-I have also implemented the ViewCommand where it would display each individual category amount. 
-This was implemented via the options available to the user which are `-e`, `-l`, and `-s`. 
-The initial thought was to only allow the view of each category but based on the feedback received, I decided to 
+I have also implemented the ViewCommand where it would display each individual category amount.
+This was implemented via the options available to the user which are `-e`, `-l`, and `-s`.
+The initial thought was to only allow the view of each category but based on the feedback received, I decided to
 enhance the feature to display all the amount of with each category in a single command, introducing the 4th option `-a`.
-This feature also has a tight bound to the amount field as we decided to show the amount in a fixed 2 decimal place 
+This feature also has a tight bound to the amount field as we decided to show the amount in a fixed 2 decimal place
 display.
 
 #### ValidateAmount
@@ -70,7 +70,7 @@ Other contributions to the UG are:
 ---
 
 ### Contributions to the DG
-I have documented the section on ParserHandler Component and ViewCommand Implementation. This includes the UML class, 
+I have documented the section on ParserHandler Component and ViewCommand Implementation. This includes the UML class,
 object and sequence diagrams.
 
 Other contributions to the DG are:
