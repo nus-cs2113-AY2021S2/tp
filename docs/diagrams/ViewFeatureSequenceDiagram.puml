@@ -41,5 +41,7 @@ end
 
 [<-- ":ViewCommand"
 deactivate ":ViewCommand"
+[<-[hidden]- ":ViewCommand"
+destroy ":ViewCommand"
 
 @enduml
