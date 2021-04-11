@@ -54,7 +54,7 @@ public class StaffInstance {
                 }
                 c.execute(staffList, staffUI, staffStorage);
                 if (c.isExit()) {
-                    System.out.println("Returning to start Menu!\n");
+                    System.out.println("Returning to Start Menu!\n");
                     logger.log(Level.WARNING, "Handling HealthVaultException.");
                     break;
                 }

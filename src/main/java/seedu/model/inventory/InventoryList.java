@@ -12,10 +12,20 @@ public class InventoryList {
     public InventoryList() {
     }
 
+    /**
+     * Constructor for Inventory List.
+     *
+     * @param load Inventory List
+     */
     public InventoryList(ArrayList<Inventory> load) {
         this.list = load;
     }
 
+    /**
+     * Adds a Inventory object to or increases quantity of Inventory object in the InventoryList.
+     *
+     * @param argArr array of inputs for Inventory object.
+     */
     public void addDrugs(String[] argArr) {
         for (int i = 0; i < list.size(); i++) {
             Inventory inventoryTemp = list.get(i);
@@ -30,6 +40,12 @@ public class InventoryList {
         list.add(newInventory);
     }
 
+    /**
+     * Deletes a Quantity of an Inventory object.
+     *
+     * @param argArr array of inputs for Inventory object.
+     * @throws InvalidQuantityException when Quantity input is invalid.
+     */
     public void deleteDrugs(String[] argArr) throws InvalidQuantityException {
         for (int i = 0; i < list.size(); i++) {
             String name = argArr[1];
@@ -41,12 +57,14 @@ public class InventoryList {
                 inventoryTemp.removeQuantity(Integer.parseInt(quantityDelete));
                 return;
             } else if (tempName.equals(name) && tempQuantity < Integer.parseInt(quantityDelete)) {
-                //inventoryTemp.removeQuantity(tempQuantity);
                 throw new InvalidQuantityException();
             }
         }
     }
 
+    /**
+     * Displays information of all relevant Inventory objects.
+     */
     public void listDrugs() {
         int numberOfDrugs = list.size();
         if (numberOfDrugs != 0) {
@@ -55,8 +73,7 @@ public class InventoryList {
             for (int i = 0; i < 60; i++) {
                 System.out.print("-");
             }
-            System.out.println("\n");
-
+            System.out.print(System.lineSeparator());
             for (Inventory inventory : list) {
                 display(inventory);
             }
@@ -65,6 +82,12 @@ public class InventoryList {
         }
     }
 
+    /**
+     * Checks if Inventory object is list.
+     *
+     * @param inputString Inventory object name.
+     * @return true or false.
+     */
     public boolean isDrugStored(String inputString) {
         for (Inventory inventory : list) {
             String drugName = inventory.getDrugName();
@@ -75,6 +98,11 @@ public class InventoryList {
         return false;
     }
 
+    /**
+     * Displays the format for the Inventory List.
+     *
+     * @param inventory Inventory object.
+     */
     public static void display(Inventory inventory) {
         System.out.println(
                 prettyPrint(inventory.getDrugName(), 15) + " | "
@@ -82,10 +110,21 @@ public class InventoryList {
                         + prettyPrint(Integer.toString(inventory.getQuantity()), 5));
     }
 
+    /**
+     * Returns size of Inventory List.
+     *
+     * @return size of Inventory List.
+     */
     public int getSize() {
         return list.size();
     }
 
+    /**
+     * Returns the format the list has to be saved in Inventory text file.
+     *
+     * @param i index of Inventory object.
+     * @return the format the list has to be saved in Inventory text file.
+     */
     public String toSaveFile(int i) {
         return list.get(i).toSaveFormat();
     }

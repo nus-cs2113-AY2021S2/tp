@@ -1,6 +1,7 @@
 package seedu.storage;
 
 import seedu.exceptions.HealthVaultException;
+import seedu.logger.HealthVaultLogger;
 import seedu.model.inventory.InventoryList;
 import seedu.logic.errorchecker.InventoryChecker;
 import seedu.model.inventory.Inventory;
@@ -11,8 +12,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-
+/**
+ * InventoryStorage handles the necessary file I/O operations.
+ */
 public class InventoryStorage {
 
     protected File saveFile;
@@ -20,12 +25,24 @@ public class InventoryStorage {
     protected ArrayList<Inventory> inventories = new ArrayList<>();
     protected InventoryUI ui;
     protected InventoryChecker checker;
+    public Logger logger = HealthVaultLogger.getLogger();
 
+    /**
+     * Constructor for InventoryStorage.
+     *
+     * @param filePath filepath to create and update file.
+     */
     public InventoryStorage(String filePath) {
         this.filePath = filePath;
         saveFile = new File(filePath);
     }
 
+    /**
+     * Creates a directory if it does not exist.
+     * Creates a file if it does not exist.
+     *
+     * @throws IOException If unable to create file/directory.
+     */
     public void fileInit() {
         try {
             //makes file directory if it doesnt exist in the system.
@@ -35,9 +52,16 @@ public class InventoryStorage {
             }
         } catch (IOException e) {
             System.out.println("OOPS! I can't create the directory or file!");
+            logger.log(Level.WARNING, "Unable to create file");
         }
     }
 
+    /**
+     * Loads data from text file into InventoryList.
+     *
+     * @return Inventory List
+     * @throws HealthVaultException If any corrupted file/data detected.
+     */
     public ArrayList<Inventory> loadInventory() throws HealthVaultException {
         fileInit();
         Scanner fileScanner = null;
@@ -66,6 +90,10 @@ public class InventoryStorage {
         return inventories;
     }
 
+    /**
+     * Stores data from InventoryList into a specified text file.
+     * @param saveInput InventoryList object where Inventory object's data are received.
+     */
     public void storeInventory(InventoryList saveInput) {
         fileInit();
         try {

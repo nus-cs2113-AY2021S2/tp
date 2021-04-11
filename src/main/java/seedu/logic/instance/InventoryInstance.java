@@ -18,21 +18,25 @@ import seedu.ui.UI;
 import java.util.ArrayList;
 
 public class InventoryInstance {
-
-    /**
-     * Main entry-point for the java.duke.DrugInstance application.
-     */
     private InventoryUI ui;
     private InventoryList inventory;
     private InventoryStorage inventoryStorage;
     private InventoryParser parser;
 
+    /**
+     * Constructor for InventoryInstance.
+     *
+     * @param filePath String of the filepath for InventoryStorage.
+     */
     public InventoryInstance(String filePath) {
         ui = new InventoryUI();
         inventoryStorage = new InventoryStorage(filePath);
         parser = new InventoryParser();
     }
 
+    /**
+     * Executes the Inventory Menu.
+     */
     public void run() {
         try {
             ArrayList<Inventory> list = inventoryStorage.loadInventory();
@@ -42,11 +46,12 @@ public class InventoryInstance {
             inventory = new InventoryList();
             return;
         }
+        UI.showLine(); // show the divider line ("_______")
         InventoryUI.inventoryMenuHeader();
         boolean isReturnToStartMenu = false;
         while (!isReturnToStartMenu) {
             try {
-                UI.showLine(); // show the divider line ("_______")
+                System.out.print("\n");
                 String fullCommand = ui.getInput("Inventory");
                 Command c = parser.inventoryParse(fullCommand, inventory);
                 c.execute(inventory, ui);

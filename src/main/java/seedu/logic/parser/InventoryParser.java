@@ -10,17 +10,32 @@ import seedu.logic.command.inventory.InventoryReturn;
 import seedu.logic.errorchecker.InventoryChecker;
 import seedu.logic.errorchecker.MainChecker;
 import seedu.ui.UI;
+
+import java.util.Locale;
+
 import static seedu.ui.UI.smartCommandRecognition;
 
 public class InventoryParser {
     static final String[] COMMANDS = {"add", "delete", "list", "return", "help"};
     private InventoryChecker checker;
 
+    /**
+     * Returns a Command object which dictates the actions to be carried out on the Inventory objects.
+     *
+     * @param fullCommand Entire input command.
+     * @param inventories InventoryList object that contains all the Inventory object.
+     * @return Command object.
+     * @throws ArrayIndexOutOfBoundsException If array is accessed with an illegal index.
+     * @throws HealthVaultException If any invalid input given.
+     */
     public Command inventoryParse(String fullCommand, InventoryList inventories)
             throws ArrayIndexOutOfBoundsException,
             HealthVaultException {
         String[] stringTokens = fullCommand.trim().split("/");
         int numberOfTokens = stringTokens.length;
+        for(int i = 0; i < numberOfTokens; i++) {
+            stringTokens[i] = stringTokens[i].trim();
+        }
         MainChecker.checkNumInput(fullCommand, 4, 1);
 
         String command = smartCommandRecognition(COMMANDS, stringTokens[0]);
@@ -64,6 +79,12 @@ public class InventoryParser {
         return c;
     }
 
+    /**
+     * Returns array of Inventory object fields.
+     *
+     * @param stringTokens represent the fields of Inventory object.
+     * @return array of Inventory object fields.
+     */
     private String[] parseToAddFormat(String[] stringTokens) {
         String[] addFormat;
         addFormat = new String[] {stringTokens[1], stringTokens[2], stringTokens[3]};
