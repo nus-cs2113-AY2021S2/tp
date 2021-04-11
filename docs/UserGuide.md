@@ -44,8 +44,6 @@ Since: `March 2021`
 
 ## 1. Introduction
 
----
-
 Finux is a Command-Line Interface (CLI) application that allows you to record your expenses, savings and loans all in
 one consolidated platform. With these information made readily available at your fingertips, it will allow you to 
 better adjust your expenditure or work harder towards your savings goal. Finux also includes a way for you to keep
@@ -57,8 +55,6 @@ financial management and planning with the Finux application as compared to the 
 applications in the market.
 
 ## 2. Quick Start
-
----
 
 1. Ensure you have Java `11` or above installed in your Computer.
 2. Download the latest `finux.jar` from [here](https://github.com/AY2021S2-CS2113T-W09-1/tp/releases/tag/v2.0).
@@ -174,8 +170,6 @@ This means that the $500 loan you have made to Mark on 20th March 2021 has been 
 record added to Finux.
 
 ## 3. Features
-
----
 
 ### 3.1 Add a record: `add`
 
@@ -475,8 +469,6 @@ Output:
 
 ## 4. Frequently Asked Questions
 
----
-
 **Q1**: How can I transfer my saved tasks information to another computer?
 > Run Finux on the other computer and overwrite the empty `finux.txt` created, with the `finux.txt` that
 > contains the data of your previous Finux usage.
@@ -491,8 +483,6 @@ Output:
 > Do check and ensure that Finux has the proper write permissions in the directory.
 
 ## 5. Command Summary
-
----
 
 | Feature                                | Command                                                  | Example                                              |
 | -------------------------------------- | -------------------------------------------------------- |------------------------------------------------------|
