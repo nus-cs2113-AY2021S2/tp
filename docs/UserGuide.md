@@ -128,7 +128,9 @@ After keying in their input, the most common way to enter the response into the 
    - Then, run the following command: `cd [File Path]`
    - Example: `cd C:\Users\JohnDoe\Downloads`
    - Run the following command: `java -jar [JAR file name]`
-  
+
+:information_source: HealthVault is optimized for screen sizes with the following specifications: 1450px (width) x 600px (height).
+Using smaller screen sizes and dimensions may result in a suboptimal viewing experience for various functionalities.
 <br/><br/>
 
 ## 4. Start Menu
@@ -895,7 +897,7 @@ This is an example of the welcome screen for the Inventory Menu.
 | list                | `list/[Nurse ID/all]`<br/><br/>`list/N12345/list/all`                                                      |
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |
-| **Drugs Inventory** |                                                                                                            |
+| **Inventory** |                                                                                                            |
 | add                 | `add/[Name]/[Price]/[Quantity]`<br/><br/>`add/paracetamol/3/90`                                           |
 | delete              | `delete/[Name]/[Quantity]`<br/><br/>`delete/paracetamol/20`                                                              |
 | list                | `list`                                                                                                     |
