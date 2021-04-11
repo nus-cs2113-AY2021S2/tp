@@ -1281,22 +1281,24 @@ Given below are instructions to test HealthVault manually.
 
 > * These instructions only provide a starting point for testers to work on;
 > testers are expected to do more *exploratory* testing.
-> * You can refer to the [User Guide]() for further information regarding the command formats.
+> * You can refer to the [User Guide](https://github.com/AY2021S2-CS2113T-F08-2/tp/blob/master/docs/UserGuide.md) for further information regarding the command formats.
 
 ### Launching HealthVault
-1. Initial launch of HealthVault
-    1.1 Download the jar file [here](https://github.com/AY2021S2-CS2113T-FO8-2/tp/releases) and copy into an empty folder.
-    1.2 Open up a command window to that folder with the jar file.
-    1.3 Run the command `java -jar tp.jar` 
+
+Initial launch of HealthVault
+    1. Download the jar file [here](https://github.com/AY2021S2-CS2113T-FO8-2/tp/releases) and copy into an empty folder.
+    2. Open up a command window to that folder with the jar file.
+    3. Run the command `java -jar tp.jar` 
         
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** HealthVault will be loaded, and a welcome message will be shown. Ensure &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;that the version number in the welcome matches version of the jar file downloaded.
 
 ### Start Menu
-1. Choose a directory from the Start Menu
+
+Choose a directory from the Start Menu
     > Ensure that the location that you are trying to access is in the Start Menu or else 
     > error message will pop up
     >
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.1 **Test case:** `staff` (where you will be directed to the Staff Menu)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. **Test case:** `staff` (where you will be directed to the Staff Menu)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 
@@ -1305,7 +1307,7 @@ Given below are instructions to test HealthVault manually.
 	Type "help" for staff menu commands
 	
 	
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.2 **Test case:** `patient` (where you will be directed to the Patient Menu)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. **Test case:** `patient` (where you will be directed to the Patient Menu)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 	
@@ -1314,7 +1316,7 @@ Given below are instructions to test HealthVault manually.
 	Type "help" for patient menu command
 	
 	
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.3 **Test case:** `appointments` (where you will be directed to the Appointments' Menu)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. **Test case:** `appointments` (where you will be directed to the Appointments' Menu)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
@@ -1323,7 +1325,7 @@ Given below are instructions to test HealthVault manually.
 	Type 'help' for appointment menu commands
 	
 	
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.4 **Test case:** `schedules` (where you will be directed to the Schedules' Menu)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4. **Test case:** `schedules` (where you will be directed to the Schedules' Menu)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 	
@@ -1332,7 +1334,7 @@ Given below are instructions to test HealthVault manually.
 	Type "help" to for nurse schedules commands
 	
 	
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.5 **Test case:** `inventory` (where you will be directed to the Staff Menu)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5. **Test case:** `inventory` (where you will be directed to the Staff Menu)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 
@@ -1342,7 +1344,7 @@ Given below are instructions to test HealthVault manually.
 	
 	
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.6 **Test case:** `help` (where you will be directed to the Help Menu)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6. **Test case:** `help` (where you will be directed to the Help Menu)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
@@ -1358,7 +1360,7 @@ Given below are instructions to test HealthVault manually.
 	exit           To exit the application                 -         
 	
 	
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.7 **Test case:** `exit` (where you will exit the program)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7. **Test case:** `exit` (where you will exit the program)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Goodbye! Have a nice day!```
 	 
@@ -1377,9 +1379,18 @@ Given below are instructions to test HealthVault manually.
 >2. Any input field in HealthVault only accepts space and alphanumeric characters
 >3. The age field input should be a positive integer starting from 0 but less than 150
     
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```add/D12345/MingShun/30/Pediatrician```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Positive Test case:** ```add/D12345/MingShun/30/Pediatrician```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Doctor MingShun hired :)```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `add/D1/MingShun/40/Pediatrician`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+
+``` 
+Error in Staff ID input
+Please input with the following format [D/N][5 digit ID number]
+```
 
 <br/>
  
