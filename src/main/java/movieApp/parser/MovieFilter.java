@@ -19,7 +19,7 @@ public class MovieFilter {
             System.out.println((i + 1) + ". " + MovieList.get(i).getMovieTitle() + " ("
                     + MovieList.get(i).getOverallRating() + ")");
         }
-        System.out.println("To select a single movie, select option 6.");
+        System.out.println("To select a single movie, select \"6 Select movie\" from the Movie Filter menu below.");
         System.out.println("============================\n");
     }
 
