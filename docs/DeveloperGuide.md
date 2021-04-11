@@ -28,7 +28,6 @@
    4.5 [Remove Feature](#45-remove-feature)\
    4.6 [Storage Feature](#46-storage-feature)\
    4.7 [Credit Score Feature](#47-credit-score-feature)
-5. [Documentation, Logging, Testing, and DevOps](#5-documentation-logging-testing-and-devops)
 
 [Appendix A: Product Scope](#appendix-a-product-scope)\
 \
@@ -468,7 +467,7 @@ By calling the `execute()` method,
 * Finally, a notification is printed onto the console with the help of `Ui`.
 
 ![AddFeatureSequenceDiagram](img/AddFeatureSequenceDiagram.png)\
-_Figure x: Sequence Diagram for `add {-e | -l | -s}`_
+_Figure x: Sequence Diagram for `AddCommand`_
 
 > 📝 The sequence diagram starts from Step 2 onward.
 
@@ -529,19 +528,76 @@ Other than increased complexity of regex Strings, any changes to command and opt
 new regex String. Therefore, systematic validation is the preferred approach, for the current and future developers.
 
 ### 4.2 List Feature
-The `list` feature allows Finux users to list records that they have entered into the system.
+The `list` feature allows the users to display the record's information of the respective category of
+*expense*, *loan*, and *saving* of the added records.
 
-To list loans:
+#### 4.2.1 Current Implementation
+The `list` feature is supported by the `Listcommand`. The user will enter `list` and followed up with the available
+options, `{-e, -l, -s, -a}`, and the `ParserHandler` will parse the input for `CommandHandler` to create the
+`ListCommand` object. The program then proceeds to call the `execute()` method, and the record's information will be
+displayed onto the screen.
 
-`list -l`
+![ListFeatureSequenceDiagram](img/ListFeatureSequenceDiagram.png)\
+_Figure x: Sequence Diagram for `ListCommand`_
 
-To list expenses:
+> 📝 The sequence diagram starts from Step 2 onward.
 
-`list -e`
+Given below is an example usage scenario of how `ViewCommand` behaves at each step.
 
-To list savings:
+***Step 1:***\
+The user execute the `list` command with one of the available options, `{-e, -l, -s, -a}`. The program 
+invokes `ParserHandler#getParseInput()` to provide the parsed input to `CommandHandler#createCommand()`. This checks 
+for the command type, `list`, and proceeds to validate the parsed input in the `ListCommand()` constructor 
+before returning the constructed `ListCommand` object to `Finux`.
 
-`list -s`
+***Step 2:***\
+The application next invokes the `ListCommand#execute()` to execute the user's instruction.
+
+***Step 3:***\
+Inside the `ListCommand#execute()`, the method conducts a check on the `RecordType` enumeration before executing the
+respective method. The `RecordType` enumeration is used to identify the category such that the correct method would be
+called. The following are the supported types found in `RecordType` enumeration:
+> ✔️ `EXPENSE` type invokes `Ui#printExpenses()`
+
+> ✔️ `LOAN` type invokes `Ui#printLoans()`
+
+> ✔️ `SAVING` type invokes `Ui#printSavings()`
+
+> ✔️ `ALL` type invokes `Ui#printAllRecords()`
+
+***Step 4:***\
+The `Ui` will handle the respective invocation call. The basis for the four methods utilizes the `for` loop to
+iterate through the `recordList`. For each iteration, `instanceof` was called to check for the respective record types.
+If the record types is valid according to the respective methods call, their record's information will be printed on
+to the screen.
+
+***Step 5:***\
+Lastly, the program will print out the record's information with the help of `getId()` and the respective `toString()` 
+methods.
+> `getId()` and `toString()` omitted for brevity in the sequence diagram.
+
+
+#### 4.2.2 Design Consideration
+
+This section shows the design considerations taken when implementing the list feature.
+
+Aspect: **Whether to print as record ID or indexes**
+
+Since we plan to allow the user to remove or return a record, need a way to identify the record. Below are two proposed
+printout ideas:
+* Index, e.g. `1. [E] [2021-01-01] [$1,000.00] Record 1` 
+* Record ID, e.g. `[ID: 1] [E] [2021-01-01] [$1,000.00] Record 1`
+
+|Approach | Pros | Cons| 
+|---------|------|-----|
+|Index|Classical approach|Might confuse the user|
+|Record ID|Creates a better intuition|New method call is necessary for formatting the printout|
+
+Having considered two of the approaches, we have decided to adopt the second approach.
+As our remove and return features takes in the number based on the listed records, it will be better to highlight the
+record ID rather than just a single number printout to provide the user a better intuition. Although a new method call
+`getID()` is needed, the price to pay is very little compared to confusing the user as index can be interpreted
+differently by different people.
 
 
 ### 4.3 View Feature
@@ -555,16 +611,17 @@ The `view` feature is facilitated by `ViewCommand`. By typing in `view` and foll
 By calling the `execute()` method, the total amount will be printed onto the console with the help of `Ui`.
 
 ![ViewFeatureSequenceDiagram](img/ViewFeatureSequenceDiagram.png)\
-_Figure x: Sequence Diagram for **`view -e`**_
+_Figure x: Sequence Diagram for `ViewCommand`_
 
 > 📝 The sequence diagram starts from Step 2 onward.
 
 Given below is an example usage scenario of how `ViewCommand` behaves at each step.
 
 ***Step 1:***\
-User executes the command `view -e`. The application invokes `ParserHandler#getParseInput()` to provide the parsed
-input to `CommandHandler#createCommand()`. This checks for the command type, `view`, and proceeds to validate the
-parsed input in the `new ViewCommand()` constructor before returning the constructed `ViewCommand` object to `Finux`.
+The user execute the `view` command with one of the available options, `{-e, -l, -s, -a}`. The program invokes 
+`ParserHandler#getParseInput()` to provide the parsed input to `CommandHandler#createCommand()`. This checks 
+for the command type, `view`, and proceeds to validate the parsed input in the `ViewCommand()` constructor 
+before returning the constructed `ViewCommand` object to `Finux`.
 
 ***Step 2:***\
 The application next invokes the `ViewCommand#execute()` to execute the user's instruction.
@@ -572,7 +629,7 @@ The application next invokes the `ViewCommand#execute()` to execute the user's i
 ***Step 3:***\
 Inside the `ViewCommand#execute()`, the method conducts a check on the `RecordType` enumeration before executing the 
 respective method. The `RecordType` enumeration is used to identify the category such that the correct method would be
-called. The following are the support types found in `RecordType` enumeration:
+called. The following are the supported types found in `RecordType` enumeration:
 > ✔️ `EXPENSE` type invokes `Ui#printTotalAmountExpense()`
 
 > ✔️ `LOAN` type invokes `Ui#printTotalAmountLoan()`
@@ -582,7 +639,7 @@ called. The following are the support types found in `RecordType` enumeration:
 > ✔️ `ALL` type invokes `Ui#printTotalAmountAllType()` 
 
 ***Step 4:***\
-The `Ui` will handle the respective invocation call. The basis for the three methods utilizes the `for` loop to
+The `Ui` will handle the respective invocation call. The basis for the four methods utilizes the `for` loop to
 iterate through the `recordList` and will only add to the `totalAmount` if it is an instance of the respective
 record type.
 > 📝 The `Ui#printTotalAmountLoan()` will imposed additional check on whether the record is returned.
@@ -726,7 +783,7 @@ parameters, our `CommandHandler` will construct the `RemoveCommand` object which
 validated parameters that will be used in the execute function.
 
 ![RemoveFeatureSequenceDiagram](img/RemoveFeatureSequenceDiagram.png)\
-*Figure x: Sequence Diagram for `remove -i 1`*
+_Figure x: Sequence Diagram for `RemoveCommand`_
 
 The sequence diagram presented above depicts the interaction between the components for running the command.
 `remove -i 1`.
@@ -812,7 +869,7 @@ classes. During the launch of the Finux application, in the `start` method, `get
 data from the saved file: `finux.txt`. 
 
 ![SavingFeatureSequenceDiagram](img/StorageSequenceDiagramSave.png)
-*Figure x: Sequence Diagram for Storage's save function*
+_Figure x: Sequence Diagram for Storage's save function_
 
 Saving of data works differently, the data will be automatically saved into `finux.txt` only with a few 
 particular command calls, these calls are the commands that will alter the `records` in the `RecordList`. As
@@ -920,11 +977,6 @@ Output:
 
 Credit score for Tom is 90
 
-## 5. Documentation, Logging, Testing, and DevOps
-
----
-
-...
 
 ## Appendix A: Product Scope
 
