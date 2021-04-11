@@ -71,7 +71,7 @@ This user guide will cover the following:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Command Line Interface** - Accessing the functionalities of a computer program in the form of lines of text.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Graphical User Interface** - Allows users to interact with the functionalities of a computer program through graphical icons
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Graphical User Interface** - Allows users to interact with the functionalities of a computer program through graphical icons.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and audio indicators, instead of text-based user interfaces, typed command labels or text navigation.
 
@@ -116,21 +116,21 @@ After keying in their input, the most common way to enter the response into the 
 
 ### <a name="section2"> 3.2 Installation Guide
 
-1. Ensure system has Java 11
+1. Ensure system has Java 11.
 
-2. Download the latest JAR file from this [website](https://github.com/AY2021S2-CS2113T-F08-2/tp/releases)
+2. Download the latest JAR file from this [website](https://github.com/AY2021S2-CS2113T-F08-2/tp/releases).
 
-3. Open the command window
-    - Click the search icon in the bottom left side of the screen
-    - Type ‘command prompt’ in the search bar
-    - Select the application called ‘Command Prompt’
+3. Open the command window.
+    - Click the search icon in the bottom left side of the screen.
+    - Type ‘command prompt’ in the search bar.
+    - Select the application called ‘Command Prompt’.
 
-4. `cd` into the folder containing the JAR file
-    - Locate the file path of the JAR file that you have downloaded
-    - For example:  (C:\Users\JohnDoe\Downloads), where JohnDoe is the user’s name
-    - Then, run the following command: `cd [File Path]`
-    - Example: `cd C:\Users\JohnDoe\Downloads`
-    - Run the following command: `java -jar [JAR file name]`
+4. `cd` into the folder containing the JAR file.
+    - Locate the file path of the JAR file that you have downloaded.
+    - For example:  (C:\Users\JohnDoe\Downloads), where JohnDoe is the user’s name.
+    - Then, run the following command: `cd [File Path]`.
+    - Example: `cd C:\Users\JohnDoe\Downloads`.
+    - Run the following command: `java -jar [JAR file name]`.
 
 :information_source: HealthVault is optimized for screen sizes with the following specifications: 1450px (width) x 600px (height).
 Using smaller screen sizes and dimensions may result in a suboptimal viewing experience for various functionalities.
@@ -197,14 +197,14 @@ This is an example of the welcome screen for Staff Menu.
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `D54321`
 >
->2. Any input field in HealthVault only accepts space and alphanumeric characters
->3. The age field input should be a positive integer starting from 18 to inclusive of 150
+>2. Any input field in HealthVault only accepts space and alphanumeric characters.
+>3. The age field input should be a positive integer starting from 18 to inclusive of 150.
 >4. Specialisation is able to take in integer values but not illegal characters.
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:<br/>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adding a Pediatrician Doctor MingShun with Staff ID of D12345 of age 30
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adding a Pediatrician Doctor MingShun with Staff ID of D12345 of age 30.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` Staff --> add/D12345/MingShun/30/Pediatrician```
 
@@ -248,7 +248,7 @@ This is an example of the welcome screen for Staff Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `list/<doctors/nurses>`
 
 >:information_source: Important notes about the input format
->1. <> implies that the inputs are optional
+>1. <> implies that the inputs are optional.
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `list`, `list/doctors`
 
@@ -350,9 +350,9 @@ When you first enter the Patient menu, you will be greeted with the following we
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `P12345`, `P54321`
 >
->2. Any input field in HealthVault only accepts space and alphanumeric characters
+>2. Any input field in HealthVault only accepts space and alphanumeric characters.
 >3. The gender field input is case-insensitive but should only be "M", "F" or "Others" or any other upper and lower case versions.
->4. The age field input should be a positive integer including 0, starting from 0 to inclusive of 150
+>4. The age field input should be a positive integer including 0, starting from 0 to inclusive of 150.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
@@ -422,11 +422,11 @@ When you first enter the Patient menu, you will be greeted with the following we
 >
 > The keyword input can be case-insensitive and still find matches in the database.
 >
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `find/john` is able to match with a name field "John" or "JOHN"
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `find/john` is able to match with a name field "John" or "JOHN".
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Finding through inputting the ID
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Finding through inputting the ID.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` Patient --> find/P54321```
 
@@ -436,7 +436,7 @@ When you first enter the Patient menu, you will be greeted with the following we
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Finding through inputting the name
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Finding through inputting the name.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` Patient --> find/Sam```
 
@@ -481,11 +481,11 @@ This is an example of the welcome screen for Doctors' Appointment Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]`
 
 >:information_source: Important notes about the input format
->1. Make sure that the inputted doctor/appointment ID starts with a D/A and have **exactly** 5 digits in the number following!
+>1. Make sure that the inputted doctor/appointment ID starts with an upper-case D/A and have **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `D12345`, `A54321`
 >
->2. Any input fields in HealthVault only accepts space and alphanumeric characters
+>2. Any input fields in HealthVault only accepts space and alphanumeric characters.
 >3. The gender field input should only be "M", "F".
 >4. This function **allows** the adding of past appointments, **Example**: `add/D12345/A12345/Alex/M/21011998`.
 
@@ -573,7 +573,7 @@ This is an example of the welcome screen for Doctors' Appointment Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage (Appointment ID)**:<br/>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List the Appointment with ID A12345
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List the Appointment with ID A12345.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` Appointments --> list/A12345```
 
@@ -625,7 +625,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:<br/>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adding a schedule for Nurse ID N12345 to visit P12345 on 30/01/2020
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adding a schedule for Nurse ID N12345 to visit P12345 on 30/01/2020.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> add/N12345/P12345/30012020 ```
 
