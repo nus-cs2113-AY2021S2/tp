@@ -13,7 +13,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static stores.Store.averageRating;
 import static ui.Ui.LINESPACING;
 
 
@@ -38,7 +37,7 @@ public class DeleteReviewCommand extends Command {
             Canteen currentCanteen = canteens.get(currentCanteenIndex);
             Store store = currentCanteen.getStore(currentStoreIndex);
             ArrayList<Review> reviews = store.getReviews();
-            averageRating = store.getAverageRating();
+            double averageRating = store.getAverageRating();
             if (reviews.size() <= 0) {
                 System.out.println(LINESPACING);
                 System.out.println("There are currently no reviews in this store to delete!");

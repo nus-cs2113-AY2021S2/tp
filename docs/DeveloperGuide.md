@@ -61,10 +61,15 @@ The rest of the App consists of four components.
 ### Logic-Component
 
 ### Model-Component
+![Model Class Diagram](./img/ModelClassDiagram.png)
+
+Our model consists of four classes: Canteen, Store, Menu, and Review.
+Composition relationships exist between these classes. 
+For example, when a Canteen is deleted, all Stores, Menus and Reviews will also be deleted.
 
 ### Storage-Component
 
-##Implementation
+## Implementation
 For public users, the list of commands is shown below:
 
 * Display selected store sample menu: `menu`
@@ -84,16 +89,6 @@ For admin, the list of commands is shown below:
  5. Delete store in canteen
  6. Delete reviews
  7. Exit
-
-
-<!-- NOT TOO SURE HOW THIS PART FITS IN
-
-#### Sequence Diagram for `admin`
-When the user enters `2` to go into the admin page, the AdminVerification() is called. It will ask the user to input 
-the password. Then it will check the input against the set password. If fails then the user have to enter again or enter
-`exit` to exit the application.
---> 
-
 
 ### Main NusFoodReviews
 
