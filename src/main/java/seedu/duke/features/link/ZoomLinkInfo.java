@@ -115,6 +115,7 @@ public class ZoomLinkInfo {
 
     /**
      * Changes the module code attribute of the ZoomLinkInfo object to mark it as deleted.
+     *
      * @param moduleToDelete is the module code to be deleted.
      */
     public static void deleteModuleCode(String moduleToDelete) {
@@ -126,8 +127,8 @@ public class ZoomLinkInfo {
     }
 
     /**
-     * This method is called when the module list is empty.
-     * Prompts the user to add a new module.
+     * This method is called when the module list is empty. Prompts the user to add a new module.
+     *
      * @return the module code as a String.
      */
     public static String addModuleWhenModuleIsEmpty() {
@@ -145,10 +146,11 @@ public class ZoomLinkInfo {
 
     /**
      * Determines if the module code already has a zoom link tagged to it.
+     *
      * @param linkToCompare is the module code
      * @return true if the module code already has a zoom link.
      */
-    public static boolean isExist (String linkToCompare) {
+    public static boolean isExist(String linkToCompare) {
         for (ZoomLinkInfo link : zoomLinksList) {
             if (link.moduleCode.equals(linkToCompare)) {
                 return true;
