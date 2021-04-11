@@ -41,7 +41,8 @@ public class AdminMainMenu implements MainMenu {
             switch (functionSelection) {
                 case 1:
                     do {
-                        movie = MovieFilter.filter(Database.MovieDatabase, Database.CineplexDatabase, user.get(currentUserIndex));
+                        ArrayList<Movie> movieList = new ArrayList<>(Database.MovieDatabase);
+                        movie = MovieFilter.filter(movieList, Database.CineplexDatabase, user.get(currentUserIndex));
                         if (movie != null) {
                             goBack = MovieMenu.movieAction(movie, user.get(currentUserIndex));
                         }
