@@ -23,9 +23,10 @@ public class Booking implements Serializable {
 
     public void printBookingDetails(){
         Calendar d = getShowtimes().getDateTime();
+        Date movieDate = d.getTime();
         System.out.println("==========================================");
         System.out.println("Movie Title:     " + showtimes.getMovieTitle());
-        System.out.println("Show Time:       " + d.get(Calendar.YEAR) + "/" + (d.get(Calendar.MONTH)+1) + "/" + d.get(Calendar.DATE) + " ");
+        System.out.println("Show Time:       " + movieDate);
         System.out.print("Seats Booked:    ");
         for(int i = 0; i<seats.size(); i++){
             System.out.print("[" + (seats.get(i).getRow()+1)

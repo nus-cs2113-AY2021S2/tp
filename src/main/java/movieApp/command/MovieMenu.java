@@ -65,14 +65,18 @@ public class MovieMenu {
 				System.out.println("--------------------------");
 				Calendar d = ShowtimeDatabase.get(i).getDateTime();
 				System.out.print("[Timing] " + d.get(Calendar.YEAR) + "/" + (d.get(Calendar.MONTH)+1) + "/" + d.get(Calendar.DATE) + " ");
-				System.out.printf("%02d:%02d%n", d.get(Calendar.HOUR_OF_DAY), d.get(Calendar.MINUTE) );
-				System.out.println("[Location] Cineplex: " + CineplexDatabase.get(ShowtimeDatabase.get(i).getCineplexID()).getCineplexName()+ " -> " +"Cinema: " + (ShowtimeDatabase.get(i).getCinemaID()+1));
+				System.out.printf("%02d:%02d%n", d.get(Calendar.HOUR_OF_DAY), d.get(Calendar.MINUTE));
+				//System.out.println("MovieID: " + ShowtimeDatabase.get(i).getMovieTitle());
+				//System.out.println("CineplexID: " + ShowtimeDatabase.get(i).getCineplexID());
+				//System.out.println("Index: " + i);
+				//System.out.println("CineplexDatabase: "+CineplexDatabase.get(ShowtimeDatabase.get(i).getCineplexID()).getCineplexName());
+				System.out.println("[Location] Cineplex: " + CineplexDatabase.get(ShowtimeDatabase.get(i).getCineplexID()-1).getCineplexName()+ " -> " +"Cinema: " + (ShowtimeDatabase.get(i).getCinemaID()+1));
 				showtime_index.add(i); 
 				n++; 
 			}
 		}
 		if(!gotShowtime){
-			System.out.println("Waiting for administrator to add the showtime. Please come back later.");
+			System.out.println("Waiting for administrator to add the show timings. Please come back later.");
 			return;
 		}
 		
@@ -94,8 +98,8 @@ public class MovieMenu {
 		}
 		
 		int index_st = showtime_index.get(choice);
-		int cinemaID = ShowtimeDatabase.get(index_st).getCinemaID(); 
-		int cineplexID = ShowtimeDatabase.get(index_st).getCineplexID();
+		int cinemaID = ShowtimeDatabase.get(index_st).getCinemaID();
+		int cineplexID = ShowtimeDatabase.get(index_st).getCineplexID()-1;
 
 		System.out.println("You have selected: ");
 		System.out.println("--------------------------");
