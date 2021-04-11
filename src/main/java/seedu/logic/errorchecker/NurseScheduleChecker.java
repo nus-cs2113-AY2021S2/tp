@@ -90,7 +90,7 @@ public class NurseScheduleChecker extends MainChecker {
      * @throws PatientIdNotFound           if id does not exist
      * @throws PatientCrossValidationError if patient database cannot be loaded
      */
-    public static void checkPatientiDExist(String patientID) throws PatientIdNotFound, PatientCrossValidationError {
+    public static void checkPatientiDExist(String patientID) throws PatientIdNotFound, PatientCrossValidationError, NumberFormatException {
         try {
             ArrayList<Patient> patientList;
             patientList = NurseScheduleStorage.loadPatientFile();
