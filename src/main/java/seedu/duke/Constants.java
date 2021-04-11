@@ -75,6 +75,7 @@ public class Constants {
                     + "You may use the help command for more clarification.";
     public static final String INVALID_INPUT_EMPTY_NRIC_ARGUMENT = "Please key in NRIC number of patient to delete";
     public static final String INVALID_INPUT_EMPTY_DATE_ARGUMENT = "Please key in a date of record to delete";
+    public static final String INVALID_INPUT_PATIENT_NOT_FOUND = "Patient with this IC number does not exist!";
     public static final String INVALID_INPUT_END_OF_FILE = "End of file reached, exiting application.";
     public static final String INVALID_INPUT_FORBIDDEN_SUBSTRING =
             "These substrings are not allowed in the input command:\n"
