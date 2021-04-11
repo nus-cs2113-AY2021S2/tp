@@ -1,6 +1,23 @@
 package seedu.ui;
 
-import static seedu.duke.Constants.*;
+import static seedu.duke.Constants.HELP_HEADER_COMMAND;
+import static seedu.duke.Constants.HELP_HEADER_DESCRIPTION;
+import static seedu.duke.Constants.HELP_HEADER_FORMAT;
+import static seedu.duke.Constants.HELP_COMMAND;
+import static seedu.duke.Constants.ADD_COMMAND;
+import static seedu.duke.Constants.LIST_COMMAND;
+import static seedu.duke.Constants.DELETE_COMMAND;
+import static seedu.duke.Constants.RETURN_COMMAND;
+import static seedu.duke.Constants.INVENTORY_HELP_DESCRIPTION;
+import static seedu.duke.Constants.INVENTORY_ADD_DESCRIPTION;
+import static seedu.duke.Constants.INVENTORY_LIST_DESCRIPTION;
+import static seedu.duke.Constants.INVENTORY_DELETE_DESCRIPTION;
+import static seedu.duke.Constants.RETURN_DESCRIPTION;
+import static seedu.duke.Constants.MARK_BLANK;
+import static seedu.duke.Constants.INVENTORY_ADD_FORMAT;
+import static seedu.duke.Constants.INVENTORY_LIST_FORMAT;
+import static seedu.duke.Constants.INVENTORY_DELETE_FORMAT;
+import static seedu.duke.Constants.INVENTORY_FILE_PATH;
 
 public class InventoryUI extends UI {
 

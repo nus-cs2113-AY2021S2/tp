@@ -21,6 +21,7 @@ public class Staff {
         this.age = Integer.parseInt(array[2]);
         this.specialisation = array[3];
     }
+
     /**
      * Returns name of Staff object.
      *
@@ -32,6 +33,7 @@ public class Staff {
         }
         return this.name;
     }
+
     /**
      * Returns age of Staff object.
      *
