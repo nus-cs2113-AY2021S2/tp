@@ -107,12 +107,12 @@ Java 11 and above<br>
 1. Open command prompt (for Windows users) or Terminal (for Mac and Linux users),
 1. Navigate to the directory of your GULIO.jar file.
 1. Run the command “java -jar gulio.jar” to start GULIO.
-> 💡 The file name is not case-sensitive, so both gulio.jar and GULIO.jar works in step 4.
+> 💡 The file name is not case-sensitive, so both gulio.jar and GULIO.jar works here.
 
 &nbsp;
 
 <p align="center">
-    <img width="973" src="userGuideImages/StartGULIO.png" alt="Command Line GULIO"><br>
+    <img width="600" src="userGuideImages/StartGULIO.png" alt="Command Line GULIO"><br>
     Figure 1 - Example of Opening GULIO in Command Prompt
 </p>
 
