@@ -27,14 +27,11 @@ public class AddCommand extends Command {
 
         String id = arguments.get("payload");
         id = id.toUpperCase();
-
-        if (!Common.isValidID(id)) {
-            throw new InvalidInputException(InvalidInputException.Type.INVALID_NRIC);
-        } else if (data.getPatients().containsKey(id)) {
+        // Checks if ID is valid
+        Common.checkID(id);
+        if (data.getPatients().containsKey(id)) {
             throw new InvalidInputException(InvalidInputException.Type.PATIENT_EXISTED);
         }
-
-        assert Common.isValidID(id) : "validID should be true";
         Patient patient = new Patient(id);
         data.setPatient(patient);
         data.saveFile();

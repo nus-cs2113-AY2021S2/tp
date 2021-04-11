@@ -1,13 +1,16 @@
 package seedu.duke;
 
 public class Constants {
-
     // String constants for the main class
     public static final String EXIT_MESSAGE = "Goodbye, we hope to see you again!";
     public static final String WELCOME_MESSAGE = "Welcome to the Patient Manager.\n";
     public static final String INPUT_PROMPT = "Please input a command: ";
 
     // Help messages
+    public static final String COMMAND_LIST_MESSAGE = "Here is a list of available commands:\n"
+            + "  add\n  delete\n  list\n  load\n  record\n  retrieve\n  current\n  exit\n"
+            + "Type 'help' followed by one or more commands for more details\n"
+            + "Example: help record";
     public static final String ADD_INFO_MESSAGE = "Add a patient to the list\n"
             + "Command prefix: add\n"
             + "Argument(s): IC number\n"
@@ -37,7 +40,7 @@ public class Constants {
             + "Usage: retrieve\n";
     public static final String CURRENT_INFO_MESSAGE = "Print out the current patient being loaded.\n"
             + "Usage: current\n";
-    public static final String HELP_INFO_MESSAGE = "Display information about all commands or selected commands only\n"
+    public static final String HELP_INFO_MESSAGE = "Displays a list of commands or information of selected commands\n"
             + "Command prefix: help\n"
             + "Argument(s): commands\n"
             + "Usage: help [OPTIONAL_COMMANDS]\n"
@@ -59,6 +62,10 @@ public class Constants {
     public static final String INVALID_INPUT_UNKNOWN_COMMAND = "Invalid command provided. Please enter \"help\""
             + "(without quotes) for a list of commands and how to use them";
     public static final String INVALID_INPUT_INVALID_NRIC = "Please key in a valid NRIC number";
+    public static final String INVALID_INPUT_INVALID_NRIC_FIRST_LETTER =
+            "Please ensure that NRIC starts with S,T,F or G";
+    public static final String INVALID_INPUT_INVALID_NRIC_CHECKSUM =
+            "NRIC does not pass the checksum test, please ensure NRIC is valid eg. G1234567X";
     public static final String INVALID_INPUT_PATIENT_EXISTED = "Patient already exists";
     public static final String INVALID_INPUT_NO_PATIENT_LOADED =
             "Please load a patient with the load command before adding or viewing records";
@@ -72,6 +79,8 @@ public class Constants {
     public static final String INVALID_FUTURE_DATE = "You cannot save a visit record for a future date.";
     public static final String INVALID_INPUT_UNKNOWN_DELETE_ARGUMENT =
             "Kindly use /p or /r to indicate patient or record, refer to help for more clarification";
+    public static final String INVALID_INPUT_EMPTY_NRIC_ARGUMENT = "Please key in NRIC number of patient to delete";
+    public static final String INVALID_INPUT_EMPTY_DATE_ARGUMENT = "Please key in a date of record to delete";
     public static final String INVALID_INPUT_PATIENT_NOT_FOUND = "Patient with this IC number does not exist!";
     public static final String INVALID_INPUT_END_OF_FILE = "End of file reached, exiting application.";
     public static final String INVALID_INPUT_FORBIDDEN_SUBSTRING =
@@ -88,10 +97,12 @@ public class Constants {
     // Number constants
     public static final int ID_NUMBER_OF_CHARACTERS = 9;
     public static final int INDEX_OF_FIRST_CHARACTER = 0;
+    public static final int INDEX_OF_SECOND_CHARACTER = 1;
+    public static final int INDEX_OF_EIGHTH_CHARACTER = 7;
     public static final int INDEX_OF_LAST_CHARACTER = 8;
 
     public static final int CHECKSUM_MOD = 11;
-    public static final int CHECKSUM_DIGIT = 4;
+    public static final int CHECKSUM_NUMBER = 4;
     public static final int FIRST_DIGIT = 1;
     public static final int SECOND_DIGIT = 2;
     public static final int THIRD_DIGIT = 3;

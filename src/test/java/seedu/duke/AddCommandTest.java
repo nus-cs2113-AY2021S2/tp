@@ -43,10 +43,40 @@ class AddCommandTest {
         arguments.put("payload", "S12345677A");
         AddCommand addCommand = new AddCommand(ui, data, arguments);
 
-        Exception exception = assertThrows(Exception.class, () -> {
+        InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
             addCommand.execute();
         });
-        assertEquals(Constants.INVALID_INPUT_INVALID_NRIC, exception.getMessage());
+        assertEquals(Constants.INVALID_INPUT_INVALID_NRIC, invalidInputException.getMessage());
+    }
+
+    @Test
+    public void executeAddCommand_invalidFirstLetter_exceptionThrown() {
+        Data data = new Data();
+        Ui ui = new Ui();
+        HashMap<String, String> arguments = new HashMap<>();
+        arguments.put("command", "add");
+        arguments.put("payload", "P1234567A");
+        AddCommand addCommand = new AddCommand(ui, data, arguments);
+
+        InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
+            addCommand.execute();
+        });
+        assertEquals(Constants.INVALID_INPUT_INVALID_NRIC_FIRST_LETTER, invalidInputException.getMessage());
+    }
+
+    @Test
+    public void executeAddCommand_invalidChecksum_exceptionThrown() {
+        Data data = new Data();
+        Ui ui = new Ui();
+        HashMap<String, String> arguments = new HashMap<>();
+        arguments.put("command", "add");
+        arguments.put("payload", "S1234567A");
+        AddCommand addCommand = new AddCommand(ui, data, arguments);
+
+        InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
+            addCommand.execute();
+        });
+        assertEquals(Constants.INVALID_INPUT_INVALID_NRIC_CHECKSUM, invalidInputException.getMessage());
     }
 
     @Test
