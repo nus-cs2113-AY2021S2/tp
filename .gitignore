@@ -22,3 +22,4 @@ text-ui-test/EXPECTED-UNIX.TXT
 # Ignore generated jar file
 tp.jar
 MANIFEST.MF
+testFile.txt
