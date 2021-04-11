@@ -13,19 +13,14 @@ We designed GULIO, a CLI-based module planner intended to help users keep track 
 ### Enhancements contributed
 
 1. Implemented a parser to parse inputs to GULIO
-   > This is the class that determines the command being entered by the user and returns the correct Command object to be executed by the main class.
-   > Some of our commands required arguments from the user, so I implemented the parser to obtain and check the validity of all necessary arguments.
-   > The parser also forms the necessary objects, then returns the objects (e.g. new Task object) to the respective classes.
-   > 
    > Since the Parser class had a rather large scope where many other classes relied on it, I only focused on the Parser for v1.0 to ensure that the Parser was working reliably before we proceeded with more features.
    > As we made progress and the parser seemed stable, I also refactored the parser code with Isa to improve its flow and logic.
    
 1. Implemented the edit lesson functionality
-   > For version 2.0, I implemented the edit lesson command which allowed users to edit the values of previously entered lessons.
-   > To keep the UI for edit lesson consistent with edit task, I constantly communicated with Alicia who was responsible for implementing edit task.
+   > For version 2.0, I implemented the command which allowed users to edit the values of previously entered lessons.
 1. Shortened GULIO commands
    > For version 2.1, we decided that some commands were too long and slowed the process of navigating and using GULIO.
-   > I shortened several of the long commands words ("cheat-sheets" to "cs", "lesson" to "lsn") to improve the speed at which the user can enter inputs.
+   > I shortened several of the long commands words (e.g. "lesson" to "lsn") to improve the speed at which the user can enter inputs.
 
 ### Contributions to Documentation
 1. As the one who implemented the edit lesson command, I covered the explanations and sample inputs for the edit lesson instruction.
