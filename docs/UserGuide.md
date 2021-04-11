@@ -202,14 +202,17 @@ allow Connoisseur to use the saved _sort method_ (refer to [4.1.3](#413-sort-rev
 <p align="center">Figure 8. Listing Reviews </p>
 
 <span>&#10071;</span> Some terminals may not support the ★ and ✰ symbols. So if you face the error as shown in Figure
-9, where the ratings are not displayed correctly, input the command `display asterisks` as shown in Figure 10. The
+9a or in Figure 9b, where the ratings and partitions are not displayed correctly, input the command `display asterisks` as shown in Figure 10. The
 error should be resolved, and the ratings will now be displayed using `*` symbol instead. To switch back to displaying 
 ★ and ✰ symbols input the command `display stars`
 
-![img_8.png](images/ug/invalid_character.png)
-<p align="center">Figure 9. ★ and ✰ symbols not displayed</p>
+![invalid_character.png](images/ug/invalid_character.png)
+<p align="center">Figure 9a. ★ and ✰ symbols not displayed</p>
 
-![img_6.png](images/ug/list_review.png)
+![misaligned_boarders.png](images/ug/misaligned_boarders.png)
+<p align="center">Figure 9b. Partitions misaligned</p>
+
+![list_review.png](images/ug/list_review.png)
 <p align="center">Figure 10. display asterisks command</p>
 
 <span>&#10071;</span> The command 'display' is case-insensitive. On the other hand, when inputting display method 
