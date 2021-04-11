@@ -7,7 +7,6 @@ participant Ui #Turquoise
 participant Parser #PaleGreen
 participant Commands #PaleGreen
 participant ReviewList #Gold
-participant RecommendationList #Gold
 participant Sorter #NavajoWhite
 
 activate Ui #Turquoise
