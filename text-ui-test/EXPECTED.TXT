@@ -61,7 +61,7 @@ Here is a list of available commands:
   retrieve
   current
   exit
-Type 'help' followed by a command for more details about the command
+Type 'help' followed by one or more commands for more details
 Example: help record
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
