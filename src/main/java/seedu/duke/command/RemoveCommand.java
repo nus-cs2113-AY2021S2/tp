@@ -14,7 +14,7 @@ import static seedu.duke.command.Utils.hasOption;
 import static seedu.duke.command.Utils.validateArguments;
 import static seedu.duke.command.Utils.validateOptions;
 import static seedu.duke.common.Constant.OPTION_INDEX;
-import static seedu.duke.common.Validators.validateIndex;
+import static seedu.duke.common.Validators.validateId;
 
 /**
  * Handles all operations related to the remove command.
@@ -67,11 +67,11 @@ public class RemoveCommand extends Command {
      */
     private int getIndexInInteger(ArrayList<String> arguments, RecordList recordList) throws CommandException {
         try {
-            return validateIndex(getOptionValue(arguments, COMMAND_REMOVE, OPTION_INDEX), recordList);
+            return validateId(getOptionValue(arguments, COMMAND_REMOVE, OPTION_INDEX), recordList);
         } catch (NumberFormatException e) {
-            throw new CommandException("Index \"" + recordNumberStr + "\" is not an integer!", COMMAND_REMOVE);
+            throw new CommandException("\"" + recordNumberStr + "\" is not an integer!", COMMAND_REMOVE);
         } catch (IndexOutOfBoundsException e) {
-            throw new CommandException("Index \"" + recordNumberStr + "\" is out of bounds!", COMMAND_REMOVE);
+            throw new CommandException("ID: \"" + recordNumberStr + "\" is out of bounds!", COMMAND_REMOVE);
         }
     }
 

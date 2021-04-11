@@ -16,7 +16,7 @@ import static seedu.duke.common.Constant.FINUX_LOGGER;
 
 public class Validators {
     private static final String KEYWORD_TODAY = "today";
-    private static final String LOGGER_OKAY_MESSAGE = "index validation success";
+    private static final String LOGGER_OKAY_MESSAGE = "id validation success";
     private static final long ERA_AD = 1;
 
     private static final DateTimeFormatter[] POSSIBLE_DATE_FORMATS = {
@@ -96,7 +96,7 @@ public class Validators {
      * @throws IndexOutOfBoundsException when the inputToCheck is less than zero, equals to zero or greater than the
      *     size of the records.
      */
-    public static int validateIndex(String inputToCheck, RecordList records) throws NumberFormatException,
+    public static int validateId(String inputToCheck, RecordList records) throws NumberFormatException,
             IndexOutOfBoundsException {
         int recordNumberInList = Integer.parseInt(inputToCheck) - 1;
         records.getRecordAt(recordNumberInList);
