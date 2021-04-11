@@ -13,6 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 import seedu.duke.exception.CustomException;
 import seedu.duke.record.RecordList;
 import static seedu.duke.common.Constant.FINUX_LOGGER;
+import static seedu.duke.common.Messages.ERROR_INVALID_DATE_SF;
 
 public class Validators {
     private static final String KEYWORD_TODAY = "today";
@@ -82,7 +83,7 @@ public class Validators {
                 return date;
             }
         }
-        throw new DateTimeException("input \"" + dateInput + "\" is an invalid date.");
+        throw new DateTimeException(String.format(ERROR_INVALID_DATE_SF, dateInput));
     }
 
     /**
