@@ -1,1 +1,11 @@
-James Gosling
+mods
+add CS2113T
+mods
+open CS2113T
+add task tP Submission ;; 16-3-2021
+Y
+close
+del
+1
+mods
+exit

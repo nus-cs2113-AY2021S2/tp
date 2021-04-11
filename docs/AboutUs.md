@@ -1,9 +1,11 @@
-# About us
+[<== Back to Home](README.md)
 
-Display | Name | Github Profile | Portfolio 
---------|:----:|:--------------:|:---------:
-![](https://via.placeholder.com/100.png?text=Photo) | John Doe | [Github](https://github.com/) | [Portfolio](docs/team/johndoe.md)
-![](https://via.placeholder.com/100.png?text=Photo) | Don Joe | [Github](https://github.com/) | [Portfolio](docs/team/johndoe.md)
-![](https://via.placeholder.com/100.png?text=Photo) | Ron John | [Github](https://github.com/) | [Portfolio](docs/team/johndoe.md)
-![](https://via.placeholder.com/100.png?text=Photo) | John Roe | [Github](https://github.com/) | [Portfolio](docs/team/johndoe.md)
-![](https://via.placeholder.com/100.png?text=Photo) | Don Roe | [Github](https://github.com/) | [Portfolio](docs/team/johndoe.md)
+# About Us
+
+Member | Github Profile | Portfolio 
+-----|:--------------:|:---------:
+Hemrish Bundhoo | [Github](https://github.com/H-horizon) | [Portfolio](team/h-horizon.md)
+Ivan Chong Zhi En | [Github](https://github.com/ivanchongzhien) | [Portfolio](team/ivanchongzhien.md)
+Chong Wen Hao | [Github](https://github.com/8kdesign) | [Portfolio](team/8kdesign.md)
+Isa Haron | [Github](https://github.com/isaharon) | [Portfolio](team/isaharon.md)
+Alicia Tay | [Github](https://github.com/aliciatay-zls/) | [Portfolio](team/aliciatay-zls.md)
