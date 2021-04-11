@@ -16,76 +16,60 @@ package Command <<Rectangle>> {
 
     package routecommand {
         class GoCommand COMMAND_COLOR {
-            # ui: RouterUi
         }
     }
 
     package generalcommand {
         class ByeCommand COMMAND_COLOR {
-            # ui: UiManager
         }
         class HelpCommand COMMAND_COLOR {
-            # ui: UiManager
+        }
+        class ShowVenuesCommand COMMAND_COLOR {
         }
     }
 
     package aliascommand {
         class AddCustomAliasCommand COMMAND_COLOR {
-            # ui: AliasUi
         }
         class DeleteCustomAliasCommand COMMAND_COLOR {
-            # ui: AliasUi
         }
         class ShowCustomAliasCommand COMMAND_COLOR {
-            # ui: AliasUi
         }
     }
 
     package dailyroutecommand {
         class AddDailyRouteCommand COMMAND_COLOR {
-            # ui: DailyRouteUi
         }
         class ShowDailyRouteCommand COMMAND_COLOR {
-            # ui: DailyRouteUi
         }
     }
 
     package favouritecommand {
         class AddFavouriteCommand COMMAND_COLOR {
-            # ui: FavouriteUi
         }
         class ShowFavouriteCommand COMMAND_COLOR {
-            # ui: FavouriteUi
         }
         class DeleteFavouriteCommand COMMAND_COLOR {
-            # ui: FavouriteUi
         }
         class RepeatFavouriteCommand COMMAND_COLOR {
-            # ui: FavouriteUi
         }
     }
 
     package historycommand {
         class ClearHistoryCommand COMMAND_COLOR {
-            # ui: HistoryUi
         }
         class RepeatHistoryCommand COMMAND_COLOR {
-            # ui: HistoryUi
         }
         class ShowHistoryCommand COMMAND_COLOR {
-            # ui: HistoryUi
         }
     }
 
     package notecommand {
         class AddNoteCommand COMMAND_COLOR {
-            # ui: NoteUi
         }
         class DeleteNoteCommand COMMAND_COLOR {
-            # ui: NoteUi
         }
         class ListNoteCommand COMMAND_COLOR {
-            # ui: NoteUi
         }
     }
 }
@@ -114,8 +98,9 @@ historycommand -[hidden]down- aliascommand
 "{abstract}\nCommand" <|-down- AddNoteCommand
 "{abstract}\nCommand" <|-down- DeleteNoteCommand
 "{abstract}\nCommand" <|-down- ListNoteCommand
+"{abstract}\nCommand" <|-down- ShowVenuesCommand
 
-hide methods
+hide members
 show "{abstract}\nCommand" members
 hide circle
 skinparam classAttributeIconSize 0
