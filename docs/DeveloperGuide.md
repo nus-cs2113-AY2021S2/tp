@@ -70,12 +70,9 @@ The rest of the App consists of four components.
 
 The `Storage` component,
 * For new user, will first create a new directory and text file.
-* Next, will load the data from resource and store it into the newly created text file.
+* Next, will load the data from resource and write it into the newly created text file.
 * At the same time, it will also load into the in-app data.
 * If it is an existing user, it will only loads data from the text file into in-App data.  
-
-
-
 
 
 ##Implementation
