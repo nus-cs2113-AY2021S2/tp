@@ -43,7 +43,7 @@ public class HelpPage {
     private static final String MAN_OPTION_PERSON_IN_ADD_DESCRIPTION = ", use only with '-l' option";
     private static final String MAN_ARGUMENT_CREDITSCORE_DESCRIPTION = "[ARGUMENT] name of the person "
             + "to check their credit score";
-    private static final String MAN_FORMAT_ADD = "add {-e | -l | -s} <description> -a <amount> -d <date>";
+    private static final String MAN_FORMAT_ADD = "add {-e | -l | -s} <description> -a <amount> -d <date> [-p <person>]";
     private static final String MAN_FORMAT_LIST = "list {-e | -l | -s | -a}";
     private static final String MAN_FORMAT_VIEW = "view {-e | -l | -s | -a}";
     private static final String MAN_FORMAT_RETURN = "return -i <record_id> -d <return_date>";
@@ -51,7 +51,7 @@ public class HelpPage {
     private static final String MAN_FORMAT_CREDITSCORE = "creditscore <person>";
     private static final String MAN_FORMAT_EXIT = "exit";
     private static final String MAN_HEADER_HELP = "see feature details";
-    private static final String MAN_FORMAT_HELP = "help <feature>";
+    private static final String MAN_FORMAT_HELP = "help [<feature>]";
 
     /**
      * Prints the respective help messages based on the command given.
