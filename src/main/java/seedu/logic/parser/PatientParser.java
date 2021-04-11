@@ -12,7 +12,7 @@ import seedu.logic.command.patient.PatientListCommand;
 import seedu.logic.command.patient.PatientReturnCommand;
 import seedu.model.patient.PatientList;
 import seedu.logic.errorchecker.MainChecker;
-import seedu.logic.errorchecker.PatientChecker;
+import seedu.logic.errorchecker.patientchecker.PatientChecker;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

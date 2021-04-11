@@ -3,6 +3,7 @@
 hide members
 hide circle
 skinparam classAttributeIconSize 0
+
 package logic{
 package command{
 Class "{abstract}\nCommand" as Command
