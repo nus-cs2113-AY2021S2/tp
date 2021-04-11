@@ -13,31 +13,31 @@ GULIO is a module planner designed for efficiency when used by someone that can 
 ### Enchancements Contributed:
 
 1. Implemented storage system, excluding cheat-sheets.<br>
-   > I implemented the Writer, Loader and ModuleList class. To ensure that the storage system would work reliably even as the other team members change their parts, I implemented my own code to split up and read the data.
+   > I implemented the Writer, Loader and ModuleList class. To ensure that the storage work reliably even as the others change their parts, I implemented my own code to split and read the data.
 1. Implemented shortcut listener for text editor.
-   > Using KeyListener, I implemented shortcuts such as "esc" to close, "crtrl-s" to save and "ctrl-up/down" to adjust text size. The shortcuts would call methods that Hemrish created in the TextEditor class. It took some reading, but overall this part was relatively easy.
+   > Using KeyListener, I implemented shortcuts such as "esc" to close and "ctrl-s" to save. The shortcuts would call methods that Hemrish created in the TextEditor class.
 1. Cleaned up code for most components.<br>
-   > The first time we merged our parts, there were a lot of inconsistencies and duplicates. Hence, I decided to tidy everything up. This includes shifting of constants and messages to their respective classes, removing of duplicate methods, etc... It was time consuming, but it made the code a lot more cohesive and easier to read.
+   > I cleaned up the code after we merged our parts for V1.0 as there were inconsistencies and duplicates. This includes shifting of constants and messages to their respective classes, removing of duplicate methods, etc...
 1. Displaying and sorting of undone  tasks by days remaining.
-   > I added the ability to count the number of days remaining for the list "task" and "info" commands, and made use of that to sort the undone tasks in order of urgency.
+   > I added the number of days remaining for tasks, and used it to sort undone tasks.
 
 ### Contributions to Documentation:
 
 1. Added many of the command information.
-   > I created the skeleton for the command section. For the "Example" part of each command, I had to change the table format of all commands multiple times, which took quite a bit of time.
+   > I created the skeleton for the command section. For the "Example" part of each command, I had to change the table format of all commands multiple times.
 1. Added data & storage section.
-   > I did the part explaining to the user  how the storage system of GULIO works and what they can do with it.
+   > I did the part explaining how the storage system works and what users can do with it.
 1. Converted user guide from Google Docs into Markdown.
    > The team originally worked on the user guide on a Google Docs file. I converted it to markdown before we split it up and pushed our respective portions. It was tedious, but not difficult.
 
 ### Contributions to Developer Guide:
 
 1. Created the architecture diagram, as well as sequence diagrams for storage.
-   >  In the design section, I I did the architecture diagram and the part relating to storage. For the implementation section, I did the part on loading and storing of data, including the sequence diagrams in it.
+   >  In the design section, I did the architecture diagram, and the storage part. For the implementation section, I did the part on loading and storing of data, including the sequence diagrams.
 1. Added instruction for manual testing.
-   > I did the section on manual testing.
+   > I wrote the section on manual testing.
 1. Converted developer guide from Google Docs into Markdown.
-   > Like the user guide, we did the developer guide on Google Docs. I converted it into markdown before splitting it up with the other group members. Again, this was tedious, but did not require a lot of brain power.
+   > Like the user guide, we did the developer guide on Google Docs. I converted it into markdown before splitting it up with the others. Again, this was tedious, but not difficult.
 
 ### Contribution to Team-Based Tasks:
 
