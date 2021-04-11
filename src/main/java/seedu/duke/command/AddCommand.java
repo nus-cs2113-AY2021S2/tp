@@ -2,6 +2,7 @@ package seedu.duke.command;
 
 import seedu.duke.account.FitCenter;
 import seedu.duke.common.Messages;
+import seedu.duke.exception.ExceedTimeInOneDayException;
 import seedu.duke.exception.FutureDateException;
 import seedu.duke.exception.TypeException;
 import seedu.duke.goal.timemanager.TimeController;
@@ -69,12 +70,16 @@ public class AddCommand extends Command {
     public CommandResult execute(FitCenter fitCenter) {
         LocalDate currentDate = LocalDate.now();
         int currentWeekOfYear = TimeController.getSystemWeekOfYear();
-        if (record != null) {
-            fitCenter.addRecordToList(recordType, record);
-            fitCenter.updateProgressAtAdding(record, currentDate, currentWeekOfYear);
-            feedback = String.format(FEEDBACK_FORMAT, record.getType(), record.getRecordSummary());
-        } else {
-            feedback = Messages.MESSAGE_CANT_ADD_RECORD;
+        try {
+            if (record != null) {
+                fitCenter.addRecordToList(recordType, record);
+                fitCenter.updateProgressAtAdding(record, currentDate, currentWeekOfYear);
+                feedback = String.format(FEEDBACK_FORMAT, record.getType(), record.getRecordSummary());
+            } else {
+                feedback = Messages.MESSAGE_CANT_ADD_RECORD;
+            }
+        } catch (ExceedTimeInOneDayException e) {
+            feedback = e.toStinrg();
         }
         return new CommandResult(feedback);
     }

@@ -6,6 +6,7 @@ import seedu.duke.command.Command;
 import seedu.duke.command.CommandResult;
 import seedu.duke.command.ExitCommand;
 import seedu.duke.commandparser.CommandParser;
+import seedu.duke.exception.ExceedTimeInOneDayException;
 import seedu.duke.goal.timemanager.TimeController;
 import seedu.duke.exception.TypeException;
 import seedu.duke.storage.Storage;
@@ -35,7 +36,7 @@ public class Healthier {
             ui.showFileErrorMessage();
             e.printStackTrace();
             System.exit(0);
-        } catch (ParseException | NumberFormatException | TypeException e) {
+        } catch (ParseException | NumberFormatException | TypeException | ExceedTimeInOneDayException e) {
             e.printStackTrace();
             ui.showFileParserErrorMessage();
             System.exit(0);
