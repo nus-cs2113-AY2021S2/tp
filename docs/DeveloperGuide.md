@@ -60,7 +60,7 @@ The rest of the App consists of four components.
 ### UI-Component
 
 ### Logic-Component
-![Architecture Diagram](./img/LoginClassDiagram.png)
+![Architecture Diagram](img/LogicClassDiagram.png)
 API: `NusFoodReviews.java`
 1. `NusFoodReviews` uses the `Parser` class to parse the user command.
 2. A `Command` object will be created and executed by the `NusFoodReviews`
@@ -152,6 +152,16 @@ To reset the store index in nusFoodReviews, `ResetStoreCommand#execute()` is cal
 passing in an ArrayList of canteens, and the ui object instantiated in NusFoodReviews.
 
 When `ResetStoreCommand` is first called, we pass the main NusFoodReviews object to the 
+constructor. This allows the `Command` to interact with the main object when `execute` is called.
+
+### Login Feature
+#### Implementation
+![DisplayMenus Sequence Diagram](./img/LoginCommand.png)
+
+To reset the application back to login page, `LoginCommand#execute()` is called,
+passing in an ArrayList of canteens, and the ui object instantiated in NusFoodReviews.
+
+When `LoginCommand` is first called, we pass main NusFoodReviews object to the 
 constructor. This allows the `Command` to interact with the main object when `execute` is called.
 
 ### Home Feature
