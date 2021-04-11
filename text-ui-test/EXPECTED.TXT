@@ -52,50 +52,17 @@ List of patients (in alphanumeric order):
 2. S1234567D
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
-Add a patient to the list
-Command prefix: add
-Argument(s): IC number
-Usage: add IC_NUMBER
-Example: add S1234567D
-
-Delete a patient from the list or delete a patient's consultation details for a specific date
-Command prefix: delete
-Argument(s): IC number or date
-Usage: delete [/p IC_NUMBER]
-Example: delete /p S1234567D
-Usage: delete [/r DATE]
-Example: delete /r 26/03/2021
-
-Show the list of all patients
-Usage: list
-
-Select a specified patient to add and retrieve records
-Command prefix: load
-Argument(s): IC number
-Usage: load IC_NUMBER
-Example: load S1234567D
-
-Add a consultation record to the selected patient
-Command prefix: record
-Arguments(s): consultation details, symptom, diagnosis, prescription
-Usage: record [CONSULTATION_DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]
-Example: record /s fever
-
-Retrieve past consultation record from the selected patient
-Usage: retrieve
-
-Print out the current patient being loaded.
-Usage: current
-
-Display information about all commands or selected commands only
-Command prefix: help
-Argument(s): commands
-Usage: help [OPTIONAL_COMMANDS]
-Example: help list add
-
-Exit the program
-Usage: exit
-
+Here is a list of available commands:
+  add
+  delete
+  list
+  load
+  record
+  retrieve
+  current
+  exit
+Type 'help' followed by a command for more details about the command
+Example: help record
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 There is no patient being loaded now.
