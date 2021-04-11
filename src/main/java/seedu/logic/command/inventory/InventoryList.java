@@ -16,7 +16,7 @@ public class InventoryList extends Command {
      */
     @Override
     public void execute(seedu.model.inventory.InventoryList inventory, InventoryUI ui) {
-        inventory.listDrugs();
+        inventory.listItems();
     }
 
     @Override

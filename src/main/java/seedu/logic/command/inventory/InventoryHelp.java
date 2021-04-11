@@ -12,11 +12,11 @@ public class InventoryHelp extends Command {
     /**
      * Displays the help message for Inventory Menu.
      *
-     * @param drugs Inventory objects in Inventory list.
+     * @param items Inventory objects in Inventory list.
      * @param ui Instance of InventoryUI used.
      */
     @Override
-    public void execute(InventoryList drugs, InventoryUI ui) {
+    public void execute(InventoryList items, InventoryUI ui) {
         ui.printInventoryHelpMessage();
     }
 

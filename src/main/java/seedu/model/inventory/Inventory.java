@@ -3,7 +3,7 @@ package seedu.model.inventory;
 import java.text.DecimalFormat;
 
 /**
- * Inventory class contains the information of a Drug in the inventory.
+ * Inventory class contains the information of a Item in the inventory.
  */
 public class Inventory {
     protected String name;
@@ -13,9 +13,9 @@ public class Inventory {
     /**
      * Constructor for Inventory object.
      *
-     * @param name Drug name.
-     * @param price Price of Drug.
-     * @param quantity Quantity of Drug.
+     * @param name Item name.
+     * @param price Price of Item.
+     * @param quantity Quantity of Item.
      */
     public Inventory(String name, Double price, int quantity) {
         this.name = name;
@@ -25,7 +25,7 @@ public class Inventory {
     }
 
     /**
-     * Increases and updates Quantity of Drug.
+     * Increases and updates Quantity of Item.
      *
      * @param input Quantity to increase by.
      */
@@ -34,7 +34,7 @@ public class Inventory {
     }
 
     /**
-     * Decreases and updates Quantity of Drug.
+     * Decreases and updates Quantity of Item.
      *
      * @param input Quantity to decrease by.
      */
@@ -47,7 +47,7 @@ public class Inventory {
      *
      * @return name of Inventory object.
      */
-    public String getDrugName() {
+    public String getItemName() {
         return this.name;
     }
 
@@ -71,9 +71,9 @@ public class Inventory {
     }
 
     /**
-     * Returns Quantity of Drug.
+     * Returns Quantity of Item.
      *
-     * @return Quantity of Drug.
+     * @return Quantity of Item.
      */
     public int getQuantity() {
         return this.quantity;

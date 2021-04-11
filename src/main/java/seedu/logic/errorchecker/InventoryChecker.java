@@ -3,8 +3,8 @@ package seedu.logic.errorchecker;
 import seedu.exceptions.CorruptedFileException;
 import seedu.exceptions.HealthVaultException;
 import seedu.exceptions.NoInputException;
-import seedu.exceptions.inventory.DuplicateDrugException;
-import seedu.exceptions.inventory.NonExistentDrugException;
+import seedu.exceptions.inventory.DuplicateItemException;
+import seedu.exceptions.inventory.NonExistentItemException;
 import seedu.exceptions.inventory.WrongNumberException;
 import seedu.exceptions.IllegalCharacterException;
 import seedu.model.inventory.InventoryList;
@@ -62,11 +62,11 @@ public class InventoryChecker extends MainChecker {
     /**
      * Calls various checker functions to determine the validity of inputs for Add command.
      *
-     * @throws DuplicateDrugException If Inventory object already exist in list.
+     * @throws DuplicateItemException If Inventory object already exist in list.
      * @throws WrongNumberException If any input for price and quantity is invalid.
      * @throws IllegalCharacterException If any illegal character is present.
      */
-    public void checkAdd() throws DuplicateDrugException, WrongNumberException, IllegalCharacterException {
+    public void checkAdd() throws DuplicateItemException, WrongNumberException, IllegalCharacterException {
         stringTokens[1] = stringTokens[1].toLowerCase();
         illegalCharacterChecker(stringTokens[1], "name");
         illegalCharacterChecker(stringTokens[3], "quantity");
@@ -79,9 +79,9 @@ public class InventoryChecker extends MainChecker {
      * Calls various checker functions to determine the validity of inputs for Delete command.
      *
      * @throws IllegalCharacterException If any illegal character is present.
-     * @throws NonExistentDrugException If Drug name does not exist in list.
+     * @throws NonExistentItemException If item name does not exist in list.
      */
-    public void checkDelete() throws IllegalCharacterException, NonExistentDrugException, WrongNumberException {
+    public void checkDelete() throws IllegalCharacterException, NonExistentItemException, WrongNumberException {
         checkQuantity(stringTokens[2]);
         stringTokens[1] = stringTokens[1].toLowerCase();
         illegalCharacterChecker(stringTokens[1], "name");
@@ -117,14 +117,14 @@ public class InventoryChecker extends MainChecker {
      *
      * @param inputString Name of Inventory object.
      * @param price Price of Inventory object.
-     * @throws DuplicateDrugException If Inventory object already exist in list.
+     * @throws DuplicateItemException If Inventory object already exist in list.
      */
-    public static void checkDuplicate(String inputString, Double price) throws DuplicateDrugException {
+    public static void checkDuplicate(String inputString, Double price) throws DuplicateItemException {
         for (Inventory inventory : InventoryList.list) {
-            String drugName = inventory.getDrugName();
-            Double drugPrice = inventory.getDoublePrice();
-            if (drugName.equals(inputString) && !drugPrice.equals(price)) {
-                throw new DuplicateDrugException();
+            String itemName = inventory.getItemName();
+            Double itemPrice = inventory.getDoublePrice();
+            if (itemName.equals(inputString) && !itemPrice.equals(price)) {
+                throw new DuplicateItemException();
             }
         }
     }
@@ -169,12 +169,12 @@ public class InventoryChecker extends MainChecker {
      * Checks if name exist in the Inventory list.
      *
      * @param userInput Name of Inventory object.
-     * @param drugs Inventory List.
-     * @throws NonExistentDrugException If name does not exist in Inventory list.
+     * @param items Inventory List.
+     * @throws NonExistentItemException If name does not exist in Inventory list.
      */
-    public void isNameExist(String userInput, InventoryList drugs) throws NonExistentDrugException {
-        if (!drugs.isDrugStored(userInput)) {
-            throw new NonExistentDrugException("NameDoesNotExist");
+    public void isNameExist(String userInput, InventoryList items) throws NonExistentItemException {
+        if (!items.isItemStored(userInput)) {
+            throw new NonExistentItemException("NameDoesNotExist");
         }
     }
 
