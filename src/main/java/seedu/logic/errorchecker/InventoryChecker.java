@@ -159,7 +159,7 @@ public class InventoryChecker extends MainChecker {
         } catch (NumberFormatException e) { //check if price is a double
             throw new WrongNumberException("price");
         }
-        if (Double.parseDouble(price) < 0) {
+        if (Double.parseDouble(price) <= 0 || Double.parseDouble(price) >= 9999999) {
             throw new WrongNumberException("price");
         }
         return false;
