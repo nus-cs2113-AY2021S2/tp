@@ -1221,14 +1221,16 @@ HealthVault aspires to help its users achieve the following results:
 Every second matters in the healthcare industry when patient lives are at stake. We believe that HealthVault can help
 its users save those precious seconds.
 
+<br>
+
 ## Appendix B: User Stories
 
 | Priority | As a... |                          I want to...                         |                 So that I can...                 |
 |:--------:|:--------:|:-------------------------------------------------------------:|:------------------------------------------------:|
 |   * * *  |  nurse  |              quickly refer to usage instructions              |      quickly get on track with the workflow      |
-|   * * *  |  nurse  |                    add a new staff/patient                    |                                                  |
+|   * * *  |  nurse  |                    add a new staff/patient                    |     record information of staff and patients     |
 |   * * *  |  nurse  |                     delete staff/patients                     |          remove entries i no longer need         |
-|   * * *  |  nurse  |                         view all staff                        |                                                  |
+|   * * *  |  nurse  |                         view all staff                        |       quickly get an overview of staff           |
 |   * * *  |  nurse  | quickly add schedules for nurses and appointments for doctors |       reduce the waiting time for patients       |
 |   * * *  |  nurse  |     quickly look up schedules for both nurses and doctors     |              plan my schedule better             |
 |   * * *  |  nurse  |                 delete schedules/appointments                 |        eliminate wasted time and resources       |
@@ -1239,7 +1241,7 @@ its users save those precious seconds.
 
 ## Appendix C: Non Functional Requirements
 
-* Should work on any mainstream OS if it has Java 11 or above installed.
+* Should work on any Mainstream OS if it has Java 11 or above installed.
 
 * Database should be able to hold up to 1000 patients, staff, appointments, nurses’ schedules, and inventory without feeling a noticeable lag in the program. 
 
@@ -1249,11 +1251,11 @@ its users save those precious seconds.
 
 * New features for example, auto generation of nurses’ schedules and personalized account login are currently in the works to demonstrate that this program is still being developed to be better and accommodate more of the concerns medical personnel have. 
 
-* Application would be affordable to the general masses
+* Application would be affordable to the general masses.
 
 * The security and accessibility of the system is relatively secure, but authorization and authentication scheme is in consideration to be implemented for greater protection.
 
-* All data process and management is in accordance to Singapore IMDA and MOH policy
+* All data process and management is in accordance to Singapore IMDA and MOH policy.
 
 * Healthvault is not accountable for any data lost due to individuals computer failure. 
 
@@ -1273,15 +1275,16 @@ its users save those precious seconds.
  
 * *No Input* - Refers to no input given. 
 
+* *Mainstream OS* - Windows/MacOS/Linux
+
 <br>
 
 ## Appendix E: Instructions for Manual Testing
 
 Given below are instructions to test HealthVault manually.
 
-> * These instructions only provide a starting point for testers to work on;
-> testers are expected to do more *exploratory* testing.
-> * You can refer to the [User Guide](https://github.com/AY2021S2-CS2113T-F08-2/tp/blob/master/docs/UserGuide.md) for further information regarding the command formats.
+* These instructions only provide a starting point for testers to work on; testers are expected to do more *exploratory* testing.
+* You can refer to the [User Guide](https://github.com/AY2021S2-CS2113T-F08-2/tp/blob/master/docs/UserGuide.md) for further information regarding the command formats.
 
 ### Launching HealthVault
 
@@ -1295,9 +1298,9 @@ Initial launch of HealthVault
 ### Start Menu
 
 Choose a directory from the Start Menu
-    > Ensure that the location that you are trying to access is in the Start Menu or else 
-    > error message will pop up
-    >
+
+> ℹ️ Ensure that the location that you are trying to access is in the Start Menu or else an error message will pop up.
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. **Test case:** `staff` (where you will be directed to the Staff Menu)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
