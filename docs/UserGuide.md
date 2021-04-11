@@ -517,12 +517,13 @@ Adds a review for the module of your choice.
 
 * Format: Once you have finished typing your review, type `/end` and hit `Enter`
 
+>**<span style="color: red"> WARNING! </span>**  
+> Anything typed **after** typing '/end' for reviews will be **ERASED** from the review. This **CANNOT** be undone.  
+
 Example for adding a review:  
 > **Note!**  
 > You may choose to keep or replace any existing reviews.  
-> > In this example, `CS2113T` has an existing review.  
-> 
-> (In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.)
+> In this example, `CS2113T` has an **existing review**. (`CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.)
 
 ``` 
 > 8  
@@ -539,11 +540,12 @@ You have already added a review:
 Very very very difficult for me:( But, very important to know!  
 5/5  
 
+WARNING: This will delete your old review. This cannot be undone.
 Would you like to replace this with another review? [Y/N]
-This will delete your old review. This cannot be undone.
 > Y  
 --------------------------------------------  
 Type '/end' to finish reviewing.  
+WARNING: Anything typed after '/end' will be erased!  
 Enter your review for CS3243 below:  
 > The lectures were very entertaining. I have learnt a lot of   
 > important algorithms.  
@@ -609,6 +611,7 @@ Here are the modules in your Modules List:
 Enter the module number to delete review:  
 > 1  
 --------------------------------------------  
+WARNING: You are deleting a review. This cannot be undone.  
 Are you sure you want to delete this review? [Y/N]  
 For CS2113T:  
 Review:  
