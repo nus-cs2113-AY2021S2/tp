@@ -12,6 +12,7 @@
     3.2 [Setting up the project in your computer](#32-setting-up-the-project-in-your-computer)
    
     3.3 [Verifying the setup](#33-verifying-the-setup)
+   
     3.4 [Configure coding style](#34-configure-the-coding-style)
    
 4. [Design](#4-design)
@@ -217,15 +218,134 @@ On startup, Connoisseur checks if there is a *connoisseur.json* file in the *./d
 Before exiting, Connoissuer will save the data from the `Model` component and write them to *connoisseur.json* located in the *./data* folder. 
 
 ## 5. Implementation
-### 5.1 Mode Switch Feature
-### 5.2 Review Mode
-### 5.2.1 Add a Review Feature
-### 5.2.2 List Reviews Feature 
-### 5.2.3 Sort Reviews Feature
-### 5.2.4 View a Review Feature
-### 5.2.5 Edit a Review Feature
-###5.2.6 Delete a Review Feature
+The following section describes the implementation of certain key features in the current version of Connoisseur. It also
+provides some background into our (the original developers of Connoisseur) thinking and the rationale behind the decisions.
 
+### 5.1 Mode Switch Feature
+The mode switch feature is shown in Figure 4. The two modes in Connoisseur are Review and Recommendation. These two modes have some overlapping commands. 
+However, depending on the mode Connoisseur is currently in, the same command displays different output to the user. Each mode has its own
+unique features and commands as well. This section explains how the mode switch feature is implemented.
+
+![img.png](images/modeSwitchingCodeSnippet.png)
+Figure 4. Mode Switching in Connoisseur
+
+The following Figure 5 is the Sequence diagram to _Switch Mode_.<br>
+
+![img_1.png](diagrams/ModeSwitch.png)
+Figure 5. Sequence Diagram for Mode Switch Feature
+
+A general explanation of how this feature works:: <br>
+
+1. User inputs commands that trigger mode switch. `review` and `reco` are commands which are recognised by Parser class as mode switching commands through the `determineCommand()` method.
+2. If `review` command is input by user, `Commands` class calls `reviewMode()` method which sets `private boolean isReviewMode` attribute to _true_.
+3. If `reco` command is input by user, `Commands` class calls `recommendationMode()` method which sets `private boolean isReviewMode` attribute to _false_.
+4. Finally, `reviewMode()` and `recommendationMode()` calls `Ui` class method `println()` to display message _"You are in review mode"_ or _"You are in recommendation mode"_ 
+   respectively as shown in Figure 4.<br>
+
+
+### 5.2 Review Mode
+When User inputs a command, `Commands` class checks for the value of the attribute
+`boolean isReviewMode` before executing the command .As explained in [section 5.1](#51-mode-switch-feature), when in review mode, `boolean isReviewMode` is equal to _true_. 
+Hence, only commands that are recognised by the Review Mode are executed when input by user. Else, inavild command message is displayed to the user.
+
+### 5.2.1 Add a Review Feature
+The mechanism to add a review is facilitated by the `ReviewList` class. The user is able to add in a new review using `new` , `add` ,`new quick`,`add quick`, `new full` or `add full` commands.
+
+The following Figure 6 is the Sequence diagram to _add a review_.
+
+![img_2.png](diagrams/addReviewSeq.png)
+Figure 6. Sequence Diagram for Add a Review Feature <br>
+
+A general explanation of how this feature works: <br>
+
+1. `Ui` will read in user command and calls `Paser#determineCommand()` to determine the input.
+2. `Parser` calls `Commands#add` if input entered is `new` or `add` command.
+3. `Commands` calls `ReviewList#addQuickReview()` or `ReviewList#addFullReview()`to prompt and read respective information of the review such as `title` , `category`, `rating` and `description`(only prompted by `addFullReview()` method).<br>
+  
+   1. `title` - string with 20char limit, that will call `ReviewList#checkAndPrintDuplicateRecommendation` to check for duplicates in ArrayList `reviews`.<br>
+   2. `category` - string with 15char limit, that cannot be whitespace or null.
+   3. `rating`- integer with -0 to 5 recognised as valid input, that cannot be whitespace or null.
+   4. `description` - string with unlimited char limit. 
+   
+4. The violation of any constraints for each attribute will print an error message from `ui` and be promoted to re-enter a valid input.
+
+5. When all fields are valid, fields are added into a `Review` Class.
+
+6. The new `Review` object is added into an ArrayList `reviews`.
+
+### 5.2.2 List Reviews Feature 
+This feature prints out `Title`, `Category`, `Rating` and `Date` string attributes for each `Review` object in the ArrayList `reviews`.
+The mechanism to list reviews is facilitated by the `ReviewList` class. The user is able to list all reviews using `list` command.
+The mechanism to list reviews sorted alphabetically according to either `Title`, `Cateogry` or from highest to lowest `rating` or from earliest/ latest `Date` of entry of the review is facilitated by the `Sorter` class.
+
+The following Figure 7 is the Sequence diagram to _list a review_.
+
+
+![img_4.png](diagrams/listReviewSeq.png)
+Figure 7. Sequence Diagram for List a Review Feature
+
+A general explanation of how this feature works:
+
+1. Assuming additional parameters are not specified, `Commands` calls `ReviewList#listReviews()` to retrieve `Review` objects in the ArrayList `reviews`.
+2. If `reviews` array is empty, `ReviewList` calls `Ui#printEmptyReviewListMessage()` which prints message _"You have no reviews, type 'new' to start!"_
+3. If additional parameters specifying sort method in addition to list command is input (for e.g `list rating`) , `ReviewList` calls `Sorter#SortReviews(sortMethod)`.
+4. `ReviewList` class executes `displayReviews()` method to display a list of reviews to the user.
+
+### 5.2.3 Sort Reviews Feature
+The mechanism to change the saved sorting method is implemented by `Sorter` class
+
+The following Figure 8 is the Sequence diagram to _Sort a review_.<br>
+
+![sortReviewSeq.png](diagrams/sortReviewSeq.png)
+Figure 8. Sequence Diagram for Sort Reviews Feature
+
+A general explanation of how this feature works:
+1. User inputs command `sort [sortType]`, where sortType is additional parameters the user can specify such as `TITLE`, `CATEGORY`, `RATING`, `EARLIEST` or `LATEST`. 
+2. `Parser` calls `Commands#sort()`.
+3. Since the command `sort [sortType]` is only recognised in review mode, if `private boolean isReviewMode` attribute of `Commands` class is set to _false_, `Commands` calls `Ui#printCommandDoesNotExistInRecommendationMode()`.  
+3. Else if `private boolean isReviewMode` attribute of `Commands` class is set to _true_, if user did not specify `sortType`, `ReviewList` calls `Ui#printCurrentSortMethod()`.
+4. If user did specify `sortType`, `ReviewList` calls `Sorter#changeSortMethod()` which changes and saves to the specified sort method.
+
+### 5.2.4 View a Review Feature
+The mechanism to view a single specified review is implemented by `ReviewList` class
+
+The following Figure 9 is the Sequence diagram to _View a review_.<br>
+
+![img_11.png](diagrams/ViewReviewSeq.png)
+Figure 9. Sequence Diagram for View a Review Feature
+
+A general explanation of how this feature works:
+1. User inputs command `view [title]`, where parameter title is the title of review that should be specified by the user.
+2. `Parser` calls `Commands#view()`.
+3. Since the command `view [title]` is only recognised in review mode, if `private boolean isReviewMode` attribute of `Commands` class is set to _false_, `Commands` calls `Ui#printCommandDoesNotExistInRecommendationMode()`.
+3. Else if `private boolean isReviewMode` attribute of `Commands` class is set to _true_, if user did not specify title of review, or it does not exist in the list , `ReviewList` calls `Ui#missingTitle` and `Ui#invalidTitle` respectively .
+4. If title of review exists in ArrayList `reviews`, `ReviewList` calls `displaySingleReview()` method which displays the specified review.
+
+### 5.2.5 Edit a Review Feature
+The mechanism to edit a specified review is implemented by `ReviewList` class
+
+The following Figure 10 is the Sequence diagram to _Edit a review_.<br>
+![img_9.png](diagrams/EditReviewSeq.png)
+Figure 10. Sequence Diagram for Edit a Review Feature
+
+A general explanation of how this feature works:
+1. User inputs command `edit [title]`, where parameter title is the title of review that should be specified by the user.
+2. `Parser` calls `Commands#edit()`. 
+3. Since the command `edit [title]` is recognised in both review and recommendation mode, `private boolean isReviewMode` attribute of `Commands` class is set to true in this case.
+4. `ReviewList` class implements edits to the specified review object in ArrayList `reviews` and sets details.
+
+###5.2.6 Delete a Review Feature
+The mechanism to delete a specified review is implemented by `ReviewList` class
+
+The following Figure 11 is the Sequence diagram to _Delete a review_.<br>
+![img_10.png](diagrams/DeleteReviewSeq.png)
+Figure 11. Sequence Diagram for Delete a Review Feature
+
+A general explanation of how this feature works:
+1. User inputs command `delete [title]`, where parameter title is the title of review that should be specified by the user.
+2. `Parser` calls `Commands#delete()`.
+3. Since the command `delete [title]` is recognised in both review and recommendation mode, `private boolean isReviewMode` attribute of `Commands` class is set to true in this case.
+4. `ReviewList` class implements delete to the specified review object in ArrayList `reviews` and removes it from the ArrayList.
 
 ### 5.3 Recommendation Mode
 This section provides details on the implementation of the various commands that occurs in the recommendation mode.
