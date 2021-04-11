@@ -19,20 +19,22 @@
 
 [4. Implementation](#4-implementation)  
 
-&nbsp;&nbsp;&nbsp;&nbsp;[4.01 Add New Module](#401-add-new-module)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.01 Add new Module](#401-add-new-module)  
 &nbsp;&nbsp;&nbsp;&nbsp;[4.02 View a Module](#402-view-a-module)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.03 View All Modules](#403-view-all-modules)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.03 View all Modules](#403-view-all-modules)  
 &nbsp;&nbsp;&nbsp;&nbsp;[4.04 Delete a Module](#404-delete-a-module)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.05 Add New Review](#405-add-new-review)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.06 Delete a Review](#406-delete-a-review)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.07 Add New Task](#407-add-new-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.08 Mark/Unmark a Task as Done](#408-markunmark-a-task-as-done)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.09 Delete a Task](#409-delete-a-task)   
-&nbsp;&nbsp;&nbsp;&nbsp;[4.10 View All Tasks](#410-view-all-tasks)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.11 Pin A Task](#411-pin-a-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.12 Add Zoom Link](#412-add-zoom-link)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.13 Add Module Components](#413-add-module-components)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.14 View Module Components](#414-view-module-components)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.05 Add Module Components](#405-add-module-components)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.06 View Module Components](#406-view-module-components)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.07 Add new Review](#407-add-new-review)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.08 Delete a Review](#408-delete-a-review)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.09 Add CAP and number of MCs counted towards CAP](#409-add-cap-and-number-of-mcs-counted-towards-cap)   
+&nbsp;&nbsp;&nbsp;&nbsp;[4.10 Add new Task](#410-add-new-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.11 Mark/Unmark a Task as Done](#411-markunmark-a-task-as-done)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.12 Delete a Task](#412-delete-a-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.13 View all Task](#413-view-all-tasks)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.14 Pin a Task](#414-pin-a-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.15 Add Zoom Link](#415-add-zoom-link)
+&nbsp;&nbsp;&nbsp;&nbsp;[4.16 Add External Links](#416-add-external-links)
 
 [5. Product scope](#5-product-scope)    
 
@@ -218,7 +220,39 @@ This feature prints out the `name` String attribute of the `module` objects in t
 This feature deletes a `module` object from the `ArrayList` of `modules`.  
 Just before a successful deletion, the deleted `module`'s relevant information (e.g. `reviews`, `module description`, etc.) will be printed out for the user's reference.
 
-### 4.05 Add New Review
+### 4.05 Add Module Components
+This feature allows user to add user-defined module components and its related weightage for an
+existing module.
+
+![Diagram](diagrams/moduleInfo/addComponent.png)  
+How the feature works:  
+The feature is facilitated by the `Component` class and a call to `addComponent()` is performed upon
+expected user input to add a new component to a module.
+
+First, a call to `Ui` is performed to find out what module* the user wishes to add a component (and
+its weightage). Secondly, a `for` loop is run to find whether the module entered by the user is
+stored in the system.  
+Here, there are two possible routes:
+
+- If the module is present, a call to `Ui` is performed to find out the component name and the
+  associated weightage for that component.
+- If the module is not present, the call to `addComponent()` returns to `ModuleInfo` class (main
+  class for module-related commands).
+
+Assuming the first route is well executed, the component (and its weightage) is stored in a
+Hashtable format in the `Module` object specified by the user previously*.
+
+### 4.06 View Module Components
+
+How the feature works:  
+The feature is an extension of the `Component` feature.
+
+It allows user to view all the module components under a module specified by the user input.
+
+Improvement: the total weightage (in whole numbers) of the module should not exceed 100.
+
+
+### 4.07 Add New Review
 This feature allows user to `add a review` for any of the modules they have taken.
 
 > 📝 **Note!**  
@@ -246,19 +280,38 @@ the `/end` symbol. Anything typed after this `/end` symbol will be erased.
 reference. The user will also be alerted that this action will delete his/her old review.
 
 
-### 4.06 Delete a Review  
+### 4.08 Delete a Review
 This feature allows user to delete a `review` from the `module`.
 
 A general explanation of how this feature works:
 
 Deleting a `review` would __reset__ the `review` *String* attribute of a `module` to a default value
 of:  
-`"You have not reviewed this module yet."`  
+`"You have not reviewed this module yet."`
 
-If this default string value already existed when `deleteAReview` is called (i.e. if the user has not reviewed the module yet), 
-this same string will be printed out as a warning to the user. 
+If this default string value already existed when `deleteAReview` is called (i.e. if the user has not reviewed the module yet),
+this same string will be printed out as a warning to the user.
 
-### 4.07 Add New Task
+### 4.09 Add CAP and Number of MCs counted towards CAP
+This feature allows user to add cumulative average point, that ranges between 0 - 5,
+with 2 decimal places of precision, and total number of graded modular credits.
+
+Given below is the sequence diagram for the feature:
+
+![Diagram](diagrams/capCalculator/addCapAndMcs.png)
+
+How the feature works:
+The feature is facilitated by the `AddCapAndMcs` method in the `HelpGraduationManager` class, and a call to the class is performed
+upon entering this sequence of numbers from the main menu:  
+`2`, `1`.
+
+A general 2-step explanation of how this feature works is shown below:
+
+Step 1.
+
+Step 2.
+
+### 4.10 Add New Task
 
 This feature allows the user to add tasks of type `normal task`, `assignment`, `midterm`, `final exam` to a
 task list.
@@ -289,7 +342,7 @@ user. Using the example above,
 signalling completion.
 5. This new task will then be stored into an `ArrayList` for its task type for future reference.
 
-### 4.08 Mark/Unmark a Task as Done
+### 4.11 Mark/Unmark a Task as Done
 
 This feature allows the user to mark or unmark tasks of type `task`, `assignment`, `midterm`, `final exam` as done.
 
@@ -306,7 +359,7 @@ input the index of the task they want to mark/unmark.
 4. Upon marking a task as done, the message that the user inputted upon creation of this particular task will then be printed out.
 
 
-### 4.09 Delete a Task
+### 4.12 Delete a Task
 
 This feature allows the user to delete a task of type `normal task`, `assignment`, `midterm`, `final exam`
 from a task list.
@@ -322,7 +375,7 @@ type__ (`normal task`, `assignment`, `midterm`, `final exam`) of the task they w
 input the index of the task they want to delete. 
 3. The task they select will then be deleted from the `ArrayList`.
 
-### 4.10 View All Tasks
+### 4.13 View All Tasks
 
 This feature allows the user to view all their existing tasks for all task types.
 
@@ -334,7 +387,7 @@ A general explanation of how this feature works:
 1. When the user calls this feature, the application will first iterate through and print out the pinned task list.
 2. This is then followed by the `normal task` list, `assignment` list, `midterm` list and `final exam` list.
 
-### 4.11 Pin a Task
+### 4.14 Pin a Task
 
 This feature allows the user to pin a task of type `normal task`, `assignment`, `midterm`, `final exam`
 from a task list.
@@ -352,7 +405,7 @@ input the index of the task they want to pin.
 The task the user selected will then be added to the respective pinned task
 ArrayList corresponding to the __task type__ they chose.
 
-### 4.12 Add Zoom Link
+### 4.15 Add Zoom Link
 
 Given below is the sequence diagram for the feature:  
 ![Diagram](diagrams/links/addZoomLink.png)
@@ -376,7 +429,7 @@ the module object which is stored in the ModuleInfo class.
 Step 4. Module#setZoomLink then sets the `zoomLink` attribute of the module object to the zoom link
 that was entered.
 
-### 4.13 Add External Links 
+### 4.16 Add External Links 
 
 This feature allows users to add and store their favourite links.
 
@@ -395,62 +448,6 @@ Step 2. If the link is valid and is not a duplicate, then LinkInfo#addLink() is 
 > For example: https://www.youtube.com or http://www.imf.org would be accepted. Other variations that do not follow these guidelines might not work!
 
 The program checks for duplicates by doing a simple linear search of all LinkInfo objects in the links list. If the object can be found within the list, then a duplicate link must exist.
-
-### 4.4 CAP Simulator/Calculator
-
-This section explains the implementation and design considerations of the
-set of features under CAP Simulator/Calculator. 
-For more information on CAP Simulator/Calculator, you may refer to __Section 3.2__ under [*User Guide*](UserGuide.md).
-
-#### 4.4.1 Add CAP and Number of MCs graded taken
-This feature allows user to add cumulative average point, that ranges between 0 - 5,
-with 2 decimal places of precision, and total number of graded modular credits.
-
-Given below is the sequence diagram for the feature:  
-
-![Diagram](diagrams/capCalculator/addCapAndMcs.png)
-
-How the feature works:
-The feature is facilitated by the `AddCapAndMcs` method in the `HelpGraduationManager` class, and a call to the class is performed
-upon entering this sequence of numbers from the main menu:  
-`2`, `1`.
-
-A general 2-step explanation of how this feature works is shown below:
-
-Step 1.
-
-Step 2.
-
-### 4.10 Add Module Components
-This feature allows user to add user-defined module components and its related weightage for an
-existing module.
-
-![Diagram](diagrams/moduleInfo/addComponent.png)  
-How the feature works:  
-The feature is facilitated by the `Component` class and a call to `addComponent()` is performed upon
-expected user input to add a new component to a module.
-
-First, a call to `Ui` is performed to find out what module* the user wishes to add a component (and
-its weightage). Secondly, a `for` loop is run to find whether the module entered by the user is
-stored in the system.  
-Here, there are two possible routes:
-
-- If the module is present, a call to `Ui` is performed to find out the component name and the
-  associated weightage for that component.
-- If the module is not present, the call to `addComponent()` returns to `ModuleInfo` class (main
-  class for module-related commands).
-
-Assuming the first route is well executed, the component (and its weightage) is stored in a
-Hashtable format in the `Module` object specified by the user previously*.
-
-### 4.11 View Module Components
-
-How the feature works:  
-The feature is an extension of the `Component` feature.
-
-It allows user to view all the module components under a module specified by the user input.
-
-Improvement: the total weightage (in whole numbers) of the module should not exceed 100.
 
 
 ---
