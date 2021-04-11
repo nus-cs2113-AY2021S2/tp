@@ -13,7 +13,7 @@ GULIO is a CLI-based module planner designed for efficiency when used by someone
 ### Enhancements Implemented:
 
 1. Implemented Commands used within the Dashboard.
-1. Implemented `enum` class, `DashboardCommands` and `ModuleCommands` to allow easier addding of new commands.
+1. Implemented `enum` class, `DashboardCommands` and `ModuleCommands` to allow easier adding of new commands.
 1. General code cleanup
 1. Organized `Parser` class
 1. Added exceptions and standardized printing of error messages

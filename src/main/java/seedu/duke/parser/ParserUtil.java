@@ -49,6 +49,7 @@ import static seedu.duke.common.Messages.MESSAGE_NON_INTEGER_INDEX;
 import static seedu.duke.common.Messages.MESSAGE_NON_INTEGER_INDICES;
 import static seedu.duke.common.Messages.MESSAGE_OUT_OF_BOUNDS_INDEX;
 import static seedu.duke.common.Messages.MESSAGE_OUT_OF_BOUNDS_INDICES;
+import static seedu.duke.common.Messages.MESSAGE_TASK_DESCRIPTION_EMPTY;
 import static seedu.duke.common.Messages.MESSAGE_TASK_FIELDS_EMPTY;
 
 public class ParserUtil {
@@ -133,6 +134,11 @@ public class ParserUtil {
         String[] taskDetails = new String[ENTRY_TASK_MAX_PARSER];
         Arrays.fill(taskDetails, EMPTY_STRING);
         fillTaskDetails(input, taskDetails);
+
+        // user does not enter a task description
+        if (taskDetails[0].isEmpty()) {
+            throw new ParserException(MESSAGE_TASK_DESCRIPTION_EMPTY);
+        }
 
         String description = taskDetails[INDEX_DESCRIPTION];
         LocalDate deadline = convertToDate(taskDetails[INDEX_DEADLINE]);

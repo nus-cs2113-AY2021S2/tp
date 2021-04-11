@@ -32,6 +32,7 @@ public class Messages {
     public static final String MESSAGE_EDITED_FIELD = "Updated %s.";
     public static final String MESSAGE_NOT_UPDATED = "Field not updated.";
     public static final String MESSAGE_FIELDS_TO_EDIT = "Which fields would you like to edit?";
+  
     
     //Parser messages
     public static final String MESSAGE_MODULE_CODE_EMPTY = "Module not specified.";
@@ -44,6 +45,7 @@ public class Messages {
     public static final String MESSAGE_INVALID_LESSON_EMAIL = "Invalid email entered. ";
 
     public static final String MESSAGE_TASK_FIELDS_EMPTY = "Missing task details.";
+    public static final String MESSAGE_TASK_DESCRIPTION_EMPTY = "Missing task description.";
     public static final String MESSAGE_INVALID_TASK_DEADLINE = "Invalid/missing deadline.";
 
     public static final String MESSAGE_NON_INTEGER_INDICES = "Warning, non-integer values removed: %s";
@@ -88,6 +90,7 @@ public class Messages {
 
     public static final String MESSAGE_LESSONS_LIST_EMPTY = "Your list of lessons is empty.";
 
+    
     //Task messages
     public static final String FORMAT_DAY_REMAINING = " (1 day remaining)";
     public static final String FORMAT_DAYS_REMAINING = " (%d days remaining)";

@@ -72,13 +72,14 @@ public class Module {
 
     /**
      * Prevents task from being added once a duplicate (same task description and deadline) 
-     * is found in the list. If different deadline, suggest editing task fields instead.
+     * is found in the list. If same task description but different deadline, suggest 
+     * editing task fields instead.
      * 
      * @param ui Instance of UI
-     * @param targetTask Task user is trying to add to the list
+     * @param targetTask Task the user is trying to add to the list
      * @return true when no task with same description is found.
      */
-    public boolean getIsAddTaskAllowed(UI ui, Task targetTask) {
+    public boolean isAddTaskAllowed(UI ui, Task targetTask) {
         String targetDescription = targetTask.getDescription().toUpperCase();
         LocalDate targetDeadline = targetTask.getDeadline();
         for (Task task : taskList) {
