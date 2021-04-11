@@ -150,7 +150,7 @@ Some examples:
 Some examples:
 >
 > <p align="center">
->     <img width="600" src="userGuideImages/2-layer.png" alt="2-Layer System"><br>
+>     <img width="600" src="../userGuideImages/2-layer.png" alt="2-Layer System"><br>
 >     Figure 2 - Visualisation of GULIO’s 2-layer system
 > </p>
 >
