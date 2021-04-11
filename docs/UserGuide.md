@@ -1210,12 +1210,13 @@ To access this menu, please enter `4` from the Main Menu.
 Links menu:
 
 ````
-Welcome to the links menu ^~^
+Welcome to the Links menu ^~^
 Please choose which action you would like to do and enter the number:
-[1] --- External links menu
+[1] --- External Links menu
 [2] --- Add Zoom links
-[3] --- View Zoom links
-[4] --- Exit to main menu
+[3] --- Delete Zoom links
+[4] --- View Zoom links
+[5] --- Exit to main menu
 ````
 
 → Go To [Table of Contents](#table-of-contents)    
@@ -1234,12 +1235,12 @@ To access this menu, Please enter `4` to reach the Links Menu, then followed by 
 
 External links menu:
 ````
-Welcome to the external links menu!
+Welcome to the External Links menu!
 Please choose which action you would like to do and enter the number:
-[1] --- add link
-[2] --- remove link
-[3] --- view links
-[4] --- exit to links menu
+[1] --- Add link
+[2] --- Remove link
+[3] --- View links
+[4] --- Exit to Links menu
 ````
 
 → Go To [Table of Contents](#table-of-contents)    
@@ -1275,12 +1276,15 @@ Supported TLD: .com, .org, .sg, .edu, .gov
 > https://www.youtube.com/java
 --------------------------------------------
 Alright! I have added the following link ---  https://www.youtube.com/java
-Welcome to the external links menu!
+Returning to the External Links menu...
+
+Welcome to the External Links menu!
 Please choose which action you would like to do and enter the number:
 [1] --- Add link
 [2] --- Remove link
 [3] --- View links
-[4] --- Exit to links menu
+[4] --- Exit to Links menu
+
 ````
 
 → Go To [Table of Contents](#table-of-contents)    
@@ -1297,23 +1301,22 @@ Example for removing an external link:
 --------------------------------------------
 These are the links you have added --->
 [1] --- https://www.reddit.com/r/nus
-[2] --- https://www.luminus.nus.edu.sg
-[3] --- https://www.myedurec.nus.edu.sg
-[4] --- https://www.youtube.com
-[5] --- https://www.facebook.com
-[6] --- https://www.youtube.com
-[7] --- https://www.instagram.com
-Please choose which link you would like to delete and enter the number
+[2] --- https://www.myedurec.nus.edu.sg
+[3] --- https://www.luminus.nus.edu.sg
+[4] --- https://www.youtube.com/java
 
-> 7
+Please choose which link you would like to delete and enter the number
+> 4
 --------------------------------------------
-You have deleted --- https://www.instagram.com
-Welcome to the external links menu!
+You have deleted --- https://www.youtube.com/java
+Returning to the External Links menu...
+
+Welcome to the External Links menu!
 Please choose which action you would like to do and enter the number:
-[1] --- add link
-[2] --- remove link
-[3] --- view links
-[4] --- exit to links menu
+[1] --- Add link
+[2] --- Remove link
+[3] --- View links
+[4] --- Exit to Links menu
 ````
 
 → Go To [Table of Contents](#table-of-contents)    
@@ -1330,19 +1333,17 @@ Example for viewing external links:
 --------------------------------------------
 These are the links you have added --->
 [1] --- https://www.reddit.com/r/nus
-[2] --- https://www.luminus.nus.edu.sg
-[3] --- https://www.myedurec.nus.edu.sg
-[4] --- https://www.youtube.com
-[5] --- https://www.facebook.com
-[6] --- https://www.youtube.com
+[2] --- https://www.myedurec.nus.edu.sg
+[3] --- https://www.luminus.nus.edu.sg
 
-Welcome to the external links menu!
+Returning to the External Links menu...
+
+Welcome to the External Links menu!
 Please choose which action you would like to do and enter the number:
-[1] --- add link
-[2] --- remove link
-[3] --- view links
-[4] --- exit to links menu
-
+[1] --- Add link
+[2] --- Remove link
+[3] --- View links
+[4] --- Exit to Links menu
 ````
 
 → Go To [Table of Contents](#table-of-contents)    
@@ -1366,28 +1367,26 @@ Please enter the number of the module you wish to add
 This is the list of modules:
 [1] CS2113T
 [2] CG1112
-[3] CS1010
-[4] CS1231
-[5] CS3243
-[6] EC1301
-[7] CG2028
-> 4
+[3] CS2040C
+> 3
 --------------------------------------------
 Please enter the zoom link below
 > https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09
 --------------------------------------------
 Does your meeting have password which you would like to add? [Y/N]
-> Y
+> y
 --------------------------------------------
 Please enter your password below!
 > itsasecret
 --------------------------------------------
 Woohoo~ Zoom link added:
-> https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 for CS1231
+https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 for CS2040C
 
-Welcome to the links menu ^~^
+Returning to the Links menu...
+
+Welcome to the Links menu ^~^
 Please choose which action you would like to do and enter the number:
-[1] --- External links menu
+[1] --- External Links menu
 [2] --- Add Zoom links
 [3] --- Delete Zoom links
 [4] --- View Zoom links
@@ -1408,15 +1407,19 @@ Example for deleting the zoom link:
 --------------------------------------------
 Here are your zoom links!
 
-[1] --- https://nus-sg.zoom.us/j/82544240707?pwd=QUdnWWowTlNTZ0tiakxDNmVJd0s2QT09 CS1010 password'
+[1] --- https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 CS2040C itsasecret
+[2] --- https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaU4234jl3k4j2lj CS2113T no password entered
+[3] --- https://nus-sg.zoom.us/j/82190325074?pwd=M2Njajdflkajdflkjadlkadjf CG1112 cs2113t
 
 Please choose which link you would like to delete and enter the number
 > 1
 --------------------------------------------
-You have deleted --- https://nus-sg.zoom.us/j/82544240707?pwd=QUdnWWowTlNTZ0tiakxDNmVJd0s2QT09
-Welcome to the links menu ^~^
+You have deleted --- https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09
+Returning to the Links menu...
+
+Welcome to the Links menu ^~^
 Please choose which action you would like to do and enter the number:
-[1] --- External links menu
+[1] --- External Links menu
 [2] --- Add Zoom links
 [3] --- Delete Zoom links
 [4] --- View Zoom links
@@ -1437,12 +1440,14 @@ Example for viewing all zoom links:
 --------------------------------------------
 Here are your zoom links!
 
-[1] --- https://nus-sg.zoom.us/j/91969975928?pwd=UmlWVEhoYmxONFZjMmFjaG4rbzhTdz09 CS1010 itsasecret!
-[2] --- https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 CS2113T no password entered
+[1] --- https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaU4234jl3k4j2lj CS2113T no password entered
+[2] --- https://nus-sg.zoom.us/j/82190325074?pwd=M2Njajdflkajdflkjadlkadjf CG1112 cs2113t
 
-Welcome to the links menu ^~^
+Returning to the Links menu...
+
+Welcome to the Links menu ^~^
 Please choose which action you would like to do and enter the number:
-[1] --- External links menu
+[1] --- External Links menu
 [2] --- Add Zoom links
 [3] --- Delete Zoom links
 [4] --- View Zoom links
