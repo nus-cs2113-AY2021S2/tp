@@ -10,7 +10,7 @@ Useful links:
 * [User Guide](UserGuide.md)
 * [Developer Guide](DeveloperGuide.md)
 * [About Us](AboutUs.md)
-  * [Hu Wen Qi](team/wenqihu.md)
+  * [Hu Wen Qi](team/vinci-hu.md)
   * [Kim Joohwan](team/joohwan.md)
   * [Lee Yang Peng](team/leeyp.md)
   * [Ryan Kwok](team/kwokyto.md)
