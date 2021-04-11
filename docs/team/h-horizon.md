@@ -36,16 +36,13 @@ GULIO is a module planner designed for efficiency when used by someone that can 
 1. Text Editor component in Design section.
    >I wrote the description for the text editor component under Design in the DG as I was the one who implemented it in our codebase.
 1. Add lesson command class in Implementation section.
-   > I worked with Ivan on describing the implementation of the add lesson command under the Implementation section.
-   > I drew two of the sequence diagrams for this implementation.
+   > I drew two of the sequence diagrams describing the implementation of the add lesson command under the Implementation section.
+
    
 ### Contribution to Team-Based Tasks:
 
 1. Fixed minor bugs for some components.
-   > Fixed minor bugs in our codebase.
 1. Maintained issue tracker.
-   > Maintained issue tracker by adding issues found during discussion with the appropriate labels.
-
 
 ### Review/mentoring contributions:
 1. Full list of PRs approved or commented on by me can be found [here](https://github.com/AY2021S2-CS2113T-W09-3/tp/pulls?q=is%3Apr+reviewed-by%3AH-horizon+is%3Aclosed+).
