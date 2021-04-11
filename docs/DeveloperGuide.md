@@ -1,4 +1,5 @@
 # Developer Guide 
+
 ![logo](./img/logo.png)
 
 ## Table of Contents
@@ -23,7 +24,7 @@
 1. Fork this repo and clone it into your computer.
 2. Run Intellij as your IDE (Highly Recommended).
 3. Configure the JDK to JDK 11.
-4. Make sure you have added the following plugins, if disable please re-enable it back by going to `File`>`Settings`>`Plugins`.
+4. Make sure you have added the following plugins, if disabled please re-enable it back by going to `File`>`Settings`>`Plugins`.
    ![Main Sequence Diagram](./img/plugins.png)
 5. Import the project as a Gradle project by selecting build.gradle. 
 6. Verify the setup: Run the nusfoodreviews and test a few commands. 
@@ -59,6 +60,14 @@ The rest of the App consists of four components.
 ### UI-Component
 
 ### Logic-Component
+![Architecture Diagram](./img/LoginClassDiagram.png)
+API: `NusFoodReviews.java`
+1. `NusFoodReviews` uses the `Parser` class to parse the user command.
+2. A `Command` object will be created and executed by the `NusFoodReviews`
+3. The command execution can affect `Model`, the component that holds 
+   data of the In-App memory (e.g. adding a canteen).
+4. In Addition, the command execution can interact with `Ui` to interact 
+   with the user, such as requesting for inputs
 
 ### Model-Component
 
@@ -70,20 +79,24 @@ For public users, the list of commands is shown below:
 * Display selected store sample menu: `menu`
 * Display all reviews of the selected store : `reviews`
 * Add a new review of the selected store: `add`
-* Goes back to home page to select canteen: `home`
 * Display all the stores of the selected canteen: `list`
+* Return to home page to select canteen: `home`
+* Return to Login Page: `login`
 * Exiting the application: `exit`
 
 
 For admin, the list of commands is shown below:
-
+ 0. Exit
  1. View canteens
  2. Add canteen
- 3. Add store in canteen
- 4. Delete canteen
- 5. Delete store in canteen
- 6. Delete reviews
- 7. Exit
+ 3. Add a store in canteen
+ 4. Add Menu to a store
+ 5. Delete canteen
+ 6. Delete a store in canteen
+ 7. Delete reviews in a store
+ 8. Delete menu in a store
+ 9. View stores in a canteen
+
 
 
 <!-- NOT TOO SURE HOW THIS PART FITS IN
