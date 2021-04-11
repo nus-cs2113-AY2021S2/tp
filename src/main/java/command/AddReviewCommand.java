@@ -16,7 +16,6 @@ import java.util.Date;
 
 import static ui.Ui.LINESPACING;
 
-
 public class AddReviewCommand extends Command {
     private Store store;
     private Canteen canteen;

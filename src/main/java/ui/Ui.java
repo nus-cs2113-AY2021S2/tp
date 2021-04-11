@@ -8,11 +8,17 @@ import stores.Store;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Represents the main class that interacts with the user through the command line interface
+ */
 public class Ui {
     public static final String LINESPACING = "====================================================";
     private static Scanner userInputScanner;
     private static String line;
 
+    /**
+     * Constructor of class. Creates a scanner to collect user input
+     */
     public Ui() {
         userInputScanner = new Scanner(System.in);
     }
