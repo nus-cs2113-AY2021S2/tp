@@ -892,7 +892,7 @@ Here are some frequently asked questions that you may have regarding GULIO.
 | link | `link` |
 | teacher | `tch` |
 | lessons | `lsn` |
-| add task | `add task <name> ;; <deadline> ;; <remarks>` |
+| add task | `add task <task name> ;; <deadline> ;; <remarks>` |
 | delete task | `del task` |
 | edit task | `edit task` |
 | mark | `mark` |

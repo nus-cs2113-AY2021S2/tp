@@ -353,7 +353,7 @@ The newly created `Lesson` object is then passed to a new `AddLessonCommand` obj
 
 ### Adding of Cheat-Sheet
 
-The `AddCheatSheetCommand` class enables the creation, addition and saving of a ".txt" file to the current module’s “Cheatsheet” directory (see Figure 5). Upon creating a new instance of it and calling the `execute()` method on it, the GULIO Text Editor application will also be automatically started.
+The `AddCheatSheetCommand` class enables the creation, addition and saving of a ".txt" file to the current module’s “Cheatsheet” directory (see [Figure 6](#storage-component)). Upon creating a new instance of it and calling the `execute()` method on it, a text editor window will also be automatically opened if there is none opened yet.
 
 An invocation of the `add cheat-sheet` command involves the following interactions:
 
@@ -362,14 +362,14 @@ An invocation of the `add cheat-sheet` command involves the following interactio
     Figure 10a - AddCheatSheetCommand Invocation Sequence Diagram
 </p>
 
-When `AddCheatSheetCommand` is executed, it gets the currently selected module by calling the `getSelectedModule()` method in `ModuleList`. It then checks if the file name given by the user is invalid. If no, `AddCheatSheetCommand` proceeds to call the `getDirectoryPath()` method in itself to obtain the directory where the cheat-sheet would be saved to. It then calls the `openTextEditor()` method itself, which will interact with the `TextEditor` class, which is a Singleton class, in the following way:
+When `AddCheatSheetCommand` is executed, it gets the currently selected module by calling the `getSelectedModule()` method in `ModuleList`. It then checks if the file name given by the user is invalid. If no, `AddCheatSheetCommand` proceeds to call the `getDirectoryPath()` method in itself to obtain the directory where the cheat-sheet would be saved to. It then calls the `openTextEditor()` method itself, which will interact with the `TextEditor` class, a Singleton class, in the following way:
 
 <p align="center">
     <img width="973" src="developerGuideImages/addCheatSheetCommand-v2.1-part2.png" alt="AddCheatSheetCommand Invocation Sequence Diagram B"><br>
     Figure 10b - Opening the Text Editor
 </p>
 
-The `openTextEditor()` method will first check if the single instance of `TextEditor` is `null`. If it is, then there is no GULIO Text Editor window currently opened and `openTextEditor()` proceeds to call the `createNew()` method of `TextEditor`. This initialises the single instance of `TextEditor` by calling the class constructor, which sets up, loads from previous data (if any) and opens the Text Editor for the user. The user can now start typing into the Text Editor.
+The `openTextEditor()` method will first check if the single instance of `TextEditor` is `null`. If it is, then there is no text editor window currently opened and `openTextEditor()` proceeds to call the `createNew()` method of `TextEditor`. This initialises the single instance of `TextEditor` by calling the class constructor, which sets up, loads from previous data (if any) and opens the text editor for the user. The user can now start typing into the text editor.
 
 &nbsp;
 
@@ -649,7 +649,7 @@ Due to the 2-layer command system, you will need to identify which layer you are
 | exit | `exit` |
 | open | `open <module code>`|
 | add | `add <module code>` |
-| delete | `del  <module name>` |
+| delete | `del` |
 | modules | `mods` |
 
 <div style="page-break-after: always;"></div>
