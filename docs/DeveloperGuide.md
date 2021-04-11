@@ -51,7 +51,7 @@ The purpose of this developer guide is to aid any curious or interested contribu
 8. Press run on the `Main()` method of NUSMaze.
 
 If the set up process had been completed successfully, you should see the following message:  
-![Screenshot 2021-03-25 at 7 03 08 PM](https://user-images.githubusercontent.com/60348727/113017279-e14b9d00-91b1-11eb-8ec3-37c0c3f80475.png)
+![img.png](images/NUSMazecli.png)
 
 ---------------------------------------------------------------------------------------------
 

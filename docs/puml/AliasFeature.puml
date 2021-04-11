@@ -4,19 +4,19 @@ skinparam classAttributeIconSize 0
 
 class ShowCustomAliasCommand {
 # AliasUi ui
-+ void execute()
++ execute():void
 }
 class AddCustomAliasCommand {
 # AliasUi ui
 - {static} String MESSAGE_SUCCESS
-+ void execute()
++ execute():void
 }
 class BlockAlias {
 - HashMap<String,String> aliases
-+ HashMap<String,String> getAliasHashMap()
-+ String[] changeAliasToBlock(String,String)
-+ void addAlias(String,String)
-+ void deleteAlias(String)
++ getAliasHashMap():HashMap<String,String>
++ changeAliasToBlock(String,String):String[]
++ addAlias(String,String):void
++ deleteAlias(String):void
 }
 class NusMap {
 - HashMap<String,Block> map
@@ -30,17 +30,17 @@ class NusMaze {
 class DeleteCustomAliasCommand {
 # AliasUi ui
 - {static} String MESSAGE_SUCCESS
-+ void execute()
++ execute():void
 }
 class AliasStorage {
-+ void loadAlias(BlockAlias)
-+ void overwriteAliasListFile(BlockAlias)
-+ void appendToAliasListFile(String)
++ loadAlias(BlockAlias):void
++ overwriteAliasListFile(BlockAlias):void
++ appendToAliasListFile(String):void
 }
 class AliasUi {
-+ String[] getAliasInfo()
-+ void showCustomAliases(BlockAlias)
-+ String getDeleteAliasInfo()
++ getAliasInfo():String[]
++ showCustomAliases(BlockAlias):void
++ getDeleteAliasInfo():String
 }
 
 
