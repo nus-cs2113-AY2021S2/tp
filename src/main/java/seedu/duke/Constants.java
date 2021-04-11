@@ -9,7 +9,7 @@ public class Constants {
     // Help messages
     public static final String COMMAND_LIST_MESSAGE = "Here is a list of available commands:\n"
             + "  add\n  delete\n  list\n  load\n  record\n  retrieve\n  current\n  exit\n"
-            + "Type 'help' followed by a command for more details about the command\n"
+            + "Type 'help' followed by one or more commands for more details\n"
             + "Example: help record";
     public static final String ADD_INFO_MESSAGE = "Add a patient to the list\n"
             + "Command prefix: add\n"
