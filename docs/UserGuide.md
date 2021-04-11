@@ -613,8 +613,8 @@ Refer to [this section](#346-delete-zoom-link).
 
 ### 3.2 CAP Simulator/Calculator
 
-The CAP Simulator/Calculator allows you to calculate your future CAP
-base on your [current CAP and MCs graded](#321-add-cap-and-number-of-mcs-counted-towards-cap).  
+The CAP Simulator/Calculator feature allows you to calculate your future CAP
+base on your [current CAP and total MCs counted towards CAP](#321-add-cap-and-number-of-mcs-counted-towards-cap).  
 
 To navigate to CAP Simulator/Calculator, type `2` from the [main menu](#3-features).
 
@@ -640,6 +640,7 @@ MCs that counts into your CAP does not include modules with zero grade points.
 > [i.e. negative CAP or CAP > 5.0]   
 > There is no strict restriction to number of MCs user can add and its up to user's discretion.
 
+Example of adding CAP and total MCs counted towards CAP:  
 
 ````
 Please choose which action you would like to do and enter the number:
@@ -663,6 +664,8 @@ Returning to CAP simulator/calculator menu...
 
 Displays current CAP and MCs counted into the CAP from input entered from [3.2.1](#321-add-cap-and-number-of-mcs-counted-towards-cap).
 
+Example of display on CAP and total MCs counted towards CAP:  
+
 ````
 Please choose which action you would like to do and enter the number:
 [1] --- Add CAP and Number of MCs graded taken
@@ -683,7 +686,7 @@ The CAP calculated with be rounded to 2 decimal places.
 
 > **Note!**  
 > All simulated CAP will not be stored as it is a simulation.  
-> You may choose to update you CAP and MCs counted under [3.2.1](#321-add-cap-and-number-of-mcs-counted-towards-cap).  
+> You may choose to update you CAP and MCs counted in [3.2.1](#321-add-cap-and-number-of-mcs-counted-towards-cap).  
 
 There are two versions of CAP Simulator:
 - v1.0: This version allows you to simulate CAP base on the grades you have entered before under each
@@ -714,6 +717,9 @@ please go back to the HelpGraduation menu and set existing CAP and MCs taken to 
 Key in 1 to simulate your cap base on the grades you have entered before for each module.
 Key in 2 to simulate cap base on your own input.
 ````
+
+Example on CAP simulator:  
+
 ###### Version 1  
 
 ````
@@ -730,7 +736,7 @@ The simulated cumulative average point (rounded to 2 d.p) you have is:
 Returning to CAP simulator/calculator menu...
 ````  
 
-###### Version 2
+###### Version 2  
 
 ````
 > 2
