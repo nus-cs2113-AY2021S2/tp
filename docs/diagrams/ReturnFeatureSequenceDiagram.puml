@@ -1,0 +1,62 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+!include style.puml
+
+
+
+[-> ":ReturnCommand": execute()
+activate ":ReturnCommand"
+
+":ReturnCommand" -> ":RecordList" : getRecordAt(:Int)
+activate ":RecordList"
+":RecordList" --> ":ReturnCommand"
+deactivate ":RecordList"
+
+opt Loan.isReturn == false
+
+":ReturnCommand" -> ":Loan" : markAsReturned()
+activate ":Loan"
+":Loan" --> ":ReturnCommand"
+deactivate ":Loan"
+
+":ReturnCommand" -> ":creditScoreReturnedLoansMap" : getCreditScoreOf(:String)
+activate ":creditScoreReturnedLoansMap"
+":creditScoreReturnedLoansMap" --> ":ReturnCommand"
+deactivate ":creditScoreReturnedLoansMap"
+
+":ReturnCommand" -> "<<class>>\n:Utils" : getDaysDifference(:LocalDate, :LocalDate)
+activate "<<class>>\n:Utils"
+"<<class>>\n:Utils" --> ":ReturnCommand"
+deactivate "<<class>>\n:Utils"
+
+
+":ReturnCommand" -> "<<class>>\n:Utils" : computeCreditScore(:Int)
+activate "<<class>>\n:Utils"
+"<<class>>\n:Utils" --> ":ReturnCommand"
+deactivate "<<class>>\n:Utils"
+
+":ReturnCommand" -> ":creditScoreReturnedLoansMap" : insertCreditScoreOf(:String, :Int)
+activate ":creditScoreReturnedLoansMap"
+":creditScoreReturnedLoansMap" --> ":ReturnCommand"
+deactivate ":creditScoreReturnedLoansMap"
+
+end
+
+":ReturnCommand" -> ":Ui" : printMessage()
+activate ":Ui"
+":Ui" --> ":ReturnCommand"
+deactivate ":Ui"
+
+":ReturnCommand" -> ":Storage" : saveData()
+activate ":Storage"
+":Storage" --> ":ReturnCommand"
+deactivate ":Storage"
+
+[<-- ":ReturnCommand"
+deactivate ":ReturnCommand"
+":ReturnCommand" -[hidden]-> ":ReturnCommand"
+destroy ":ReturnCommand"
+
+note right: Some method parameters are omitted for brevity
+
+@enduml

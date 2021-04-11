@@ -4,8 +4,6 @@
 
 ## Table of Content
 
----
-
 1. [Introduction](#1-introduction)\
    1.1 [Purpose](#11-purpose)\
    1.2 [Using this Guide](#12-using-this-guide)
@@ -41,8 +39,6 @@
 
 ## 1. Introduction
 
----
-
 **Greetings from Finux!**
 
 **Finux** is a CLI Style application that allows the user to make better financial
@@ -76,8 +72,6 @@ list of icons:
 
 ## 2. Setting Up
 
----
-
 ### 2.1 Setting up the project in your computer
 
 Ensure that you have the following installed:
@@ -100,7 +94,7 @@ If you plan to use IntelliJ IDEA:
 1. **Verify the setup.**
    1. After importing successfully, locate the `src/main/java/seedu.duke/Duke.java` file, right click it, 
       and choose `Run...`. If the setup is correct, you should see the following:
-   ![Login_Page](img/LoginPageExampleOutput.png)
+   ![Login_Page](img/NewFileCreationExampleOutput.png)
 
 ### 2.2 Before writing code
 
@@ -122,8 +116,6 @@ Before starting to write any code, we recommend that you have a look at Finux's 
 [Finux's Architecture](#31-architecture) section.
 
 ## 3. Design
-
----
 
 ### 3.1 Architecture
 
@@ -365,14 +357,14 @@ _Figure X: Storage Class Diagram_
 
 #### Description
 The `storage` component consists of only 1 class called `Storage`. The role of the `Storage` is to translate all
-`records` from the `RecordList` and `creditScoreHashMap` (a `HashMap`) into a text format in a text output file and 
+`records` from the `RecordList` and `CreditScoreReturnedLoansMap` (a `HashMap`) into a text format in a text output file and 
 vice versa.
 
 #### Design
 In the application, `Storage` is instantiated in classes that requires the use of the save or load function, this
 is done through the constructor `new Storage()`. Whenever a new `record` gets added, removed, or marked as returned, 
 the `saveData` method will be called and all `record` up to that point will be converted into a text output
-and saved into the `finux.txt` file. The `creditScoreHashMap` will also be translated into a user readable text format 
+and saved into the `finux.txt` file. The `creditScoreReturnedLoansMap` will also be translated into a user readable text format 
 and stored in the same file as the `records`. The `loadFile` method will do the exact opposite, and load the data from 
 the `finux.txt` file back into the Finux application.
 
@@ -384,7 +376,7 @@ the `finux.txt` file back into the Finux application.
    will also output each individual records in separate lines.
 
 3. `writeCreditScoreMapToSaveFile` will convert all key:value pairs, in this case, `borrowerName`:`creditScore` pairs
-   in the `creditScoreHashMap` into a user readable format and store them in the same `finux.txt` file as the `records`. 
+   in the `creditScoreReturnLoansMap` into a user readable format and store them in the same `finux.txt` file as the `records`. 
   
 4. `loadFile` method does the opposite of the `writeRecordListToSaveFile` method. In the `loadFile` method, a new 
    ArrayList of `record` is instantiated. It will then call the `saveFileExist` method. If the method returns false, 
@@ -444,8 +436,6 @@ the `finux.txt` file back into the Finux application.
    the application may cause unknown and unwanted outputs.
 
 ## 4. Implementation
-
----
 
 This section introduces the specific implementation details and design thought processes
 of some features in **Finux**.
@@ -596,7 +586,7 @@ printout ideas:
 Having considered two of the approaches, we have decided to adopt the second approach.
 As our remove and return features takes in the number based on the listed records, it will be better to highlight the
 record ID rather than just a single number printout to provide the user a better intuition. Although a new method call
-`getID()` is needed, the price to pay is very little compared to confusing the user as index can be interpreted
+`getId()` is needed, the price to pay is very little compared to confusing the user as index can be interpreted
 differently by different people.
 
 
@@ -618,7 +608,7 @@ _Figure x: Sequence Diagram for `ViewCommand`_
 Given below is an example usage scenario of how `ViewCommand` behaves at each step.
 
 ***Step 1:***\
-The user execute the `view` command with one of the available options, `{-e, -l, -s, -a}`. The program invokes 
+The user execute the `view` command with one of the available options, `{-e | -l | -s | -a}`. The program invokes 
 `ParserHandler#getParseInput()` to provide the parsed input to `CommandHandler#createCommand()`. This checks 
 for the command type, `view`, and proceeds to validate the parsed input in the `ViewCommand()` constructor 
 before returning the constructed `ViewCommand` object to `Finux`.
@@ -671,23 +661,108 @@ what the integer data type provided can cater to higher flexibility of the appli
 
 
 ### 4.4 Return Feature
-The `return` feature allows Finux users to mark a loan as returned.
+The `return` feature aims to allow users to mark a loan as return after querying the ID with the `list` command. The
+users will be able to then use the `return` command to mark a loan as return when they deem it as returned. Hence, this
+feature allows them to update loan records accordingly whenever necessary.
 
-`return -i <index of loan to return> -d <return date>`
+#### 4.4.1 Current Implementation
 
-Upon marking the loan as returned, *creditscore* for the borrower who loaned the book will be updated and saved into `finux.txt`
+The `return` feature is facilitated by `ReturnCommand`. By running the command with required options and relevant
+parameters, our `CommandHandler` will construct the `ReturnCommand` object which will validate the input and provide
+the validated parameters that will be used in the execute function.
 
-Example:
-`return -i 2 -d 2021-03-16`
+![ReturnFeatureSequenceDiagram](img/ReturnFeatureSequenceDiagram.png)\
+*Figure x: Sequence Diagram for `return -i 1 -d 2021-03-28`
 
-Output:
-Loan marked as returned: `[L][2021-03-16] Loan to Tom [v]`
+The sequence diagram presented above depicts the interaction between the components for running the command.
+`return -i 1 -d 2021-03-28`.
+> 📝 The sequence diagram starts from Step 2 onward.
 
+Given below is an example usage scenario of how `ReturnCommand` behaves at each step.
+
+***Step 1:***\
+User executes the command `return -i 1 -d 2021-03-28`. The application invokes `CommandHandler#createCommand()`, and 
+since the command type is `return`, the `createCommand` constructs a `ReturnCommand` object. The parameter validation 
+of the constructed `ReturnCommand` is done in the constructor. The validation is done by invoking the commands: 
+`ReturnCommand#getIndexInString`, `ReturnCommand#getIndexInInteger` and `ReturnCommand#getDate`. The created command is 
+then returned to `Finux`.
+
+***Step 2:***\
+The `CommandHandler` terminates after validating user input and creating the corresponding Command object. The 
+application invokes `ReturnCommand#execute()` to execute the user's instruction.
+
+***Step 3:***\
+The `ReturnCommand` first invokes `RecordList#getRecordAt(:Int)` to get the record located at index
+`recordNumberInt` and is stored in `currentRecord`. The record retrieved will be used in the next step.
+> 📝 `recordNumberInt` is a value that you see on the list minus by one.
+
+***Step 4:***\
+The `currentRecord` object is then type-casted to a Loan object. This type-casted object will be stored in `currentLoan`.
+This `currentLoan` will then be used to make necessary computations of the creditscore of the person associated with the
+loan.
+
+***Step 5:***\
+If the loan is not returned, the `Loan#markAsReturned()`. Then steps 6 to 7 will be carried
+out. Otherwise, these steps will be skipped.
+
+***Step 6:***\
+Convert the person associated with the loan to lower case. Then invoke the method
+`creditScoreReturnedLoansMap#getCreditScoreOf(:String)` to retrieve to current credit score of the
+person. Then, the `Utils#getDaysDifference(:LocalDate, :LocalDate)` is invoked to 
+retrieve how many days it took for the person to return the loan.
+
+***Step 7:***\
+The information derived from step 6 is then used to compute the new credit score by calling the method
+`Utils#computeCreditScore(:long, :Int, :bool)`. This newly computed credit score is
+then stored by invoking `creditScoreReturnedLoansMap#insertCreditScoreOf(:String, :Int)`.
+
+***Step 8:***\
+The application invokes `Ui#printMessage()` and prints the record that will be marked as return with their respective
+`toString()` method.
+
+***Step 9:***\
+The application invokes `Storage#saveData()` to save the modification on the record list onto the save file after the
+updates on the loan is done successfully. This will then enable future file loading to be accurate and there are no 
+mismatch of information or records.
+
+#### 4.4.2 Design Consideration
+
+This section shows the design considerations taken when implementing the return feature.
+
+Aspect: **When should the application validate the user inputs**
+
+These user inputs include:
+* index
+* date
+
+It is entirely possible that the index or date provided by the user can be invalid. \
+*For indices*:
+* negative numbers
+* numbers that refer to non-existent records
+* non-numerics (e.g. alphabets, symbols, etc.)
+
+*For dates*:
+* incorrect date format
+* not a date
+* future dates or non-existent dates (30th February)
+
+There is a need to validate the index given by the user to ensure that the application does not terminate unexpectedly
+and that suitable error messages are printed to notify the user of their intentional or unintentional incorrect
+parameter inputs.
+
+|Approach | Pros | Cons| 
+|---------|------|-----|
+|During command execution.|No additional class required.|A new argument for the `execute()` method is needed. It also increases coupling and decreases cohesion.|
+|During command creation.|Decreases coupling and increases cohesion as there is a clear cut in between responsibilities. The arguments of `execute()` can remain consistent with other command types.|Duplication of validation may occur in other commands.|
+
+Having considered two of the approaches, we have decided to implement the second approach which is to validate the index
+and date during command creation. The lower coupling and higher cohesion won the battle here and also the consistency of
+the arguments in `execute()` can also be maintained.
 
 ### 4.5 Remove Feature
 
 The `remove` feature aims to allow users to remove records after querying the record's
-index number with the `list` command. The users will be able to then use the `remove`
+ID with the `list` command. The users will be able to then use the `remove`
 command to delete certain records that they deem obsolete or is incorrect. Hence, this feature
 allows them to amend their mistakes or edit their list with constraints.
 
@@ -695,10 +770,14 @@ allows them to amend their mistakes or edit their list with constraints.
 
 The `remove` feature is facilitated by `RemoveCommand`. By running the command with required options and relevant 
 parameters, our `CommandHandler` will construct the `RemoveCommand` object which will validate the input and provide
-relevant parameters that will be used in the execute function.
+validated parameters that will be used in the execute function.
 
 ![RemoveFeatureSequenceDiagram](img/RemoveFeatureSequenceDiagram.png)\
 _Figure x: Sequence Diagram for `RemoveCommand`_
+
+The sequence diagram presented above depicts the interaction between the components for running the command.
+`remove -i 1`.
+> 📝 The sequence diagram starts from Step 2 onward.
 
 Given below is an example usage scenario of how `RemoveCommand` behaves at each step.
 
@@ -712,29 +791,22 @@ The `CommandHandler` terminates after parsing user input and creating the corres
 invokes `RemoveCommand#execute()` to execute the user's instruction.
 
 ***Step 3:***\
-The `RemoveCommand` first invokes `RecordList#getRecordAt(recordNumberInt)` to get the record located at index
+The `RemoveCommand` first invokes `RecordList#getRecordAt(:Int)` to get the record located at index
 `recordNumberInt`. The record retrieved will be used in the next step.
-> 📝 `recordNumberInt` is the index number that you will see on the list minus by one.
+> 📝 `recordNumberInt` is a value that you see on the list minus by one.
 
 ***Step 4:***\
 The application invokes `Ui#printMessage()` and prints the record that will be removed with their respective 
 `toString()` method. 
 
 ***Step 5:***\
-The application invokes `RecordList#deleteRecordAt(recordNumberInt)` which removes the record located at the index 
+The application invokes `RecordList#deleteRecordAt(:Int)` which removes the record located at the index 
 `recordNumberInt`.
 
 ***Step 6:***\
 The application invokes `Storage#saveData()` to save the modification on the record list onto the save file after the
 removal of the record is successful. This will then enable future file loading to be accurate and there are no mismatch
 of information or records.
-
-The sequence diagram presented below depicts the interaction between the components for running the command.
-`remove -i 1`.
-> 📝 The sequence diagram starts from Step 2 onward.
-> 
-> 📝 The `commandLooper()` only serves as a user input reader here and takes certain actions when certain allowed 
-> commands are given.
 
 #### 4.5.2 Design Consideration
 
@@ -749,8 +821,10 @@ following:
 * non-numerics (e.g. alphabets, symbols, etc.)
 
 There is a need to validate the index given by the user to ensure that the application does not terminate unexpectedly
-and that suitable error messages are printed to notify the user of their intentional or unintentional parameter inputs.
+and that suitable error messages are printed to notify the user of their intentional or unintentional incorrect
+parameter inputs.
 
+This consideration is much similar to the one in [Return Feature](#442-design-consideration)
 
 |Approach | Pros | Cons| 
 |---------|------|-----|
@@ -775,8 +849,8 @@ user experience, and it will not cause any confusion. The time wasted is negligi
 long-term benefit.
 
 ### 4.6 Storage Feature
-The `storage` feature allows all `records` and `creditScoreHashMap` to be stored locally on the device and for `records` and 
-and `creditScoreHashMap` to be loaded from a saved file into the Finux application. This is the only feature implemented 
+The `storage` feature allows all `record` and `creditScoreReturnedLoansMap` to be stored locally on the device and for `record` and 
+and `creditScoreReturnedLoansMap` to be loaded from a saved file into the Finux application. This is the only feature implemented 
 that does not have an explicit command to call it.
 
 #### 4.6.1 Current Implementation
@@ -846,7 +920,7 @@ the `HashMap` of itself.
 
 ***Step 4***\
 The `start` method in the `Finux` class will then call the `getRecordListData` method to retrieve the loaded 
-`RecordList` from the `Storage` class, this is also the same with the `creditScoreReturnedLoansMap` where the `start`
+`RecordList` from the `Storage` class, this is also the same with the `CreditScoreReturnedLoansMap` where the `start`
 method in the `Finux` class will call the `getMapData` method from the `Storage` class which will then return the
 `HashMap`.
 
@@ -869,8 +943,8 @@ multiple occasions that this can be invoked:
 |After each command call|Guaranteed save after every successful command call, users can "save" the data by simply entering any legal commands|Extraneous calls of save, high coupling, a lot of passing of data around|
 |After any command call that edits data in `RecordList`|Allows data to be saved after every update to the `RecordList`|Some coupling between the methods that updates the `records` and calling the save method.|
 
-> 💡 Note that data in the HashMap `creditScoreHashMap` is related directly to the `Loan` object in the `RecordList`, thus
-> we have omitted the mention of it here as any changes to the `creditScoreHashMap` will also be reflected in the `Loan`
+> 💡 Note that data in the `CreditScoreReturnedLoansMap` is related directly to the `Loan` object in the `RecordList`, thus
+> we have omitted the mention of it here as any changes to the `CreditScoreReturnedLoansMap` will also be reflected in the `Loan`
 > object which is a part of the `RecordList`.
 
 After considering the above approaches, we have decided to adopt the third approach even though there might be more
@@ -934,8 +1008,6 @@ coding and typing can speed up the process of their finance management through f
 
 ## Appendix B: User Stories
 
----
-
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
 |v1.0|user|be able to add a record (expense) with dates|record each expense into the app.|
@@ -952,16 +1024,12 @@ coding and typing can speed up the process of their finance management through f
 
 ## Appendix C: Non-Functional Requirements
 
----
-
 1. The application should be responsive.
 1. The application should work on most operating systems (OS) such as Windows and Linux with `Java 11` installed.
 1. Users who can type fast should be able to complete equivalent tasks faster as compared to using a mouse.
 1. Users should be able to use the application with ease with the help of the User Guide (UG) and the Developer's Guide (DG).
 
 ## Appendix D: Instructions for manual testing
-
----
 
 ### D.1: Launch and Shutdown
 

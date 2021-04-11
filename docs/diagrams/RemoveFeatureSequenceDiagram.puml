@@ -5,7 +5,7 @@
 [-> ":RemoveCommand": execute()
 activate ":RemoveCommand"
 
-":RemoveCommand" -> ":RecordList" : getRecordAt(recordNumberInt)
+":RemoveCommand" -> ":RecordList" : getRecordAt(:Int)
 activate ":RecordList"
 ":RecordList" --> ":RemoveCommand"
 deactivate ":RecordList"
@@ -16,7 +16,7 @@ activate ":Ui"
 ":Ui" --> ":RemoveCommand"
 deactivate ":Ui"
 
-":RemoveCommand" -> ":RecordList" : deleteRecordAt(recordNumberInt)
+":RemoveCommand" -> ":RecordList" : deleteRecordAt(:Int)
 activate ":RecordList"
 ":RecordList" --> ":RemoveCommand"
 deactivate ":RecordList"
@@ -28,6 +28,7 @@ deactivate ":Storage"
 
 [<-- ":RemoveCommand"
 deactivate ":RemoveCommand"
+":RemoveCommand" -[hidden]-> ":RemoveCommand"
 destroy ":RemoveCommand"
 
 @enduml

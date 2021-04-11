@@ -32,7 +32,7 @@ Since: `March 2021`
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.4 [View total amount in every category](#334-view-total-amount-in-every-category)\
    3.4 [Mark a loan as return: `return`](#34-mark-a-loan-as-returned-return)\
    3.5 [Remove a record: `remove`](#35-remove-a-record-remove)\
-   3.6 [Check a person credit score: `creditscore`](#36-check-a-persons-credit-score-creditscore)\
+   3.6 [Check a person's credit score: `creditscore`](#36-check-a-persons-credit-score-creditscore)\
    3.7 [Exit the program: `exit`](#37-exit-the-program-exit)\
    3.8 [Help function: `help`](#38-help-function-help)\
    3.9 [Records Storage](#39-records-storage)\
@@ -43,8 +43,6 @@ Since: `March 2021`
 
 
 ## 1. Introduction
-
----
 
 Finux is a Command-Line Interface (CLI) application that allows you to record your expenses, savings and loans all in
 one consolidated platform. With these information made readily available at your fingertips, it will allow you to 
@@ -57,8 +55,6 @@ financial management and planning with the Finux application as compared to the 
 applications in the market.
 
 ## 2. Quick Start
-
----
 
 1. Ensure you have Java `11` or above installed in your Computer.
 2. Download the latest `finux.jar` from [here](https://github.com/AY2021S2-CS2113T-W09-1/tp/releases/tag/v2.0).
@@ -106,15 +102,15 @@ The Commands in Finux follow these argument orders (depending on the command):
 ❗ **All options are single letter and followed by 1 space at the front and back**
 > * E.g. `_-a_` would be a valid option format after replacing `_` with space at the front and back.  
 > * E.g. `add -e Plain bread loaf -a 10` will work, whereas `add -e Plain bread loaf -a10` will not be
-    recognized as valid option due to missing space in between ` -a` and `10`.
+    recognized as valid because the input have a missing space in between `-a` and `10`.
 
 ---
 
 ### 2.3 Explanation for Date and Date formats
 
 Date input is required when you specify the option `-d`.
-You are required to enter a date that follows a valid Date format.
-Finux supports multiple Date formats, for ease of use:
+You are required to enter a date that follows a valid date format.
+Finux supports multiple date formats for ease of use such as the one listed below:
 > * `DDMMYYYY`
 > * `D.M.YYYY`
 > * `D-M-YYYY`
@@ -129,14 +125,16 @@ Finux supports multiple Date formats, for ease of use:
 
 ### 2.4 Explanation for Expense, Loan, and Saving record output formats
 
-The general output format used by Finux in displaying an expense and saving record is as follows:
+The general output format used by Finux in displaying an expense and saving record is:
 
-`[record_type][issue_date][amount] description`
+`[record_id] [record_type] [issue_date] [amount] description`
 
 Whereas the general output format for loan record is:
 
-`[record_type][issue_date][amount] description [return_status]`
+`[record_id] [record_type] [issue_date] [amount] description [return_status]`
 
+> * record_id
+>    * record ID used to identify the record shown in the application
 > * record_type
 >    * A single character denoting the type of the record. 
 >    * `E` for expense record, `L` for loan record and `S` for saving record.
@@ -149,33 +147,31 @@ Whereas the general output format for loan record is:
 >    * A character denoting the return status of the loan record.
 >    * `v` for returned loan record and ` ` (an empty space) for unreturned loan record.
 
-For example, let's say you bought a plain loaf of bread for $2.75 on 3rd March 2021. The output format of this *expense* record 
+For example, lets say you bought a plain loaf of bread for $2.75 on 3rd March 2021. The output format of this *expense* record 
 will be:
 
-`[E][2021-03-20][2.75] Plain bread loaf`
+`[ID: 1] [E] [2021-03-03] [$2.75] Plain bread loaf`
 
-Another example is suppose you made a loan $500 to Mark on 20th March 2021. The output format of this *unreturned loan* 
-record will be:
+Suppose you now make a loan of $500 to Mark on 20th March 2021 with the description being set to 
+1st loan to Mark, then the output format of this *unreturned loan* record will be:
 
-`[L][2021-03-20][500] 1st loan to Mark [ ]`
+`[ID: 2] [L] [2021-03-20] [$500] 1st loan to Mark [ ]`
 
-After Mark returns this loan to you, the output format of this *returned loan* record will be:
+After Mark return this loan to you, the output format of this *returned loan* record will be:
 
-`[L][2021-03-20][500] 1st loan to Mark [v]`
+`[ID: 2] [L] [2021-03-20] [$500] 1st loan to Mark [v]`
 
-For the `add` and `list` commands, each displayed record will be preceded with a number, referred to as the *index* of
+For the `add` and `list` commands, each displayed record will be preceded with a number, referred to as the *record ID* of
 the record with respect to the combined list of expense, loan, and saving records. Let's say you have added the records
 shown above to Finux one after another, then doing a `list -l` operation will display the above loan record to you as
 follows:
 
-`2. [L][2021-03-20][500] 1st loan to Mark [v]`
+`[ID: 2] [L] [2021-03-20] [$500] 1st loan to Mark [v]`
 
 This means that the $500 loan you have made to Mark on 20th March 2021 has been returned and this loan is the second 
 record added to Finux.
 
 ## 3. Features
-
----
 
 ### 3.1 Add a record: `add`
 
@@ -186,7 +182,7 @@ record added to Finux.
 
 #### 3.1.1 Add an expense record
 
-Suppose you bought a plain loaf of bread for $2.90 on 3rd March 2021, you would want to enter
+Suppose you bought a plain loaf of bread for $2.90 on 20th March 2021, you would want to enter
 your `expense` as the example shown below.
 
 Format: `add -e <description> -a <amount> -d <date>`
@@ -200,7 +196,7 @@ Output:
 
 #### 3.1.2 Add a loan record
 
-It is the 20th of March 2021, and your friend Mark borrows a large sum of $200 from you . You will
+It is the 20th of March 2021, and your friend Mark borrows a large sum of $200 from you. You will
 have to enter the following into Finux to record this `loan`.
 
 You may want to add a _description_ of the `loan`, in this scenario, it will be `1st loan to Mark`
@@ -295,7 +291,7 @@ Output:
 
 You can also view your total **unreturned** loan using `view` and the option `-l`.
 
-> 📝 The total amount shown only includes the unreturned loans
+> 📝 The total amount shown only includes the unreturn loans
 
 Format: `view -l`
 
@@ -333,11 +329,11 @@ Output:
 
 Let's say Mark returns the loan he borrowed on 20th March 2021, and his `loan` record is the second record in the 
 combined list of expense, loan and saving records.
-Then to mark this loan as *returned*, the `index_of_loan` to be included in this case is `2` and the `return_date` is 
+Then to mark this loan as *returned*, the `record_id` to be included in this case is `2` and the `return_date` is 
 the date of return which is `28/03/21`.
 
-Format: `return -i <index_of_loan> -d <return_date>`
-* `<index_of_loan>` refers to the index number shown on the [displayed list of loans](#322-list-all-loan-records).
+Format: `return -i <record_id> -d <return_date>`
+* `<record_id>` refers to the record_ID displayed in the [list command output](#322-list-all-loan-records).
 * `<return_date>` refers to the date on which the borrower has returned the loan.
 
 Example: `return -i 2 -d 28/03/2021`
@@ -351,11 +347,11 @@ Output:
 ---
 
 In a scenario that you realised that the `expense` record of Plain bread loaf added on 20th March 2021 was wrong,
-you can `remove` the record by entering the `remove` command with the _index_ of the `expense`, this is case, it would
-be the first record in the list.
+you can `remove` the record by entering the `remove` command with the _record ID_ of the `expense`, 
+this is case, it would be `1`.
 
-Format: `remove -i <index>`
-* `<index>` refers to the index number shown on the record list.
+Format: `remove -i <record_id>`
+* `<record_id>` refer to the record ID displayed in list command.
 
 Example: `remove -i 1`
 
@@ -363,8 +359,11 @@ Output:
 
 ![remove example output](img/RemoveExampleOutput.png)
 
-> 💡 To find the index of a record, you can simply `list` the record type (`-e`, `-l`, `-s`) and the number that
-> precedes the record is the index.
+> 💡 To find the record ID of a record, you can simply `list` the record type (`-e`, `-l`, `-s`, `-a`) and the number that
+> precedes the record is the record ID.
+>  
+> 💡 After removing a record from the application, you will have to use the list command again to retrieve the latest 
+> updated record IDs.
 
 ### 3.6 Check a person's credit score: `creditscore`
 
@@ -416,7 +415,7 @@ Format: `help all`
 Output:
 
 ![help all example output](img/HelpAllExampleOutput.png)\
-💡 Typing `help` is also equivalent to typing `help all`.
+📝 Typing `help` is also equivalent to typing `help all`.
 
 
 If you would like to know the specifications in details, simply type
@@ -475,8 +474,6 @@ Output:
 
 ## 4. Frequently Asked Questions
 
----
-
 **Q1**: How can I transfer my saved tasks information to another computer?
 > Run Finux on the other computer and overwrite the empty `finux.txt` created, with the `finux.txt` that
 > contains the data of your previous Finux usage.
@@ -492,8 +489,6 @@ Output:
 
 ## 5. Command Summary
 
----
-
 | Feature                                | Command                                                  | Example                                              |
 | -------------------------------------- | -------------------------------------------------------- |------------------------------------------------------|
 | Add an expense record                  | `add -e <description> -a <amount> -d <date>`             | `add -e Plain bread loaf -a 2.90 -d 20.3.2021`       |
@@ -506,8 +501,9 @@ Output:
 | View total expense                     | `view -e`                                                | -                                                    |
 | View total unreturned loans            | `view -l`                                                | -                                                    |
 | View total savings                     | `view -s`                                                | -                                                    |
-| Mark a loan as returned                | `return -i <index_of_loan> -d <return_date>`             | `return -i 2 -d 28/03/2021`                          |
-| Remove a record (expense/savings/loan) | `remove -i <index>`                                      | `remove -i 1`                                        |
+| View total amount in every category    | `view -a`                                                | -                                                    |
+| Mark a loan as returned                | `return -i <record_id> -d <return_date>`                 | `return -i 2 -d 28/03/2021`                          |
+| Remove a record (expense/savings/loan) | `remove -i <record_id>`                                  | `remove -i 1`                                        |
 | Check a person's credit score          | `creditscore <person>`                                   | `creditscore mark`                                   |
 | Exit the application                   | `exit`                                                   | -                                                    |
 | Help (detailed)                        | `help <feature>`                                         | `help remove`                                        |
