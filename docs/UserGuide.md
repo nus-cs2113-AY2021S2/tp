@@ -15,11 +15,11 @@
    4.3. [Routing](#43-routing) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.3.1. [Routing between blocks](#431-routing-between-blocks) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.3.2. [Routing to an eatery](#432-routing-to-an-eatery) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.3.2. [Routing to the closest eatery](#433-routing-to-the-closest-eatery) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.3.3. [Routing to the closest eatery](#433-routing-to-the-closest-eatery) <br>
    4.4. [History](#44-history) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.4.1. [Viewing History](#441-viewing-history) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.4.2. [Clearing History](#442-clearing-history) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.4.3. [Repeating History](#443-repeating-history) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.4.2. [Repeating History](#442-repeating-history) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.4.3. [Clearing History](#443-clearing-history) <br>
    4.5. [Alias](#45-alias) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.5.1. [Adding an alias for block name](#451-adding-an-alias-for-block-name) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.5.2. [Viewing all aliases](#452-viewing-all-aliases) <br>
@@ -27,7 +27,7 @@
    4.6. [Daily Routes](#46-daily-routes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.6.1. [Adding a daily route](#461-adding-a-daily-route) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.6.2. [Viewing daily route](#462-viewing-daily-route) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.5.3. [Deleting daily route](#463-deleting-daily-route) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.3. [Deleting daily route](#463-deleting-daily-route) <br>
    4.7. [Notes](#47-notes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.7.1. [Adding notes](#471-adding-notes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.7.2. [Viewing notes](#472-viewing-notes) <br>
@@ -345,20 +345,45 @@ Format : `history`<br>
 Example :
 ```
 ------------------------------------------------------------------------------------------------------------
-> go
+> history
 ------------------------------------------------------------------------------------------------------------
-Starting Block:
-* e1
-  Destination Block:
-* starbucks
-------------------------------------------------------------------------------------------------------------
-Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
+There are 2 records in your history: 
+1. E2 -> COM1
+2. E1 -> STARBUCKS
 ------------------------------------------------------------------------------------------------------------
 ```
 :information_source: NUSMaze will automatically update your history to the most recent 10 searches.
 
 
-#### 4.4.2 Clearing History
+#### 4.4.2 Repeating History
+
+Repeats past route search history.<br>
+Format : `repeat history` → `REPEAT_ENTRY`<br>
+Example : 
+```
+------------------------------------------------------------------------------------------------------------
+> repeat history
+------------------------------------------------------------------------------------------------------------
+There are 2 records in your history: 
+1. E2 -> COM1
+2. E1 -> STARBUCKS
+------------------------------------------------------------------------------------------------------------
+Select Entry to Repeat:
+* 2
+------------------------------------------------------------------------------------------------------------
+Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
+------------------------------------------------------------------------------------------------------------
+```
+
+- When the `repeat history` command is entered, NUSMaze will show a list of past route searches.
+
+- Followed by a prompt asking for the `REPEAT_ENTRY` index that you want to repeat.
+
+<div class="block" class="alert alert-warning">
+:warning: `REPEAT_ENTRY` must be an integer that is within the bounds of the history list shown.
+</div>
+
+#### 4.4.3 Clearing History
 
 Deletes all histories (past route searches).<br>
 Format : `clear history`<br>
@@ -370,34 +395,6 @@ Example :
 Your history has been successfully cleared
 ------------------------------------------------------------------------------------------------------------
 ```
-
-#### 4.4.3 Repeating History
-
-Repeats past route search history.<br>
-Format : `repeat history` → `REPEAT_ENTRY`<br>
-Example : 
-```
---------------------------------------------------------------------------------------------
-> repeat history
---------------------------------------------------------------------------------------------
-There are 2 records in your history: 
-1. E2 -> COM1
-2. E1 -> STARBUCKS
---------------------------------------------------------------------------------------------
-Select Entry to Repeat:
-* 2
---------------------------------------------------------------------------------------------
-Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
---------------------------------------------------------------------------------------------
-```
-
-- When the `repeat history` command is entered, NUSMaze will show a list of past route searches.
-
-- Followed by a prompt asking for the `REPEAT_ENTRY` index that you want to repeat.
-
-<div class="block" class="alert alert-warning">
-:warning: `REPEAT_ENTRY` must be an integer that is within the bounds of the history list shown.
-</div>
 
 ### 4.5 Alias
 #### 4.5.1 Adding an alias for block name
@@ -658,9 +655,10 @@ Got it! Successfully added new favourite route!
 :warning: The `STARTING_BLOCK` and the `DESTINATION_BLOCK` cannot be the same. <br>
 :warning: Aliases cannot be used in this feature.<br>
 
+
 #### 4.8.2 Show stored favourites
 You can request NUSMaze to display all the saved favourites, if you have stored at least one route to favourites.<br>
-Format : `show favourite`
+Format : `show favourite` <br>
 Example :
 ```
 ------------------------------------------------------------------------------------------------------------
@@ -673,7 +671,7 @@ Here are your favourite routes:
 
 #### 4.8.3 Repeating favourite route
 You can execute and obtain the route to take for your favourite routes.<br>
-Format : `repeat favourite` → `ROUTE_INDEX`
+Format : `repeat favourite` → `ROUTE_INDEX` <br>
 Example :
 ```
 ------------------------------------------------------------------------------------------------------------
@@ -692,7 +690,7 @@ Route: EA -> E2 -> E3 -> E4
 
 #### 4.8.4 Deleting favourite route
 You can delete a favourite route if it is not frequently used anymore.<br>
-Format : `delete favourite` → `ROUTE_INDEX`
+Format : `delete favourite` → `ROUTE_INDEX` <br>
 Example :
 ```
 ------------------------------------------------------------------------------------------------------------
@@ -712,7 +710,7 @@ Got it! Successfully deleted favourite route :)
 ### 4.9 Exiting the application
 
 Exits the application.<br>
-Format : `bye`
+Format : `bye` <br>
 Example :
 ```
 ------------------------------------------------------------------------------------------------------------
