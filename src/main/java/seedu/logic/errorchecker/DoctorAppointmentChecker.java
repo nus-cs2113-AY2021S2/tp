@@ -1,10 +1,19 @@
 package seedu.logic.errorchecker;
 
 import seedu.duke.Constants;
-import seedu.exceptions.*;
+import seedu.exceptions.CorruptedFileException;
+import seedu.exceptions.DuplicateIdException;
+import seedu.exceptions.EmptyListException;
+import seedu.exceptions.HealthVaultException;
+import seedu.exceptions.IdNotFoundException;
+import seedu.exceptions.IllegalCharacterException;
+import seedu.exceptions.InvalidDateException;
+import seedu.exceptions.InvalidIdException;
+import seedu.exceptions.InvalidGenderException;
 import seedu.exceptions.doctorappointment.DocIdNotFoundException;
-import seedu.exceptions.doctorappointment.InvalidGenderException;
 import seedu.exceptions.doctorappointment.WrongAptIdFormatException;
+import seedu.exceptions.doctorappointment.WrongIdFormatException;
+import seedu.exceptions.InvalidIntegerException;
 import seedu.logger.HealthVaultLogger;
 import seedu.model.doctorappointment.AppointmentList;
 import seedu.model.doctorappointment.DoctorAppointment;
@@ -72,6 +81,7 @@ public class DoctorAppointmentChecker extends MainChecker {
         if (id.equals("all")) {
             return;
         }
+        checkIdDuringParse(id);
         logger.log(Level.INFO, "Checking for Valid data after list command");
         if (!isValidDocID(id) && !isValidListAppointmentID(id)) {
             throw new InvalidIdException();
@@ -85,8 +95,9 @@ public class DoctorAppointmentChecker extends MainChecker {
      * @throws InvalidIdException If the data to execute delete command does not fit the parameters.
      */
 
-    public static void checkValidDataForDelete(String[] input) throws InvalidIdException {
+    public static void checkValidDataForDelete(String[] input) throws HealthVaultException {
         id = input[1];
+        checkIdDuringParse(id);
         logger.log(Level.INFO, "Checking for Valid data after delete command");
         if (!isValidIdToDelete(id)) {
             throw new InvalidIdException();
@@ -109,6 +120,25 @@ public class DoctorAppointmentChecker extends MainChecker {
         }
         if (!(id.charAt(0) == 'A') || (id.length()) != 6) {
             throw new WrongAptIdFormatException();
+        }
+    }
+
+    /**
+     * Checks if the ID is in the correct format.
+     *
+     * @param id The input.
+     * @throws WrongIdFormatException If the data does not fit the parameters.
+     */
+
+    public static void checkIdDuringParse(String id) throws HealthVaultException {
+        try {
+            Integer.parseInt(id.substring(1));
+            logger.log(Level.INFO, "Testing if the input is in the format.");
+        } catch (NumberFormatException e) {
+            throw new WrongIdFormatException();
+        }
+        if ((!(id.charAt(0) == 'A') && !(id.charAt(0) == 'D')) || (id.length()) != 6) {
+            throw new WrongIdFormatException();
         }
     }
 
