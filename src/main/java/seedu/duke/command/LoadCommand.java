@@ -22,10 +22,9 @@ public class LoadCommand extends Command {
     @Override
     public void execute() throws InvalidInputException {
         String id = arguments.get("payload");
-        if (!Common.isValidID(id)) {
-            throw new InvalidInputException(InvalidInputException.Type.INVALID_NRIC);
-        }
         id = id.toUpperCase();
+
+        Common.checkID(id);
         if (!data.loadCurrentPatient(id)) {
             throw new InvalidInputException(InvalidInputException.Type.PATIENT_NOT_FOUND);
         }

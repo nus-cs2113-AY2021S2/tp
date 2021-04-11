@@ -24,7 +24,7 @@ List of patients (in alphanumeric order):
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Input command and/or arguments are invalid:
-	Please key in a valid NRIC number
+	NRIC does not pass the checksum test, please ensure NRIC is valid eg. G1234567X
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Patient S1234567D has been added!
