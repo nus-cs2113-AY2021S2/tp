@@ -1,6 +1,7 @@
 package seedu.logic.errorchecker;
 
 import seedu.exceptions.InvalidDateException;
+import seedu.exceptions.InvalidIntegerException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.nurseschedules.DuplicateScheduleException;
 import seedu.exceptions.nurseschedules.InvalidiDTypeException;
@@ -75,7 +76,7 @@ public class NurseScheduleChecker extends MainChecker {
                 }
             }
             throw new NurseIdNotFound();
-        } catch (ArrayIndexOutOfBoundsException e) {
+        } catch (ArrayIndexOutOfBoundsException | NumberFormatException | InvalidIntegerException e) {
             throw new NurseCrossValidationError();
         } catch (FileNotFoundException e) {
             throw new NurseIdNotFound();

@@ -196,6 +196,7 @@ This is an example of the welcome screen for Staff Menu.
 >   
 >2. Any input field in HealthVault only accepts space and alphanumeric characters
 >3. The age field input should be a positive integer starting from 18 to inclusive of 150
+>4. Specialisation is able to take in integer values but not illegal characters.
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:<br/>

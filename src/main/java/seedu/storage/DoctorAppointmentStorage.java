@@ -3,9 +3,11 @@ package seedu.storage;
 import seedu.duke.Constants;
 import seedu.exceptions.CorruptedFileException;
 import seedu.exceptions.HealthVaultException;
+import seedu.exceptions.InvalidIntegerException;
 import seedu.logger.HealthVaultLogger;
 import seedu.model.doctorappointment.AppointmentList;
 import seedu.logic.errorchecker.DoctorAppointmentChecker;
+import static seedu.logic.errorchecker.MainChecker.checkNumericInput;
 import seedu.model.doctorappointment.DoctorAppointment;
 import seedu.model.staff.Staff;
 
@@ -112,7 +114,7 @@ public class DoctorAppointmentStorage {
      * @throws FileNotFoundException if the file does not exists.
      */
 
-    public static ArrayList<Staff> loadDoctorFile() throws FileNotFoundException {
+    public static ArrayList<Staff> loadDoctorFile() throws FileNotFoundException, InvalidIntegerException {
         ArrayList<Staff> loadDoctorList = new ArrayList<>();
 
         File fileName = new File(STAFF_FILE_PATH);
@@ -121,6 +123,8 @@ public class DoctorAppointmentStorage {
         while (fileReader.hasNextLine()) {
             String input = fileReader.nextLine();
             String[] data = input.split("\\|");
+            checkNumericInput(data[2]);
+
             loadDoctorList.add(new Staff(data));
         }
         fileReader.close();
