@@ -45,7 +45,7 @@ DeliveryList consists of Delivery and Item objects and also has methods to modif
 Route contains an arraylist of various routes with their corresponding delivery fees and relative distance for unique delivery locations.
 
 ### Storage Component
-The Storage component consists of DataManager class that individually reads data from and writes data to three different .txt files, and consists of the following classes:
+The Storage component mainly consists of DataManager class that individually reads data from and writes data to three different .txt files (profile, delivery and routes) and consists of the following method classes:
 
 * `loadProfile()` loads deliveryman details from a .txt file. The method class also implements `createNewFile()` to create new .txt files for delivery and routes if the user is new.
 * `saveProfile()` implements `FileWriter()` to save the deliveryman's personal details - allowing accessibility on next startup.
