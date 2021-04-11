@@ -2,52 +2,46 @@
 hide circle
 skinparam classAttributeIconSize 0
 
-class seedu.duke.ui.NoteUi {
+class NoteUi {
 + String[] getNoteInfo()
 + String getBlockInfo()
 + void showNotes(ArrayList<String>)
-+ int getDeleteIndex()
 }
-class seedu.duke.ui.RouterUi {
+class RouterUi {
 + String[] getRoutingInfo()
 + int getEateryEntry(Block[])
 }
-class seedu.duke.ui.UiManager {
+class UiManager {
 - Scanner in
 - PrintStream out
 + String getUserCommandInput()
 + String getUserInput()
 + void showMessage(String)
 + void showMessageWithDivider(String)
-+ void showLogo()
-+ void showGreetMessage()
 }
-class seedu.duke.ui.HistoryUi {
+class HistoryUi {
 + void showHistory(History)
 + int getRepeatEntry()
 }
-class seedu.duke.ui.CommonMessage {
+class CommonMessage {
 + {static} String LINE_SEPARATOR
 + {static} String DIVIDER
 + {static} String COMMAND_INPUT_HEADER
 + {static} String INFO_INPUT_HEADER
-+ {static} String LOGO
-+ {static} String GREETING_MESSAGE
 }
-class seedu.duke.ui.DailyRouteUi {
+class DailyRouteUi {
 + ArrayList<String> getScheduleInfo()
-+ boolean isEnd(String)
 + int getDayEntryForAdd(ArrayList<String>)
 + int getDayEntryForShow(ArrayList<String>)
 + void showListOfDays(ArrayList<String>)
 + int getEntryFromUser(ArrayList<String>)
 }
-class seedu.duke.ui.AliasUi {
+class AliasUi {
 + String[] getAliasInfo()
 + void showCustomAliases(BlockAlias)
 + String getDeleteAliasInfo()
 }
-class seedu.duke.ui.FavouriteUi {
+class FavouriteUi {
 + String[] getFavouriteInfo()
 + void showFavourites(Favourite)
 + int getDeleteIndex()
@@ -55,10 +49,10 @@ class seedu.duke.ui.FavouriteUi {
 }
 
 
-seedu.duke.ui.UiManager <|-- seedu.duke.ui.NoteUi
-seedu.duke.ui.UiManager <|-- seedu.duke.ui.RouterUi
-seedu.duke.ui.UiManager <|-- seedu.duke.ui.HistoryUi
-seedu.duke.ui.UiManager <|-- seedu.duke.ui.DailyRouteUi
-seedu.duke.ui.UiManager <|-- seedu.duke.ui.AliasUi
-seedu.duke.ui.UiManager <|-- seedu.duke.ui.FavouriteUi
+UiManager <|-- NoteUi
+UiManager <|-- RouterUi
+UiManager <|-- HistoryUi
+UiManager <|-- DailyRouteUi
+UiManager <|-- AliasUi
+UiManager <|-- FavouriteUi
 @enduml

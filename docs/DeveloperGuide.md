@@ -81,9 +81,8 @@ chapters of the developer guide.
 
 ### 2.2. UIManager Component 
 ![img.png](images/ui_design.png)  
-**API**: [UiManager.java](https://github.com/AY2021S2-CS2113T-T09-2/tp/blob/master/src/main/java/seedu/duke/ui/UiManager.java)
 
-The UI of the application is managed by the `UiManager` class as shown by the class diagram above. The individual UI classes for each feature such as `AliasUi`, `DailyRouteUi` and
+The UI of the application is managed by the [`UiManager`](https://github.com/AY2021S2-CS2113T-T09-2/tp/blob/master/src/main/java/seedu/duke/ui/UiManager.java) class as shown by the class diagram above. The individual UI classes for each feature such as `AliasUi`, `DailyRouteUi` and
 `FavouriteUi` extend the `UiManager` class. The UiManager class consists of the methods that are used to display recurrent messages on the *CLI* and also the utilities to get the user's inputs.
 
 The `UiManager` requires the static string variables from the `CommonMessages` class to obtain the commonly used messages that
@@ -96,7 +95,7 @@ the user for these two inputs using the utility methods from the UiManager. Meth
 
 The `UiManager` component,
 * displays messages in the *CLI*.
-* provides the individual Ui classes with the utilities to obtain user input specific to their needs.
+* provides the Ui classes of the respective features with the utilities to obtain user input specific to their needs.
 
 ### 2.3. Parser Component 
 ![img.png](images/ParserComponent.png)
@@ -286,10 +285,9 @@ The following diagram illustrates the class diagram for implementation of the al
 The command entered by the user in the `Main()` function of NUSMaze will be parsed in the `Parser` class. Thereafter, the parser will decide which of the 3 alias commands,
 if applicable, was the command that the user wanted to execute. 
 
-The three command classes, namely `AddCustomAliasCommand`, `ShowCustomAliasCommand` and `DeleteCustomAliasCommand` extend the `Command` class and they all depend on the `AliasUi` class to obtain inputs and display outputs.
+The three command classes, namely `AddCustomAliasCommand`, `ShowCustomAliasCommand` and `DeleteCustomAliasCommand` extend the `Command` class, and they all depend on the `AliasUi` class to obtain inputs and display outputs.
 
-Another thing to note is that the `NUSMaze` class has an `AliasStorage` class that facilitates the storage of the aliases
-so that the user can access their aliases even after they close and reopen the application. 
+Another thing to note is that the `NUSMaze` class has an `AliasStorage` class that facilitates the storage of the aliases so that the user can access their aliases even after they close and reopen the application. 
 
 The data model for this feature is facilitated by the `BlockAlias` class which contains the hashmap of custom aliases and block pairs. 
 The hashmap will have the `custom alias name` as the `key` and the `block name` as the `value` for each key-value pair. The
@@ -297,7 +295,7 @@ The hashmap will have the `custom alias name` as the `key` and the `block name` 
 
 Given below is an example usage scenario and how the add/view/delete mechanism behaves at each step:
 
-1. The user launches the application for the first time. If there is a storage file with pre-existing alias-block pairs, then the hashmap in `BlockAlias` class will be initialized with those data, and an empty hashmap if it does not exist.  
+1. The user launches the application for the first time. If there is a storage file with pre-existing alias-block pairs, then the hashmap in `BlockAlias` class will be initialized with those data, or an empty hashmap if it does not exist.  
 
 2. The user executes `add alias` command. The user input will be parsed by the `Parser` which will create a new `AddCustomAliasCommand` command. This will invoke the UI which will prompt the user `Enter the block:` to input the block name and `Enter the alias name:` to input the alias name that the user wants. The UI parser will then check if the entered block and alias are valid and throw an exception if they are not.  
 
@@ -305,7 +303,7 @@ Given below is an example usage scenario and how the add/view/delete mechanism b
 
 4. The user executes `show alias` command. The user input will be parsed by the `Parser` which will create a new `ShowCustomAliasCommand` command. The new command will then invoke the UI which will print `It seems that you do not have any aliases` if the hashmap is empty, or it will print the alias-block pairs in new lines when the hashmap has been previously populated.  
 
-5. The user executes `delete alias` command. The user input will be parsed by the `Parser` which will create a new `DeleteCustomAliasCommand` command. The new command will then invoke the UI which will prompt the user `Enter the alias name that you wish to delete:` where the user will enter the alias name that the wish to remove. The user input for the alias to be removed will be checked against the hashmap and return an exception if the key does not exist. If the alias to be removed exists in the hashmap, the key-value pair will be removed and a success message will be displayed to the user.
+5. The user executes `delete alias` command. The user input will be parsed by the `Parser` which will create a new `DeleteCustomAliasCommand` command. The new command will then invoke the UI which will prompt the user `Enter the alias name that you wish to delete:` where the user will enter the alias name that the user wishes to remove. The user input for the alias to be removed will be checked against the hashmap and return an exception if the key does not exist. If the alias to be removed exists in the hashmap, the key-value pair will be removed, and a success message will be displayed to the user.
 
 Shown below is the sequence diagram when a valid block name and alias are added:
 ![img.png](images/AliasFeatureSequence.png)
