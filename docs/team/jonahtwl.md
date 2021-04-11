@@ -69,7 +69,7 @@ Other contributions to the UG are:
 ### Contributions to the DG
 I have also documented on the same features implemented by myself on the DG. That being the storage component, this
 also includes the object and sequence diagrams. I have also worked with Jason to do up the manual testing section in
-Appendix D
+Appendix D. Mentored and suggested to the team ways to improve the DG.
 
 ---
 
@@ -80,7 +80,8 @@ Appendix D
 1. General editing of language in UG
 1. Worked as a shadow for Andy (There to advice and discuss what's next, but behind the scenes) 
 1. Bug hunting the team's features and components.
-1. Maintained a small portion of issues in the issue tracker 
+1. Maintained a portion of issues in the issue tracker
+1. Demo Video
 
 ---
 

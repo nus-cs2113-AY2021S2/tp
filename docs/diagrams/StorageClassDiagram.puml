@@ -8,7 +8,7 @@ class Storage {
 - recordList: ArrayList
 - creditScoreReturnedLoansMap: HashMap
 - dataFilePath: Path
-+ saveData(recordList, creditScoreReturnedLoansMap)
++ saveData(:RecordList, :CreditScoreReturnedLoansMap)
 + loadFile()
 + getRecordListData()
 + getMapData()
