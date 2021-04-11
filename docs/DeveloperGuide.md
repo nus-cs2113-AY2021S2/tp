@@ -18,7 +18,7 @@
 3. [Implementation](#3-implementation)  
     3.1. [Finding The Shortest Route Feature](#31-finding-the-shortest-route-feature)  
     3.2. [Daily Route Planning Feature](#32-daily-route-planning-feature)  
-    3.3. [Favourite Routes Feature](#33-favourite-routes-feature)
+    3.3. [Favourite Routes Feature](#33-favourite-routes-feature)  
     3.4. [Custom Aliases Feature](#34-custom-aliases-feature)  
     3.5. [History Feature](#35-history-feature)  
     3.6. [Save Feature](#36-save-feature)
