@@ -1,6 +1,6 @@
 # Developer Guide 
 
-[comment]: <> (![logo]&#40;./img/logo.png&#41;)
+![logo](./img/logo.png)
 
 ## Table of Contents
 * [Setup](#setup)
