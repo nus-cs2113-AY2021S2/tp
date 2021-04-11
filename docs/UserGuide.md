@@ -79,9 +79,7 @@ This section gives you step-by-step instructions on how to download and open the
 
 4. Open your command line or terminal and navigate into the file directory where you saved the application. <br>
 
-<div markdown="block" class="alert alert-info">
 :information_source: An easy way to do so is shown below for both Mac and Windows <br>
-</div>
 
 5. Key in `java -jar NUSMaze.jar` and press enter to launch the NUSMaze application.<br>
 6. A CLI similar to Figure 1 below should appear in a few seconds.  <br>
