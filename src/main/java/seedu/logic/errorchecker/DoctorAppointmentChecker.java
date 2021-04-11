@@ -1,14 +1,7 @@
 package seedu.logic.errorchecker;
 
 import seedu.duke.Constants;
-import seedu.exceptions.CorruptedFileException;
-import seedu.exceptions.DuplicateIdException;
-import seedu.exceptions.EmptyListException;
-import seedu.exceptions.HealthVaultException;
-import seedu.exceptions.IdNotFoundException;
-import seedu.exceptions.IllegalCharacterException;
-import seedu.exceptions.InvalidDateException;
-import seedu.exceptions.InvalidIdException;
+import seedu.exceptions.*;
 import seedu.exceptions.doctorappointment.DocIdNotFoundException;
 import seedu.exceptions.doctorappointment.InvalidGenderException;
 import seedu.exceptions.doctorappointment.WrongAptIdFormatException;
@@ -232,7 +225,7 @@ public class DoctorAppointmentChecker extends MainChecker {
                     }
                 }
             }
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException | InvalidIntegerException e) {
             System.out.println(e.getMessage());
         }
         return false;
