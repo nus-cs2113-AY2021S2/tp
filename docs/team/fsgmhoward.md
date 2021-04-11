@@ -4,14 +4,14 @@
 Patient Manager is a _Command Line Interface_ (CLI) application for **_general practitioners_** (GP)
 who work in polyclinics to manage their patient list.
 
-My teammate, together with me, developed this application as a team project for CS2113T module of NUS.
-This project aimed to develop a program targetting a current problem using Java with Object-oriented
+I, together with my teammates, developed this application as a team project for CS2113T module of NUS.
+This project aimed to develop a program targeting a current problem using Java with Object-oriented
 programming as model.
 
 The entire development cycle, excluding the planning stage which consists of a few weeks before actual
-development, includes three iterations. V1.0 is the minimum viable product, and V2.0 is the one with most
-of the features in. For v2.1, the last iteration, we focused on bug fixing and improvements in product
-documentation.
+development, includes three iterations. Iteration v1.0 is the minimum viable product, and v2.0 is the 
+one with most of the features in. For v2.1, the last iteration, we focused on bug fixing and improvements
+in product documentation.
 
 ## Summary of Contributions
 
