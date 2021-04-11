@@ -25,8 +25,6 @@ import storage.Storage;
 import stores.Store;
 import ui.Ui;
 
-import java.util.Scanner;
-
 
 public class Parser {
 

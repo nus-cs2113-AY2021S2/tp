@@ -2,7 +2,7 @@ package command;
 
 import canteens.Canteen;
 import exceptions.DukeExceptions;
-import storage.Storage;
+import storage.WriteToFile;
 import ui.Ui;
 
 import java.io.FileWriter;
@@ -44,6 +44,6 @@ public class AddCanteenCommand extends Command {
         canteenName = line;
         canteens.add(new Canteen(canteenName));
         ui.showAddCanteenSuccess(canteenName);
-        Storage.saveCanteen(new FileWriter(savePath,true),canteenName);
+        WriteToFile.saveCanteen(new FileWriter(savePath,true),canteenName);
     }
 }
