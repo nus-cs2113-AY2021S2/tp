@@ -16,6 +16,13 @@ public class RepeatFavouriteCommand extends Command {
     }
 
     @Override
+    /**
+     * This method will run the "go" command by using the stored starting block and destination block in favourites.
+     * The user would first be shown the current list of favourite routes,
+     * and then be prompted to enter the index of the route to repeat.
+     *
+     * This method further calls the execute() command from the Router class.
+     */
     public void execute() {
         try {
             ui.showFavourites(favourite);

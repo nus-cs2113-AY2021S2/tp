@@ -16,6 +16,11 @@ public class DeleteFavouriteCommand extends Command {
         this.ui = new FavouriteUi();
     }
 
+    /**
+     * This method deletes a currently existing favourite route.
+     * The user would first be shown the current list of favourites,
+     * and then prompted to provide the index of the favourite route to delete.
+     */
     public void execute() {
         try {
             ui.showFavourites(favourite);

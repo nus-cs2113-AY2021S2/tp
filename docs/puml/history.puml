@@ -1,0 +1,40 @@
+@startuml
+hide circle
+skinparam classAttributeIconSize 0
+
+class ClearHistoryCommand {
+# HistoryUi ui
+- {static} String MESSAGE_SUCCESS
++ void execute()
+}
+class HistoryUi {
++ void showHistory(History)
++ int getRepeatIndex()
+}
+abstract class Command {
+# NusMap nusMap
+# BlockAlias blockAlias
+# History history
+# Favourite favourite
+# DailyRoute dailyRoute
+# boolean isExit
++ void setData(NusMap,BlockAlias,History,Favourite,DailyRoute)
++ boolean isExit()
++ void execute()
+}
+class RepeatHistoryCommand {
+# HistoryUi ui
++ void execute()
+}
+
+class ShowHistoryCommand {
+# HistoryUi ui
++ void execute()
+}
+
+
+Command <|-- ClearHistoryCommand
+UiManager <|-- istoryUi
+Command <|-- RepeatHistoryCommand
+Command <|-- ShowHistoryCommand
+@enduml

@@ -17,6 +17,11 @@ public class AddFavouriteCommand extends Command {
     }
 
     @Override
+    /**
+     * This method adds a new favourite route to the list of favourite routes,
+     * by prompting the user for the starting and destination blocks.
+     * This method calls the checkIfValidBlock() method under NusMap class.
+     */
     public void execute() {
         try {
             String[] startAndDestination = ui.getFavouriteInfo();

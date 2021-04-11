@@ -302,7 +302,7 @@ Given below is an example usage scenario and how the add/view/delete mechanism b
 Shown below is the sequence diagram when a valid block name and alias are added:
 ![img.png](images/AliasFeatureSequence.png)
 ### 3.5. History feature
-
+![img.png](images/history.png)
 #### Current Implementation
 Whenever the user inputs the `go` command, and enters a valid start and destination address, a String consisting the start and end block is created and stored in `historyList`. 
 The contents of the `historyList` will be stored into a text file named `historyList.txt` when NUSMaze terminates.
