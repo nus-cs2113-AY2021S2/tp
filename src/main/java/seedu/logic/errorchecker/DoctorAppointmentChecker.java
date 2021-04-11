@@ -9,7 +9,11 @@ import seedu.exceptions.IdNotFoundException;
 import seedu.exceptions.IllegalCharacterException;
 import seedu.exceptions.InvalidDateException;
 import seedu.exceptions.InvalidIdException;
-import seedu.exceptions.doctorappointment.*;
+import seedu.exceptions.InvalidGenderException;
+import seedu.exceptions.doctorappointment.DocIdNotFoundException;
+import seedu.exceptions.doctorappointment.WrongAptIdFormatException;
+import seedu.exceptions.doctorappointment.WrongIdFormatException;
+import seedu.exceptions.InvalidIntegerException;
 import seedu.logger.HealthVaultLogger;
 import seedu.model.doctorappointment.AppointmentList;
 import seedu.model.doctorappointment.DoctorAppointment;
@@ -251,7 +255,7 @@ public class DoctorAppointmentChecker extends MainChecker {
                     }
                 }
             }
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException | InvalidIntegerException e) {
             System.out.println(e.getMessage());
         }
         return false;

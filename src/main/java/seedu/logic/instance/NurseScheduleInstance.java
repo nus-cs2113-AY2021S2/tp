@@ -75,13 +75,16 @@ public class NurseScheduleInstance {
                 }
                 ui.lineBreak();
             } catch (HealthVaultException e) {
-                System.out.println(e.getMessage());
+                System.out.print(e.getMessage());
                 ui.lineBreak();
             } catch (NullPointerException e) {
                 //ui.invalidInputsMessage();
                 //Command C can return as null if an error is triggered in parser
                 //Null Pointer Exception may hence occur, the catch statement is to ensure it does not exit the loop.
                 logger.log(Level.WARNING, "null command returned");
+            } catch (Exception e) {
+                logger.log(Level.WARNING, "Something went wrong that is not handled by HealthVault exception.");
+                System.out.println("OOPS! Something went wrong!");
             }
         }
     }
