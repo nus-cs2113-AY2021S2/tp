@@ -1616,6 +1616,16 @@ Please input with the following format [D/N][5 digit ID number]
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```add/D12345/A12345/Alex/M/21012021```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Appointment Added```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `add/D3/A12345/Alex/M/21012021`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+
+``` 
+Error in Doctor ID input
+Please input with the following format [D][5 digit ID number]
+```
+
 	
 <br/>
  
@@ -1628,9 +1638,27 @@ Please input with the following format [D/N][5 digit ID number]
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```DoctorID / Appointment ID: D12345/A12345 has been deleted!```
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `delete/D123`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+
+``` 
+Error in ID input
+Please input with the following format [D/A] followed by [5 digit ID number]
+```
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.2 **Test case:** ```delete/A12346```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```DoctorID / Appointment ID: D12345/A12345 has been deleted!```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `delete/A123`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+
+``` 
+Error in ID input
+Please input with the following format [D/A] followed by [5 digit ID number]
+```
 
 <br/>
 
@@ -1650,6 +1678,14 @@ Please input with the following format [D/N][5 digit ID number]
 	D11111         | A54321         | Owen           | M              | 01/04/2021
 	D12345         | A12345         | Alex           | M              | 21/01/2021  
 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `list`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+
+``` 
+OOPS! There are too few inputs for this command
+```
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.2 **Test case:** ```list/D12345```
 
@@ -1660,6 +1696,14 @@ Please input with the following format [D/N][5 digit ID number]
 	____________________________________________________________
 	D12345         | A12345         | Alex           | M              | 21/01/2021  
 	
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `list/D111`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+
+``` 
+Error in ID input
+Please input with the following format [D/A] followed by [5 digit ID number]
+```
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.3 **Test case:** ```list/A12345 ```
 
@@ -1670,6 +1714,14 @@ Please input with the following format [D/N][5 digit ID number]
 	____________________________________________________________
 	D12345         | A12345         | Alex           | M              | 21/01/2021  
 		
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `list/A111`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+
+``` 
+Error in ID input
+Please input with the following format [D/A] followed by [5 digit ID number]
+```
 	
 <br/>
 
