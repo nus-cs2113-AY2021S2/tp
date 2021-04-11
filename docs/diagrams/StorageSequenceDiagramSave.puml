@@ -19,11 +19,14 @@ Storage -> Storage : writeRecordListToSaveFile(recordList)
 activate Storage
 Loop all records
 Storage -> RecordList : getRecordAt()
+activate RecordList
 RecordList --> Storage : currentRecord : Record
 Storage -> RecordList : convertFileFormat()
 RecordList --> Storage
-end loop
+deactivate RecordList
+RecordList --[Hidden]> Storage
 destroy RecordList
+end loop
 
 activate Storage
 Storage --> Storage
@@ -37,8 +40,10 @@ activate CSRLM
 CSRLM --> Storage : borrowerName : Set<String>
 Storage -> CSRLM : getCreditScoreOf(borrowerName)
 CSRLM --> Storage : creditScore : int
-end loop
+deactivate CSRLM
+CSRLM --[Hidden]> Storage
 destroy CSRLM
+end loop
 Storage --> Storage
 deactivate Storage
 
