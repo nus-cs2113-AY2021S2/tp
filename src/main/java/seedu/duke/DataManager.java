@@ -104,6 +104,7 @@ public class DataManager {
      * Method to load list of deliveries.
      *
      * @return list of deliveries to be stored in the static DeliveryList class
+     * @author lamzf1998
      */
     public static ArrayList<Delivery> loadDeliveryList() {
         ArrayList<Delivery> deliveries = new ArrayList<>();
@@ -138,6 +139,7 @@ public class DataManager {
      *
      * @param itemList item list provided in each line of the .txt file
      * @return ArrayList of items as dictated in the .txt
+     * @author lamzf1998
      */
     public static ArrayList<Item> itemRetriever(String[] itemList) {
         ArrayList<Item> itemsArray = new ArrayList<>();
