@@ -31,7 +31,6 @@ public class StaffListCommand extends Command {
     public void execute(seedu.model.staff.StaffList staffList, StaffUI staffUI, StaffStorage staffStorage) {
         UI.printEmptyLine();
         staffList.list(this.input);
-        UI.printEmptyLine();
     }
 
     /**
