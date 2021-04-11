@@ -1,5 +1,5 @@
-# Developer Guide
-
+# Developer Guide 
+![logo](./img/logo.png)
 
 ## Table of Contents
 * [Setup](#setup)
@@ -10,6 +10,8 @@
     * [Architecture](#architecture)
     * [UI Component](#ui-component)
     * [Logic Component](#logic-component)
+    * [Model Component](#model-component)
+    * [Storage Component](#storage-component)
 
 ## **Setup**
 ### Prerequisites
@@ -36,7 +38,7 @@ password is `Password`. When run as admin the user is able to `add` or `remove` 
 functions allows the app to be moderated and maintained by the person in charge. 
 
 ### Architecture
-![Architecture Diagram](./img/architecture diagram2.png)
+![Architecture Diagram](./img/architecture diagram.png)
 The Architecture Diagram shown above explains the high-level design of NusFoodReviews Application. The following is a brief overview of each component.
 
 *Main* is responsible for,
@@ -45,10 +47,18 @@ The Architecture Diagram shown above explains the high-level design of NusFoodRe
 *Commons* represents a collection of classes used by multiple other components.
   
 The rest of the App consists of four components.
-1. UI: The UI of the App. 
-2. Logic: The command executor.
-3. Model: Holds the data of the In-App memory.
-4. Storage: Reads data from, and writes data to, the textfile.
++ UI: The UI of the App. 
++ Logic: The command executor.
++ Model: Holds the data of the In-App memory.
++ Storage: Reads data from text file, and write to text file. 
+
+### UI-Component
+
+### Logic-Component
+
+### Model-Component
+
+### Storage-Component
 
 ##Implementation
 For public users, the list of commands is shown below:
