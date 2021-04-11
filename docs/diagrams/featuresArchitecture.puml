@@ -21,8 +21,8 @@ package Task {
             Class Task
 
             Assignment --|> Task
-            Midterm --|> Task
             FinalExam --|> Task
+            Midterm --|> Task
         }
 }
 
@@ -57,7 +57,7 @@ package Module_Info {
     Class Component
 
     ModuleInfo -> Module
-    ModuleInfo -> Task
+    ModuleInfo -> TaskManager
 
     ModuleInfo <-> ZoomLinkInfo
     Component -> Module

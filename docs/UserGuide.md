@@ -89,9 +89,11 @@ on your local computer.
 Once UniTracker is up and running, you can refer to the [table of contents](#table-of-contents) to
 navigate to specific sections to explore, learn and use UniTracker.
 
+Additionally, we included 'Go To [Table of Contents](#table-of-contents)' and 'Go To [Command Summary](#5-command-summary)' hyperlinks at the end of every section to help you navigate through this guide easily.
+
 ### 1.4 Conventions in This User Guide
 
-In this developer guide, all text that appears on the CLI or in code will be written in a `code block`.
+In this user guide, all text that appears on the CLI or in code will be written in a `code block`.
 
 In the example code for each feature, all user inputs will start with an angle bracket.
 E.g. `> user input`
@@ -103,6 +105,7 @@ E.g. `> user input`
 
 → Go To [Table of Contents](#table-of-contents)  
 → Go To [Command Summary](#5-command-summary)
+
 ---
 
 ## 2. Quick Start
@@ -171,6 +174,9 @@ Jar file:
 In order to start using our features, navigate to your desired menu by inputting the respective
 index. E.g. `1` would bring you to the Module Information Menu.
 
+→ Go To [Table of Contents](#table-of-contents)  
+→ Go To [Command Summary](#5-command-summary)
+
 ---
 
 ## 3. Features
@@ -186,6 +192,8 @@ understanding.
 
 Main Menu:
 ````
+This is the list of your pinned tasks:
+
 Main Menu:
 [1] Module Information
 [2] CAP Simulator/Calculator
@@ -915,7 +923,6 @@ message being `Wow yay~`:
   > Wow yay~
   --------------------------------------------
   You've added this: [CS2113T][    ] Work on User Guide
-  Returning back to the menu now!
   ````
 
 For adding an `assignment`, `midterm` or `final exam`, there will be two additional fields which cannot be empty:
@@ -924,6 +931,12 @@ For adding an `assignment`, `midterm` or `final exam`, there will be two additio
   (Y stands for the year, M stands for the month and D stands for the day)
 2. Time: Format is HH:MM.  
   (H stands for hour in 24H standard and M stands for minute)
+
+If you were to input an invalid date format, you will see this error message to prompt you to try again:
+`Please enter a valid date format.`
+
+If you were to input an invalid time format, you will see this error message to prompt you to try again:
+`Please enter a valid time format.`
 
 Example for adding a task of type `assignment` with the task description of `Work on user guide` and
 message being `Wow yay~`:
@@ -960,30 +973,18 @@ What is the message you would like to see after completing this?
 > Wow yay~
 --------------------------------------------
 You've added this: [CS2113T][    ] Work on User Guide (by: Mar 14 2021, 11:59 PM)
-Returning back to the menu now!
 ````
 
 > **Note!**  
 > If you were to input an invalid command when choosing the module of the task,
-> you will be asked if you want to add a new module:
-> ````
-> "No such module! Would you like to add a module? [Y/N]
-> ````
-> If there are no existing modules, you will see this message instead:
-> ````
-> There are no modules! Would you like to add a module? [Y/N]
-> ````  
-> Additionally, if you were to input an invalid date format, you will see the following error message to prompt you to try again:
-> ````
-> Please enter a valid date format.
-> ````
-> If you were to input an invalid time format, you will see the following error message to prompt you to try again:
-> ````
-> Please enter a valid time format.
-> ````
+> you will be asked if you want to add a new module:  
+> `No such module! Would you like to add a module? [Y/N]`  
+> 
+> If there are no existing modules, you will see this message instead:  
+> `There are no modules! Would you like to add a module? [Y/N]`
 
-After adding a task, you will return to the module you accessed this feature from. This feature can be accessed
-from both the Task Manager and [Module Information](#31-module-information) menus.  
+After adding a task, you will return to the menu you accessed this feature from. This feature can be accessed
+from both the [Task Manager](#33-task-manager) and [Module Information](#31-module-information) menus.  
 
 → Go To [Table of Contents](#table-of-contents)    
 → Go To [Command Summary](#5-command-summary)  
@@ -1003,25 +1004,24 @@ Upon marking a task is done, the message that you inputted when [adding a new ta
 Example for marking a task type `normal task` with a task description of `Work on user guide` as done and
 message being `Wow yay~`:
 ````
-  Please choose which type of task you would like to mark/unmark as done and enter the number:
-  [1] --- Task
-  [2] --- Assignment
-  [3] --- Midterm
-  [4] --- Final Exam
-  > 1
-  --------------------------------------------
-  This is the list of your tasks:  
-  1. [CS2113T][    ] Work on User Guide  
-  
-  What is the number of the task you want to mark/unmark?
-  > 1
-  --------------------------------------------
-  This task is not marked as done. Would you like to mark it? [Y/N]
-  Y
-  --------------------------------------------
-  You've marked this as done: [CS2113T][DONE] Work on User Guide
-  NOTE: Wow yay~
-  Returning back to TaskManager menu now!
+Please choose which type of task you would like to mark/unmark as done and enter the number:
+[1] --- Task
+[2] --- Assignment
+[3] --- Midterm
+[4] --- Final Exam
+> 1
+--------------------------------------------
+This is the list of your tasks:  
+1. [CS2113T][    ] Work on User Guide  
+
+What is the number of the task you want to mark/unmark?
+> 1
+--------------------------------------------
+This task is not marked as done. Would you like to mark it? [Y/N]
+> Y
+--------------------------------------------
+You've marked this as done: [CS2113T][DONE] Work on User Guide
+NOTE: Wow yay~
 ````
 
 Example for unmarking a task of type `normal task` with a task description of `Work on user guide` as done and
@@ -1041,23 +1041,20 @@ What is the number of the task you want to mark/unmark?
 > 1
 --------------------------------------------
 This task is marked as done. Would you like to unmark it? [Y/N]
-Y
+> Y
 --------------------------------------------
 You've marked this as not done: [CS2113T][    ] Work on User Guide
-Returning back to TaskManager menu now!
 ````
 
 > **Note!**  
-> Your input to the confirmation of marking/unmarking the task is NOT case-sensitive. Both  `y` and `Y` are accepted as valid inputs. 
-> If you were to input `n` or `N`, UniTracker will return to the TaskManager menu. If you were to input an invalid command, you will see the following error message:
-> ````
-> Invalid input! Please input Y or N.
-> ````
+> Your input to the confirmation of marking/unmarking the task is NOT case-sensitive.
+> 
+> If you were to input `n` or `N`, UniTracker will return to the TaskManager menu. If you were to input an invalid command, you will see the following error message:  
+> `Invalid input! Please input Y or N.`
+> 
 > Additionally, if you were to input an invalid command when choosing the task,
-> you will see the following error message:
-> ````
-> Invalid input! Please enter a valid integer from the list.
-> ````
+> you will see the following error message:  
+> `Invalid input! Please enter a valid integer from the list.`
 
 → Go To [Table of Contents](#table-of-contents)    
 → Go To [Command Summary](#5-command-summary)  
@@ -1089,21 +1086,18 @@ Example for deleting a task of type `normal task` with the task description of `
   > 1
   --------------------------------------------
   You've deleted this: [CS2113T][DONE] Work on User Guide  
-  Returning back to the menu now!
   ````
 > **Note!**  
 > If you were to input an invalid command when choosing the task,
-> you will see the following error message:
-> ````
-> Invalid input! Please enter a valid integer from the list.
-> ````
+> you will see the following error message:  
+> `Invalid input! Please enter a valid integer from the list.`
 
 → Go To [Table of Contents](#table-of-contents)    
 → Go To [Command Summary](#5-command-summary)  
 
 #### 3.3.4 View All Tasks
 
-Prints all existing tasks of type `task`, `assignment`, `midterm` and `final exam` from the task
+Prints all existing tasks of type `normal task`, `assignment`, `midterm` and `final exam` from the task
 list.
 
 Example:
@@ -1135,7 +1129,7 @@ Example:
 #### 3.3.5 Pin a Task
 
 Pins a task of type `normal task`, `assignment`, `midterm` or `final exam` from the task list. The list of pinned tasks will be displayed whenever you enter the main menu or want to 
-[view all your tasks](#334-view-all-tasks).
+[view all your tasks](#334-view-all-tasks). The pinned tasks will be listed according to its task type, etc all `assignment` tasks will be listed together.
 
 Example of pinning a task of type `normal task` with the task description of `Work on user guide`:
 
@@ -1160,14 +1154,11 @@ Example of pinning a task of type `normal task` with the task description of `Wo
   > 1
   --------------------------------------------
   You've pinned this: [CS2113T][DONE] Work on User Guide  
-  Returning back to the menu now!
   ````
 > **Note!**  
 > If you were to input an invalid command when choosing the task,
-> you will see the following error message:
-> ````
-> Invalid input! Please enter a valid integer from the list.
-> ```````
+> you will see the following error message:    
+> `Invalid input! Please enter a valid integer from the list.`
 
 Following this, if you were to [view all your tasks](#334-view-all-tasks), it will be updated accordingly:
 
@@ -1502,3 +1493,5 @@ Features|Menu | Command to enter from the Main Menu
 [Add a Zoom Link](#345-add-zoom-link) | Links | 4, 2 or 1, 13
 [Delete Zoom Link](#346-delete-zoom-link) | Links | 4,3 or 1, 14
 [View Zoom Links](#347-view-zoom-links) | Links | 4, 3
+
+→ Go To [Table of Contents](#table-of-contents)  
