@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+participant NusMaze
+
+participant ":BlockAlias"
+participant ":DailyRoute"
+participant ":Favourite"
+participant ":History"
+participant ":NusMap"
+participant ":Block"
+
+group sd initData
+    NusMaze --> NusMaze: initializeData()
+    activate NusMaze #DarkSalmon
+    NusMaze --> ":BlockAlias": BlockAlias()
+    activate ":BlockAlias"
+    deactivate ":BlockAlias"
+    NusMaze --> ":DailyRoute": DailyRoute()
+    activate ":DailyRoute"
+    deactivate ":DailyRoute"
+    NusMaze --> ":Favourite": Favourite()
+    activate ":Favourite"
+    deactivate ":Favourite"
+    NusMaze --> ":History": History()
+    activate ":History"
+    deactivate ":History"
+    NusMaze --> ":NusMap": NusMap()
+    activate ":NusMap"
+    deactivate ":NusMap"
+    deactivate NusMaze
+end
+
+@enduml

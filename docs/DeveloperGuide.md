@@ -41,14 +41,14 @@ NUSMaze is a Command Line Interface (CLI) based application that aims to simplif
 The purpose of this developer guide is to aid any curious or interested contributor in developing NUSMaze further by providing more insight on how the features were implemented.
 
 ### 1.2. Setting up and getting started 
-Step 1. Ensure that Java 11 and IntelliJ Idea (or your preferred Java IDE) are installed in your computer.  
-Step 2. Fork the NUSMaze repo from [here](https://github.com/AY2021S2-CS2113T-T09-2/tp), and clone the fork into your computer.    
-Step 3. Configure the JDK in IntelliJ Idea to use JDK 11 by following instructions from [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).    
-Step 4. Import the project as a Gradle project.
-Step 5. If you had previously disabled the Gradle plugin, go to `File → Settings → Plugins` to re-enable them.  
-Step 6. Click on Import Project and select the build.gradle file.  
-Step 7. Navigate to the NUSMaze class via the path `src → main → java → seedu.duke → NUSMaze` and right click on it.  
-Step 8. Press run on the `Main()` method of NUSMaze.
+1. Ensure that Java 11 and IntelliJ Idea (or your preferred Java IDE) are installed in your computer.  
+2. Fork the NUSMaze repo from [here](https://github.com/AY2021S2-CS2113T-T09-2/tp), and clone the fork into your computer.    
+3. Configure the JDK in IntelliJ Idea to use JDK 11 by following instructions from [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).    
+4. Import the project as a Gradle project.
+5. If you had previously disabled the Gradle plugin, go to `File → Settings → Plugins` to re-enable them.  
+6. Click on Import Project and select the build.gradle file.  
+7. Navigate to the NUSMaze class via the path `src → main → java → seedu.duke → NUSMaze` and right click on it.  
+8. Press run on the `Main()` method of NUSMaze.
 
 If the set up process had been completed successfully, you should see the following message:  
 ![Screenshot 2021-03-25 at 7 03 08 PM](https://user-images.githubusercontent.com/60348727/113017279-e14b9d00-91b1-11eb-8ec3-37c0c3f80475.png)
@@ -71,18 +71,18 @@ Architecture Components of NUSMaze:
 * [**`UIManager`**](#22-uimanager-component): The user interface of the app
 * [**`Parser`**](#23-parser-component): Processes commands inputted by the user
 * [**`Command`**](#24-command-component): Executes the user command 
-* [**`Router`**](#25-router-component): Searches shortest router
-* [**`Data`**](#26-data-component): Holds the data of the app in memory
-* [**`Storage`**](#27-storage-component): Reads data from and write data to external text files
+* [**`Router`**](#25-router-component): Searches the shortest route
+* [**`Data`**](#26-data-component): Holds the data of the app to be used 
+* [**`Storage`**](#27-storage-component): Reads app data from and writes the app data to created text files
+* [**`Text Files`**](#28-text-file-component): Holds the data of the app in memory
 
 Explanations on how each component is designed and how it functions are further elaborated in the following 
 chapters of the developer guide.
 
 ### 2.2. UIManager Component 
 ![img.png](images/ui_design.png)  
-**API**: [UiManager.java](https://github.com/AY2021S2-CS2113T-T09-2/tp/blob/master/src/main/java/seedu/duke/ui/UiManager.java)
 
-The UI of the application is managed by the `UiManager` class as shown by the class diagram above. The individual UI classes for each feature such as `AliasUi`, `DailyRouteUi` and
+The UI of the application is managed by the [`UiManager`](https://github.com/AY2021S2-CS2113T-T09-2/tp/blob/master/src/main/java/seedu/duke/ui/UiManager.java) class as shown by the class diagram above. The individual UI classes for each feature such as `AliasUi`, `DailyRouteUi` and
 `FavouriteUi` extend the `UiManager` class. The UiManager class consists of the methods that are used to display recurrent messages on the *CLI* and also the utilities to get the user's inputs.
 
 The `UiManager` requires the static string variables from the `CommonMessages` class to obtain the commonly used messages that
@@ -95,7 +95,7 @@ the user for these two inputs using the utility methods from the UiManager. Meth
 
 The `UiManager` component,
 * displays messages in the *CLI*.
-* provides the individual Ui classes with the utilities to obtain user input specific to their needs.
+* provides the Ui classes of the respective features with the utilities to obtain user input specific to their needs.
 
 ### 2.3. Parser Component 
 ![img.png](images/ParserComponent.png)
@@ -141,62 +141,80 @@ The **Data Component** is where all the data that are needed to execute a comman
 command is executed, the `GoCommand`object will use data stored in `NusMap`, `EateryList` and `BlockAlias` in order to find
 the shortest route.
 
-On the other hand, `Storage` is responsible for saving and loading data stored in the **Data Component**. This will be
+On the other hand, the **Storage Component** is responsible for saving from and loading data into stored in the **Data Component**. This will be
 further elaborated in the following section.
 
-### 2.7. Storage Component  
-
+### 2.7. Storage Component
+![img.png](images/StorageComponent.png)
+The **Storage Component** reads app's data from the objects of the **Data Component** and writes to the **Text File component**. 
+It reads the app's data from the **Text File component** and writes the app's data into the objects of the **Data component**. <br>
+The **Storage Component**:
+- loads the app's data from the relevant text file using the `filepath` into the `nusMap`, `blockAlias`, `history`, `favourite`, or `dailyRoute` objects.
+- saves the app's data from `nusMap`, `blockAlias`, `history`, `favourite`, or `dailyRoute` objects into the relevant text file using the `filepath`.
 ---------------------------------------------------------------------------------------------
 
 ## *3. Implementation*
 ### 3.1. Save feature
 #### Current Implementation
-The save mechanism is facilitated by `AliasStorage`, `HistoryRouteStorage`, `NotesStorage`, `DailyRouteStorage`, `FavouriteLocationsStorage` subclasses. </br>
-They extend `Storage` (superclass) with a feature to save the block aliases, history of visited routes, tagged notes, daily routes and favourite locations, stored internally as a `aliasList`,  `historyList`, `notesList`, `dailyRouteList` and `favouritesList`. <br />
+The save mechanism is facilitated by `AliasStorage`, `DailyRouteStorage`, `FavouriteStorage`, `HistoryStorage` and `NotesStorage` subclasses. </br>
+They extend `Storage` (superclass) with a feature to save the blocks' aliases, daily routes, favourite locations, history of visited routes and tagged notes, stored internally as `aliasList`,  `dailyRouteList`, `favouriteList`, `history`, `noteList` text files. <br />
 Additionally, they implement the following operations: <br/>
-- `AliasStorage#overwriteAliasListFile()` —  Saves all aliases given by user to blocks into `aliasList`. <br />
-- `AliasStorage#loadAlias()`   —  Restores all aliases given by user to blocks from `aliasList`. <br />
-- `HistoryRouteStorage#overwriteHistoryListFile()` —  Saves the current list of the 10 most recently visited routes in its history into `historyList`. <br />
-- `HistoryRouteStorage#loadHistory()` —  Restores the previous list of the 10 most recently visited routes in its history from `historyList`. <br />
-- `NotesStorage#overwriteNotesListFile()` —  Saves all notes tagged to a location into `notesList`. <br />
-- `NotesStorage#loadNotes()` —  Restores all notes tagged to a location from `notesList`. <br />
-- `DailyRouteStorage#loadDailyRoute()` —  Saves all the daily routes that user wants to see for each day of the week into `dailyRouteList`. <br />
-- `DailyRouteStorage#overwriteDailyRouteFile()` Restores all the daily routes that user wants to see from `dailyRouteList`. <br />
-- `FavouriteLocationsStorage#overwriteFavouritesListFile()` —  Saves the current list of all the locations that the users are interested in keeping in `favouritesList`. <br />
-- `FavouriteLocationsStorage#loadFavourites()` —  Restores the previous list of the all the locations that the users are interested in keeping from `favouritesList`. <br />
+- `AliasStorage#saveData()` —  Saves all aliases given by user to blocks into `aliasList`. <br />
+- `AliasStorage#loadData()` —  Restores all aliases given by user to blocks from `aliasList`. <br />
+- `DailyRouteStorage#saveData()` —  Saves all the daily routes that user wants to see for each day of the week into `dailyRouteList`. <br />
+- `DailyRouteStorage#loadData()` —  Restores all the daily routes that user wants to see from `dailyRouteList`. <br />
+- `FavouriteStorage#saveData()` —  Saves the current list of all the routes that the users are interested in keeping in `favouriteList`. <br />
+- `FavouriteStorage#loadData()` —  Restores the previous list of all the routes that the users are interested in keeping from `favouriteList`. <br />
+- `HistoryStorage#saveData()` —  Saves the current list of the 10 most recently visited routes in its history into `history`. <br />
+- `HistoryStorage#loadData()` —  Restores the previous list of the 10 most recently visited routes in its history from `history`. <br />
+- `NotesStorage#saveData()` —  Saves all notes tagged to a location into `noteList`. <br />
+- `NotesStorage#loadData()` —  Restores all notes tagged to a location from `noteList`. <br />
 
-These operations are exposed in the `Storage` class  as `Storage#loadAlias()`, `Storage#overwriteAliasListFile()`, `Storage#loadHistory()`, `Storage#overwriteHistoryListFile()` , `Storage#loadNotes()`, `Storage#overwriteNotesListFile()`, `Storage#loadDailyRoute()`, `Storage#overwriteDailyRouteFile()` , `Storage#loadFavourites()` and `Storage#overwriteFavouritesListFile()`. <br />
-The image below shows an overview for the storage component, which consist of Storage class and its four subclasses.
-![img.png](images/Overview%20for%20Safe%20Feature.png)
+These 'saveData()' operations are exposed in the `DataEncoder` interface as `DataEncoder#encodeAlias(:BlockAlias) `, `DataEncoder#encodeDailyRoute(:DailyRoute)`, `DataEncoder#encodeFavourite(:Favourite)`, `DataEncoder#encodeHistory(:History)` and `DataEncoder#encodeNotes(:NusMap)` respectively.<br />
+These 'loadData()' operations are exposed in the `DataDecoder` interface as `DataDecoder#decodeAliasAndNoteData()`, `DataDecoder#decodeDailyRouteData()` and `DataDecoder#decodeHistoryAndFavouriteData()`.
+The image below shows an overview for how the storage component is used when each of the features are executed. <br/>
+![img.png](images/SaveFeatureSequence.png)
+
 Given below is an example usage scenario and how the save mechanism behaves at each step. <br />
-Step 1. The user launches the application for the first time. 
-`AliasStorage`, `HistoryRouteStorage`, `NotesStorage`, `DailyRouteStorage` and `FavouriteLocationsStorage` 
-will be initialized with the respective file paths of `aliasList`,  `historyList`, `notesList`, `dailyRouteList` and `favouritesList`. 
-The lists will be initialized by calling `AliasStorage#loadAlias()`, `HistoryRouteStorage#loadHistory()`, `NotesStorage#loadNotes()` `DailyRouteStorage#loadDailyRoute()` and `FavouriteLocationsStorage#loadFavourites()` with the initial state of the application. <br /> 
-This is done only once for each time the application is launched. <br />
-![img.png](images/Storage%20Feature%20Sequence%20.png)
-<br />
-Step 2. The user executes `go` command to show the route from starting location to final location. <br /> 
-The `go` command calls `HistoryRouteStorage#overwriteHistoryListFile()`, 
-causing the modified state of the `historyList` in the application after the `go` command executes to be saved in the `routesHistoryList.txt`. <br />
-Step 3. The user executes `add note E4/...` to tag a note to that location. <br /> 
-The `add note` command calls `NotesStorage#overwriteNotesListFile()`, causing  the modified state of the `notesList` to be saved into the `notesList.txt`. <br />
-Step 4. The user executes `delete note E4/1` to remove a note with the given note index from that location, assuming that it exists. <br /> 
-The `delete note` command also calls `NotesStorage#overwriteNotesListFile()`, causing  the modified state of the `notesList` to be saved into the `notesList.txt`. <br />
-Step 5. The user executes `like E4` command to add a location to favourites. <br /> The `like` command calls `FavouriteLocationsStorage#save()`, causing the modified state of the `favouritesList` to be saved into the `favouritesList.txt`. <br />
-Step 6. At any point when a command is called, the `AliasStorage#overwriteAliasListFile()`, `HistoryRouteStorage#overwriteHistoryListFile()`, `NotesStorage#overwriteNotesListFile()`, `DailyRouteStorage#overwriteDailyRouteFile()` and `FavouriteLocationsStorage#overwriteFavouritesListFile()` methods will be executed, 
-but not all files will be modified. The above steps explains which lists will be modified after the commands listed above are called.
-For all other commands, they also call the overwrite functions, but they do not modify the state of any of the lists `aliasList`,  `historyList`, `notesList`,  `dailyRouteList` and `favouritesList`. 
-Thus, the `aliasList.txt`, `routesHistoryList.txt`, `notesList.txt`, `dailyRouteList.txt`  and `favouritesList.txt` inside the created `data` folder remains unchanged. <br/>
+1. The user launches the application for the first time.
+`AliasStorage`, `DailyRouteStorage`, `FavouriteStorage`, `HistoryStorage` and `NotesStorage` objects 
+will be initialized with the filepaths of `aliasList`,  `dailyRouteList`, `favouriteList`, `history` and `noteList` text files respectively. <br>
+The `blockAlias`, `dailyRoute`, `favourite`, `history` or `nusMap` object in `NusMaze` class will be initialised using the initial state of the respective text file, 
+by calling `AliasStorage#loadData()`, `DailyRouteStorage#loadData()`, `FavouriteStorage#loadData()` `HistoryStorage#loadData()` and `NotesStorage#loadData()`. <br> 
+This is done only once for each time the application is launched. <br>
+![img.png](images/SaveFeatureStep1ref1.png)
+![img.png](images/SaveFeatureStep1.png)
+![img.png](images/SaveFeatureStep1ref2.png) <br>
+2. For all valid commands called before the last user input 'bye' or before program is terminated, the following process is executed continuously. <br>
+`AliasStorage#saveData()`, `DailyRouteStorage#saveData()`, `FavouriteStorage#saveData()`, `HistoryStorage#saveData()`, `NotesStorage#saveData()` are called.
+When `#saveData()` for each of the storage objects are called, data from the `blockAlias`, `dailyRoute`, `favourite`, `history` or `nusMap` object is saved into the respective text file. <br>
+![img_1.png](images/SaveFeatureStep2.png)
+
+<div markdown="block" class="alert alert-info">
+**:information_source:** At any point when a command is called, the `AliasStorage#saveData()`, `DailyRouteStorage#saveData()`, `FavouriteStorage#saveData()`, `HistoryStorage#saveData()`, `NotesStorage#saveData()` will be executed,
+but not all text files will be modified. <br>
+* The `history` text file is modified by the `go`, `clear history` and `repeat history` commands. <br>
+* The `aliasList` text file is modified by the `add alias` and `delete alias` commands. <br>
+* The `dailyRouteList` text file is modified by the `add daily route` and `delete daily route` commands. <br>
+* The `noteList` text file is modified by the `add note` and `delete note` commands. <br>
+* The `favouriteList` text file is modified by the `add favourite`, `repeat favourite` and `delete favourite` commands <br>
+</div>
+<br>
+
+<div markdown="block" class="alert alert-info">
+**:information_source:** If a command fails its execution, it will not call `#saveData()` for all the storage objects,
+so the content from the `nusMap`, `blockAlias`, `history`, `favourite`, or `dailyRoute` objects will not be saved into the text files.
+</div>
+
 #### Design Consideration
-Alternative 1 (current choice): Saves the entire list of block aliases, visited routes, tagged notes, daily routes and favourite locations. <br/>
-Pros: Easy to implement. <br/>
-Cons: Only highly effective when limited to use of one user. <br/>
+**Alternative 1 (current choice):** Saves the entire list of block aliases, visited routes, tagged notes, daily routes and favourite locations. <br/>
+- Pros: Easy to implement. <br/>
+- Cons: Only highly effective when limited to use of one user. <br/>
 
 ### 3.2. Daily route planning feature
 #### Current Implementation
-The current implementation is facilitated by `DailyRoute` class, with the `AddDailyRouteCommand` and `ShowDailyRouteCommand` subclasses invoking methods that the `DailyRoute` class provides. </br>
-`AddDailyRouteCommand`, `ClearDailyRouteCommand` and `ShowDailyRouteCommand` extend `Command` (superclass), where `AddDailyRouteCommand` implements the feature of adding the schedule of the day to the `DailyRoute` object and `ShowDailyRouteCommand` accesses the `DailyRoute` object to retrieve an ArrayList with the location schedule provided from the `AddDailyRouteCommand` and run the routing algorithm present in the `Router` object. <br />
+The current implementation is facilitated by `DailyRoute` class, with the `AddDailyRouteCommand`, `ShowDailyRouteCommand` and `DeleteDailyRouteCommand` subclasses invoking methods that the `DailyRoute` class provides. </br>
+`AddDailyRouteCommand`, `ClearDailyRouteCommand` and `DeleteDailyRouteCommand` extend `Command` (superclass). `AddDailyRouteCommand` implements the feature of adding the schedule of the day to the `DailyRoute` object. `ShowDailyRouteCommand` accesses the `DailyRoute` object to retrieve an ArrayList with the location schedule provided from the `AddDailyRouteCommand` and run the routing algorithm present in the `Router` object. `DeleteDailyRouteCommand` clears the schedule mapped to the selected day.<br />
 Additionally, `DailyRoute` implements the following operations:
 
 `addDailyRoute(String ,ArrayList<String>)` — Maps the inputted day string to the inputted ArrayList of the schedule of the day in a hashmap . <br />
@@ -205,36 +223,38 @@ Additionally, `DailyRoute` implements the following operations:
 `getValidDays()` — Returns the days of the week.
 
 These operations are exposed in the `DailyRoute` class  as `DailyRoute#addDailyRoute()`, `DailyRoute#getDailyRoute(String)`, `DailyRoute#getSelectableDay()`, `DailyRoute#getValidDay()`. <br />
-Given below is an example usage scenario and how the addDailyRoute mechanism behaves at each step. <br />
-Step 1. The user launches the application.<br />
-Step 2. The user executes `add daily route` command. UI will then prompt the user `Select entry to add:`  to input a day index. <br />
-Step 3. The UI then prompts the user to input the next block that is in the day's schedule.  <br /> The inputted location will be appended to an ArrayList. <br />
-Step 4. Repeat step 3 until the word `END` is input by the user. <br /> 
-Step 5. The inputted day, and the filled Arraylist from step 3 is then passed into the DailyRoute object<br /> This done using the addDailyRoute method from the DailyRoute class. The selectableDay boolean flag for the selected day is also set to true. <br />
-Step 6. The day and filled Arraylist passed in step 5 is then saved in a hashmap that the DailyRoute object contains. <br /> 
 
-The following image shows the sequence diagram in which the add day command is implemented
+Given below is an example usage scenario and how the addDailyRoute mechanism behaves at each step. <br />
+1. The user launches the application.<br />
+2. The user executes `add daily route` command. UI will then prompt the user `Select entry to add:`  to input a day index. <br />
+3. The UI then prompts the user to input the next block that is in the day's schedule.  <br /> The inputted location will be appended to an ArrayList. <br />
+4. Repeat step 3 until the word `END` is input by the user. <br /> 
+5. The inputted day, and the filled Arraylist from step 3 is then passed into the DailyRoute object<br /> This done using the addDailyRoute method from the DailyRoute class. The selectableDay boolean flag for the selected day is also set to true. <br />
+6. The day and filled Arraylist passed in step 5 is then saved in a hashmap that the DailyRoute object contains. <br /> 
+
+The following image shows the sequence diagram in which the addDailyRoute command is executed.
 ![img.png](images/addday.png)
 
 Given below is an example usage scenario and how the showDailyRoute mechanism behaves at each step.
 
-Step 1. The user launches the application.<br />
-Step 2. The user executes `show daily route` command. UI will then prompt the user `Select entry:`  to input a day index. This returns an arraylist of the day's schedule. <br />
-Step 3. The routing algorithm is now performed for each of the blocks in the array list in order. Each execution of the routing algorithm returns a string which is then appended to the end of an Array list. <br />
-Step 4. The arraylist of the days schedule, and the arraylist that contains the routes from the routing algorithm are then output through Daily Route Ui <br />
+1. The user launches the application.<br />
+2. The user executes `show daily route` command. UI will then prompt the user `Select entry:`  to input a day index. This returns an arraylist of the day's schedule. <br />
+3. The routing algorithm is now performed for each of the blocks in the array list in order. Each execution of the routing algorithm returns a string which is then appended to the end of an Array list. <br />
+4. The arraylist of the days schedule, and the arraylist that contains the routes from the routing algorithm are then output through Daily Route Ui <br />
 
-The following image shows the sequence diagram in which the show day command is implemented
+The following image shows the sequence diagram in which the showDailyRoute command is executed.
 ![img.png](images/showday.png)
 
-Given below is an example usage scenario and how the clearDailyRoute mechanism behaves at each step.
+Given below is an example usage scenario and how the deleteDailyRoute mechanism behaves at each step.
 
-Step 1. The user launches the application.<br />
-Step 2. The user executes `delete daily route` command. UI will then show the selectable days if applicable and prompt the user `Select entry:`  to input a day index. If there are no days scheduled, the UI will print `"There are no daily routes planned!"` <br />
-Step 3. The `addDailyRoute(day, schedule)` method is then called with the selected day as day, and an empty array list as the schedule. The selectable day boolean flag for the day is set to false in the DailyRoute object, and the schedule mapped to the day is cleared.<br />
-Step 4. The String `"Got it! Successfully cleared [DAY]'s schedule!"` is output through Daily Route Ui <br />
+1. The user launches the application.<br />
+2. The user executes `delete daily route` command. UI will then show the selectable days if applicable and prompt the user `Select entry:`  to input a day index. If there are no days scheduled, the UI will print `"There are no daily routes planned!"` <br />
+3. The `addDailyRoute(day, schedule)` method is then called with the selected day as day, and an empty array list as the schedule. The selectable day boolean flag for the day is set to false in the DailyRoute object, and the schedule mapped to the day is cleared.<br />
+4. The String `"Got it! Successfully cleared [DAY]'s schedule!"` is output through Daily Route Ui <br />
 
-The following image shows the sequence diagram in which the DeleteDailyRoute command is implemented
+The following image shows the sequence diagram in which the deleteDailyRoute command is executed.
 ![img.png](images/clearday.png)
+
 ### 3.3. Finding The Shortest Route Feature
 #### Current Implementation
 
@@ -248,12 +268,12 @@ The image below depicts how the `GoCommand` is implemented.
 
 Given below is an example scenario of how the routing algorithm functions.
 
-Step 1. User executes `GoCommand` and the `RouterUi` reads in the starting location and destination.<br />
-Step 2. `GoCommand` will then check if the second entry is eatery. If it is not "EATERY", step 3 and 4 are skipped for step 5.<br />
-Step 3. `GoCommand` will then create an instance of `EateryList` and invokes its method `sortEateriesByDistance()` which returns a list of eateries in order of the closest distance.<br />
-Step 4. `GoCommand` then takes in the selection of eatery that the user is chosen and sets the destination.<br/>
-Step 5. The Router will then run the `findShortestRoute()` method which is a routing algorithm based on breath-first search. This returns the shortest route as a string<br />
-Step 6. The `RouterUi` will then show the shortest route to the user through `showMessageWithDivider()` method.<br />
+1. User executes `GoCommand` and the `RouterUi` reads in the starting location and destination.<br />
+2. `GoCommand` will then check if the second entry is eatery. If it is not "EATERY", step 3 and 4 are skipped for step 5.<br />
+3. `GoCommand` will then create an instance of `EateryList` and invokes its method `sortEateriesByDistance()` which returns a list of eateries in order of the closest distance.<br />
+4. `GoCommand` then takes in the selection of eatery that the user is chosen and sets the destination.<br/>
+5. The Router will then run the `findShortestRoute()` method which is a routing algorithm based on breath-first search. This returns the shortest route as a string<br />
+6. The `RouterUi` will then show the shortest route to the user through `showMessageWithDivider()` method.<br />
 
 Shown below is the sequence diagram when a valid block is entered for the starting location and destination.
 ![img.png](images/routersequencediagram.png)
@@ -265,10 +285,9 @@ The following diagram illustrates the class diagram for implementation of the al
 The command entered by the user in the `Main()` function of NUSMaze will be parsed in the `Parser` class. Thereafter, the parser will decide which of the 3 alias commands,
 if applicable, was the command that the user wanted to execute. 
 
-The three command classes, namely `AddCustomAliasCommand`, `ShowCustomAliasCommand` and `DeleteCustomAliasCommand` extend the `Command` class and they all depend on the `AliasUi` class to obtain inputs and display outputs.
+The three command classes, namely `AddCustomAliasCommand`, `ShowCustomAliasCommand` and `DeleteCustomAliasCommand` extend the `Command` class, and they all depend on the `AliasUi` class to obtain inputs and display outputs.
 
-Another thing to note is that the `NUSMaze` class has an `AliasStorage` class that facilitates the storage of the aliases
-so that the user can access their aliases even after they close and reopen the application. 
+Another thing to note is that the `NUSMaze` class has an `AliasStorage` class that facilitates the storage of the aliases so that the user can access their aliases even after they close and reopen the application. 
 
 The data model for this feature is facilitated by the `BlockAlias` class which contains the hashmap of custom aliases and block pairs. 
 The hashmap will have the `custom alias name` as the `key` and the `block name` as the `value` for each key-value pair. The
@@ -276,15 +295,15 @@ The hashmap will have the `custom alias name` as the `key` and the `block name` 
 
 Given below is an example usage scenario and how the add/view/delete mechanism behaves at each step:
 
-Step 1. The user launches the application for the first time. If there is a storage file with pre-existing alias-block pairs, then the hashmap in `BlockAlias` class will be initialized with those data, and an empty hashmap if it does not exist.  
+1. The user launches the application for the first time. If there is a storage file with pre-existing alias-block pairs, then the hashmap in `BlockAlias` class will be initialized with those data, or an empty hashmap if it does not exist.  
 
-Step 2. The user executes `add alias` command. The user input will be parsed by the `Parser` which will create a new `AddCustomAliasCommand` command. This will invoke the UI which will prompt the user `Enter the block:` to input the block name and `Enter the alias name:` to input the alias name that the user wants. The UI parser will then check if the entered block and alias are valid and throw an exception if they are not.  
+2. The user executes `add alias` command. The user input will be parsed by the `Parser` which will create a new `AddCustomAliasCommand` command. This will invoke the UI which will prompt the user `Enter the block:` to input the block name and `Enter the alias name:` to input the alias name that the user wants. The UI parser will then check if the entered block and alias are valid and throw an exception if they are not.  
 
-Step 3. The entered alias and block pair will then be put into a temporary hashmap which will then be merged with the main hashmap in the instance of the BlockAlias.  
+3. The entered alias and block pair will then be put into a temporary hashmap which will then be merged with the main hashmap in the instance of the BlockAlias.  
 
-Step 4. The user executes `show alias` command. The user input will be parsed by the `Parser` which will create a new `ShowCustomAliasCommand` command. The new command will then invoke the UI which will print `It seems that you do not have any aliases` if the hashmap is empty, or it will print the alias-block pairs in new lines when the hashmap has been previously populated.  
+4. The user executes `show alias` command. The user input will be parsed by the `Parser` which will create a new `ShowCustomAliasCommand` command. The new command will then invoke the UI which will print `It seems that you do not have any aliases` if the hashmap is empty, or it will print the alias-block pairs in new lines when the hashmap has been previously populated.  
 
-Step 5. The user executes `delete alias` command. The user input will be parsed by the `Parser` which will create a new `DeleteCustomAliasCommand` command. The new command will then invoke the UI which will prompt the user `Enter the alias name that you wish to delete:` where the user will enter the alias name that the wish to remove. The user input for the alias to be removed will be checked against the hashmap and return an exception if the key does not exist. If the alias to be removed exists in the hashmap, the key-value pair will be removed and a success message will be displayed to the user.
+5. The user executes `delete alias` command. The user input will be parsed by the `Parser` which will create a new `DeleteCustomAliasCommand` command. The new command will then invoke the UI which will prompt the user `Enter the alias name that you wish to delete:` where the user will enter the alias name that the user wishes to remove. The user input for the alias to be removed will be checked against the hashmap and return an exception if the key does not exist. If the alias to be removed exists in the hashmap, the key-value pair will be removed, and a success message will be displayed to the user.
 
 Shown below is the sequence diagram when a valid block name and alias are added:
 ![img.png](images/AliasFeatureSequence.png)
@@ -374,24 +393,26 @@ Any invalid input such as decimals or alphabets will result in
 ## *4. Appendix: Requirements*
 ### 4.1. Product Scope
 
-NUSMaze is targeted at NUS engineering freshman, to help new students find their way to their destination blocks.
+NUSMaze is targeted at NUS engineering freshmen, to help new students find their way to their destination blocks.
 
 The engineering block is extremely huge, and the layout of the blocks may be confusing for new students. To reduce the time wasted on navigating the numerous blocks in Engineering, NUSMaze will provide the shortest route available for students to take.
 
 ### 4.2. User Stories
 
-|Version| As a ... | I want to ... | So that I ...|
-|--------|----------|---------------|------------------|
-|v1.0|new user|see usage instructions|can refer to them when I forget how to use the application|
-|v1.0|user|have a clear path to my destination|will not get lost|
-|v1.0|user|be able to pin a note to certain locations as a reminder|do not forget|
-|v1.0|user|keep track of my search history|don't have to repeatedly search for the same route.|
-|v1.0|user|have a clear interface in which I can enter my commands|can have a good user experience|
-|v2.0|user|find the nearest eatery|do not have to starve for longer than necessary|
-|v2.0|user|have a list of favorite locations|can access directions to them quickly|
-|v2.0|user|have my list of favourites and history stored|can access it every time I start the app|
-|v2.0|user|be able to set custom aliases to blocks|can access the blocks more conveniently|
-|v2.0|user|be able to store my routing for my daily activities|can access it easily|
+Below is our analysis of our target user and the importance in which he/she would place on the potential user stories we have chosen.
+
+|Version| As a ... | I want to ... | So that I ...|Importance|
+|--------|----------|---------------|------------------|----|
+|v1.0|new user|see usage instructions|can refer to them when I forget how to use the application|HIGH|
+|v1.0|user|have a clear path to my destination|will not get lost|HIGH|
+|v1.0|user|be able to pin a note to certain locations as a reminder|do not forget|MEDIUM|
+|v1.0|user|keep track of my search history|don't have to repeatedly search for the same route.|MEDIUM|
+|v1.0|user|have a clear interface in which I can enter my commands|can have a good user experience|HIGH|
+|v2.0|user|find the nearest eatery|do not have to starve for longer than necessary|HIGH|
+|v2.0|user|have a list of favorite locations|can access directions to them quickly|MEDIUM|
+|v2.0|user|have my list of favourites and history stored|can access it every time I start the app|MEDIUM|
+|v2.0|user|be able to set custom aliases to blocks|can access the blocks more conveniently|MEDIUM|
+|v2.0|user|be able to store my routing for my daily activities|can access it easily|MEDIUM|
 
 ### 4.3. Use Cases
 

@@ -9,7 +9,7 @@ public class EateryList {
     private Block[] eateries;
 
     public EateryList(NusMap nusMap, String from) {
-        this.eateries = new Block[6];
+        this.eateries = new Block[7];
         setRouteLengths(nusMap, from);
         setEateries(nusMap);
     }
@@ -19,7 +19,7 @@ public class EateryList {
     }
 
     public Block getSpecificEatery(int index) throws InvalidIndexException {
-        if (index > 6 || index < 0) {
+        if (index > 7 || index < 0) {
             throw new InvalidIndexException();
         } else {
             return eateries[index];
@@ -33,6 +33,8 @@ public class EateryList {
         new Router().findShortestRoute(nusMap, new LinkedList<>(), from, "PLATYPUS FOOD BAR");
         new Router().findShortestRoute(nusMap, new LinkedList<>(), from, "SPINELLI COFFEE");
         new Router().findShortestRoute(nusMap, new LinkedList<>(), from, "MAXX COFFEE");
+        new Router().findShortestRoute(nusMap, new LinkedList<>(), from, "STARBUCKS");
+
     }
 
     public void setEateries(NusMap nusMap) {
@@ -42,6 +44,7 @@ public class EateryList {
         eateries[3] = nusMap.getBlock("PLATYPUS FOOD BAR");
         eateries[4] = nusMap.getBlock("SPINELLI COFFEE");
         eateries[5] = nusMap.getBlock("MAXX COFFEE");
+        eateries[6] = nusMap.getBlock("STARBUCKS");
     }
 
     public void sortEateriesByDistance() {

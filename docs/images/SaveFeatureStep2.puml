@@ -1,0 +1,72 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+group sd saveData
+    loop till bye command
+    NusMaze --> NusMaze: saveCurrentData()
+    activate NusMaze #DarkSalmon
+
+    NusMaze --> ":AliasStorage": saveData()
+    activate ":AliasStorage"
+    ":AliasStorage" ---> DataEncoder: encodeAlias(blockAlias)
+    activate DataEncoder
+    DataEncoder ---> ":AliasStorage": encodedData
+    deactivate DataEncoder
+    ":AliasStorage" ---> Files: write(filepath, encodedData);
+    activate Files
+    deactivate Files
+    ":AliasStorage" --> NusMaze
+    deactivate ":AliasStorage"
+
+    NusMaze --> ":DailyRouteStorage": saveData()
+    activate ":DailyRouteStorage"
+    ":DailyRouteStorage" ---> DataEncoder: encodeDailyRoute(dailyRoute)
+    activate DataEncoder
+    DataEncoder ---> ":DailyRouteStorage": encodedData
+    deactivate DataEncoder
+    ":DailyRouteStorage" ---> Files: write(filepath, encodedData);
+    activate Files
+    deactivate Files
+    ":DailyRouteStorage" --> NusMaze
+    deactivate ":DailyRouteStorage"
+
+    NusMaze --> ":FavouriteStorage": saveData()
+    activate ":FavouriteStorage"
+    ":FavouriteStorage" ---> DataEncoder: encodeFavourite(favourite)
+    activate DataEncoder
+    DataEncoder ---> ":FavouriteStorage": encodedData
+    deactivate DataEncoder
+    ":FavouriteStorage" ---> Files: write(filepath, encodedData);
+    activate Files
+    deactivate Files
+    ":FavouriteStorage" --> NusMaze
+    deactivate ":FavouriteStorage"
+
+    NusMaze --> ":HistoryStorage": saveData()
+    activate ":HistoryStorage"
+    ":HistoryStorage" ---> DataEncoder: encodeHistory(history)
+    activate DataEncoder
+    DataEncoder ---> ":HistoryStorage": encodedData
+    deactivate DataEncoder
+    ":HistoryStorage" ---> Files: write(filepath, encodedData);
+    activate Files
+    deactivate Files
+    ":HistoryStorage" --> NusMaze
+    deactivate ":HistoryStorage"
+
+    NusMaze --> ":NotesStorage": saveData()
+    activate ":NotesStorage"
+    ":NotesStorage" ---> DataEncoder: encodeNotes(nusMap)
+    activate DataEncoder
+    DataEncoder ---> ":NotesStorage": encodedData
+    deactivate DataEncoder
+    ":NotesStorage" ---> Files: write(filepath, encodedData);
+    activate Files
+    deactivate Files
+    ":NotesStorage" --> NusMaze
+    deactivate ":NotesStorage"
+
+    deactivate NusMaze #DarkSalmon
+    end
+end
+@enduml

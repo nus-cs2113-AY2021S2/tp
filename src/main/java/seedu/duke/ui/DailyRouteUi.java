@@ -30,7 +30,7 @@ public class DailyRouteUi extends UiManager {
         }
         while (!block.equals("END")) {
             try {
-                showMessage("Enter location of the next activity of the day: ");
+                showMessage("Enter location of the next activity of the day: (Enter \"end\" to stop)");
                 block = getBlockEntry(block);
                 if (isValidBlock(block)) {
                     dailyBlocks.add(block);
