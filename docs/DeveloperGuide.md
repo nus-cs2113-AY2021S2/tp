@@ -345,6 +345,13 @@ i. Enter `exit` or `bye` into terminal while **Connoisseur** is running.
 
 &nbsp; **Expected**: A farewell message by Connoisseur will be shown.
 
+**Help**
+Guide on the use of Connoisseur
+1. **Test case**: `help`
+   **Expected**: A guide on how to use Connoisseur will be shown.
+   
+2. **Test case**: 'help aaaa`
+   **Expected**: `Invalid help command!`
 
 ### Appendix E: Other Guides: Documentation, Testing, Dev-ops
 

@@ -68,7 +68,7 @@ public class Storage {
                 logger.log(Level.WARNING, FILE_ALREADY_EXISTS);
             }
         } catch (IOException e) { //creating or retrieving data has errors
-            ui.printErrorMessage(e);
+            ui.printErrorMessage();
         }
         return fileAlreadyExists;
     }
@@ -93,7 +93,6 @@ public class Storage {
             connoisseurData = new ConnoisseurData(sortMethod, displayStars, reviewList, recommendationList);
             connoisseurFileScanner.close();
         } catch (FileNotFoundException | NoSuchElementException e) {
-            ui.printErrorMessage(e);
             connoisseurData = new ConnoisseurData("latest", true, new ArrayList<Review>(),
                     new ArrayList<Recommendation>());
         }
@@ -163,7 +162,7 @@ public class Storage {
             connoisseurFileWriter.append(data.toString());
             connoisseurFileWriter.close();
         } catch (IOException e) {
-            ui.printErrorMessage(e);
+            ui.printErrorMessage();
         }
     }
 

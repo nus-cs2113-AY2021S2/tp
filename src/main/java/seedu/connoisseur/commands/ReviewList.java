@@ -329,7 +329,7 @@ public class ReviewList {
                     sorter.sortReviews(reviews, sortMethod);
                     displayReviews(reviews);
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    ui.printErrorMessage(e);
+                    ui.printErrorMessage();
                 }
             }
         }

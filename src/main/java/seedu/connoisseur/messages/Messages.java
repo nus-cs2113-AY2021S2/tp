@@ -19,7 +19,7 @@ public class Messages {
             + "Please enter a command: ";
 
     public static final String EXIT_MESSAGE = "Thanks for using Connoisseur, see you again!";
-    public static final String ERROR_MESSAGE = "An error has occured";
+    public static final String ERROR_MESSAGE = "An error has occurred";
     public static final String INVALID_COMMAND = "Invalid command, please try again.";
     public static final String INVALID_PARAMETERS = "Invalid command. Please do not enter extra parameters or less " +
             "parameters than required.";
