@@ -44,6 +44,7 @@ public class DeleteStoreCommand extends Command {
             ui.showStoreNotDeleted();
             return;
         }
+
         int storeIndex = parser.parseInt(line, 1,
                 canteens.get(currentCanteenIndex).getNumStores()) - 1;
 
@@ -53,4 +54,5 @@ public class DeleteStoreCommand extends Command {
         ui.showDeleteStore(storeName);
         UpdateFile.deleteAndUpdateFile(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH),canteens);
     }
+
 }
