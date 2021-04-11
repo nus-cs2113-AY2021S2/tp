@@ -18,19 +18,15 @@
     
     4.1 [Architecture: High Level View](#41-architecture-high-level-view)
     
-    4.2 [UI and Messages component](#42-ui-and-component)
+    4.2 [UI component](#42-ui-component)
     
-    4.3 [Parser component](#43-parser-component)
+    4.3 [Logic component](#43-logic-component)
     
-    4.4 [Review component](#44-review-componenet)
+    4.4 [Model component](#44-model-componenet)
     
-    4.5 [Recommendation component](#45-review-componenet)
+    4.5 [Sorter component](#45-sorter-component)
     
-    4.6 [Commands component](#46-commands-component)
-    
-    4.7 [Sorter component](#47-sorter-component)
-    
-    4.8 [Storage component](#48-storage-component)
+    4.6 [Storage component](#46-storage-component)
     
 5. [Implementation](#5-implementation)
 
@@ -153,32 +149,72 @@ understandable. However, you may wish to consult [[CS2113/T] Modeling](https://n
 
 The following Figure 1, provides a rough overview of how **Connoisseur** is built.<br>
 
-![Class_Diagram.png](./diagrams/Class_Diagram.png)<br>
-Figure 1. Class Diagram of Connoisseur <br>
+![Architecture.png](./diagrams/Architecture.png)<br>
+Figure 1. Architecture of Connoisseur <br>
 
-As shown in Figure 1, the user interacts with the`UI` class and inputs commands. The input is parsed using the `Parser` class, which then executes the corresponding command in the `Commands` class. Depending on whether Connoisseur is in review or recommendation mode, the `Commands` class will execute the respective commands in the `ReviewList` and `RecommendationList` classes. In the case of a storing data, `Commands` will interact directly with the `Storage` class. 
+As shown in Figure 1, the user interacts with `UI`, which takes in commands and displays output to the user. 
 
-The `ReviewList` class has sorting functions which requires `Sorter`. The entire reviews ArrayList will be passed to `Sorter` to be sorted, which then returns the sorted reviews back to `ReviewList`. 
+The main `Connoisseur` class initializes the other components in the application. It passes the input received from the user to the logic component, which consists of `Parser` and `Commands`. 
+
+`Parser` will decipher the input and make the corresponding method calls in `Commands`. Depending on whether Connoisseur is in review or recommendation mode, the `Commands` class will execute the respective commands in the `ReviewList` and `RecommendationList` classes of the `Model` component. 
+
+In the case of a storing data, `Commands` will interact directly with the `Storage` class to save the data. 
+
+The `ReviewList` class has sorting functions which requires `Sorter`. All the reviews will be passed to `Sorter` to be sorted, which then returns the sorted reviews back to `ReviewList`. 
 
 `RecommendationList` also interacts with `ReviewList` for converting Recomendations to Reviews. 
 
-### 4.2 UI and Messages component
+### 4.2 UI component
 
-The user interface of Connoisseur is provided by the classes UI & Messages.
-It is instantiated once in the connoisseur() method.<br>
-//can add code snippet here// 
-* The ui.printGreeting() method is called to display the welcome message to the user.
-* The ui.println(COMMAND_PROMPT) method is called to prompt the user for input, where COMMAND_PROMPT is a message from 
-  the `Messages` component
-* The ui.readCommand() method reads the input which is then passed on to the `parser` component
+The UI component of Connoisseur consists of the classes `UI` and `Messages`.
+It is instantiated in the connoisseur() method and serves two main purposes:
+* Read user input from the console.
+* Print program output to the console. 
 
-### 4.3. Parser component
+The *ui.readCommand()* method reads the input which is then passed on to the `Logic` component. 
 
-### 4.4. Review component
-### 4.5. Recommendation component
-### 4.6. Commands component
-### 4.7. Sorter component
-### 4.8. Storage component
+The *ui.println(output)* method prints output to the console. Default output messages are stored as static String constants in the `Messages` class, while commonly used output messages are made methods by themselves. *ui.printGreeting()* is one such method and is called to display the welcome message to the user. 
+
+
+### 4.3. Logic component
+
+![LogicComponent.png](./diagrams/LogicComponent.png)<br>
+Figure 2. Logic Component of Connoisseur <br>
+
+The Logic component of Connoisseur consists of the classes `Parser` and `Commands`. 
+It is instantiated in the connoisseur() method and serves to translate user input into commands which are recognised by the application. 
+
+The *determineCommand()* method of the `Parser` class deciphers the command word of the input, calling the respective command's method in `Commands`. 
+
+Each method in `Commands` will then check the arguments provided with the commands to make sure that they are valid, before executing the command in `Storage`, `ReviewList` or `RecommendationList`. 
+
+
+### 4.4. Model component
+
+![ModelComponent.png](./diagrams/ModelComponent.png)<br>
+Figure 2. Model Component of Connoisseur <br>
+
+The Model component of Connoisseur consists of the classes `ReviewList` and `RecommendationList`. 
+It is instantiated in the connoissuer() method and serves to store data as the program runs. 
+
+Both the classes in the Model component contain methods which modify the content of their respective ArrayLists, which consist of either Reviews or Recommendations. 
+
+### 4.5. Sorter component
+
+![SorterComponent.png](./diagrams/SorterComponent.png)<br>
+Figure 3. Sorter Component of Connoisseur <br>
+
+The Sorter component is a separate component which serves to sort the reviews based on a few sorting methods. 
+
+When the *sortReviews()* method is called in the `ReviewList`, a sortMethod parameter is passed together with it to the `Sorter`, which then determines which of the Sorts to sort the reviews by. If the sortMethod parameter is empty, `Sorter` will use the default sortMethod saved. The sorted reviews are then passed back to `ReviewList`. 
+
+### 4.6. Storage component
+
+The Storage component serves to implement the storage functions of Connoisseur. It saves and loads data represented as a JSON file in the *./data* folder so that data can be retained after exiting Connoisseur. 
+
+On startup, Connoisseur checks if there is a *connoisseur.json* file in the *./data* folder. If they exist, the data will be loaded via the *loadConnoisseurData()* method and used to initialize classes in the `Model` component. If the file and folder do not exist, they will be created and new instances of the classes in the `Model` component will be initialized instead. 
+
+Before exiting, Connoissuer will save the data from the `Model` component and write them to *connoisseur.json* located in the *./data* folder. 
 
 ## 5. Implementation
 ### 5.1 Mode Switch Feature

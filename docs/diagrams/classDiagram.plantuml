@@ -20,15 +20,15 @@ together {
     class SortMethod
 }
 
-class Ui {
+class Ui #Turquoise {
     + readCommand() : String
 }
 
-class Commands {
+class Commands #PaleGreen {
     - boolean isReviewMode
 }
 
-class RecommendationList {
+class RecommendationList #Gold {
     - ui : Ui
     + recommendations : ArrayList<Recommendation>
     + addRecommendation()
@@ -38,7 +38,7 @@ class RecommendationList {
     + convertRecommendation()
 }
 
-class ReviewList {
+class ReviewList #Gold {
     - ui : Ui
     + reviews : ArrayList<Reviews>
     - displayStars : boolean
@@ -51,11 +51,11 @@ class ReviewList {
     + changeDisplay(displayType : String)
 }
 
-class Parser {
+class Parser #PaleGreen {
     + determineCommand(input : String)
 }
 
-class Sorter {
+class Sorter #NavajoWhite {
     + sortMethod : SortMethod
     + stringToSortMethod(sortMethod : String) : SortMethod
     + sortMethodToString(sortMethod : SortMethod) : String
@@ -64,14 +64,14 @@ class Sorter {
     + sortReviews(reviewList : ArrayList) : ArrayList
 }
 
-class Storage {
+class Storage #PowderBlue {
     - Ui ui
     + retrieveDataFile() : boolean
     + loadConnoisseurData() : ConnoisseurData
     + saveConnoisseurData()
 }
 
-enum SortMethod {
+enum SortMethod #NavajoWhite {
     RATING
     CATEGORY
     TITLE
