@@ -408,8 +408,19 @@ Output:
 
 ---
 
-If you do not know how to use any of the features in Finux, and would like to know their specifications, simply type
-`help` followed by the command name of the available features listed below:
+To see the available commands and their usage, simply type `help all` and a brief description of the commands will
+be shown.
+
+Format: `help all`
+
+Output:
+
+![help all example output](img/HelpAllExampleOutput.png)\
+💡 Typing `help` is also equivalent to typing `help all`.
+
+
+If you would like to know the specifications in details, simply type
+`help` followed by the `feature` name from the available list below:
 
 * `add`: display the help section for `add` command.
 * `list`: display the help section for `list` command.
@@ -418,14 +429,11 @@ If you do not know how to use any of the features in Finux, and would like to kn
 * `remove`: display the help section for `remove` command.
 * `creditscore`: display the help section for `creditscore` command.
 * `exit`: display the help section for `exit` command.
-* `all`: display will all the features, brief description and format.
-
-💡 Typing `help` is also equivalent to typing `help all`.
  
 Each help section is divided into three parts:
 * `NAME` will show you the feature name and its brief description.
-* `SYNOPSIS` will show you the format to follow. <br>
-* `DESCRIPTION` will explain the usage of any arguments or options.
+* `SYNOPSIS` will show you the whether an option or argument is needed. <br>
+* `DESCRIPTION` will explain the usage of any options or arguments.
 * 📝 The `exit` section will only show the `NAME` and `SYNOPSIS` as no argument is needed.
 
 Format: `help <FEATURE>`
@@ -502,6 +510,6 @@ Output:
 | Remove a record (expense/savings/loan) | `remove -i <index>`                                      | `remove -i 1`                                        |
 | Check a person's credit score          | `creditscore <person>`                                   | `creditscore mark`                                   |
 | Exit the application                   | `exit`                                                   | -                                                    |
-| Help (selected command)                | `help <feature>`                                         | `help remove`                                        |
-| Help (all commands)                    | `help`                                                   | -                                                    |
+| Help (detailed)                        | `help <feature>`                                         | `help remove`                                        |
+| Help (brief)                           | `help`                                                   | -                                                    |
 
