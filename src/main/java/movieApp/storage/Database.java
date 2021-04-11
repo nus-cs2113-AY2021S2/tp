@@ -255,10 +255,10 @@ public class Database {
                 if (newEndYear < newStartYear) {
                     System.out.println("The end year cannot be earlier than the start year.");
                     continue;
-                } else if (newEndMonth < newStartMonth) {
+                } else if (newEndYear == newStartYear && newEndMonth < newStartMonth) {
                     System.out.println("The end month cannot be earlier than the start month.");
                     continue;
-                } else if (newEndDate < newStartDate) {
+                } else if (newEndYear == newStartYear && newEndMonth == newStartMonth && newEndDate < newStartDate) {
                     System.out.println("The end date cannot be earlier than the start date.");
                     continue;
                 }
