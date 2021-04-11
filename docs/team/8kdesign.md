@@ -4,7 +4,7 @@
 
 ## Overview
 
-GULIO is a module planner designed for efficiency when used by someone that can type fast. It is capable of storing lessons and tasks for individual modules, as well as lesson notes via cheat-sheets. 
+GULIO is a module planner designed for efficiency for people that can type fast. It is capable of storing lessons and tasks for individual modules, as well as lesson notes via cheat-sheets. 
 
 ## Summary of Contributions
 
@@ -12,42 +12,33 @@ GULIO is a module planner designed for efficiency when used by someone that can 
 
 ### Enchancements Contributed:
 
-1. Implemented storage system, excluding cheat-sheets.<br>
-   > I implemented the Writer, Loader and ModuleList class. The storage system in our project is designed to be editable even from the outside, on top of just being readable. I even included instructions that the user can follow in the file, if they want to edit the data file in an external text editor tool. To ensure that the storage system would work reliably even as the other team members change their parts, I implemented my own code to split up and read the data.
+1. Implemented ModuleList class and storage system, excluding cheat-sheets.<br>
 1. Implemented shortcut listener for text editor.
-   > To ensure that the text-editor is usable without a mouse, we needed a way to allow users to interact with it via the keyboard. Using KeyListener, I implemented shortcuts such as "esc" to close, "crtrl-s" to save and "ctrl-up/down" to adjust text size. The shortcuts would call methods that Hemrish created in the TextEditor class. It took some reading, but overall this part was relatively easy.
+   > Using KeyListener, I implemented shortcuts such as "ctrl-s" to save. The shortcuts would call methods that Hemrish created in the TextEditor class.
 1. Cleaned up code for most components.<br>
-   > The first time we merged our parts, there were a lot of inconsistencies and duplicates. Hence, I decided to tidy everything up. This includes shifting of constants and messages to their respective classes, removing of duplicate methods, renaming of variables for greater consistency, etc... It was time consuming, but it made the code a lot more cohesive and easier to read.
-1. Displaying and sorting of undone  tasks by days remaining.
-   > I added the ability to count the number of days remaining for the list "task" and "info" commands, and made use of that to sort the undone tasks in order of urgency.
+   > I cleaned up the code after we merged our parts for V1.0 as there were inconsistencies and duplicates. This includes shifting of constants and messages to their respective classes, removing of duplicate methods, etc...
+1. Added days remaining for undone task and used it for sorting.
 
 ### Contributions to Documentation:
 
-1. Added many of the command information.
-   > I created the draft for most of the commands in the command section (for the commands we originally had), which the team edits whenever they make some changes. As such, I am responsible for how the commands are presented. For the "Example" part of each command, I had to change all the tables' format multiple times, which took quite a bit of time.
 1. Added data & storage section.
-   > As the one responsible for the storage, I did the part explaining to the user  how the storage system of GULIO works and what they can do with it.
+1. Created skeleton for the command section.
 1. Converted user guide from Google Docs into Markdown.
-   > The team originally worked on the user guide on a Google Docs file. I converted it to markdown before we split it up and pushed our respective portions. It was tedious, but not difficult.<br><br>
-   > We decided to split it up equally (not according to lines we wrote) as we believe everyone contributed equally and across almost every part, so it would be difficult to assign each part to a member.
+   > The team originally did the user guide on Google Docs. I converted it to markdown before we split it up and pushed our respective portions. It was really tedious, but not difficult.
 
 ### Contributions to Developer Guide:
 
-1. Created the architecture diagram, as well as sequence diagrams for storage.
-   > I was assigned to do the architecture diagram for the design section. In the design section, I also did the part relating to storage. For the implementation section, I did the part on loading and storing of data, including the sequence diagrams in it.
+1. Created the architecture diagram and did the parts relating to storage.
 1. Added instruction for manual testing.
-   > I did the section on manual testing.
 1. Converted developer guide from Google Docs into Markdown.
-   > Like the user guide, we did the developer guide on Google Docs. I converted it into markdown before splitting it up with the other group members. Again, this was tedious, but a brainless task.
+   > Like the user guide, we did the developer guide on Google Docs. I converted it into markdown before splitting it up with the others.
 
 ### Contribution to Team-Based Tasks:
 
 1. Did the release for V1.0.
-   > Together with the team, I created release V1.0 in our team repository. 
 1. Fixed minor bugs for some components.
-   > I helped to fix bugs in various components of the project. Examples include [fixing the formatting of data printed out by the various list commands](https://github.com/AY2021S2-CS2113T-W09-3/tp/pull/74/files), as well as [getting focus for the text editor](https://github.com/AY2021S2-CS2113T-W09-3/tp/pull/130/files).  
-1. Maintained issue tracker.
-   > I created some issues and added labels to them.
+   > Examples include [fixing the formatting of various list commands](https://github.com/AY2021S2-CS2113T-W09-3/tp/pull/74/files), as well as [getting focus for the text editor](https://github.com/AY2021S2-CS2113T-W09-3/tp/pull/130/files).  
+1. Created issues and added labels on the issue tracker.
 
 ### Review/mentoring contributions:
 
@@ -55,12 +46,8 @@ GULIO is a module planner designed for efficiency when used by someone that can 
    > Examples: 
    > 1. https://github.com/AY2021S2-CS2113T-W09-3/tp/pull/129
    > 1. https://github.com/AY2021S2-CS2113T-W09-3/tp/pull/125
-   > 1. https://github.com/AY2021S2-CS2113T-W09-3/tp/pull/95
-   > 1. https://github.com/AY2021S2-CS2113T-W09-3/tp/pull/92
-   > 1. https://github.com/AY2021S2-CS2113T-W09-3/tp/pull/81
    > 1. https://github.com/AY2021S2-CS2113T-W09-3/tp/pull/43
-1. Helped resolve some issues with cheat-sheets.
-   > I gave suggestions on how to improve the text editor features (e.g. removal of text customization) and provided help to Hemrish whenever he faced difficulties regarding the text editor. (Which was how I ended up doing the shortcuts.) 
+1. Helped Hemrish resolve some issues regarding cheat-sheets.
 
 ### Contributions Beyond the Team
 1. Identified bugs during dry run PE. Click [here](https://github.com/8kdesign/ped/issues) to view.
@@ -68,6 +55,8 @@ GULIO is a module planner designed for efficiency when used by someone that can 
    > Examples:
    > 1. https://github.com/nus-cs2113-AY2021S2/forum/issues/2
    > 1. https://github.com/nus-cs2113-AY2021S2/forum/issues/11
+
+<div style="page-break-after: always;"></div>
 
 ## [Optional] Contributions to User Guide
 
@@ -98,6 +87,8 @@ Example of parts that I wrote:
 > 1. `task | <description> | <deadline> | <is done> | <is graded> | <remarks>`
 > 
 > > ⚠ For `<is done>` and `<is graded>`, use ‘T’ for true and ‘F’ for false.
+
+<div style="page-break-after: always;"></div>
 
 ## [Optional] Contributions to Developer Guide
 
