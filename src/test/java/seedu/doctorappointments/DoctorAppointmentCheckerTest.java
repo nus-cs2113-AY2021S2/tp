@@ -1,17 +1,19 @@
 package seedu.doctorappointments;
 
 import org.junit.jupiter.api.Test;
-import seedu.model.doctorappointment.AppointmentList;
 import seedu.logic.errorchecker.DoctorAppointmentChecker;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DoctorAppointmentCheckerTest {
 
     @Test
     public void testValidAppointmentId() {
-        String Id = "A12345";
-        assertDoesNotThrow(() -> DoctorAppointmentChecker.checkAptID(Id));
+        String id = "A12345";
+        assertDoesNotThrow(() -> DoctorAppointmentChecker.checkAptID(id));
     }
 
     @Test
@@ -36,7 +38,7 @@ public class DoctorAppointmentCheckerTest {
     }
 
     @Test
-    public void ValidGender() {
+    public void validGender() {
         boolean output = DoctorAppointmentChecker.isValidGender("M");
         assertTrue(output);
     }
