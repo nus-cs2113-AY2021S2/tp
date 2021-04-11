@@ -81,7 +81,8 @@ public class InventoryChecker extends MainChecker {
      * @throws IllegalCharacterException If any illegal character is present.
      * @throws NonExistentDrugException If Drug name does not exist in list.
      */
-    public void checkDelete() throws IllegalCharacterException, NonExistentDrugException {
+    public void checkDelete() throws IllegalCharacterException, NonExistentDrugException, WrongNumberException {
+        checkQuantity(stringTokens[2]);
         stringTokens[1] = stringTokens[1].toLowerCase();
         illegalCharacterChecker(stringTokens[1], "name");
         isNameExist(stringTokens[1], inventory);
