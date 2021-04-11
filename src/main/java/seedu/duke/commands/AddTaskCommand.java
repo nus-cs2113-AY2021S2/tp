@@ -7,7 +7,7 @@ import seedu.duke.ui.UI;
 
 import static seedu.duke.common.Messages.MESSAGE_ADDED_TASK;
 import static seedu.duke.common.Messages.MESSAGE_TASK_CHECK_GRADED;
-import static seedu.duke.common.CommonMethods.getIsTaskGraded;
+import static seedu.duke.common.CommonMethods.isTaskGraded;
 
 public class AddTaskCommand extends Command {
 
@@ -26,12 +26,12 @@ public class AddTaskCommand extends Command {
     @Override
     public void execute(UI ui) {
         Module module = ModuleList.getSelectedModule();
-        boolean isAddTaskAllowed = module.getIsAddTaskAllowed(ui, task);
+        boolean isAddTaskAllowed = module.isAddTaskAllowed(ui, task);
         if (!isAddTaskAllowed) {
             return;
         }
         ui.printMessage(MESSAGE_TASK_CHECK_GRADED);
-        boolean isGraded = getIsTaskGraded(ui);
+        boolean isGraded = isTaskGraded(ui);
         task.setGraded(isGraded);
         module.addTask(task);
         ui.printMessage(String.format(MESSAGE_ADDED_TASK, task.getDescription()));

@@ -80,7 +80,7 @@ public class CommonMethods {
      * @param ui Instance of UI.
      * @return Boolean of whether new task is graded.
      */
-    public static boolean getIsTaskGraded(UI ui) {
+    public static boolean isTaskGraded(UI ui) {
         String userInput = ui.readUserInput();
         while (!userInput.equalsIgnoreCase(YES_STRING)
                 && !userInput.equalsIgnoreCase(NO_STRING)) {

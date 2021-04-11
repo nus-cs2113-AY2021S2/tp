@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
-import static seedu.duke.common.CommonMethods.getIsTaskGraded;
+import static seedu.duke.common.CommonMethods.isTaskGraded;
 import static seedu.duke.common.Constants.EDIT;
 import static seedu.duke.common.Constants.FORMAT_DATE_IO;
 import static seedu.duke.common.Constants.TASK_FIELD_DEADLINE;
@@ -123,7 +123,7 @@ public class EditTaskCommand extends Command {
             selectedTask.editRemarks(ui.readUserInput());
             break;
         case 4:
-            selectedTask.editGraded(getIsTaskGraded(ui));
+            selectedTask.editGraded(isTaskGraded(ui));
             break;
         default:
         }
