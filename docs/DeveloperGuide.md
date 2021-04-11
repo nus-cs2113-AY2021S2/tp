@@ -97,21 +97,7 @@
    Appendix C: [Non-Functional Requirements](#appendix-c-non-functional-requirements)
 
    Appendix D: [Instructions for manual testing](#appendix-d-instructions-for-manual-testing)
-   <ul>Launch and Shutdown</ul>
-   <ul>Adding a Review</ul>
-   <ul>Editing a Review</ul>
-   <ul>Listing Reviews</ul>
-   <ul>Sorting Reviews</ul>
-   <ul>Deleting a review</ul>
-   <ul>Viewing the full details of a review</ul>
-   <ul>Adding a Recommendation</ul>
-   <ul>Editing a Recommendation</ul>
-   <ul>Listing Recommendations</ul>
-   <ul>Deleting a Recommendation</ul>
-   <ul>Marking a Recommendation as Done</ul>
-   <ul>Help</ul>
-   <ul>Data storage</ul>
-
+   
    Appendix E: [Other Guides: Documentation, Testing, Dev-ops](#appendix-e-other-guides-documentation-testing-dev-ops)
 
    Appendix F: [Glossary](#appendix-f-glossary)
@@ -347,23 +333,156 @@ Given below are instructions to test the app manually.
 
 &nbsp; **Expected**: A farewell message by Connoisseur will be shown.
 
-**Deleting a review or recommendation**
+**Mode Switch**
 
-Delete an unwanted review or recommendation.
+Switch between review and recommendation modes to manage reviews and recommendations respectively.
 
-1. **Test case**: `delete <review/recommendation title>` (case insensitive, review/ recommendation exist)
-
-   **Expected** *(review)*: `<review title> has been deleted.`
+1. **Test Case**: `reco`
    
-   **Expected** *(recommendation)*: `<recommendation title> has been deleted.`
+   **Expected**: `You are now in recommendation mode.`
 
-2. **Test case**: `delete <review/recommendation title>` (review/ recommendation does not exist)
+2. **Test Case**: `review`
 
-   **Problem**: An attempt at deleting an entry that does not exist.
+   **Expected**: `You are now in review mode.`
 
-   **Expected** *(review)*: `Specified review does not exist`
+3. **Test Case**: `aaaa`
+   
+   **Problem**: Invalid Command. Unable to switch modes.
 
-   **Expected** *(recommendation)*: `Specified review does not exist`
+   **Expected**: `Invalid command, please try again.`
+
+**Adding a Review or Recommendation**
+
+Allow user to add a review or recommendation, depending on whether they are in review or recommendation mode respectively.
+
+*User is in review mode*
+
+1. **Test Case**: `new` or `add`
+   
+   **Expected**: Connoisseur will ask user if user wants to add a quick review, followed by prompting user to add in 
+   details of review.
+   
+2. **Test Case**: `new quick` or `add quick`
+   
+   **Expected**: Connoisseur will prompt user to add in details of review, excluding the description.
+
+3. **Test Case**: `new full` or `add full`
+
+   **Expected**: Connoisseur will prompt user to add in details of review, including the description.
+
+4. **Test Case**: Rating given is not an integer between 0 and 5 inclusive. `-1`
+   
+   **Expected**: `Invalid number. Please add in a valid rating!`
+
+*User is in recommendation mode*
+
+1. **Test Case**: `new` or `add`
+
+   **Expected**: Connoisseur will prompt user to add details of recommendation.
+
+*Duplicate review or recommendation title, case insensitive)*
+
+1. **Test Case**: `Avengers`
+
+   **Expected**: Prints details of existing review or recommendation, followed by `Please try again with a unique title!`
+
+*Empty Inputs*
+1. **Test Case** *e.g. title*: null input or `    `
+
+   **Expected**: `This field should not be empty!`
+
+*Longer than expected inputs*
+1. **Test Case** *e.g. title*: `abcdefghijklmnopqrstuvwxyz`
+   
+   **Expected**: `Please enter an input with less than 20 characters.`
+
+**Editing a Review or Recommendation**
+
+Allow user to edit a review or recommendation, depending on whether they are in review or recommendation mode respectively.
+
+
+1. **Test Case**: `edit <review/ recommendation tite>`, review or recommendation title exists
+
+   **Expected**: Connoisseur will ask user what the user wants to edit, until the user is satisfied with edits.
+
+2. **Test Case**: `edit <review/ recommendation tite>`, review or recommendation title does not exist.
+
+   **Expected**: `Specified review/ recommendation does not exist!`
+
+*Duplicate review or recommendation title, case insensitive)*
+
+1. **Test Case**: `Avengers`
+
+   **Expected**: Prints details of existing review or recommendation, followed by `Please try again with a unique title!`
+
+*Empty Inputs*
+1. **Test Case** *e.g. title*: null input or `    `
+
+   **Expected**: `This field should not be empty!`
+
+*Longer than expected inputs*
+1. **Test Case** *e.g. title*: `abcdefghijklmnopqrstuvwxyz`
+
+   **Expected**: `Please enter an input with less than 20 characters.`
+
+   *User is in review mode*
+
+4. **Test Case**: Rating given is not an integer between 0 and 5 inclusive. `-1`
+
+   **Expected**: `Invalid number. Please add in a valid rating!`
+
+*User is in recommendation mode*
+
+1. **Test Case**: `new` or `add`
+
+   **Expected**: Connoisseur will prompt user to add details of recommendation.
+
+
+**Setting preferred sorting method for reviews**
+
+Sets sort method as preferred sorting method for reviews.
+
+**Prerequisite**: Connoisseur is in `review` mode.
+
+1. **Test Case**: `sort <preferred sorting method>`
+   **Expected**: `Success! Your preferred sorting method has been saved: <preferred sorting method in caps>`
+   
+2. **Test Case**: `sort`
+   **Expected**: Displays how to use the sort function.
+   
+3. **Test Case**: `sort aaaa`
+   **Expected**: `aaaa is not a valid sorting method, please try again.`
+   
+**List stored reviews or recommendations**
+
+Provide a consolidated view of reviews or recommendations, depending on which mode Connoisseur is in.
+
+1. **Test Case**: `list`
+   
+   **Expected**: Provides list of reviews in preferred sorting method if user is in review mode. 
+   Provides list of recommendations if user is in recommendation mode.
+
+2. **Test Case**: `list abc`
+
+   **Expected**: `Invalid Command. Please do not enter extra parameters or less parameters than required.`
+
+**Marking a recommendation as done**
+
+Mark a recommendation as done and convert it to a review.
+
+**Prerequisite**: Connoisseur must be in `reco` mode. Type `reco` to switch to `reco` mode.
+
+1. **Test case**: `done <recommendation title>` (case insensitive, recommendation exist)
+
+   **Expected**: Prompts to enter rating and option to enter description of review. 
+   This is followed by `<recommendation title> has been made a review!`.
+
+2. **Test case**: `done <recommendation title>` (recommendation does not exist)
+
+   **Problem**: An attempt at marking a recommendation that does not exist as done.
+
+   **Expected** : `Specified recommendation does not exist!`
+
 
 **Viewing the full details of a review**
 
@@ -379,7 +498,7 @@ Viewing a review details with review descriptions.
 
    **Problem**: An attempt at viewing a title that does not exist.
 
-   **Expected**: `Specified review does not exist`
+   **Expected**: `Specified review does not exist!`
 
 **Data Storage**
 
