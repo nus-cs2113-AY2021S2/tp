@@ -43,6 +43,7 @@
 5. [FAQ](#5-faq) <br>
 6. [Command summary](#6-command-summary) <br>
 
+--------------------------------------------------------------------------------------------------------------------
 
 ## 1. Introduction
 
@@ -737,24 +738,24 @@ In the data folder you will find 5 text files as shown below.<br>
 NUSMaze automatically loads your past data when the application is launched.<br>
 NUSMaze will inform you whether the data has been successfully loaded by displaying the below message after the NUSMaze Logo.<br>
 ```
-------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 [X] Alias data has been successfully loaded!
 [X] History data has been successfully loaded!
 [X] Favourite data has been successfully loaded!
 [X] Daily Route data has been successfully loaded!
 [X] Note data has been successfully loaded!
-------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 ```
 :information_source: If the saved data is corrupted, NUSMaze will automatically clear the data for that feature.<br>
 For example if favourite data is corrupted, NUSMaz will display:<br> 
 ```
-------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 [X] Alias data has been successfully loaded!
 [X] History data has been successfully loaded!
 [ ] An Error occurred while loading Favourite data. It has been cleared to default!
 [X] Daily Route data has been successfully loaded!
 [X] Note data has been successfully loaded!
-------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 ```
 
 --------------------------------------------------------------------------------------------------------------------
@@ -768,7 +769,7 @@ For example if favourite data is corrupted, NUSMaz will display:<br>
 **A** : Copy the entire data folder that can be found together with the NUSMaze.jar file on the first computer and copy it over to the same directory where the NUSMaze.jar file
 can be found on the second computer.
 
-**Q** : What Should I do if I don't know how to travel from one block to another?
+**Q** : What Should I do if I don't know how to travel from one block to another? <br>
 **A** : You can refer to this [map](http://map.nus.edu.sg) to view the directions.
 
 --------------------------------------------------------------------------------------------------------------------
