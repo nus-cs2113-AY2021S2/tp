@@ -48,7 +48,7 @@ public class Login {
 			if(password == null){
 				return -1;
 			}
-			
+
 			currentUserIndex = Login.authenticate(name, password, user);
 		
 			if(currentUserIndex < 0) {

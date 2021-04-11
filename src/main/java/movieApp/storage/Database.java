@@ -4,6 +4,9 @@ import movieApp.Cineplex;
 import movieApp.Movie;
 import movieApp.Review;
 import movieApp.Showtimes;
+import movieApp.generator.CineplexList;
+import movieApp.generator.MovieList;
+import movieApp.generator.ShowtimeList;
 import movieApp.parser.MovieFilter;
 import movieApp.user.Admin;
 import movieApp.user.Customer;
@@ -37,9 +40,9 @@ public class Database {
 
     public Database() throws Exception {
         checkIfDirectoryExists();
-        checkIfFileExists(movieListDirectory);
-        checkIfFileExists(cineplexListDirectory);
-        checkIfFileExists(showtimeListDirectory);
+        checkIfMovieListExists();
+        checkIfCineplexListExists();
+        checkIfShowtimeListExists();
         checkIfUserListExists();
         importDatabase();
     }
@@ -53,15 +56,27 @@ public class Database {
     }
 
     private static void checkIfShowtimeListExists() throws IOException{
-
+        if(!Files.exists(showtimeListDirectory)){
+            File newFile = new File(String.valueOf(showtimeListDirectory));
+            newFile.createNewFile();
+            writeToFile("data/showtimeList.txt", ShowtimeList.getDefaultShowtimes());
+        }
     }
 
     private static void checkIfCineplexListExists() throws IOException{
-
+        if(!Files.exists(cineplexListDirectory)){
+            File newFile = new File(String.valueOf(cineplexListDirectory));
+            newFile.createNewFile();
+            writeToFile("data/cineplexList.txt", CineplexList.getDefaultCineplexes());
+        }
     }
 
     private static void checkIfMovieListExists() throws IOException{
-
+        if(!Files.exists(movieListDirectory)){
+            File newFile = new File(String.valueOf(movieListDirectory));
+            newFile.createNewFile();
+            writeToFile("data/movieList.txt", MovieList.getDefaultMovieList());
+        }
     }
 
     private static void checkIfDirectoryExists() throws IOException {

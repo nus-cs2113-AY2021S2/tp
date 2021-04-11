@@ -12,7 +12,7 @@ public class UserList {
     public static ArrayList<User> getDefaultUsers(){
 
         return new ArrayList<User>(Arrays.asList(
-                new Admin("admin1", "6lcnRS7gdK90CYsb3mIu9A==~TzgBIVrD5za8LiAWhZGSgg"),
-                new Customer("customer1", "6lcnRS7gdK90CYsb3mIu9A==~TzgBIVrD5za8LiAWhZGSgg")));
+                new Admin("ADMIN1", "6lcnRS7gdK90CYsb3mIu9A==~TzgBIVrD5za8LiAWhZGSgg=="),
+                new Customer("CUSTOMER1", "6lcnRS7gdK90CYsb3mIu9A==~TzgBIVrD5za8LiAWhZGSgg==")));
     }
 }

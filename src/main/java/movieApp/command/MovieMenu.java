@@ -21,13 +21,13 @@ public class MovieMenu {
 		int action = -1;
 		Scanner sc = new Scanner(System.in);
 		while ((action < 1) || (action > 4)) {
-			System.out.println("\n\n======== Menu Choice =======");
+			System.out.println("\n======== Menu Choice =======");
 			System.out.println(" 1 Buy ticket");
 			System.out.println(" 2 View movie details");
 			System.out.println(" 3 Add review");
 			System.out.println(" 4 Go back");
-			System.out.println(" ============================");
-			System.out.println(" Please indicate your choice:");
+			System.out.println("============================");
+			System.out.println("Please indicate your choice:");
 
 			if (!sc.hasNextInt()) {
 				System.out.println("Please input an integer.\n");
