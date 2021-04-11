@@ -82,7 +82,7 @@ public class Constants {
     public static final String APPOINTMENTS_ADD_FORMAT =
             "add/[Doctor ID]/[Appointment ID]/[Name]/[Gender]/[Date (DDMMYYYY)]";
     public static final String SCHEDULES_ADD_FORMAT = "add/[Nurse ID]/[Patient ID]/[Date (DDMMYYYY)]";
-    public static final String INVENTORY_ADD_FORMAT = "add/[Drug name]/[Price]/[Quantity]";
+    public static final String INVENTORY_ADD_FORMAT = "add/[Item name]/[Price]/[Quantity]";
 
 
     // LIST FUNCTION DESCRIPTION
@@ -115,7 +115,7 @@ public class Constants {
     public static final String PATIENT_DELETE_FORMAT = "delete/[Patient ID]";
     public static final String APPOINTMENTS_DELETE_FORMAT = "delete/[DoctorID/Appointment ID]";
     public static final String SCHEDULES_DELETE_FORMAT = "delete/[Nurse ID]/[Date (DDMMYYYY)]";
-    public static final String INVENTORY_DELETE_FORMAT = "delete/[Drug Name]/[Quantity]";
+    public static final String INVENTORY_DELETE_FORMAT = "delete/[Item Name]/[Quantity]";
 
 
     // FIND FUNCTION DESCRIPTION

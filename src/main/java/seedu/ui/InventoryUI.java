@@ -23,18 +23,18 @@ public class InventoryUI extends UI {
     /**
      * Displays an output after adding a Inventory object.
      *
-     * @param addedDrugName Drug name.
-     * @param addedDrugQuantity Quantity of Drug.
+     * @param addedItemName Item name.
+     * @param addedItemQuantity Quantity of Item.
      */
-    public static void drugAddedMessage(String addedDrugName, String addedDrugQuantity) {
-        System.out.println(addedDrugQuantity + " " + addedDrugName + " is added into Inventory!");
+    public static void itemAddedMessage(String addedItemName, String addedItemQuantity) {
+        System.out.println(addedItemQuantity + " " + addedItemName + " is added into Inventory!");
     }
 
     /**
      * Displays an output when Inventory List is empty.
      */
     public static void emptyInventoryListMessage() {
-        System.out.println("You do not have any Drugs in your inventory:(");
+        System.out.println("You do not have any Items in your inventory:(");
     }
 
     /**
@@ -42,7 +42,7 @@ public class InventoryUI extends UI {
      */
     public static void inventoryListHeader() {
         System.out.println(
-                UI.prettyPrint("DrugName", 15) + " | "
+                UI.prettyPrint("ItemName", 15) + " | "
                         + UI.prettyPrint("Price", 10) + " | "
                         + UI.prettyPrint("Quantity", 5));
     }
@@ -69,11 +69,11 @@ public class InventoryUI extends UI {
     /**
      * Displays an output after deleting quantity of Inventory object.
      *
-     * @param deletedDrug Drug name
-     * @param deletedDrugQuantity Quantity of Drug
+     * @param deletedItem Item name
+     * @param deletedItemQuantity Quantity of Item
      */
-    public static void deleteDrugMessage(String deletedDrug, String deletedDrugQuantity) {
-        System.out.println("Noted. I've removed " + deletedDrugQuantity + " " + deletedDrug);
+    public static void deleteItemMessage(String deletedItem, String deletedItemQuantity) {
+        System.out.println("Noted. I've removed " + deletedItemQuantity + " " + deletedItem);
     }
 
     /**
