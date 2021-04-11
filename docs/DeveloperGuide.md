@@ -254,7 +254,7 @@ This feature prints each `review` *String* of all `modules` in the `ArrayList` o
 
 A brief explanation of how this works:  
 
-After checking if the modules list is empty, a '`for`' loop is used to go through the list of `modules`.    
+After checking if the modules list is empty, a '`for`' loop is used to go through the list of `modules`. The `review` *String* attribute is printed through the getReview() function within the `Module` class.  
 
 ### 4.07 Delete a Review  
 
