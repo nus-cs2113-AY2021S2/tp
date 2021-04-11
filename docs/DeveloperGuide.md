@@ -38,7 +38,7 @@ password is `Password`. When run as admin the user is able to `add` or `remove` 
 functions allows the app to be moderated and maintained by the person in charge. 
 
 ### Architecture
-![Architecture Diagram](./img/architecture diagram.png)
+![Architecture Diagram](./img/architecture%20diagram.png)
 The Architecture Diagram shown above explains the high-level design of NusFoodReviews Application. The following is a brief overview of each component.
 
 *Main* is responsible for,
@@ -47,10 +47,10 @@ The Architecture Diagram shown above explains the high-level design of NusFoodRe
 *Commons* represents a collection of classes used by multiple other components.
   
 The rest of the App consists of four components.
-+ UI: The UI of the App. 
-+ Logic: The command executor.
-+ Model: Holds the data of the In-App memory.
-+ Storage: Reads data from text file, and write to text file. 
+* [**`UI`**](#ui-component): The UI of the App. 
+* [**`Logic`**](#logic-component): The command executor.
+* [**`Model`**](#model-component): Holds the data of the In-App memory.
+* [**`Storage`**](#storage-component): Reads data from text file, and write to text file. 
 
 ### UI-Component
 
