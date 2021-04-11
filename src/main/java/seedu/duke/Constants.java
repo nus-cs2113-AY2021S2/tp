@@ -115,7 +115,7 @@ public class Constants {
     public static final String PATIENT_DELETE_FORMAT = "delete/[Patient ID]";
     public static final String APPOINTMENTS_DELETE_FORMAT = "delete/[DoctorID/Appointment ID]";
     public static final String SCHEDULES_DELETE_FORMAT = "delete/[Nurse ID]/[Date (DDMMYYYY)]";
-    public static final String INVENTORY_DELETE_FORMAT = "delete/[Drug Name]";
+    public static final String INVENTORY_DELETE_FORMAT = "delete/[Drug Name]/[Quantity]";
 
 
     // FIND FUNCTION DESCRIPTION
