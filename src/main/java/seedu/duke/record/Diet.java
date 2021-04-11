@@ -5,12 +5,14 @@ import seedu.duke.exception.TypeException;
 import java.time.LocalDate;
 import java.util.Locale;
 
+import static seedu.duke.common.Messages.HEADER_FOR_DIET_RECORD_FOOD;
+import static seedu.duke.common.Messages.HEADER_FOR_DIET_RECORD_WEIGHT;
 import static seedu.duke.record.FoodCategory.INVALID;
 import static seedu.duke.record.RecordType.DIET;
 
 public class Diet extends Record {
-    private static final int SPACES_FOR_FOOD = 20;
-    private static final int SPACES_FOR_WEIGHT = 12;
+    private static final int SPACES_FOR_FOOD = HEADER_FOR_DIET_RECORD_FOOD.length();
+    private static final int SPACES_FOR_WEIGHT = HEADER_FOR_DIET_RECORD_WEIGHT.length();
     private final double calorie;
     private final FoodCategory foodCategory;
     private final double amount;
