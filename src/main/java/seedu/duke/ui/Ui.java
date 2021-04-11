@@ -209,7 +209,6 @@ public class Ui {
 
     public static void printAddedTaskMessage(Task task) {
         System.out.println("You've added this: " + task.toString());
-        System.out.println("Returning back to the menu now!");
         printHorizontalLine();
     }
 
@@ -230,19 +229,16 @@ public class Ui {
     public static void printMarkedTaskMessage(Task task) {
         System.out.println("You've marked this as done: " + task.toString());
         System.out.println("NOTE: " + task.getMessage());
-        System.out.println("Returning back to TaskManager menu now!");
         printHorizontalLine();
     }
 
     public static void printUnmarkedTaskMessage(Task task) {
         System.out.println("You've marked this as not done: " + task.toString());
-        System.out.println("Returning back to TaskManager menu now!");
         printHorizontalLine();
     }
 
     public static void printDeletedTaskMessage(Task task) {
         System.out.println("You've deleted this: " + task.toString());
-        System.out.println("Returning back to the menu now!");
         printHorizontalLine();
     }
 
@@ -268,7 +264,6 @@ public class Ui {
 
     public static void printPinnedTaskMessage(Task task) {
         System.out.println("You've pinned this: " + task.toString());
-        System.out.println("Returning back to TaskManager menu now!");
         printHorizontalLine();
     }
 
@@ -278,8 +273,7 @@ public class Ui {
     }
 
     public static void printTaskListIsEmptyMessage() {
-        System.out.println("Task list is empty!\n"
-                + "Returning back to the menu now...");
+        System.out.println("Task list is empty!");
         printHorizontalLine();
     }
 
@@ -409,9 +403,6 @@ public class Ui {
         System.out.println();
     }
 
-    public static void printModuleDoesNotExistMessage() {
-        System.out.println("This module does not exist, would you like to add it? [Y/N]");
-    }
 
     public static void printReturnToMainMenuMessage() {
         System.out.println("Returning to main menu...");

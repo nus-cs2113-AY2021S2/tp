@@ -69,7 +69,7 @@ public class Component {
             }
 
         } else {
-            Ui.printModuleDoesNotExistMessage();
+            Ui.printInvalidInputMessage();
         }
 
     }
@@ -98,7 +98,7 @@ public class Component {
             System.out.println(modules.get(moduleNumberInt).getComponentsToString());
 
         } else {
-            Ui.printModuleDoesNotExistMessage();
+            Ui.printInvalidInputMessage();
         }
 
 
