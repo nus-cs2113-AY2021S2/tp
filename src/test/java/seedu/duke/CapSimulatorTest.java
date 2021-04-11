@@ -1,13 +1,13 @@
 package seedu.duke;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.features.capsimulator.HelpGraduation;
+import seedu.duke.features.capsimulator.AcademicRecords;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class HelpGraduationTest {
+public class CapSimulatorTest {
 
     @Test
     public void capCalculator_validCap_success() {
@@ -17,7 +17,7 @@ public class HelpGraduationTest {
         grades.add(1.0);
         mcs.add(4);
         mcs.add(6);
-        assertEquals(1.3, new HelpGraduation()
+        assertEquals(1.3, new AcademicRecords()
                 .capCalculator(grades, mcs, 20));
 
     }

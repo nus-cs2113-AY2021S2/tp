@@ -7,6 +7,9 @@ import seedu.duke.features.task.TaskManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Mark or unmark task allows the user to mark or unmark an assignment, midterm, final exam or normal task.
+ */
 public class MarkOrUnmarkTask {
 
     private static final int TOGGLE_TASK_COMMAND = 1;
@@ -21,6 +24,11 @@ public class MarkOrUnmarkTask {
     private static final String NOT_DONE_STATUS = "[    ] ";
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
+    /**
+     * Executes the mark or unmark task feature.
+     *
+     * @param taskTypeNumber The number of the task type the user wants to mark or unmark.
+     */
     public static void execute(int taskTypeNumber) {
         if (TaskManager.taskListIsEmpty(taskTypeNumber)) {
             Ui.printTaskListIsEmptyMessage();
@@ -59,8 +67,17 @@ public class MarkOrUnmarkTask {
         }
     }
 
+    /**
+     * Toggles the task status depending on its current status.
+     * If the task is marked as done, the user can choose to unmark it.
+     * If the task is not marked as done, the user can choose to mark it.
+     *
+     * @param taskNumber The index of the task the user wants to mark or unmark.
+     * @param taskType The type of the task the user wants to mark or unmark.
+     */
     public static void toggleTaskStatus(int taskNumber, String taskType) {
         Task task = TaskManager.getTask(taskType, taskNumber);
+        assert task != null : "task should exist!";
         String taskStatus = task.getStatus();
 
         if (taskStatus.equals(DONE_STATUS)) {
@@ -104,12 +121,24 @@ public class MarkOrUnmarkTask {
         }
     }
 
+    /**
+     * Marks a pinned task as done.
+     *
+     * @param taskIsPinned If the task is pinned.
+     * @param task The task to be marked as done.
+     */
     public static void markPinnedTaskAsDone(boolean taskIsPinned, Task task) {
         if (taskIsPinned) {
             task.markAsDone();
         }
     }
 
+    /**
+     * Marks a pinned task as not done.
+     *
+     * @param taskIsPinned If the task is pinned.
+     * @param task The task to be marked as not done.
+     */
     public static void markPinnedTaskAsUnDone(boolean taskIsPinned, Task task) {
         if (taskIsPinned) {
             task.markAsUnDone();

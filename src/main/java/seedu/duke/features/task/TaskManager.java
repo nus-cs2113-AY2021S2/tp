@@ -17,6 +17,10 @@ import java.util.HashMap;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 
+/**
+ * TaskManager manages the task list for modules and contains methods to
+ * add, delete, mark/unmark, view and pin assignments, midterm, final exam and normal tasks.
+ */
 public class TaskManager {
 
     private static final int ADD_NEW_TASK_COMMAND = 1;
@@ -37,6 +41,9 @@ public class TaskManager {
     public static ArrayList<FinalExam> finalExams;
     public static HashMap<String, ArrayList<Task>> pinnedTasks;
 
+    /**
+     * Constructs task list for all different task types.
+     */
     public TaskManager() {
         tasks = new ArrayList<>();
         assignments = new ArrayList<>();
@@ -45,6 +52,9 @@ public class TaskManager {
         pinnedTasks = new HashMap<>();
     }
 
+    /**
+     * Prints task manager menu and executes task manager features.
+     */
     public static void execute() {
         while (true) {
             Ui.printTaskManagerMenu();
@@ -84,6 +94,9 @@ public class TaskManager {
         }
     }
 
+    /**
+     * Executes add new task feature.
+     */
     public static void addNewTask() {
         Ui.printAddTaskMenu();
         int taskTypeNumber = getTaskNumber();
@@ -91,6 +104,9 @@ public class TaskManager {
         AddTask.execute(taskTypeNumber);
     }
 
+    /**
+     * Executes mark or unmark task feature.
+     */
     private static void markOrUnmarkTask() {
         Ui.printMarkTaskMenu();
         int taskTypeNumber = getTaskNumber();
@@ -99,6 +115,9 @@ public class TaskManager {
 
     }
 
+    /**
+     * Executes view all tasks feature.
+     */
     private static void viewAllTasks() {
         Ui.printPinnedTaskList(pinnedTasks);
         Ui.printEmptyLine();
@@ -113,6 +132,9 @@ public class TaskManager {
         Ui.printHorizontalLine();
     }
 
+    /**
+     * Executes pin task feature.
+     */
     private static void pinTask() {
         Ui.printPinTaskMenu();
         int taskTypeNumber = getTaskNumber();
@@ -120,6 +142,9 @@ public class TaskManager {
         PinTask.execute(taskTypeNumber);
     }
 
+    /**
+     * Executes delete task feature.
+     */
     public static void deleteTask() {
         Ui.printDeleteTaskMenu();
         int taskTypeNumber = getTaskNumber();
@@ -127,6 +152,12 @@ public class TaskManager {
         DeleteTask.execute(taskTypeNumber);
     }
 
+    /**
+     * Checks if user input corresponds to a valid task type. The number should range from 1 to 4.
+     *
+     * @param taskNumber User input for task type.
+     * @return If the user input corresponds to a valid task type.
+     */
     public static boolean isValidTaskType(int taskNumber) {
         try {
             boolean isInvalidTaskType = (taskNumber <= 0) || (taskNumber >= 5);
@@ -142,6 +173,11 @@ public class TaskManager {
         return false;
     }
 
+    /**
+     * Gets user input for task type.
+     *
+     * @return Number of the task type.
+     */
     public static int getTaskNumber() {
         int taskNumber;
         while (true) {
@@ -154,6 +190,12 @@ public class TaskManager {
         return taskNumber;
     }
 
+    /**
+     * Checks if the task list for a specific task type is empty.
+     *
+     * @param taskTypeNumber The number corresponding to the 4 different task types.
+     * @return If the task list for the specified task type is empty.
+     */
     public static boolean taskListIsEmpty(int taskTypeNumber) {
         boolean isEmpty = false;
         switch (taskTypeNumber) {
@@ -175,6 +217,14 @@ public class TaskManager {
         return isEmpty;
     }
 
+    /**
+     * Checks if a normal task already exists.
+     *
+     * @param module The module code of the task.
+     * @param description The description of the task.
+     * @param status The status of whether the task is done.
+     * @return If the task already exists in the task list.
+     */
     public static boolean findIfTaskExists(String module, String description, String status) {
         for (Task task : tasks) {
             boolean isSameModule = task.getModule().equals(module);
@@ -189,6 +239,15 @@ public class TaskManager {
         return false;
     }
 
+    /**
+     * Checks if an assignment already exists.
+     *
+     * @param module The module code of the assignment.
+     * @param description The description of the assignment.
+     * @param dateAndTime The date and time of the assignment.
+     * @param status The status of whether the assignment is done.
+     * @return If the assignment already exists in the assignment list.
+     */
     public static boolean findIfAssignmentExists(String module, String description,
                                                  String dateAndTime, String status) {
         for (Assignment assignment : assignments) {
@@ -205,8 +264,17 @@ public class TaskManager {
         return false;
     }
 
+    /**
+     * Checks if a midterm already exists.
+     *
+     * @param module The module code of the midterm.
+     * @param description The description of the midterm.
+     * @param dateAndTime The date and time of the midterm.
+     * @param status The status of whether the midterm is done.
+     * @return If the midterm already exists in the midterm list.
+     */
     public static boolean findIfMidtermExists(String module, String description,
-                                                 String dateAndTime, String status) {
+                                              String dateAndTime, String status) {
         for (Midterm midterm : midterms) {
             boolean isSameModule = midterm.getModule().equals(module);
             boolean isSameDescription = midterm.getDescription().equals(description);
@@ -221,8 +289,17 @@ public class TaskManager {
         return false;
     }
 
+    /**
+     * Checks if a final exam already exists.
+     *
+     * @param module The module code of the final exam.
+     * @param description The description of the final exam.
+     * @param dateAndTime The date and time of the final exam.
+     * @param status The status of whether the final exam is done.
+     * @return If the final exam already exists in the final exam list.
+     */
     public static boolean findIfFinalExamExists(String module, String description,
-                                              String dateAndTime, String status) {
+                                                String dateAndTime, String status) {
         for (FinalExam finalExam : finalExams) {
             boolean isSameModule = finalExam.getModule().equals(module);
             boolean isSameDescription = finalExam.getDescription().equals(description);
@@ -237,6 +314,13 @@ public class TaskManager {
         return false;
     }
 
+    /**
+     * Gets a task.
+     *
+     * @param taskType The task type.
+     * @param taskNumber The index of the task.
+     * @return The task.
+     */
     public static Task getTask(String taskType, int taskNumber) {
         switch (taskType) {
         case TASK_TYPE:
@@ -253,8 +337,18 @@ public class TaskManager {
         }
     }
 
+    /**
+     * Gets a pinned task.
+     *
+     * @param taskType The task type.
+     * @param module The module of the task.
+     * @param description The description of the task.
+     * @param status The status of whether a task is done.
+     * @param message The message belonging to the task.
+     * @return The pinned task.
+     */
     public static Task getPinnedTask(String taskType, String module, String description,
-                                       String status, String message) {
+                                     String status, String message) {
         ArrayList<Task> tasks = pinnedTasks.get(taskType);
         for (Task task : tasks) {
             boolean isSameModule = task.getModule().equals(module);
@@ -269,6 +363,16 @@ public class TaskManager {
         return null;
     }
 
+    /**
+     * Checks if a pinned task already exists.
+     *
+     * @param taskType The task type.
+     * @param module The module of the task.
+     * @param description The description of the task.
+     * @param status The status of whether the task is done.
+     * @param message The message corresponding to the task.
+     * @return If the task already exists in the pinned task list.
+     */
     public static boolean findTaskInPinnedTasks(String taskType, String module, String description,
                                                 String status, String message) {
         if (!pinnedTasks.containsKey(taskType)) {

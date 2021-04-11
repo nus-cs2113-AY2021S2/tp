@@ -4,10 +4,11 @@ import seedu.duke.features.moduleinfo.Module;
 import seedu.duke.features.moduleinfo.ModuleInfo;
 import seedu.duke.ui.Ui;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class HelpGraduation {
+public class AcademicRecords {
 
     private static Double currentCap = 0.0;
     private static int numberOfGradedMCsTaken = 0;
@@ -15,26 +16,28 @@ public class HelpGraduation {
     public ArrayList<Double> listOfGrades;
     public ArrayList<Integer> listOfMCs;
     public ArrayList<String> gradesInString;
+    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 
-    public HelpGraduation() {
+
+    public AcademicRecords() {
         this.listOfGrades = new ArrayList<>();
         this.listOfMCs = new ArrayList<>();
         this.gradesInString = new ArrayList<>();
     }
 
     public static void setCurrentCap(Double currentCap) {
-        HelpGraduation.currentCap = currentCap;
+        AcademicRecords.currentCap = currentCap;
     }
 
     public static void setTotalMcs(int numberOfGradedMCsTaken) {
-        HelpGraduation.numberOfGradedMCsTaken = numberOfGradedMCsTaken;
+        AcademicRecords.numberOfGradedMCsTaken = numberOfGradedMCsTaken;
     }
 
     public static Double getCurrentCap() {
-        DecimalFormat df = new DecimalFormat("#.##");
-        String formattedCap = df.format(currentCap);
-        return Double.parseDouble(formattedCap);
+        //DecimalFormat df = new DecimalFormat("#.##");
+        //String formattedCap = df.format(currentCap);
+        return currentCap;
     }
 
     public static int getNumberOfGradedMCsTaken() {
@@ -51,6 +54,7 @@ public class HelpGraduation {
         Ui.printCapSimulatorSetting();
         int capSimulatorSetting = Ui.readCommandToInt();
         if (capSimulatorSetting == 1) {
+            logger.log(Level.INFO, "Going to start cap simulator version 1");
             for (Module module : ModuleInfo.modules) {
                 String grade = module.getGrade();
                 int modularCredits = module.getMc();
@@ -65,7 +69,7 @@ public class HelpGraduation {
             }
             capCalculator(listOfGrades, listOfMCs, totalMCs);
         } else if (capSimulatorSetting == 2) {
-
+            logger.log(Level.INFO, "Going to start cap simulator version 2");
             Ui.printCapSimulatorPrompt();
             while (true) {
                 Ui.printGradePerModulePrompt();
@@ -77,50 +81,51 @@ public class HelpGraduation {
                 case "A+":
                 case "A":
                     listOfGrades.add(5.0);
-                    receivingMCs();
+                    receivingMCs(false);
                     break;
                 case "A-":
                     listOfGrades.add(4.5);
-                    receivingMCs();
+                    receivingMCs(false);
                     break;
                 case "B+":
                     listOfGrades.add(4.0);
-                    receivingMCs();
+                    receivingMCs(false);
                     break;
                 case "B":
                     listOfGrades.add(3.5);
-                    receivingMCs();
+                    receivingMCs(false);
                     break;
                 case "B-":
                     listOfGrades.add(3.0);
-                    receivingMCs();
+                    receivingMCs(false);
                     break;
                 case "C+":
                     listOfGrades.add(2.5);
-                    receivingMCs();
+                    receivingMCs(false);
                     break;
                 case "C":
                     listOfGrades.add(2.0);
-                    receivingMCs();
+                    receivingMCs(false);
                     break;
                 case "D+":
                     listOfGrades.add(1.5);
-                    receivingMCs();
+                    receivingMCs(false);
                     break;
                 case "D":
                     listOfGrades.add(1.0);
-                    receivingMCs();
+                    receivingMCs(false);
                     break;
                 case "F":
                     listOfGrades.add(0.0);
-                    receivingMCs();
+                    receivingMCs(false);
                     break;
                 case "SU":
-                    // work in progress here
+                    listOfGrades.add(0.0);
+                    receivingMCs(true);
                     break;
                 case "OK":
                     capCalculator(listOfGrades, listOfMCs, totalMCs);
-                    break;
+                    return;
                 case "Q":
                     Ui.printEraseSimulationEntriesMessage();
                     return;
@@ -132,49 +137,17 @@ public class HelpGraduation {
 
     }
 
-    public void receivingMCs() {
+    public void receivingMCs(boolean isSU) {
         Ui.printMCsPerModulePrompt();
-        String numberOfMCs = Ui.readCommand().trim();
-        switch (numberOfMCs) {
-        case "1":
-            listOfMCs.add(1);
-            totalMCs += 1;
-            break;
-        case "2":
-            listOfMCs.add(2);
-            totalMCs += 2;
-            break;
-        case "4":
-            listOfMCs.add(4);
-            totalMCs += 4;
-            break;
-        case "6":
-            listOfMCs.add(6);
-            totalMCs += 6;
-            break;
-        case "8":
-            listOfMCs.add(8);
-            totalMCs += 8;
-            break;
-        case "10":
-            listOfMCs.add(10);
-            totalMCs += 10;
-            break;
-        case "12":
-            listOfMCs.add(12);
-            totalMCs += 12;
-            break;
-        case "q":
-            // to remove last grade keyed in by user due to
-            // unexpected input for MCs associated with the last grade.
+        Integer numberOfMCs = Ui.readCommandToInt();
+
+        if (ModularCreditEnum.checkMcsExist(numberOfMCs)) {
+            listOfMCs.add(numberOfMCs);
+            if (!isSU) {
+                totalMCs += numberOfMCs;
+            }
+        } else {
             int gradeIndex = listOfGrades.size() - 1;
-            listOfGrades.remove(gradeIndex);
-            Ui.printEraseSimulationEntriesMessage();
-            return;
-        default:
-            // to remove last grade keyed in by user due to
-            // unexpected input for MCs associated with the last grade.
-            gradeIndex = listOfGrades.size() - 1;
             listOfGrades.remove(gradeIndex);
             gradesInString.remove(gradeIndex);
             Ui.printInvalidModularCreditMessage();
@@ -186,11 +159,11 @@ public class HelpGraduation {
                                         ArrayList<Integer> listOfMCs, Integer totalMCs) {
 
 
-        System.out.println("Calculating on the following entries entered: ");
-        System.out.println("Grades entered: " + gradesInString);
-        System.out.println("MCs entered: " + listOfMCs);
+        System.out.println("Calculating on the following entries: ");
+        System.out.println("Grades: " + gradesInString);
+        System.out.println("MCs: " + listOfMCs);
 
-        System.out.println("Current CAP: " + currentCap);
+        System.out.printf("Current CAP: %.02f\n", getCurrentCap());
         System.out.println("Current Graded MCs taken: " + numberOfGradedMCsTaken);
 
         Double calculatedCap = 0.0;
@@ -201,9 +174,7 @@ public class HelpGraduation {
         calculatedCap = (calculatedCap + currentCap * numberOfGradedMCsTaken)
                 / (totalMCs + numberOfGradedMCsTaken);
         System.out.println("The simulated cumulative average point (rounded to 2 d.p) you have is: ");
-        DecimalFormat df = new DecimalFormat("#.##");
-        String formattedCap = df.format(calculatedCap);
-        System.out.println(formattedCap);
+        System.out.printf("%.02f\n", calculatedCap);
         return calculatedCap;
     }
 

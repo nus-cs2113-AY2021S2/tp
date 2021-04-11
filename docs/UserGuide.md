@@ -347,12 +347,26 @@ Returning to module information menu...
 
 #### 3.1.5 Add/View Components and Their Weightages
 
+This command allows you to add or view components, 
+and their weightages that adds up to 100 for an existing module.
+In this sub-section, the word, "components", will be use interchangeably
+to mean components or components and its associated weightage for simplicity.
+
+
+>**<span style="color: red"> WARNING! </span>**  
+> * You may only delete components through deleting the module object associated with it.  
+> * A prompt will come after each entry to ask for your confirmation on the correctness of the component.  
+> * Rationale: The assessment breakdown of a module is usually fixed.  
+
+
 > **Note!**  
-> Components' weightages is only accepting integer values which is usually the convention.
-* Example for adding components and weightage to a module Input:  
+> * Components' weightages is only accepting integer values which is usually the convention.  
+> * Old components' weightage will be over written automatically when a component name already exist in the program.  
+> * Parsing is designed such as any inputs after weightage will be ignored. E.g. FinalExam 20 2, '2' will be ignored.  
+
+* Example for adding component and weightage to a module:    
 ````
-> 5  
---------------------------------------------   
+> 5
 Which action would you like to proceed with? Key in 1 or 2.
 [1] --- Add Component
 [2] --- View Component
@@ -362,22 +376,27 @@ Here are the modules in your Modules List:
 --------------------------------------------
 [1] --- CS2113T
 [2] --- CG1112
-[3] --- CS1010
 --------------------------------------------
 Which module would you like to add a component?
-> 1
+> 2
 --------------------------------------------
-Please key in your component and percentage of the component. 
-Leave space between component and percentage only.
+Please key in your component and weightage of the component. 
+Leave space between component and weightage only.
 Example: FinalExam 20
 > FinalExam 40
+--------------------------------------------
+Are you sure you have keyed in the correct name and weightage?
+Note: you may only change this by deleting the module associated with it.
+[1] --- Yes, I confirm my inputs.
+[2] --- No, I wish to key in my inputs again.
+> 1
 --------------------------------------------
 Component and weightage added!
 ```` 
  
 
 
-* Example for viewing the components and weightage of an existing module Input:  
+* Example for viewing the components and weightage of an existing module:  
   
 ````
 > 5  
@@ -402,14 +421,47 @@ From Module object: CS2113T
 
 #### 3.1.6 Add Module's Modular Credits (MC)
 
-*[This section will be completed in the future.]* <br>
+This command allows you to add modular credits for an existing module.
+
+>**<span style="color: red"> WARNING! </span>**  
+> You may overwrite the existing modular credits for an existing module.  
+
+> **Note!**  
+> Supported MCs: 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 13, 14, 15, 20; 
+> As these MCs are more common, they are selected to be valid MCs input. 
+> Invalid MCs are not allowed and entries for such inputs will be discarded.  
+
+
+```
+> 6
+--------------------------------------------
+Here are the modules in your Modules List:
+--------------------------------------------
+[1] --- CS2113T
+[2] --- CG1112
+[3] --- CS2040C
+--------------------------------------------
+Please choose which module you would like to allocate modular credits (MCs) and enter the number:
+> 3
+--------------------------------------------
+Enter the number of MCs for this module: 
+> 1
+--------------------------------------------
+The current MCs associated with CS2040C is: 4
+Overwriting current MCs for CS2040C to: 1
+Returning to module information menu...
+```
 
 #### 3.1.7 Add Module Grade
+
+This command allows you to add module grade to an existing module. 
+The module grade added can be used to compute a [simulated CAP](#323-simulate-future-cap).   
 
 Example for adding grade to a module:  
 
 > **Note!**  
 > In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.  
+
 
 ````
 > 7

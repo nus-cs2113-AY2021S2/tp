@@ -7,6 +7,9 @@ import seedu.duke.features.task.TaskManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Delete task allows the user to delete an assignment, midterm, final exam or normal task.
+ */
 public class DeleteTask {
 
     private static final int DELETE_TASK = 1;
@@ -19,6 +22,11 @@ public class DeleteTask {
     private static final String FINAL_EXAM_TYPE = "[Final Exam]";
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
+    /**
+     * Executes the delete task feature.
+     *
+     * @param taskTypeNumber The number of the task type the user wants to delete.
+     */
     public static void execute(int taskTypeNumber) {
         if (TaskManager.taskListIsEmpty(taskTypeNumber)) {
             Ui.printTaskListIsEmptyMessage();
@@ -57,6 +65,12 @@ public class DeleteTask {
         }
     }
 
+    /**
+     * Finds and deletes a task.
+     *
+     * @param taskNumber The index of the task the user wants to delete.
+     * @param taskType The type of the task the user wants to delete.
+     */
     public static void findAndDeleteTask(int taskNumber, String taskType) {
         Task task = TaskManager.getTask(taskType, taskNumber);
         deleteTask(taskType, task);
@@ -71,6 +85,12 @@ public class DeleteTask {
         Ui.printDeletedTaskMessage(task);
     }
 
+    /**
+     * Deletes a task.
+     *
+     * @param taskType The index of the task the user wants to delete.
+     * @param task The task the user wants to delete.
+     */
     public static void deleteTask(String taskType, Task task) {
         switch (taskType) {
         case TASK_TYPE:
@@ -90,7 +110,12 @@ public class DeleteTask {
         }
     }
 
-
+    /**
+     * Finds and deletes a pinned task.
+     *
+     * @param taskType The type of the pinned task to be deleted.
+     * @param task The pinned task to be deleted.
+     */
     public static void findAndDeletePinnedTask(String taskType, Task task) {
         boolean taskIsPinned = TaskManager.findTaskInPinnedTasks(taskType, task.getModule(), task.getDescription(),
                 task.getStatus(), task.getMessage());

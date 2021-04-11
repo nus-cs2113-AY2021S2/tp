@@ -1,6 +1,6 @@
 package seedu.duke.ui;
 
-import seedu.duke.features.capsimulator.HelpGraduation;
+import seedu.duke.features.capsimulator.AcademicRecords;
 import seedu.duke.features.link.LinkInfo;
 import seedu.duke.features.link.ZoomLinkInfo;
 import seedu.duke.features.moduleinfo.ModuleInfo;
@@ -299,6 +299,11 @@ public class Ui {
         System.out.println("Please enter a valid date format.");
     }
 
+    /**
+     * Reads user input and ensures that it does not contain the delimiter " ~~ ".
+     *
+     * @return User input.
+     */
     public static String readCommand() {
         String command;
         Scanner input = new Scanner(System.in);
@@ -315,6 +320,11 @@ public class Ui {
         return command;
     }
 
+    /**
+     * Reads user input and ensures that it is an Integer.
+     *
+     * @return User input in Integer form.
+     */
     public static int readCommandToInt() {
         int command;
         Scanner input = new Scanner(System.in);
@@ -404,7 +414,7 @@ public class Ui {
         System.out.println();
     }
 
-    public static void printReturnToHelpGraduationMenuMessage() {
+    public static void printReturnToCapSimulatorMenuMessage() {
         System.out.println("Returning to CAP simulator/calculator menu...");
         System.out.println();
     }
@@ -441,8 +451,8 @@ public class Ui {
     }
 
     public static void printModuleComponentPrompt() {
-        System.out.println("Please key in your component and percentage of the component. ");
-        System.out.println("Leave space between component and percentage only.");
+        System.out.println("Please key in your component and weightage of the component. ");
+        System.out.println("Leave space between component and weightage only.");
         System.out.println("Example: FinalExam 20");
     }
 
@@ -612,7 +622,8 @@ public class Ui {
         System.out.println("Welcome to CAP Simulator Version 2!\n"
                 + "You have chosen to simulate CAP base on your input.");
         System.out.println("THINGS TO NOTE: ");
-        System.out.println("You may key in 'q' to quit and 'ok' after finishing your inputs.");
+        System.out.println("When prompted to key in grade, "
+                + "you may key in 'q' to quit and 'ok' to generate simulated CAP.");
         System.out.println("You may key in your letter grades "
                 + "follow by MCs associated with the letter grade "
                 + "after each prompt. \n");
@@ -642,13 +653,15 @@ public class Ui {
     }
 
     public static void getNumberOfGradedMCsTakenPrompt() {
-        System.out.println("Please key in the number of MCs graded you have taken so far: ");
+        System.out.println("Please key in the total MCs completed "
+                + "(excluding modules you have S/U-ed and CS/CU modules)");
     }
 
     public static void printRegisteredCapAndMCsTakenMessage() {
-        System.out.println("Current CAP: " + HelpGraduation.getCurrentCap() + " (rounded to 2dp)");
-        System.out.println("Number of Graded MCs Taken: "
-                + HelpGraduation.getNumberOfGradedMCsTaken());
+        System.out.printf("Current CAP: %.02f", AcademicRecords.getCurrentCap());
+        System.out.println(" (rounded to 2dp)");
+        System.out.println("Number of MCs completed: "
+                + AcademicRecords.getNumberOfGradedMCsTaken());
     }
 
     public static void printInvalidGradeMessage() {
@@ -685,7 +698,7 @@ public class Ui {
         System.out.println("Note: CAP Simulated takes your current CAP "
                 + "and total number of MCs taken into account.");
         System.out.println("If you intend to calculate your CAP solely on new entries, \n"
-                + "please go back to the HelpGraduation menu"
+                + "please go back to the AcademicRecords menu"
                 + " and set existing CAP and MCs taken to be 0.\n");
         System.out.println("Key in 1 to simulate your cap base on the grades you have"
                 + " entered before for each module."
@@ -699,7 +712,7 @@ public class Ui {
     }
 
     public static void printEraseSimulationEntriesMessage() {
-        System.out.println("Erasing current simulation entries...\n");
+        System.out.println("Erasing any existing current simulation entries...\n");
     }
 
     public static void printFilesCouldNotBeSavedMessage() {

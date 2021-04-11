@@ -4,9 +4,13 @@ import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class HelpGraduationManager {
+public class CapSimulatorManager {
 
+    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+    
     public static void execute() {
 
         while (true) {
@@ -24,8 +28,8 @@ public class HelpGraduationManager {
                     Ui.printRegisteredCapAndMCsTakenMessage();
                     break;
                 case 3:
-                    HelpGraduation helpGraduation = new HelpGraduation();
-                    helpGraduation.capSimulator();
+                    AcademicRecords academicRecords = new AcademicRecords();
+                    academicRecords.capSimulator();
                     break;
                 case 4:
                     return;
@@ -40,8 +44,9 @@ public class HelpGraduationManager {
                 Storage.saveAllFiles();
             } catch (IOException e) {
                 Ui.printFilesCouldNotBeSavedMessage();
+                logger.log(Level.WARNING, "Saving error in CAP Simulator Manager.");
             }
-            Ui.printReturnToHelpGraduationMenuMessage();
+            Ui.printReturnToCapSimulatorMenuMessage();
         }
     }
 
@@ -64,8 +69,8 @@ public class HelpGraduationManager {
         int totalMcs = Integer.parseInt(Ui.readCommand());
         if (((cap > 0 && cap <= 5.0) && (totalMcs > 0 && totalMcs <= 180))
                 || ((cap == 0) && (totalMcs == 0))) {
-            HelpGraduation.setCurrentCap(cap);
-            HelpGraduation.setTotalMcs(totalMcs);
+            AcademicRecords.setCurrentCap(cap);
+            AcademicRecords.setTotalMcs(totalMcs);
         } else {
             System.out.println("Invalid MCs. Entries is not registered.\n");
         }
