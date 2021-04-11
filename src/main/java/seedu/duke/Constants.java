@@ -40,7 +40,7 @@ public class Constants {
             + "Usage: retrieve\n";
     public static final String CURRENT_INFO_MESSAGE = "Print out the current patient being loaded.\n"
             + "Usage: current\n";
-    public static final String HELP_INFO_MESSAGE = "Display information about all commands or selected commands only\n"
+    public static final String HELP_INFO_MESSAGE = "Displays a list of commands or information of selected commands\n"
             + "Command prefix: help\n"
             + "Argument(s): commands\n"
             + "Usage: help [OPTIONAL_COMMANDS]\n"
