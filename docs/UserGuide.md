@@ -37,8 +37,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.14. Delete Zoom Link](#3114-delete-zoom-link)   
 
 &nbsp;&nbsp;&nbsp;&nbsp;[3.2 CAP Simulator/Calculator](#32-cap-simulatorcalculator)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.1 Add CAP and Number of MCs graded taken](#321-add-cap-and-number-of-mcs-graded-taken)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.2 View CAP and Number of MCs graded taken](#322-view-cap-and-number-of-mcs-graded-taken)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.1 Add CAP and Number of MCs counted towards CAP](#321-add-cap-and-number-of-mcs-counted-towards-cap)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.2 View CAP and Number of MCs counted towards CAP](#322-view-cap-and-number-of-mcs-counted-towards-cap)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.3 Simulate future CAP](#323-simulate-future-cap)  
 
 &nbsp;&nbsp;&nbsp;&nbsp;[3.3 Task Manager](#33-task-manager)  
@@ -347,8 +347,9 @@ Returning to module information menu...
 
 #### 3.1.5 Add/View Components and Their Weightages
 
-This command allows you to add or view components, 
+Adds or displays components, 
 and their weightages that adds up to 100 for an existing module.
+
 In this sub-section, the word, "components", will be use interchangeably
 to mean components or components and its associated weightage for simplicity.
 
@@ -421,7 +422,7 @@ From Module object: CS2113T
 
 #### 3.1.6 Add Module's Modular Credits (MC)
 
-This command allows you to add modular credits for an existing module.
+Adds modular credits for an existing module.
 
 >**<span style="color: red"> WARNING! </span>**  
 > You may overwrite the existing modular credits for an existing module.  
@@ -431,6 +432,7 @@ This command allows you to add modular credits for an existing module.
 > As these MCs are more common, they are selected to be valid MCs input. 
 > Invalid MCs are not allowed and entries for such inputs will be discarded.  
 
+Example for adding modular credits to a module:  
 
 ```
 > 6
@@ -454,14 +456,9 @@ Returning to module information menu...
 
 #### 3.1.7 Add Module Grade
 
-This command allows you to add module grade to an existing module. 
-The module grade added can be used to compute a [simulated CAP](#323-simulate-future-cap).   
+Adds module grade to an existing module. The module grade added can be used to compute a [simulated CAP](#323-simulate-future-cap).   
 
 Example for adding grade to a module:  
-
-> **Note!**  
-> In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.  
-
 
 ````
 > 7
@@ -608,10 +605,10 @@ Refer to [this section](#346-delete-zoom-link).
 
 ### 3.2 CAP Simulator/Calculator
 
-The CAP Simulator/Calculator allows you to calculate your future CAP base on your current CAP and
-modules you have taken before.  
+The CAP Simulator/Calculator allows you to calculate your future CAP
+base on your [current CAP and MCs graded](#321-add-cap-and-number-of-mcs-counted-towards-cap).  
 
-To enter CAP Simulator/Calculator, type `2` from the main menu.
+To navigate to CAP Simulator/Calculator, type `2` from the [main menu](#3-features).
 
 CAP Simulator/Calculator menu:
 
@@ -623,12 +620,17 @@ Please choose which action you would like to do and enter the number:
 [4] --- Exit
 ````
 
-#### 3.2.1 Add CAP and Number of MCs graded taken
+#### 3.2.1 Add CAP and Number of MCs counted towards CAP
 
-This feature allows you to add current CAP and MCs counted into the CAP.  
-The program exits program if CAP is invalid.  
-[i.e. negative CAP or CAP > 5.0]  
-There is no strict restriction to number of MCs user can add and its up to user's discretion.
+Adds current CAP and MCs counted into the CAP.  
+
+MCs that counts into your CAP does not include modules with zero grade points.  
+
+> **Note!**  
+> CAP entered is rounded to 2 decimal places (2dp).  
+> The program exits back to CAP Simulator/Calculator menu if CAP is invalid.    
+> [i.e. negative CAP or CAP > 5.0]   
+> There is no strict restriction to number of MCs user can add and its up to user's discretion.
 
 
 ````
@@ -642,16 +644,16 @@ Please choose which action you would like to do and enter the number:
 Please key in your current CAP: [e.g. 4.33]
 > 4.5
 --------------------------------------------
-Please key in the number of MCs graded you have taken so far: 
+Please key in the total MCs completed (excluding modules you have S/U-ed and CS/CU modules)
 > 20
 --------------------------------------------
-Current CAP: 4.5
-Number of Graded MCs Taken: 20
+Current CAP: 4.50 (rounded to 2dp)
+Number of MCs completed: 20
 Returning to CAP simulator/calculator menu...
 ````
-#### 3.2.2 View CAP and Number of MCs graded taken
+#### 3.2.2 View CAP and Number of MCs counted towards CAP
 
-This feature allows you to view current CAP and MCs counted into the CAP.
+Displays current CAP and MCs counted into the CAP from input entered from [3.2.1](#321-add-cap-and-number-of-mcs-counted-towards-cap).
 
 ````
 Please choose which action you would like to do and enter the number:
@@ -661,19 +663,37 @@ Please choose which action you would like to do and enter the number:
 [4] --- Exit
 > 2
 --------------------------------------------
-Current CAP: 4.5
-Number of Graded MCs Taken: 20
+Current CAP: 4.50 (rounded to 2dp)
+Number of MCs completed: 20
 Returning to CAP simulator/calculator menu...
 ````
 
 #### 3.2.3 Simulate future CAP
 
-This feature simulates future CAP base on the current CAP and MCs counted into the CAP. The CAP calculated with be rounded to 2 decimal places.   
-Once done, enter `ok` when prompt with entering a new grade again.
+Simulates future CAP base on the current CAP and MCs counted into the CAP.
+The CAP calculated with be rounded to 2 decimal places.  
+
+> **Note!**  
+> All simulated CAP will not be stored as it is a simulation.  
+> You may choose to update you CAP and MCs counted under [3.2.1](#321-add-cap-and-number-of-mcs-counted-towards-cap).  
 
 There are two versions of CAP Simulator:
- - v1.0: This version allows you to simulate CAP base on the grades you have entered before in each module.
- - v2.0: This version allows you to simulate CAP from a fresh set of inputs from you.
+- v1.0: This version allows you to simulate CAP base on the grades you have entered before under each
+  [existing module](#312-view-a-module)
+- v2.0: This version allows you to simulate CAP from a fresh set of inputs from you.
+
+To begin,
+1. Ensure your current CAP and MCs counted is up to date. You may update it under [3.2.1](#321-add-cap-and-number-of-mcs-counted-towards-cap).
+2. Choose the choice of your simulation. 
+   * If your choice is v1.0, v1.0 CAP Simulator will calculate from the grades present in existing modules
+     and returns back to CAP Simulator/Calculator menu once simulation is completed.
+   * If your choice is v2.0, v2.0 CAP Simulator will prompt you for a grade, 
+   follow by a prompt for MCs.
+
+Once done, enter `ok` when prompt with entering a new grade again (for v2.0 only). 
+
+List of accepted grades: `A+`,`A`,`A-`,`B+`,`B`,`B-`,`C+`,`C`,`D+`,`D`,`F`,`SU`
+
 
 When you enter CAP Simulator, it will welcome you with the following interface!
 
@@ -691,48 +711,45 @@ Key in 2 to simulate cap base on your own input.
 ````
 > 1
 --------------------------------------------
-Calculating on the following entries entered: 
-Grades entered: [A, A, SU]
-MCs entered: [4, 6, 4]
-Current CAP: 4.5
+Welcome to CAP Simulator Version 1!
+Calculating on the following entries: 
+Grades: [SU, A, null]
+MCs: [4, 8, 1]
+Current CAP: 4.50
 Current Graded MCs taken: 20
-The simulated cumulative average point you have is: 
-4.666666666666667
+The simulated cumulative average point (rounded to 2 d.p) you have is: 
+4.64
 Returning to CAP simulator/calculator menu...
 ````  
 
 ###### Version 2
 
 ````
+> 2
+--------------------------------------------
 Welcome to CAP Simulator Version 2!
 You have chosen to simulate CAP base on your input.
 THINGS TO NOTE: 
-You may key in 'q' to quit and 'ok' after finishing your inputs.
+When prompted to key in grade, you may key in 'q' to quit and 'ok' to generate simulated CAP.
 You may key in your letter grades follow by MCs associated with the letter grade after each prompt. 
 
 Key in a grade: [e.g. A+, B, B-]
-A+
+> A
 --------------------------------------------
 Key in MCs for the associated module: 
-6
+> 6
 --------------------------------------------
 Key in a grade: [e.g. A+, B, B-]
-B+
+> ok
 --------------------------------------------
-Key in MCs for the associated module: 
-4
---------------------------------------------
-Key in a grade: [e.g. A+, B, B-]
-ok
---------------------------------------------
-Calculating on the following entries entered: 
-Grades entered: [A+, B+]
-MCs entered: [6, 4]
-Current CAP: 4.5
+Calculating on the following entries: 
+Grades: [A]
+MCs: [6]
+Current CAP: 4.50
 Current Graded MCs taken: 20
-The simulated cumulative average point you have is: 
-4.533333333333333
-Key in a grade: [e.g. A+, B, B-]
+The simulated cumulative average point (rounded to 2 d.p) you have is: 
+4.62
+Returning to CAP simulator/calculator menu...
 ````  
 
 ---
@@ -1350,8 +1367,8 @@ Features|Menu | Command to enter from the Main Menu
 [Add a Review](#318-add-a-review) | Module Information | 1, 8
 [View All Reviews](#319-view-all-reviews) | Module Information | 1, 9
 [Delete a Review](#3110-delete-a-review) | Module Information | 1, 10
-[Add CAP and Number of MCs graded taken](#321-add-cap-and-number-of-mcs-graded-taken) | Cap Simulator / Calculator | 2,1
-[View CAP and Number of MCs graded taken](#322-view-cap-and-number-of-mcs-graded-taken) | Cap Simulator / Calculator | 2,2
+[Add CAP and Number of MCs counted towards CAP](#321-add-cap-and-number-of-mcs-counted-towards-cap) | Cap Simulator / Calculator | 2,1
+[View CAP and Number of MCs counted towards CAP](#322-view-cap-and-number-of-mcs-counted-towards-cap) | Cap Simulator / Calculator | 2,2
 [Simulate future CAP](#323-simulate-future-cap) | Cap Simulator / Calculator | 2.3
 [Add a new Task](#331-add-new-task) | Task Manager | 3, 1 or 1, 11
 [Mark/Unmark a Task as Done](#332-markunmark-a-task-as-done) | Task Manager | 3, 2

@@ -67,6 +67,7 @@ public class AcademicRecords {
                 listOfGrades.add(ModuleGradeEnum.checkScoreAgainstGrade(grade, moduleName));
                 listOfMCs.add(modularCredits);
             }
+            System.out.println("Welcome to CAP Simulator Version 1!");
             capCalculator(listOfGrades, listOfMCs, totalMCs);
         } else if (capSimulatorSetting == 2) {
             logger.log(Level.INFO, "Going to start cap simulator version 2");
