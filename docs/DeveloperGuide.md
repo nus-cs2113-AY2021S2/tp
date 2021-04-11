@@ -500,7 +500,7 @@ This feature might be slightly more challenging to test, since the user tester h
 that has an expiry date within 7 days of their **local system time**, as of the date of testing.
 
 1. Prerequisites: Add a food with an expiry date within 7 days of the user's system date.
-    * Modify the input in the above [add command](adding-food) in order to fulfil this requirement.
+    * Modify the input in the above [add command](#adding-food) in order to fulfil this requirement.
     * Example: The current date on my system time is `29-03-2021`.
       * Prior to testing, I perform the command `add duck /cat meat /exp 30-03-2021 /loc lower_shelf /qty 100`.
       * Thus, this food should expire in 1 day, within the 7 days required to trigger the `expiring` command.
@@ -549,7 +549,7 @@ the user during testing.
 Therefore, user testers should manually compare the results of the `history` command with their actual input
 during testing, and see if they correspond.
 
-1. Prerequisites: Only the input in the above [add command](adding-food) was added to the list.
+1. Prerequisites: Only the input in the above [add command](#adding-food) was added to the list.
    No other food was added to the list.
     * Note: To reset the history, use `history clear`.
     * `add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 100`
