@@ -1,16 +1,18 @@
-package seedu.logic.errorchecker;
+package seedu.logic.errorchecker.patientchecker;
 
 import seedu.exceptions.CorruptedFileException;
 import seedu.exceptions.DuplicateIdException;
+import seedu.exceptions.ExcessInputException;
 import seedu.exceptions.HealthVaultException;
 import seedu.exceptions.IdNotFoundException;
+import seedu.exceptions.InsufficientInputException;
 import seedu.exceptions.NoInputException;
-import seedu.exceptions.patient.InvalidFieldsNumberException;
-import seedu.exceptions.patient.InvalidIdLengthException;
-import seedu.exceptions.patient.InvalidIdTypeException;
-import seedu.exceptions.patient.InvalidIdValueException;
+import seedu.exceptions.UnrecognizedCommandException;
 import seedu.exceptions.patient.InvalidPatientAgeException;
+import seedu.exceptions.patient.InvalidPatientIdException;
 import seedu.logger.HealthVaultLogger;
+import seedu.logic.errorchecker.MainChecker;
+import seedu.logic.errorchecker.patientchecker.utils.CommandInputTypeLength;
 import seedu.model.patient.PatientList;
 import seedu.model.patient.Patient;
 
@@ -64,7 +66,7 @@ public class PatientChecker extends MainChecker {
      *
      * @throws HealthVaultException collection of exceptions from checks.
      */
-    public void checkStorage() throws HealthVaultException {
+    public void checkStorage() throws HealthVaultException, NumberFormatException {
         emptySpaceCheck();
         checkStorageLength();
         checkIdStorage();
@@ -119,19 +121,70 @@ public class PatientChecker extends MainChecker {
     /**
      * Checks if the number of tokens in the split input from the storage is acceptable for the given command.
      *
-     * @throws InvalidFieldsNumberException when the number of input fields is incorrect.
+     * @throws ExcessInputException when the number of input fields is in excess.
+     * @throws InsufficientInputException when the number of input fields is insufficient.
+     * @throws UnrecognizedCommandException when the command is unrecognized.
      */
-    public void checkLength() throws HealthVaultException {
-        if (command.equals("add") && numberOfTokens != 7) {
-            logger.log(Level.WARNING, "Incorrect patient add command input fields.");
-            throw new InvalidFieldsNumberException(command);
-        } else if ((command.equals("delete") || command.equals("find")) && numberOfTokens != 2) {
-            logger.log(Level.WARNING, "Incorrect patient delete or find command input fields.");
-            throw new InvalidFieldsNumberException(command);
-        } else if ((command.equals("list") || command.equals("return") || command.equals("help"))
-                && numberOfTokens != 1) {
-            logger.log(Level.WARNING, "Incorrect patient list, return or help command input fields.");
-            throw new InvalidFieldsNumberException(command);
+    public void checkLength() throws ExcessInputException, InsufficientInputException, UnrecognizedCommandException {
+        CommandInputTypeLength c = commandLengthClassifier();
+        switch (c) {
+        case MULTI:
+            inputLengthCheck(7, numberOfTokens);
+            break;
+        case DUAL:
+            inputLengthCheck(2, numberOfTokens);
+            break;
+        case SINGLE:
+            inputLengthCheck(1, numberOfTokens);
+            break;
+        default:
+            throw new UnrecognizedCommandException();
+        }
+    }
+
+    /**
+     * Identifies the appropriate allows length for a particular command.
+     *
+     * @return CommandInputTypeLength which shows represents the desired length of the command.
+     * @throws UnrecognizedCommandException when the command is unrecognized.
+     */
+    public CommandInputTypeLength commandLengthClassifier() throws UnrecognizedCommandException {
+        CommandInputTypeLength commandLength;
+        switch (command) {
+        case "add":
+            commandLength = CommandInputTypeLength.MULTI;
+            break;
+        case "delete":
+        case "find":
+            commandLength = CommandInputTypeLength.DUAL;
+            break;
+        case "list":
+        case "help":
+        case "return":
+            commandLength = CommandInputTypeLength.SINGLE;
+            break;
+        default:
+            throw new UnrecognizedCommandException();
+        }
+        return commandLength;
+    }
+
+    /**
+     * Checks if the given command has greater or fewer than the required number of inputs.
+     *
+     * @param correctNumberInputs the ideal number of inputs for this particular command
+     * @param numberOfTokens the number of inputs currently in the command
+     * @throws ExcessInputException when the number of input fields is in excess.
+     * @throws InsufficientInputException when the number of input fields is insufficient.
+     */
+    public void inputLengthCheck(int correctNumberInputs, int numberOfTokens) throws ExcessInputException,
+            InsufficientInputException {
+        if (numberOfTokens > correctNumberInputs) {
+            logger.log(Level.WARNING, "Incorrect patient input fields, excess fields.");
+            throw new ExcessInputException();
+        } else if (numberOfTokens < correctNumberInputs) {
+            logger.log(Level.WARNING, "Incorrect patient input fields, insufficient fields.");
+            throw new InsufficientInputException();
         }
     }
 
@@ -140,7 +193,7 @@ public class PatientChecker extends MainChecker {
      *
      * @throws NoInputException when the user has omitted a required field.
      */
-    private void emptySpaceCheck() throws NoInputException {
+    public void emptySpaceCheck() throws NoInputException {
         for (int i = 0; i < numberOfTokens; i++) {
             if (stringTokens[i].trim().equals("")) {
                 logger.log(Level.WARNING, "Input field is empty.");
@@ -156,7 +209,7 @@ public class PatientChecker extends MainChecker {
      * @throws NumberFormatException when the input from the user is not an integer.
      * @throws HealthVaultException collection of exceptions from checks.
      */
-    private void checkAge(String stringToken) throws NumberFormatException, HealthVaultException {
+    public void checkAge(String stringToken) throws NumberFormatException, HealthVaultException {
         checkNumericInput(stringToken);
         checkAgeRange(stringToken);
     }
@@ -167,7 +220,7 @@ public class PatientChecker extends MainChecker {
      * @param ageString the age of the patient.
      * @throws InvalidPatientAgeException when the patient's age is not acceptable.
      */
-    private void checkAgeRange(String ageString) throws InvalidPatientAgeException {
+    public void checkAgeRange(String ageString) throws InvalidPatientAgeException {
         int age = Integer.parseInt(ageString);
         if (!(age >= 0 && age <= 150)) {
             logger.log(Level.WARNING, "Patient age is out of range.");
@@ -201,7 +254,7 @@ public class PatientChecker extends MainChecker {
      * @param userInput the user input to be checked.
      * @return the number of integers in the user input.
      */
-    private int numberOfIntegersInString(String userInput) {
+    public int numberOfIntegersInString(String userInput) {
         int numberOfIntegers = 0;
         for (int i = 0; i < userInput.length(); i++) {
             if (Character.isDigit(userInput.charAt(i))) {
@@ -215,21 +268,18 @@ public class PatientChecker extends MainChecker {
      * Checks if the ID is of the proper format.
      *
      * @param userID the string containing the ID of the patient.
-     * @throws InvalidIdLengthException when the length of the ID is unacceptable.
-     * @throws InvalidIdTypeException when the type of the ID is unacceptable.
-     * @throws InvalidIdValueException when the value of the ID is unacceptable.
+     * @throws InvalidPatientIdException when the characters in the patient ID are unacceptable.
      */
-    private void checkValidId(String userID) throws InvalidIdLengthException, InvalidIdTypeException,
-            InvalidIdValueException {
+    public void checkValidId(String userID) throws InvalidPatientIdException {
         if (userID.length() != 6) {
             logger.log(Level.WARNING, "Incorrect patient ID length.");
-            throw new InvalidIdLengthException("IDLength");
+            throw new InvalidPatientIdException();
         } else if (!(userID.charAt(0) == 'P')) {
             logger.log(Level.WARNING, "Incorrect patient ID type.");
-            throw new InvalidIdTypeException("IDType");
+            throw new InvalidPatientIdException();
         } else if (numberOfIntegersInString(userID) != 5) {
             logger.log(Level.WARNING, "Incorrect patient ID value.");
-            throw new InvalidIdValueException("IDValue");
+            throw new InvalidPatientIdException();
         }
     }
 
@@ -239,7 +289,7 @@ public class PatientChecker extends MainChecker {
      * @param userID the string containing the ID of the patient.
      * @throws CorruptedFileException when file is corrupted.
      */
-    private void checkIdExistStorage(String userID) throws CorruptedFileException {
+    public void checkIdExistStorage(String userID) throws CorruptedFileException {
         if (isIdTakenStorage(userID)) {
             logger.log(Level.WARNING, "Duplicate patient ID in storage.");
             throw new CorruptedFileException("Patient");
@@ -252,7 +302,7 @@ public class PatientChecker extends MainChecker {
      * @param userID the string containing the ID of the patient.
      * @return true if the ID is taken already and false if the ID is new.
      */
-    private boolean isIdTakenStorage(String userID) {
+    public boolean isIdTakenStorage(String userID) {
         for (Patient patient : patientArrayList) {
             String patientID = patient.getPatientID();
             if (patientID.equals(userID)) {
@@ -271,7 +321,7 @@ public class PatientChecker extends MainChecker {
      * @throws IdNotFoundException when the ID does not exist in the patient list
      * @throws DuplicateIdException when there is already an existing ID in the patient list.
      */
-    private void checkIdExist(String userID, PatientList patients, String command) throws IdNotFoundException,
+    public void checkIdExist(String userID, PatientList patients, String command) throws IdNotFoundException,
             DuplicateIdException {
         if (patients.isIdTaken(userID)) {
             if (command.equals("add")) {

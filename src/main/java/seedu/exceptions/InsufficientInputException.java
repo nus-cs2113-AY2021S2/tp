@@ -11,6 +11,6 @@ public class InsufficientInputException extends HealthVaultException {
      * @return Error Message.
      */
     public String getMessage() {
-        return "OOPS! There is too little input for this command";
+        return "OOPS! There are too few inputs for this command";
     }
 }

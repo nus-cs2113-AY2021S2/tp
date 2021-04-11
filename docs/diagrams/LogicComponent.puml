@@ -3,6 +3,7 @@
 hide members
 hide circle
 skinparam classAttributeIconSize 0
+
 package logic{
 package command{
 Class "{abstract}\nCommand" as Command
@@ -45,8 +46,8 @@ PQRParser .up.> PQRCommand : creates >
 package instance {
 Class ABCInstance
 note left: ABCInstance = DoctorAppointmentInstance, \n InventoryInstance, \n NurseScheduleInstance, \n StaffInstance, \n StartMenuInstance
-ABCInstance .RIGHT.> PQRParser : creates >
-ABCInstance .RIGHT.> Command : executes >
+ABCInstance .up.> PQRParser : creates >
+ABCInstance .up.> Command : executes >
 }
 
 }

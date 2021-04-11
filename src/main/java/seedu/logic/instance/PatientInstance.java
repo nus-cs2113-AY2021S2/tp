@@ -49,9 +49,12 @@ public class PatientInstance {
         while (!isReturnToStartMenu) {
             try {
                 String fullCommand = ui.getInput("Patient");
+                //identifying which Command by sanitizing input with the parser.
                 Command c = parser.patientParse(fullCommand, patients);
                 ui.lineBreak();
+                //executing the identified command using the execute method used by all Command classes.
                 c.execute(patients, ui);
+                //stores after every cycle to ensure that data is saved even when the program crashes.
                 patientStorage.storePatients(patients);
                 logger.log(Level.INFO, "Patient file saved.");
                 isReturnToStartMenu = c.isExit();

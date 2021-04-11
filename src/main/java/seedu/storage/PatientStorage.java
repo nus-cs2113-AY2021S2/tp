@@ -3,7 +3,7 @@ package seedu.storage;
 import seedu.exceptions.CorruptedFileException;
 import seedu.exceptions.HealthVaultException;
 import seedu.logger.HealthVaultLogger;
-import seedu.logic.errorchecker.PatientChecker;
+import seedu.logic.errorchecker.patientchecker.PatientChecker;
 import seedu.model.patient.Patient;
 import seedu.model.patient.PatientList;
 import seedu.ui.PatientUI;
@@ -58,8 +58,9 @@ public class PatientStorage {
      *
      * @return Populated patients arraylist.
      * @throws HealthVaultException if there is an error in loading.
+     * @throws NumberFormatException if there is an invalid age field when an integer is supposed to be inputted.
      */
-    public ArrayList<Patient> loadPatients() throws HealthVaultException {
+    public ArrayList<Patient> loadPatients() throws HealthVaultException, NumberFormatException {
         fileInit();
         logger.log(Level.INFO, "loading patients from storage.");
         // initializing file scanner to scan the file

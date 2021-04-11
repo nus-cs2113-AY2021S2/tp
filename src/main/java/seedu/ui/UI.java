@@ -6,11 +6,16 @@ import java.util.List;
 import java.util.Scanner;
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
+
+import static seedu.duke.Constants.EXIT_COMMAND;
+import static seedu.duke.Constants.EXIT_COMMAND_DESCRIPTION;
+import static seedu.duke.Constants.HELP_COMMAND;
+import static seedu.duke.Constants.HELP_COMMAND_DESCRIPTION;
 import static seedu.duke.Constants.HELP_HEADER_COMMAND;
 import static seedu.duke.Constants.HELP_HEADER_DESCRIPTION;
 import static seedu.duke.Constants.HELP_HEADER_FORMAT;
-import static seedu.duke.Constants.TO_STAFF_INSTANCE;
-import static seedu.duke.Constants.TO_STAFF_INSTANCE_DESCRIPTION;
+import static seedu.duke.Constants.MARK_BLANK;
+
 import static seedu.duke.Constants.TO_APPOINTMENTS_INSTANCE;
 import static seedu.duke.Constants.TO_APPOINTMENTS_INSTANCE_DESCRIPTION;
 import static seedu.duke.Constants.TO_INVENTORY_INSTANCE;
@@ -19,11 +24,9 @@ import static seedu.duke.Constants.TO_PATIENT_INSTANCE;
 import static seedu.duke.Constants.TO_PATIENT_INSTANCE_DESCRIPTION;
 import static seedu.duke.Constants.TO_SCHEDULES_INSTANCE;
 import static seedu.duke.Constants.TO_SCHEDULES_INSTANCE_DESCRIPTION;
-import static seedu.duke.Constants.HELP_COMMAND;
-import static seedu.duke.Constants.HELP_COMMAND_DESCRIPTION;
-import static seedu.duke.Constants.EXIT_COMMAND;
-import static seedu.duke.Constants.EXIT_COMMAND_DESCRIPTION;
-import static seedu.duke.Constants.MARK_BLANK;
+
+import static seedu.duke.Constants.TO_STAFF_INSTANCE;
+import static seedu.duke.Constants.TO_STAFF_INSTANCE_DESCRIPTION;
 
 
 public class UI {
@@ -181,8 +184,6 @@ public class UI {
     public static void printStartMenu() {
 
         UI.printEmptyLine();
-
-        UI.printEmptyLine();
         int[] lengthPara = {15,40,10};
         printer(new String[]{HELP_HEADER_COMMAND, HELP_HEADER_DESCRIPTION, HELP_HEADER_FORMAT}, lengthPara);
         UI.showLongLine();
@@ -208,7 +209,6 @@ public class UI {
     public static void unidentifiedErrorMessage() {
         System.out.println("Something went wrong!\n");
     }
-
 
     public void showLoadingError() {
         System.out.println("OOPS! There was an error loading the file!");
