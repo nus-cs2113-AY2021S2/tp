@@ -495,6 +495,11 @@ Returning to module information menu...
 
 Adds module grade to an existing module. The module grade added can be used to compute a [simulated CAP](#323-simulate-future-cap).   
 
+>**<span style="color: red"> WARNING! </span>**  
+> You can overwrite the existing module grade for an existing module
+> by simply adding module grade to it.  
+
+
 > **Note!**  
 > List of accepted grades: `A+`, `A`, `A-`, `B+`, `B`, `B-`, `C+`, `C`, `D+`, `D`, `F`, `SU`  
 > By default, when a new module is added, module grade is `null`.  

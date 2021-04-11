@@ -1,16 +1,17 @@
 package seedu.duke.features.moduleinfo;
 
-import seedu.duke.features.link.ZoomLinkInfo;
-import seedu.duke.storage.Storage;
-import seedu.duke.ui.Ui;
+import seedu.duke.features.capsimulator.ModularCreditEnum;
 import seedu.duke.features.capsimulator.ModuleGradeEnum;
 import seedu.duke.features.link.Links;
+import seedu.duke.features.link.ZoomLinkInfo;
+import seedu.duke.features.task.TaskManager;
+import seedu.duke.features.task.command.DeleteTask;
 import seedu.duke.features.task.tasktypes.Assignment;
 import seedu.duke.features.task.tasktypes.FinalExam;
 import seedu.duke.features.task.tasktypes.Midterm;
 import seedu.duke.features.task.tasktypes.Task;
-import seedu.duke.features.task.TaskManager;
-import seedu.duke.features.task.command.DeleteTask;
+import seedu.duke.storage.Storage;
+import seedu.duke.ui.Ui;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -133,12 +134,16 @@ public class ModuleInfo {
             moduleNumberInt--;
             System.out.println("Enter the number of MCs for this module: ");
             int moduleCredits = Ui.readCommandToInt();
-            System.out.println("The current MCs associated with "
-                    + modules.get(moduleNumberInt).getName() + " is: "
-                    + modules.get(moduleNumberInt).getMc());
-            System.out.println("Overwriting current MCs for "
-                    + modules.get(moduleNumberInt).getName() + " to: " + moduleCredits);
-            modules.get(moduleNumberInt).setMc(moduleCredits);
+            if (ModularCreditEnum.checkMcsExist(moduleCredits)) {
+                System.out.println("The current MCs associated with "
+                        + modules.get(moduleNumberInt).getName() + " is: "
+                        + modules.get(moduleNumberInt).getMc());
+                System.out.println("Overwriting current MCs for "
+                        + modules.get(moduleNumberInt).getName() + " to: " + moduleCredits);
+                modules.get(moduleNumberInt).setMc(moduleCredits);
+            } else {
+                Ui.printInvalidModularCreditMessage();
+            }
         } else {
             Ui.printInvalidInputMessage();
         }
@@ -515,40 +520,6 @@ public class ModuleInfo {
 
     }
 
-    /**
-     * This method read in module name and decipher if module exists. If module exists, module
-     * description previously added is printed. Else, method prompts user to enter module
-     * description and creates a new Module object. This method returns to module information menu.
-     */
-    private static void getModuleDescriptions() {
-        Ui.printModuleNameToModifyPrompt();
-        String moduleName = Ui.readCommand(); // read in module name, i.e. CS2113T
-        boolean isModuleExist = false;
-        for (Module module : modules) {
-            if (module.getName().equals(moduleName)) {
-                Ui.printModuleExistMessage();
-                isModuleExist = true;
-                System.out.println(module.getDescription() + "\n");
-                //Safety break in cases of more than 1 same module name present.
-                //In fact, two same module should not be present.
-                break;
-            }
-        }
-        if (!isModuleExist) {
-            Ui.printModuleDoesNotExistMessage();
-            String userInput;
-            userInput = Ui.readCommand(); //read in [Y/N]
-            if (userInput.equals("Y")) {
-                Ui.printModuleDescriptionPrompt(moduleName);
-                String moduleDescription = Ui.readCommand(); //read in description
-                Module module = new Module(moduleName, moduleDescription);
-                modules.add(module);
-                Ui.printModuleDescriptionAddedMessage(moduleName,
-                        module.getDescription());
-            }
-        }
-
-    }
 
     public static void deleteReview() {
         if (modules.isEmpty()) {
