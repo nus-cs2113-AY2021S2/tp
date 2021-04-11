@@ -13,7 +13,7 @@ calls the same saveData method,we will
 simplify it by grouping them together.
 end note
 
-XYZCommand -> Storage : saveData(recordList, (creditScoreReturnedLoansMap))
+XYZCommand -> Storage : saveData(:RecordList, :CreditScoreReturnedLoansMap)
 activate Storage
 Storage -> Storage : writeRecordListToSaveFile(recordList)
 activate Storage
@@ -37,8 +37,8 @@ activate Storage
 Loop Each borrowersName in creditScore
 Storage -> CSRLM : getBorrowersNames()
 activate CSRLM
-CSRLM --> Storage : borrowerName : Set<String>
-Storage -> CSRLM : getCreditScoreOf(borrowerName)
+CSRLM --> Storage : borrowerName : String
+Storage -> CSRLM : getCreditScoreOf(borrowerName:String)
 CSRLM --> Storage : creditScore : int
 deactivate CSRLM
 CSRLM --[Hidden]> Storage
