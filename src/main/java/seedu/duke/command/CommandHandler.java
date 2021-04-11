@@ -2,6 +2,7 @@ package seedu.duke.command;
 
 import seedu.duke.exception.CommandException;
 import seedu.duke.record.RecordList;
+import seedu.duke.ui.Ui;
 
 import static seedu.duke.command.ListCommand.COMMAND_LIST;
 import static seedu.duke.command.AddCommand.COMMAND_ADD;
@@ -56,7 +57,7 @@ public class CommandHandler {
             FINUX_LOGGER.logInfo(LOGGER_OKAY_MESSAGE);
             return command;
         } catch (CommandException e) {
-            System.out.println(e.getMessage());
+            Ui.printError(e.getMessage());
             FINUX_LOGGER.logWarning(e.getMessage());
             return null;
         }

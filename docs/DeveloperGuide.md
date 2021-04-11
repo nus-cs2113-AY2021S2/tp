@@ -143,7 +143,7 @@ The `Finux` component is the object class itself, It is responsible for,
 * At shut down: Shuts down the components and invokes cleanup method where necessary.
 
 The rest of the Application consists of six main components.
-* `Ui`: The user interface (Ui) of the App which handles all user input and Application output.
+* `Ui`: The user interface (Ui) of the Application which handles all user input and Application output.
 * `Parser`: The user input parser of the CLI.
 * `CommandHandler`: The handler of parsed arguments for conversion into appropriate `Commands`.
 * `Command`: The appropriate command to be executed.
@@ -266,7 +266,8 @@ Finally, if `parsedArguments[0]` cannot be mapped to any command, a `CommandExce
 thrown to `Finux` to handle.
 
 Not stated explicitly in the diagrams, when the `exit` command is entered, the `CommandHandler`
-sets the `isExit = true`, ending control of the `commandLooper()` and resulting in `Finux` proceeding to call `end()` to exit the Application.
+sets the `isExit = true`, ending control of the `commandLooper()` and resulting in `Finux` 
+proceeding to call `end()` to exit the Application.
 
 ### 3.5 Command Component
 ![CommandClassDiagram](img/CommandClassDiagram.png)\
@@ -277,7 +278,7 @@ _Figure 9: Command Class Diagram (Part 2)_
 
 All Commands contain a command word constant named as `COMMAND_*` (as underlined in _Figure 8 & 9_),\
 e.g. `protected static final String COMMAND_XYZ = "xyz";`\
-These constants are used by the `CommandHandler` to map to each `Command`.\
+These constants are used by the `CommandHandler` to map to each `Command`.
 
 ![AddCommandClassDiagram](img/AddCommandClassDiagram.png)\
 _Figure 10: AddCommand Class Diagram_
@@ -337,12 +338,19 @@ object is successfully created. Most of the input validation is done in the cons
 >   to check for argument validity.
 > * `getOptionValue(...)`: Extracts the option's value from arguments.
 
-In the case of `AddCommand`, which supports options of `{-e | -l | -s}`, the constructor will check which option
-was given, and sets the `RecordType` enumeration, `recordType` to the following:
+##### The RecordType enumeration
+The use of `RecordType` is for later in the execution of the `Command`.
+
+In the case of `AddCommand` (as seen in _Figure 10_), which supports options of `{-e | -l | -s}`, the constructor
+will check which option was given, and sets the `RecordType` enumeration, `recordType` to the following:
 * `-e` sets `recordType` to `EXPENSE`.
 * `-l` sets `recordType` to `LOAN`.
 * `-s` sets `recordType` to `SAVING`.
 
+For other cases, like in the `ViewCommand` and `ListCommand`, it supports an additional `-a` option. This option 
+sets the `recordType` to `ALL`.
+
+##### Command validation
 If no violations are present in the arguments, then the subsequent `Command` object is returned.\
 If violations occur at any point of the input validation, the `Command` is not created and `CommandException` 
 is thrown back to the `CommandHandler`.
@@ -681,7 +689,7 @@ Since it is entirely possible that the index provided by the user can be invalid
 following:
 * negative numbers
 * numbers that refer to non-existent records
-* non-numerics (e.g. alphabets, symbols, etc.)\
+* non-numerics (e.g. alphabets, symbols, etc.)
 
 There is a need to validate the index given by the user to ensure that the application does not terminate unexpectedly
 and that suitable error messages are printed to notify the user of their intentional or unintentional parameter inputs.

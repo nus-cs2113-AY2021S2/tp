@@ -35,6 +35,8 @@ public class Ui {
             + "||   $$  $$   $$$$$$   $$   $$     $$       $$   $$  $$  $$  $$    ||\n"
             + "=====================================================================\n";
 
+    private static final String ERROR_PREFIX = "ERROR: ";
+
     private static final String MESSAGE_LOADING = "Loading from save file... ";
     private static final String MESSAGE_FILE_CREATION_SUCCESS = "New save file created!";
     private static final String MESSAGE_EXPENSE_SUCCESSFULLY_ADDED = "Expense has been added...";
@@ -78,6 +80,15 @@ public class Ui {
     public static void printSuccessfulFileCreation() {
         System.out.println(DIVIDER);
         System.out.println(MESSAGE_FILE_CREATION_SUCCESS);
+        System.out.println(DIVIDER);
+    }
+
+    /**
+     * Prints an error prefix with the error message.
+     */
+    public static void printError(String errorMessage) {
+        System.out.println(DIVIDER);
+        System.out.println(ERROR_PREFIX + errorMessage);
         System.out.println(DIVIDER);
     }
 
