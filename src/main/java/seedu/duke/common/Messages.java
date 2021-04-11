@@ -14,4 +14,9 @@ public class Messages {
     public static final String ERROR_SAVE_DATA = "Error in saving data!";
     public static final String ERROR_FILE_CREATION = "File creation unsuccessful!";
     public static final String ERROR_FILE_INPUT = "Invalid File Inputs!";
+    public static final String ERROR_AMOUNT_LESS_THAN_ZERO = "amount must be greater than 0.";
+    public static final String ERROR_AMOUNT_MORE_THAN_2DP = "amount should be at most 2 decimal place.";
+    public static final String ERROR_DOLLAR_AMOUNT_MISSING = "please enter the dollar amount.";
+    public static final String ERROR_CENT_AMOUNT_MISSING = "please enter the cent amount.";
+
 }

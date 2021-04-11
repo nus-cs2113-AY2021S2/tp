@@ -304,16 +304,13 @@ public class Utils {
     }
     
     public static long getDaysDifference(LocalDate issueDate, LocalDate returnDate) {
-        LocalDate fromDate = issueDate;
         LocalDate toDate;
         if (returnDate == null) {
             toDate = LocalDate.now();
         } else {
-            assert returnDate != null : "returnDate should not be empty";
             toDate = returnDate;
         }
-        long daysDifference = ChronoUnit.DAYS.between(fromDate, toDate);
-        return daysDifference;
+        return ChronoUnit.DAYS.between(issueDate, toDate);
     }
 
     public static int computeCreditScore(long daysDifference, int currentCreditScore, boolean isReturn) {
