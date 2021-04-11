@@ -11,6 +11,15 @@ public class FavouriteUi extends UiManager {
         return new RouterUi().getRoutingInfo();
     }
 
+    /**
+     * This method displays all the stored favourite routes to the user, in the format of an indexed list.
+     * If there are no stored favourite routes, the EmptyFavouriteException is thrown.
+     * This method further calls the getSpecificEntry() method.
+     *
+     * @param favourite
+     * @throws EmptyFavouriteException
+     * @throws InvalidIndexException
+     */
     public void showFavourites(Favourite favourite) throws EmptyFavouriteException, InvalidIndexException {
         if (favourite.isEmpty()) {
             throw new EmptyFavouriteException();
