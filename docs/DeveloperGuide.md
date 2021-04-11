@@ -1,3 +1,19 @@
+<!-- @author brandonfoong -->
+<style type="text/css">
+ol {
+    counter-reset: item
+}
+ol > li {
+    counter-increment: item;
+}
+ol ol > li {
+    display: block
+}
+ol ol > li:before {
+    content: counters(item, ".") ". ";
+}
+</style>
+
 # Patient Manager Developer Guide
 
 ## Table of Contents
