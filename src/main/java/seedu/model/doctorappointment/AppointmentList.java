@@ -3,6 +3,7 @@ package seedu.model.doctorappointment;
 
 import seedu.exceptions.HealthVaultException;
 import seedu.exceptions.EmptyListException;
+import seedu.exceptions.doctorappointment.DoctorIdDoesNotExistException;
 import seedu.storage.DoctorAppointmentStorage;
 import seedu.ui.DoctorAppointmentUI;
 import seedu.ui.UI;
@@ -71,13 +72,6 @@ public class AppointmentList {
                 UI.showLine();
                 for (int i = 0; i < appointmentList.size(); i++) {
                     DoctorAppointmentUI.printList(appointmentList.get(i), indicator);
-
-                    /*extraList.clear();
-                    doctorID = appointmentList.get(i).getDoctorId();
-                    if (!isDoctorDone(appointmentList, i)) {
-                        getDoctorAppointmentByID(appointmentList, doctorID);
-                        printSchedules(extraList);
-                    }*/
                 }
             } else if (id.equals("A")) {
                 DoctorAppointmentUI.appointmentPrintList(indicator);
@@ -89,18 +83,28 @@ public class AppointmentList {
                 }
             } else if (id.equals("D")) {
                 indicator = "D";
-                DoctorAppointmentUI.appointmentPrintList(indicator);
-                UI.showLine();
-                DoctorAppointmentUI.printEmptyCell(input);
-                int counter = 0;
+                boolean isWithin = false;
                 for (int i = 0; i < appointmentList.size(); i++) {
                     if (appointmentList.get(i).getDoctorId().equals(input)) {
-                        if (counter != 0) {
-                            DoctorAppointmentUI.printEmptyCell("");
-                        }
-                        DoctorAppointmentUI.printList(appointmentList.get(i), indicator);
-                        counter++;
+                        isWithin = true;
                     }
+                }
+                if (isWithin) {
+                    DoctorAppointmentUI.appointmentPrintList(indicator);
+                    UI.showLine();
+                    DoctorAppointmentUI.printEmptyCell(input);
+                    int counter = 0;
+                    for (int i = 0; i < appointmentList.size(); i++) {
+                        if (appointmentList.get(i).getDoctorId().equals(input)) {
+                            if (counter != 0) {
+                                DoctorAppointmentUI.printEmptyCell("");
+                            }
+                            DoctorAppointmentUI.printList(appointmentList.get(i), indicator);
+                            counter++;
+                        }
+                    }
+                } else {
+                    throw new DoctorIdDoesNotExistException();
                 }
             }
         }
@@ -113,26 +117,35 @@ public class AppointmentList {
      * @throws IOException if writing to storage throws an error.
      */
 
-    public static void deleteAppointment(String inputID) throws IOException {
+    public static void deleteAppointment(String inputID) throws IOException, DoctorIdDoesNotExistException {
         String[] id = inputID.split("");
-
-        if (id[0].equals("A")) {
-            for (int i = 0; i < appointmentList.size(); i++) {
-                if (appointmentList.get(i).getAppointmentId().equals(inputID)) {
-                    DoctorAppointmentUI.deletedAptID(appointmentList.get(i).getAppointmentId());
-                    appointmentList.remove(i);
-                    DoctorAppointmentStorage.writeToFile(appointmentList);
+        boolean isWithin = false;
+        for (int i = 0; i < appointmentList.size(); i++) {
+            if (appointmentList.get(i).getDoctorId().equals(inputID)) {
+                isWithin = true;
+            }
+        }
+        if (isWithin) {
+            if (id[0].equals("A")) {
+                for (int i = 0; i < appointmentList.size(); i++) {
+                    if (appointmentList.get(i).getAppointmentId().equals(inputID)) {
+                        DoctorAppointmentUI.deletedAptID(appointmentList.get(i).getAppointmentId());
+                        appointmentList.remove(i);
+                        DoctorAppointmentStorage.writeToFile(appointmentList);
+                    }
+                }
+            } else if (id[0].equals("D")) {
+                for (int i = appointmentList.size() - 1; i >= 0; i--) {
+                    if (appointmentList.get(i).getDoctorId().equals(inputID)) {
+                        DoctorAppointmentUI.deletedDocID(appointmentList.get(i).getDoctorId(),
+                                appointmentList.get(i).getAppointmentId());
+                        appointmentList.remove(i);
+                        DoctorAppointmentStorage.writeToFile(appointmentList);
+                    }
                 }
             }
-        } else if (id[0].equals("D")) {
-            for (int i = appointmentList.size() - 1; i >= 0; i--) {
-                if (appointmentList.get(i).getDoctorId().equals(inputID)) {
-                    DoctorAppointmentUI.deletedDocID(appointmentList.get(i).getDoctorId(),
-                            appointmentList.get(i).getAppointmentId());
-                    appointmentList.remove(i);
-                    DoctorAppointmentStorage.writeToFile(appointmentList);
-                }
-            }
+        } else {
+            throw new DoctorIdDoesNotExistException();
         }
     }
 
