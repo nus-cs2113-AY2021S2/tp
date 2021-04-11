@@ -2,7 +2,7 @@
 
 ### Overview
 
-UniTrack is a one-stop university tracker designed and created to help NUS students keep track of all the resources needed for their modules. 
+UniTracker is a one-stop university tracker designed and created to help NUS students keep track of all the resources needed for their modules. 
 It also includes helpful features such as a CAP simulator and a task manager. The user can interact with it using a Command Line Interface (CLI).
 UniTracker was created with Java, and has about 7 kLOC.
 
