@@ -2,6 +2,9 @@ package seedu.exceptions.patient;
 
 import seedu.exceptions.HealthVaultException;
 
+/**
+ * Exception to handle invalid patient age when the patient's age is out of range or not an integer.
+ */
 public class InvalidPatientAgeException extends HealthVaultException {
 
     public String getMessage() {
