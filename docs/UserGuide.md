@@ -894,7 +894,7 @@ This is an example of the welcome screen for the Inventory Menu.
 | **Doctor Appointments** |                                                                                                        |
 | add                 | `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]`<br/><br/>`add/D12345/A12345/Mingshun/M/19082021`    |
 | delete              | `delete/[Doctor ID/Appointment ID]` <br/><br/>`delete/D12345`<br/><br/>`delete/A12345`                      |
-| list                | `list/[all/Doctor ID/Appointment ID]` <br/><br/>`list/D12345`<br/><br/>`list/A12345`			     	   |
+| list                | `list/[all/Doctor ID/Appointment ID]` <br/><br/>`list/all`<br/><br/>`list/D12345`<br/><br/>`list/A12345`			     	   |
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |
 | **Nurse Schedules** |                                                                                                            |
