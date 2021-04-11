@@ -134,6 +134,8 @@ public class AcademicRecords {
                     Ui.printInvalidGradeMessage();
                 }
             }
+        } else {
+            Ui.printInvalidInputMessage();
         }
 
     }

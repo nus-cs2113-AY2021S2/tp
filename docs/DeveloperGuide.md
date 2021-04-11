@@ -224,14 +224,21 @@ Just before a successful deletion, the deleted `module`'s relevant information (
 This feature allows user to add user-defined module components and its related weightage for an
 existing module.
 
-![Diagram](diagrams/moduleInfo/addComponent.png)  
-How the feature works:  
-The feature is facilitated by the `Component` class and a call to `addComponent()` is performed upon
-expected user input to add a new component to a module.
+Given below is the sequence diagram of the feature:  
 
-First, a call to `Ui` is performed to find out what module* the user wishes to add a component (and
-its weightage). Secondly, a `for` loop is run to find whether the module entered by the user is
+![Diagram](diagrams/moduleInfo/addComponent.png)  
+
+A general 2-step explanation of how this feature works is shown below:
+
+Step 1. The feature is facilitated by the `Component` class and a call to `addComponent()` is performed upon
+expected user input to add a new component to a module.  
+
+Step 2. A call to `Ui` is performed to find out what module* the user wishes to add a component (and
+its weightage).  
+
+Step 3. A `for` loop is run to find whether the module entered by the user is
 stored in the system.  
+
 Here, there are two possible routes:
 
 - If the module is present, a call to `Ui` is performed to find out the component name and the

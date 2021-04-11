@@ -400,9 +400,6 @@ public class Ui {
         System.out.println();
     }
 
-    public static void printModuleDoesNotExistMessage() {
-        System.out.println("This module does not exist, would you like to add it? [Y/N]");
-    }
 
     public static void printReturnToMainMenuMessage() {
         System.out.println("Returning to main menu...");
