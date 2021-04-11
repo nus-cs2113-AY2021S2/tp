@@ -4,19 +4,19 @@
 
 ## Content Page
 
-1. [Introduction](#1-introduction) (jia en)
+1. [Introduction](#1-introduction)
 	1. [What is HealthVault?](#11-what-is-healthvault) 
 	2. [About the Developer Guide](#12-about-the-developer-guide)
-2. [How to use this guide](#2-how-to-use-the-guide) (sarrah)
+2. [How to use this guide](#2-how-to-use-the-guide)
 	1. [Technical Terms](#21-technical-terms)
 	2. [Symbols & Icons](#22-symbols-and-icons)
-4. [Getting Started](#3-getting-started) (Owen)
+4. [Getting Started](#3-getting-started)
 5. [Design](#4-design) 
-    1. [Architecture](#41-architecture) (owen)
-    2. [UI component](#42-ui-component) (ms)
-    3. [Logic Component](#43-logic-component) (jiaen)
-    4. [Model component](#44-model-component) (alex)
-    5. [Storage component](#45-storage-component) (sarrah)
+    1. [Architecture](#41-architecture)
+    2. [UI component](#42-ui-component) 
+    3. [Logic Component](#43-logic-component)
+    4. [Model component](#44-model-component) 
+    5. [Storage component](#45-storage-component)
 6. [Implementation](#5-implementation)
     1. [Staff](#51-staff) 
     	1. [Staff Menu](#511-staff-menu)
@@ -52,16 +52,15 @@
     	2. [Personalized Account Login](#562-personalized-account-login)
     	3. [Inventory Alerts](#563-inventory-alerts)
 
-[Appendix A: Product Scope](#appendix-a-product-scope) (jiaen)
+[Appendix A: Product Scope](#appendix-a-product-scope)
 
-[Appendix B: User Stories](#appendix-b-user-stories) (alex)
+[Appendix B: User Stories](#appendix-b-user-stories)
 
-[Appendix C: Non Functional Requirements](#appendix-c-non-functional-requirements) (mingshun)
+[Appendix C: Non Functional Requirements](#appendix-c-non-functional-requirements)
 
-[Appendix D: Glossary](#appendix-d-glossary) (owen)
+[Appendix D: Glossary](#appendix-d-glossary)
 
-[Appendix E: Instructions for Manual Testing](#appendix-e-instructions-for-manual-testing) (sarrah)
-
+[Appendix E: Instructions for Manual Testing](#appendix-e-instructions-for-manual-testing)
 
 ## 1. Introduction
 ### 1.1 What is HealthVault?
@@ -1510,11 +1509,11 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
-	```
+	
 	Noted. I've removed this patient: 
 	Sam
 	Now you have 0 patients in the list
-	```
+
 
 <br/>
 
@@ -1524,13 +1523,13 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
-	```
+	
 	Here are the patients currently in the list!
 	ID       | Name                 | Age    | Gender   | Illness              | Medication Required 
 	____________________________________________________________________________________________________
 	P55555   | Sam                  | 40     | M        | Fever                | Paracetamol    
 	P12345   | Amy                  | 35     | F        | Flu                  | Panadol
-	```
+
 	
 <br/>
 
@@ -1545,20 +1544,21 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
-	```
+	
 	ID       | Name                 | Age    | Gender   | Illness              | Medication Required 
 	____________________________________________________________________________________________________
 	P55555   | Sam                  | 40     | M        | Fever                | Paracetamol    
-	```
+
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.2 **Test case:** ```find/Sam```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
-	```
+
 	ID       | Name                 | Age    | Gender   | Illness              | Medication Required 
 	____________________________________________________________________________________________________
 	P55555   | Sam                  | 40     | M        | Fever                | Paracetamol    
-	```
+	
 <br/>
 
 5. Returning to Start Menu
@@ -1575,7 +1575,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 
-	```
+
 	Here is a list of Patient commands: 
 
 	Commands  Description                                                 Format                                                                
@@ -1586,7 +1586,7 @@ Given below are instructions to test HealthVault manually.
 	delete    Deletes the Patient with the specified ID from the list!    delete/[Patient ID]                                                   
 	find      Finds a matching Patient using a keyword or phrase!         find/[keyword or phrase]                                              
 	return    Returns you to the Start Menu!                              -                                
-	```
+	
 
 <br/><br/>
 
@@ -1631,32 +1631,32 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 
-	```
+	
 	Doctor ID      | Appointment ID | Name           | Gender         | Date          
 	____________________________________________________________
 	D11111         | A54321         | Owen           | M              | 01/04/2021
 	D12345         | A12345         | Alex           | M              | 21/01/2021  
-	```
+
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.2 **Test case:** ```list/D12345```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 
-	```
+	
 	Doctor ID      | Appointment ID | Name           | Gender         | Date          
 	____________________________________________________________
 	D12345         | A12345         | Alex           | M              | 21/01/2021  
-	```
+	
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.3 **Test case:** ```list/A12345 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 
-	```
+	
 	Doctor ID      | Appointment ID | Name           | Gender         | Date          
 	____________________________________________________________
 	D12345         | A12345         | Alex           | M              | 21/01/2021  
-	```		
+		
 	
 <br/>
 
@@ -1674,7 +1674,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 
-	```
+	
 	Here is a list of Doctor Appointments Commands: 
 	Commands  Description                                                           Format                                            
 	____________________________________________________________________________________________________
@@ -1683,7 +1683,7 @@ Given below are instructions to test HealthVault manually.
 	list      Brings up the list of all current Doctors' Appointments in database!  list/[DoctorID/AppointmentID]                     
 	delete    Deletes the Appointment with the specified ID from the list!          delete/[DoctorID/Appointment ID]                  
 	return    Returns you to the Start Menu!                   
-	```
+	
 
 <br/><br/>
 
@@ -1725,21 +1725,21 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 
-	```
+	
 	Nurse ID   | Patient ID | Date      
 	____________________________________________________________
 	N12345     | P12345     | 30/01/2020 
-	```
+	
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.2 **Test case:** ```list/all```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
-	```
+	
 	Nurse ID   | Patient ID | Date      
 	____________________________________________________________
 	N12345     | P12345     | 30/01/2020
 	N55555     | P55555     | 30/01/2020   
-	```
+	
 		
 <br/>
 
@@ -1757,7 +1757,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 
-	```
+	
 	Here is a list of Nurse Schedule commands: 
 	Commands  Description                                                      Format                                            
 	____________________________________________________________________________________________________
@@ -1766,7 +1766,7 @@ Given below are instructions to test HealthVault manually.
 	list      Brings up the list of all current Nurse Schedules in database!   list/[NurseID/all]                                
 	delete    Deletes the Schedule with the specified ID from the list!        delete/[Nurse ID]/[Date (DDMMYYYY)]               
 	return    Returns you to the Start Menu!                                   -    
-	```
+	
 
 <br/><br/>
 
@@ -1802,13 +1802,13 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 
-	```
+	
 	DrugName        | Price      | Quantity
 	------------------------------------------------------------
 
 	paracetamol     | 3.00       | 70   
 	Panadol         | 4.80       | 36 
-	```		
+		
 	
 <br/>
 
@@ -1826,7 +1826,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 
-	```
+	
 	Here is a list of Inventory commands: 
 
 	Commands  Description                                                 Format                                            
@@ -1836,6 +1836,6 @@ Given below are instructions to test HealthVault manually.
 	list      Brings up the list of all current Inventory in database!    list                                              
 	delete    Deletes the Inventory item from the list!                   delete/[Drug Name]                                
 	return    Returns you to the Start Menu!                              -            
-	```
+	
 
 <br/><br/>
