@@ -38,7 +38,7 @@ The purpose of this User Guide is to assist you in the usage of the application.
 To save a life is the top priority of any healthcare worker.
 In such a precarious situation, every second matters and nurses cannot afford to waste time when they need to store or view critical information.
 
-Introducting HealthVault, a hospital information recording system made for nurses. HealthVault is a desktop app for managing doctor, nurse, patient and inventory information, optimised for use through the command line interface. If the user can type fast, HealthVault brings both convenience and speed for nurses to view and store critical information.
+Introducing HealthVault, a hospital information recording system made for nurses. HealthVault is a desktop app for managing doctor, nurse, patient and inventory information, optimised for use through the command line interface. If the user can type fast, HealthVault brings both convenience and speed for nurses to view and store critical information.
 
 
 In this application there are 5 main features that are provided for the user.
@@ -81,7 +81,7 @@ This user guide will cover the following:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Alphanumeric** - Consisting of only alphabets and numerals.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Delimiter** - A character that seperates different sections of a text or input.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Delimiter** - A character that separates different sections of a text or input.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Illegal Characters** - A character that is neither an alphabet nor number.
 
@@ -92,7 +92,7 @@ This user guide will cover the following:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **<>** - Angled quotation marks for optional user inputs.
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :information_source: This icon denotes a important information to note.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :information_source: This icon denotes an important piece of information to take note of.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :exclamation: Warning sign to inform user against doing certain actions.
 
@@ -102,7 +102,7 @@ This user guide will cover the following:
 
 ### 3.1 Introduction to Command Line Interface (CLI)
 
-HealthVault uses the Command Line Interface (CLI) to run and it is the primary input method for interacting with HealthVault.
+HealthVault uses the Command Line Interface (CLI) to run, and it is the primary input method for interacting with HealthVault.
 
 As CLI is not commonly used, this section hopes to orientate you with the CLI environment if you are new, and acts as a refresher for returning users.
 
@@ -161,13 +161,13 @@ This is an example of a typical help command in the application.
 The **Commands** column gives the command that allows you to accomplish a certain action with the relevant features.
 For example, the `add` command allows you to add a new staff and their relevant details into the database.
 
-The **Description** column gives you an explaination on the usage and purpose of the command.
+The **Description** column gives you an explanation on the usage and purpose of the command.
 
 The **Format** column gives the appropriate format for you to use the command.
 For example, the `add` format requires specific details regarding the staff that will be added into the database.
 The '-' in the format column specifies that the command can be used alone without any additional details.
 
-The detailed explaination of each command will be explained in the subsequent sections.
+The detailed explanation of each command will be explained in the subsequent sections.
 
 <br/><br/>
 
@@ -346,13 +346,13 @@ When you first enter the Patient menu, you will be greeted with the following we
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted user ID starts with a P and has **exactly** 5 digits in the number following!
+>1. Make sure that the inputted user ID starts with an upper case P and has **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `P12345`, `P54321`
 >
 >2. Any input field in HealthVault only accepts space and alphanumeric characters
 >3. The gender field input is case-insensitive but should only be "M", "F" or "Others" or any other upper and lower case versions.
->4. The age field input should be a positive integer starting from 0 to inclusive of 150
+>4. The age field input should be a positive integer including 0, starting from 0 to inclusive of 150
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
@@ -375,7 +375,7 @@ When you first enter the Patient menu, you will be greeted with the following we
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted user ID starts with a P and has **exactly** 5 digits in the number following!
+>1. Make sure that the inputted user ID starts with an upper-case P and has **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `P12345`, `P54321`
 >
@@ -400,7 +400,7 @@ When you first enter the Patient menu, you will be greeted with the following we
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` Staff --> list```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` Patient --> list```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
@@ -420,7 +420,7 @@ When you first enter the Patient menu, you will be greeted with the following we
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `find/19`, `find/P12345`
 >
-> The keyword input can be case insensitive and still find matches in the database.
+> The keyword input can be case-insensitive and still find matches in the database.
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `find/john` is able to match with a name field "John" or "JOHN"
 
@@ -448,7 +448,7 @@ When you first enter the Patient menu, you will be greeted with the following we
 
 #### Help: `help`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display the commands for the Staff Menu.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display the commands for the Patient Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
@@ -538,7 +538,7 @@ This is an example of the welcome screen for Doctors' Appointment Menu.
 <br/><br/>
 
 #### Listing an appointment: `list`
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lists all of the appointments of a specific doctor or list an individual appointment.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lists all the appointments of a specific doctor or list an individual appointment.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**:
 
@@ -616,7 +616,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 >:information_source: Important notes about the input format
 >1. Make sure Nurse ID exists in Staff and Patient ID exists in Patients before adding.
->2. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and have **exactly** 5 digits in the number following!
+>2. Make sure that the inputted user ID starts with an upper-case N for Nurse, upper-case P for Patient and have **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `P54321`
 >
@@ -645,7 +645,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted Nurse ID starts with a N for Nurse, and have **exactly** 5 digits in the number following!
+>1. Make sure that the inputted Nurse ID starts with an upper-case N for Nurse, and have **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `P54321`
 >
@@ -672,7 +672,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted Nurse ID starts with a N for Nurse, and have **exactly** 5 digits in the number following!
+>1. Make sure that the inputted Nurse ID starts with an upper-case N for Nurse, and have **exactly** 5 digits in the number following!
 >
 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `P54321`
 
@@ -850,17 +850,17 @@ This is an example of the welcome screen for the Inventory Menu.
 
 **Q**: How do I transfer my data to another computer?
 
-**A**: Navigate to where the TP jar file is located and identify the data folder. Simply copy this data folder and transfer it via thumbdrive or other means to your other computer. When setting up the jar file in a new folder in your other computer, move the data folder into the new folder in which you have set up the jar before starting the application. You're now good to go to start accessing the data on your new computer!
+**A**: Navigate to where the TP jar file is located and identify the data folder. Simply copy this data folder and transfer it via thumb drive or other means to your other computer. When setting up the jar file in a new folder in your other computer, move the data folder into the new folder in which you have set up the jar before starting the application. You're now good to go to start accessing the data on your new computer!
 
 
 **Q**: Why is HealthVault telling me there is a Corrupted File?
 
-**A**: Corrupted Files are a result of editing the text file manually and causing impermissible inputs into the data fields. As a result HealthVault is unable process and retrieve the data.
+**A**: Corrupted Files are a result of editing the text file manually and causing impermissible inputs into the data fields. As a result HealthVault is unable to process and retrieve the data.
 
 
-**Q**: What do i do when HealthVault tells me there is a Corrupted File?
+**Q**: What do I do when HealthVault tells me there is a Corrupted File?
 
-**A**: First, exit the HealthVault application. Then locate the relevant .txt file that is corrupted. Either delete the .txt file, or edit the .txt file so that it matches the required input fields that is accepted by HealthVault. Finally relaunch the HealthVault application.
+**A**: First, exit the HealthVault application. Then locate the relevant .txt file that is corrupted. Either delete the .txt file, or edit the .txt file so that it matches the required input fields that is accepted by HealthVault. Finally, relaunch the HealthVault application.
 
 
 
