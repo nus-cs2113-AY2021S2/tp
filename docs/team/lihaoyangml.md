@@ -1,3 +1,5 @@
+<div style="page-break-after: always;"></div>
+
 # Li Haoyang - Project Portfolio Page
 
 ## Overview
