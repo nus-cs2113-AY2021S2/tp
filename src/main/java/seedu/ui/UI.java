@@ -7,7 +7,25 @@ import java.util.Scanner;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
-import static seedu.duke.Constants.*;
+import static seedu.duke.Constants.HELP_HEADER_COMMAND;
+import static seedu.duke.Constants.HELP_HEADER_DESCRIPTION;
+import static seedu.duke.Constants.HELP_HEADER_FORMAT;
+import static seedu.duke.Constants.TO_STAFF_INSTANCE;
+import static seedu.duke.Constants.TO_STAFF_INSTANCE_DESCRIPTION;
+import static seedu.duke.Constants.TO_PATIENT_INSTANCE;
+import static seedu.duke.Constants.TO_PATIENT_INSTANCE_DESCRIPTION;
+import static seedu.duke.Constants.TO_APPOINTMENTS_INSTANCE;
+import static seedu.duke.Constants.TO_APPOINTMENTS_INSTANCE_DESCRIPTION;
+import static seedu.duke.Constants.TO_SCHEDULES_INSTANCE;
+import static seedu.duke.Constants.TO_SCHEDULES_INSTANCE_DESCRIPTION;
+import static seedu.duke.Constants.TO_INVENTORY_INSTANCE;
+import static seedu.duke.Constants.TO_INVENTORY_INSTANCE_DESCRIPTION;
+import static seedu.duke.Constants.HELP_COMMAND;
+import static seedu.duke.Constants.HELP_COMMAND_DESCRIPTION;
+import static seedu.duke.Constants.EXIT_COMMAND;
+import static seedu.duke.Constants.EXIT_COMMAND_DESCRIPTION;
+import static seedu.duke.Constants.MARK_BLANK;
+
 
 public class UI {
     static final int LARGE_NUMBER = 100; // Just a large number

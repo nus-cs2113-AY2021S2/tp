@@ -121,7 +121,7 @@ public class PatientChecker extends MainChecker {
      * @throws ExcessInputException when the number of input fields is in excess.
      * @throws InsufficientInputException when the number of input fields is insufficient.
      */
-    public void checkLength() throws ExcessInputException, InsufficientInputException{
+    public void checkLength() throws ExcessInputException, InsufficientInputException {
         if (command.equals("add") && numberOfTokens > 7) {
             logger.log(Level.WARNING, "Incorrect patient add command input fields, excess fields.");
             throw new ExcessInputException();
@@ -230,7 +230,7 @@ public class PatientChecker extends MainChecker {
      * @param userID the string containing the ID of the patient.
      * @throws InvalidPatientIdException when the characters in the patient ID are unacceptable.
      */
-    private void checkValidId(String userID) throws InvalidPatientIdException{
+    private void checkValidId(String userID) throws InvalidPatientIdException {
         if (userID.length() != 6) {
             logger.log(Level.WARNING, "Incorrect patient ID length.");
             throw new InvalidPatientIdException();
