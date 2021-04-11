@@ -164,8 +164,6 @@ public class UI {
     public static void printStartMenu() {
 
         UI.printEmptyLine();
-
-        UI.printEmptyLine();
         int[] lengthPara = {15,40,10};
         printer(new String[]{HELP_HEADER_COMMAND, HELP_HEADER_DESCRIPTION, HELP_HEADER_FORMAT}, lengthPara);
         UI.showLongLine();
@@ -191,7 +189,6 @@ public class UI {
     public static void unidentifiedErrorMessage() {
         System.out.println("Something went wrong!\n");
     }
-
 
     public void showLoadingError() {
         System.out.println("OOPS! There was an error loading the file!");
