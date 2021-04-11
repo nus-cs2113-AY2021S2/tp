@@ -6,13 +6,13 @@ Participant ":CommandHandler" as CommandHandler
 Participant ":XYZCommand" as XYZCommand
 
 activate Finux
-Finux -> CommandHandler : parseCommand(parsedArguments)
+Finux -> CommandHandler : parseCommand(parsedArguments : ArrayList<String>)
 activate CommandHandler
-CommandHandler -> CommandHandler :createCommand(parsedArguments)
+CommandHandler -> CommandHandler :createCommand(parsedArguments : ArrayList<String>)
 activate CommandHandler
 alt parsedArguments[0] is "xyz"
     create XYZCommand
-    CommandHandler -> XYZCommand : XYZCommand(parsedArguments)
+    CommandHandler -> XYZCommand : XYZCommand(parsedArguments : ArrayList<String>)
     activate XYZCommand
     alt no error
     XYZCommand --> CommandHandler
