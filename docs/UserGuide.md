@@ -547,6 +547,8 @@ Follow one of the two formats below.
 **Result** - Adds “iP submission” to the module’s  list of tasks, with the specified details.
 
 > 💡 Deadline has to be in the DD-MM-YYYY format.
+> 
+> Note: a task should minimally have a "task name" and "deadline", so only the "remarks" field can be skipped.
 
 > 💡 When asked if the task is graded, both "y" and "Y" will work. Response is not case-sensitive for the user's convenience.
 
