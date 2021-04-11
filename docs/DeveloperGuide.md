@@ -24,15 +24,17 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[4.03 View All Modules](#403-view-all-modules)  
 &nbsp;&nbsp;&nbsp;&nbsp;[4.04 Delete a Module](#404-delete-a-module)  
 &nbsp;&nbsp;&nbsp;&nbsp;[4.05 Add New Review](#405-add-new-review)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.06 Delete a Review](#406-delete-a-review)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.07 Add New Task](#407-add-new-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.08 Mark/Unmark a Task as Done](#408-markunmark-a-task-as-done)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.09 Delete a Task](#409-delete-a-task)   
-&nbsp;&nbsp;&nbsp;&nbsp;[4.10 View All Tasks](#410-view-all-tasks)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.11 Pin A Task](#411-pin-a-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.12 Add Zoom Link](#412-add-zoom-link)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.13 Add Module Components](#413-add-module-components)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.14 View Module Components](#414-view-module-components)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.06 View all Reviews](#406-view-all-reviews)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.07 Delete a Review](#407-delete-a-review)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.08 Add New Task](#408-add-new-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.09 Mark/Unmark a Task as Done](#409-markunmark-a-task-as-done)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.10 Delete a Task](#410-delete-a-task)   
+&nbsp;&nbsp;&nbsp;&nbsp;[4.11 View All Tasks](#411-view-all-tasks)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.12 Pin A Task](#412-pin-a-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.13 Add Zoom Link](#413-add-zoom-link)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.14 Add External Links](#414-add-external-links)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.15 Add Module Components](#415-add-module-components)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.16 View Module Components](#416-view-module-components)  
 
 [5. Product scope](#5-product-scope)    
 
@@ -222,7 +224,8 @@ Just before a successful deletion, the deleted `module`'s relevant information (
 This feature allows user to `add a review` for any of the modules they have taken.
 
 > 📝 **Note!**  
-> This action will **overwrite** any existing reviews with the new review.
+> This action will **overwrite** any existing reviews with the new review.  
+> **Also, anything typed after '/end' will be erased!**
 
 
 ```
@@ -245,8 +248,16 @@ the `/end` symbol. Anything typed after this `/end` symbol will be erased.
 **When overwriting this review with a new review**: The old review will be printed for user
 reference. The user will also be alerted that this action will delete his/her old review.
 
+### 4.06 View all Reviews  
 
-### 4.06 Delete a Review  
+This feature prints each `review` *String* of all `modules` in the `ArrayList` of `modules`.  
+
+A brief explanation of how this works:  
+
+After checking if the modules list is empty, a '`for`' loop is used to go through the list of `modules`. The `review` *String* attribute is printed through the getReview() function within the `Module` class.  
+
+### 4.07 Delete a Review  
+
 This feature allows user to delete a `review` from the `module`.
 
 A general explanation of how this feature works:
@@ -258,7 +269,7 @@ of:
 If this default string value already existed when `deleteAReview` is called (i.e. if the user has not reviewed the module yet), 
 this same string will be printed out as a warning to the user. 
 
-### 4.07 Add New Task
+### 4.08 Add New Task
 
 This feature allows the user to add tasks of type `normal task`, `assignment`, `midterm`, `final exam` to a
 task list.
@@ -289,7 +300,7 @@ user. Using the example above,
 signalling completion.
 5. This new task will then be stored into an `ArrayList` for its task type for future reference.
 
-### 4.08 Mark/Unmark a Task as Done
+### 4.09 Mark/Unmark a Task as Done
 
 This feature allows the user to mark or unmark tasks of type `task`, `assignment`, `midterm`, `final exam` as done.
 
@@ -306,7 +317,7 @@ input the index of the task they want to mark/unmark.
 4. Upon marking a task as done, the message that the user inputted upon creation of this particular task will then be printed out.
 
 
-### 4.09 Delete a Task
+### 4.10 Delete a Task
 
 This feature allows the user to delete a task of type `normal task`, `assignment`, `midterm`, `final exam`
 from a task list.
@@ -322,7 +333,7 @@ type__ (`normal task`, `assignment`, `midterm`, `final exam`) of the task they w
 input the index of the task they want to delete. 
 3. The task they select will then be deleted from the `ArrayList`.
 
-### 4.10 View All Tasks
+### 4.11 View All Tasks
 
 This feature allows the user to view all their existing tasks for all task types.
 
@@ -334,7 +345,7 @@ A general explanation of how this feature works:
 1. When the user calls this feature, the application will first iterate through and print out the pinned task list.
 2. This is then followed by the `normal task` list, `assignment` list, `midterm` list and `final exam` list.
 
-### 4.11 Pin a Task
+### 4.12 Pin a Task
 
 This feature allows the user to pin a task of type `normal task`, `assignment`, `midterm`, `final exam`
 from a task list.
@@ -352,7 +363,7 @@ input the index of the task they want to pin.
 The task the user selected will then be added to the respective pinned task
 ArrayList corresponding to the __task type__ they chose.
 
-### 4.12 Add Zoom Link
+### 4.13 Add Zoom Link
 
 Given below is the sequence diagram for the feature:  
 ![Diagram](diagrams/links/addZoomLink.png)
@@ -376,7 +387,7 @@ the module object which is stored in the ModuleInfo class.
 Step 4. Module#setZoomLink then sets the `zoomLink` attribute of the module object to the zoom link
 that was entered.
 
-### 4.13 Add External Links 
+### 4.14 Add External Links 
 
 This feature allows users to add and store their favourite links.
 
@@ -402,7 +413,8 @@ This section explains the implementation and design considerations of the
 set of features under CAP Simulator/Calculator. 
 For more information on CAP Simulator/Calculator, you may refer to __Section 3.2__ under [*User Guide*](UserGuide.md).
 
-#### 4.4.1 Add CAP and Number of MCs graded taken
+#### 4.4.1 Add CAP and Number of MCs graded taken  
+
 This feature allows user to add cumulative average point, that ranges between 0 - 5,
 with 2 decimal places of precision, and total number of graded modular credits.
 
@@ -421,7 +433,8 @@ Step 1.
 
 Step 2.
 
-### 4.10 Add Module Components
+### 4.15 Add Module Components  
+
 This feature allows user to add user-defined module components and its related weightage for an
 existing module.
 
@@ -443,7 +456,7 @@ Here, there are two possible routes:
 Assuming the first route is well executed, the component (and its weightage) is stored in a
 Hashtable format in the `Module` object specified by the user previously*.
 
-### 4.11 View Module Components
+### 4.16 View Module Components
 
 How the feature works:  
 The feature is an extension of the `Component` feature.
