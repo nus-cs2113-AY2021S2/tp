@@ -101,6 +101,8 @@ E.g. `> user input`
 > **<span style="color: red"> WARNING! </span>**   
 > This is a warning section. Any user interaction with UniTracker that may result in issues or unintended results will be written in sections such as this one.
 
+→ Go To [Table of Contents](#table-of-contents)  
+→ Go To [Command Summary](#5-command-summary)
 ---
 
 ## 2. Quick Start
@@ -138,6 +140,9 @@ Next, ensure that Java 11 is installed on your computer. You can download the la
 4. Navigate to the folder you stored your Jar file in. 
    - You can open a folder by typing `cd` followed by space then the name of your folder.  
 5. Once you are in the folder, enter `java -jar duke.jar` to run the application.
+
+→ Go To [Table of Contents](#table-of-contents)  
+→ Go To [Command Summary](#5-command-summary)
 
 ### 2.2 Start Up
 
@@ -226,7 +231,9 @@ Please choose which action you would like to do and enter the number:
 [15] --- Exit to main menu
 ----------------------
 ```
-  
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)    
+
 #### 3.1.1 Add a Module  
 
 Adds a new module to the modules list.  
@@ -253,6 +260,8 @@ Software Engineering and OOP
 --------------------------------------------  
 Returning to module information menu...  
 ```  
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.1.2 View a Module
 
@@ -293,6 +302,8 @@ These are your tasks:
 --------------------------------------------  
 Returning to module information menu...  
 ```  
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.1.3 View all Modules
 
@@ -311,6 +322,8 @@ Here are the modules in your Modules List:
 [2] --- CS2113T   
 --------------------------------------------  
 ```  
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.1.4 Delete a Module  
 
@@ -348,6 +361,8 @@ Overall: 5/5
 --------------------------------------------  
 Returning to module information menu...  
 ```
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.1.5 Add/View Components and Their Weightages  
 
@@ -426,6 +441,9 @@ From Module object: CS2113T
 {FinalExam=40}
 ````
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 #### 3.1.6 Add Module's Modular Credits (MC)
 
 Adds modular credits for an existing module.  
@@ -462,6 +480,9 @@ Overwriting current MCs for CS2040C to: 1
 Returning to module information menu...
 ```
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 #### 3.1.7 Add Module Grade
 
 Adds module grade to an existing module. The module grade added can be used to compute a [simulated CAP](#323-simulate-future-cap).   
@@ -486,6 +507,9 @@ Please choose which module you would like to assign a grade and enter the number
 Enter the grade for this module:
 > A
 ````
+
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.1.8 Add a review
 
@@ -534,6 +558,9 @@ Overall: 5/5
 Returning to module information menu...  
 ```
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 #### 3.1.9 View all reviews
 
 Lists out all the reviews for all modules added to UniTracker.
@@ -559,6 +586,9 @@ Overall: 5/5
 --------------------------------------------  
 Returning to module information menu...  
 ```
+
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.1.10 Delete a Review
 
@@ -596,6 +626,9 @@ Overall: 5/5
 Returning to module information menu...  
 ```
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 #### 3.1.11 Add New Task
 
 Refer to [this section](#331-add-new-task).
@@ -611,6 +644,10 @@ Refer to [this section](#345-add-zoom-link).
 #### 3.1.14 Delete Zoom Link
 
 Refer to [this section](#346-delete-zoom-link).
+
+
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 ---
 
@@ -630,6 +667,8 @@ Please choose which action you would like to do and enter the number:
 [3] --- Simulate future CAP
 [4] --- Exit
 ````
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.2.1 Add CAP and Number of MCs counted towards CAP
 
@@ -662,7 +701,11 @@ Please key in the total MCs completed (excluding modules you have S/U-ed and CS/
 Current CAP: 4.50 (rounded to 2dp)
 Number of MCs completed: 20
 Returning to CAP simulator/calculator menu...
-````
+````  
+
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 #### 3.2.2 View CAP and Number of MCs counted towards CAP
 
 Displays current CAP and MCs counted into the CAP from input entered from [3.2.1](#321-add-cap-and-number-of-mcs-counted-towards-cap).
@@ -681,6 +724,9 @@ Current CAP: 4.50 (rounded to 2dp)
 Number of MCs completed: 20
 Returning to CAP simulator/calculator menu...
 ````
+
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.2.3 Simulate future CAP
 
@@ -769,6 +815,9 @@ The simulated cumulative average point (rounded to 2 d.p) you have is:
 Returning to CAP simulator/calculator menu...
 ````  
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 ---
 
 ### 3.3 Task Manager
@@ -818,6 +867,8 @@ Please choose which action you would like to do and enter the number:
 [5] --- Pin a Task
 [6] --- Exit
 ````
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.3.1 Add New Task
 
@@ -924,7 +975,10 @@ Returning back to the menu now!
 > ````
 
 After adding a task, you will return to the module you accessed this feature from. This feature can be accessed
-from both the Task Manager and [Module Information](#31-module-information) menus. 
+from both the Task Manager and [Module Information](#31-module-information) menus.  
+
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.3.2 Mark/Unmark a Task as Done
 
@@ -997,6 +1051,9 @@ Returning back to TaskManager menu now!
 > Invalid input! Please enter a valid integer from the list.
 > ````
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 #### 3.3.3 Delete a Task
 
 Deletes a task of type `normal task`, `assignment`, `midterm` or `final exam` from the task list.
@@ -1033,6 +1090,8 @@ Example for deleting a task of type `normal task` with the task description of `
 > Invalid input! Please enter a valid integer from the list.
 > ````
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.3.4 View All Tasks
 
@@ -1061,6 +1120,9 @@ Example:
 
   This is the list of your final exams:  
   ````  
+
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.3.5 Pin a Task
 
@@ -1130,6 +1192,9 @@ Main Menu:
 [5] Exit Program
 ````
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 ---
 
 ### 3.4 Links Menu
@@ -1149,6 +1214,9 @@ Please choose which action you would like to do and enter the number:
 [3] --- View Zoom links
 [4] --- Exit to main menu
 ````
+
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.4.1 External Links Menu
 
@@ -1171,6 +1239,8 @@ Please choose which action you would like to do and enter the number:
 [4] --- exit to links menu
 ````
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.4.2 Add External Link
 
@@ -1210,6 +1280,9 @@ Please choose which action you would like to do and enter the number:
 [4] --- Exit to links menu
 ````
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 #### 3.4.3 Remove External Link
 
 Removes an external link from the external links list.
@@ -1240,6 +1313,9 @@ Please choose which action you would like to do and enter the number:
 [4] --- exit to links menu
 ````
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 #### 3.4.4 View External Links
 
 Allows you to view all external links stored in the application.
@@ -1265,6 +1341,9 @@ Please choose which action you would like to do and enter the number:
 [4] --- exit to links menu
 
 ````
+
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
 
 #### 3.4.5 Add Zoom Link
 
@@ -1312,6 +1391,9 @@ Please choose which action you would like to do and enter the number:
 [5] --- Exit to main menu
 ````
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 #### 3.4.6 Delete Zoom Link
 
 Deletes a zoom link of your choice
@@ -1338,6 +1420,9 @@ Please choose which action you would like to do and enter the number:
 [5] --- Exit to main menu
 ````
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 #### 3.4.7 View Zoom Links
 
 View all zoom links stored in the application
@@ -1361,6 +1446,9 @@ Please choose which action you would like to do and enter the number:
 [5] --- Exit to main menu
 ````
 
+→ Go To [Table of Contents](#table-of-contents)    
+→ Go To [Command Summary](#5-command-summary)  
+
 ---
 ## 4. Frequently Asked Questions (FAQ)  
 
@@ -1368,6 +1456,7 @@ Please choose which action you would like to do and enter the number:
 **A:** Yes, you can! Firstly, locate the UniTracker Jar file on your desired computer. If the folder already contains a 'UniTracker Data' folder, delete it.
 Then, copy the 'UniTracker Data' folder over from your current computer to the folder containing the Jar file on your desired computer.
 
+→ Go To [Table of Contents](#table-of-contents)
 
 ---
 ## 5. Command Summary
