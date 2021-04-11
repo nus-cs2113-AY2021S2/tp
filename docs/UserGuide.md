@@ -36,16 +36,17 @@ The purpose of this User Guide is to assist you in the usage of the application.
 ### 1.1 What is HealthVault?
 
 To save a life is the top priority of any healthcare worker. 
-In such a precarious situation, every second matters and a Head Nurse cannot afford to waste time when they need to store or view critical information.
+In such a precarious situation, every second matters and nurses cannot afford to waste time when they need to store or view critical information.
 
-Introducting HealthVault, a Head Nurse's personal information recording system. HealthVault is a desktop app for managing doctor, nurse, patient and inventory information, optimised for use through the command line interface. If the user can type fast, HealthVault brings both convenience and speed for a Head Nurse to view and store critical information.
+Introducting HealthVault, a hospital information recording system made for nurses. HealthVault is a desktop app for managing doctor, nurse, patient and inventory information, optimised for use through the command line interface. If the user can type fast, HealthVault brings both convenience and speed for nurses to view and store critical information.
+
 
 In this application there are 5 main features that are provided for the user. 
 * **Staff:** Keeps record of and allows you to access staff information.
 * **Patient:** Keeps record of and allows you to access patient information.
 * **Doctor Appointments:** Keeps record of and allows you to create and view Doctor Appointments.
 * **Nurse Schedules:** Keeps record of and allows you to create and view Nurse Schedules.
-* **Inventory:** Keeps record of and allows you to view your current hospital inventory of supplies
+* **Inventory:** Keeps record of and allows you to view your current hospital inventory of supplies.
 
 Each feature can be accessed by accessing its specific menu. For example, the Patient details can be accessed by accessing the Patient Menu from the Start Menu.
 
@@ -56,7 +57,7 @@ Various helpful screenshots from the application also help to guide you through 
 
 This user guide will cover the following:
 * How to set up the application
-* How to use Command Line Interface - CLI
+* How to use Command Line Interface (CLI)
 * Helpful tips on how to use the guide
 * How to use each of the features
 * Frequently asked questions
@@ -80,18 +81,20 @@ This user guide will cover the following:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Alphanumeric** - Consisting of only alphabets and numerals.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Delimiter** - A character that seperates different sections of a text or input
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Delimiter** - A character that seperates different sections of a text or input.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Illegal Characters** - A character that is neither an alphabet nor number.
 
 ### 2.2 Symbols & Icons
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **[]** - Square brackets for compulsory user inputs.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **[ ]** - Square brackets for compulsory user inputs.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **<>** - Angled quotation marks for optional user inputs.
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :information_source: This icon denotes a important information to note.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :exclamation: Warning sign to inform user against doing certain actions 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :exclamation: Warning sign to inform user against doing certain actions. 
 
 <br/><br/>
 
@@ -99,7 +102,7 @@ This user guide will cover the following:
 
 ### 3.1 Introduction to Command Line Interface (CLI)
 
-HealthVault uses the Command Line Interface (CLI) to run. And CLI is primary input method for interacting with HealthVault.
+HealthVault uses the Command Line Interface (CLI) to run and it is the primary input method for interacting with HealthVault.
 
 As CLI is not commonly used, this section hopes to orientate you with the CLI environment if you are new, and acts as a refresher for returning users.
 
@@ -174,7 +177,7 @@ The detailed explaination of each command will be explained in the subsequent se
 
 ### 5.1 Staff
 
-The functions in Staff menu allow you, the head nurse, to access and modify the details of each staff in the hospital. 
+The functions in Staff menu allow you, the nurse, to access and modify the details of each staff in the hospital. 
 (Note for Staff ID: D/N = Doctor/Nurse)
 
 This is an example of the welcome screen for Staff Menu.
@@ -326,7 +329,7 @@ This is an example of the welcome screen for Staff Menu.
 <br/><br/>
 ### 5.2 Patient
 
-The functions in the Patient menu allow you, the head nurse, to add, view, find, and delete patients in the patient list.
+The functions in the Patient menu allow you, the nurse, to add, view, find, and delete patients in the patient list.
 
 When you first enter the Patient menu, you will be greeted with the following welcome message.
 
@@ -462,7 +465,7 @@ When you first enter the Patient menu, you will be greeted with the following we
 <br/><br/>
 ### 5.3 Doctor's Appointment
 
-The functions in the Doctors' Appointment menu allow you, the head nurse, to add, view, and delete appointments made with a specific doctor.
+The functions in the Doctors' Appointment menu allow you, the nurse, to add, view, and delete appointments made with a specific doctor.
 
 This is an example of the welcome screen for Doctors' Appointment Menu.
 
@@ -599,7 +602,7 @@ This is an example of the welcome screen for Doctors' Appointment Menu.
 <br/><br/>
 ### 5.4 Schedules for Nurses
 
-The functions in the Nurse Schedule menu allow you, the head nurse, to add, view, and delete schedules of your nurses.
+The functions in the Nurse Schedule menu allow you, the nurse, to add, view, and delete schedules of your nurses.
 
 This is an example of the welcome screen for the Nurse Schedule Menu.
 <img src="images/NurseScheduleStartScreen.png" width = "600">
@@ -665,6 +668,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List either all schedules or specified Nurse ID's schedule.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `list/[Nurse ID/all]`
 
 >:information_source: Important notes about the input format
@@ -717,7 +721,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 ### 5.5 Inventory
 
-The functions in the Inventory menu allow you, the head nurse, to add, view, and delete drugs existing in your inventory.
+The functions in the Inventory menu allow you, the nurse, to add, view, and delete drugs existing in your inventory.
 
 This is an example of the welcome screen for the Inventory Menu.
 
@@ -728,6 +732,7 @@ This is an example of the welcome screen for the Inventory Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adds a new drug or increase the quantity of an existing drug in the drug inventory.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `add/[Name]/[Price]/[Quantity]`
 
 >:information_source: Important notes about the input format
@@ -785,6 +790,7 @@ This is an example of the welcome screen for the Inventory Menu.
 >2. Avoid using uppercase letters
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `delete/[Name]/[Quantity]`
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
@@ -809,6 +815,7 @@ This is an example of the welcome screen for the Inventory Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lists all the drugs in the inventory.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `list`
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
