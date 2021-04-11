@@ -24,7 +24,7 @@ GULIO is a module planner designed for efficiency for people that can type fast.
 1. Added data & storage section.
 1. Created skeleton for the command section.
 1. Converted user guide from Google Docs into Markdown.
-   > The team originally did the user guide on Google Docs. I converted it to markdown before we split it up and pushed our portions. It was tedious, but not difficult.
+   > The team originally did the user guide on Google Docs. I converted it to markdown before we split it up and pushed our respective portions. It was really tedious, but not difficult.
 
 ### Contributions to Developer Guide:
 
