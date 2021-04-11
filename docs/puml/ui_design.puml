@@ -1,17 +1,18 @@
 @startuml
+!include Style.puml
 hide circle
 skinparam classAttributeIconSize 0
 
-class NoteUi {
+class NoteUi UIMANAGER_COLOR{
 + String[] getNoteInfo()
 + String getBlockInfo()
 + void showNotes(ArrayList<String>)
 }
-class RouterUi {
+class RouterUi UIMANAGER_COLOR{
 + String[] getRoutingInfo()
 + int getEateryEntry(Block[])
 }
-class UiManager {
+class UiManager UIMANAGER_COLOR{
 - Scanner in
 - PrintStream out
 + String getUserCommandInput()
@@ -19,40 +20,40 @@ class UiManager {
 + void showMessage(String)
 + void showMessageWithDivider(String)
 }
-class HistoryUi {
+class HistoryUi UIMANAGER_COLOR{
 + void showHistory(History)
 + int getRepeatEntry()
 }
-class CommonMessage {
+class CommonMessage UIMANAGER_COLOR{
 + {static} String LINE_SEPARATOR
 + {static} String DIVIDER
 + {static} String COMMAND_INPUT_HEADER
 + {static} String INFO_INPUT_HEADER
 }
-class DailyRouteUi {
+class DailyRouteUi UIMANAGER_COLOR{
 + ArrayList<String> getScheduleInfo()
 + int getDayEntryForAdd(ArrayList<String>)
 + int getDayEntryForShow(ArrayList<String>)
 + void showListOfDays(ArrayList<String>)
 + int getEntryFromUser(ArrayList<String>)
 }
-class AliasUi {
+class AliasUi UIMANAGER_COLOR{
 + String[] getAliasInfo()
 + void showCustomAliases(BlockAlias)
 + String getDeleteAliasInfo()
 }
-class FavouriteUi {
+class FavouriteUi UIMANAGER_COLOR{
 + String[] getFavouriteInfo()
 + void showFavourites(Favourite)
 + int getDeleteIndex()
 + int getRepeatIndex()
 }
 
-
-UiManager <|-- NoteUi
-UiManager <|-- RouterUi
-UiManager <|-- HistoryUi
-UiManager <|-- DailyRouteUi
-UiManager <|-- AliasUi
-UiManager <|-- FavouriteUi
+UiManager <|--up-- NoteUi
+UiManager <|--up-- RouterUi
+UiManager <|--up-- HistoryUi
+UiManager <|--down-- DailyRouteUi
+UiManager <|--down-- AliasUi
+UiManager <|--down-- FavouriteUi
+UiManager <|--left[hidden]-- CommonMessage
 @enduml
