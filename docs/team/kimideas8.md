@@ -18,13 +18,13 @@ This application was created with the aim of helping NUS Computing and Engineeri
     - What it does: allows the user to add notes one at a time to a location of choice, view an existing list of notes by locations, and delete notes at a location of choice one at a time 
     - Justification: It provides users with way of making quick notes within the campus, and saves users the trouble of adding notes in their own note-taking softwares, especially if the user is rushing for time.
       Since it helps to naturally organise a person's notes by locations, the user can easily recall what the note was made for.
-      
+
+<div style="page-break-after: always;"></div>
+
 - **Feature 2**: Implemented the ability to save the history of recently searched routes and all notes tagged to locations.
     - What it does: allows the user to auto-save all the past data in the app. This does not require any input from the user.
     - Justification: The ability to save previous data of the user is useful for the features of the app which requires saving data from previous interactions.
     - Highlights: It required an in-depth analysis of design alternatives to minimise the amount of redundancy on our code for the storage classes.
-
-<div style="page-break-after: always;"></div>
 
 ### Documentation
 - **User Guide:**
