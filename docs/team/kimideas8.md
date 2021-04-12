@@ -8,8 +8,6 @@ NUSMaze is a Command Line Interface (CLI) based application that aims to simplif
 The application allows users to find the shortest route from one block to another, locate the nearest eateries, tag personal notes to the location, add their daily scheduled routes and more. 
 This application was created with the aim of helping NUS Computing and Engineering students reach their lessons in time and to aid in making their journey in NUS quicker and more enjoyable.
 
-<div style="page-break-after: always;"></div>
-
 ## Summary of Contributions
 ### Code contribution 
 [RepoSense link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&since=&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false&tabOpen=true&tabType=authorship&tabAuthor=KimIdeas8&tabRepo=AY2021S2-CS2113T-T09-2%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code~other)
