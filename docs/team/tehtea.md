@@ -10,18 +10,18 @@ Access my contribution on [RepoSense](https://nus-cs2113-ay2021s2.github.io/tp-d
 
 Functionalities / Contributions and their PRs:
 #### Search for facility
-* https://github.com/AY2021S2-CS2113-T10-2/tp/pull/25
-* https://github.com/AY2021S2-CS2113-T10-2/tp/pull/87
+* [Search Facility Initial](https://github.com/AY2021S2-CS2113-T10-2/tp/pull/25)
+* [Better Input Validation](https://github.com/AY2021S2-CS2113-T10-2/tp/pull/87)
 
 #### Search all facilities in building
-* https://github.com/AY2021S2-CS2113-T10-2/tp/pull/43
-* https://github.com/AY2021S2-CS2113-T10-2/tp/pull/87
+* [Search in Building Initial](https://github.com/AY2021S2-CS2113-T10-2/tp/pull/43)
+* [Better Input Validation](https://github.com/AY2021S2-CS2113-T10-2/tp/pull/87)
 
 #### User guide cleanup
-* https://github.com/AY2021S2-CS2113-T10-2/tp/pull/89
+* [User Guide Cleanup](https://github.com/AY2021S2-CS2113-T10-2/tp/pull/89)
 
 #### Other general cleanups
-* https://github.com/AY2021S2-CS2113-T10-2/tp/pull/21/files (data loader patch)
-* https://github.com/AY2021S2-CS2113-T10-2/tp/pull/89 (PMD violations + some grammatical errors)
-* https://github.com/AY2021S2-CS2113-T10-2/tp/pull/38/files (DG diagrams moved out of zip file)
-* https://github.com/AY2021S2-CS2113-T10-2/tp/pull/51 (JAR file compilations)
+* [Data loader Patch](https://github.com/AY2021S2-CS2113-T10-2/tp/pull/21/files)
+* [PMD violations + some grammatical errors](https://github.com/AY2021S2-CS2113-T10-2/tp/pull/89)
+* [DG diagrams moved out of zip file](https://github.com/AY2021S2-CS2113-T10-2/tp/pull/38/files)
+* [JAR file compilation](https://github.com/AY2021S2-CS2113-T10-2/tp/pull/51)
