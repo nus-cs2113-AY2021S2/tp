@@ -8,25 +8,25 @@
     
     2.1 [Prerequisites](#21-prerequisites)
    
-    2.2 [Setting up the project in your computer](#22-setting-up-the-project-in-your-computer)
+    2.2 [Setting up Connoisseur in your computer](#22-setting-up-connoisseur-in-your-computer)
    
-    2.3 [Verifying the setup](#23-verifying-the-setup)
+    2.3 [Verifying the Setup](#23-verifying-the-setup)
    
-    2.4 [Configure coding style](#24-configure-coding-style)
+    2.4 [Configure Coding Style](#24-configure-coding-style)
    
 3. [Design](#3-design)
     
     3.1 [Architecture: High Level View](#31-architecture-high-level-view)
     
-    3.2 [UI component](#32-ui-component)
+    3.2 [UI Component](#32-ui-component)
     
-    3.3 [Logic component](#33-logic-component)
+    3.3 [Logic Component](#33-logic-component)
     
-    3.4 [Model component](#34-model-component)
+    3.4 [Model Component](#34-model-component)
     
-    3.5 [Sorter component](#35-sorter-component)
+    3.5 [Sorter Component](#35-sorter-component)
     
-    3.6 [Storage component](#36-storage-component)
+    3.6 [Storage Component](#36-storage-component)
     
 4. [Implementation](#4-implementation)
 
@@ -166,9 +166,9 @@ It is instantiated in the connoisseur() method and serves two main purposes:
 * Read user input from the console.
 * Print program output to the console. 
 
-The *ui.readCommand()* method reads the input which is then passed on to the `Logic` component. 
+The `ui.readCommand()` method reads the input which is then passed on to the `Logic` component. 
 
-The *ui.println(output)* method prints output to the console. Default output messages are stored as static String constants in the `Messages` class, while commonly used output messages are made methods by themselves. *ui.printGreeting()* is one such method and is called to display the welcome message to the user. 
+The `ui.println(output)` method prints output to the console. Default output messages are stored as static string constants in the `Messages` class, while commonly used output messages are made methods by themselves. `ui.printGreeting()` is one such method and is called to display the welcome message to the user. 
 
 
 ### 3.3 Logic Component
@@ -177,9 +177,9 @@ The *ui.println(output)* method prints output to the console. Default output mes
 <p align="center">Figure 2. Logic Component of Connoisseur</p>
 
 As show in Figure 2, the Logic component of Connoisseur consists of the classes `Parser` and `Commands`. 
-It is instantiated in the connoisseur() method and serves to translate user input into `Commands` which are recognised by the application. 
+It is instantiated in the `connoisseur()` method and serves to translate user input into recognisable commands by the application. 
 
-The *determineCommand()* method of the `Parser` class deciphers the command word of the input, calling the respective command's method in `Commands`. 
+The `determineCommand()` method of the `Parser` class deciphers the command word of the input, calling the respective command's method in `Commands`. 
 
 Each method in `Commands` will then check the arguments provided with the commands to make sure that they are valid, before executing the command in `Storage`, `ReviewList` or `RecommendationList`. 
 
@@ -199,17 +199,17 @@ Both the classes in the Model component contain methods which modify the content
 ![SorterComponent.png](./diagrams/SorterComponent.png)<br>
 <p align="center">Figure 4. Sorter Component of Connoisseur</p>
 
-As shown in Figure 4, The Sorter component is a separate component which serves to sort the reviews based on a few sorting methods. 
+As shown in Figure 4, the Sorter component is a separate component which serves to sort the reviews based on a few sorting methods. 
 
-When the *sortReviews()* method is called in the `ReviewList`, a sortMethod parameter is passed together with it to the `Sorter`, which then determines which of the Sorts to sort the reviews by. If the sortMethod parameter is empty, `Sorter` will use the default sortMethod saved. The sorted reviews are then passed back to `ReviewList`. 
+When the `sortReviews()` method is called in the `ReviewList`, a sortMethod parameter is passed together with it to the `Sorter`, which then determines which of the Sorts to sort the reviews by. If the sortMethod parameter is empty, `Sorter` will use the default sortMethod saved. The sorted reviews are then passed back to `ReviewList`. 
 
 ### 3.6. Storage Component
 
-The Storage component serves to implement the storage functions of Connoisseur. It saves and loads data represented as a JSON file in the *./data* folder so that data can be retained after exiting Connoisseur. 
+The Storage component serves to implement the storage functions of Connoisseur. It saves and loads data represented as a JSON file in the `./data` folder so that data can be retained after exiting Connoisseur. 
 
-On startup, Connoisseur checks if there is a *connoisseur.json* file in the *./data* folder. If they exist, the data will be loaded via the *loadConnoisseurData()* method and used to initialize classes in the `Model` component. If the file and folder do not exist, they will be created and new instances of the classes in the `Model` component will be initialized instead. 
+On startup, Connoisseur checks if there is a `connoisseur.json` file in the `./data` folder. If they exist, the data will be loaded via the `loadConnoisseurData()` method and used to initialize classes in the `Model` component. If the file and folder do not exist, they will be created and new instances of the classes in the `Model` component will be initialized instead. 
 
-Before exiting, Connoissuer will save the data from the `Model` component and write them to *connoisseur.json* located in the *./data* folder. 
+Before exiting, Connoissuer will save the data from the `Model` component and write them to `connoisseur.json` located in the `./data` folder. 
 
 ## 4. Implementation
 The following section describes the implementation of certain key features in the current version of Connoisseur. It also
