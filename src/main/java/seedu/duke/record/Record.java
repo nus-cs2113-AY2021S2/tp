@@ -12,7 +12,6 @@ public abstract class Record {
     private BigDecimal amount;
     private LocalDate issueDate;
     private String description;
-    private static final String FILE_OUTPUT_STRING_FORMAT = "%s | %f | %s";
 
     /**
      * Constructor to create a record.
