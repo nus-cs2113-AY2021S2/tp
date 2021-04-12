@@ -795,6 +795,10 @@ Example on CAP simulator:
 
 ###### Version 1  
 
+> **Note!**  
+> Ensure the MCs and grade entered into each module is up to date for meaningful simulation. You may update the MCs and grade of each module in [3.1.6](#316-add-modules-modular-credits-mc) and [3.1.7](#317-add-module-grade) respectively.
+> The grades and MCs for each simulation is shown for you to know.  
+
 ````
 > 1
 --------------------------------------------
@@ -810,6 +814,9 @@ Returning to CAP simulator/calculator menu...
 ````  
 
 ###### Version 2  
+
+> **Note!**  
+> Empty entries will be shown as "[]" to denote you have not entered any grades and MCs.  
 
 ````
 > 2
