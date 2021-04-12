@@ -156,6 +156,15 @@ How the command is executed?
 * `Goal` is an abstract class, which is the superclass for different types of goals.
 * Each `RecordList` is composed of `Record`. Each `GoalList` is composed of `Goal`.
 
+#### Command component
+
+![Structure of the Commands](./diagrams/DG_Images/CommandStructure.png)
+<h5 align="center">Figure 3: class structure for Command</h5>
+
+* `Command` is an abstract class to interact with other components of the system.
+* `AddCommand`,`ViewCommand`,`DeleteCommand`,`SetCommand`,`CheckCommand`,`CancelCommand`,`HelpCommand`,`ExitCommand` are concrete command classes inherit from `Command` class to carry out different tasks.
+* `InvalidCommand` represents commands whose syntax are invalid.
+* `CommandResult` stores the feedback message of command execution and will interact with UI to display the feedback.
 
 #### Storage component
 
