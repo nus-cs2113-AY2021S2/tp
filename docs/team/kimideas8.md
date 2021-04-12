@@ -8,8 +8,6 @@ NUSMaze is a Command Line Interface (CLI) based application that aims to simplif
 The application allows users to find the shortest route from one block to another, locate the nearest eateries, tag personal notes to the location, add their daily scheduled routes and more. 
 This application was created with the aim of helping NUS Computing and Engineering students reach their lessons in time and to aid in making their journey in NUS quicker and more enjoyable.
 
-<div style="page-break-after: always;"></div>
-
 ## Summary of Contributions
 ### Code contribution 
 [RepoSense link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&since=&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false&tabOpen=true&tabType=authorship&tabAuthor=KimIdeas8&tabRepo=AY2021S2-CS2113T-T09-2%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code~other)
@@ -26,17 +24,17 @@ This application was created with the aim of helping NUS Computing and Engineeri
     - Justification: The ability to save previous data of the user is useful for the features of the app which requires saving data from previous interactions.
     - Highlights: It required an in-depth analysis of design alternatives to minimise the amount of redundancy on our code for the storage classes.
 
+<div style="page-break-after: always;"></div>
+
 ### Documentation
 - **User Guide:**
-    - Added documentation for Notes Section (under 'Features')
-    - Edited documentation for 'add, view, delete notes' rows (under 'Command Summary')
-- **Developer's Guide:**
-    - Added documentation for Storage Component (under 'Design')
+    - Added documentation for Section 4.8 'Notes' (under Section 4 'Features')
+    - Edited documentation for 'add, view, delete notes' rows (under Section 6 'Command Summary' Table)
+- **Developer Guide:**
+    - Added documentation for Section 2.7 'Storage Component' (under Section 2 'Design')
         - UML Diagrams added: (1 diagram) Storage Component Diagram 
-    - Added documentation for Save Feature (under 'Implementation')
+    - Added documentation for Section 3.6 'Save Feature' (under Section 3 'Implementation')
         - UML Diagrams added: (5 diagrams) 1 overall sequence diagram for Save Feature, 3 close-up Sequence diagrams for Step 1, 1 close-up Sequence diagram for Step 2
-
-<div style="page-break-after: always;"></div>
 
 ### Contribution to Team-based Tasks 
 - Managed releases v2.0 (1 release) on GitHub
@@ -46,10 +44,10 @@ This application was created with the aim of helping NUS Computing and Engineeri
 - Reviewed some pull requests for team: [Links to PRs reviewed](https://github.com/AY2021S2-CS2113T-T09-2/tp/pulls?q=is%3Apr+is%3Aclosed+reviewed-by%3AKimIdeas8)
       
 ### Contributions beyond the project team
-- Evidence of helping others:
+- **Evidence of helping others:**
   - Contributed suggestions for improving product for Team W09-1:
-    - https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/183
-    - https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/181
-    - https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/182
+    - [Suggestion 1](https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/183)
+    - [Suggestion 2](https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/181)
+    - [Suggestion 3](https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/182)
       
         
