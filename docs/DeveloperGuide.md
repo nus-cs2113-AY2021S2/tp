@@ -199,6 +199,8 @@ Each subclass of `BaseException`:
 * has at most one component that is dependent on it (e.g `InvalidInputException` and the `UI` component)
 * contains an enumeration of error messages specific to that component
 
+More details on the specific implementation can be found at [Section 4.3: Exception Handling](#exception-handling).
+
 ### Common Classes
 
 There are two common classes, `Constants` and `Common`.
