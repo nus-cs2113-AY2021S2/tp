@@ -1731,7 +1731,7 @@ Please input with the following format [P][5 digit ID number]
 >3. The gender field input should only be "M", "F".
 >4. This function **allows** the adding of past appointments.
      
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```add/D12345/A12345/Alex/M/21012021```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Positive Test case:** ```add/D12345/A12345/Alex/M/21012021```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Appointment Added```
 
@@ -1752,7 +1752,7 @@ Please input with the following format [D][5 digit ID number]
 >:information_source: Important notes about the input format
 >1. Make sure that the inputted doctor/appointment ID starts with a D/A and have **exactly** 5 digits in the number following! 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.1 **Test case:** ```delete/D12345```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.1 **Positive Test case:** ```delete/D12345```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```DoctorID / Appointment ID: D12345/A12345 has been deleted!```
 
@@ -1765,7 +1765,7 @@ Error in ID input
 Please input with the following format [D/A] followed by [5 digit ID number]
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.2 **Test case:** ```delete/A54321```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.2 **Positive Test case:** ```delete/A54321```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Appointment ID: A54321 has been deleted!```
 
@@ -1786,7 +1786,7 @@ Please input with the following format [D/A] followed by [5 digit ID number]
 >1. Make sure the input `all` is lower caps.
 >2. Make sure that the inputted doctor/appointment ID starts with a D/A and have **exactly** 5 digits in the number following! 
     
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.1 **Test case:** ```list/all```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.1 **Positive Test case:** ```list/all```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 
@@ -1806,7 +1806,7 @@ Error in ID input
 Please input with the following format [all/D/A] followed by [5 digit ID number]
 ```
 	
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.2 **Test case:** ```list/D12345```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.2 **Positive Test case:** ```list/D12345```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 
@@ -1824,7 +1824,7 @@ Error in ID input
 Please input with the following format [all/D/A] followed by [5 digit ID number]
 ```
 	
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.3 **Test case:** ```list/A12345 ```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.3 **Positive Test case:** ```list/A12345 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 
