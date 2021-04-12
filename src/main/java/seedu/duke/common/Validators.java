@@ -19,7 +19,9 @@ import static seedu.duke.common.Messages.ERROR_AMOUNT_MORE_THAN_2DP;
 import static seedu.duke.common.Messages.ERROR_DOLLAR_AMOUNT_MISSING;
 import static seedu.duke.common.Messages.ERROR_CENT_AMOUNT_MISSING;
 
-
+/**
+ * Provides common validation methods for input validation.
+ */
 public class Validators {
     private static final String KEYWORD_TODAY = "today";
     private static final String LOGGER_OKAY_MESSAGE = "id validation success";

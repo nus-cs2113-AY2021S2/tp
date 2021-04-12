@@ -1,0 +1,18 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide circle
+
+class CreditScoreReturnedLoansMap {
+    -creditScoreReturnedLoansMap: HashMap<String, Integer>
+    +CreditScoreReturnedLoansMap(:HashMap<String, Integer>)
+    +getCreditScoreOf(:String) : int
+    +insertCreditScoreOf(:String, :int)
+    +getBorrowersNames(): Set<String>
+}
+
+
+class Finux {
+    +main()
+}
+Finux -> "1"CreditScoreReturnedLoansMap
+@enduml

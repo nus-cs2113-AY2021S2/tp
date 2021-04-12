@@ -37,7 +37,7 @@ Storage -> Storage : writeMapToSaveFile(:CreditScoreReturnedLoansMap)
 activate Storage
 Storage -> CSRLM : getBorrowersNames()
 activate CSRLM
-CSRLM --> Storage :  :<Set>String
+CSRLM --> Storage :  :Set<String>
 deactivate CSRLM
 Loop Each borrower in creditScoreReturnedLoansMap
 Storage -> CSRLM : getCreditScoreOf(borrowerName:String)

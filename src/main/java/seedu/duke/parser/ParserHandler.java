@@ -91,8 +91,8 @@ public class ParserHandler {
         if (StringUtils.startsWithAny(firstBlock, "help ", "creditscore ")) {
             String[] splitBlock = firstBlock.split(" ", 2);
             extracted.remove(0);
-            extracted.add(splitBlock[0]);
-            extracted.add(splitBlock[1].trim());
+            extracted.add(0, splitBlock[0]);
+            extracted.add(1, splitBlock[1].trim());
         }
         if (StringUtils.startsWith(firstBlock, "help") && firstBlock.length() == 4) {
             extracted.add(1,"all");
