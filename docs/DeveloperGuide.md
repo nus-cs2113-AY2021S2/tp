@@ -90,7 +90,9 @@ The login component consists of the classes that run the main functions of the L
 
 ![Login Component Class Diagram](UML diagrams/LoginComponentClassDiagram.png)
 
+
 The **Login Class Diagram** give above shows how the classes in the Login Component interact with each other
+
 
 The Login Component consists of 5 components.
 
