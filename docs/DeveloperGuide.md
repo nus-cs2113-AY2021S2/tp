@@ -37,6 +37,8 @@ ol ol > li:before {
     1. [Initializing Command Class](#initializing-command-class)
     1. [Adding Patients](#adding-patients)
     1. [Loading Patients](#loading-patients)
+    1. [Adding Medical Records to Patients](#adding-medical-records-to-patients)
+    1. [Retrieving a Patient's Medical Records](#retrieving-a-patients-medical-records)
     1. [Exception Handling](#exception-handling)
     1. [Organization of the Model Component](#organization-of-the-model-component)
 1. [Appendix A: Product scope](#appendix-a-product-scope)
@@ -338,22 +340,13 @@ Loading of patients is implemented via the `RetrieveCommand`, which is created b
 per [Section 4.1: Parsing User Input](#parsing-user-input), the arguments to the command are stored in
 a `HashMap<String, String>` and passed to the `RetrieveCommand` during initialization.
 
-Below is a sequence diagram when the user executes the command `retrieve`.
+Below is a sequence diagram when the user executes the command `retrieve`. For clarity, arguments are
+excluded from some function invocations.
 
 <img src="./images/sequence_diagram_retrieve.png" width="800">
 
 Internally, the `getRecords` method will first verify that there is a loaded patient before trying to load their
 records.
-
-### Loading Patients
-
-Loading of patients is implemented via the `LoadCommand`, which is created by the `Parser.parse()` method. As
-per [Section 4.1: Parsing User Input](#parsing-user-input), the arguments to the command are stored in
-a `HashMap<String, String>` and passed to the `LoadCommand` during initialization.
-
-Below is a sequence diagram when the user executes the command `add S1234567D`.
-
-<img src="./images/sequence_diagram_load.png" width="800">
 
 ### Exception Handling
 
