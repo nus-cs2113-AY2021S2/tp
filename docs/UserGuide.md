@@ -375,7 +375,7 @@ When you first enter the Patient menu, you will be greeted with the following we
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted user ID starts with an upper-case P and has **exactly** 5 digits in the number following!
+>1. Make sure that the inputted user ID starts with an upper case P and has **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `P12345`, `P54321`
 >
@@ -481,7 +481,7 @@ This is an example of the welcome screen for Doctors' Appointment Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]`
 
 >:information_source: Important notes about the input format
->1. Make sure that the inputted doctor/appointment ID starts with an upper-case D/A and has **exactly** 5 digits in the number following!
+>1. Make sure that the inputted doctor/appointment ID starts with an upper case D/A and has **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `D12345`, `A54321`
 >
@@ -510,7 +510,7 @@ This is an example of the welcome screen for Doctors' Appointment Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `delete/[DoctorID/ Appointment ID]`
 
 >:information_source: Important notes about the input format
->1. Make sure that the inputted doctor/appointment ID starts with an upper-case D/A and has **exactly** 5 digits in the number following!
+>1. Make sure that the inputted doctor/appointment ID starts with an upper case D/A and has **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `D12345`, `A54321`
 >
@@ -546,7 +546,7 @@ This is an example of the welcome screen for Doctors' Appointment Menu.
 
 >:information_source: Important notes about the input format
 >1. Make sure the input `all` is lower caps.
->2. Make sure that the inputted doctor/appointment ID starts with an upper-case D/A and has **exactly** 5 digits in the number following!
+>2. Make sure that the inputted doctor/appointment ID starts with an upper case D/A and has **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `D12345`, `A54321`
 >
@@ -748,7 +748,7 @@ This is an example of the welcome screen for the Inventory Menu.
 >
 >5. Note that the examples for adding a new item and increasing the quantity of an existing item are related!
 >
->6. Avoid using uppercase letters!
+>6. Avoid using upper case letters!
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1. Example of usage(add a new item)**:
 
@@ -892,7 +892,7 @@ paracetamol     | 3.00       | 120
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |
 | **Patient**         |                                                                                                            |
-| add                 | `add/[Patient ID]/[Name] [Age]/[Gender]/[Illness]/[Items needed]`<br/><br/>`add/P55555/Sam/40/Male/Fever/Paracetamol`   |
+| add                 | `add/[Patient ID]/[Name]/[Age]/[Gender]/[Illness]/[Items needed]`<br/><br/>`add/P55555/Sam/40/Male/Fever/Paracetamol`   |
 | delete              | `delete/[Patient ID]`<br/><br/>`delete/P55555`                                                             |
 | find                | `find/[keyword]`<br/><br/>`find/P55555`                                                                    |
 | list                | `list`                                                                                                     |
