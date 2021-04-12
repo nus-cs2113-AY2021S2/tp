@@ -1,4 +1,6 @@
 @startuml
+hide footbox
+
 participant User
 User -> AddCustomAliasCommand : execute
 activate AddCustomAliasCommand
@@ -55,4 +57,6 @@ deactivate UiManager
 UiManager --> AddCustomAliasCommand
 deactivate UiManager
 return
+
+
 @enduml

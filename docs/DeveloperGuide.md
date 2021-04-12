@@ -17,8 +17,8 @@
     2.7. [Storage Component](#27-storage-component)  
 3. [Implementation](#3-implementation)  
     3.1. [Finding The Shortest Route Feature](#31-finding-the-shortest-route-feature)  
-    3.2. [Daily Route Planning Feature](#32-daily-route-planning-feature)
-    3.3. [Favourite Routes Feature](#33-favourite-routes-feature)
+    3.2. [Daily Route Planning Feature](#32-daily-route-planning-feature)  
+    3.3. [Favourite Routes Feature](#33-favourite-routes-feature)  
     3.4. [Custom Aliases Feature](#34-custom-aliases-feature)  
     3.5. [History Feature](#35-history-feature)  
     3.6. [Save Feature](#36-save-feature)
@@ -51,7 +51,7 @@ The purpose of this developer guide is to aid any curious or interested contribu
 8. Press run on the `Main()` method of NUSMaze.
 
 If the set up process had been completed successfully, you should see the following message:  
-![Screenshot 2021-03-25 at 7 03 08 PM](https://user-images.githubusercontent.com/60348727/113017279-e14b9d00-91b1-11eb-8ec3-37c0c3f80475.png)
+![img.png](images/NUSMazecli.png)
 
 ---------------------------------------------------------------------------------------------
 
@@ -337,7 +337,7 @@ Cons: Might be confusing since there is less distinction between each command.
 
 ### 3.6. Save feature
 #### Current Implementation
-The save mechanism is facilitated by `AliasStorage`, `DailyRouteStorage`, `FavouriteStorage`, `HistoryStorage` and `NotesStorage` subclasses. </br>
+The save mechanism is facilitated by `AliasStorage`, `DailyRouteStorage`, `FavouriteStorage`, `HistoryStorage` and `NotesStorage` subclasses. <br>
 They extend `Storage` (superclass) with a feature to save the blocks' aliases, daily routes, favourite locations, history of visited routes and tagged notes, stored internally as `aliasList`,  `dailyRouteList`, `favouriteList`, `history`, `noteList` text files. <br />
 Additionally, they implement the following operations: <br/>
 - `AliasStorage#saveData()` —  Saves all aliases given by user to blocks into `aliasList`. <br />

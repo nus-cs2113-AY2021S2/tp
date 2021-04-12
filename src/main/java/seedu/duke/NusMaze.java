@@ -21,6 +21,10 @@ import seedu.duke.storage.Storage;
 import seedu.duke.ui.CommonMessage;
 import seedu.duke.ui.UiManager;
 
+/**
+ * Entry point of the NusMaze application.
+ * Initializes the application and starts the interaction with the user.
+ */
 public class NusMaze {
 
     private NusMap nusMap;
@@ -35,11 +39,13 @@ public class NusMaze {
         new NusMaze().run();
     }
 
+    /** Sets up and run the program. */
     private void run() {
         initializeNusMaze();
         runCommandLoopUntilByeCommand();
     }
 
+    /** Initialises the data and storage. */
     private void initializeNusMaze() {
         try {
             initializeData();
@@ -53,6 +59,7 @@ public class NusMaze {
         }
     }
 
+    /** Reads the user command and executes it, until the user issues the bye command. */
     private void runCommandLoopUntilByeCommand() {
         boolean isExit = false;
         while (!isExit) {
@@ -69,6 +76,7 @@ public class NusMaze {
         }
     }
 
+    /** Initialises the data. */
     private void initializeData() {
         nusMap = new NusMap();
         ui = new UiManager();
@@ -78,6 +86,9 @@ public class NusMaze {
         dailyRoute = new DailyRoute();
     }
 
+    /**
+     * Creates new directory and file according to the {@code filepath} if it does not already exists.
+     */
     private void initializeStorage() throws InvalidFilePathException {
         Storage aliasStorage = new AliasStorage("data/aliasList.txt");
         Storage historyStorage = new HistoryStorage("data/history.txt");
@@ -87,12 +98,14 @@ public class NusMaze {
         storages = new Storage[]{aliasStorage, historyStorage, favouriteStorage, dailyRouteStorage, notesStorage};
     }
 
+    /** Sets the data into appropriate storage. */
     private void setStorageData() {
         for (Storage storage : storages) {
             storage.setData(nusMap, blockAlias, history, favourite, dailyRoute);
         }
     }
 
+    /** Loads the data from the txt files. */
     private void loadPreviousData() throws SaveDataException {
         for (Storage storage : storages) {
             try {
@@ -106,6 +119,7 @@ public class NusMaze {
         ui.showMessage(CommonMessage.DIVIDER);
     }
 
+    /** Saves the data into the txt file. */
     private void saveCurrentData() throws SaveDataException {
         for (Storage storage : storages) {
             storage.saveData();

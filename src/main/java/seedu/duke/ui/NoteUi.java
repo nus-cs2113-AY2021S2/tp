@@ -8,7 +8,13 @@ import java.util.ArrayList;
 
 public class NoteUi extends UiManager {
 
-    public String[] getNoteInfo() throws InvalidNoteException {
+
+    /**
+     * Prompts the user for the block name and the note description.
+     *
+     * @return the block name and note description
+     */
+    public String[] getNoteInfo() {
         String[] noteInfo = new String[2];
         showMessage("Enter Block:");
         noteInfo[0] = getUserInput().toUpperCase();
@@ -20,6 +26,8 @@ public class NoteUi extends UiManager {
         return noteInfo;
     }
 
+
+    /** Return the block name inputted by the user. */
     public String getBlockInfo() {
         showMessage("Enter Block:");
         String block = getUserInput().toUpperCase();
@@ -27,6 +35,13 @@ public class NoteUi extends UiManager {
         return block;
     }
 
+
+    /**
+     * Generates and displays all the notes tagged to a particular block.
+     *
+     * @param notes the list of notes to be show to the user
+     * @throws EmptyNoteException if there are no notes
+     */
     public void showNotes(ArrayList<String> notes) throws EmptyNoteException {
         if (notes.isEmpty()) {
             throw new EmptyNoteException();
@@ -38,6 +53,12 @@ public class NoteUi extends UiManager {
         showMessage(CommonMessage.DIVIDER);
     }
 
+    /**
+     * Prompts the user for the index of the note to be deleted.
+     *
+     * @return the number of note to be deleted.
+     * @throws InvalidIndexException if the input is not an integer
+     */
     public int getDeleteIndex() throws InvalidIndexException {
         try {
             showMessage("Select Entry to delete:");
