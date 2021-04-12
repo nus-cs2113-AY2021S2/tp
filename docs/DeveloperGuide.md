@@ -60,7 +60,11 @@
    5.2. [Viewing help](#52-viewing-help)  
    5.3. [Viewing venues in NUSMaze](#53-viewing-venues-in-nusmaze)  
    5.4. [Routing](#54-routing)  
-   5.5. [History](#55-history)
+   5.5. [History](#55-history)  
+   5.6. [Alias](#56-alias)  
+   5.7. [Daily Route](#57-daily-route)  
+   5.8. [Favourites](#58-favourites)  
+   5.9. [Notes](#59-notes)  
 <!-- TOC -->
 
 ---------------------------------------------------------------------------------------------
@@ -570,44 +574,6 @@ Below is our analysis of our target user and the importance in which he/she woul
 5. Clearing history<br>
     1.1 Enter `clear history`<br>
    Expected: `Your history has been successfully cleared`<br>
-   
-
-### 5.7 Daily Route
-1. Viewing daily route when the user haven't scheduled any daily route.<br>
-    1.1 Enter `show daily route`<br>
-    Expected: `Oops! You haven't planned any daily routes yet :(`<br>
-2. Adding daily route<br>
-    1.1 Test case: `add daily route` → `1` → `ea` → `end`<br>
-   Expected: `Got it! Successfully added MONDAY's schedule!` <br>
-    1.2 Test case: `add daily route` → `8`<br>
-   Expected: `Oops! You must enter an Integer that is within the bounds :(`<br>
-3. Deleting daily route when only Monday's schedule is planned<br>
-    1.1 Test case: `delete daily route` → `1`<br>
-   Expected: `Got it! Successfully cleared MONDAY's schedule!`<br>
-   1.2 Test case: `delete daily route` → `2` <br>
-   Expected: `Oops! You must enter an Integer that is within the bounds :(`<br>
-
-
-### 5.9 Notes
-1. Adding note to blocks<br>
-    1.1 Test case: `add note` → `e1` → `crowded`<br>
-   Expected: `Got it! Successfully added and tagged note to E1`<br>
-   1.2 Test case: `add note` → `e20` → `crowded`<br>
-   Expected: `Invalid block! Please try again with a block that exists :(`<br>
-   1.3 Test case: `add note` → `e20` → `""`<br>
-   Expected: `Your note description cannot be empty or contain "/". Please try the command again :)`<br>
-   1.4 Test case: `add note` → `e20` → `very/crowded`<br>
-   Expected: `Your note description cannot be empty or contain "/". Please try the command again :)`<br>
-2. Viewing notes tagged to specific block<br>
-    2.1 Test case: `show note` → `e1`<br>
-   Expected: Show a list of notes tagged to e1<br>
-   2.2 Test case: `show note` → `e20`<br>
-   Expected: `Invalid block! Please try again with a block that exists :(`<br>
-3. Deleting note tagged to a specific block<br>
-   3.1 Test case: `delete note` → `e1` → `1` (When there is at least one note tagged to e1)<br>
-   Expected: `Got it! Successfully deleted note tagged to E1` <br>
-   3.2 Test case: `delete note` → `e1` → `1` (When there are no notes tagged to e1)<br>
-   Expected: `Oops! There are no notes tagged to E1` <br>
 
 ### 5.6 Alias
 1. Adding an alias that is a block name<br>
@@ -628,6 +594,22 @@ Below is our analysis of our target user and the importance in which he/she woul
 6. Deleting an alias that was previously set<br>
    1.1 Enter `delete alias` → `alias that exists`<br>
    Expected: `Got it! Successfully deleted ALIAS THAT EXISTS from alias list!`<br>
+
+
+### 5.7 Daily Route
+1. Viewing daily route when the user haven't scheduled any daily route.<br>
+   1.1 Enter `show daily route`<br>
+   Expected: `Oops! You haven't planned any daily routes yet :(`<br>
+2. Adding daily route<br>
+   1.1 Test case: `add daily route` → `1` → `ea` → `end`<br>
+   Expected: `Got it! Successfully added MONDAY's schedule!` <br>
+   1.2 Test case: `add daily route` → `8`<br>
+   Expected: `Oops! You must enter an Integer that is within the bounds :(`<br>
+3. Deleting daily route when only Monday's schedule is planned<br>
+   1.1 Test case: `delete daily route` → `1`<br>
+   Expected: `Got it! Successfully cleared MONDAY's schedule!`<br>
+   1.2 Test case: `delete daily route` → `2` <br>
+   Expected: `Oops! You must enter an Integer that is within the bounds :(`<br>
    
 
 ### 5.8 Favourites
@@ -647,4 +629,27 @@ Below is our analysis of our target user and the importance in which he/she woul
    Expected: `Got it! Successfully deleted favourite route :)`<br>
    1.1 Test case `delete favourite` → `INVALID_FAVOURITE_INDEX`<br>
    Expected: `Oops! You must enter an Integer that is within the bounds :(`<br>
+
+### 5.9 Notes
+1. Adding note to blocks<br>
+   1.1 Test case: `add note` → `e1` → `crowded`<br>
+   Expected: `Got it! Successfully added and tagged note to E1`<br>
+   1.2 Test case: `add note` → `e20` → `crowded`<br>
+   Expected: `Invalid block! Please try again with a block that exists :(`<br>
+   1.3 Test case: `add note` → `e20` → `""`<br>
+   Expected: `Your note description cannot be empty or contain "/". Please try the command again :)`<br>
+   1.4 Test case: `add note` → `e20` → `very/crowded`<br>
+   Expected: `Your note description cannot be empty or contain "/". Please try the command again :)`<br>
+2. Viewing notes tagged to specific block<br>
+   2.1 Test case: `show note` → `e1`<br>
+   Expected: Show a list of notes tagged to e1<br>
+   2.2 Test case: `show note` → `e20`<br>
+   Expected: `Invalid block! Please try again with a block that exists :(`<br>
+3. Deleting note tagged to a specific block<br>
+   3.1 Test case: `delete note` → `e1` → `1` (When there is at least one note tagged to e1)<br>
+   Expected: `Got it! Successfully deleted note tagged to E1` <br>
+   3.2 Test case: `delete note` → `e1` → `1` (When there are no notes tagged to e1)<br>
+   Expected: `Oops! There are no notes tagged to E1` <br>
+   
+
    
