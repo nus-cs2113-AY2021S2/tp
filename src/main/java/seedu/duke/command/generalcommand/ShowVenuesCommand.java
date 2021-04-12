@@ -3,6 +3,9 @@ package seedu.duke.command.generalcommand;
 import seedu.duke.command.Command;
 import seedu.duke.ui.UiManager;
 
+/**
+ * Shows all possible venues.
+ */
 public class ShowVenuesCommand extends Command {
     protected UiManager ui;
     private static final String TD = " | ";
@@ -34,6 +37,7 @@ public class ShowVenuesCommand extends Command {
         this.ui = new UiManager();
     }
 
+    /** Prints out the all the venues stored in the application. */
     public void execute() {
         ui.showMessageWithDivider(MESSAGE_SUCCESS);
     }

@@ -5,11 +5,11 @@ skinparam classAttributeIconSize 0
 class ClearHistoryCommand {
 # HistoryUi ui
 - {static} String MESSAGE_SUCCESS
-+ void execute()
++ execute():void
 }
 class HistoryUi {
-+ void showHistory(History)
-+ int getRepeatIndex()
++ showHistory(History):void
++ getRepeatIndex():int
 }
 abstract class Command {
 # NusMap nusMap
@@ -18,23 +18,23 @@ abstract class Command {
 # Favourite favourite
 # DailyRoute dailyRoute
 # boolean isExit
-+ void setData(NusMap,BlockAlias,History,Favourite,DailyRoute)
-+ boolean isExit()
-+ void execute()
++ setData(NusMap,BlockAlias,History,Favourite,DailyRoute):void
++ isExit():boolean
++ execute():void
 }
 class RepeatHistoryCommand {
 # HistoryUi ui
-+ void execute()
++ execute():void
 }
 
 class ShowHistoryCommand {
 # HistoryUi ui
-+ void execute()
++ execute():void
 }
 
 
 Command <|-- ClearHistoryCommand
-UiManager <|-- istoryUi
+UiManager <|-- HistoryUi
 Command <|-- RepeatHistoryCommand
 Command <|-- ShowHistoryCommand
 @enduml

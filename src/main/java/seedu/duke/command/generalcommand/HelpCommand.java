@@ -3,6 +3,9 @@ package seedu.duke.command.generalcommand;
 import seedu.duke.command.Command;
 import seedu.duke.ui.UiManager;
 
+/**
+ * Shows all the possible commands that the user can use.
+ */
 public class HelpCommand extends Command {
     protected UiManager ui;
     private static final String MESSAGE_SUCCESS = "1.  go:\n"
@@ -46,6 +49,7 @@ public class HelpCommand extends Command {
         this.ui = new UiManager();
     }
 
+    /** Prints out the help message. */
     public void execute() {
         ui.showMessageWithDivider(MESSAGE_SUCCESS);
     }

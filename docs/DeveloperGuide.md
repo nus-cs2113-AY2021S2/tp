@@ -51,7 +51,7 @@ The purpose of this developer guide is to aid any curious or interested contribu
 8. Press run on the `Main()` method of NUSMaze.
 
 If the set up process had been completed successfully, you should see the following message:  
-![Screenshot 2021-03-25 at 7 03 08 PM](https://user-images.githubusercontent.com/60348727/113017279-e14b9d00-91b1-11eb-8ec3-37c0c3f80475.png)
+![img.png](images/NUSMazecli.png)
 
 ---------------------------------------------------------------------------------------------
 
@@ -63,7 +63,7 @@ The **Architecture Diagram** above depicts the high-level design of the NUSMaze.
 to understand how the different components of NUSMaze interact with each other.
 
 The class [`NusMaze`](https://github.com/AY2021S2-CS2113T-T09-2/tp/blob/master/src/main/java/seedu/duke/NusMaze.java) is where the `main()` 
-method belongs and is reponsible for:
+method belongs and is responsible for:
 * When the app launches, initialise and connect different components of the NUSMaze in correct sequence.
 * When the app terminates, shut down all the components.
 
@@ -233,6 +233,8 @@ The following image shows the sequence diagram in which the deleteDailyRoute com
 
 ### 3.3. Favourite Routes feature
 
+![img.png](images/Favourite.png)
+
 #### 3.3.1. Current Implementation
 
 The favourite routes feature acts as an independent storage of the user's favourites routes,
@@ -282,7 +284,7 @@ Any invalid input such as decimals or alphabets will result in
 #### 3.4.1. Current Implementation
 The following diagram illustrates the class diagram for implementation of the alias feature:
 ![img.png](images/AliasFeature.png)
-The command entered by the user in the `Main()` function of NUSMaze will be parsed in the `Parser` class. Thereafter, the parser will decide which of the 3 alias commands,
+The command entered by the user in the `Main()` function of NUSMaze will be parsed by the `Parser` class. Thereafter, the parser will decide which of the 3 alias commands,
 if applicable, was the command that the user wanted to execute. 
 
 The three command classes, namely `AddCustomAliasCommand`, `ShowCustomAliasCommand` and `DeleteCustomAliasCommand` extend the `Command` class, and they all depend on the `AliasUi` class to obtain inputs and display outputs.
@@ -293,6 +295,24 @@ The data model for this feature is facilitated by the `BlockAlias` class which c
 The hashmap will have the `custom alias name` as the `key` and the `block name` as the `value` for each key-value pair. The
 `BlockAlias` class also depends on the `NusMap` class to ensure that valid blocks are input by the user.
 
+#### Adding of custom aliases
+The user can enter `add alias` invoke an instance of `AddCustomAliasCommand` which will prompt them for the
+alias and block names. If the alias name already exists, or the alias name conflicts
+with a block name, the application will display an error message and the addition of the custom alias will not be executed. If there
+were no errors, the alias and block pair would be added to the hashmap in the instance of the `BlockAlias` class and it will also be
+stored in the `AliasStorage`.
+
+#### Showing custom aliases
+The user can enter `show alias` to invoke an instance of `ShowCustomAliasCommand` to view all the alias and block pairs that have been stored previously by them.
+If there are no alias and block pairs, then the message `You haven't set any aliases yet!` will be displayed to the user. If there 
+are valid alias and block pairs stored in the application, then the list of alias and block pairs will be displayed.
+
+#### Deleting a custom alias
+The user can enter `delete alias` to invoke an instance of `DeleteCustomAliasCommand` which will prompt them for the alias name that they
+wish to delete. If the entered alias name exists in the alias hashmap stored in the instance of `BlockAlias`, then that alias will be removed.
+However, if the alias does not exist in the hashmap, then an invalid alias error message will be displayed.
+
+#### Example for alias feature
 Given below is an example usage scenario and how the add/view/delete mechanism behaves at each step:
 
 1. The user launches the application for the first time. If there is a storage file with pre-existing alias-block pairs, then the hashmap in `BlockAlias` class will be initialized with those data, or an empty hashmap if it does not exist.  
@@ -305,9 +325,15 @@ Given below is an example usage scenario and how the add/view/delete mechanism b
 
 5. The user executes `delete alias` command. The user input will be parsed by the `Parser` which will create a new `DeleteCustomAliasCommand` command. The new command will then invoke the UI which will prompt the user `Enter the alias name that you wish to delete:` where the user will enter the alias name that the user wishes to remove. The user input for the alias to be removed will be checked against the hashmap and return an exception if the key does not exist. If the alias to be removed exists in the hashmap, the key-value pair will be removed, and a success message will be displayed to the user.
 
-Shown below is the sequence diagram when a valid block name and alias are added:
+Shown below is the sequence diagram when a valid block name and alias are **added**:
 ![img.png](images/AliasFeatureSequence.png)
-### 3.5. History feature
+
+#### Design Consideration
+**Current choice:** Saves the alias and block names in a hashmap stored within a data model class which is the `BlockAlias` class. <br/>
+- Pros: Easy to implement. <br/>
+- Cons: The same instance of `BlockAlias` needs to be shared among the other classes that may use the alias feature. <br/>
+
+### 3.5. History feature 
 ![img.png](images/history.png)
 #### 3.5.1. Current Implementation
 Whenever the user inputs the `go` command, and enters a valid start and destination address, a String consisting the start and end block is created and stored in `historyList`. 
@@ -341,8 +367,8 @@ Alternative 2: Place all commands (add, view, delete) as functions in 1 command 
 Pros: Less code to be written and hashmap can be shared by the 3 commands in 1 class.  
 Cons: Might be confusing since there is less distinction between each command.
 
-### 3.6. Save feature
-#### 3.6.1. Current Implementation
+### 3.6. Save feature  
+#### 3.6.1. Current Implementation  
 The save mechanism is facilitated by `AliasStorage`, `DailyRouteStorage`, `FavouriteStorage`, `HistoryStorage` and `NotesStorage` subclasses. </br>
 They extend `Storage` (superclass) with a feature to save the blocks' aliases, daily routes, favourite locations, history of visited routes and tagged notes, stored internally as `aliasList`,  `dailyRouteList`, `favouriteList`, `history`, `noteList` text files. <br />
 Additionally, they implement the following operations: <br/>

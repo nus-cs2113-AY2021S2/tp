@@ -7,8 +7,19 @@ import seedu.duke.exception.LoadDataException;
 
 import java.util.ArrayList;
 
+/**
+ * Decodes the encoded data in the storage file.
+ */
 public interface DataDecoder {
 
+    /**
+     * Decodes history or favourite list data.
+     *
+     * @param encodedData data to be decoded
+     * @param nusMap nusMap
+     * @return decoded data
+     * @throws LoadDataException if there are invalid blocks in the encoded data
+     */
     default String[] decodeHistoryAndFavouriteData(String encodedData, NusMap nusMap) throws LoadDataException {
         try {
             String[] decodedData = encodedData.split("/");
@@ -22,6 +33,14 @@ public interface DataDecoder {
         }
     }
 
+    /**
+     * Decodes Alias list or note data.
+     *
+     * @param encodedData data to be decoded
+     * @param nusMap nusMap
+     * @return decoded data
+     * @throws LoadDataException if there are invalid blocks in the encoded data
+     */
     default String[] decodeAliasAndNoteData(String encodedData, NusMap nusMap) throws LoadDataException {
         try {
             String[] decodedData = encodedData.split("/");
@@ -33,6 +52,14 @@ public interface DataDecoder {
         }
     }
 
+    /**
+     * Decodes daily route data.
+     *
+     * @param encodedData data to be decoded
+     * @param nusMap nusMap
+     * @return decoded data
+     * @throws LoadDataException if there are invalid blocks in the encoded data
+     */
     default String[] decodeDailyRouteData(String encodedData, NusMap nusMap, DailyRoute dailyRoute)
             throws LoadDataException {
         try {
@@ -49,12 +76,14 @@ public interface DataDecoder {
         }
     }
 
+    /** Throws an exception if the decoded data's length is not equal to 2. */
     default void checkIfValidLength(String[] decodedData) throws InvalidBlockException {
         if (decodedData.length != 2) {
             throw new InvalidBlockException();
         }
     }
 
+    /** Checks if the day is one of the seven days in a week. */
     default boolean isValidDay(String day, DailyRoute dailyRoute) {
         boolean isValidDay = false;
         ArrayList<String> days = dailyRoute.getValidDays();

@@ -8,6 +8,9 @@ import seedu.duke.command.Command;
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.ui.RouterUi;
 
+/**
+ * Finds out the shortest route between two blocks.
+ */
 public class GoCommand extends Command {
     protected RouterUi ui;
 
@@ -16,7 +19,9 @@ public class GoCommand extends Command {
     }
 
     /**
-     * This method Gets user input for the start and end location and prints the shortest route to get from start to end.
+     * Takes in two location from the the user and finds out the shortest route between them.
+     * When eatery is inputted as the parameter for destination block, it prints out eatery list and takes
+     * in entry from the user to conduct routing.
      */
     @Override
     public void execute() {
