@@ -1,0 +1,36 @@
+@startuml Architecture
+!define LIGHTBLUE
+!includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+skinparam style strictuml
+skinparam actorStyle awesome
+skinparam linetype ortho
+
+actor User #APPLICATION;line:RoyalBlue
+rectangle Ui #Turquoise
+rectangle Sorter #NavajoWhite
+rectangle Connoisseur #LightPink
+rectangle Storage #PowderBlue
+database Data #APPLICATION;line:RoyalBlue
+
+rectangle Logic #TECHNOLOGY {
+    rectangle Commands #PaleGreen
+    rectangle Parser #PaleGreen
+}
+
+rectangle Model #Khaki {
+    rectangle ReviewList #Gold
+    rectangle RecommendationList #Gold
+}
+
+User <-> Ui
+Ui --> Connoisseur
+Connoisseur -> Parser
+Parser --> Commands
+Commands -left-> ReviewList
+Commands -left-> RecommendationList
+RecommendationList -u-> ReviewList
+ReviewList <-> Sorter
+Commands -left-> Storage
+Storage -left-> Data
+
+@enduml

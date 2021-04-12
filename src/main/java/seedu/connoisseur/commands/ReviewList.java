@@ -79,7 +79,7 @@ public class ReviewList {
         if (input == null || input.isBlank()) {
             while (true) {
                 ui.println(QUICK_PROMPT);
-                switch (ui.readCommand().toLowerCase()) {
+                switch (ui.readCommand().toLowerCase().trim()) {
                 case "y":
                     addQuickReview();
                     break;
@@ -93,7 +93,7 @@ public class ReviewList {
                 break;
             }
         } else {
-            switch (input) {
+            switch (input.toLowerCase()) {
             case "quick":
                 addQuickReview();
                 break;
@@ -390,7 +390,7 @@ public class ReviewList {
                 } while (!editReviewFields(index));
                 while (true) {
                     ui.println(ANYTHING_ELSE);
-                    String answer = ui.readCommand();
+                    String answer = ui.readCommand().toLowerCase().trim();
                     switch (answer.toLowerCase()) {
                     case "y":
                         break;
@@ -406,7 +406,7 @@ public class ReviewList {
             }
             while (true) {
                 ui.println(EDIT_DATE_PROMPT);
-                String answer = ui.readCommand();
+                String answer = ui.readCommand().toLowerCase().trim();
                 switch (answer) {
                 case "y":
                     Review currentReview = reviews.get(index);
@@ -440,13 +440,17 @@ public class ReviewList {
             String newTitle;
             while (true) {
                 ui.println(EDIT_TITLE_PROMPT);
-                newTitle = ui.readCommand();
+                newTitle = ui.readCommand().trim();
                 if (newTitle.isBlank()) {
                     ui.printEmptyInputMessage();
                     continue;
                 }
                 if (newTitle.length() > 20) {
                     ui.printInputTooLongMessage_20Char();
+                    continue;
+                }
+                if (checkDuplicateReviewWhenEditing(newTitle, index)) {
+                    ui.printNoUniqueTitleMessage();
                     continue;
                 }
                 break;
@@ -475,7 +479,7 @@ public class ReviewList {
             String newDescription;
             while (true) {
                 ui.println(ENTER_DETAILS_PROMPT);
-                newDescription = ui.readCommand();
+                newDescription = ui.readCommand().trim();
                 if (newDescription.isBlank()) {
                     ui.printEmptyInputMessage();
                     continue;
@@ -488,7 +492,7 @@ public class ReviewList {
             String newCategory;
             while (true) {
                 ui.println(EDIT_CATEGORY_PROMPT);
-                newCategory = ui.readCommand();
+                newCategory = ui.readCommand().trim();
                 if (newCategory.isBlank()) {
                     ui.printEmptyInputMessage();
                     continue;
@@ -540,6 +544,31 @@ public class ReviewList {
     public boolean checkAndPrintDuplicateReview(String title) {
         int reviewIndex = -1;
         for (int i = 0; i < reviews.size(); i++) {
+            if (reviews.get(i).getTitle().equalsIgnoreCase(title)) {
+                reviewIndex = i;
+            }
+        }
+        if (reviewIndex == -1) {
+            return false;
+        }
+        ui.println(DUPLICATE_REVIEW);
+        displaySingleReview(reviews.get(reviewIndex));
+        return true;
+    }
+
+    /**
+     * Check for duplicate review titles in existing review list during editing.
+     *
+     * @param title review title input by user.
+     * @param index index of title that is being edited by the user.
+     * @return true if there is a duplicate, and false if there are no duplicates.
+     */
+    public boolean checkDuplicateReviewWhenEditing(String title, int index) {
+        int reviewIndex = -1;
+        for (int i = 0; i < reviews.size(); i++) {
+            if (i == index) {
+                continue;
+            }
             if (reviews.get(i).getTitle().equalsIgnoreCase(title)) {
                 reviewIndex = i;
             }

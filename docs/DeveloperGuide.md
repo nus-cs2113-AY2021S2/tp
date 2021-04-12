@@ -7,33 +7,29 @@
 2. [How to use this document](#2-how-to-use-this-document)
 
 3. [Setting up](#3-setting-up)
-
-   3.1 [Prerequisites](#31-prerequisites)
-
-   3.2 [Setting up the project in your computer](#32-setting-up-the-project-in-your-computer)
-
-   3.3 [Verifying the setup](#33-verifying-the-setup)
-
-   3.4 [Configure coding style](#34-configure-the-coding-style)
-
+    
+    3.1 [Prerequisites](#31-prerequisites)
+   
+    3.2 [Setting up the project in your computer](#32-setting-up-the-project-in-your-computer)
+   
+    3.3 [Verifying the setup](#33-verifying-the-setup)
+   
+    3.4 [Configure coding style](#34-configure-the-coding-style)
+   
 4. [Design](#4-design)
-
-   4.1 [Architecture: High Level View](#41-architecture-high-level-view)
-
-   4.2 [UI and Messages component](#42-ui-and-component)
-
-   4.3 [Parser component](#43-parser-component)
-
-   4.4 [Review component](#44-review-componenet)
-
-   4.5 [Recommendation component](#45-review-componenet)
-
-   4.6 [Commands component](#46-commands-component)
-
-   4.7 [Sorter component](#47-sorter-component)
-
-   4.8 [Storage component](#48-storage-component)
-
+    
+    4.1 [Architecture: High Level View](#41-architecture-high-level-view)
+    
+    4.2 [UI component](#42-ui-component)
+    
+    4.3 [Logic component](#43-logic-component)
+    
+    4.4 [Model component](#44-model-componenet)
+    
+    4.5 [Sorter component](#45-sorter-component)
+    
+    4.6 [Storage component](#46-storage-component)
+    
 5. [Implementation](#5-implementation)
 
    5.1 [Mode Switch Feature](#51-mode-switch-feature)
@@ -167,75 +163,315 @@ a quick introduction to UML.
 
 The following Figure 1, provides a rough overview of how **Connoisseur** is built.<br>
 
-Figure 1. Architecture Diagram of Connoisseur <br>
-//TODO ADD PLANTUML DIAGRAM !missing! sorter component// <br>
+![Architecture.png](./diagrams/Architecture.png)<br>
+Figure 1. Architecture of Connoisseur <br>
 
-As shown in Figure 1, the user interacts with the`UI` component and types in input. Messages displayed to the user by
-the `UI` component comes from the `Messages` component. Input from user is passed to the `parser` component, which is
-interpreted as a command and passed to the `Commands` component. Either `Storage`, `ReviewList` or `RecommendationList`
-component executes the command input by the user. These components may produce outputs which are passed to the `UI`
-component and seen by the user. This is explained in more detail in the following sections.
+As shown in Figure 1, the user interacts with `UI`, which takes in commands and displays output to the user. 
 
-### 4.2 UI and Messages component
+The main `Connoisseur` class initializes the other components in the application. It passes the input received from the user to the logic component, which consists of `Parser` and `Commands`. 
 
-The user interface of Connoisseur is provided by the classes UI & Messages. It is instantiated once in the connoisseur()
-method.<br>
-//can add code snippet here//
+`Parser` will decipher the input and make the corresponding method calls in `Commands`. Depending on whether Connoisseur is in review or recommendation mode, the `Commands` class will execute the respective commands in the `ReviewList` and `RecommendationList` classes of the `Model` component. 
 
-* The ui.printGreeting() method is called to display the welcome message to the user.
-* The ui.println(COMMAND_PROMPT) method is called to prompt the user for input, where COMMAND_PROMPT is a message from
-  the `Messages` component
-* The ui.readCommand() method reads the input which is then passed on to the `parser` component
+In the case of storing data, `Commands` will interact directly with the `Storage` class to save the data. 
 
-### 4.3. Parser component
+The `ReviewList` class has sorting functions which requires `Sorter`. All the reviews will be passed to `Sorter` to be sorted, which then returns the sorted reviews back to `ReviewList`. 
 
-### 4.4. Review component
+`RecommendationList` also interacts with `ReviewList` for converting Recomendations to Reviews. 
 
-### 4.5. Recommendation component
+### 4.2 UI component
 
-### 4.6. Commands component
+The UI component of Connoisseur consists of the classes `UI` and `Messages`.
+It is instantiated in the connoisseur() method and serves two main purposes:
+* Read user input from the console.
+* Print program output to the console. 
 
-### 4.7. Sorter component
+The *ui.readCommand()* method reads the input which is then passed on to the `Logic` component. 
 
-### 4.8. Storage component
+The *ui.println(output)* method prints output to the console. Default output messages are stored as static String constants in the `Messages` class, while commonly used output messages are made methods by themselves. *ui.printGreeting()* is one such method and is called to display the welcome message to the user. 
+
+
+### 4.3. Logic component
+
+![LogicComponent.png](./diagrams/LogicComponent.png)<br>
+Figure 2. Logic Component of Connoisseur <br>
+
+The Logic component of Connoisseur consists of the classes `Parser` and `Commands`. 
+It is instantiated in the connoisseur() method and serves to translate user input into commands which are recognised by the application. 
+
+The *determineCommand()* method of the `Parser` class deciphers the command word of the input, calling the respective command's method in `Commands`. 
+
+Each method in `Commands` will then check the arguments provided with the commands to make sure that they are valid, before executing the command in `Storage`, `ReviewList` or `RecommendationList`. 
+
+
+### 4.4. Model component
+
+![ModelComponent.png](./diagrams/ModelComponent.png)<br>
+Figure 2. Model Component of Connoisseur <br>
+
+The Model component of Connoisseur consists of the classes `ReviewList` and `RecommendationList`. 
+It is instantiated in the connoissuer() method and serves to store data as the program runs. 
+
+Both the classes in the Model component contain methods which modify the content of their respective ArrayLists, which consist of either Reviews or Recommendations. 
+
+### 4.5. Sorter component
+
+![SorterComponent.png](./diagrams/SorterComponent.png)<br>
+Figure 3. Sorter Component of Connoisseur <br>
+
+The Sorter component is a separate component which serves to sort the reviews based on a few sorting methods. 
+
+When the *sortReviews()* method is called in the `ReviewList`, a sortMethod parameter is passed together with it to the `Sorter`, which then determines which of the Sorts to sort the reviews by. If the sortMethod parameter is empty, `Sorter` will use the default sortMethod saved. The sorted reviews are then passed back to `ReviewList`. 
+
+### 4.6. Storage component
+
+The Storage component serves to implement the storage functions of Connoisseur. It saves and loads data represented as a JSON file in the *./data* folder so that data can be retained after exiting Connoisseur. 
+
+On startup, Connoisseur checks if there is a *connoisseur.json* file in the *./data* folder. If they exist, the data will be loaded via the *loadConnoisseurData()* method and used to initialize classes in the `Model` component. If the file and folder do not exist, they will be created and new instances of the classes in the `Model` component will be initialized instead. 
+
+Before exiting, Connoissuer will save the data from the `Model` component and write them to *connoisseur.json* located in the *./data* folder. 
 
 ## 5. Implementation
+The following section describes the implementation of certain key features in the current version of Connoisseur. It also
+provides some background into our (the original developers of Connoisseur) thinking and the rationale behind the decisions.
 
 ### 5.1 Mode Switch Feature
+The mode switch feature is shown in Figure 4. The two modes in Connoisseur are Review and Recommendation. These two modes have some overlapping commands. 
+However, depending on the mode Connoisseur is currently in, the same command displays different output to the user. Each mode has its own
+unique features and commands as well. This section explains how the mode switch feature is implemented.
+
+![img.png](images/modeSwitchingCodeSnippet.png)
+Figure 4. Mode Switching in Connoisseur
+
+The following Figure 5 is the Sequence diagram to _Switch Mode_.<br>
+
+![img_1.png](diagrams/ModeSwitch.png)
+Figure 5. Sequence Diagram for Mode Switch Feature
+
+A general explanation of how this feature works:: <br>
+
+1. User inputs commands that trigger mode switch. `review` and `reco` are commands which are recognised by Parser class as mode switching commands through the `determineCommand()` method.
+2. If `review` command is input by user, `Commands` class calls `reviewMode()` method which sets `private boolean isReviewMode` attribute to _true_.
+3. If `reco` command is input by user, `Commands` class calls `recommendationMode()` method which sets `private boolean isReviewMode` attribute to _false_.
+4. Finally, `reviewMode()` and `recommendationMode()` calls `Ui` class method `println()` to display message _"You are in review mode"_ or _"You are in recommendation mode"_ 
+   respectively as shown in Figure 4.<br>
+
 
 ### 5.2 Review Mode
+When User inputs a command, `Commands` class checks for the value of the attribute
+`boolean isReviewMode` before executing the command .As explained in [section 5.1](#51-mode-switch-feature), when in review mode, `boolean isReviewMode` is equal to _true_. 
+Hence, only commands that are recognised by the Review Mode are executed when input by user. Else, inavild command message is displayed to the user.
 
 ### 5.2.1 Add a Review Feature
+The mechanism to add a review is facilitated by the `ReviewList` class. The user is able to add in a new review using `new` , `add` ,`new quick`,`add quick`, `new full` or `add full` commands.
 
-### 5.2.2 List Reviews Feature
+The following Figure 6 is the Sequence diagram to _add a review_.
+
+![img_2.png](diagrams/addReviewSeq.png)
+Figure 6. Sequence Diagram for Add a Review Feature <br>
+
+A general explanation of how this feature works: <br>
+
+1. `Ui` will read in user command and calls `Paser#determineCommand()` to determine the input.
+2. `Parser` calls `Commands#add` if input entered is `new` or `add` command.
+3. `Commands` calls `ReviewList#addQuickReview()` or `ReviewList#addFullReview()`to prompt and read respective information of the review such as `title` , `category`, `rating` and `description`(only prompted by `addFullReview()` method).<br>
+  
+   1. `title` - string with 20char limit, that will call `ReviewList#checkAndPrintDuplicateRecommendation` to check for duplicates in ArrayList `reviews`.<br>
+   2. `category` - string with 15char limit, that cannot be whitespace or null.
+   3. `rating`- integer with -0 to 5 recognised as valid input, that cannot be whitespace or null.
+   4. `description` - string with unlimited char limit. 
+   
+4. The violation of any constraints for each attribute will print an error message from `ui` and be promoted to re-enter a valid input.
+
+5. When all fields are valid, fields are added into a `Review` Class.
+
+6. The new `Review` object is added into an ArrayList `reviews`.
+
+### 5.2.2 List Reviews Feature 
+This feature prints out `Title`, `Category`, `Rating` and `Date` string attributes for each `Review` object in the ArrayList `reviews`.
+The mechanism to list reviews is facilitated by the `ReviewList` class. The user is able to list all reviews using `list` command.
+The mechanism to list reviews sorted alphabetically according to either `Title`, `Cateogry` or from highest to lowest `rating` or from earliest/ latest `Date` of entry of the review is facilitated by the `Sorter` class.
+
+The following Figure 7 is the Sequence diagram to _list a review_.
+
+
+![img_4.png](diagrams/listReviewSeq.png)
+Figure 7. Sequence Diagram for List a Review Feature
+
+A general explanation of how this feature works:
+
+1. Assuming additional parameters are not specified, `Commands` calls `ReviewList#listReviews()` to retrieve `Review` objects in the ArrayList `reviews`.
+2. If `reviews` array is empty, `ReviewList` calls `Ui#printEmptyReviewListMessage()` which prints message _"You have no reviews, type 'new' to start!"_
+3. If additional parameters specifying sort method in addition to list command is input (for e.g `list rating`) , `ReviewList` calls `Sorter#SortReviews(sortMethod)`.
+4. `ReviewList` class executes `displayReviews()` method to display a list of reviews to the user.
 
 ### 5.2.3 Sort Reviews Feature
+The mechanism to change the saved sorting method is implemented by `Sorter` class
+
+The following Figure 8 is the Sequence diagram to _Sort a review_.<br>
+
+![sortReviewSeq.png](diagrams/sortReviewSeq.png)
+Figure 8. Sequence Diagram for Sort Reviews Feature
+
+A general explanation of how this feature works:
+1. User inputs command `sort [sortType]`, where sortType is additional parameters the user can specify such as `TITLE`, `CATEGORY`, `RATING`, `EARLIEST` or `LATEST`. 
+2. `Parser` calls `Commands#sort()`.
+3. Since the command `sort [sortType]` is only recognised in review mode, if `private boolean isReviewMode` attribute of `Commands` class is set to _false_, `Commands` calls `Ui#printCommandDoesNotExistInRecommendationMode()`.  
+3. Else if `private boolean isReviewMode` attribute of `Commands` class is set to _true_, if user did not specify `sortType`, `ReviewList` calls `Ui#printCurrentSortMethod()`.
+4. If user did specify `sortType`, `ReviewList` calls `Sorter#changeSortMethod()` which changes and saves to the specified sort method.
 
 ### 5.2.4 View a Review Feature
+The mechanism to view a single specified review is implemented by `ReviewList` class
+
+The following Figure 9 is the Sequence diagram to _View a review_.<br>
+
+![img_11.png](diagrams/ViewReviewSeq.png)
+Figure 9. Sequence Diagram for View a Review Feature
+
+A general explanation of how this feature works:
+1. User inputs command `view [title]`, where parameter title is the title of review that should be specified by the user.
+2. `Parser` calls `Commands#view()`.
+3. Since the command `view [title]` is only recognised in review mode, if `private boolean isReviewMode` attribute of `Commands` class is set to _false_, `Commands` calls `Ui#printCommandDoesNotExistInRecommendationMode()`.
+3. Else if `private boolean isReviewMode` attribute of `Commands` class is set to _true_, if user did not specify title of review, or it does not exist in the list , `ReviewList` calls `Ui#missingTitle` and `Ui#invalidTitle` respectively .
+4. If title of review exists in ArrayList `reviews`, `ReviewList` calls `displaySingleReview()` method which displays the specified review.
 
 ### 5.2.5 Edit a Review Feature
+The mechanism to edit a specified review is implemented by `ReviewList` class
 
-### 5.2.6 Delete a Review Feature
+The following Figure 10 is the Sequence diagram to _Edit a review_.<br>
+![img_9.png](diagrams/EditReviewSeq.png)
+Figure 10. Sequence Diagram for Edit a Review Feature
+
+A general explanation of how this feature works:
+1. User inputs command `edit [title]`, where parameter title is the title of review that should be specified by the user.
+2. `Parser` calls `Commands#edit()`. 
+3. Since the command `edit [title]` is recognised in both review and recommendation mode, `private boolean isReviewMode` attribute of `Commands` class is set to true in this case.
+4. `ReviewList` class implements edits to the specified review object in ArrayList `reviews` and sets details.
+
+###5.2.6 Delete a Review Feature
+The mechanism to delete a specified review is implemented by `ReviewList` class
+
+The following Figure 11 is the Sequence diagram to _Delete a review_.<br>
+![img_10.png](diagrams/DeleteReviewSeq.png)
+Figure 11. Sequence Diagram for Delete a Review Feature
+
+A general explanation of how this feature works:
+1. User inputs command `delete [title]`, where parameter title is the title of review that should be specified by the user.
+2. `Parser` calls `Commands#delete()`.
+3. Since the command `delete [title]` is recognised in both review and recommendation mode, `private boolean isReviewMode` attribute of `Commands` class is set to true in this case.
+4. `ReviewList` class implements delete to the specified review object in ArrayList `reviews` and removes it from the ArrayList.
 
 ### 5.3 Recommendation Mode
+This section provides details on the implementation of the various commands that occurs in the recommendation mode.
+This mode allows users to keep a list of recommendations that they have not tried/completed.
+This mode implements the following features:
+
+*`add`/`new` - Add a Recommendation
+*`list` - List Recommendations
+*`edit [TITLE_OF_RECOMMENDATION]` - Edit a Recommendation
+*`delete [TITLE_OF_RECOMMENDATION]` - Delete a Recommendation
+*`done [TITLE_OF_RECOMMENDATION]` - Review a Recommendation
 
 ### 5.3.1 Add a Recommendation Feature
+This feature allows user to add a recommendation for any of the activities that they have not completed.
 
-When the user attempts to add a new recommendation,
+<span>&#10071;</span> Title of a new recommendation cannot exist in current list of reviews. An error message would be printed out.
+
+The mechanism to add a recommendation is facilitated by the `RecommendationList` class. The user is able to add in a new recommendation using `new` or `add` command.
+
+The following is the Sequence diagram to `add a recommendation`.
+
+![add reco seq](./diagrams/Add_Reco_Sequence_Diagram.png)
+<p align="center">Figure !!. Sequence Diagram for add recommendations</p>
+
+A general explanation of add recommendation works:
+1. `Ui` will read in user command, calls `Paser#determineCommand()` to determine the input.
+
+2. `Paser` calls for `Commands#add` if input enter is `new` or `add` command.
+
+3. `Commands` calls for `RecommendationList#addReccomendation` to prompt and read respective information such as  `title`, `category`, `price range`,`recommendedby` and `location`.
+   1.`title` - string with 20char limit, that will call [`RecommendationList#checkAndPrintDuplicateRecommendation`]() to check for duplicates in both ArrayLists `reviews` and `recommendations`.
+   2. `category`, `recommendedby` and `location` - string with 15char limit, that cannot be whitespace or null.
+   3. `price range`- string, that will call `RecommendationList#checkPriceValidity` and restrict it to 2 decimal places.
+
+4. The violation of any constraints for each attribute will print an error message from `ui` and be promoted to re-enter a valid input.
+
+5. When all fields are valid, fields are added into a `Recommendation` Class.
+
+6. The new `Recommendation` is added into an ArrayList `recommendations`.
 
 ### 5.3.2 List Recommendation Feature
+This feature prints out `title`, `category`, `price range`,`recommendedby` and `location` String attributes for each `Recommendation` class in the ArrayList `recommendations`.
+
+The mechanism to list recommendations is facilitated by the `RecommendationList` class. The user is able to list all recommendations using `list` command.
+
+The following is the Sequence diagram to `list a recommendation`.
+![List_Reco_seq](./diagrams/List_Reco_Sequence_Diagram.png)
+
+A general explanation of how this feature works:
+
+1. `Commands` calls `RecommendationList#listRecommendations` to retrieve `Recommendation` in `recommendations`
+2. `RecommendationList` calls itself `displayRecommendations` to iterate through and print `Recommendation` in `recommendations`.
 
 ### 5.3.3 Edit a Recommendation Feature
+This feature allows the user to change the fields in a specific `Recommendation` Class in the ArrayList `recommendations`.
+
+The mechanism to edit a recommendation is facilitated by the `RecommendationList` class. The user is able to edit in an existing recommendation using `edit [TITLE]` command.
+
+The following is the Sequence diagram to `edit a recommendation`.
+![Edit_Reco_seq](./diagrams/Edit_Reco_Sequence_Diagram.png)
+ 
+A general explaination of how this feature works:
+
+1. `Commands` will call `RecommendationList#editRecommendation` to determine which `Recommendation` from the ArrayList `recommendatios` should be editied.
+
+2. `RecommendationList` then calls itself, `editRecommendationFields`.
+Similar to [adding a recommendation](#531-add-a-recommendation-feature), edit will take in either `title`, `category`, `price range`,`recommendedby` and `location` String attributes for that specific `Recommendation` class and replace previous String stored with new user input.
+After checking for duplicates, the violation of any constraints for each attribute will print an error message from `ui` and prompt for a valid input.
 
 ### 5.3.4 Delete a Recommendation Feature
+This feature allows the user to remove a specific `Recommendation` from the ArrayList `recommendations`.
+
+The mechanism to remove a recommendation is facilitated by the `RecommendationList` class. The user is able to delete in an existing recommendation using `delete [TITLE]` command.
+
+The following is the Sequence diagram to `delete a recommendation`.
+![Delete_Reco_seq](./diagrams/Delete_Reco_Sequence_Diagram.png)
+
+A general explanation of how this feature works:
+
+1. `Commands` calls for `RecommendationList#deleteRecommendation`, Connoisseur will check if the title given exists.
+2. If title exists, Connoisseur will remove it from the ArrayList `recommendations`.
 
 ### 5.3.5 Review a Recommendation Feature
+This feature allows the user to change a specific `Recommendation` to a `Review` class, removing it from the ArrayList `recommendations` and adding it to the ArrayList `reviws`.
+
+The mechanism to review a recommendation is facilitated by the `RecommendationList` class. The user is able to review in an existing recommendation using `done [TITLE]` command.
+
+The following is the Sequence diagram to `review a recommendation`.
+![Review_a_Reco_seq](./diagrams/Done_Sequence_Diagram.png)
+
+A general explanation of how this feature works:
+
+1. `Commands` calls for `RecommendationList#convertRecommendation`, which retrieves fields from the `Recommendation` that is required by and creates a new `Review` Object.
+2. `RecommendationList` then calls for `ReviewList#receiveConvert` with the new `Review` and inserts it into the ArrayList `reviews`.
+3. `RecommendationList#convertRecommendation` continues with the chosen `Recommendation` object and removes it from the ArrayList `recommendations`.
 
 ### 5.4 Storage
+The `Storage` class is responsible for loading data from memory and saving data to memory. The location of this data can be found at *./data/connoisseur.json* and serves to retain all the information of the user after the application has exited. Other than the reviews and recommendations, it also saves the preferences of the user such as the sorting method as well as the display type. 
 
 ### 5.4.1 Storage Format
+The information is saved as a JSON Object in the data file. It consists of two strings, the sort method and display type, as well as two JSON Arrays which hold the reviews and recommendations. 
+To facilitate easier conversion between the raw data and JSON object, a `ConnoisseurData` class was created to store all the data as a single object before conversion. 
 
 ### 5.4.2 Implementation
+The following is a Sequence diagram to illustrate how Connoisseur saves data on exit. 
+![saving_sequence](./diagrams/Save_Sequence_Diagram.png)
+
+1. When the `exit()` method is called, `saveConnoisseurData()` will be called to save the data before exiting. 
+2. `Storage#saveReviews` is called to convert the reviews to a JSON Array. 
+3. `Storage#saveRecommendations` is called to convert the recommendations to a JSON Array. 
+4. These are then combined with the sort method and display type and written to *connoisseur.json*. 
+5. If there is an error writing to the file, an exception will be raised and the user will be notified. 
+6. Finally, the exit message will be printed and connoisseur will exit. 
 
 ### 5.5 Error handling
 
