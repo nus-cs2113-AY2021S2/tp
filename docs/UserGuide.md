@@ -1,7 +1,4 @@
 # Finux User Guide
-By: `Jonah Tham`, `Gerard Tan`, `Lee Han Yong Andy`, `Mark Low`, `Tan Tze Xern`
-
-Since: `March 2021`
 
 ---
 
@@ -540,3 +537,8 @@ Output:
 | Help (detailed)                        | `help <feature>`                                         | `help remove`                                        |
 | Help (brief)                           | `help`                                                   | -                                                    |
 
+---
+
+By: `Jonah Tham`, `Gerard Tan`, `Lee Han Yong Andy`, `Mark Low`, `Tan Tze Xern`
+
+Updated: `April 2021`
