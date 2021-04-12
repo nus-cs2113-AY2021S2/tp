@@ -307,7 +307,7 @@ Additionally, the command `history clear` deletes the contents of `historyData.t
 ### Target User Profile
 
 * is a new homeowner who cooks
-* has a needs to manage a significant number of foods in the fridge
+* has a need to manage a significant number of food items in the fridge
 * has a tendency to forget expiry date and location of the food stored
 * can type fast
 * prefers typing to mouse interactions
