@@ -1,0 +1,45 @@
+@startuml
+hide circle
+
+skinparam classAttributeIconSize 0
+
+class FavouriteUi {
++ String[] getFavouriteInfo()
++ showFavourites(Favourite):void
++ getDeleteIndex():int
++ getRepeatIndex():int
+}
+class AddFavouriteCommand {
+# FavouriteUi ui
+- {static} String MESSAGE_SUCCESS
++ execute():void
+}
+class Favourite {
++ ArrayList<String[]> favourites
++ isEmpty():boolean
++ getFavouriteSize():int
++ addFavourite(String,String):void
++ getSpecificEntry(int):String[]
++ deleteFavourite(int):void
+}
+class DeleteFavouriteCommand {
+# FavouriteUi ui
+- {static} String MESSAGE_SUCCESS
++ execute():void
+}
+class RepeatFavouriteCommand {
+# FavouriteUi ui
++ execute():void
+}
+class ShowFavouriteCommand {
+# FavouriteUi ui
++ execute():void
+}
+
+
+UiManager <|-- FavouriteUi
+Command <|-- AddFavouriteCommand
+Command <|-- DeleteFavouriteCommand
+Command <|-- RepeatFavouriteCommand
+Command <|-- ShowFavouriteCommand
+@enduml

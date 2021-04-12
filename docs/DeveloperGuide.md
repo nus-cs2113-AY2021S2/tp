@@ -227,6 +227,8 @@ The following image shows the sequence diagram in which the deleteDailyRoute com
 
 ### 3.3. Favourite Routes feature
 
+![img.png](images/Favourite.png)
+
 #### Current Implementation
 
 The favourite routes feature acts as an independent storage of the user's favourites routes,
@@ -301,7 +303,7 @@ Given below is an example usage scenario and how the add/view/delete mechanism b
 
 Shown below is the sequence diagram when a valid block name and alias are added:
 ![img.png](images/AliasFeatureSequence.png)
-### 3.5. History feature 
+### 3.5. History feature
 ![img.png](images/history.png)
 #### Current Implementation
 Whenever the user inputs the `go` command, and enters a valid start and destination address, a String consisting the start and end block is created and stored in `historyList`. 
