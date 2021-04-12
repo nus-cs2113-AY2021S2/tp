@@ -7,7 +7,7 @@ plugins {
 jar {
     manifest {
         attributes(
-                'Main-Class': 'seedu.duke.Duke'
+                'Main-Class': 'seedu.duke.HealthVault'
         )
     }
 }
