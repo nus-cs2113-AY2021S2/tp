@@ -11,12 +11,22 @@ import java.util.Scanner;
 
 public class CustomerMainMenu implements MainMenu {
 
+    /**
+     * Display the main landing page a Customer will encounter when using the app
+     * @param currentUserIndex the position in ArrayList of User objects, that corresponds to the current Customer
+     * @param user the ArrayList of all User objects.
+     */
     public static int displayMenu(int currentUserIndex, ArrayList<User> user) {
         System.out.println("\nWelcome, " + user.get(currentUserIndex).getName());
         getOption(user.get(currentUserIndex));
         return -1;
     }
 
+    /**
+     * Execute the option selected by the customer.
+     * @param option the option number selected by the user.
+     * @param user the user who selects the option.
+     */
     public static void doOption(int option, User user) {
         boolean goBack = false;
         Movie movie;
@@ -40,6 +50,9 @@ public class CustomerMainMenu implements MainMenu {
         }
     }
 
+    /**
+     * Display goodbye message and log the user out the program.
+     */
     public static void exit() {
         System.out.println("\nThank you for your time.");
         System.out.println("Have a good day!");
@@ -47,6 +60,10 @@ public class CustomerMainMenu implements MainMenu {
         System.out.println("Logging out...");
     }
 
+    /**
+     * Prompt the user to input an option.
+     * @param user the user who selects the option.
+     */
     public static void getOption(User user) {
         int menu_choice = -1;
         Scanner sc = new Scanner(System.in);

@@ -11,6 +11,10 @@ import java.util.Scanner;
 
 public class MovieFilter {
 
+    /**
+     * Display the list of (filtered) movies.
+     * @param MovieList the full list of movies.
+     */
     public static void printMovieList(ArrayList<Movie> MovieList) {
         int i;
         System.out.println("\n============================");
@@ -23,6 +27,10 @@ public class MovieFilter {
         System.out.println("To select a single movie, select \"6 Select movie\" from the Movie Filter menu below.");
     }
 
+    /**
+     * Display the filters users can choose from and prompt users to make a choice.
+     * @return an int value that indicates user's choice.
+     */
     public static int getFilter() {
         int filter = -1;
         Scanner sc = new Scanner(System.in);
@@ -55,7 +63,10 @@ public class MovieFilter {
         return filter;
     }
 
-    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Display the genres users can choose from and prompt users to make a choice.
+     * @return a string value that indicates user's choice.
+     */
     public static String getGenre() {
         int genre_choice = -1;
         Scanner sc = new Scanner(System.in);
@@ -103,7 +114,11 @@ public class MovieFilter {
         }
     }
 
-    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Display the movies filtered by selected genre.
+     * @param movieList the full list of movies.
+     * @return a list of filtered movies.
+     */
     public static ArrayList<Movie> filterByGenre(ArrayList<Movie> movieList) {
         int i = 0;
         String genre = getGenre();
@@ -119,7 +134,10 @@ public class MovieFilter {
         return movieList;
     }
 
-    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Display the rating users can choose from and prompt users to make a choice.
+     * @return a float value that indicates user's choice.
+     */
     public static float getRating() {
         float rating = -1;
         Scanner sc = new Scanner(System.in);
@@ -139,7 +157,11 @@ public class MovieFilter {
         return rating;
     }
 
-    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Display the movies filtered by selected rating.
+     * @param movieList the full list of movies.
+     * @return a list of filtered movies.
+     */
     public static ArrayList<Movie> filterByRating(ArrayList<Movie> movieList) {
         int i = 0;
         float rating = getRating();
@@ -155,7 +177,10 @@ public class MovieFilter {
         return movieList;
     }
 
-    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Display the showing status users can choose from and prompt users to make a choice.
+     * @return a String value that indicates user's choice.
+     */
     public static String getShowingStatus() {
         int showing_status_choice = -1;
         Scanner sc = new Scanner(System.in);
@@ -195,7 +220,11 @@ public class MovieFilter {
         }
     }
 
-    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Display the movies filtered by selected showing status.
+     * @param movieList the full list of movies.
+     * @return a list of filtered movies.
+     */
     public static ArrayList<Movie> filterByShowingStatus(ArrayList<Movie> movieList) {
         int i = 0;
         String showingStatus = getShowingStatus();
@@ -211,7 +240,10 @@ public class MovieFilter {
         return movieList;
     }
 
-    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Display the cineplex users can choose from and prompt users to make a choice.
+     * @return an int value that indicates user's choice.
+     */
     public static int getCineplex() {
         int cineplex_choice = -1;
         Scanner sc = new Scanner(System.in);
@@ -236,7 +268,12 @@ public class MovieFilter {
         return (cineplex_choice - 1);
     }
 
-    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Display the movies filtered by selected cineplex.
+     * @param movieList the full list of movies.
+     * @param CineplexDatabase the list of cineplex.
+     * @return a list of filtered movies.
+     */
     public static ArrayList<Movie> filterByCineplex(ArrayList<Movie> movieList, ArrayList<Cineplex> CineplexDatabase) {
 
         int cineplexID = getCineplex();
@@ -255,14 +292,21 @@ public class MovieFilter {
         return movieList;
     }
 
-    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Prompt users to enter the title they want to search.
+     * @return a String value that indicates user's input.
+     */
     public static String getTitle() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Search: ");
         return sc.nextLine();
     }
 
-    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Display the movies filtered by selected title.
+     * @param movieList the full list of movies.
+     * @return a list of filtered movies.
+     */
     public static ArrayList<Movie> filterByTitle(ArrayList<Movie> movieList) {
         String title = getTitle();
         System.out.println("The selected keyword is: " + title);
@@ -278,7 +322,11 @@ public class MovieFilter {
 
     }
 
-    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Prompt users to choose a movie by index.
+     * @param size the length of the movie list.
+     * @return an int value that indicates user's choice.
+     */
     public static int getMovieChoice(int size) {
         int movie_choice = -1;
         Scanner sc = new Scanner(System.in);
@@ -298,7 +346,11 @@ public class MovieFilter {
         return movie_choice - 1;
     }
 
-    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Display the movies selected by the user.
+     * @param movieList the full list of movies.
+     * @return a list of selected movies.
+     */
     public static ArrayList<Movie> selectMovie(ArrayList<Movie> movieList) {
         ArrayList<Movie> result = new ArrayList<>();
         printMovieList(movieList);
@@ -306,7 +358,13 @@ public class MovieFilter {
         return result;
     }
 
-    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Display the types of filters users can choose from and prompt users to make a choice.
+     * @param movieList the full list of movies.
+     * @param CineplexDatabase the list of cineplex.
+     * @param user the list of users.
+     * @return a selected movie.
+     */
     public static Movie filter(ArrayList<Movie> movieList, ArrayList<Cineplex> CineplexDatabase, User user) {
         int Filter;
         loop:

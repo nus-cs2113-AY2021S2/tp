@@ -36,6 +36,9 @@ public class Database {
     public static Path userListDirectory = Path.of(System.getProperty("user.dir") + "\\data"
             + "\\userSerialList.txt");
 
+    /**
+     * Initialize all the methods.
+     */
     public Database() throws Exception {
         checkIfDirectoryExists();
         checkIfMovieListExists();
@@ -45,6 +48,9 @@ public class Database {
         importDatabase();
     }
 
+    /**
+     * Check if the user text file exists in storage.
+     */
     private static void checkIfUserListExists() throws IOException {
         if (!Files.exists(userListDirectory)) {
             File newFile = new File(String.valueOf(userListDirectory));
@@ -53,6 +59,9 @@ public class Database {
         }
     }
 
+    /**
+     * Check if the showtime text file exists in storage.
+     */
     private static void checkIfShowtimeListExists() throws IOException {
         if (!Files.exists(showtimeListDirectory)) {
             File newFile = new File(String.valueOf(showtimeListDirectory));
@@ -61,6 +70,9 @@ public class Database {
         }
     }
 
+    /**
+     * Check if the cineplex text file exists in storage.
+     */
     private static void checkIfCineplexListExists() throws IOException {
         if (!Files.exists(cineplexListDirectory)) {
             File newFile = new File(String.valueOf(cineplexListDirectory));
@@ -69,6 +81,9 @@ public class Database {
         }
     }
 
+    /**
+     * Check if the movie list text file exists in storage.
+     */
     private static void checkIfMovieListExists() throws IOException {
         if (!Files.exists(movieListDirectory)) {
             File newFile = new File(String.valueOf(movieListDirectory));
@@ -77,12 +92,18 @@ public class Database {
         }
     }
 
+    /**
+     * Check if the directory that stores data exists in storage.
+     */
     private static void checkIfDirectoryExists() throws IOException {
         if (!Files.exists(dataDirectory)) {
             Files.createDirectory(dataDirectory);
         }
     }
 
+    /**
+     * Check if the the file that stores data exists in storage.
+     */
     private static void checkIfFileExists(Path databaseFile) throws IOException {
         if (!Files.exists(databaseFile)) {
             File newFile = new File(String.valueOf(databaseFile));
@@ -90,6 +111,9 @@ public class Database {
         }
     }
 
+    /**
+     * Import data to populate the object array list.
+     */
     private static void importDatabase() throws Exception {
         MovieDatabase = importMovieDatabase();
         CineplexDatabase = importCineplexDatabase();
@@ -97,6 +121,10 @@ public class Database {
         users = importUserDatabaseUsingSerialization();
     }
 
+    /**
+     * Import user database from text file.
+     * @return  an array list of user objects.
+     */
     private static ArrayList<User> importUserDatabaseUsingSerialization() throws Exception {
         File f_movie = new File("data/userSerialList.txt");
         FileInputStream fis_movie = new FileInputStream(f_movie);
@@ -107,6 +135,10 @@ public class Database {
         return MList;
     }
 
+    /**
+     * Import movie database from text file.
+     * @return  an array list of movie objects.
+     */
     private static ArrayList<Movie> importMovieDatabase() throws Exception {
         File f_movie = new File("data/movieList.txt");
         FileInputStream fis_movie = new FileInputStream(f_movie);
@@ -118,6 +150,10 @@ public class Database {
         return MList;
     }
 
+    /**
+     * Import cineplex database from text file.
+     * @return  an array list of cineplex objects.
+     */
     private static ArrayList<Cineplex> importCineplexDatabase() throws Exception {
         File f_cineplex = new File("data/cineplexList.txt");
         FileInputStream fis_cineplex = new FileInputStream(f_cineplex);
@@ -128,6 +164,10 @@ public class Database {
         return CPList;
     }
 
+    /**
+     * Import showtime database from text file.
+     * @return  an array list of showtime objects.
+     */
     private static ArrayList<Showtimes> importShowtimesDatabase() throws Exception {
         File f_showtime = new File("data/showtimeList.txt");
         FileInputStream fis_showtime = new FileInputStream(f_showtime);
@@ -138,6 +178,10 @@ public class Database {
         return STList;
     }
 
+    /**
+     * Update the showing status of the movie list.
+     * @param MList  the list of movies to update.
+     */
     private static ArrayList<Movie> updateMovieStatus(ArrayList<Movie> MList) {
         Date currentDate = new Date();
         Calendar startCalendar = null;
@@ -158,6 +202,10 @@ public class Database {
         return MList;
     }
 
+    /**
+     * Delete a movie from the movie list.
+     * @param choice the index of movie to delete.
+     */
     public static void deleteMovie(int choice) throws Exception {
         MovieDatabase.remove(choice - 1);
         try {
@@ -173,6 +221,11 @@ public class Database {
         System.out.println("The movie has been removed from the database.");
     }
 
+    /**
+     * Edit a movie in the movie list.
+     * @param choice the index of movie to edit.
+     * @param type the movie attribute to edit.
+     */
     public static void editMovie(int choice, int type) throws Exception {
         Movie selectedMovie = MovieDatabase.get(choice - 1);
         Scanner select = new Scanner(System.in);
@@ -266,7 +319,11 @@ public class Database {
         System.out.println("The changes have been saved to the database.");
     }
 
-
+    /**
+     * Get an integaer input from the user.
+     * @param prompt the prompt to display to user.
+     * @param maxValue the max value range the user can choose from.
+     */
     public static int getIntegerInput(String prompt, int maxValue) {
         int integer_input = -1;
         Scanner sc = new Scanner(System.in);
@@ -289,6 +346,11 @@ public class Database {
         return integer_input;
     }
 
+    /**
+     * Check if the user input comply to a valid date format.
+     * @param input input from the user.
+     * @return  a boolean value, which indicates whether the input date format is valid.
+     */
     private static boolean isValidDate(String input) {
         try {
             SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
@@ -305,6 +367,10 @@ public class Database {
         return true;
     }
 
+    /**
+     * Read in user's date input string and convert it to int.
+     * @return  an int value of date.
+     */
     public static int[] getDateTime() throws Exception {
         System.out.println("Input the date using the format dd-mm-yyyy");
         Scanner scanner = new Scanner(System.in);
@@ -321,6 +387,9 @@ public class Database {
         return dates;
     }
 
+    /**
+     * Add a new movie to the movie list.
+     */
     public static void addMovie() throws Exception {
 
         Scanner select = new Scanner(System.in);
@@ -414,6 +483,9 @@ public class Database {
 
     }
 
+    /**
+     * Update any changes made to the database.
+     */
     public static void updateDatabase() {
         writeToFile("data/showtimeList.txt", ShowtimesDatabase);
         writeToFile("data/userSerialList.txt", users);
@@ -421,6 +493,11 @@ public class Database {
         writeToFile("data/movieList.txt", MovieDatabase);
     }
 
+    /**
+     * Store the object to file.
+     * @param fileName file to store the object.
+     * @param object object to be stored in file.
+     */
     private static void writeToFile(String fileName, Object object) {
         try {
             File f_movie = new File(fileName);
