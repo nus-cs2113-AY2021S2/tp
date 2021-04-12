@@ -48,6 +48,6 @@ argument.
     
 
 * **Community:**
-    * PRs reviewed (with non-trivial review comments): #41, #109, #142
+    * PRs reviewed (with non-trivial review comments): [#41](https://github.com/AY2021S2-CS2113T-T09-1/tp/pull/41), [#109](https://github.com/AY2021S2-CS2113T-T09-1/tp/pull/109), [#142](https://github.com/AY2021S2-CS2113T-T09-1/tp/pull/142)
     * Contributed to the user stories development
     * Released the second build, v2.0
