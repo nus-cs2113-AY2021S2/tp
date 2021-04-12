@@ -166,12 +166,9 @@ public class Ui {
 
     /**
      * Prints error message.
-     *
-     * @param e error encountered
      */
-    public void printErrorMessage(Exception e) {
+    public void printErrorMessage() {
         println(ERROR_MESSAGE);
-        e.printStackTrace();
     }
 
     /**

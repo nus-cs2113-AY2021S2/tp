@@ -1,7 +1,6 @@
 package seedu.connoisseur.commands;
 
 import seedu.connoisseur.exceptions.DuplicateException;
-import seedu.connoisseur.exceptions.EmptyInputException;
 import seedu.connoisseur.recommendation.Recommendation;
 import seedu.connoisseur.review.Review;
 import seedu.connoisseur.storage.ConnoisseurData;
@@ -181,15 +180,13 @@ public class RecommendationList {
             addRecommendationDetails();
         } catch (DuplicateException de) {
             ui.printNoUniqueTitleMessage();
-        } catch (EmptyInputException ee) {
-            ui.printEmptyInputMessage();
         }
     }
 
     /**
      * Prompts for details of recommendation.
      */
-    public void addRecommendationDetails() throws DuplicateException, EmptyInputException {
+    public void addRecommendationDetails() throws DuplicateException {
         String title;
         String input;
         String category;
