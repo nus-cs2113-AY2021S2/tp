@@ -46,16 +46,20 @@ public class Controller {
      */
     public void controllerForCommandsAndArguments(String userCommand, String userArguments, Deliveryman deliveryman) {
         assert userArguments != null : "!! Argument is null";
+        DataManager dataManager = new DataManager();
         switch (userCommand) {
         case "edit":
             String inputProfileData = parser.parseInput("edit", userArguments);
             deliveryman.updateProfile(inputProfileData);
+            dataManager.saveAll(deliveryman);
             break;
         case "view":
             ui.processViewDelivery(userArguments, parser);
+            dataManager.saveAll(deliveryman);
             break;
         case "complete":
             ui.processCompleteDelivery(userArguments, deliveryman, parser);
+            dataManager.saveAll(deliveryman);
             break;
         default:
             System.out.println("Please enter a valid command!");
