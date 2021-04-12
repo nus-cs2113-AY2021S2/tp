@@ -8,9 +8,10 @@ import static seedu.duke.common.Constant.MAX_CREDIT_SCORE;
 /**
  * Maintains an internal HashMap of borrower names mapped to their respective credit score,
  * and handles operations relating to this HashMap.
- *
+ * <p>
  * NOTE: The credit score referred to in this case is computed based on the list of confirmed returned loans made by
  * the borrower and is not the final credit score.
+ * </p>
  */
 public class CreditScoreReturnedLoansMap {
     private HashMap<String,Integer> creditScoreReturnedLoansMap;
@@ -45,7 +46,6 @@ public class CreditScoreReturnedLoansMap {
      * made by the borrower and is not the final credit score.
      *
      * @param borrowerName name of the borrower.
-     * @return credit score of the specified borrower.
      */
     public void insertCreditScoreOf(String borrowerName, int creditScore) {
         creditScoreReturnedLoansMap.put(borrowerName, creditScore);
