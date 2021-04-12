@@ -1,6 +1,7 @@
 **Developer Guide**
 ===================
 
+<div style="page-break-after: always;"></div>
 
 ## Content Page
 
@@ -51,6 +52,8 @@
     	- [Auto Schedule Generator for Nurses](#561-auto-schedule-generator-for-nurses)
     	- [Personalized Account Login](#562-personalized-account-login)
     	- [Inventory Alerts](#563-inventory-alerts)
+
+---
 
 [Appendix A: Product Scope](#appendix-a-product-scope)
 
