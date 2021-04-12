@@ -33,13 +33,13 @@ My code contribution can be found [here](https://nus-cs2113-ay2021s2.github.io/t
 #### Contributions to developer guide
 * [Design Section](../DeveloperGuide.md#4-design)
 * [Storage Section](../DeveloperGuide.md#54-storage)
-* Most of the [UML diagrams](../diagrams)
+* Most of the [UML diagrams](https://github.com/AY2021S2-CS2113T-F08-3/tp/tree/master/docs/diagrams)
 #### Contributions to team-based tasks
 * Set up team repository
 * Releases
 * Set up milestones and issue tracker
 * Set up discord channel for monitoring github activity with webhooks to the team repo and everyone's individual repo
-![discord-monitoring](PPP_Screenshots/huachen1.png)
+![discord-monitoring](https://ay2021s2-cs2113t-f08-3.github.io/tp/team/PPP_Screenshots/huachen1.png)
 #### Review/mentoring contributions
 * [List of reviewed pull requests](https://github.com/AY2021S2-CS2113T-F08-3/tp/pulls?q=reviewed-by%3Ahuachen24)
 * Commented on pull requests
