@@ -104,7 +104,7 @@ As shown above in the class diagram, **Parser component** is made out of the `Pa
 After the `UiManager` reads in the user command, `NusMaze` makes use of the `Parser` to interpret 
 the user command and it will instantiate a new Command object to execute the command. 
 
-The Sequence diagram shown below is of a scenario where the user inputs an `"invalid input"`. It will allow you to 
+The Sequence diagram shown below is of a scenario where the user inputs an `invalid input`. It will allow you to 
 get a better understanding of how the `Parser` class interacts with `NusMaze` and `UiManager`.
 
 ![img.png](images/Parsersequencediagram.png)
