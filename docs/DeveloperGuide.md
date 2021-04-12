@@ -227,6 +227,8 @@ The following image shows the sequence diagram in which the deleteDailyRoute com
 
 ### 3.3. Favourite Routes feature
 
+![img.png](images/Favourite.png)
+
 #### Current Implementation
 
 The favourite routes feature acts as an independent storage of the user's favourites routes,
