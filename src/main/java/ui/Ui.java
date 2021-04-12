@@ -180,7 +180,7 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
-    public void showHelpCommand(){
+    public void showHelpCommand() {
         System.out.println(Ui.LINESPACING);
         System.out.println("Enter 'menu' to view sample menu");
         System.out.println("Enter 'reviews' to show reviews of that particular store");
@@ -336,7 +336,7 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
-    public void showNoCanteen(){
+    public void showNoCanteen() {
         System.out.println(Ui.LINESPACING);
         System.out.println("There are no canteens for you to view any stores yet.");
         System.out.println(Ui.LINESPACING);
