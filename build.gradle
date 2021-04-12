@@ -10,8 +10,15 @@ repositories {
 }
 
 dependencies {
+    implementation 'junit:junit:4.12'
+    implementation group: 'org.json', name: 'json', version: '20210307'
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.5.0'
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.5.0'
+}
+
+run {
+    standardInput = System.in
+    enableAssertions = true;
 }
 
 test {
@@ -29,11 +36,11 @@ test {
 }
 
 application {
-    mainClassName = "seedu.duke.Duke"
+    mainClassName = "seedu.connoisseur.Connoisseur"
 }
 
 shadowJar {
-    archiveBaseName = "duke"
+    archiveBaseName = "connoisseur"
     archiveClassifier = null
 }
 
@@ -41,6 +48,3 @@ checkstyle {
     toolVersion = '8.23'
 }
 
-run{
-    standardInput = System.in
-}

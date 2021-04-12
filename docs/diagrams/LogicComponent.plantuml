@@ -1,0 +1,71 @@
+@startuml LogicComponent
+hide circle
+!define LIGHTGREEN
+!includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+skinparam classAttributeIconSize 0
+
+rectangle Logic #TECHNOLOGY{
+    class Parser
+    class Commands
+}
+
+rectangle Model #Khaki {
+    class RecommendationList
+    class ReviewList
+}
+
+class Commands #PaleGreen {
+    - boolean isReviewMode
+    + reviewMode()
+    + recommendationMode()
+    + printHelp()
+    + list()
+    + sort()
+    + view()
+    + add()
+    + edit()
+    + done()
+    + delete()
+    + display()
+}
+
+class RecommendationList #Gold {
+    - ui : Ui
+    + recommendations : ArrayList<Recommendation>
+    + addRecommendation()
+    + listRecommendations()
+    + editRecommendation()
+    + deleteRecommendation()
+    + convertRecommendation()
+}
+
+class ReviewList #Gold {
+    - ui : Ui
+    + reviews : ArrayList<Reviews>
+    - displayStars : boolean
+    + addReview()
+    + sortReviews()
+    + listReviews()
+    + viewReview()
+    + editReview()
+    + deleteReview()
+    + changeDisplay()
+}
+
+class Parser #PaleGreen {
+    + determineCommand()
+}
+
+class Storage #PowderBlue {
+    - ui : Ui
+    + retrieveDataFile() : boolean
+    + loadConnoisseurData() : ConnoisseurData
+    + saveConnoisseurData()
+}
+
+Parser - Commands : deciphered commands >
+Commands -- Storage : store data >
+Commands -- ReviewList : deciphered arguments >
+Commands -- RecommendationList : deciphered arguments >
+
+@enduml

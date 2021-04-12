@@ -1,0 +1,40 @@
+@startuml EditReviewSeq
+!define LIGHTBLUE
+!includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+skinparam style strictuml
+
+participant Ui #Turquoise
+participant Parser #PaleGreen
+participant Commands #PaleGreen
+participant ReviewList #Gold
+
+activate Ui #Turquoise
+Ui -> Parser : determineCommand()
+activate Parser #PaleGreen
+
+Parser -> Commands : edit()
+activate Commands #PaleGreen
+
+alt isReviewMode
+    Commands -> ReviewList : editReview(title)
+    activate ReviewList #Gold
+
+    alt missing title
+        ReviewList --> Ui : missing title
+
+    else review does not exist
+        ReviewList --> Ui : invalid title
+
+    else review exists
+        ReviewList -> ReviewList : set details
+    end
+    ReviewList --> Commands
+    deactivate ReviewList
+
+
+Commands --> Parser
+deactivate Commands
+Parser --> Ui
+deactivate Parser
+
+@enduml

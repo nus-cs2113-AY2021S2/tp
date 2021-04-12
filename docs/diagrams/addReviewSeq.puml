@@ -1,0 +1,38 @@
+@startuml Add_Reco_Sequence_Diagram
+!define LIGHTBLUE
+!includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+skinparam style strictuml
+
+participant Ui #Turquoise
+participant Parser #PaleGreen
+participant Commands #PaleGreen
+participant ReviewList #Gold
+
+activate Ui #Turquoise
+Ui -> Parser : determineCommand()
+activate Parser #PaleGreen
+
+Parser -> Commands : add()
+activate Commands #PaleGreen
+
+alt isReviewMode
+    Commands -> ReviewList : addReview(input)
+    activate ReviewList #Gold
+
+    alt quick review
+        ReviewList -> ReviewList : addQuickReview()
+
+    else full review
+        ReviewList -> ReviewList : addFullReview()
+
+    else else
+        ReviewList --> Ui : invalidCommand()
+    end
+    ReviewList --> Commands
+    deactivate ReviewList
+Commands --> Parser
+deactivate Commands
+Parser --> Ui
+deactivate Parser
+
+@enduml

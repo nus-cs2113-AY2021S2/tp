@@ -1,1 +1,9 @@
-James Gosling
+list
+new superman movie 4 great
+new avengers movie 5 amazing
+list
+sort title
+list
+list rating
+delete superman
+bye

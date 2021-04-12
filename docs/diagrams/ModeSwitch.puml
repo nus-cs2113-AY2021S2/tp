@@ -1,0 +1,25 @@
+@startuml ModeSwitch
+!define LIGHTBLUE
+!includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+skinparam style strictuml
+
+participant Ui #Turquoise
+participant Parser #PaleGreen
+participant Commands #PaleGreen
+
+activate Ui #Turquoise
+Ui -> Parser : determineCommand()
+activate Parser #PaleGreen
+alt "review"
+    Parser -> Commands : reviewMode()
+    activate Commands #PaleGreen
+    Commands -> Commands : isReviewMode = true;
+
+else "reco"
+      Parser -> Commands : recommendationMode()
+      Commands -> Commands : isReviewMode = false;
+end
+Commands --> Ui: println()
+deactivate Commands
+deactivate Parser
+@enduml

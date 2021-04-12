@@ -1,0 +1,38 @@
+@startuml Save_Sequence_Diagram
+!define LIGHTBLUE
+!includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+skinparam style strictuml
+
+participant Ui #Turquoise
+participant Parser #PaleGreen
+participant Commands #PaleGreen
+participant Storage #PowderBlue
+participant Data #APPLICATION
+
+activate Ui #Turquoise
+Ui -> Parser : determineCommand()
+activate Parser #PaleGreen
+
+Parser -> Commands : exit()
+activate Commands #PaleGreen
+
+Commands -> Storage : saveConnoisseurData()
+activate Storage #PowderBlue
+
+Storage -> Storage : saveReviews()
+Storage -> Storage : saveRecommendations()
+Storage -> Data : write to file
+activate Data #APPLICATION
+break IOException
+    Data -[hidden]-> Storage
+    Storage --> Ui : printErrorMessage()
+end
+Data --> Storage
+deactivate Data
+Storage --> Commands
+deactivate Storage
+Commands --> Ui : println(EXIT_MESSAGE)
+deactivate Commands
+deactivate Parser
+
+@enduml
