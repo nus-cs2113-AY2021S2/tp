@@ -12,7 +12,7 @@ Given below are my contributions to the project.
 ## TeamPlanner
 ***
 
-###Summary of team planner feature
+### Summary of team planner feature
 The feature that I invested a great deal of time and effort into is the ability to add tasks to each team member
 and show the tasks(sorted by order of priority) that have been assigned to each team member as this feature involved
 using a task manager class for each team member class and each task had to be sorted in order of priority level.
@@ -58,8 +58,8 @@ higher up the list while tasks with a lower priority will be lower down the list
 
 ***
 
-###Code Contribution:
-
+### Code Contribution:
+[RepoSense](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=douglaslewpc&sort=groupTitle&sortWithin=title&since=2021-03-05&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false)
 
 ***
 
