@@ -26,14 +26,14 @@ public class CapSimulatorTest {
 
     @Test
     public void checkMcsExist_validMCs_true() {
-        Integer Mcs = 1;
-        assertEquals(true, checkMcsExist(Mcs));
+        Integer mcs = 1;
+        assertEquals(true, checkMcsExist(mcs));
     }
 
     @Test
     public void checkMcsExist_validMCs_false() {
-        Integer Mcs = 100;
-        assertEquals(false, checkMcsExist(Mcs));
+        Integer mcs = 100;
+        assertEquals(false, checkMcsExist(mcs));
     }
 
     @Test

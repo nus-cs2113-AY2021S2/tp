@@ -80,10 +80,6 @@ In this developer guide, all text that appears on the CLI or in code will be wri
 > 📝 **Note!**  
 > This is a note section. Additional useful information will be written in sections such as this one.
 
-> ⚠️ **<span style="color: red"> WARNING! </span>**  
-> This is a warning section. Any user interaction with UniTracker that may result in issues or unintended results will be written in sections such as this one.
-
-
 ---
 
 # 2. Setting Up
