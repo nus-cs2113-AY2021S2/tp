@@ -527,7 +527,7 @@ input.
        ----------------------------------------------------------------------
        Added new record to patient S1234567D:
        
-       Symptom: coughing, runny, fever
+       Symptom: coughing, runny nose, fever
        Diagnosis: flu
        Prescription: panadol, cetirizine
 
@@ -542,7 +542,7 @@ input.
        Here are S1234567D's records:
        30/03/2021:
        Symptoms:
-           coughing, runny, fever
+           coughing, runny nose, fever
        Diagnoses:
            flu
        Prescriptions:
@@ -556,7 +556,7 @@ input.
        Expected: Application deletes record dates 30/03/2021 and shows:
        ```
        ----------------------------------------------------------------------
-       Record for 2021-03-30 has been deleted!
+       Record for 30/03/2021 has been deleted!
        ----------------------------------------------------------------------
        ```
 
