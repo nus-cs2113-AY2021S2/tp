@@ -95,6 +95,7 @@ Other contributions to the DG are:
 1. Discussing bugs and fixes with teammates.
 1. Maintained a small portion of issues in the issue tracker.
 1. Maintaining early communication with teammates, regarding features.
+1. Demo video
 
 ---
 
