@@ -92,34 +92,55 @@ Control is then passed back to the `addSchedule` method in `EmployeeController`,
 #### Implementation
 
 The proposed Assign Employee feature is facilitated by the `Shift` object in the `shift` package,
-where it stores the employees on the shift, its shift date, shift index, and vacancy. 
-This method, like its name suggests, assigns an employee to an available shift.
+where it stores the employees on the shift, its shift date, shift index, and vacancy. It also uses `listAllEmployees` 
+method from `EmployeeController` class, which helps user to view the employees that they can assign to the shift.
+This method, like its name suggests, assigns an employee who has an available schedule to a shift that has vacancies.
+In version 2.0 and 2.1, exceptions and error-handling are added to ensure bugs are fixed and no longer occur.
 
 Given below is an example usage scenario and how the Assign Employee method behaves at each step.
 
 Step 1: The user launches the application and the `Employee` and `Shift` objects are initialised with the saved data.
-For this example, we will use the `Employee` object to store all employees and their schedules, where `employees: `[Adam, Eve], and 
-`shifts` which is an ArrayList of `Shift` objects. The example will use a `Shift` object with attributes `employees: `[Adam], 
-an ArrayList of employees assigned to this shift, meaning `Adam` is assigned to this shift, `shiftDate: `04/04/2021, `shiftIndex: `3, meaning that the shift period is 0800 to 1200, 
-and `vacancy: `2.
+For this example, we will use the `Employee` object to store all employees and their schedules, where 
+`employees: `[Adam, Eve], and `shifts` which is an ArrayList of `Shift` objects. As for `Eve`, the object will be 
+initialised such that `Eve` will be available for schedule on `04/04/2021`.  The example will use a `Shift` object 
+with attributes `employees: `[Adam], an ArrayList of employees assigned to this shift, meaning `Adam` is 
+assigned to this shift, `shiftDate: `04/04/2021, `shiftIndex: `3, meaning that the shift period is 0800 to 1200, 
+and `vacancy: `1, meaning that there is 1 vacancy left in this shift.
 
 Step 2: The system calls `App Controller` and prompts "Enter Command: ".
 
 Step 3: The user enters `assign employee`. This command will call `assignEmployee()` in `App Controller`, which then 
-causes the system to output "Enter Employee name to assign: ".
+calls the `viewAllShifts()` method that will display all the shifts, and their vacancies. `shifts.isEmpty()` is then run
+to check whether there is any shift in the database, in which no shift means no employee will be assigned, and the 
+method ends here prematurely. Else, the method continues to Step 4.
 
-Step 4: The user inputs "Eve", which calls the`getName()` method in `Employee` to check whether `Eve` exists in the database.
-If `Eve` does not exist in the database, the system will output "Employee not found", and the method ends here. Since `Eve`
-exist in the database, the system proceeds to output "Enter Shift date (in dd/MM/yyyy)".
+Step 4: The system outputs "Enter Shift date (in dd/MM/yyyy): " as `getShiftDate()` is called.
+The user inputs "04/04/2021" and `getShiftDate()` method returns a temporary `LocalDate` object. This will be stored as
+`shiftDate`, following which the system will output "Enter Shift index:" as `getShiftIndex()` is called.
 
-Step 5: The user inputs "04/04/2021" and this is stored as a temporary `shiftDate` object in the method, where the `LocalDate.parse()` method will parse the `String` input using the `DateTimeFormatter` into a `LocalDate` object.
-The system will then output "Enter Shift index:".
+Step 5: The user inputs "3" and `getShiftIndex()` returns an integer which will be stored as `shiftIndex`, and 
+the system proceeds to verify that the `Shift` object with this particular `shiftDate` and `shiftIndex` exists when 
+`getShift()` returns a non-null value.
 
-Step 6: The user inputs "3" which is temporarily stored as `shiftIndex`, and the system proceeds to verify that the `Shift` object with this particular `shiftDate` and `shiftIndex` exists.
-The system outputs "Shift not found" if the particular `Shift` object does not exist. Since this `Shift` exists, the system
-calls the `assignEmployee()` method in `Shift` to assign `Eve` to this shift by adding `Eve` into the ArrayList of `employees` stored in the `Shift` object. This causes the `vacancy` in this current `Shift` object to decrement by 1.
-If the `vacancy` is 0, the system outputs "Shift is full!". Since there is still 2 vacancies for this shift, the system will instead
-output "Employee Eve assigned." and `vacancy` becomes 1.
+Step 6: The system assigns `shift` to a temporary `Shift` object via the `getShift()` method. `EmployeeController` then 
+calls the `listAllEmployees()` method that displays all the employees in the database that the user can assign to shift.
+
+Step 7: The system outputs "Enter Employee name to assign: ". The user inputs "Eve", and the `getEmployee` method is 
+called, which returns an `Employee` object that is stored under `employee`. 
+
+Step 8: If `employee` is a null object, the system outputs "No employee in database. Please add an employee with a 
+schedule first." and ends here. Else, `employeeAvailable()` is called to check whether `Eve` is available to work 
+according to the schedule, which will output "Employee Eve is available to work!". If not, the system outputs 
+"Employee Eve is unavailable to work!", followed by "Employee Eve is not assigned to this shift. Please assign another 
+employee.", where the method ends here prematurely.
+
+Step 9: Continuing from the fact that `Eve` is stored under `employee`, and `employeeAvailable()` yields `true`,
+the system then checks if `Eve` is already assigned to this shift by calling `shift.getEmployees().contains()`. Since
+`Eve` has not been assigned to this shift yet, the system assigns `Eve` to this shift, where `vacancy` for this shift 
+becomes 0 and `Eve` is added to the ArrayList of `employees` stored in this `Shift` object.
+
+Step 10: The system then outputs "Employee Eve is successfully assigned to this shift.", where the method ends with 
+a success case.
 
 Given below is a sequence diagram of the Assign Employee feature.
 ![assignEmployee.PNG](assignEmployee.png) 
@@ -161,8 +182,15 @@ This application is for fast-food restaurant managers who have difficulty in sch
 
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
-|v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
-|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
+|v1.0|user|view each of my employee’s available schedules|schedule when to put my employee for work.|
+|v1.0|user|add new employee’s schedules|keep track of changes in the overall record when a single new schedule needs to be added.|
+|v1.0|user|drop any employee’s schedules|manage changes in the employee’s schedule.|
+|v1.0|user|add an employee to a particular shift|schedule an available employee to work on that shift.|
+|v1.0|user|drop an employee from a particular shift|find a replacement if an employee can no longer make it from that shift.|
+|v1.0|user|view all employees working on a particular shift|keep track of the employees working on that shift.|
+|v1.0|user|print the status of all the shifts in a week|easily get an overview of the current week and slot in employees that are available for empty shifts.|
+|v2.0|new user|see usage instructions|refer to them when I forget how to use the application.|
+|v2.0|user|view list of all employees|refer to them while I assign them to shift.|
 
 ## Non-Functional Requirements
 
