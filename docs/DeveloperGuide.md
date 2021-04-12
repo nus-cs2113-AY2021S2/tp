@@ -1386,6 +1386,8 @@ coding and typing can speed up the process of their finance management through t
    1. `remove -i 0`
    1. `remove -i x` (where x is any integer that is greater than the size of the array or a negative integer)
 
+<div style="page-break-after: always;"></div>
+
 ### D.15 Checking the CreditScore of a person
 
 1. Prerequisite:
