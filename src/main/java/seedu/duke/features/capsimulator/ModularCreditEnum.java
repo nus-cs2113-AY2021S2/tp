@@ -1,5 +1,9 @@
 package seedu.duke.features.capsimulator;
 
+/**
+ * ModularCreditEnum contains the list of modular credits(MCs) that is deemed valid
+ * for simulation of CAP.
+ */
 public enum ModularCreditEnum {
     ONE(1),
     TWO(2),
@@ -27,6 +31,12 @@ public enum ModularCreditEnum {
         return modularCredit;
     }
 
+    /**
+     * Checks if MCs entered by the user exists in the ModularCreditEnum.
+     *
+     * @param mcs MCs from user input.
+     * @return boolean value of whether MCs exists.
+     */
     public static boolean checkMcsExist(Integer mcs) {
         if (mcs == null) {
             return false;

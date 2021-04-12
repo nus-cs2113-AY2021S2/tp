@@ -19,7 +19,10 @@ public class AcademicRecords {
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 
-
+    /**
+     * Constructor to store a fresh set of list of grades and modular credits
+     * everytime user choose to simulate CAP score.
+     */
     public AcademicRecords() {
         this.listOfGrades = new ArrayList<>();
         this.listOfMCs = new ArrayList<>();
@@ -35,8 +38,6 @@ public class AcademicRecords {
     }
 
     public static Double getCurrentCap() {
-        //DecimalFormat df = new DecimalFormat("#.##");
-        //String formattedCap = df.format(currentCap);
         return currentCap;
     }
 
@@ -44,12 +45,17 @@ public class AcademicRecords {
         return numberOfGradedMCsTaken;
     }
 
-    //public static void viewCurrentCAPAndGradedMCs() {
-    //String formattedCurrentCAPString = String.format("%.02f", getCurrentCap());
-    //System.out.println("[ " + formattedCurrentCAPString + numberOfGradedMCsTaken + " ]");
-    //}
 
-
+    /**
+     * Simulates CAP score given user input. If user input equals to 1,
+     * CAP score is calculated with the grades and MCs stored in each
+     * module in the program, together with and their current CAP
+     * and total MCs counted.
+     * If user equals to 2, CAP score is calculated with the grades and MCs
+     * that is to be keyed in by user.
+     * Simulation prints the final CAP score simulated and the simulation score
+     * is not saved.
+     */
     public void capSimulator() {
         Ui.printCapSimulatorSetting();
         int capSimulatorSetting = Ui.readCommandToInt();
@@ -140,6 +146,14 @@ public class AcademicRecords {
 
     }
 
+    /**
+     * Prompts user for a valid MCs for the grade keyed in during simulation.
+     * If the grade entered by the user comes with zero grade points,
+     * the MCs associated with the grade is not taken into account
+     * when calculating CAP.
+     *
+     * @param isSU boolean value of the grade, whether it is S/U-ed or a normal grade.
+     */
     public void receivingMCs(boolean isSU) {
         Ui.printMCsPerModulePrompt();
         Integer numberOfMCs = Ui.readCommandToInt();
@@ -157,7 +171,15 @@ public class AcademicRecords {
         }
     }
 
-
+    /**
+     * Returns the calculated CAP score base on the list of grades, list of MCs
+     * and totalMCs, and prints the CAP score in 2 decimal places.
+     *
+     * @param listOfGrades The list of grade points associated with the grade base on NUS website.
+     * @param listOfMCs The list of MCs entered by the user.
+     * @param totalMCs The total number of MCs with non-zero grade points.
+     * @return
+     */
     public Double capCalculator(ArrayList<Double> listOfGrades,
                                         ArrayList<Integer> listOfMCs, Integer totalMCs) {
 
