@@ -175,4 +175,4 @@ The app will help cinema administrators to update the movie information regularl
 
 ## Instructions for manual testing
 
-To run the JAR file, run `java -jar [CS2113-T10-3][MovieApp].jar`
+To run the JAR file, run `java -jar CS2113-T10-3.MovieApp.jar`
