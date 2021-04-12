@@ -271,7 +271,7 @@ Given below are how to use Gradle for some important project tasks.
     * `./gradlew clean test` — Cleans the project and runs tests
 
 
-## Continous Integration (CI)
+### Continous Integration (CI)
 
 This project uses GitHub Actions for CI. The project comes with the necessary GitHub Actions configurations 
 files (in the `.github/workflows` folder). No further setting up required.
@@ -279,8 +279,6 @@ files (in the `.github/workflows` folder). No further setting up required.
 * Repository-wide checks
 
 ### Making a release
-
-## Making a release
 
 Here are the steps to create a new release.
 
