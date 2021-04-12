@@ -18,8 +18,12 @@ public class Login {
 	private static String name;
 	private static char[] password;
 	private static Scanner sc = new Scanner(System.in);
-	
 
+	/**
+	 * Displays the main Login page
+	 * @param user an ArrayList of User objects, that contain all users in the database
+	 * @return     an int corresponding to the index of User in the ArrayList, upon successful login
+	 */
 	public static int login(ArrayList<User> user) throws Exception {
 		int currentUserIndex;
 		
@@ -59,6 +63,10 @@ public class Login {
 		return currentUserIndex;
 	}
 
+	/**
+	 * Returns the password entered by the user, for verification purposes
+	 * @return password  a String corresponding user input password
+	 */
 	public static String readPasswordSecure() {
 		String password;
 		Console console = System.console();

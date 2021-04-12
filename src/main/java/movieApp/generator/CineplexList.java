@@ -9,6 +9,11 @@ import java.util.Arrays;
 
 public class CineplexList {
 
+    /**
+     * If cineplexList.txt is missing, this is the default data that is used to populate the file that will
+     * be created in its place
+     * @return an ArrayList of Cineplexes, containing default Cineplex objects.
+     */
     public static ArrayList<Cineplex> getDefaultCineplexes(){
         ArrayList<Cineplex> returnList = new ArrayList<Cineplex>();
 

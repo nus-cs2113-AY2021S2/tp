@@ -8,6 +8,11 @@ import java.util.Arrays;
 
 public class MovieList {
 
+    /**
+     * If movieList.txt is missing, this is the default data that is used to populate the file that will
+     * be created in its place
+     * @return an ArrayList of Movie, containing default Movie objects.
+     */
     public static ArrayList<Movie> getDefaultMovieList(){
 
         /*

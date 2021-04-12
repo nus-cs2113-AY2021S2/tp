@@ -10,6 +10,11 @@ import java.util.Arrays;
 import java.util.Calendar;
 
 public class ShowtimeList {
+    /**
+     * If showtimeList.txt is missing, this is the default data that is used to populate the file that will
+     * be created in its place
+     * @return an ArrayList of Showtimes, containing default Showtimes objects.
+     */
     public static ArrayList<Showtimes> getDefaultShowtimes(){
         ArrayList<Showtimes> returnList = new ArrayList<Showtimes>();
 

@@ -14,6 +14,11 @@ public class AdminMainMenu implements MainMenu {
     private static final Scanner sc = new Scanner(System.in);
     private static int functionSelection;
 
+    /**
+     * Display the main landing page an Admin will encounter when using the app
+     * @param currentUserIndex the position in ArrayList of User objects, that corresponds to the current Admin
+     * @param user the ArrayList of all User objects.
+     */
     public static int displayMenu(int currentUserIndex, ArrayList<User> user) throws Exception {
         System.out.println("\nWelcome, " + user.get(currentUserIndex).getName());
 
@@ -68,6 +73,10 @@ public class AdminMainMenu implements MainMenu {
         return -1;
     }
 
+    /**
+     * Display the menu that appears if the Admin chooses to delete a movie
+     * @param movieDatabase an ArrayList of Movie objects, that contain all movies in the database
+     */
     public static void displayDeleteMovieMenu(ArrayList<Movie> movieDatabase) throws Exception {
         if (checkIfMovieListIsEmpty(movieDatabase)) {
             return;
@@ -97,6 +106,10 @@ public class AdminMainMenu implements MainMenu {
         Database.deleteMovie(choice);
     }
 
+    /**
+     * Display the menu that appears if the Admin chooses to update a movie
+     * @param movieDatabase an ArrayList of Movie objects, that contain all movies in the database
+     */
     public static void displayEditMovieMenu(ArrayList<Movie> movieDatabase) throws Exception {
         if (checkIfMovieListIsEmpty(movieDatabase)) {
             return;
@@ -126,6 +139,11 @@ public class AdminMainMenu implements MainMenu {
         displayEditMovieSectionMenu(Database.MovieDatabase, choice);
     }
 
+    /**
+     * Returns true or false depnding on whether there are movies in the movie database or not
+     * @param movieDatabase an ArrayList of Movie objects, that contain all movies in the database
+     * @return     a boolean value, that is true only if there are no movies in the movie database
+     */
     private static boolean checkIfMovieListIsEmpty(ArrayList<Movie> movieDatabase) {
         if (movieDatabase.size() == 0) {
             System.out.println("No movies available in the database.");
@@ -135,6 +153,11 @@ public class AdminMainMenu implements MainMenu {
         }
     }
 
+    /**
+     * Display the menu that appears after the Admin chooses to update a movie, and selected a movie
+     * @param movieDatabase an ArrayList of Movie objects, that contain all movies in the database
+     * @param choice        an int corresopnding to the id of the selected movie
+     */
     public static void displayEditMovieSectionMenu(ArrayList<Movie> movieDatabase, int choice) throws Exception {
         Movie selectedMovie = movieDatabase.get(choice - 1);
         System.out.println("You have selected " + selectedMovie.getMovieTitle() + "\n");
