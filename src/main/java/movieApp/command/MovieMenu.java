@@ -13,6 +13,10 @@ import java.util.Scanner;
 
 public class MovieMenu {
 
+    /**
+     * Display the menu choice users can make and prompt users to make a choice.
+     * @return an int value that indicates user's choice.
+     */
     public static int getAction() {
         int action = -1;
         Scanner sc = new Scanner(System.in);
@@ -38,7 +42,12 @@ public class MovieMenu {
         return action;
     }
 
-
+    /**
+     * Allows users to book a movie ticket.
+     * @param user user to make a booking.
+     * @param CineplexDatabase the list of cineplex.
+     * @param movie the movie to book
+     */
     public static void bookTicket(Movie movie, ArrayList<Cineplex> CineplexDatabase, User user) {
         ArrayList<Showtimes> ShowtimeDatabase = Database.ShowtimesDatabase;
         String ms = movie.getShowingStatus();
@@ -227,16 +236,30 @@ public class MovieMenu {
         Database.updateDatabase();
     }
 
+    /**
+     * Check whether current date is after the booking date.
+     * @param showingDate the booking date made by the user.
+     * @return a boolean value that indicate whether current date is after the booking date.
+     */
     private static boolean checkIfCurrDateOverBookingDate(Calendar showingDate) {
         Date currentDate = new Date();
         Date showDate = showingDate.getTime();
         return currentDate.compareTo(showDate) > 0;
     }
 
+    /**
+     * Check whether the keyword back exists.
+     * @param sc the scanner.
+     * @return a boolean value that indicate whether the keyword back exists.
+     */
     private static boolean checkForBackKeyword(Scanner sc) {
         return sc.next().trim().toLowerCase().equals("back");
     }
 
+    /**
+     * Allows users to add a review to a movie.
+     * @param movie the movie that users want to add a review on.
+     */
     public static void addReview(Movie movie) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Comment:");
@@ -250,6 +273,10 @@ public class MovieMenu {
         Database.updateDatabase();
     }
 
+    /**
+     * Check whether the rating input is valid.
+     * @return an int value that is a valid rating input.
+     */
     public static int ratingVerification() {
         Scanner sc = new Scanner(System.in);
         int value = -1;
@@ -268,11 +295,20 @@ public class MovieMenu {
         return value;
     }
 
-
+    /**
+     * Displays the detailed information of a movie.
+     * @param movie the movie that users want to view details.
+     */
     public static void viewMovieDetails(Movie movie) {
         movie.displayMovie();
     }
 
+    /**
+     * Executes the action that users want to do on the movie.
+     * @param movie the movie that users choose.
+     * @param user the user that make the command.
+     * @return a boolean value that indicate the action the user chooses.
+     */
     public static Boolean movieAction(Movie movie, User user) {
         int action;
         do {
