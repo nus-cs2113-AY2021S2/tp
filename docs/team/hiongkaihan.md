@@ -15,7 +15,7 @@ application. For v2.1, the last iteration, we focused on bug fixing and making i
 
 This is a link to the RepoSense dashboard, which has a detailed analysis of the lines of code contributed by me:
 
-https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?breakdown=true&search=hiongkaihan
+[https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?breakdown=true&search=hiongkaihan](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?breakdown=true&search=hiongkaihan)
 
 ### Enhancement Implemented
 
