@@ -101,7 +101,7 @@ code to improve Connoisseur.
 2. *Recommended integrated development environment for coding* : IntelliJ IDEA<br>
    [Download IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
-### 2.2 Setting up the project in your computer
+### 2.2 Setting up Connoisseur in your computer
 
 > <span>&#10071;</span> Follow the steps in the following guide precisely. Things will not work out if you deviate in some steps.
 
@@ -116,12 +116,12 @@ code to improve Connoisseur.
 6. Click **`Open as Project`**.
 7. Click **`OK`** to accept the default settings.
 
-### 2.3 Verifying the setup
+### 2.3 Verifying the Setup
 1. Run Connoisseur.main()
 2. Try a few commands.
 3. Run the [tests](TestingGuide.md) to ensure they all pass.
 
-### 2.4 Configure Coding style
+### 2.4 Configure Coding Style
 
 If using IDEA, follow the
 guide [[se-edu/guides] IDEA: Configuring the code style](https://se-education.org/guides/tutorials/intellijCodeStyle.html)
@@ -159,7 +159,7 @@ The `ReviewList` class has sorting functions which requires `Sorter`. All the re
 
 `RecommendationList` also interacts with `ReviewList` for converting Recomendations to Reviews. 
 
-### 3.2 UI component
+### 3.2 UI Component
 
 The UI component of Connoisseur consists of the classes `UI` and `Messages`.
 It is instantiated in the connoisseur() method and serves two main purposes:
@@ -171,20 +171,20 @@ The *ui.readCommand()* method reads the input which is then passed on to the `Lo
 The *ui.println(output)* method prints output to the console. Default output messages are stored as static String constants in the `Messages` class, while commonly used output messages are made methods by themselves. *ui.printGreeting()* is one such method and is called to display the welcome message to the user. 
 
 
-### 3.3 Logic component
+### 3.3 Logic Component
 
 ![LogicComponent.png](./diagrams/LogicComponent.png)<br>
 <p align="center">Figure 2. Logic Component of Connoisseur</p>
 
 As show in Figure 2, the Logic component of Connoisseur consists of the classes `Parser` and `Commands`. 
-It is instantiated in the connoisseur() method and serves to translate user input into commands which are recognised by the application. 
+It is instantiated in the connoisseur() method and serves to translate user input into `Commands` which are recognised by the application. 
 
 The *determineCommand()* method of the `Parser` class deciphers the command word of the input, calling the respective command's method in `Commands`. 
 
 Each method in `Commands` will then check the arguments provided with the commands to make sure that they are valid, before executing the command in `Storage`, `ReviewList` or `RecommendationList`. 
 
 
-### 3.4 Model component
+### 3.4 Model Component
 
 ![ModelComponent.png](./diagrams/ModelComponent.png)<br>
 <p align="center">Figure 3. Model Component of Connoisseur</p>
@@ -194,7 +194,7 @@ It is instantiated in the connoissuer() method and serves to store data as the p
 
 Both the classes in the Model component contain methods which modify the content of their respective ArrayLists, which consist of either Reviews or Recommendations. 
 
-### 3.5. Sorter component
+### 3.5. Sorter Component
 
 ![SorterComponent.png](./diagrams/SorterComponent.png)<br>
 <p align="center">Figure 4. Sorter Component of Connoisseur</p>
@@ -203,7 +203,7 @@ As shown in Figure 4, The Sorter component is a separate component which serves 
 
 When the *sortReviews()* method is called in the `ReviewList`, a sortMethod parameter is passed together with it to the `Sorter`, which then determines which of the Sorts to sort the reviews by. If the sortMethod parameter is empty, `Sorter` will use the default sortMethod saved. The sorted reviews are then passed back to `ReviewList`. 
 
-### 3.6. Storage component
+### 3.6. Storage Component
 
 The Storage component serves to implement the storage functions of Connoisseur. It saves and loads data represented as a JSON file in the *./data* folder so that data can be retained after exiting Connoisseur. 
 
@@ -230,7 +230,7 @@ The following Figure 6 is the Sequence diagram to _Switch Mode_.<br>
 
 A general explanation of how this feature works:: <br>
 
-1. User inputs commands that trigger mode switch. `review` and `reco` are commands which are recognised by Parser class as mode switching commands through the `determineCommand()` method.
+1. User inputs commands that trigger mode switch. `review` and `reco` are commands which are recognised by `Parser` class as mode switching commands through the `determineCommand()` method.
 2. If `review` command is input by user, `Commands` class calls `reviewMode()` method which sets `private boolean isReviewMode` attribute to _true_.
 3. If `reco` command is input by user, `Commands` class calls `recommendationMode()` method which sets `private boolean isReviewMode` attribute to _false_.
 4. Finally, `reviewMode()` and `recommendationMode()` calls `Ui` class method `println()` to display message _"You are in review mode"_ or _"You are in recommendation mode"_ 
@@ -260,13 +260,14 @@ The following Figure 7 is the Sequence diagram to _add a review_.
 
 A general explanation of how this feature works: <br>
 
-1. `Ui` will read in user command and calls `Paser#determineCommand()` to determine the input.
+1. `Ui` will read in user command and calls `Parser#determineCommand()` to determine the input.
 2. `Parser` calls `Commands#add` if input entered is `new` or `add` command.
 3. `Commands` calls `ReviewList#addQuickReview()` or `ReviewList#addFullReview()`to prompt and read respective information of the review such as `title` , `category`, `rating` and `description`(only prompted by `addFullReview()` method).<br>
   
-   1. `title` - string with 20char limit, that will call `ReviewList#checkAndPrintDuplicateRecommendation` to check for duplicates in ArrayList `reviews`.<br>
-   2. `category` - string with 15char limit, that cannot be whitespace or null.
-   3. `rating`- integer with -0 to 5 recognised as valid input, that cannot be whitespace or null.
+   1. `title` - a string with 20char limit, that will call `ReviewList#checkAndPrintDuplicateRecommendation` to check for duplicates in ArrayList `reviews`.<br>
+   2. `category` - a string with 15char limit, that cannot be whitespace or null.
+   3. `rating`- a positive integer with 0 to 5 recognised as valid input, that cannot be whitespace or null.
+      <span>&#10071;</span> The input '-0' would be treated as '0'. <br />
    4. `description` - string with unlimited char limit. 
    
 4. The violation of any constraints for each attribute will print an error message from `ui` and be promoted to re-enter a valid input.
@@ -376,16 +377,16 @@ The following Figure 13 is the Sequence diagram to `add a recommendation`.
 <p align="center">Figure 13. Sequence Diagram for add recommendations</p>
 
 A general explanation of add recommendation works:
-1. `Ui` will read in user command, calls `Paser#determineCommand()` to determine the input.
+1. `Ui` will read in user command, calls `Parser#determineCommand()` to determine the input.
 
-2. `Paser` calls for `Commands#add` if input enter is `new` or `add` command.
+2. `Parser` calls for `Commands#add()` if input enter is `new` or `add` command.
 
-3. `Commands` calls for `RecommendationList#addReccomendation` to prompt and read respective information such as  `title`, `category`, `price range`,`recommendedby` and `location`.
-   1.`title` - string with 20char limit, that will call [`RecommendationList#checkAndPrintDuplicateRecommendation`]() to check for duplicates in both ArrayLists `reviews` and `recommendations`.
-   2. `category`, `recommendedby` and `location` - string with 15char limit, that cannot be whitespace or null.
-   3. `price range`- string, that will call `RecommendationList#checkPriceValidity` and restrict it to 2 decimal places.
+3. `Commands` calls for `RecommendationList#addReccomendation()` to prompt and read respective information such as  `title`, `category`, `price range`,`recommendedby` and `location`.
+   1.`title` - a string with 20char limit, that will call `RecommendationList#checkAndPrintDuplicateRecommendation()` to check for duplicates in both ArrayLists `reviews` and `recommendations`.
+   2. `category`, `recommendedby` and `location` - a string with 15char limit, that cannot be whitespace or null.
+   3. `price range`- a string, that will call `RecommendationList#checkPriceValidity()` and restrict it to 2 decimal places.
 
-4. The violation of any constraints for each attribute will print an error message from `ui` and be promoted to re-enter a valid input.
+4. The violation of any constraints for each attribute will print an error message from `Ui` and be promoted to re-enter a valid input.
 
 5. When all fields are valid, fields are added into a `Recommendation` Class.
 
@@ -402,7 +403,7 @@ The following Figure 14 is the Sequence diagram to `list recommendations`.
 
 A general explanation of how this feature works:
 
-1. `Commands` calls `RecommendationList#listRecommendations` to retrieve `Recommendation` in `recommendations`
+1. `Commands` calls `RecommendationList#listRecommendations()` to retrieve `Recommendation` in `recommendations`
 2. `RecommendationList` calls itself `displayRecommendations` to iterate through and print `Recommendation` in `recommendations`.
 
 #### 4.3.3 Edit a Recommendation Feature
@@ -416,11 +417,11 @@ The following Figure 15 is the Sequence diagram to `edit a recommendation`.
 
 A general explanation of how this feature works:
 
-1. `Commands` will call `RecommendationList#editRecommendation` to determine which `Recommendation` from the ArrayList `recommendatios` should be editied.
+1. `Commands` will call `RecommendationList#editRecommendation()` to determine which `Recommendation` from the ArrayList `recommendatios` should be editied.
 
 2. `RecommendationList` then calls itself, `editRecommendationFields`.
-Similar to [adding a recommendation](#531-add-a-recommendation-feature), edit will take in either `title`, `category`, `price range`,`recommendedby` and `location` String attributes for that specific `Recommendation` class and replace previous String stored with new user input.
-After checking for duplicates, the violation of any constraints for each attribute will print an error message from `ui` and prompt for a valid input.
+Similar to [adding a recommendation](#431-add-a-recommendation-feature), edit will take in either `title`, `category`, `price range`,`recommendedby` and `location` String attributes for that specific `Recommendation` class and replace previous String stored with new user input.
+After checking for duplicates, the violation of any constraints for each attribute will print an error message from `Ui` and prompt for a valid input.
 
 #### 4.3.4 Delete a Recommendation Feature
 This feature allows the user to remove a specific `Recommendation` from the ArrayList `recommendations`.
@@ -433,7 +434,7 @@ The following Figure 16 is the Sequence diagram to `delete a recommendation`.
 
 A general explanation of how this feature works:
 
-1. `Commands` calls for `RecommendationList#deleteRecommendation`, Connoisseur will check if the title given exists.
+1. `Commands` calls for `RecommendationList#deleteRecommendation()`, Connoisseur will check if the title given exists.
 2. If title exists, Connoisseur will remove it from the ArrayList `recommendations`.
 
 #### 4.3.5 Review a Recommendation Feature
@@ -447,9 +448,9 @@ The following Figure 17 is the Sequence diagram to `review a recommendation`.
 
 A general explanation of how this feature works:
 
-1. `Commands` calls for `RecommendationList#convertRecommendation`, which retrieves fields from the `Recommendation` that is required by and creates a new `Review` Object.
-2. `RecommendationList` then calls for `ReviewList#receiveConvert` with the new `Review` and inserts it into the ArrayList `reviews`.
-3. `RecommendationList#convertRecommendation` continues with the chosen `Recommendation` object and removes it from the ArrayList `recommendations`.
+1. `Commands` calls for `RecommendationList#convertRecommendation()`, which retrieves fields from the `Recommendation` that is required by and creates a new `Review` Object.
+2. `RecommendationList` then calls for `ReviewList#receiveConvert()` with the new `Review` and inserts it into the ArrayList `reviews`.
+3. `RecommendationList#convertRecommendation()` continues with the chosen `Recommendation` object and removes it from the ArrayList `recommendations`.
 
 ### 4.4 Storage
 The `Storage` class is responsible for loading data from memory and saving data to memory. The location of this data can be found at *./data/connoisseur.json* and serves to retain all the information of the user after the application has exited. Other than the reviews and recommendations, it also saves the preferences of the user such as the sorting method as well as the display type. 
@@ -461,15 +462,16 @@ To facilitate easier conversion between the raw data and JSON object, a `Connois
 #### 4.4.2 Implementation
 The following is a Sequence diagram to illustrate how Connoisseur saves data on exit. 
 ![saving_sequence](./diagrams/Save_Sequence_Diagram.png)
+<p align="center">Figure 18. Sequence Diagram for Saving data</p>
 
-1. When the `exit()` method is called, `saveConnoisseurData()` will be called to save the data before exiting. 
-2. `Storage#saveReviews` is called to convert the reviews to a JSON Array. 
-3. `Storage#saveRecommendations` is called to convert the recommendations to a JSON Array. 
+1. When the `Commands#exit()` method is called, `Storage#saveConnoisseurData()` will be called to save the data before exiting. 
+2. `Storage#saveReviews()` is called to convert the reviews to a JSON Array. 
+3. `Storage#saveRecommendations()` is called to convert the recommendations to a JSON Array. 
 4. These are then combined with the sort method and display type and written to *connoisseur.json*. 
 5. If there is an error writing to the file, an exception will be raised and the user will be notified. 
 6. Finally, the exit message will be printed and connoisseur will exit. 
 
-### 4.5 Error handling
+### 4.5 Error Handling
 
 Connoisseur provides default error handling. The default error handling system handles invalid input format and invalid
 file errors with exceptions. Connoisseur also has a customized exception, the duplicate exception. You can also choose
@@ -479,8 +481,8 @@ to define your own custom error handling by creating custom exceptions.
 The Duplicate Exception is used to handle titles of reviews or recommendations that are input by the user. If the title
 input is found, duplicate exception will be thrown.
 
-The Duplicate Exception is thrown in addRecommendationDetails(), if the checkAndPrintDuplicateRecommendation(title)
-returns true. This error will be caught in the addRecommendation() method.
+The Duplicate Exception is thrown in `addRecommendationDetails()`, if the `checkAndPrintDuplicateRecommendation(title)`
+returns true. This error will be caught in the `addRecommendation()` method.
 
 ## 5 Appendix
 
