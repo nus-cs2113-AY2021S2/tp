@@ -37,7 +37,7 @@ This application was created with the aim of helping NUS Computing and Engineeri
         - UML Diagrams added: (4 diagrams) 3 close-up Sequence diagrams for Step 1 and 1 close-up Sequence diagram for Step 2
 
 ### Contribution to Team-based Tasks 
-- Managed releases v2.0 (1 release) on GitHub
+- Managed releases `v2.0` (1 release) on GitHub
 - Enabled assertions for team's code
     
 ### Review / Mentoring Contributions
