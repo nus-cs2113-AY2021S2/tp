@@ -1,0 +1,84 @@
+@startuml RemoveSequenceDiagram
+'https://plantuml.com/sequence-diagram
+!include style.puml
+
+box "Command\n" COMMAND_COLOR_T1
+participant ":RemoveCommand" as RemoveCommand COMMAND_COLOR
+end box
+
+box Food FOOD_COLOR_T1
+participant "fridge:Fridge" as Fridge FOOD_COLOR
+participant ":Food" as Food FOOD_COLOR_T3
+participant ":Minimum" as Minimum FOOD_COLOR_T2
+end box
+
+
+
+-> RemoveCommand: execute()
+activate RemoveCommand
+
+RemoveCommand -> RemoveCommand: findFoodByName(foodNameToEdit: String)
+activate RemoveCommand
+
+loop food in fridge
+    RemoveCommand -> Fridge: getFood()
+    activate Fridge
+    opt equals foodNameToEdit
+        Fridge -> Food: getFoodName()
+        activate Food
+        return food
+    end
+    return food
+end
+return
+
+RemoveCommand -> RemoveCommand: removePortion()
+activate RemoveCommand
+
+alt newQuantity > 0
+    RemoveCommand -> Fridge: getFood()
+    activate Fridge
+    Fridge -> Food: setQuantity()
+    activate Food
+    return
+    return
+
+else newQuantity == 0
+    RemoveCommand -> Fridge: remove()
+    activate Fridge
+    note right
+    if newQuantity is <0
+    InvalidQuantityExpcetion
+    will be thrown
+    end note
+    return
+end
+return
+
+RemoveCommand -> RemoveCommand: checkRunningOut()
+activate RemoveCommand
+RemoveCommand -> Fridge: isRunningOut()
+activate Fridge
+Fridge -> Fridge: getTotalQuantity()
+activate Fridge
+loop food in fridge
+    Fridge -> Food: getCategory(foodCategory)
+    activate Food
+    return
+    opt foodCategory1 equals foodCategory
+        Fridge -> Food: getQuantity()
+        activate Food
+        return
+    end
+end
+return
+Fridge -> Minimum: getMinimumQuantity()
+activate Minimum
+return
+opt totalQuantity < MinimumQuantity
+    return
+end
+return
+return
+
+@enduml

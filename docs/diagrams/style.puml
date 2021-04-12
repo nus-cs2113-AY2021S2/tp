@@ -1,0 +1,95 @@
+@startuml style
+
+/'
+ ' @@kwokyto-reused
+ 'Reused from https://github.com/nus-cs2113-AY2021S2/addressbook-level3/blob/master/docs/diagrams/style.puml
+ 'Commonly used styles and colors across diagrams.
+ 'Refer to https://plantuml-documentation.readthedocs.io/en/latest for a more
+ 'comprehensive list of skinparams.
+ '/
+
+
+'T1 through T4 are shades of the original color from lightest to darkest
+
+!define FRIDGEFRIEND_COLOR #696969
+!define FRIDGEFRIEND_COLOR_T1 #808080
+
+!define UTILITIES_COLOR #1D8900
+!define UTILITIES_COLOR_T1 #83E769
+!define UTILITIES_COLOR_T2 #3FC71B
+!define UTILITIES_COLOR_T3 #166800
+!define UTILITIES_COLOR_T4 #0E4100
+!define DATA_COLOR #3FC71B
+
+!define COMMAND_COLOR #3333C4
+!define COMMAND_COLOR_T1 #C8C8FA
+!define COMMAND_COLOR_T2 #6A6ADC
+!define COMMAND_COLOR_T3 #1616B0
+!define COMMAND_COLOR_T4 #101086
+
+!define FOOD_COLOR #9D0012
+!define FOOD_COLOR_T1 #FFABC8
+!define FOOD_COLOR_T2 #E41F36
+!define FOOD_COLOR_T3 #7B000E
+!define FOOD_COLOR_T4 #51000A
+
+!define EXCEPTION_COLOR #A38300
+!define EXCEPTION_COLOR_T1 #FFE374
+!define EXCEPTION_COLOR_T2 #EDC520
+!define EXCEPTION_COLOR_T3 #806600
+!define EXCEPTION_COLOR_T4 #544400
+
+!define USER_COLOR #000000
+
+skinparam BackgroundColor #FFFFFFF
+
+skinparam Shadowing false
+
+skinparam Class {
+    FontColor #FFFFFF
+    BorderThickness 1
+    BorderColor #FFFFFF
+    StereotypeFontColor #FFFFFF
+    FontName Arial
+}
+
+skinparam Actor {
+    BorderColor USER_COLOR
+    Color USER_COLOR
+    FontName Arial
+}
+
+skinparam Sequence {
+    MessageAlign center
+    BoxFontSize 15
+    BoxPadding 0
+    BoxFontColor #FFFFFF
+    FontName Arial
+}
+
+skinparam Participant {
+    FontColor #FFFFFFF
+    Padding 20
+}
+
+skinparam MinClassWidth 50
+skinparam ParticipantPadding 10
+skinparam Shadowing false
+skinparam DefaultTextAlignment center
+skinparam packageStyle Rectangle
+
+skinparam arrowThickness 1.1
+skinparam arrowColor #black
+skinparam ParticipantBorderColor Black
+skinparam ActorBackgroundColor Black
+skinparam SequenceLifeLineBorderColor Black
+skinparam SequenceGroupBodyBackgroundColor transparent
+skinparam SequenceGroupBackgroundColor White
+skinparam SequenceBoxBorderColor Black
+skinparam SequenceBoxFontColor Black
+
+hide footbox
+hide empty members
+hide circle
+
+@enduml

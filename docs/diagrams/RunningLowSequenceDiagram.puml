@@ -1,0 +1,63 @@
+@startuml RunningLowSequenceDiagram
+'https://plantuml.com/sequence-diagram
+!include style.puml
+
+box "Command\n" COMMAND_COLOR_T1
+participant ":RunningLowCommand" as RunningLowCommand COMMAND_COLOR
+end box
+
+box Food FOOD_COLOR_T1
+participant "fridge:Fridge" as Fridge FOOD_COLOR
+participant "foodCategory :FoodCategory" as FoodCategory FOOD_COLOR_T3
+participant "food:Food" as Food FOOD_COLOR_T4
+participant ":MinimumQuantity" as MinimumQuantity FOOD_COLOR_T2
+end box
+
+autoactivate on
+
+-> RunningLowCommand: execute()
+
+loop foodCategory in FoodCategory
+    RunningLowCommand -> FoodCategory: getFoodCategory()
+    return foodCategory
+
+    RunningLowCommand -> MinimumQuantity: getMinimumQuantity()
+    return
+    alt minimumQuantity == 0
+        RunningLowCommand -> RunningLowCommand: increaseNumberOfCategoryDisabled()
+        return
+    else minimumQuantity > 0
+        RunningLowCommand -> Fridge: isRunningOut(foodCategory)
+        Fridge -> Fridge: getTotalQuantity()
+    loop food in Fridge
+        Fridge -> Food: getFoodCategory()
+        return foodCategory1
+        opt foodCategory1 equals foodCategory
+            Fridge -> Food: getQuantity()
+            return
+        end
+    end
+    return totalQuantity
+
+    opt totalQuantity < MinimumQuantity
+        return
+        RunningLowCommand -> RunningLowCommand: updateMessage()
+        return
+    end
+    end
+end
+
+    alt isAllCategoryDisabled
+        RunningLowCommand -> RunningLowCommand: disabledMessage()
+        return
+    else isStockedUp
+        RunningLowCommand -> RunningLowCommand: stockedUpMessage()
+        return
+    end
+
+return
+@enduml
+
+    alt minimumQuantity == 0
+
+    else minimumQuantity > 0
