@@ -777,4 +777,8 @@ public class Ui {
         System.out.printf("%.02f\n", calculatedCap);
     }
 
+    public static void printMcsOverflowMessage() {
+        System.out.println("The upper limit of total number of MCs is 220!");
+        System.out.println("ERROR IN MCs OVERFLOW");
+    }
 }

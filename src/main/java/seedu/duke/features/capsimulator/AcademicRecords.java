@@ -182,12 +182,16 @@ public class AcademicRecords {
      */
     public Double capCalculator(ArrayList<Double> listOfGrades,
                                         ArrayList<Integer> listOfMCs, Integer totalMCs) {
+        Double calculatedCap = 0.0;
 
+        if ((totalMCs + numberOfGradedMCsTaken) > 220) {
+            Ui.printMcsOverflowMessage();
+            return calculatedCap;
+        }
 
         Ui.printCapCalculatorMessage(gradesInString, listOfMCs,
                 getCurrentCap(), numberOfGradedMCsTaken);
 
-        Double calculatedCap = 0.0;
         for (int i = 0; i < listOfGrades.size(); i++) {
             calculatedCap += listOfGrades.get(i) * listOfMCs.get(i);
         }
