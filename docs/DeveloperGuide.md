@@ -394,7 +394,7 @@ When `Finux` starts up, `Finux` instantiates the `RecordList` with data loaded f
 by the `Finux` class calling the constructor `RecordList(ArrayList<Record>)`, passing in the `ArrayList<Record>` returned from the method
 call `storage.getRecordListData()`. This `ArrayList<Record>` returned from `storage.getRecordListData()` is loaded from the save file
 by a prior method call `storage.loadFile()`, also performed by the `Finux` class. For more information on `Storage` component,
-refer to [section 3.7](#37-storage-component).
+refer to [section 3.8](#38-storage-component).
 
 When any of the commands of the listed features in [section 4](#4-implementation) are requested to run, `Finux` will pass
 the `RecordList` into the `execute()` method call of the respective commands’ classes for their intended operations. 
@@ -403,7 +403,7 @@ During runtime, any executions of the `execute()` method of `AddCommand` will in
 Conversely, any executions of the `execute()` method of `RemoveCommand` will remove the requested `Record` object from 
 the `RecordList` via the `deleteRecordAt(recordIndex)` method call of the `RecordList` class, where `recordIndex` refers
 to the index of the requested `Record` to delete. Upon successful addition or deletion, the state of the `RecordList` 
-will be saved into the save file via the method call `storage.saveData(recordList, creditScoreReturnedLoansMap)`
+will be saved into the save file via the method call `storage.saveData(recordList, creditScoreReturnedLoansMap)`.
 
 When any of the `Finux`’s components is required to retrieve a `Record` object from the `RecordList`, the following methods
 are utilized:
@@ -416,7 +416,54 @@ following snippet of pseudo code:
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PRINT  getRecordAt(i)\
 > END LOOP
 
+
+### 3.7 CreditScoreReturnedLoansMap Component
+![CreditScoreReturnedLoansMap Class Diagram](img/CreditScoreReturnedLoansMapClassDiagram.png)\
+_Figure 21: **CreditScoreReturnedLoansMap** Class Diagram_
+
+#### Description
+The `CreditScoreReturnedLoansMap` component consists of only one class which is the `CreditScoreReturnedLoansMap`. 
+The role of the `CreditScoreReturnedLoansMap` is to maintain an internal `HashMap` of borrower names mapped to their 
+respective credit score, inserted throughout `Finux`’s execution. The credit score referred to in this case is computed 
+based on the **list of confirmed returned loans made by the borrower** and **is not the final score**.
+
+#### Design
+Similar to `RecordList`, the maintenance of `CreditScoreReturnedLoansMap` is also achieved through the traditional 
+OOP style, where operations relating to the internal `HashMap` can only be performed through the defined interfaces
+in `CreditScoreReturnedLoansMap` class. By adopting this design, it allows us to restrict the access to the internal
+`HashMap` from the outside world, hence satisfying the information hiding aspect under the Encapsulation concept of OOP.
+
+When `Finux` starts up, `Finux` instantiates the `CreditScoreReturnedLoansMap` with data loaded from the save file, 
+`finux.txt`. This is done by the `Finux` class calling the constructor `CreditScoreReturnedLoansMap(HashMap)`, passing 
+in the `HashMap` returned from the method call `storage.getMapData()`. This `HashMap` returned from 
+`storage.getMapData()` is loaded from the save file by a prior method call `storage.loadFile()`, also performed by the
+`Finux` class. For more information on `Storage` component, refer to [section 3.8](#38-storage-component).
+
+When any of the commands of the listed features in [section 4](#4-implementation) are requested to run, `Finux` will pass the
+`CreditScoreReturnedLoansMap` into `execute()` method call of the respective commands’ classes for their intended
+operations. As of V2.1 implementation, only both `ReturnCommand` and `CreditScoreCommand` operate on
+`CreditScoreReturnedLoansMap`. When a loan is marked as returned by the `ReturnCommand`, the command will first retrieve
+the borrower’s credit score from `CreditScoreReturnedLoansMap` via `CreditScoreReturnedLoansMap#getCreditScoreOf()`.
+If the borrower’s name does not exist in `CreditScoreReturnedLoansMap`, `getCreditScoreOf()` will return a max 
+credit score of 100, indicating that the borrower is trustable **based solely on his loan history of returned loans prior
+to the current loan that has just been returned.**
+
+Next, the `ReturnCommand` will compute the days taken for the borrower to return this loan. With this information
+together with the retrieved score, the `ReturnCommand` will recompute the Borrower’s credit score by executing 
+`Utils#computeCreditScore()`. The formula used by `Utils#computeCreditScore() `is as described in 
+[section 4.7](#47-credit-score-feature). With this newly recomputed score, the `ReturnCommand` will proceed to update
+`CreditScoreReturnedLoansMap` with the Borrower’s new credit score via 
+`CreditScoreReturnedLoansMap#insertCreditScoreOf()`. Upon successful update, the state of the 
+`CreditScoreReturnedLoansMap` will be saved into the save file via the method call 
+`storage.saveData(recordList, creditScoreReturnedLoansMap)`.
+
+Lastly, when the `CreditScoreCommand` is requested by the user, the command will likewise
+first retrieve the borrower’s credit score from `CreditScoreReturnedLoansMap` via 
+`CreditScoreReturnedLoansMap#getCreditScoreOf()`. With the retrieved value, the command will proceed to compute and
+display the final credit score of the borrower as described in [section 4.7.1](#471-current-implementation).
+
 <div style="page-break-after: always;"></div>
+
 
 ### 3.8 Storage Component
 
@@ -1060,7 +1107,7 @@ during the creation of this instance.
 Within the `execute()` of the `CreditScoreCommand` class, the method first retrieves the borrower’s credit score via
 `CreditScoreReturnedLoansMap#getCreditScoreOf()`. This retrieved score is computed based on the **list of confirmed
 returned loans made by the borrower** and **is not the final score.** Data stored within `CreditScoreReturnedLoansMap` are
-computed by the `ReturnCommand`, when a loan is [marked as returned.](#44-return-feature)
+computed by the `ReturnCommand`, when a loan is [marked as returned](#44-return-feature).
 
 ***Step 4***\
 Continuing the computation from the score retrieved in step 3, the method proceeds to loop through the entire `RecordList`.
@@ -1077,7 +1124,8 @@ days between the current date and the issue date of the loan.
 ***Step 7***\
 Next, `Utils#computeCreditScore()` will be used to compute a new credit score of the borrower. This computation is
 cumulative to the score retrieved in step 3 and takes into account of the value computed in step 6. The formula used
-by `Utils#computeCreditScore()` is as described above in the [introduction section of Credit Score Feature.](#47-credit-score-feature)
+by `Utils#computeCreditScore()` is as described above in the 
+[introduction section of Credit Score Feature](#47-credit-score-feature).
 
 ***Step 8***\
 Lastly after the loop mentioned in step 3 ends, the final score is displayed onto the console via the `UI` component.
@@ -1090,8 +1138,8 @@ Aspect: **How can we preserve the accuracy of the credit score system?**
 
 As the credit score calculation is calculated based on the loan records of a borrower, the following methods of
 calculation can be implemented:
-* Calculating the credit score at run time based on the current contents of the record list
-* Persisting the credit score of returned loans by storing into the save file
+* Calculating the credit score at run time based on the current contents of the record list.
+* Persisting the credit score of returned loans by storing into the save file.
 
 |Approach|Pros|Cons|
 |--------|----|----|
