@@ -32,6 +32,6 @@ public class DeliveryList {
             deliveries.remove(deliveries.size() - 1); // remove the last delivery that causes the weight to exceed
             calculateCombinedWeight();
         }
-        assert combinedWeight > deliveryManMaxWeight: "Weight mismatch present!";
+        assert combinedWeight > deliveryManMaxWeight : "Weight mismatch present!";
     }
 }
