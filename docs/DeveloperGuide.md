@@ -295,7 +295,7 @@ Below is a sequence diagram when the user executes the command `add S1234567D`.
 
 <img src="./images/sequence_diagram_add.png" width="800">
 
-### Adding Patients
+### Loading Patients
 
 Loading of patients is implemented via the `LoadCommand`, which is created by the `Parser.parse()` method. As
 per [Section 4.1: Parsing User Input](#parsing-user-input), the arguments to the command are stored in
@@ -303,7 +303,7 @@ a `HashMap<String, String>` and passed to the `LoadCommand` during initializatio
 
 Below is a sequence diagram when the user executes the command `add S1234567D`.
 
-<img src="./images/sequence_diagram_add.png" width="800">
+<img src="./images/sequence_diagram_load.png" width="800">
 
 ### Exception Handling
 
