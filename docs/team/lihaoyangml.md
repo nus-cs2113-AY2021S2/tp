@@ -92,6 +92,8 @@ ___
 
 * Contributed to bug finding and fixing
 * Creating and releasing of all jar files
+  * Resolved the frequently appearing bug on "no main manifest attribute" when launching
+  the jar file with the help of external resources
 * Setting up github team and repo
 * Clarifying tp doubts on behalf of the group
 
