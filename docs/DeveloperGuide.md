@@ -303,9 +303,9 @@ _Figure 10: **Add Command** Class Diagram_
 In the case of `AddCommand` in the above _Figure 10_,\
 the resultant constant is `...final String COMMAND_ADD = "add";`.
 
-Below shows the command format the user has to type into the Application.
-
 <div style="page-break-after: always;"></div>
+
+Below shows the command format the user has to type into the Application.
 
 #### Command Format
 > _**Commands in Finux follow these argument orders (depending on the command):**_
