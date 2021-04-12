@@ -7,12 +7,16 @@ The user interacts with it using a Command Line Interface (CLI). It is written i
 Object-oriented programming (OOP) paradigm.
 
 ## Summary of contributions
-* New feature: Added the textUi class.
+* New feature: Added the textUi class and filter for checked in visitors. 
+    * What it does: Takes in user command and print out text ui.
+    * Justification: This feature is essential in ensuring an active interaction between the user and the program. 
+    * Highlights: This feature has a function that counts number of checked in visitors and output to user. 
+  This is addition to basic ui features such as printing output and error message.
   
 * Major enhancement: Added the history class.
     * What it does: Allow user to store the history visitor's movement.
     * Justification: This feature allows user to carry out contact tracing if necessary.
-    * Highlights: This enhancement allow CYC to remain competitive with other products such as SafeEntry/Tracetogeher.
+    * Highlights: This enhancement allow visitor's movement to be recorded without the need of active effort by the user.
     
 * Minor enhancement: Added datetime class.
     * Created to be used by history class in storing visitor's movement.
