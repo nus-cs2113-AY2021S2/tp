@@ -1,10 +1,6 @@
 # Ryan Kwok - Project Portfolio Page
 
-This is a student project for university software development course.
-I am one of the contributors to the `FridgeFriend` project.
-`FridgeFriend` is an app for managing food in the fridge that is optimised for use via a Command Line Interface (CLI) and is targeted at new homeowners who cook.
-If you can type fast, `FridgeFriend` can track your cold or frozen groceries faster and easier than any other apps.
-It is written in Java, and has more than 6000 lines of code.
+This is a student project for university software development course and I am one of the contributors to the `FridgeFriend` project.
 
 ## Summary of Contributions
 
