@@ -224,6 +224,13 @@ public class Data {
         return "Patient " + currentPatient.getID() + "\'s data has been found and loaded.";
     }
 
+    /**
+     * Gets the ID number of the currently loaded patient. If there is no currently loaded patient, returns a message
+     * to inform the user that there is no patient loaded.
+     *
+     * @return a string containing the current patient's ID, or a message to inform that there is no loaded patient if
+     * there is no loaded patient
+     */
     public String getCurrentPatientDetails() {
         if (currentPatient == null) {
             return "There is no patient being loaded now.";

@@ -22,13 +22,13 @@ public class Common {
         int stringLength = id.length();
         int checksum = 0;
 
-        final char firstLetter = id.charAt(Constants.INDEX_OF_FIRST_CHARACTER);
-        final char lastLetter = id.charAt(Constants.INDEX_OF_LAST_CHARACTER);
-
         // Checks if ID has 9 characters
         if (stringLength != Constants.ID_NUMBER_OF_CHARACTERS) {
             throw new InvalidInputException(InvalidInputException.Type.INVALID_NRIC);
         }
+
+        final char firstLetter = id.charAt(Constants.INDEX_OF_FIRST_CHARACTER);
+        final char lastLetter = id.charAt(Constants.INDEX_OF_LAST_CHARACTER);
 
         // Checks if first index of ID is S,T,F or G
         if (firstLetter != 'S' && firstLetter != 'T' && firstLetter != 'F' && firstLetter != 'G') {
