@@ -20,6 +20,8 @@ that we'd like you to read through and understand first!
    the contents of any of these pregenerated files manually (i.e. not from the user interface) will likely result
    in the application not performing as intended, or even crashing.
 3. TLDR: Please do <b>NOT</b> edit the various .txt files or the program may crash
+4. As a result of Diliveri's reliance on such third parties, you'll need to run the 'start' command to load the list of deliveries into
+   Diliveri before you can make the most use of Diliveri's functionalities!
 
 
 ## Dependencies
