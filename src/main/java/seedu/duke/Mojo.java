@@ -17,17 +17,14 @@ public class Mojo {
     private static Ui ui;
     private static EmailManager emails;
     private static Parser parser;
-    private Storage storage;
+    private final Storage storage;
 
     public Mojo(String filePath, LoginInfo providedLoginInfo) throws NullPointerException {
         ui = new Ui();
         storage = new Storage(filePath, providedLoginInfo.getUserId(), providedLoginInfo.getPassword());
         try {
             emails = new EmailManager(storage.load());
-        } catch (IOException e) {
-            emails = new EmailManager();
-            e.printStackTrace();
-        } catch (ParseException e) {
+        } catch (IOException | ParseException e) {
             emails = new EmailManager();
             e.printStackTrace();
         }
