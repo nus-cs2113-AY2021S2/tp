@@ -44,7 +44,7 @@ This is a link to the RepoSense dashboard, which has a detailed analysis of the 
 Along the way of development, I have reviewed a number of pull requests opened by other team members.
 For a full list of PRs reviewed by me, you may refer to this link:
 
-[https://github.com/AY2021S2-CS2113T-W09-4/tp/pulls?q=is%3Apr+reviewed-by%3AEmkay16+](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?breakdown=true&search=Emkay16)
+[https://github.com/AY2021S2-CS2113T-W09-4/tp/pulls?q=is%3Apr+reviewed-by%3AEmkay16+](https://github.com/AY2021S2-CS2113T-W09-4/tp/pulls?q=is%3Apr+reviewed-by%3AEmkay16+)
 
 Other than PR reviews, I have also provided general help to teammates encountering difficulties.
 

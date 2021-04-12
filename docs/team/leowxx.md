@@ -15,7 +15,7 @@ application. For v2.1, the last iteration, we focused on bug fixing and making i
 ### Summary of Contributions
 
 RepoSense dashboard: \
-https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=leowxx
+[https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=leowxx](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=leowxx)
 
 ### Enhancement Implemented
 
