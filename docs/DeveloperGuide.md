@@ -36,7 +36,7 @@
 
 ## 1. Setting up
 
-The instructions for setting up can be [found here](SettingUp.md).
+The instructions for setting up can be [found here](https://ay2021s2-cs2113t-t09-1.github.io/tp/SettingUp.html).
 
 ## 2. Design
 
@@ -239,7 +239,7 @@ The following sequence diagram shows how loading all the visitor's information f
 
 ## 4. Documentation
 
-Refer to the Documentation Guide [here](DocumentationGuide.md).
+Refer to the Documentation Guide [here](https://ay2021s2-cs2113t-t09-1.github.io/tp/DocumentationGuide.html).
 
 ## 5. Testing
 
@@ -360,7 +360,7 @@ and no wireless transfer is allowed.
 
 ### Appendix E: Glossary
 
-Refer to Glossary [here](Glossary.md).
+Refer to Glossary [here](https://ay2021s2-cs2113t-t09-1.github.io/tp/Glossary.html).
 
 ### Appendix F: Instructions for manual testing
 Given below are instructions to test CYC manually.
