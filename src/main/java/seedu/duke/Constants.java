@@ -113,6 +113,10 @@ public class Constants {
     public static final int SIXTH_DIGIT = 6;
     public static final int LAST_DIGIT = 7;
 
+    // Checksum letters for NRIC numbers
+    public static final char[] ST_NRIC_CHECKDIGIT = {'J', 'Z', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A'};
+    public static final char[] FG_NRIC_CHECKDIGIT = {'X', 'W', 'U', 'T', 'R', 'Q', 'P', 'N', 'M', 'L', 'K'};
+
     // Keys for the argument HashMap
     public static final String PAYLOAD_KEY = "payload";
     public static final String PATIENT_KEY = "p";

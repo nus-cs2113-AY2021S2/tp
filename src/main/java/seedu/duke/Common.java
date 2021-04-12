@@ -19,10 +19,6 @@ public class Common {
      * @throws InvalidInputException when an invalid input has been given
      */
     public static void checkID(String id) throws InvalidInputException {
-
-        char[] st = {'J', 'Z', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A'};
-        char[] fg = {'X', 'W', 'U', 'T', 'R', 'Q', 'P', 'N', 'M', 'L', 'K'};
-
         int stringLength = id.length();
         int checksum = 0;
 
@@ -77,11 +73,11 @@ public class Common {
             }
             checksum = checksum % Constants.CHECKSUM_MOD;
             if (firstLetter == 'S' || firstLetter == 'T') {
-                if (lastLetter != st[checksum]) {
+                if (lastLetter != Constants.ST_NRIC_CHECKDIGIT[checksum]) {
                     throw new InvalidInputException(InvalidInputException.Type.INVALID_NRIC_CHECKSUM);
                 }
             } else {
-                if (lastLetter != fg[checksum]) {
+                if (lastLetter != Constants.FG_NRIC_CHECKDIGIT[checksum]) {
                     throw new InvalidInputException(InvalidInputException.Type.INVALID_NRIC_CHECKSUM);
                 }
             }
