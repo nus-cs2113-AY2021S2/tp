@@ -50,5 +50,5 @@ public class CommandsTest {
     public void restoreStreams() {
         System.setOut(originalOut);
     }
-
+  
 }
