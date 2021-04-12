@@ -1,18 +1,15 @@
-@startuml Sort_Sequence_Diagram
+@startuml ModeSwitch
 !define LIGHTBLUE
 !includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
 skinparam style strictuml
 
-participant User #APPLICATION
 participant Ui #Turquoise
 participant Parser #PaleGreen
 participant Commands #PaleGreen
 
-activate User #APPLICATION
-    User -> Ui
-    activate Ui #Turquoise
-    Ui -> Parser : determineCommand()
-    activate Parser #PaleGreen
+activate Ui #Turquoise
+Ui -> Parser : determineCommand()
+activate Parser #PaleGreen
 alt "review"
     Parser -> Commands : reviewMode()
     activate Commands #PaleGreen
@@ -22,9 +19,7 @@ else "reco"
       Parser -> Commands : recommendationMode()
       Commands -> Commands : isReviewMode = false;
 end
- Commands --> Ui: println()
- deactivate Commands
- deactivate Parser
- Ui --> User
- deactivate Ui
+Commands --> Ui: println()
+deactivate Commands
+deactivate Parser
 @enduml

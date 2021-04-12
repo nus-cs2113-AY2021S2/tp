@@ -141,6 +141,7 @@ public class RecommendationList {
     }
 
     //@@author Krithigha24
+
     /**
      * Check for duplicate recommendation titles in existing recommendation list during editing.
      *
@@ -245,7 +246,7 @@ public class RecommendationList {
         }
         while (true) {
             ui.println(CATEGORY_PROMPT);
-            category = ui.readCommand().toLowerCase();
+            category = ui.readCommand().toLowerCase().trim();
             if (category.isBlank()) {
                 ui.printEmptyInputMessage();
                 continue;
@@ -287,7 +288,7 @@ public class RecommendationList {
         }
         while (true) {
             ui.println(RECOBY_PROMPT);
-            recommendedBy = ui.readCommand();
+            recommendedBy = ui.readCommand().trim();
             if (recommendedBy.isBlank()) {
                 ui.printEmptyInputMessage();
                 continue;
@@ -306,7 +307,7 @@ public class RecommendationList {
         }
         while (true) {
             ui.println(LOCATION_PROMPT);
-            location = ui.readCommand();
+            location = ui.readCommand().trim();
             if (location.isBlank()) {
                 ui.printEmptyInputMessage();
                 continue;
@@ -428,6 +429,7 @@ public class RecommendationList {
     }
 
     //@@author Krithigha24
+
     /**
      * Edit a recommendation.
      *

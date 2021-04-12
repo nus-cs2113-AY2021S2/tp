@@ -42,13 +42,14 @@
 
    4.4 [Exit and Save](#44-exit-and-save-connoisseur)
 5. [Command Summary](#5-command-summary)
+   
 6. [FAQ](#6-faq)
 
 ## 1. Introduction
 
 Welcome to the user guide for our application, Connoisseur!
 
-Fret-not! Connoisseur is a desktop application for managing and storing personal reviews on experiences and recommendations to try next. It is a revolutionary app that not only provides an organised user-friendly database, but provides customisable categories to enhance your experience. Through its intuitive command line interface, you will be able to store and access your reviews & recommendation easily!
+Connoisseur is a desktop application for managing and storing personal reviews on experiences and recommendations to try next. It is a revolutionary app that not only provides an organised user-friendly database, but provides customisable categories to enhance your experience. Through its intuitive command line interface, you will be able to store and access your reviews & recommendation easily!
 
 ## 2. About this Guide
 
@@ -58,7 +59,7 @@ Simply click on any link in our [Features](#table-of-contents) list to get step-
 ### 2.1 What is in Connoisseur
 
 In our Review mode, you can add a review about an experience, delete or edit a review, view the
-entire list of your reviews or if you want the full details, just view a particular review. You can also sort the list from the highest to the lowest rating, by category, title or date.
+entire list of your reviews or if you want the full details, just view a particular review. You can also sort the list from the highest to the lowest rating, by category, title, earliest or latest date.
 
 For our Recommendation mode, you can have a list of things you would like to try, the location and the approximate cost of the experience. Already tried out the experience? You can now move it to your review list and record your thoughts on the experience! 
 
@@ -157,7 +158,7 @@ specify if you would like to input a quick review. Input the command: `y` for qu
 ![img_4.png](images/ug/add_Review.png)
 <p align="center">Figure 7. Adding a quick or full review </p>
 
-<span>&#10071;</span> Ensure the rating is an integer whole number from 0 to 5. Inputting -0 is treated as 0 and is not an invalid number.
+<span>&#10071;</span> Ensure the rating is an integer whole number from 0 to 5. Inputting -0 is treated as 0.
 If you input an invalid number Connoisseur will prompt you until a valid number is input. <br />
 
 <span>&#10071;</span> Ensure the title of the review added is unique and does not already exist in the list. Connoisseur 
@@ -256,7 +257,7 @@ Command: `view [TITLE_OF_REVIEW]`
 <span>&#10071;</span> Ensure the title of the review you want to view already exists in your lists of reviews. Otherwise, Connoisseur will 
 prompt you saying that no such review exits. When typing the title you want to view, ensure spelling, and the number of blank spaces in between words is the same as the title in the list.
 
-<span>&#10071;</span> When adding a review, if you did not put in a description for it, the text "No description entered." will appear when viewing the review.
+<span>&#10071;</span> When adding a review, if you did not put in a description for it, the text "Invalid command. Please do not enter extra parameters or less parameters than required." will appear when viewing the review.
 
 #### 4.1.5 Edit a Review
 
@@ -271,7 +272,7 @@ Otherwise, Connoisseur will prompt you saying that no such review exits. When ty
 
 <span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed before or after the command.
 
-<span>&#10071;</span> The command 'edit' is case-insensitive.<br>
+<span>&#10071;</span> The command 'edit' is case-insensitive. <br>
 
 <span>&#10071;</span> Connoisseur will ignore extra blank spaces are typed in between the 'edit' and 'TITLE_OF_REVIEW' in the command.
 
