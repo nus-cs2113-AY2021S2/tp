@@ -20,33 +20,33 @@
 6. [Implementation](#5-implementation)
     1. [Staff](#51-staff) 
     	1. [Staff Menu](#511-staff-menu)
-    	2. [Add](#512-add)
-    	3. [Delete](#513-delete)
-    	4. [List](#514-list)
-    	5. [Find](#515-find)
+    	2. [Staff Add](#512-staff-add)
+    	3. [Staff Delete](#513-staff-delete)
+    	4. [Staff List](#514-staff-list)
+    	5. [Staff Find](#515-staff-find)
     2. [Patient](#52-patient)
     	1. [Patient Menu](#521-patient-menu)
-    	2. [Add](#522-add)
-    	3. [Delete](#523-delete)
-    	4. [List](#524-list)
-    	5. [Find](#525-find)
+    	2. [Patient Add](#522-patient-add)
+    	3. [Patient Delete](#523-patient-delete)
+    	4. [Patient List](#524-patient-list)
+    	5. [Patient Find](#525-patient-find)
     3. [Doctor Appointment](#53-doctor-appointment)
     	1. [Doctor Appointment Menu](#531-doctor-appointment-menu)
-    	2. [Add](#532-add)
-    	3. [Delete](#533-delete)
-    	4. [List All](#534-list-all)
-    	5. [List by Doctor ID or Appointment ID](#535-list-by-doctor-id-or-appointment-id)
+    	2. [Doctor Appointment Add](#532-doctor-appointment-add)
+    	3. [Doctor Appointment Delete](#533-doctor-appointment-delete)
+    	4. [Doctor Appointment List All](#534-doctor-appointment-list-all)
+    	5. [Doctor Appointment List by Doctor ID or Appointment ID](#535-doctor-appointment-list-by-doctor-id-or-appointment-id)
     4. [Nurse Schedule](#54-nurse-schedule)
     	1. [Nurse Schedule Menu](#541-nurse-schedule-menu)
-    	2. [Add](#542-add)
-    	3. [Delete](#543-delete)
-    	4. [List All](#544-list-all)
-    	5. [List by Nurse ID](#545-list-by-nurse-id)
+    	2. [Nurse Schedule Add](#542-nurse-schedule-add)
+    	3. [Nurse Schedule Delete](#543-nurse-schedule-delete)
+    	4. [Nurse Schedule List All](#544-nurse-schedule-list-all)
+    	5. [Nurse Schedule List by Nurse ID](#545-nurse-schedule-list-by-nurse-id)
     5. [Inventory](#55-inventory)
         1. [Inventory Menu](#551-inventory-menu)
-    	2. [Add](#552-add)
-    	3. [Delete](#553-delete)
-    	4. [List](#554-list)
+    	2. [Inventory Add](#552-inventory-add)
+    	3. [Inventory Delete](#553-inventory-delete)
+    	4. [Inventory List](#554-inventory-list)
     6. [Proposed Features](#56-proposed-features)
     	1. [Auto Schedule Generator for Nurses](#561-auto-schedule-generator-for-nurses)
     	2. [Personalized Account Login](#562-personalized-account-login)
@@ -296,7 +296,7 @@ Whenever a user input is given to the Staff Menu, the following steps will occur
 
 <br>
 
-### 5.1.2 Add
+### 5.1.2 Staff Add
 
 **Implementation:**
 
@@ -346,9 +346,22 @@ Invalid Input includes:
 10. Data is written and saved.
 11. Control is then returned to StaffInstance.
 
+**Design Considerations**
+
+Deciding the main data structure, ArrayList or Dictionary:
+
+Option 1 (Final choice): Using an ArrayList
+* Pros: Able to access a staff information given the unique key and allows for more flexibility in the methods used.
+* Cons: Slow accessing of items when searching for information in ArrayList compared to Dictionary.
+
+Option 2 : Using a Dictionary
+* Pros: Able utilise the key function of dictionary to locate items quickly.
+* Cons: Multiple items to be stored for 1 single key in the dictionary.
+* Cons: Listing all information might be rather troublesome.
+
 <br>
 
-### 5.1.3 Delete
+### 5.1.3 Staff Delete
 
 **Implementation:**
 
@@ -387,9 +400,21 @@ Invalid Input includes:
 9. Data is written and saved.
 10. Control is then returned to StaffInstance.
 
+**Design Considerations**
+
+Deciding whether to use an iterator to iterate through the ArrayList.
+
+Option 1 (Final choice): Not using an iterator
+* Pros: Using the inbuilt commands to iterate through to find the item to delete seems more straightforward.
+* Cons: The flexibility of the data manipulation may be restrictive and this may result in future functions being harder to implement.
+
+Option 2 : Using an iterator
+* Pros: An iterator allows for more flexible data access as it allows for more efficient deletion of a block of data, and it helps to keep the location of where data was manipulated.
+* Cons: Maintenance of the iterator is very difficult, and it may not be worth the effort to implement when solutions exist that only require inbuilt functions.
+
 <br>
 
-### 5.1.4 List
+### 5.1.4 Staff List
 
 **Implementation:**
 
@@ -419,9 +444,21 @@ Invalid Input includes:
 7. Depending on the input given by the user, the relevant Staff Objects will be displayed.
 8. Control is then returned to StaffInstance.
 
+**Design Considerations**
+
+Deciding whether to have additional capabilities for the list function:
+
+Option 1 (Final choice): Function to list either nurses or doctors.
+* Pros: Able to be specific to view specific data items.
+* Cons: Implementation will be troublesome. Need to consider the fact that there is variable number of inputs (0/1).
+
+Option 2 : Only have a general list function to see all staff information.
+* Pros: Easy implementation.
+* Cons: Unable to view just the nurses/doctors information.
+
 <br>
 
-### 5.1.5 Find
+### 5.1.5 Staff Find
 
 **Implementation:**
 
@@ -452,6 +489,18 @@ Invalid Input includes:
 8. The relevant Staff Objects are then displayed.
 9. Control is then returned to StaffInstance.
 
+**Design Considerations**
+
+Deciding whether `find` function should be case-sensitive:
+
+Option 1 (Final choice): Case-insensitive.
+* Pros: Provides the user with greater flexibility when querying the list for specific data.
+* Cons: Harder to implement and may result in unwanted data being shown.
+
+Option 2 : Case sensitive.
+* Pros: Easy to implement and can be more specific.
+* Cons: Harder to consistently type and very punishing for users who don't know if what they are searching for has capital letters.
+
 <br>
 
 ###  5.2 Patient
@@ -478,7 +527,7 @@ Whenever a user input is given to the Patient Menu, the following steps will occ
 
 <br>
 
-### 5.2.2 Add
+### 5.2.2 Patient Add
 
 
 **Implementation:**
@@ -546,7 +595,7 @@ Option 2 : Using a List
 * Cons: No random access and thus made certain functions more troublesome code wise.
 <br>
 
-### 5.2.3 Delete
+### 5.2.3 Patient Delete
 
 **Implementation:**
 
@@ -597,7 +646,7 @@ Option 2 : Using an iterator
 * Cons: Maintenance of the iterator is very difficult, and it may not be worth the effort to implement when solutions exist that only require inbuilt functions.
   <br>
   
-### 5.2.4 List
+### 5.2.4 Patient List
 
 **Implementation:**
 
@@ -639,9 +688,10 @@ Option 1 (Final choice): Using pretty print
 Option 2 : Printing the patients in blocks with no common rows or columns.
 * Pros: Easy to implement and may be easier to show a single patient.
 * Cons: Very difficult to view when the list of patients became increasingly large.
+
   <br>
 
-### 5.2.5 Find
+### 5.2.5 Patient Find
 
 **Implementation:**
 
@@ -721,7 +771,7 @@ Whenever a user input is given to the Doctor Appointment Menu, the following ste
 
 <br>
 
-### 5.3.2 Add
+### 5.3.2 Doctor Appointment Add
 
 **Implementation:**
 
@@ -775,7 +825,7 @@ Invalid Input includes:
 
 <br>
 
-### 5.3.3 Delete
+### 5.3.3 Doctor Appointment Delete
 
 **Implementation:**
 
@@ -819,7 +869,7 @@ Invalid Input includes:
 
 <br>
 
-### 5.3.4 List all
+### 5.3.4 Doctor Appointment List all
 
 **Implementation:**
 
@@ -856,7 +906,7 @@ Invalid Input includes:
 
 <br>
 
-### 5.3.5 List by Doctor ID or Appointment ID
+### 5.3.5 Doctor Appointment List by Doctor ID or Appointment ID
 
 **Implementation:**
 
@@ -910,7 +960,7 @@ Whenever a user input is given to the Nurse Schedule Menu, the following steps w
 
 6. Based on the recognised command, the relevant execution will be carried out.
 
-### 5.4.2 Add
+### 5.4.2 Nurse Schedule Add
 
 **Implementation**
 
@@ -948,7 +998,7 @@ Invalid Inputs include:
 5. Control is then returned to NurseScheduleInstance.
 
 
-### 5.4.3 Delete
+### 5.4.3 Nurse Schedule Delete
 
 **Implementation**
 
@@ -983,7 +1033,7 @@ Invalid Inputs include:
 
 6. Control is then returned to NurseScheduleInstance.
 
-### 5.4.4 List all
+### 5.4.4 Nurse Schedule List all
 
 **Implementation**
 
@@ -1017,7 +1067,7 @@ Invalid Inputs include:
 6. `listAllSchedules()` iterates through the arraylist of Nurse Schedule objects, printing all schedules.
 
 
-### 5.4.5 List by Nurse ID
+### 5.4.5 Nurse Schedule List by Nurse ID
 
 **Implementation**
 
@@ -1071,7 +1121,7 @@ Whenever a user input is given to the Inventory Menu, the following steps will o
 
 <br>
 
-### 5.5.2 Add
+### 5.5.2 Inventory Add
 
 **Implementation:**
 
@@ -1123,7 +1173,7 @@ Invalid Input includes:
 
 <br>
 
-### 5.5.3 Delete
+### 5.5.3 Inventory Delete
 
 **Implementation:**
 
@@ -1162,7 +1212,7 @@ Invalid Input includes:
 
 <br>
 
-### 5.5.4 List
+### 5.5.4 Inventory List
 
 **Implementation:**
 
@@ -1403,10 +1453,10 @@ Choose a directory from the Start Menu
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 
-``` 
-Error in Staff ID input
-Please input with the following format [D/N][5 digit ID number]
-```
+
+	Error in Staff ID input
+	Please input with the following format [D/N][5 digit ID number]
+
 
 <br/>
  
@@ -1418,6 +1468,15 @@ Please input with the following format [D/N][5 digit ID number]
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```delete/D12345```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```D12345 has been fired :(```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `delete/Owen`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+
+
+	Error in Staff ID input
+	Please input with the following format [D/N][5 digit ID number]
+
 
 <br/>
 
@@ -1457,6 +1516,17 @@ Please input with the following format [D/N][5 digit ID number]
 	D12345     | MingShun   | 30    | Pediatrician    
 	D12355     | Alex       | 28    | Oncology
 			
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `list/blahblah`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+
+
+	Invalid List command parameter
+	Please input with the either of the following format:
+		list
+		list/nurses
+		list/doctors
+
 	
 <br/>
 
@@ -1474,8 +1544,12 @@ Please input with the following format [D/N][5 digit ID number]
 	____________________________________________________________
 	D12355     | Alex       | 28    | Oncology            
 
-	Staff -->
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `find/`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+
+	OOPS! There are too few inputs for this command
 
 <br/>
 
