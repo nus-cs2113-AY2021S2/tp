@@ -6,6 +6,7 @@ package seedu.duke.exception;
  */
 public class CustomException extends Exception {
     /**
+     * Constructor for CustomException.
      * @param message should contain relevant information on the failed constraint(s).
      */
     public CustomException(String message) {

@@ -6,6 +6,7 @@ package seedu.duke.exception;
  */
 public class CommandException extends Exception {
     /**
+     * Constructor for CommandException.
      * @param message should contain relevant information on the failed constraint(s).
      */
     public CommandException(String message) {
@@ -13,6 +14,7 @@ public class CommandException extends Exception {
     }
 
     /**
+     * 2nd Constructor for CommandException.
      * @param message should contain relevant information on the failed constraint(s).
      * @param command the name of the {@code Command} that error occurred in.
      */
