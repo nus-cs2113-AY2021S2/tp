@@ -22,7 +22,7 @@ The **Architecture Diagram** given above explains the high-level design of the A
 * `Storage`: Reads data from, and writes data to, the hard disk.
 
 
-### UI component
+### UI Component
 ![UI Diagram](diagrams/images/UiClassDiagram.png)
 1. The UI consists of a Login class, and a MainMenu interface.
 2. AdminMainMenu and CustomerMainMenu inherit from the MainMenu interface.
@@ -30,13 +30,13 @@ The **Architecture Diagram** given above explains the high-level design of the A
 Allows users to login using the Model data.\
 Executes user commands using the Logic component.
 
-### Logic component
+### Logic Component
 ![Logic Diagram](diagrams/images/LogicClassDiagram.png)
 1. Logic uses the `MovieMenu` class to read users inputs and execute the commands accordingly.
 2. The command execution can affect the Model.
 3. The result of the command execution is passed back to the Ui.
 
-### Model component
+### Model Component
 ![Model Diagram](diagrams/images/ModelClassDiagram.png)
 The Model:
 1. Stores users data including the customer and admin users.
@@ -44,6 +44,10 @@ The Model:
 3. Stores information related to Movie, such as Review and Showtime.
 4. Stores information related to Cinema, such as Seat and Cineplex.
 5. Does not depend on any of the other three components.
+
+### Storage Component
+![Storage Diagram](Database.png)
+1. Database is 
 
 ## Implementation
 Our team is going to use breadth-first iterative approach as it allows us to focus on all features in parallel throughout the version 1.0, 2.0 and 2.1.
@@ -96,7 +100,7 @@ to the .txt file.
 Like wise for Edit movie, except the ui uses displayEditMovieMenu(ArrayList<Movie> movieDatabase) and
 displayEditMovieSectionMenu(ArrayList<Movie> movieDatabase), and the database uses editMovie(int choice, int type).
 
-![Admin Main Menu](AdminMainMenu.png)
+![Admin Main Menu](diagrams/images/AdminMenuDiagram.png)
 
 ### Customer Commands
 The process starts with the actor calling the Customer Main Menu

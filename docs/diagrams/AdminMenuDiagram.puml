@@ -1,0 +1,278 @@
+@startuml
+participant Actor
+Actor -> AdminMainMenu : displayMenu
+activate AdminMainMenu
+AdminMainMenu -> MovieFilter : filter
+activate MovieFilter
+MovieFilter -> MovieFilter : filterByGenre
+activate MovieFilter
+MovieFilter --> MovieFilter
+deactivate MovieFilter
+MovieFilter -> MovieFilter : filterByRating
+activate MovieFilter
+MovieFilter -> Movie : calculateOverallRating
+activate Movie
+Movie --> MovieFilter
+deactivate Movie
+MovieFilter --> MovieFilter
+deactivate MovieFilter
+MovieFilter -> MovieFilter : filterByShowingStatus
+activate MovieFilter
+MovieFilter --> MovieFilter
+deactivate MovieFilter
+MovieFilter -> MovieFilter : filterByCineplex
+activate MovieFilter
+MovieFilter --> MovieFilter
+deactivate MovieFilter
+MovieFilter -> MovieFilter : filterByTitle
+activate MovieFilter
+MovieFilter --> MovieFilter
+deactivate MovieFilter
+MovieFilter -> MovieFilter : selectMovie
+activate MovieFilter
+MovieFilter -> MovieFilter : printMovieList
+activate MovieFilter
+MovieFilter --> MovieFilter
+deactivate MovieFilter
+MovieFilter -> MovieFilter : getMovieChoice
+activate MovieFilter
+MovieFilter --> MovieFilter
+deactivate MovieFilter
+MovieFilter --> MovieFilter
+deactivate MovieFilter
+MovieFilter -> ViewBooking : new
+activate ViewBooking
+ViewBooking -> ViewBooking : downcastToSpecificUser
+activate ViewBooking
+ViewBooking --> ViewBooking
+deactivate ViewBooking
+ViewBooking --> MovieFilter
+deactivate ViewBooking
+MovieFilter -> ViewBooking : printBookings
+activate ViewBooking
+ViewBooking -> ViewBooking : printAllBookings
+activate ViewBooking
+ViewBooking -> Booking : printBookingDetails
+activate Booking
+Booking --> ViewBooking
+deactivate Booking
+ViewBooking --> ViewBooking
+deactivate ViewBooking
+ViewBooking -> ViewBooking : displayCancelBookingMenu
+activate ViewBooking
+ViewBooking -> ViewBooking : printAllBookings
+activate ViewBooking
+ViewBooking -> Booking : printBookingDetails
+activate Booking
+Booking --> ViewBooking
+deactivate Booking
+ViewBooking --> ViewBooking
+deactivate ViewBooking
+ViewBooking -> CancelBooking : new
+activate CancelBooking
+CancelBooking --> ViewBooking
+deactivate CancelBooking
+ViewBooking -> CancelBooking : cancelOneBooking
+activate CancelBooking
+CancelBooking -> CancelBooking : deleteThisBooking
+activate CancelBooking
+CancelBooking --> CancelBooking
+deactivate CancelBooking
+CancelBooking --> ViewBooking
+deactivate CancelBooking
+ViewBooking --> ViewBooking
+deactivate ViewBooking
+ViewBooking --> MovieFilter
+deactivate ViewBooking
+MovieFilter -> MovieFilter : printMovieList
+activate MovieFilter
+MovieFilter --> MovieFilter
+deactivate MovieFilter
+MovieFilter --> AdminMainMenu
+deactivate MovieFilter
+AdminMainMenu -> MovieMenu : movieAction
+activate MovieMenu
+MovieMenu -> MovieMenu : bookTicket
+activate MovieMenu
+MovieMenu -> MovieMenu : checkForBackKeyword
+activate MovieMenu
+MovieMenu --> MovieMenu
+deactivate MovieMenu
+MovieMenu -> MovieMenu : checkIfCurrDateOverBookingDate
+activate MovieMenu
+MovieMenu --> MovieMenu
+deactivate MovieMenu
+MovieMenu -> Showtimes : printSeats
+activate Showtimes
+Showtimes -> Showtimes : checkSeatTaken
+activate Showtimes
+Showtimes --> Showtimes
+deactivate Showtimes
+Showtimes --> MovieMenu
+deactivate Showtimes
+MovieMenu -> Showtimes : checkSeatTaken
+activate Showtimes
+Showtimes --> MovieMenu
+deactivate Showtimes
+MovieMenu -> Showtimes : setSeatStatus
+activate Showtimes
+Showtimes --> MovieMenu
+deactivate Showtimes
+MovieMenu -> Showtimes : printSeats
+activate Showtimes
+Showtimes -> Showtimes : checkSeatTaken
+activate Showtimes
+Showtimes --> Showtimes
+deactivate Showtimes
+Showtimes --> MovieMenu
+deactivate Showtimes
+MovieMenu -> Showtimes : getSeat
+activate Showtimes
+Showtimes --> MovieMenu
+deactivate Showtimes
+MovieMenu -> Booking : new
+activate Booking
+Booking -> Booking : printBookingDetails
+activate Booking
+Booking --> Booking
+deactivate Booking
+Booking --> MovieMenu
+deactivate Booking
+MovieMenu -> Customer : addNewBooking
+activate Customer
+Customer --> MovieMenu
+deactivate Customer
+MovieMenu -> Booking : new
+activate Booking
+Booking -> Booking : printBookingDetails
+activate Booking
+Booking --> Booking
+deactivate Booking
+Booking --> MovieMenu
+deactivate Booking
+MovieMenu -> Admin : addNewBooking
+activate Admin
+Admin --> MovieMenu
+deactivate Admin
+MovieMenu -> Database : updateDatabase
+activate Database
+Database -> Database : writeToFile
+activate Database
+Database --> Database
+deactivate Database
+Database -> Database : writeToFile
+activate Database
+Database --> Database
+deactivate Database
+Database -> Database : writeToFile
+activate Database
+Database --> Database
+deactivate Database
+Database -> Database : writeToFile
+activate Database
+Database --> Database
+deactivate Database
+Database --> MovieMenu
+deactivate Database
+MovieMenu --> MovieMenu
+deactivate MovieMenu
+MovieMenu -> MovieMenu : viewMovieDetails
+activate MovieMenu
+MovieMenu -> Movie : displayMovie
+activate Movie
+Movie -> Movie : printCast
+activate Movie
+Movie --> Movie
+deactivate Movie
+Movie -> Movie : printReviews
+activate Movie
+Movie --> Movie
+deactivate Movie
+Movie --> MovieMenu
+deactivate Movie
+MovieMenu --> MovieMenu
+deactivate MovieMenu
+MovieMenu -> MovieMenu : addReview
+activate MovieMenu
+MovieMenu -> MovieMenu : ratingVerification
+activate MovieMenu
+MovieMenu --> MovieMenu
+deactivate MovieMenu
+MovieMenu -> Movie : addReview
+activate Movie
+Movie -> Review : new
+activate Review
+Review --> Movie
+deactivate Review
+Movie --> MovieMenu
+deactivate Movie
+MovieMenu -> Database : updateDatabase
+activate Database
+Database -> Database : writeToFile
+activate Database
+Database --> Database
+deactivate Database
+Database -> Database : writeToFile
+activate Database
+Database --> Database
+deactivate Database
+Database -> Database : writeToFile
+activate Database
+Database --> Database
+deactivate Database
+Database -> Database : writeToFile
+activate Database
+Database --> Database
+deactivate Database
+Database --> MovieMenu
+deactivate Database
+MovieMenu --> MovieMenu
+deactivate MovieMenu
+MovieMenu --> AdminMainMenu
+deactivate MovieMenu
+AdminMainMenu -> Database : addMovie
+activate Database
+Database -> Movie : new
+activate Movie
+Movie --> Database
+deactivate Movie
+Database -> Database : updateMovieStatus
+activate Database
+Database --> Database
+deactivate Database
+Database --> AdminMainMenu
+deactivate Database
+AdminMainMenu -> AdminMainMenu : displayDeleteMovieMenu
+activate AdminMainMenu
+AdminMainMenu -> AdminMainMenu : checkIfMovieListIsEmpty
+activate AdminMainMenu
+AdminMainMenu --> AdminMainMenu
+deactivate AdminMainMenu
+AdminMainMenu -> Database : deleteMovie
+activate Database
+Database --> AdminMainMenu
+deactivate Database
+AdminMainMenu --> AdminMainMenu
+deactivate AdminMainMenu
+AdminMainMenu -> AdminMainMenu : displayEditMovieMenu
+activate AdminMainMenu
+AdminMainMenu -> AdminMainMenu : checkIfMovieListIsEmpty
+activate AdminMainMenu
+AdminMainMenu --> AdminMainMenu
+deactivate AdminMainMenu
+AdminMainMenu -> AdminMainMenu : displayEditMovieSectionMenu
+activate AdminMainMenu
+AdminMainMenu -> Database : editMovie
+activate Database
+Database -> Database : updateMovieStatus
+activate Database
+Database --> Database
+deactivate Database
+Database --> AdminMainMenu
+deactivate Database
+AdminMainMenu --> AdminMainMenu
+deactivate AdminMainMenu
+AdminMainMenu --> AdminMainMenu
+deactivate AdminMainMenu
+return
+@enduml

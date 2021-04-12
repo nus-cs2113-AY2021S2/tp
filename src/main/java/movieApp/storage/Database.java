@@ -27,14 +27,15 @@ public class Database {
     public static ArrayList<Showtimes> ShowtimesDatabase;
     public static ArrayList<User> users;
 
-    public static Path dataDirectory = Path.of(System.getProperty("user.dir") + "\\data");
-    public static Path movieListDirectory = Path.of(System.getProperty("user.dir") + "\\data" + "\\movieList.txt");
-    public static Path cineplexListDirectory = Path.of(System.getProperty("user.dir") + "\\data"
-            + "\\cineplexList.txt");
-    public static Path showtimeListDirectory = Path.of(System.getProperty("user.dir") + "\\data"
-            + "\\showtimeList.txt");
-    public static Path userListDirectory = Path.of(System.getProperty("user.dir") + "\\data"
-            + "\\userSerialList.txt");
+    public static Path dataDirectory = Path.of(System.getProperty("user.dir") + "/data");
+
+    public static Path movieListDirectory = Path.of(System.getProperty("user.dir") + "/data" + "/movieList.txt");
+    public static Path cineplexListDirectory = Path.of(System.getProperty("user.dir") + "/data"
+            + "/cineplexList.txt");
+    public static Path showtimeListDirectory = Path.of(System.getProperty("user.dir") + "/data"
+            + "/showtimeList.txt");
+    public static Path userListDirectory = Path.of(System.getProperty("user.dir") + "/data"
+            + "/userSerialList.txt");
 
     /**
      * Initialize all the methods.
@@ -97,7 +98,7 @@ public class Database {
      */
     private static void checkIfDirectoryExists() throws IOException {
         if (!Files.exists(dataDirectory)) {
-            Files.createDirectory(dataDirectory);
+           Files.createDirectory(dataDirectory);
         }
     }
 
