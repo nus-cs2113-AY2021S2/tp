@@ -382,12 +382,12 @@ _Figure 11: **RecordList** Class Diagram_
 
 #### Description
 The `RecordList` component consists of only one class which is the `RecordList`. The role of the `RecordList` 
-is to maintain an internal `ArrayList<Record>` objects created throughout `Finux`’s execution. 
+is to maintain an internal `ArrayList<Record>` object created throughout `Finux`’s execution. 
 
 #### Design
-This maintenance is achieved through the traditional Object Oriented Programming (OOP) style, where operations
+This design follows the Object Oriented Programming (OOP) style, where operations
 relating to the list can only be performed through the interfaces defined in the `RecordList` class. Doing so allows
-us to restrict the access to the internal `ArrayList<Record>` from the outside world, successfully achieving the information
+us to restrict the access to the internal `ArrayList<Record>` from the external classes, successfully achieving the information
 hiding aspect under the Encapsulation concept of OOP.
 
 When `Finux` starts up, `Finux` instantiates the `RecordList` with data loaded from the save file, `finux.txt`. This is done
@@ -416,6 +416,7 @@ following snippet of pseudo code:
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PRINT  getRecordAt(i)\
 > END LOOP
 
+<div style="page-break-after: always;"></div>
 
 ### 3.7 CreditScoreReturnedLoansMap Component
 ![CreditScoreReturnedLoansMap Class Diagram](img/CreditScoreReturnedLoansMapClassDiagram.png)\
@@ -428,10 +429,10 @@ respective credit score, inserted throughout `Finux`’s execution. The credit s
 based on the **list of confirmed returned loans made by the borrower** and **is not the final score**.
 
 #### Design
-Similar to `RecordList`, the maintenance of `CreditScoreReturnedLoansMap` is also achieved through the traditional 
+Similar to `RecordList`, the maintenance of `CreditScoreReturnedLoansMap` is also achieved through the 
 OOP style, where operations relating to the internal `HashMap` can only be performed through the defined interfaces
 in `CreditScoreReturnedLoansMap` class. By adopting this design, it allows us to restrict the access to the internal
-`HashMap` from the outside world, hence satisfying the information hiding aspect under the Encapsulation concept of OOP.
+`HashMap` from the external classes, hence satisfying the information hiding aspect under the Encapsulation concept of OOP.
 
 When `Finux` starts up, `Finux` instantiates the `CreditScoreReturnedLoansMap` with data loaded from the save file, 
 `finux.txt`. This is done by the `Finux` class calling the constructor `CreditScoreReturnedLoansMap(HashMap)`, passing 
@@ -461,9 +462,6 @@ Lastly, when the `CreditScoreCommand` is requested by the user, the command will
 first retrieve the borrower’s credit score from `CreditScoreReturnedLoansMap` via 
 `CreditScoreReturnedLoansMap#getCreditScoreOf()`. With the retrieved value, the command will proceed to compute and
 display the final credit score of the borrower as described in [section 4.7.1](#471-current-implementation).
-
-<div style="page-break-after: always;"></div>
-
 
 ### 3.8 Storage Component
 
@@ -550,6 +548,8 @@ the `finux.txt` file back into the Finux application.
    * Error has to be thrown if the saved text is unable to be parsed, as allowing ambiguous values to be parsed into
    the application may cause unknown and unwanted outputs.
 
+<div style="page-break-after: always;"></div>
+
 ## 4. Implementation
 
 This section introduces the specific implementation details and design thought processes
@@ -570,6 +570,8 @@ By calling the `execute()` method,
   `addRecord(Record)`.
 * Next, the `saveData(...)` from the `Storage` object is invoked to store the records to file.
 * Finally, a notification is printed onto the console with the help of `Ui`.
+
+<div style="page-break-after: always;"></div>
 
 ![AddFeatureSequenceDiagram](img/AddFeatureSequenceDiagram.png)\
 _Figure 14: Sequence Diagram for `AddCommand`_
@@ -1219,8 +1221,8 @@ coding and typing can speed up the process of their finance management through t
 **Initial Launch**
 
 1. Download the jar file and copy it into an empty folder where the application will save its files in.
-1. Open a new command prompt (Windows) or terminal (MacOS) and navigate to the directory containing `Finux.jar`.
-1. Enter the command `java -jar Finux.jar` to launch Finux.
+1. Open a new command prompt (Windows) or terminal (MacOS) and navigate to the directory containing `finux.jar`.
+1. Enter the command `java -jar finux.jar` to launch Finux.
 1. Program will create a new save file if there are currently no existing save file, else it will load the save file.
    
 **Shutdown**
