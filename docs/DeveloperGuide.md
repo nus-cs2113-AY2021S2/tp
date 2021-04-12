@@ -201,8 +201,8 @@ program needs to parse a user input, the ParserHandler calls the method `getPars
    * Any leading or trailing white space of the argument field will be removed.
    * If no argument is provided, the argument would be stored as an empty string.
 4. `extractFinalPart()` will check if the final input ends with option. If yes, extract the option and
-   add an empty string as the argument, else just add the final input to the ArrayList<String>.
-5. Finally, after the extraction to ArrayList<String> is complete, `extractFinalPart()` will
+   add an empty string as the argument, else just add the final input to the `ArrayList<String>`.
+5. Finally, after the extraction to `ArrayList<String>` is complete, `extractFinalPart()` will
    call `checkFirstBlock()` for the final check to parse any `help` or `creditscore` in the first argument block.
    
 #### Parser Component Design Consideration
@@ -225,10 +225,10 @@ program needs to parse a user input, the ParserHandler calls the method `getPars
    * `StringUtils.endsWithAny()`   - detection of end option with non-fixed order.
    * `StringUtils.indexOfAny()`    - detection of during processing option with non-fixed order.
 4. As multiple whitespaces is allowed, options and arguments should be fully trimmed (leading and trailing).
-5. As the ArrayList<String> is passed back to the main program and is being used by CommandHandler,
+5. As the `ArrayList<String>` is passed back to the main program and is being used by CommandHandler,
    the argument field should be compulsory and appended with an empty string if it is empty to facilitate validations 
    and option-argument pairwise logic.
-6. `getParseInput()` should always return a new ArrayList<String> per new input.
+6. `getParseInput()` should always return a new `ArrayList<String>` per new input.
 
 
 ### 3.4 CommandHandler Component
@@ -420,14 +420,14 @@ the `finux.txt` file back into the Finux application.
    in the `creditScoreReturnLoansMap` into a user readable format and store them in the same `finux.txt` file as the `records`.
   
 4. `loadFile` method does the opposite of the `writeRecordListToSaveFile()` method. In the `loadFile()` method, a new 
-   ArrayList of `Record` is instantiated. It will then call the `saveFileExist()` method. If the method returns false, 
+   `ArrayList<Record>` is instantiated. It will then call the `saveFileExist()` method. If the method returns false, 
    `initSaveFile()` method will be called and a new `finux.txt` will be created in the same directory of the FINUX 
-   application. The `loadFile()` method will then return a new and empty ArrayList of `Record` back to the `start()` method 
+   application. The `loadFile()` method will then return a new and empty `ArrayList<Record>` back to the `start()` method 
    in the `Finux` class. Should the `saveFileExist()` returns true, for each line of text in the `finux.txt` file will be 
    parsed into the `parseRecord()` method which will call the individual load methods `loadExpense()`, `loadLoan()`, 
    `loadSaving()` based on a REGEX expression of the text data. Should the pattern be unrecognisable, or the file is 
    unable to be read, an exception will be thrown to the `start()` method and FINUX will terminate. If all the text data 
-   is properly loaded, the `loadFile()` method will return the ArrayList of `Record` to the `RecordList` object in the 
+   is properly loaded, the `loadFile()` method will return the `ArrayList<Record>` to the `RecordList` object in the 
    `start()` method.
    
 5. `initSaveFile()` method will create a new `finux.txt` specified by the constant `SAVED_FILE_PATH`. It will call 
@@ -956,13 +956,13 @@ respective methods to return the object type of it. (In this case, `Expense`, `L
 
 ***Step 3***\
 With the returned objects, they are now parsed into the `processParsedObject` method to be added into their respective
-classes. With the instances of `Record` being added into an ArrayList of `Record` and the `creditScoreReturnedLoansMap` 
-into a HashMap<String, Integer>.
+classes. With the instances of `Record` being added into an `ArrayList<Record>` and the `creditScoreReturnedLoansMap` 
+into a `HashMap<String, Integer>`.
 
 ***Step 4***\
-The `start` method in the `Finux` class will then call the `getRecordListData` method to retrieve the loaded 
+The `start` method in the `Finux` class will then call the `getRecordListData()` method to retrieve the loaded 
 `ArrayList<Record>` from the `Storage` class and to load it into the `RecordList` object, this is also the same with the 
-`CreditScoreReturnedLoansMap` where the `start` method in the `Finux` class will call the `getMapData` method from the 
+`CreditScoreReturnedLoansMap` where the `start()` method in the `Finux` class will call the `getMapData()` method from the 
 `Storage` class which will then return the `HashMap<String, Integer>` and load it into the `CreditScoreReturnedLoansMap` 
 object.
 
