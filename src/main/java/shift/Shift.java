@@ -2,7 +2,6 @@ package shift;
 
 import asserts.Asserter;
 import employee.Employee;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -11,19 +10,15 @@ public class Shift {
     private ArrayList<Employee> employees;
     private ArrayList<String> employeeList = null;
     private LocalDate shiftDate;
-    private int vacancy = 0;
-    private int shiftIndex = 1;
+    private int vacancy;
+    private int shiftIndex;
 
     public Shift(ArrayList<Employee> employees, LocalDate shiftDate, int shiftIndex, int vacancy) {
         Asserter.assertNonNullEmployees(employees);
         this.employees = employees;
         this.shiftDate = shiftDate;
         this.vacancy = vacancy;
-        if (shiftIndex < 1 || shiftIndex > 6) {
-            System.out.println("Shift Index value not accepted. Values should be 1 to 6.");
-        } else {
-            this.shiftIndex = shiftIndex;
-        }
+        this.shiftIndex = shiftIndex;
     }
 
     public ArrayList<Employee> getEmployees() {
@@ -43,16 +38,16 @@ public class Shift {
             employees.add(e);
             this.vacancy--;
             Asserter.assertPositiveVacancies(this.vacancy);
-            System.out.println("Employee " + e.getName() + " assigned.");
+            System.out.println("Employee " + e.getName() + " is successfully assigned to this shift.");
         } else {
-            System.out.println("Shift is full!");
+            System.out.println("Shift is full. Employee " + e.getName() + " is not assigned to this shift.");
         }
     }
 
     public void unassignEmployee(Employee e) {
         employees.remove(e);
         this.vacancy++;
-        System.out.println("Employee " + e.getName() + " unassigned.");
+        System.out.println("Employee " + e.getName() + " is successfully unassigned from this shift.");
     }
 
     public LocalDate getShiftDate() {
