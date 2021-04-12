@@ -66,6 +66,7 @@ applications in the market.
 5. Run the `finux.jar` file by executing the command `java -jar finux.jar`.
 
 ---
+<div style="page-break-after: always;"></div>
 
 ### 2.1 Understanding the guide
 Now that you are here, congratulations on taking the first step to embark on your finance management journey! But before you proceed, there are a few tips and tricks that you should know in order to better understand our guide.
@@ -94,6 +95,7 @@ The Commands in Finux follow these argument orders (depending on the command):
 > * `CMD`
 
 ---
+<div style="page-break-after: always;"></div>
 
 ❗ **Commands and options are case-sensitive**
 > * E.g. `exit` will work, whereas `Exit`, `EXIT` or other variations will not be recognised.
