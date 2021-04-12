@@ -145,15 +145,17 @@ The app will help cinema administrators to update the movie information regularl
 
 ## Non-Functional Requirements
 
-###1. Usability Requirements###
+### 1. Usability Requirements
     1. All text in the system must be consistently written in English.
     2. The wording used in system text must be intuitive for user to understand easily.   
     3. The layout of the application must be consistent throughout all the pages.
     4. The system will provide a list of options for the user to choose.
-###2. Performance Requirements###
+
+### 2. Performance Requirements
     1. Database must be regularly updated according to user inputs.
     2. Exceptions must be performed in cases of undesirable incidents.
-###3. Security Requirements###
+
+### 3. Security Requirements
     1. All passwords must be hashed before it is stored.
 
 ## Glossary
