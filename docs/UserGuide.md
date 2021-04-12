@@ -203,15 +203,17 @@ Logging out...
 
 
 ```
-======= Movie Filter =======   
-1 Filter by genre   
-2 Filter by rating   
-3 Filter by showing status   
-4 Filter by cineplex   
-5 Filter by title
-6 Select movie   
-7 Clear all filters   
-8 Back to Main Menu
+======= Movie Filter =======
+ 1 Filter by genre
+ 2 Filter by rating
+ 3 Filter by showing status
+ 4 Filter by cineplex
+ 5 Filter by title
+ 6 Select movie
+ 7 List filtered movies
+ 8 Clear all filters
+ 9 View Bookings
+ 10 Back to Main Menu
 ============================
 ```
 
@@ -624,6 +626,26 @@ Movie List:
 10. Charlie's Angels (1.0)
 ============================
 To select a single movie, select "6 Select movie" from the Movie Filter menu below.
+
+```
+
+</details>
+
+<br />
+
+
+**9. View Bookings:  `9`**  
+Print all bookings.
+
+**Format:** `9`  
+<details><summary markdown="span"> <strong>Display:</strong> </summary>
+
+
+
+```
+Please indicate your choice:
+9
+No bookings available.
 
 ```
 
