@@ -23,7 +23,7 @@
     &nbsp;&nbsp;&nbsp;&nbsp; 3.2.1. [Current implementation](#321-current-implementation)  
     &nbsp;&nbsp;&nbsp;&nbsp; 3.2.2. [Adding daily route](#322-adding-daily-route)  
     &nbsp;&nbsp;&nbsp;&nbsp; 3.2.3. [Showing daily route](#323-showing-daily-route)  
-    &nbsp;&nbsp;&nbsp;&nbsp; 3.1.1. [Deleting daily route](#324-deleting-daily-route)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.2.4. [Deleting daily route](#324-deleting-daily-route)  
     3.3. [Favourite Routes Feature](#33-favourite-routes-feature)  
     &nbsp;&nbsp;&nbsp;&nbsp; 3.3.1. [Current implementation](#331-current-implementation)  
     &nbsp;&nbsp;&nbsp;&nbsp; 3.3.2. [Loading of saved favourite routes](#332-loading-of-saved-favourite-routes)  
