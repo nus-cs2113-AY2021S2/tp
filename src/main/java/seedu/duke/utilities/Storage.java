@@ -26,7 +26,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class Storage {
     private String fileName;
@@ -55,15 +54,15 @@ public class Storage {
     }
 
     private void loadResources() {
-        String[] files = {"/LoginInfo.txt",
-                          "/12312@gmail.com.json",
-                          "/test@gmail.com.json",
-                          "/test@yahoo.com.json"
+        String[] files = {"LoginInfo.txt",
+                          "12312@gmail.com.json",
+                          "test@gmail.com.json",
+                          "test@yahoo.com.json"
         };
 
         for (String file : files) {
             try {
-                InputStream in = getClass().getResourceAsStream("/data" + file);
+                InputStream in = getClass().getResourceAsStream(File.separator + "data" + File.separator + file);
                 BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 
                 String outputPath = System.getProperty("user.dir") + File.separator + "data" + File.separator + file;
@@ -76,7 +75,7 @@ public class Storage {
                 }
                 writer.flush();
             } catch (IOException | NullPointerException e) {
-                System.out.println("Error loading resources...");
+                ;   // If no resource file then start afresh
             }
         }
     }

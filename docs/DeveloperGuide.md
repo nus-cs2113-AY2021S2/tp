@@ -232,7 +232,7 @@ In this software, it is used to store details of an email account.
 This section explains the instructions on how to test the app manually. Testers are advised to use
 the account "12312@gmail.com" as the UserGuide and DeveloperGuide uses examples from this email account.
 
-:information_source: **Note:** These instructions only provide a starting point for testers to work on; testers are
+**Note:** These instructions only provide a starting point for testers to work on; testers are
 expected to do more *exploratory* testing.
 
 ### Launch and shutdown
@@ -264,7 +264,8 @@ Enter password: `5678`
 
 Expected:
 
-```` Hello! I'm MojoHR
+```
+Hello! I'm MojoHR
   _________   _____   _____   _____
  |  _   _  | |  _  | |_   _| |  _  |
  | | | | | | | | | |   | |   | | | |
@@ -285,7 +286,7 @@ Expected:
  > Use the keyword "BYE" to exit
  ____________________________________________________________
  Enter Command: 
-````
+```
 
 ##### Test case 1.1: When wrong login information is provided
 
@@ -324,7 +325,8 @@ Enter password: `1234`
 
 Expected:
 
-```` Hello! I'm MojoHR
+```
+Hello! I'm MojoHR
   _________   _____   _____   _____
  |  _   _  | |  _  | |_   _| |  _  |
  | | | | | | | | | |   | |   | | | |
@@ -345,7 +347,7 @@ Expected:
  > Use the keyword "BYE" to exit
  ____________________________________________________________
  Enter Command: 
-````
+```
 
 ##### Test case 2.1: Incorrect Registration Format provided by a User
 
@@ -361,13 +363,13 @@ Enter password: `1234`
 
 Expected
 
-````
+```
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Error Message: 
 Please enter a valid email address! 
 Email address must have "@" and cannot have empty string in front or behind
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-````
+```
 
 #### 3. Exit Application
 

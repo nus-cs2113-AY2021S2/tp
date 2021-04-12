@@ -165,24 +165,25 @@ Format: `list TYPE`
 
 Example of usage
 
-```____________________________________________________________
-Enter Command:
-list draft
+```
 ____________________________________________________________
-1. [Draft][UNREAD]
-|| Subject: This is subject 3
-|| From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T08:30:00
+Enter Command:
+list inbox
+____________________________________________________________
+1. [Inbox][UNREAD]
+|| Subject: S1
+|| From: testC@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
 || Tags: []
-2. [Draft][UNREAD]
-|| Subject: LilySubject
-|| From: 12312@gmail.com --> To: [lily@gmail.com]
-|| Time: 2021-03-30T20:15:06
+2. [Inbox][UNREAD]
+|| Subject: S2
+|| From: testA@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
 || Tags: []
-3. [Draft][UNREAD]
-|| Subject: testing
-|| From: 12312@gmail.com --> To: [lolita@gmail.com, lolota@gmail.com]
-|| Time: 2021-03-30T22:48:58
+3. [Inbox][UNREAD]
+|| Subject: S1
+|| From: testC@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
 || Tags: []
 ____________________________________________________________
 ```

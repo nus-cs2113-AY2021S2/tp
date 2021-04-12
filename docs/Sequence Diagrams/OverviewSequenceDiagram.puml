@@ -6,6 +6,7 @@ participant ":Ui" as Ui
 participant ":Command" as Command
 participant ":Email" as Email
 participant ":Storage" as Storage
+hide footbox
 
 user -> Ui: "help"
 activate Ui

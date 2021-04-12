@@ -2,10 +2,10 @@
 'https://plantuml.com/sequence-diagram
 
 participant ":DeleteCommand" as DeleteCommand
-participant ":Parser" as Parser
+participant "<<class>>\n:Parser" as Parser
 participant ":EmailManager" as EmailManager
 participant ":Storage" as Storage
-
+hide footbox
 
 [-> DeleteCommand: execute()
 activate DeleteCommand

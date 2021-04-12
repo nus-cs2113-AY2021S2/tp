@@ -2,23 +2,22 @@
 participant " :Actor"
 
 hide footbox
-title Footer removed
 
-" :Actor" -> ": ListCommand" : execute( )
-activate ": ListCommand"
+" :Actor" -> ":ListCommand" : execute( )
+activate ":ListCommand"
 
 
-": ListCommand" -> ": Parser" : getTypeToList( )
-activate ": Parser"
+":ListCommand" -> "<<class>>\n:Parser" : getTypeToList( )
+activate "<<class>>\n:Parser"
 
-": Parser" --> ": ListCommand"
-deactivate ": Parser"
+"<<class>>\n:Parser" --> ":ListCommand"
+deactivate "<<class>>\n:Parser"
 
-": ListCommand" -> ": EmailManager" : printEmailByType( )
-activate ": EmailManager"
+":ListCommand" -> ":EmailManager" : printEmailByType( )
+activate ":EmailManager"
 
-": EmailManager" --> ": ListCommand"
-deactivate ": EmailManager"
+":EmailManager" --> ":ListCommand"
+deactivate ":EmailManager"
 
 
 
