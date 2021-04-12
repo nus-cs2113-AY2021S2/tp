@@ -1,4 +1,4 @@
-//@@author {jhjhjajh}
+//@@author jhjhjajh
 
 package seedu.connoisseur.commands;
 

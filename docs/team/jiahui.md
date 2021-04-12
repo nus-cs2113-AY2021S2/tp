@@ -31,7 +31,7 @@ project: [RepoSense Link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?se
 * Implemented case-insensitive commands (view, add and edit) for better user experience.
 * Implemented tests in commands.
 
-#### Contributions to documentation
+##### Contributions to documentation
 
 * User Guide
     * Helped to ensure that links in the documentation is working.
@@ -46,7 +46,7 @@ project: [RepoSense Link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?se
     * Added Appendix (e.g. product scope, user stories, non-functional requirements, other guides, instructions for
       manual testing, glossary, etc)
 
-#### Contributions to team-based tasks :
+##### Contributions to team-based tasks :
 
 * Reviewed teammates PRs, approved and merged PRs: [PR67](https://github.com/AY2021S2-CS2113T-F08-3/tp/pull/67)
   , [PR70](https://github.com/AY2021S2-CS2113T-F08-3/tp/pull/70)
@@ -55,10 +55,12 @@ project: [RepoSense Link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?se
   [PR83](https://github.com/AY2021S2-CS2113T-F08-3/tp/pull/83)
   , [PR148](https://github.com/AY2021S2-CS2113T-F08-3/tp/pull/148)
 * Helped to fix other bugs that were found.
-    * Fixed bugs in parser.
+    * Fixed some bugs in parser.
+    * Implemented a limit to number of characters input.
+    * Implemented invalid command when user inputs extra or less parameters than required.
 * Helped to re-organise code in commands, from Commands to RecommendationList and ReviewList.
 
-### Contributions beyond the project team:
+#### Contributions beyond the project team:
 
 * Reported bugs in program for other teams, which can be found [here](https://github.com/jhjhajh/ped/tree/main/files).
 * Gave feedback to documentations of other teams.
