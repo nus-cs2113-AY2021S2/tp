@@ -27,7 +27,7 @@ loop For each record in RecordList
     opt currentRecord is a Loan
         CreditScoreCommand -> Loan : getBorrowerName()
         activate Loan
-        Loan --> CreditScoreCommand : :String
+        Loan --> CreditScoreCommand : :Set<String>
         deactivate Loan
         CreditScoreCommand -> Loan : isReturn()
         activate Loan
