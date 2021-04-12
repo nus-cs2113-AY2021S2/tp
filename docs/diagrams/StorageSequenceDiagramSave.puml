@@ -15,34 +15,34 @@ end note
 
 XYZCommand -> Storage : saveData(:RecordList, :CreditScoreReturnedLoansMap)
 activate Storage
-Storage -> Storage : writeRecordListToSaveFile(recordList)
+Storage -> Storage : writeRecordListToSaveFile(:RecordList)
 activate Storage
 Loop all records
 Storage -> RecordList : getRecordAt()
 activate RecordList
 RecordList --> Storage : currentRecord : Record
+deactivate RecordList
 Storage -> RecordList : convertFileFormat()
+activate RecordList
 RecordList --> Storage
 deactivate RecordList
 RecordList --[Hidden]> Storage
-destroy RecordList
 end loop
 
 activate Storage
 Storage --> Storage
 deactivate Storage
-Storage -> Storage : writeMapToSaveFile(creditScoreReturnedLoansMap)
+Storage -> Storage : writeMapToSaveFile(:CreditScoreReturnedLoansMap)
 
 activate Storage
-Loop Each borrowersName in creditScore
 Storage -> CSRLM : getBorrowersNames()
-activate CSRLM
-CSRLM --> Storage : borrowerName : String
+CSRLM --> Storage :  :<Set>String
+Loop Each borrower in creditScoreReturnedLoansMap
 Storage -> CSRLM : getCreditScoreOf(borrowerName:String)
+activate CSRLM
 CSRLM --> Storage : creditScore : int
 deactivate CSRLM
 CSRLM --[Hidden]> Storage
-destroy CSRLM
 end loop
 Storage --> Storage
 deactivate Storage
