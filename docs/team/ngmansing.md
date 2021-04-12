@@ -63,5 +63,5 @@ Given below are my contributions to the project.
       ```
       
 <i>Contributions beyond the project team</i>
-    * Post common question regarding IDE on the [forum](https://github.com/nus-cs2113-AY2021S2/forum/issues/14).
-    * Provide suggestions for other team's product on [GitHub](https://github.com/nus-cs2113-AY2021S2/tp/pull/20/files/6a997527bc6fcbafea346f18d41fa926169dda38).
+* Post common question regarding IDE on the [forum](https://github.com/nus-cs2113-AY2021S2/forum/issues/14).
+* Provide suggestions for other team's product on [GitHub](https://github.com/nus-cs2113-AY2021S2/tp/pull/20/files/6a997527bc6fcbafea346f18d41fa926169dda38).
