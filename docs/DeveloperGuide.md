@@ -21,18 +21,18 @@ ol ol > li:before {
 1. [Introduction](#introduction)
 1. [Setting up the project in your computer](#setting-up-the-project-in-your-computer)
 1. [Design & Implementation](#design--implementation)
-   1. [Architecture](#architecture)
-      1. [Interaction Among Architecture Components](#interaction-among-architecture-components)
-   1. [UI Component](#ui-component)
-   1. [Logic Component](#logic-component)
-   1. [Model Component](#model-component)
-   1. [Storage Component](#storage-component)
-   1. [Exception Component](#exception-component)
-   1. [Commons](#commons)
+    1. [Architecture](#architecture)
+        1. [Interaction Among Architecture Components](#interaction-among-architecture-components)
+    1. [UI Component](#ui-component)
+    1. [Logic Component](#logic-component)
+    1. [Model Component](#model-component)
+    1. [Storage Component](#storage-component)
+    1. [Exception Component](#exception-component)
+    1. [Commons](#commons)
 1. [Implementation](#implementation)
-   1. [Parsing User Input](#parsing-user-input)
-   1. [Initializing Command Class](#initializing-command-class)
-   1. [Exception Handling](#exception-handling)
+    1. [Parsing User Input](#parsing-user-input)
+    1. [Initializing Command Class](#initializing-command-class)
+    1. [Exception Handling](#exception-handling)
 1. [Appendix A: Product scope](#appendix-a-product-scope)
     1. [Target user profile](#target-user-profile)
     1. [Value proposition](#value-proposition)
@@ -40,11 +40,12 @@ ol ol > li:before {
 1. [Appendix C: Non-Functional Requirements](#appendix-c-non-functional-requirements)
 1. [Appendix D: Glossary](#appendix-d-glossary)
 1. [Appendix E: Instructions for Manual Testing](#appendix-e-instructions-for-manual-testing)
-   1. [Launch, Help and Shutdown](#launch-help-and-shutdown)
-   1. [Adding and Loading Patients](#adding-and-loading-patients)
-   1. [Adding, Viewing and Deleting a Patient's Visit Records](#adding-viewing-and-deleting-a-patients-visit-records)
-   1. [Saving Data](#saving-data)
+    1. [Launch, Help and Shutdown](#launch-help-and-shutdown)
+    1. [Adding and Loading Patients](#adding-and-loading-patients)
+    1. [Adding, Viewing and Deleting a Patient's Visit Records](#adding-viewing-and-deleting-a-patients-visit-records)
+    1. [Saving Data](#saving-data)
 1. [Appendix F: Command Summary](#appendix-f-command-summary)
+
 <!-- ^ The above table of content is auto generated -->
 
 ## Introduction
@@ -178,7 +179,8 @@ The `Storage` component is responsible for:
 1. After initialization, the `save(SortedMap<String, Patient> patientData)` method can be called to save the records to
    a file. The path of the output file is specified by the variable, `FILE_PATH`, in the `Constants` class.
 1. The reverse process is the `load()` method. This method reads the contents from the file located at `FILE_PATH`, and
-   returns a `SortedMap<String, Patient>`, which can be loaded into the `Data` constructor during program initialization.
+   returns a `SortedMap<String, Patient>`, which can be loaded into the `Data` constructor during program
+   initialization.
 
 ### Exception Component
 
@@ -250,8 +252,8 @@ At the end, we have an argument hashmap like this:
 
 ### Initializing Command Class
 
-Continuing from the command parsing above. Next step is the initialization of a command class. Since we
-have command `record`, the program finds a class called `RecordCommand` under the module `seedu.duke.command`
+Continuing from the command parsing above. Next step is the initialization of a command class. Since we have
+command `record`, the program finds a class called `RecordCommand` under the module `seedu.duke.command`
 (first character being capitalized, then concatenated with 'Command').
 
 Since this is a valid command, this class exists. If the class does not exist, it means the command is not yet
@@ -321,6 +323,21 @@ This cause is stored for debugging purposes, and it will not be printed out to t
 facilitates breakpoint debugging during development.
 
 ### Organization of the Model Component
+
+In the `Model` component, the `Data` class acts as a Facade for the `Patient` and `Record` classes. As such, if a
+command requires to make some modifications to the `Patient` or `Record` as part of its execution, it will have to do so
+via method(s) implemented in the `Data` class. However, since the `Patient` and `Record` are implemented seperately from
+the `Data` class, all their methods are still exposed as public methods. In theory, one could still bypass the `Data`
+class and directly interface `Patient` and `Record` classes.
+
+One alternative solution to prevent this is to implement `Patient` and `Record` as nested classes within the `Data`
+class, and then making all their methods private. This would allow `Data` to access their methods while preventing other
+classes from doing the same. However, since Java does not have support for seperately defining and defining classes, all
+the definitions would have to be included in the `Data` class, making the codebase much larger and harder to read.
+
+As such, we have opted to seperate these three classes individual files, and rely on the developers' to exercise their
+due discretion to not directly interface with the `Patient` and `Record` classes, but implement and utilize the
+necessary methods in the `Data` class.
 
 ## Appendix A: Product scope
 
@@ -475,8 +492,8 @@ input.
 
 ## Appendix F: Command Summary
 
-Listed below are all currently implemented commands in alphabetical order. For a more
-detailed explanation and input/output samples, please refer to the [User Guide](UserGuide.md).
+Listed below are all currently implemented commands in alphabetical order. For a more detailed explanation and
+input/output samples, please refer to the [User Guide](UserGuide.md).
 
 | Command                                                                             | Usage                                                         |
 | ----------------------------------------------------------------------------------- | ------------------------------------------------------------- |
