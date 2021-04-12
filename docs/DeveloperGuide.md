@@ -46,7 +46,7 @@ The ***Architecture Diagram*** given below explains the high-level design of the
 :information_source: The user interacts with the `Ui` class which is part of the `Utilities` component.
 
 The Main driver class for the FridgeFriend app is
-named `FridgeFriend`**.
+named `FridgeFriend`.
 It is responsible for,
 
 * At app launch: Initialising the components in the correct sequence, and connecting them up with each other.
