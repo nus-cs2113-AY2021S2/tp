@@ -80,6 +80,7 @@ Throughout the guide, you will come across various symbols, each has a different
 > 📝: The notepad will precede information that may improve the flexibility of using the app. 
 
 ---
+<div style="page-break-after: always;"></div>
 
 ### 2.2 Explanation for Command formats
 
@@ -95,7 +96,6 @@ The Commands in Finux follow these argument orders (depending on the command):
 > * `CMD`
 
 ---
-<div style="page-break-after: always;"></div>
 
 ❗ **Commands and options are case-sensitive**
 > * E.g. `exit` will work, whereas `Exit`, `EXIT` or other variations will not be recognised.
@@ -107,6 +107,7 @@ The Commands in Finux follow these argument orders (depending on the command):
     recognized as valid because the input have a missing space in between `-a` and `10`.
 
 ---
+<div style="page-break-after: always;"></div>
 
 ### 2.3 Explanation for Date and Date formats
 
@@ -124,6 +125,7 @@ Finux supports multiple date formats for ease of use such as the one listed belo
 > 📝 `today` keyword specifies today's date, replacing the need for you to type in the actual date for date inputs.
 
 ---
+<div style="page-break-after: always;"></div>
 
 ### 2.4 Explanation for Expense, Loan, and Saving record output formats
 
