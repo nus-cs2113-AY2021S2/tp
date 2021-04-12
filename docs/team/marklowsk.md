@@ -64,15 +64,3 @@ object and sequence diagrams.
 Other contributions to the DG are:
 * Starting off with the PlantUML diagrams, using it as our documentation
   standard.
-
----
-
-### Contributions to Team-based Tasks
-
-1. Vetting of UG & DG.
-1. General code enhancements.
-1. Bug hunting the team's features and components.
-1. Discussing bugs and fixes with teammates.
-1. Maintained a small portion of issues in the issue tracker.
-1. Maintaining early communication with teammates, regarding features.
-1. Demo video
