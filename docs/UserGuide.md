@@ -265,6 +265,7 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 </details>
 
 
+
 **2. Filter by rating: `2`**  
 Filter movie by the rating .
 
@@ -279,7 +280,7 @@ Please indicate your choice:
 ===== Filter by Rating =====
 Select the cut-off rating (0-5):
 ```
-<details>
+</details>
 
 <details>
   <summary> <strong>Example:</strong> </summary>
@@ -413,6 +414,7 @@ Movie List:
 To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 ```
 
+</details>
 
 **5. Filter by title: `5`**  
 Filter movie by title keyword.
@@ -428,6 +430,7 @@ Please indicate your choice:
 ===== Filter by Title ======
 Search: 
 ```
+</details>
 
 <details>
   <summary> <strong>Example:</strong> </summary>
