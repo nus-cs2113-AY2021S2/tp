@@ -14,7 +14,7 @@ return invalid input
 
 create parser
 nusMaze -> parser
-nusMaze -> parser ++ : prepareForCommandExecution("invald input")
+nusMaze -> parser ++ : prepareForCommandExecution("invalid input")
 return InvalidInputException
 
 nusMaze --> ui
