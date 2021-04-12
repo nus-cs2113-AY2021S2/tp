@@ -123,7 +123,8 @@ public class Database {
 
     /**
      * Import user database from text file.
-     * @return  an array list of user objects.
+     *
+     * @return an array list of user objects.
      */
     private static ArrayList<User> importUserDatabaseUsingSerialization() throws Exception {
         File f_movie = new File("data/userSerialList.txt");
@@ -137,7 +138,8 @@ public class Database {
 
     /**
      * Import movie database from text file.
-     * @return  an array list of movie objects.
+     *
+     * @return an array list of movie objects.
      */
     private static ArrayList<Movie> importMovieDatabase() throws Exception {
         File f_movie = new File("data/movieList.txt");
@@ -152,7 +154,8 @@ public class Database {
 
     /**
      * Import cineplex database from text file.
-     * @return  an array list of cineplex objects.
+     *
+     * @return an array list of cineplex objects.
      */
     private static ArrayList<Cineplex> importCineplexDatabase() throws Exception {
         File f_cineplex = new File("data/cineplexList.txt");
@@ -166,7 +169,8 @@ public class Database {
 
     /**
      * Import showtime database from text file.
-     * @return  an array list of showtime objects.
+     *
+     * @return an array list of showtime objects.
      */
     private static ArrayList<Showtimes> importShowtimesDatabase() throws Exception {
         File f_showtime = new File("data/showtimeList.txt");
@@ -180,7 +184,8 @@ public class Database {
 
     /**
      * Update the showing status of the movie list.
-     * @param MList  the list of movies to update.
+     *
+     * @param MList the list of movies to update.
      */
     private static ArrayList<Movie> updateMovieStatus(ArrayList<Movie> MList) {
         Date currentDate = new Date();
@@ -204,6 +209,7 @@ public class Database {
 
     /**
      * Delete a movie from the movie list.
+     *
      * @param choice the index of movie to delete.
      */
     public static void deleteMovie(int choice) throws Exception {
@@ -223,8 +229,9 @@ public class Database {
 
     /**
      * Edit a movie in the movie list.
+     *
      * @param choice the index of movie to edit.
-     * @param type the movie attribute to edit.
+     * @param type   the movie attribute to edit.
      */
     public static void editMovie(int choice, int type) throws Exception {
         Movie selectedMovie = MovieDatabase.get(choice - 1);
@@ -321,7 +328,8 @@ public class Database {
 
     /**
      * Get an integaer input from the user.
-     * @param prompt the prompt to display to user.
+     *
+     * @param prompt   the prompt to display to user.
      * @param maxValue the max value range the user can choose from.
      */
     public static int getIntegerInput(String prompt, int maxValue) {
@@ -348,8 +356,9 @@ public class Database {
 
     /**
      * Check if the user input comply to a valid date format.
+     *
      * @param input input from the user.
-     * @return  a boolean value, which indicates whether the input date format is valid.
+     * @return a boolean value, which indicates whether the input date format is valid.
      */
     private static boolean isValidDate(String input) {
         try {
@@ -369,7 +378,8 @@ public class Database {
 
     /**
      * Read in user's date input string and convert it to int.
-     * @return  an int value of date.
+     *
+     * @return an int value of date.
      */
     public static int[] getDateTime() throws Exception {
         System.out.println("Input the date using the format dd-mm-yyyy");
@@ -495,8 +505,9 @@ public class Database {
 
     /**
      * Store the object to file.
+     *
      * @param fileName file to store the object.
-     * @param object object to be stored in file.
+     * @param object   object to be stored in file.
      */
     private static void writeToFile(String fileName, Object object) {
         try {

@@ -13,8 +13,9 @@ public class CustomerMainMenu implements MainMenu {
 
     /**
      * Display the main landing page a Customer will encounter when using the app
+     *
      * @param currentUserIndex the position in ArrayList of User objects, that corresponds to the current Customer
-     * @param user the ArrayList of all User objects.
+     * @param user             the ArrayList of all User objects.
      */
     public static int displayMenu(int currentUserIndex, ArrayList<User> user) {
         System.out.println("\nWelcome, " + user.get(currentUserIndex).getName());
@@ -24,8 +25,9 @@ public class CustomerMainMenu implements MainMenu {
 
     /**
      * Execute the option selected by the customer.
+     *
      * @param option the option number selected by the user.
-     * @param user the user who selects the option.
+     * @param user   the user who selects the option.
      */
     public static void doOption(int option, User user) {
         boolean goBack = false;
@@ -62,6 +64,7 @@ public class CustomerMainMenu implements MainMenu {
 
     /**
      * Prompt the user to input an option.
+     *
      * @param user the user who selects the option.
      */
     public static void getOption(User user) {
