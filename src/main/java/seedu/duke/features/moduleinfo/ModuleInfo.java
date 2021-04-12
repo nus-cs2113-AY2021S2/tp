@@ -149,6 +149,10 @@ public class ModuleInfo {
         }
     }
 
+
+    /**
+     * Adds new (unique) module to modules ArrayList.
+     */
     public static void addNewModule() {
         while (true) {
             System.out.println("Enter name of the new module:");
@@ -178,6 +182,12 @@ public class ModuleInfo {
 
     }
 
+    /**
+     * Checks if new module to be added has already been added (if same name).
+     * @param moduleName name of module to be checked
+     * @return true if module exists, false if module doesn't exist in modules ArrayList
+     */
+
     private static boolean checkIfModuleExists(String moduleName) {
         for (Module module : modules) {
             if (module.getName().trim().equalsIgnoreCase(moduleName)) {
@@ -188,6 +198,11 @@ public class ModuleInfo {
         return false;
     }
 
+    /**
+     * Checks if user allows module name to be non-alphanumeric.
+     * @param moduleName name of module to be checked
+     * @return true if user allows non-alphanumeric characters
+     */
     private static boolean isAlphaNumeric(String moduleName) {
         if (!moduleNameIsAlphaNumeric(moduleName)) {
             int yesOrNo = 2;
@@ -209,7 +224,11 @@ public class ModuleInfo {
     public static boolean moduleNameIsAlphaNumeric(String s) {
         return s != null && s.matches("^[a-zA-Z0-9]*$");
     }
-    
+
+    /**
+     * to print the chosen module's important details (name, description, review, grade, MCs, Tasks).
+     */
+
     public static void viewAModule() {
         boolean listIsNotEmpty = viewAllModules();
         while (true) {
@@ -275,7 +294,11 @@ public class ModuleInfo {
         }
     }
 
-
+    /**
+     * Reads Yes (Y) or No (N).
+     * @param command the user input to be parsed
+     * @return 0 if N, 1 if Y, 2 if anything else that is invalid
+     */
     public static int readYN(String command) {
         if (command.trim().equalsIgnoreCase("N")) {
             return 0;
@@ -286,6 +309,10 @@ public class ModuleInfo {
         return 1;
     }
 
+    /**
+     * prints out all the modules' names in modules ArrayList.
+     * @return true if modules list is not empty
+     */
     public static boolean viewAllModules() {
         if (modules.isEmpty()) {
             System.out.println("You have not added any modules.");
@@ -300,6 +327,9 @@ public class ModuleInfo {
         return true;
     }
 
+    /**
+     * adds new review to a module.
+     */
     public static void addReview() {
         if (modules.isEmpty()) {
             System.out.println("You have not added any modules.");
@@ -322,6 +352,11 @@ public class ModuleInfo {
         }
     }
 
+    /**
+     * if module review exists, print warning and ask user to input Y or N to overwrite review.
+     * @param module module selected to review
+     * @return String containing full review
+     */
     public static String printAlreadyAddedReviewMessage(Module module) {
         if (!module.getReview().equals(EMPTY_REVIEW_MESSAGE)) {
             System.out.println("You already have added a review:");
@@ -346,6 +381,10 @@ public class ModuleInfo {
         return readReview();
     }
 
+    /**
+     * Read user input and check each line for '/end' and ' ~~ ' characters.
+     * @return full review String
+     */
     public static String readReview() {
         StringBuilder review = new StringBuilder();
         while (true) {
@@ -369,6 +408,11 @@ public class ModuleInfo {
         }
     }
 
+    /**
+     * if user inputs ' ~~ ' which is restricted (for Storage only), replace it with ' -- '.
+     * @param input review String
+     * @return return edited/original review String
+     */
     public static String checkAndRemoveDelimiter(String input) {
         String output = input;
         if (input.contains(" ~~ ")) {
@@ -386,6 +430,9 @@ public class ModuleInfo {
         System.out.println(review);
     }
 
+    /**
+     * Prints all reviews for all modules.
+     */
     public static void viewAllReviews() {
         if (modules.isEmpty()) {
             System.out.println("You have not added any modules.");
@@ -398,6 +445,9 @@ public class ModuleInfo {
         }
     }
 
+    /**
+     * Deletes a module from modules ArrayList.
+     */
     public static void deleteModule() {
         if (modules.isEmpty()) {
             System.out.println("You have not added any modules.");
@@ -520,7 +570,9 @@ public class ModuleInfo {
 
     }
 
-
+    /**
+     * Deletes review for certain modules.
+     */
     public static void deleteReview() {
         if (modules.isEmpty()) {
             System.out.println("You have not added any modules.");
