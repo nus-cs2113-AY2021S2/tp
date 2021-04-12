@@ -9,6 +9,11 @@ import java.util.Arrays;
 
 public class UserList {
 
+    /**
+     * If userSerialList.txt is missing, this is the default data that is used to populate the file that will
+     * be created in its place
+     * @return an ArrayList of User objects, containing default User accounts.
+     */
     public static ArrayList<User> getDefaultUsers(){
 
         return new ArrayList<User>(Arrays.asList(
