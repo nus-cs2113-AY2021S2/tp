@@ -63,8 +63,7 @@ statements.
 *Justification:* This feature aims to make the code more OOP by serving as a platform that interacts with an user, 
 identifies his commands and passes responsibility to other relevant parts of the program
 
-
-
+---
 ### Contributions to documentation
 
 #### User Guide
@@ -79,21 +78,20 @@ Other joint contributions to our google doc (outdated version):
 * command summary
 
 ___
-
 ### Contributions to DG
 
 * Under Implementation, I wrote the section titled 'add schedule to employee feature', which includes:
   * A brief overview of the Employee Class, along with a simple class diagram titled 'employee class diagram v2'
   * A detail explanation of our addSchedule feature, along with a detail sequence diagram
   titled 'add schedule sequence diagram v2'
+    
 ___
-
 ### Contributions to team-based tasks
 
 * Contributed to bug finding and fixing
-* Creating and releasing of all jar files
-  * Resolved the frequently appearing bug on "no main manifest attribute" when launching
-  the jar file with the help of external resources
+* Creating and releasing of all jar files (Resolved the frequently appearing 
+  bug on "no main manifest attribute" when launching
+  the jar file with the help of external resources)
 * Setting up github team and repo
 * Clarifying tp doubts on behalf of the group
 
