@@ -142,7 +142,7 @@ public class ModuleInfo {
                         + modules.get(moduleNumberInt).getName() + " to: " + moduleCredits);
                 modules.get(moduleNumberInt).setMc(moduleCredits);
             } else {
-                Ui.printInvalidModularCreditMessage();
+                System.out.println("Invalid modular credit!");
             }
         } else {
             Ui.printInvalidInputMessage();
