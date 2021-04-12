@@ -129,9 +129,12 @@ The table below explains some technical terms that you may come across throughou
 | Command word| The Command word refers to the keywords which NUSMaze recognises to invoke specific commands. These command words will be indicated by `COMMAND WORD` in the various sections below.|
 |Parameter|Parameter refers to the user input required after the user is prompted by NUSMaze|
 
+<div style="page-break-after: always;"></div>
+
 #### 3.2.2. General Symbols and Syntax
 
 The table below explains the general syntax used throughout the user guide.
+
 
 | Syntax |  What it means |
 |:----------:|-------------|
