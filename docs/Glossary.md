@@ -1,3 +1,5 @@
+#Glossary
+
 **Class**: A  class  describes  a set  of  objects  that  share  the  same  specifications  of  features,
 constraints, and semantics. Class is a kind of classifier whose features are attributes and operations.
 
