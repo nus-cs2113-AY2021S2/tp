@@ -58,8 +58,6 @@
     - [Personalized Account Login](#562-personalized-account-login)
     - [Inventory Alerts](#563-inventory-alerts)
 
----
-
 [Appendix A: Product Scope](#appendix-a-product-scope)
 
 [Appendix B: User Stories](#appendix-b-user-stories)
@@ -69,6 +67,8 @@
 [Appendix D: Glossary](#appendix-d-glossary)
 
 [Appendix E: Instructions for Manual Testing](#appendix-e-instructions-for-manual-testing)
+
+---
 
 ## 1. Introduction
 ### 1.1 What is HealthVault?
