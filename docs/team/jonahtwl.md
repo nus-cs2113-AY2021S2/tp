@@ -4,12 +4,8 @@
 
 ## Overview
 Finux is a Command-Line Interface (CLI) application that allows you to record your expenses, savings and loans all 
-in one consolidated platform. Finux's design was inspired mostly by the *Nix operating systems and it favours those
+in one consolidated platform. Finux's design was inspired by the *Nix operating systems, and it favours those
 who type fast or prefers typing to clicking.
-
-Our value proposition is an All-In-One application that can manage and track your personal finances with a unique
-credit score feature that is native to just Finux. And the fact that all records can and will be saved automatically in
-a local file for easy transfer to another device.
 
 ---
 
@@ -32,8 +28,6 @@ Contributions can be found on [RepoSense](https://nus-cs2113-ay2021s2.github.io/
 #### UI & Finux classes
 * Created the skeleton for both UI and Finux classes
 * Refactoring done on both classes to better fit team project.
-* 
-<div style="page-break-after: always;"></div>
 
 #### Record types and Commands
 * Created base Command class with Mark
