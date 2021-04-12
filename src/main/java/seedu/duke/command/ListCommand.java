@@ -65,9 +65,10 @@ public class ListCommand extends Command {
     /**
      * Executes the list function.
      *
-     * @param recordList is the recordList.
+     * @param recordList is the RecordList component of Finux.
      * @param ui      is the Ui object that interacts with the user.
      * @param storage is the Storage object that reads and writes to the save file.
+     * @param creditScoreReturnedLoansMap is the CreditScoreReturnedLoansMap component of Finux.
      */
     @Override
     public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreReturnedLoansMap
