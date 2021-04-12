@@ -364,6 +364,7 @@ creation:
 5) Message <br> Example: `Good job!`  
 
 Given below is the sequence diagram for the feature:  
+
 ![Diagram](diagrams/tasks/addNewTask2.png)  
 *Figure 9*
 
