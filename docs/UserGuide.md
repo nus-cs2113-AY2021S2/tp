@@ -83,7 +83,7 @@ This user guide will cover the following:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Delimiter** - A character that separates different sections of a text or input.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Illegal Characters** - A character that is neither an alphabet nor number.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Illegal Characters** - A character that is neither an alphabet nor a number.
 
 ### 2.2 Symbols & Icons
 
@@ -116,7 +116,7 @@ After keying in their input, the most common way to enter the response into the 
 
 ### <a name="section2"> 3.2 Installation Guide
 
-1. Ensure system has Java 11.
+1. Ensure the system has Java 11 installed.
 
 2. Download the latest JAR file from this [website](https://github.com/AY2021S2-CS2113T-F08-2/tp/releases).
 
@@ -193,7 +193,7 @@ This is an example of the welcome screen for Staff Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `add/[Staff ID]/[Name]/[Age]/[Specialisation]`
 
 >:information_source: Important notes about the input format
->1. Make sure that the inputted user ID starts with a D (for doctor ID) or N (for nurse ID)  and has **exactly** 5 digits in the number following!
+>1. Make sure that the inputted user ID starts with an upper case D (for doctor ID) or upper case N (for nurse ID) and has **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `D54321`
 >
@@ -204,7 +204,7 @@ This is an example of the welcome screen for Staff Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:<br/>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adding a Pediatrician Doctor MingShun with Staff ID of D12345 of age 30.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adding a Pediatrician, Doctor MingShun with Staff ID of D12345 of age 30.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` Staff --> add/D12345/MingShun/30/Pediatrician```
 
@@ -223,7 +223,7 @@ This is an example of the welcome screen for Staff Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `delete/[Staff ID]`
 
 >:information_source: Important notes about the input format
->1. Make sure that the inputted user ID starts with a D (for doctor ID) or N (for nurse ID)  and has **exactly** 5 digits in the number following!
+>1. Make sure that the inputted user ID starts with an upper case D (for doctor ID) or upper case N (for nurse ID) and has **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `D54321`
 >
@@ -375,7 +375,7 @@ When you first enter the Patient menu, you will be greeted with the following we
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted user ID starts with an upper-case P and has **exactly** 5 digits in the number following!
+>1. Make sure that the inputted user ID starts with an upper case P and has **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `P12345`, `P54321`
 >
@@ -481,7 +481,7 @@ This is an example of the welcome screen for Doctors' Appointment Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]`
 
 >:information_source: Important notes about the input format
->1. Make sure that the inputted doctor/appointment ID starts with an upper-case D/A and have **exactly** 5 digits in the number following!
+>1. Make sure that the inputted doctor/appointment ID starts with an upper case D/A and has **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `D12345`, `A54321`
 >
@@ -510,7 +510,7 @@ This is an example of the welcome screen for Doctors' Appointment Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `delete/[DoctorID/ Appointment ID]`
 
 >:information_source: Important notes about the input format
->1. Make sure that the inputted doctor/appointment ID starts with a D/A and have **exactly** 5 digits in the number following!
+>1. Make sure that the inputted doctor/appointment ID starts with an upper case D/A and has **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `D12345`, `A54321`
 >
@@ -546,7 +546,7 @@ This is an example of the welcome screen for Doctors' Appointment Menu.
 
 >:information_source: Important notes about the input format
 >1. Make sure the input `all` is lower caps.
->2. Make sure that the inputted doctor/appointment ID starts with a D/A and have **exactly** 5 digits in the number following!
+>2. Make sure that the inputted doctor/appointment ID starts with an upper case D/A and has **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `D12345`, `A54321`
 >
@@ -616,7 +616,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 >:information_source: Important notes about the input format
 >1. Make sure Nurse ID exists in Staff and Patient ID exists in Patients before adding.
->2. Make sure that the inputted user ID starts with an upper-case N for Nurse, upper-case P for Patient and have **exactly** 5 digits in the number following!
+>2. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and has **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `P54321`
 >
@@ -645,7 +645,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted Nurse ID starts with an upper-case N for Nurse, and have **exactly** 5 digits in the number following!
+>1. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and has **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `P54321`
 >
@@ -672,7 +672,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted Nurse ID starts with an upper-case N for Nurse, and have **exactly** 5 digits in the number following!
+>1. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and has **exactly** 5 digits in the number following!
 >
 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `P54321`
 
@@ -740,11 +740,15 @@ This is an example of the welcome screen for the Inventory Menu.
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `3`, `3.0`, `3.00`
 >
->2. Any input fields in HealthVault only accepts space and alphanumeric characters!
+>2. A valid price is any positive double including 0.00, starting from 0.00 and inlcuding 1000000.00
 >
->3. Note that the examples for adding a new item and increasing the quantity of an existing item are related!
+>3. A valid quantity is any positive interger including 0, starting from 0 and inlcuding 1000000
 >
->4. Avoid using uppercase letters!
+>4. Any input fields in HealthVault only accepts space and alphanumeric characters!
+>
+>5. Note that the examples for adding a new item and increasing the quantity of an existing item are related!
+>
+>6. Avoid using upper case letters!
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1. Example of usage(add a new item)**:
 
@@ -756,11 +760,11 @@ This is an example of the welcome screen for the Inventory Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **List example**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```ItemName        | Price      | Quantity```
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```------------------------------------------------------------```
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```paracetamol     | 3.00       | 90   ```
+```
+ItemName        | Price      | Quantity
+------------------------------------------------------------
+paracetamol     | 3.00       | 90
+```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1. Example of usage(increases quantity of existing item)**:
 
@@ -772,11 +776,11 @@ This is an example of the welcome screen for the Inventory Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **List example**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```ItemName        | Price      | Quantity```
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```------------------------------------------------------------```
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```paracetamol     | 3.00       | 140   ```
+```
+ItemName        | Price      | Quantity
+------------------------------------------------------------
+paracetamol     | 3.00       | 140
+```
 
 <br/><br/>
 
@@ -787,6 +791,8 @@ This is an example of the welcome screen for the Inventory Menu.
 >1. Note that the example from add(increasing quantity of existing item) feature is used for this feature's example!
 >
 >2. Avoid using uppercase letters
+>
+>3. The clauses for a valid quantity follow that from the add command.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**:
 
@@ -802,11 +808,11 @@ This is an example of the welcome screen for the Inventory Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **List example**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```ItemName        | Price      | Quantity```
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```------------------------------------------------------------```
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```paracetamol     | 3.00       | 120   ```
+```
+ItemName        | Price      | Quantity
+------------------------------------------------------------
+paracetamol     | 3.00       | 120   
+```
 
 <br/><br/>
 
@@ -823,7 +829,7 @@ This is an example of the welcome screen for the Inventory Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/InventoryList.PNG" width = "600">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/InventoryListFinal.PNG" width = "600">
 
 <br/><br/>
 
@@ -877,17 +883,18 @@ This is an example of the welcome screen for the Inventory Menu.
 | schedules           | `schedules`                                                                                                |
 | inventory           | `inventory`                                                                                                |
 | help                | `help`                                                                                                     |
+| exit                | `exit`                                                                                                     |
 | **Staff**           |                                                                                                            |
-| add                 | `add/[Staff ID]/[Name]/[Age]/[Specialisation]`<br/><br/>`add/D12345/A12345/Alex/M 21012021`                |
+| add                 | `add/[Staff ID]/[Name]/[Age]/[Specialisation]`<br/><br/>`add/D12345/Alex/30/Pediatrician`                  |
 | delete              | `delete/[Staff ID]`<br/><br/>`delete/D12345`                                                               |
-| find		      | `find/[keyword]`<br/><br/>`find/D12345` 								   |
+| find		          | `find/[keyword]`<br/><br/>`find/D12345` 								                                   |
 | list                | `list`                                                                                                     |
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |
 | **Patient**         |                                                                                                            |
-| add                 | `add/[Patient ID]/[Name] [Age]/[Gender]/[Illness]/[Items needed]`<br/><br/>`add/P55555/Sam/40/Male Fever/Paracetamol`   |
-| delete              | `delete/[Patient ID]`<br/><br/>`delete/P55555`                                                                          |
-| find                | `find/[keyword]`<br/><br/>`find/P55555`                                                                              |
+| add                 | `add/[Patient ID]/[Name]/[Age]/[Gender]/[Illness]/[Items needed]`<br/><br/>`add/P55555/Sam/40/Male/Fever/Paracetamol`   |
+| delete              | `delete/[Patient ID]`<br/><br/>`delete/P55555`                                                             |
+| find                | `find/[keyword]`<br/><br/>`find/P55555`                                                                    |
 | list                | `list`                                                                                                     |
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |
@@ -900,7 +907,7 @@ This is an example of the welcome screen for the Inventory Menu.
 | **Nurse Schedules** |                                                                                                            |
 | add                 | `add/[Nurse ID]/[Patient ID]/[DDMMYYYY]`<br/><br/>`add/N12345/P56789/30012020`                             |
 | delete              | `delete/[Nurse ID]/[DDMMYYYY]`<br/><br/>`delete/N12345/30012020`                                           |
-| list                | `list/[Nurse ID/all]`<br/><br/>`list/N12345/list/all`                                                      |
+| list                | `list/[Nurse ID/all]`<br/><br/>`list/N12345`<br/><br/>`list/all`                                                      |
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |
 | **Inventory** |                                                                                                            |
