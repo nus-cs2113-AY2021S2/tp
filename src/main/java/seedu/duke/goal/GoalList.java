@@ -53,7 +53,6 @@ public class GoalList {
                 lengthOfIndex = ("" + i).length();
                 switch (lengthOfIndex) {
                 case 1:
-                    System.out.println("a");
                     separatorBetweenIndexAndContent = "    ";
                     break;
                 case 2:

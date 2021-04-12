@@ -16,8 +16,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
+
+import static seedu.duke.common.Messages.MESSAGE_EXCEED_24_HOURS_A_DAY;
 
 /**
  * Represents a command of adding a new record to current record list.
@@ -68,6 +71,7 @@ public class AddCommand extends Command {
      * @return the feedback message of execution.
      */
     public CommandResult execute(FitCenter fitCenter) {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate currentDate = LocalDate.now();
         int currentWeekOfYear = TimeController.getSystemWeekOfYear();
         try {
@@ -79,7 +83,7 @@ public class AddCommand extends Command {
                 feedback = Messages.MESSAGE_CANT_ADD_RECORD;
             }
         } catch (ExceedTimeInOneDayException e) {
-            feedback = e.toStinrg();
+            feedback = String.format(MESSAGE_EXCEED_24_HOURS_A_DAY, record.getDate().format(dateFormatter));
         }
         return new CommandResult(feedback);
     }
