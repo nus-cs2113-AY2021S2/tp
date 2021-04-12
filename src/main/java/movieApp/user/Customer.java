@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Customer extends User {
 
-    private final ArrayList<Booking> bookings;
+    private ArrayList<Booking> bookings;
 
     /**
      * Class constructor, extends User class.

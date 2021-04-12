@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class ViewBooking {
 
-    private static final Scanner sc = new Scanner(System.in);
+    private static Scanner sc = new Scanner(System.in);
     private ArrayList<Booking> bookings = null;
     private User user = null;
 

@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class Seat implements Serializable {
     private static final long serialVersionUID = -6172861579975166925L;
-    private final int row;
-    private final int number;
+    private int row;
+    private int number;
     private boolean status;
 
     /**

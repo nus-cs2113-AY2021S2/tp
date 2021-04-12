@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class CancelBooking {
 
-    private static final Scanner sc = new Scanner(System.in);
+    private static Scanner sc = new Scanner(System.in);
     private ArrayList<Booking> currentBookings = null;
     private User user = null;
 

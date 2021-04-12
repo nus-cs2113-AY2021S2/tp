@@ -8,14 +8,14 @@ import java.util.Calendar;
 public class Movie implements Serializable {
     private static final long serialVersionUID = -7893868657490723698L;
     private String movieTitle;
-    private final int movieID;
+    private int movieID;
     private Calendar startDate;
     private Calendar endDate;
     private String director;
     private String[] cast;
-    private final String genre;
+    private String genre;
     private String synopsis;
-    private final ArrayList<Review> reviews;
+    private ArrayList<Review> reviews;
     private movieStatus showingStatus;
 
     /**

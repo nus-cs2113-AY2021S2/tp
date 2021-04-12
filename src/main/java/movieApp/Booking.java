@@ -7,10 +7,10 @@ import java.util.Date;
 
 public class Booking implements Serializable {
     private static final long serialVersionUID = 7709150072267421383L;
-    private final Showtimes showtimes;
-    private final ArrayList<Seat> seats;
-    private final Status status;
-    private final Date date;
+    private Showtimes showtimes;
+    private ArrayList<Seat> seats;
+    private Status status;
+    private Date date;
 
     public Booking(Showtimes showtimes, ArrayList<Seat> seats) {
         this.showtimes = showtimes;
