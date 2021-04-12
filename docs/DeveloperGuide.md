@@ -238,17 +238,17 @@ A general explanation of how this feature works:: <br>
 
 ### 4.2 Review Mode
 When User inputs a command, `Commands` class checks for the value of the attribute
-`boolean isReviewMode` before executing the command. As explained in [section 5.1](#51-mode-switch-feature), when in review mode, `boolean isReviewMode` is equal to _true_. 
-Hence, only commands that are recognised by the Review Mode are executed when input by user. Else, inavild command message is displayed to the user.
+`boolean isReviewMode` before executing the command. As explained in [section 4.1](#41-mode-switch-feature), when in review mode, `boolean isReviewMode` is equal to _true_. 
+Hence, only commands that are recognised by the Review Mode are executed when input by user. Else, an "inavild command" message is displayed to the user.
 
 This mode implements the following features:
 
-*`add`/`new`/`add quick`/`add full`/`new quick`/`new full` - Add a Review
-*`list [SORT_TYPE(optional parameter)]` - List Review sorted by SORT_TYPE parameter
+* `add`/`new`/`add quick`/`add full`/`new quick`/`new full` - Add a Review
+* `list [SORT_TYPE(optional parameter)]` - List Review sorted by SORT_TYPE parameter
 * `sort [SORT_TYPE(Optional parameter)]` - Displays current saved sorting method or changes saved sorting method to that specified by SORT_TYPE parameter
 * `view [TITLE_OF_REVIEW]` - View a Review
 * `edit [TITLE_OF_REVIEW]` - Edit a Review
-*`delete [TITLE_OF_REVIEW]` - Delete a Review
+* `delete [TITLE_OF_REVIEW]` - Delete a Review
   
 #### 4.2.1 Add a Review Feature
 The mechanism to add a review is facilitated by the `ReviewList` class. The user is able to add in a new review using `new` , `add` ,`new quick`,`add quick`, `new full` or `add full` commands.
@@ -260,8 +260,8 @@ The following Figure 7 is the Sequence diagram to _add a review_.
 
 A general explanation of how this feature works: <br>
 
-1. `Ui` will read in user command and calls `Paser#determineCommand()` to determine the input.
-2. `Parser` calls `Commands#add` if input entered is `new` or `add` command.
+1. `Ui` will read in user command and call `Paser#determineCommand()` to determine the input.
+2. `Parser` calls `Commands#add` if input entered is `new` or `add`.
 3. `Commands` calls `ReviewList#addQuickReview()` or `ReviewList#addFullReview()`to prompt and read respective information of the review such as `title` , `category`, `rating` and `description`(only prompted by `addFullReview()` method).<br>
   
    1. `title` - string with 20char limit, that will call `ReviewList#checkAndPrintDuplicateRecommendation` to check for duplicates in ArrayList `reviews`.<br>
@@ -290,7 +290,7 @@ A general explanation of how this feature works:
 
 1. Assuming additional parameters are not specified, `Commands` calls `ReviewList#listReviews()` to retrieve `Review` objects in the ArrayList `reviews`.
 2. If `reviews` array is empty, `ReviewList` calls `Ui#printEmptyReviewListMessage()` which prints message _"You have no reviews, type 'new' to start!"_
-3. If additional parameters specifying sort method in addition to list command is input (for e.g `list rating`) , `ReviewList` calls `Sorter#SortReviews(sortMethod)`.
+3. If additional parameters specifying sort method in addition to list command is input (e.g `list rating`) , `ReviewList` calls `Sorter#SortReviews(sortMethod)`.
 4. `ReviewList` class executes `displayReviews()` method to display a list of reviews to the user.
 
 #### 4.2.3 Sort Reviews Feature
@@ -331,7 +331,7 @@ The following Figure 11 is the Sequence diagram to _Edit a review_.<br>
 <p align="center">Figure 11. Sequence Diagram for Edit a Review Feature</p>
 
 A general explanation of how this feature works:
-1. User inputs command `edit [title]`, where parameter title is the title of review that should be specified by the user.
+1. User inputs command `edit [title]`, where the parameter title is the title of review that should be specified by the user.
 2. `Parser` calls `Commands#edit()`. 
 3. Since the command `edit [title]` is recognised in both review and recommendation mode, `private boolean isReviewMode` attribute of `Commands` class is set to true in this case.
 4. `ReviewList` class implements edits to the specified review object in ArrayList `reviews` and sets details.
@@ -353,20 +353,20 @@ A general explanation of how this feature works:
 This section provides details on the implementation of the various commands that occurs in the recommendation mode.
 This mode allows users to keep a list of recommendations that they have not tried/completed. When User inputs a command, `Commands` class checks for the value of the attribute
 `boolean isReviewMode` before executing the command. As explained in [section 5.1](#51-mode-switch-feature), when in recommendation mode, `boolean isReviewMode` is equal to _false_.
-Hence, only commands that are recognised by the Review Mode are executed when input by user. Else, inavild command message is displayed to the user.
+Hence, only commands that are recognised by the Recommendation Mode are executed when input by user. Else, inavild command message is displayed to the user.
 
 This mode implements the following features:
 
-*`add`/`new` - Add a Recommendation
-*`list` - List Recommendations
-*`edit [TITLE_OF_RECOMMENDATION]` - Edit a Recommendation
-*`delete [TITLE_OF_RECOMMENDATION]` - Delete a Recommendation
-*`done [TITLE_OF_RECOMMENDATION]` - Review a Recommendation
+* `add`/`new` - Add a Recommendation
+* `list` - List Recommendations
+* `edit [TITLE_OF_RECOMMENDATION]` - Edit a Recommendation
+* `delete [TITLE_OF_RECOMMENDATION]` - Delete a Recommendation
+* `done [TITLE_OF_RECOMMENDATION]` - Review a Recommendation
 
 #### 4.3.1 Add a Recommendation Feature
 This feature allows user to add a recommendation for any of the activities that they have not completed.
 
-<span>&#10071;</span> Title of a new recommendation cannot exist in current list of reviews. An error message would be printed out.
+<span>&#10071;</span> Title of a new recommendation cannot exist in current list of reviews. An error message would be printed out if it does.
 
 The mechanism to add a recommendation is facilitated by the `RecommendationList` class. The user is able to add in a new recommendation using `new` or `add` command.
 
@@ -375,13 +375,13 @@ The following Figure 13 is the Sequence diagram to `add a recommendation`.
 ![add reco seq](./diagrams/Add_Reco_Sequence_Diagram.png)
 <p align="center">Figure 13. Sequence Diagram for add recommendations</p>
 
-A general explanation of add recommendation works:
-1. `Ui` will read in user command, calls `Paser#determineCommand()` to determine the input.
+A general explanation of how add recommendation works:
+1. `Ui` will read in user command, calls `Parser#determineCommand()` to determine the input.
 
-2. `Paser` calls for `Commands#add` if input enter is `new` or `add` command.
+2. `Parser` calls for `Commands#add` if input enter is `new` or `add` command.
 
-3. `Commands` calls for `RecommendationList#addReccomendation` to prompt and read respective information such as  `title`, `category`, `price range`,`recommendedby` and `location`.
-   1.`title` - string with 20char limit, that will call [`RecommendationList#checkAndPrintDuplicateRecommendation`]() to check for duplicates in both ArrayLists `reviews` and `recommendations`.
+3. `Commands` calls for `RecommendationList#addRecommendation` to prompt and read respective information such as  `title`, `category`, `price range`,`recommendedby` and `location`.
+   1. `title` - string with 20char limit, that will call [`RecommendationList#checkAndPrintDuplicateRecommendation`]() to check for duplicates in both ArrayLists `reviews` and `recommendations`.
    2. `category`, `recommendedby` and `location` - string with 15char limit, that cannot be whitespace or null.
    3. `price range`- string, that will call `RecommendationList#checkPriceValidity` and restrict it to 2 decimal places.
 
@@ -608,7 +608,7 @@ Allow user to add a review or recommendation, depending on whether they are in r
 
    **Expected**: Connoisseur will prompt user to add details of recommendation.
 
-*Duplicate review or recommendation title, case-insensitive)*
+*Duplicate review or recommendation title, (case-insensitive)*
 
 1. **Test Case**: `Avengers`
 
@@ -673,12 +673,15 @@ Sets sort method as preferred sorting method for reviews.
 **Prerequisite**: Connoisseur is in `review` mode.
 
 1. **Test Case**: `sort <preferred sorting method>`
+
    **Expected**: `Success! Your preferred sorting method has been saved: <preferred sorting method in caps>`
    
 2. **Test Case**: `sort`
+
    **Expected**: Displays how to use the sort function.
    
 3. **Test Case**: `sort aaaa`
+
    **Expected**: `aaaa is not a valid sorting method, please try again.`
    
 **List stored reviews or recommendations**
