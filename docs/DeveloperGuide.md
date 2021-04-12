@@ -453,8 +453,6 @@ input.
 1. The application should be at most 100 MB in size.
 1. The application should not rely on any remote server, or database management system.
 
-<!-* NFRs taken from: https://nus-cs2113-ay2021s2.github.io/website/admin/tp-constraints.html -->
-
 ## Appendix D: Glossary
 
 * *Mainstream OS* - Windows, Linux, and OS-X platforms.
