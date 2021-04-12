@@ -89,7 +89,7 @@ Allowing to choose the mode “Admin” or “Customer” based on user’s acco
    password1
 ```
 <details>
-  <summary> <strong>Display:</strong> </summary>
+  <summary markdown="span"> <strong>Display:</strong> </summary>
 
 ```
   ___  ___           _       ___                    
@@ -126,7 +126,7 @@ Exit the app from login page
 **Format**: `out`
 
 <details>
-  <summary> <strong>Display:</strong> </summary>
+  <summary markdown="span"> <strong>Display:</strong> </summary>
 
 ```
  Thank you for your time.
@@ -152,7 +152,7 @@ View all movies and movie filters.
 
 **Format**: 1  
 <details>
-  <summary> <strong>Display:</strong> </summary>
+  <summary markdown="span"> <strong>Display:</strong> </summary>
 
 ```
 ======= Movie Filter =======   
@@ -174,7 +174,7 @@ Exit and terminate the app.
 
 **Format**: `2`  
 <details>
-  <summary> <strong>Display:</strong> </summary>
+  <summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 ```
@@ -208,7 +208,7 @@ Filter movies by genre.
 
 **Format**: 1
 <details>
-  <summary> <strong>Display:</strong> </summary>
+  <summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 ```
@@ -228,7 +228,7 @@ Please indicate your choice:
 </details>
 
 <details>
-  <summary> <strong>Example:</strong> </summary>
+  <summary markdown="span"> <strong>Example:</strong> </summary>
 
 
 ` 2 `
@@ -270,7 +270,7 @@ Filter movie by the rating .
 
 **Format**: 2  
 <details>
-  <summary> <strong>Display:</strong> </summary>
+  <summary markdown="span"> <strong>Display:</strong> </summary>
 
 ```
 Please indicate your choice:
@@ -282,7 +282,7 @@ Select the cut-off rating (0-5):
 </details>
 
 <details>
-  <summary> <strong>Example:</strong> </summary>
+  <summary markdown="span"> <strong>Example:</strong> </summary>
 
 `3`  
 
@@ -314,7 +314,7 @@ Filter by show status (Coming Soon, Pre-Order, Now Showing, End of Showing).
 
 **Format**: `3`  
 <details>
-  <summary> <strong>Display:</strong> </summary>
+  <summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 ```
@@ -332,7 +332,7 @@ Please indicate your choice:
 </details>
 
 <details>
-  <summary> <strong>Example:</strong> </summary>
+  <summary markdown="span"> <strong>Example:</strong> </summary>
 
 `3` 
 
@@ -369,7 +369,7 @@ Filter by cinema location (Coming Soon, Pre-Order, Now Showing, End of Showing).
 
 **Format**: `4`  
 <details>
-  <summary> <strong>Display:</strong> </summary>
+  <summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 ```
@@ -385,7 +385,7 @@ Please indicate your choice:
 </details>
 
 <details>
-  <summary> <strong>Example:</strong> </summary>
+  <summary markdown="span"> <strong>Example:</strong> </summary>
 
 
  `2` 
@@ -420,7 +420,7 @@ Filter movie by title keyword.
 
 **Format**: `5`  
 <details>
-  <summary> <strong>Display:</strong> </summary>
+  <summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 ```
@@ -432,7 +432,7 @@ Search:
 </details>
 
 <details>
-  <summary> <strong>Example:</strong> </summary>
+  <summary markdown="span"> <strong>Example:</strong> </summary>
 
 
  `The`
@@ -460,7 +460,7 @@ Select a movie to view information about the movie and book the code.
 
 **Format**: `6`  
 <details>
-  <summary> <strong>Display:</strong> </summary>
+  <summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 ```
@@ -489,7 +489,7 @@ Please indicate your choice:
 </details>
 
 <details>
-  <summary> <strong>Example:</strong> </summary>
+  <summary markdown="span"> <strong>Example:</strong> </summary>
 
 
  `1`  
@@ -533,7 +533,7 @@ List movies based on the filters performed.
 
 **Format:** `7`  
 <details>
-  <summary> <strong>Display:</strong> </summary>
+  <summary markdown="span"> <strong>Display:</strong> </summary>
 
 ```
 Please indicate your choice:
@@ -563,7 +563,7 @@ Clear all selected filters.
 
 **Format:** `8`  
 <details>
-  <summary> <strong>Display:</strong> </summary>
+  <summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 
@@ -595,7 +595,7 @@ Go back to access the main menu.
 
 **Format**: `10`  
 <details>
-  <summary> <strong>Display:</strong> </summary>
+  <summary markdown="span"> <strong>Display:</strong> </summary>
 
 [Customer]
 
@@ -627,7 +627,7 @@ Buy ticket of the selected movie.
 
 **Format**: `1`  
 <details>
-  <summary> <strong>Display:</strong> </summary>
+  <summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 ```
@@ -734,7 +734,7 @@ View the details of selected movie.
 
 **Format**: `2`  
 <details>
-  <summary> <strong>Display:</strong> </summary>
+  <summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 ```
@@ -765,7 +765,7 @@ Add new review for the selected movie
 
 **Format**: 3  
 <details>
-  <summary> <strong>Display:</strong> </summary>
+  <summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 ```
@@ -775,7 +775,7 @@ Rating:
 </details>
 
 <details>
-  <summary> <strong>Example:</strong> </summary>
+  <summary markdown="span"> <strong>Example:</strong> </summary>
 
 
 ```
@@ -799,7 +799,7 @@ Go back to access the main menu
 
 **Format**: `4`  
 <details>
-  <summary> <strong>Display:</strong> </summary>
+  <summary markdown="span"> <strong>Display:</strong> </summary>
 
 [Customer]
 
@@ -837,7 +837,7 @@ Add a new movie to the movie list.
 **Format**: `2` 
 
 <details>
-  <summary> <strong>Example:</strong> </summary>
+  <summary markdown="span"> <strong>Example:</strong> </summary>
 
 ```
     Hi, Mom
@@ -901,7 +901,7 @@ Delete a movie in the movie list.
 
 **Format**: `3` 
 <details>
-  <summary> <strong>Display:</strong> </summary>
+  <summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 ```
@@ -918,7 +918,7 @@ Please enter your choice:
 
 
 <details>
-  <summary> <strong>Example:</strong> </summary>
+  <summary markdown="span"> <strong>Example:</strong> </summary>
 
 
  `6`
@@ -935,7 +935,7 @@ Update the movie details of a movie in the movie list.
 
 **Format**: `4` 
 <details>
-  <summary> <strong>Display:</strong> </summary>
+  <summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 ```
@@ -950,7 +950,7 @@ Please enter your choice:
 </details>
 
 <details>
-  <summary> <strong>Example:</strong> </summary>
+  <summary markdown="span"> <strong>Example:</strong> </summary>
 
 ```
     1
@@ -983,7 +983,7 @@ Logout current admin user.
 **Format**: `5` 
 
 <details>
-  <summary> <strong>Display:</strong> </summary>
+  <summary markdown="span"> <strong>Display:</strong> </summary>
 
 ```
 Logging out..
