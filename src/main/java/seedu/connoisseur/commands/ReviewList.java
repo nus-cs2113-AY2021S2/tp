@@ -280,6 +280,7 @@ public class ReviewList {
         ui.println("|");
         ui.println("+---------------------+--------------------------------------------------------------------+");
     }
+    //@@author Krithigha24
 
     /**
      * View a selected review.
@@ -308,6 +309,8 @@ public class ReviewList {
         }
         return reviewIndex;
     }
+    //@@author
+
 
     /**
      * List reviews according to different types of input.
@@ -370,6 +373,8 @@ public class ReviewList {
         }
     }
 
+    //@@author Krithigha24
+
     /**
      * Edit a review.
      *
@@ -422,6 +427,7 @@ public class ReviewList {
             }
         }
     }
+    //@@author
 
     /**
      * Edit specific fields of the review.
@@ -556,6 +562,8 @@ public class ReviewList {
         return true;
     }
 
+    //@@author Krithigha24
+
     /**
      * Check for duplicate review titles in existing review list during editing.
      *
@@ -580,6 +588,7 @@ public class ReviewList {
         displaySingleReview(reviews.get(reviewIndex));
         return true;
     }
+    //@@author
 
     /**
      * Add converted recommendation to reviews.
