@@ -88,8 +88,7 @@ Allowing to choose the mode “Admin” or “Customer” based on user’s acco
    admin1  
    password1
 ```
-<details>
-  <summary markdown="span"> <strong>Display:</strong> </summary>
+<details><summary markdown="span"> <strong>Display:</strong> </summary>
 
 ```
   ___  ___           _       ___                    
@@ -125,8 +124,7 @@ Exit the app from login page
 
 **Format**: `out`
 
-<details>
-  <summary markdown="span"> <strong>Display:</strong> </summary>
+<details><summary markdown="span"> <strong>Display:</strong> </summary>
 
 ```
  Thank you for your time.
@@ -151,8 +149,7 @@ Please indicate your choice:
 View all movies and movie filters.
 
 **Format**: 1  
-<details>
-  <summary markdown="span"> <strong>Display:</strong> </summary>
+<details><summary markdown="span"> <strong>Display:</strong> </summary>
 
 ```
 ======= Movie Filter =======   
@@ -173,8 +170,7 @@ Please indicate your choice:
 Exit and terminate the app.
 
 **Format**: `2`  
-<details>
-  <summary markdown="span"> <strong>Display:</strong> </summary>
+<details><summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 ```
@@ -207,8 +203,7 @@ Logging out...
 Filter movies by genre.
 
 **Format**: 1
-<details>
-  <summary markdown="span"> <strong>Display:</strong> </summary>
+<details><summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 ```
@@ -227,8 +222,7 @@ Please indicate your choice:
 ```
 </details>
 
-<details>
-  <summary markdown="span"> <strong>Example:</strong> </summary>
+<details><summary markdown="span"> <strong>Example:</strong> </summary>
 
 
 ` 2 `
@@ -269,8 +263,7 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 Filter movie by the rating .
 
 **Format**: 2  
-<details>
-  <summary markdown="span"> <strong>Display:</strong> </summary>
+<details><summary markdown="span"> <strong>Display:</strong> </summary>
 
 ```
 Please indicate your choice:
@@ -281,8 +274,7 @@ Select the cut-off rating (0-5):
 
 </details>
 
-<details>
-  <summary markdown="span"> <strong>Example:</strong> </summary>
+<details><summary markdown="span"> <strong>Example:</strong> </summary>
 
 `3`  
 
@@ -313,8 +305,7 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 Filter by show status (Coming Soon, Pre-Order, Now Showing, End of Showing).
 
 **Format**: `3`  
-<details>
-  <summary markdown="span"> <strong>Display:</strong> </summary>
+<details><summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 ```
@@ -331,8 +322,7 @@ Please indicate your choice:
 
 </details>
 
-<details>
-  <summary markdown="span"> <strong>Example:</strong> </summary>
+<details><summary markdown="span"> <strong>Example:</strong> </summary>
 
 `3` 
 
@@ -368,8 +358,7 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 Filter by cinema location (Coming Soon, Pre-Order, Now Showing, End of Showing).
 
 **Format**: `4`  
-<details>
-  <summary markdown="span"> <strong>Display:</strong> </summary>
+<details><summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 ```
@@ -384,8 +373,7 @@ Please indicate your choice:
 ```
 </details>
 
-<details>
-  <summary markdown="span"> <strong>Example:</strong> </summary>
+<details><summary markdown="span"> <strong>Example:</strong> </summary>
 
 
  `2` 
@@ -419,8 +407,7 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 Filter movie by title keyword.
 
 **Format**: `5`  
-<details>
-  <summary markdown="span"> <strong>Display:</strong> </summary>
+<details><summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 ```
@@ -431,8 +418,7 @@ Search:
 ```
 </details>
 
-<details>
-  <summary markdown="span"> <strong>Example:</strong> </summary>
+<details><summary markdown="span"> <strong>Example:</strong> </summary>
 
 
  `The`
@@ -459,8 +445,7 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 Select a movie to view information about the movie and book the code.
 
 **Format**: `6`  
-<details>
-  <summary markdown="span"> <strong>Display:</strong> </summary>
+<details><summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 ```
@@ -488,8 +473,7 @@ Please indicate your choice:
 
 </details>
 
-<details>
-  <summary markdown="span"> <strong>Example:</strong> </summary>
+<details><summary markdown="span"> <strong>Example:</strong> </summary>
 
 
  `1`  
@@ -532,8 +516,7 @@ Please indicate your choice:
 List movies based on the filters performed.
 
 **Format:** `7`  
-<details>
-  <summary markdown="span"> <strong>Display:</strong> </summary>
+<details><summary markdown="span"> <strong>Display:</strong> </summary>
 
 ```
 Please indicate your choice:
@@ -562,8 +545,7 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 Clear all selected filters.
 
 **Format:** `8`  
-<details>
-  <summary markdown="span"> <strong>Display:</strong> </summary>
+<details><summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 
@@ -594,8 +576,7 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 Go back to access the main menu.
 
 **Format**: `10`  
-<details>
-  <summary markdown="span"> <strong>Display:</strong> </summary>
+<details><summary markdown="span"> <strong>Display:</strong> </summary>
 
 [Customer]
 
@@ -626,8 +607,7 @@ Please indicate your choice:
 Buy ticket of the selected movie.
 
 **Format**: `1`  
-<details>
-  <summary markdown="span"> <strong>Display:</strong> </summary>
+<details><summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 ```
@@ -733,8 +713,7 @@ Date Booked:     Mon Apr 12 19:21:27 SGT 2021
 View the details of selected movie.
 
 **Format**: `2`  
-<details>
-  <summary markdown="span"> <strong>Display:</strong> </summary>
+<details><summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 ```
@@ -764,8 +743,7 @@ Rating content: great movie concept!
 Add new review for the selected movie
 
 **Format**: 3  
-<details>
-  <summary markdown="span"> <strong>Display:</strong> </summary>
+<details><summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 ```
@@ -774,8 +752,7 @@ Rating:
 ```
 </details>
 
-<details>
-  <summary markdown="span"> <strong>Example:</strong> </summary>
+<details><summary markdown="span"> <strong>Example:</strong> </summary>
 
 
 ```
@@ -798,8 +775,7 @@ Thank you for your review!
 Go back to access the main menu
 
 **Format**: `4`  
-<details>
-  <summary markdown="span"> <strong>Display:</strong> </summary>
+<details><summary markdown="span"> <strong>Display:</strong> </summary>
 
 [Customer]
 
@@ -836,8 +812,7 @@ Add a new movie to the movie list.
 
 **Format**: `2` 
 
-<details>
-  <summary markdown="span"> <strong>Example:</strong> </summary>
+<details><summary markdown="span"> <strong>Example:</strong> </summary>
 
 ```
     Hi, Mom
@@ -900,8 +875,7 @@ The new movie "Hi, Mom" have been saved to the database.
 Delete a movie in the movie list.
 
 **Format**: `3` 
-<details>
-  <summary markdown="span"> <strong>Display:</strong> </summary>
+<details><summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 ```
@@ -917,8 +891,7 @@ Please enter your choice:
 </details>
 
 
-<details>
-  <summary markdown="span"> <strong>Example:</strong> </summary>
+<details><summary markdown="span"> <strong>Example:</strong> </summary>
 
 
  `6`
@@ -934,8 +907,7 @@ The movie has been removed from the database.
 Update the movie details of a movie in the movie list.
 
 **Format**: `4` 
-<details>
-  <summary markdown="span"> <strong>Display:</strong> </summary>
+<details><summary markdown="span"> <strong>Display:</strong> </summary>
 
 
 ```
@@ -949,8 +921,7 @@ Please enter your choice:
 ```
 </details>
 
-<details>
-  <summary markdown="span"> <strong>Example:</strong> </summary>
+<details><summary markdown="span"> <strong>Example:</strong> </summary>
 
 ```
     1
@@ -982,8 +953,7 @@ Logout current admin user.
 
 **Format**: `5` 
 
-<details>
-  <summary markdown="span"> <strong>Display:</strong> </summary>
+<details><summary markdown="span"> <strong>Display:</strong> </summary>
 
 ```
 Logging out..
