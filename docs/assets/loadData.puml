@@ -1,0 +1,36 @@
+@startuml
+
+hide circle
+
+actor       actor       as Foo1
+participant     ":FileManager"     as FM
+participant    ":Facility"    as Facility
+hide footbox
+Foo1 -> FM : FileManager()
+activate FM
+FM -> FM : load()
+activate FM #DarkSalmon
+deactivate FM
+FM -> Facility : Facility()
+activate Facility
+Facility -> Facility : setID()
+activate Facility #DarkSalmon
+deactivate Facility
+Facility -> Facility : setName()
+activate Facility #DarkSalmon
+deactivate Facility
+Facility -> Facility : setType()
+activate Facility #DarkSalmon
+deactivate Facility
+Facility -> Facility : setLocation()
+activate Facility #DarkSalmon
+deactivate Facility
+Facility --> FM
+deactivate Facility
+FM -> FM : add(Facility)
+activate FM #DarkSalmon
+deactivate FM
+Foo1 -> FM : getFacilities()
+FM --> Foo1
+deactivate FM
+@enduml

@@ -10,8 +10,27 @@ repositories {
 }
 
 dependencies {
-    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.5.0'
-    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.5.0'
+    String jUnitVersion = '5.4.0'
+    String mockitoVersion = '3.8.0'
+
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: jUnitVersion
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: jUnitVersion
+
+    /**
+     * JUnit jupiter with mockito.
+     */
+    testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: mockitoVersion
+
+    /**
+     * Mockito for mocking.
+     */
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: mockitoVersion
+
+    /**
+     * Mockito for inline.
+     */
+    testImplementation group: 'org.mockito', name: 'mockito-inline', version: mockitoVersion
+
 }
 
 test {
@@ -29,11 +48,11 @@ test {
 }
 
 application {
-    mainClassName = "seedu.duke.Duke"
+    mainClassName = "seedu.duke.Map"
 }
 
 shadowJar {
-    archiveBaseName = "duke"
+    archiveBaseName = "map"
     archiveClassifier = null
 }
 
@@ -43,4 +62,8 @@ checkstyle {
 
 run{
     standardInput = System.in
+}
+
+run {
+    enableAssertions = true
 }

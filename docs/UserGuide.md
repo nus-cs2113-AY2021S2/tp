@@ -2,41 +2,93 @@
 
 ## Introduction
 
-{Give a product intro}
+Location Buddy provides a navigation tool for fast-typing students to locate facilities on campus.
+
+It currently supports three types of facilities, namely `Canteens`, `Lecture Theaters`, and
+`Libraries`.
 
 ## Quick Start
 
-{Give steps to get started quickly}
-
-1. Ensure that you have Java 11 or above installed.
-1. Down the latest version of `Duke` from [here](http://link.to/duke).
+1. Ensure that you have Java 11 or above installed in your computer.
+2. Download the `JAR` file from the latest release of `Location Buddy` [here](https://github.com/AY2021S2-CS2113-T10-2/tp/tags).
+3. On the command line, run `java -jar LocationBuddy.jar` in the current directory. 
+   (In case JAR file name changes, change the command accordingly)
+4. Here are some example commands you can try after starting up:\
+   `listAllLocations<canteen>`\
+   `search in SCSE`\
+   `search library/1`
 
 ## Features 
 
-{Give detailed description of each feature}
+### listAllLocations
+List all locations for a specific facility.
 
-### Adding a todo: `todo`
-Adds a new item to the list of todo items.
+Format: `listAllLocations<facility_type>`
 
-Format: `todo n/TODO_NAME d/DEADLINE`
-
-* The `DEADLINE` can be in a natural language format.
-* The `TODO_NAME` cannot contain punctuation.  
+* The `facility_type` can be either `canteen`, `library` or `lecture theater`.
+* The `facility_type` are not case-sensitive, for example, canteen and Canteen mean the same thing. 
 
 Example of usage: 
 
-`todo n/Write the rest of the User Guide d/next week`
+`listAllLocations<Canteen>`\
+`listAllLocations<library>`\
+`listAllLocations<LECTURE THEATER>`
 
-`todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
+### search
+Search a facility's location by the facility type and facility id.
 
-## FAQ
+Format: `search facilityType/id`
 
-**Q**: How do I transfer my data to another computer? 
+* The `facilityType` is only either `canteen`, `library`, or `lectureTheater`
+* The `facilityType` is not case-sensitive, for example, lectureTheater and LECTURETHEATER 
+  mean the same thing.
 
-**A**: {your answer here}
+Examples of usage:
+`search lectureTheater/1`
 
-## Command Summary
+Output:
+`lectureTheater (1) is found at: NS3-05-43`
 
-{Give a 'cheat sheet' of commands here}
+### search in
+Search for all facilities found in a building. Currently, only building names 
+`NorthSpine`, `SouthSpine`, and `SCSE` are supported.
 
-* Add todo `todo n/TODO_NAME d/DEADLINE`
+Format: `search in building_name`
+
+* The `building_name` supported is only one of the following: `NorthSpine`, `SouthSpine`, `SCSE`.
+* The `building_name` is not case sensitive, for example, scse and SCSE mean the same thing.
+
+Examples of usage:
+`search in SCSE`
+
+Output:
+`Here are the facilities in "SCSE":`\
+`1 (library1) is located at  (15.5, 16.6, N1-02-02)`
+
+### findFacility
+Find the top K nearest facilities of a certain type. Distance is determined with respect to a specific facility.
+  
+Format: `findFacility<facility><facility_type><top k>`
+
+* The `facility` and `facility_type` are not case-sensitive. \
+* `facility` can be found from the output of the `search in` command, or the
+* `facility_type` is only either `canteen`, `library`, or `lectureTheater`
+* `top k` must be an integer >= 1. It also cannot exceed the number of entries of that `facility_type`.
+
+Examples of usage:
+`findFacility<library1><Canteen><2>`
+
+Output:\
+`canteen1@N4-01-01`\
+`canteen4@N5-04-02`
+
+### Exit Application
+Terminate the application gracefully. If you want to be a rebel, you can also either close the command prompt,
+or press Ctrl+D (KeyboardInterrupt) or whatever the equivalent is on Mac.
+
+Usage: `bye`
+Output: `Bye. Hope you don't have to use me again! Otherwise you need to orientate about your own school better :)`
+
+### Logging
+> ℹ️ **Note:** A `Map-0.log` file is created after running the application to log all the user's inputs and error
+> handling messages. 
