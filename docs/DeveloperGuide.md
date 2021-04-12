@@ -293,6 +293,8 @@ All Commands contain a command word constant named as `COMMAND_*` (as underlined
 e.g. `protected static final String COMMAND_XYZ = "xyz";`\
 These constants are used by the `CommandHandler` to map to each `Command`.
 
+<div style="page-break-after: always;"></div>
+
 #### 3.5.1 Add Command
 
 ![AddCommandClassDiagram](img/AddCommandClassDiagram.png)\
@@ -367,12 +369,12 @@ will check which option was given, and sets the `RecordType` enumeration, `recor
 For other cases, like in the `ViewCommand` and `ListCommand`, it supports an additional `-a` option. This option 
 sets the `recordType` to `ALL`.
 
+<div style="page-break-after: always;"></div>
+
 ##### Command validation
 If no violations are present in the arguments, then the subsequent `Command` object is returned.\
 If violations occur at any point of the input validation, the `Command` is not created and `CommandException` 
 is thrown back to the `CommandHandler`.
-
-<div style="page-break-after: always;"></div>
 
 ### 3.6 RecordList Component
 ![RecordList](img/RecordListClassDiagram.png)
