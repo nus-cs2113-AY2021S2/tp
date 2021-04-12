@@ -1,0 +1,42 @@
+@startuml
+
+
+-> ":AddTask" : execute()
+activate ":AddTask"
+ref over ":AddTask" : get module
+
+":AddTask" -> ":Ui"++ : printAddTaskDescriptionMessage()
+return
+":AddTask" -> ":AddTask"++ : getDescription()
+return description
+
+opt taskNumber != 1
+":AddTask" -> ":AddTask"++ : getDateAndTime(taskTypeNumber)
+return dateAndTime
+end
+
+":AddTask" -> ":Ui"++ : printAddMessageAfterCompletedTask()
+return
+":AddTask" -> ":AddTask"++ : getMessage()
+return message
+
+alt ADD_TASK_COMMAND
+":AddTask" -> ":AddTask"++ : addTask(module, description, message)
+return
+else ADD_ASSIGNMENT_COMMAND
+":AddTask" -> ":AddTask"++ : addAssignment(module, description, message, dateAndTime)
+return
+else ADD_MIDTERM_COMMAND
+":AddTask" -> ":AddTask"++ : addMidterm(module, description, message, dateAndTime)
+return
+else ADD_FINAL_EXAM_COMMAND
+":AddTask" -> ":AddTask"++ : addFinalExam(module, description, message, dateAndTime)
+return
+else default
+":AddTask" -> ":Ui"++ : printRepeatInputUntilValidMessage()
+return
+end
+
+return
+
+@enduml

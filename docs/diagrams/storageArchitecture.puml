@@ -1,0 +1,21 @@
+@startuml
+left to right direction
+hide circle
+skinparam classAttributeIconSize 0
+
+package storage {
+    class Storage {
+        + {static} saveAllFiles()
+        + {static} loadAllFiles()
+    }
+}
+
+package features {
+}
+
+class Duke
+hide Duke members
+Duke --> Storage
+Storage -- features
+
+@enduml

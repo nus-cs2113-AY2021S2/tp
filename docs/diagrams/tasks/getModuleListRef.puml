@@ -1,0 +1,27 @@
+@startuml
+
+group sd get module
+
+activate ":AddTask"
+alt ModuleInfo.modules.isEmpty()
+":AddTask" -> ":Ui"++ : printNoModuleMessage()
+return
+":AddTask" -> ":Ui"++ : readCommand()
+return input
+    opt input.equalsIgnoreCase("N)
+    <-- ":AddTask"
+    end
+":AddTask" -> ":AddTask"++ : getModuleForTask();
+return module
+
+else !ModuleInfo.modules.isEmpty()
+":AddTask" -> ":Ui"++ : printAddTaskModuleMessage(taskTypeNumber)
+return
+":AddTask" -> ":AddTask"++ : printAndGetModule()
+return module
+    opt module.equals("")
+    <-- ":AddTask"
+    end
+end
+end
+@enduml

@@ -1,0 +1,58 @@
+@startuml
+hide footbox
+
+":Links" -> ":ZoomLinkInfo" : addZoomLink()
+activate ":ZoomLinkInfo"
+
+opt !ModuleInfo.modules.isEmpty()
+":ZoomLinkInfo" -> ":Ui" : printChooseModule()
+activate ":Ui"
+":Ui" -> ":ZoomLinkInfo"
+deactivate ":Ui"
+":ZoomLinkInfo" -> ":AddTask" : printAndGetModule()
+activate ":AddTask"
+":AddTask" --> ":ZoomLinkInfo"
+deactivate ":AddTask"
+end
+":ZoomLinkInfo" -> ":Ui" : printEnterZoomLinkMessage()
+activate ":Ui"
+":Ui" --> ":ZoomLinkInfo"
+deactivate ":Ui"
+":ZoomLinkInfo" -> ":Ui" : readCommand()
+activate ":Ui"
+":Ui" --> ":ZoomLinkInfo"
+deactivate ":Ui"
+":ZoomLinkInfo" -> ":Ui" : printEnterRequirePassword()
+activate ":Ui"
+":Ui" -> ":Ui" : readCommand()
+activate ":Ui"
+":Ui" --> ":Ui"
+deactivate ":Ui"
+":Ui" --> ":ZoomLinkInfo"
+deactivate ":Ui"
+
+opt passwordCommand.equals('y')
+":ZoomLinkInfo" -> ":Ui" : printEnterPassword()
+activate ":Ui"
+":Ui" -> ":Ui" : readCommand()
+activate ":Ui"
+":Ui" --> ":Ui"
+deactivate ":Ui"
+":Ui" --> ":ZoomLinkInfo"
+deactivate ":Ui"
+end
+
+":ZoomLinkInfo" -> ":ZoomLinkInfo" : add()
+activate ":ZoomLinkInfo"
+":ZoomLinkInfo" --> ":ZoomLinkInfo"
+deactivate ":ZoomLinkInfo"
+":ZoomLinkInfo" -> ":ModuleInfo" : getModule(moduleCode)
+activate ":ModuleInfo"
+":ModuleInfo" --> ":ZoomLinkInfo"
+deactivate ":ModuleInfo"
+":ZoomLinkInfo" -> ":Module" : setZoomLink(link)
+activate ":Module"
+":Module" --> ":ZoomLinkInfo"
+deactivate
+return
+@enduml

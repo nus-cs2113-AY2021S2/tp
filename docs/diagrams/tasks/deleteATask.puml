@@ -1,0 +1,42 @@
+@startuml
+
+-> ":DeleteTask"
+activate ":DeleteTask"
+
+opt TaskManager.taskListIsEmpty(taskTypeNumber)
+":DeleteTask" -> ":Ui"++ : printTaskListIsEmptyMessage()
+return
+<---- ":DeleteTask"
+end
+
+":DeleteTask" -> ":Ui"++ : printSelectTaskNumberToDelete(taskTypeNumber)
+return
+
+loop
+":DeleteTask" -> ":Ui"++ : readCommandToInt()
+return taskNumber
+
+alt DELETE_TASK
+":DeleteTask" -> ":DeleteTask"++ : findAndDeleteTask(taskNumber, TASK_TYPE)
+return
+<--- ":DeleteTask"
+else DELETE_ASSIGNMENT
+":DeleteTask" -> ":DeleteTask"++ : findAndDeleteAssignment(taskNumber, ASSIGNMENT_TYPE)
+return
+<--- ":DeleteTask"
+else DELETE_MIDTERM
+":DeleteTask" -> ":DeleteTask"++ : findAndDeleteMidterm(taskNumber, MIDTERM_TYPE)
+return
+<--- ":DeleteTask"
+else DELETE_FINAL_EXAM
+":DeleteTask" -> ":DeleteTask"++ : findAndDeleteFinalExam(taskNumber, FINAL_EXAM_TYPE)
+return
+<--- ":DeleteTask"
+else default
+":DeleteTask" -> ":Ui"++ : printRepeatInputUntilValidMessage()
+return
+end
+
+end
+
+@enduml

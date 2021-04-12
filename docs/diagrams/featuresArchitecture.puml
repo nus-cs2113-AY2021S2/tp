@@ -1,0 +1,68 @@
+@startuml
+hide members
+hide circle
+
+package Features {
+
+package Task {
+    package command {
+        Class AddTask
+        Class DeleteTask
+        Class MarkOrUnmarkTask
+        Class PinTask
+    }
+    Class TaskManager
+    command -- TaskManager
+    tasktypes <-- TaskManager
+    package tasktypes {
+            Class Assignment
+            Class FinalExam
+            Class Midterm
+            Class Task
+
+            Assignment --|> Task
+            FinalExam --|> Task
+            Midterm --|> Task
+        }
+}
+
+package Link {
+  Class ExternalLinks
+  Class LinkInfo
+  Class Links
+  Class ZoomLinkInfo
+
+
+ExternalLinks --|> Links
+ExternalLinks --> LinkInfo
+Links --> ZoomLinkInfo
+}
+
+package "Cap Simulator" {
+  Class AcademicRecords
+  Class CapSimulatorManager
+  Enum "<<enumeration>>\nModuleGradeEnum"
+  Enum "<<enumeration>>\nModularCreditEnum"
+
+
+
+AcademicRecords --> "<<enumeration>>\nModularCreditEnum"
+AcademicRecords --> "<<enumeration>>\nModuleGradeEnum"
+CapSimulatorManager --> AcademicRecords
+}
+
+package Module_Info {
+    Class ModuleInfo
+    Class Module
+    Class Component
+
+    ModuleInfo -> Module
+    ModuleInfo -> TaskManager
+
+    ModuleInfo <-> ZoomLinkInfo
+    Component -> Module
+    Module <- AcademicRecords
+}
+
+}
+@enduml

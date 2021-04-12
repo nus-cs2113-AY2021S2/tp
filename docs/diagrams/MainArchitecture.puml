@@ -1,0 +1,17 @@
+@startuml
+
+hide members
+hide circle
+
+class Duke
+class Ui
+class Storage
+class features
+Duke --> features
+Duke <--> Ui
+features <--> Ui
+Duke <--> Storage
+features --> Storage
+
+
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+
+hide circle
+skinparam classAttributeIconSize 0
+
+package Ui {
+    class Ui {
+        - {static} longHorizontalLine : String
+        + {static} readCommand() : String
+        + {static} readCommandToInt() : Int
+        + {static} printMainMenu()
+        + {static} printInvalidInputMessage()
+    }
+}
+
+@enduml

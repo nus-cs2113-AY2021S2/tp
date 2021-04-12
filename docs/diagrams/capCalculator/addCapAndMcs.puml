@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+-> ":CapSimulatorManager"
+activate ":CapSimulatorManager"
+":CapSimulatorManager" -> ":CapSimulatorManager" : addCapAndMcs()
+activate ":CapSimulatorManager"
+
+":CapSimulatorManager" -> ":Ui" : readCommand()
+activate ":Ui"
+":Ui" --> ":CapSimulatorManager" : cap
+deactivate ":Ui"
+
+alt 0 <= cap <= 5
+":CapSimulatorManager" -> ":Ui": readCommand()
+activate ":Ui"
+":Ui" --> ":CapSimulatorManager" : totalMcs
+deactivate ":Ui"
+alt valid mcs
+":CapSimulatorManager" -> ":AcademicRecords" : setCurrentCap()
+activate ":AcademicRecords"
+":AcademicRecords" --> ":CapSimulatorManager"
+deactivate ":AcademicRecords"
+":CapSimulatorManager" -> ":AcademicRecords" : setTotalMcs()
+activate ":AcademicRecords"
+":AcademicRecords" --> ":CapSimulatorManager"
+deactivate ":AcademicRecords"
+else else
+":CapSimulatorManager" -> ":Ui" : printInvalidMcsMessage()
+activate ":Ui"
+return
+end
+else else
+":CapSimulatorManager" -> ":Ui" : printInvalidCapMessage()
+activate ":Ui"
+return
+end
+return
+return
+@enduml

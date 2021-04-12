@@ -1,0 +1,42 @@
+@startuml
+
+-> ":MarkOrUnmarkTask" : execute()
+activate ":MarkOrUnmarkTask"
+
+opt TaskManager.taskListIsEmpty(taskTypeNumber)
+":MarkOrUnmarkTask" -> ":Ui"++ : printTaskListIsEmptyMessage
+return
+<---- ":MarkOrUnmarkTask"
+end
+
+":MarkOrUnmarkTask" -> ":Ui"++ : printSelectTaskNumberToMarkOrUnmark(taskTypeNumber)
+return
+
+loop
+":MarkOrUnmarkTask" -> ":Ui"++ : readCommandToInt()
+return taskNumber
+
+alt TOGGLE_TASK_COMMAND
+":MarkOrUnmarkTask" -> ":MarkOrUnmarkTask"++ : toggleTaskStatus(taskNumber, TASK_TYPE)
+return
+<---- ":MarkOrUnmarkTask"
+else TOGGLE_ASSIGNMENT_COMMAND
+":MarkOrUnmarkTask" -> ":MarkOrUnmarkTask"++ : toggleTaskStatus(taskNumber, ASSIGNMENT_TYPE)
+return
+<--- ":MarkOrUnmarkTask"
+else TOGGLE_MIDTERM_COMMAND
+":MarkOrUnmarkTask" -> ":MarkOrUnmarkTask"++ : toggleTaskStatus(taskNumber, MIDTERM_TYPE)
+return
+<--- ":MarkOrUnmarkTask"
+else TOGGLE_FINAL_EXAM_COMMAND
+":MarkOrUnmarkTask" -> ":MarkOrUnmarkTask"++ : toggleTaskStatus(taskNumber, FINAL_EXAM_TYPE)
+return
+<--- ":MarkOrUnmarkTask"
+else default
+":MarkOrUnmarkTask" -> ":Ui"++ : printRepeatInputUntilValidMessage()
+return
+end
+
+end
+
+@enduml

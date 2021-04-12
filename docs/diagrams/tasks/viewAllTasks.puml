@@ -1,0 +1,29 @@
+@startuml
+
+activate ":TaskManager"
+":TaskManager" -> ":TaskManager"++ : viewAllTasks()
+":TaskManager" -> ":Ui"++ : printPinnedTaskList(pinnedTasks)
+return
+":TaskManager" -> ":Ui"++ : printEmptyLine()
+return
+":TaskManager" -> ":Ui"++ : printTaskList(tasks)
+return
+":TaskManager" -> ":Ui"++ : printEmptyLine()
+return
+":TaskManager" -> ":Ui"++ : printAssignmentList(assignments)
+return
+":TaskManager" -> ":Ui"++ : printEmptyLine()
+return
+":TaskManager" -> ":Ui"++ : printMidtermList(midterms)
+return
+":TaskManager" -> ":Ui"++ : printEmptyLine()
+return
+":TaskManager" -> ":Ui"++ : printFinalExamList(finalExams)
+return
+":TaskManager" -> ":Ui"++ : printEmptyLine()
+return
+":TaskManager" -> ":Ui"++ : printHorizontalLine()
+
+return
+
+@enduml

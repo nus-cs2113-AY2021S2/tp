@@ -1,0 +1,42 @@
+@startuml
+
+-> ":PinTask"
+activate ":PinTask"
+
+opt TaskManager.taskListIsEmpty(taskTypeNumber)
+":PinTask" -> ":Ui"++ : printTaskListIsEmptyMessage()
+return
+<---- ":PinTask"
+end
+
+":PinTask" -> ":Ui"++ : printSelectTaskNumberToPin(taskTypeNumber)
+return
+
+loop
+":PinTask" -> ":Ui"++ : readCommandToInt()
+return taskNumber
+
+alt PIN_TASK_COMMAND
+":PinTask" -> ":PinTask"++ : addTaskToPinnedTasks(TaskManager.tasks.get(taskNumber - 1), TASK_TYPE)
+return
+<---- ":PinTask"
+else PIN_ASSIGNMENT_COMMAND
+":PinTask" -> ":PinTask"++ : addTaskToPinnedTasks(TaskManager.assignments.get(taskNumber - 1), ASSIGNMENT_TYPE)
+return
+<---- ":PinTask"
+else PIN_MIDTERM_COMMAND
+":PinTask" -> ":PinTask"++ : addTaskToPinnedTasks(TaskManager.midterms.get(taskNumber - 1), MIDTERM_TYPE)
+return
+<---- ":PinTask"
+else PIN_FINAL_EXAM_COMMAND
+":PinTask" -> ":PinTask"++ : addTaskToPinnedTasks(TaskManager.finalExams.get(taskNumber - 1), FINAL_EXAM_TYPE)
+return
+<---- ":PinTask"
+else default
+":PinTask" -> ":Ui"++ : printRepeatInputUntilValidMessage()
+return
+end
+
+end
+
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+-> ":Component" : addComponent()
+activate ":Component"
+
+
+":Component" -> ":Ui" : readCommand()
+activate ":Ui"
+":Ui" --> ":Component" : moduleNumberInt
+deactivate ":Ui"
+
+alt valid moduleNumberInt
+":Component" -> ":Ui" : readCommand()
+":Ui" --> ":Component" : userInput
+":Component" -> ":Module" : setComponent()
+
+activate ":Module"
+return
+
+else else
+":Component" -> ":Ui" : printInvalidMessage()
+activate ":Ui"
+return
+end
+return
+@enduml
