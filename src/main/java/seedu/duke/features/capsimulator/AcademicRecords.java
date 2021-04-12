@@ -73,7 +73,7 @@ public class AcademicRecords {
                 listOfGrades.add(ModuleGradeEnum.checkScoreAgainstGrade(grade, moduleName));
                 listOfMCs.add(modularCredits);
             }
-            System.out.println("Welcome to CAP Simulator Version 1!");
+            Ui.printWelcomeVersion1Message();
             capCalculator(listOfGrades, listOfMCs, totalMCs);
         } else if (capSimulatorSetting == 2) {
             logger.log(Level.INFO, "Going to start cap simulator version 2");
@@ -184,12 +184,8 @@ public class AcademicRecords {
                                         ArrayList<Integer> listOfMCs, Integer totalMCs) {
 
 
-        System.out.println("Calculating on the following entries: ");
-        System.out.println("Grades: " + gradesInString);
-        System.out.println("MCs: " + listOfMCs);
-
-        System.out.printf("Current CAP: %.02f\n", getCurrentCap());
-        System.out.println("Current Graded MCs taken: " + numberOfGradedMCsTaken);
+        Ui.printCapCalculatorMessage(gradesInString, listOfMCs,
+                getCurrentCap(), numberOfGradedMCsTaken);
 
         Double calculatedCap = 0.0;
         for (int i = 0; i < listOfGrades.size(); i++) {
@@ -198,8 +194,7 @@ public class AcademicRecords {
 
         calculatedCap = (calculatedCap + currentCap * numberOfGradedMCsTaken)
                 / (totalMCs + numberOfGradedMCsTaken);
-        System.out.println("The simulated cumulative average point (rounded to 2 d.p) you have is: ");
-        System.out.printf("%.02f\n", calculatedCap);
+        Ui.printSimulatedCapMessage(calculatedCap);
         return calculatedCap;
     }
 

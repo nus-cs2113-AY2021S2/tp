@@ -1,5 +1,7 @@
 package seedu.duke.features.capsimulator;
 
+import seedu.duke.ui.Ui;
+
 /**
  * ModuleGradeEnum contains the list of grades base on NUS website,
  * and its associated grade points.
@@ -71,7 +73,7 @@ public enum ModuleGradeEnum {
                     break;
                 }
             } catch (NullPointerException e) {
-                System.out.println("There is no grade entered for " + module);
+                Ui.printNoGradeEnteredMessage(module);
                 score = 0;
                 break;
             }
