@@ -776,5 +776,5 @@ public class Ui {
         System.out.println("The simulated cumulative average point (rounded to 2 d.p) you have is: ");
         System.out.printf("%.02f\n", calculatedCap);
     }
-    
+
 }

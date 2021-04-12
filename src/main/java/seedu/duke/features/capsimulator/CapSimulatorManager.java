@@ -74,7 +74,7 @@ public class CapSimulatorManager {
 
         Ui.getNumberOfGradedMCsTakenPrompt();
         int totalMcs = Integer.parseInt(Ui.readCommand());
-        boolean validMc = ((cap > 0 && cap <= 5.0) && (totalMcs > 0 && totalMcs <= 180))
+        boolean validMc = ((cap > 0 && cap <= 5.0) && (totalMcs > 0 && totalMcs <= 220))
                 || ((cap == 0) && (totalMcs == 0));
         if (validMc) {
             AcademicRecords.setCurrentCap(cap);
