@@ -17,12 +17,15 @@ Modified and completed functionality of the Map class
 #### 2.2.2 Control Classes
 
 Designed the control class FindNearest to implement the functionality of finding the top K nearest facility.
+see [pull request #23](https://github.com/AY2021S2-CS2113-T10-2/tp/pull/23)
 * https://github.com/AY2021S2-CS2113-T10-2/tp/pull/23
 
 #### 2.2.2 Exceptions
 
 I implemented various exception classes to deal wrong user input. 
 Errors such as input current location invalid, input facility type invalid and K is larger than the number of available facilities are handled with proper error messages.
+see [pull request #98](https://github.com/AY2021S2-CS2113-T10-2/tp/pull/98)
+and [pull request #41](https://github.com/AY2021S2-CS2113-T10-2/tp/pull/41/commits/aecf92d09ce61352337aecaaec47ec53aa6401bd)
 * https://github.com/AY2021S2-CS2113-T10-2/tp/pull/98
 * https://github.com/AY2021S2-CS2113-T10-2/tp/pull/41/commits/aecf92d09ce61352337aecaaec47ec53aa6401bd
 
@@ -31,5 +34,7 @@ Errors such as input current location invalid, input facility type invalid and K
 ### 2.3 Contributions to DG
 
 I documented the section for findFacility in the DG and added sequence diagram.
+see [pull request #44](https://github.com/AY2021S2-CS2113-T10-2/tp/pull/44)
+and [pull request #45](https://github.com/AY2021S2-CS2113-T10-2/tp/pull/45)
 * https://github.com/AY2021S2-CS2113-T10-2/tp/pull/44
 * https://github.com/AY2021S2-CS2113-T10-2/tp/pull/45
