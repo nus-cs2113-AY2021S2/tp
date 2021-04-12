@@ -346,7 +346,7 @@ During invocation of an exception, there are two ways to invoke:
 throw new InvalidInputException(InvalidInputException.Type.EMPTY_STRING);
 // e is a Throwable, e.g. a captured exception in a try-catch block
 // for this UNKNOWN_COMMAND, the e should be of type ClassNotFoundException
-        throw new InvalidInputException(InvalidInputException.Type.UNKNOWN_COMMAND,e);
+throw new InvalidInputException(InvalidInputException.Type.UNKNOWN_COMMAND,e);
 ```
 
 If a second argument is passed, it is called the **cause** of the exception. For example, the user's wrong input
