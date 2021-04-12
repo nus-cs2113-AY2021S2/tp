@@ -3,6 +3,9 @@
 ol {
     counter-reset: item
 }
+ul {
+    counter-reset: item
+}
 ol > li {
     counter-increment: item;
 }
@@ -184,7 +187,7 @@ The `Storage` component is responsible for:
 
 ### Exception Component
 
-<img src="./images/class_diagram_execption.png" width="500">
+<img src="./images/class_diagram_execption.png" width="600">
 
 API: `BaseException.java` and its subclasses
 
