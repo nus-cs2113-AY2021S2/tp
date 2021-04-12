@@ -103,8 +103,8 @@ To know where a library is if a user knows its ID.
 ## Miscellaneous
 
 ### Instructions for automated testing
-1. On IntelliJ, make sure the `src/test/java` folder is marked as a `Test Sources Root`. 
-   It should look like below after that.
+1. On IntelliJ, make sure the `src/test/java` folder is marked as a `Test Sources Root`.\
+   It should look like below after that.\
 ![Test Folder Screenshot](assets/test-folder.png)
 2. Right click on that folder, then click on `Run 'Tests in <package>'`
 3. Get the test results in the bottom panel of the IDE.

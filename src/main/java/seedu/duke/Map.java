@@ -9,8 +9,8 @@ import java.util.logging.Logger;
 
 import control.FileManager;
 import control.FindInBuilding;
-import control.SearchFacility;
 import control.FindNearest;
+import control.SearchFacility;
 import entity.Location;
 import exceptions.BuildingNotFoundException;
 import exceptions.FacilityNotFoundException;
@@ -24,7 +24,7 @@ public class Map {
     private static UI ui = new UI();
     private static SearchFacility searchFacility = new SearchFacility(dataController);
     private static FindInBuilding findInBuilding = new FindInBuilding(dataController);
-
+    //@@author zhangyongzhe20
     //logger
     private static final Logger LOGGER = Logger.getLogger(Map.class.getName());
     public static FileManager getDataController() {
@@ -40,7 +40,7 @@ public class Map {
             LOGGER.log(Level.WARNING, "An error occur when trying to read logger configuration file.", e);
         }
     }
-
+    //@@chenling
     /**
      * Prints welcome message at initial run.
      */
@@ -61,9 +61,19 @@ public class Map {
      */
     public static void show_exit_msg() {
         System.out.println("Bye. Hope you don't have to use me again! "
-                + "Otherwise you need to orientate about your own school better:)\n");
+                + "Otherwise you need to orientate about your own school better :)\n");
     }
 
+    /**
+     * Executes a given input string using the associated command.
+     * @param input
+     * @param c
+     * @throws InvalidCommandException
+     * @throws EmptyInputException
+     * @throws FacilityNotFoundException
+     * @throws InvalidSearchException
+     * @throws BuildingNotFoundException
+     */
     public static void executeCommand(String input, Command c)
             throws InvalidCommandException, EmptyInputException,
             FacilityNotFoundException, InvalidSearchException, BuildingNotFoundException {
@@ -83,13 +93,15 @@ public class Map {
             break;
         case FIND_FACILITY:
             String facilityLocation = parser.getFindFacilityLocation(input);
-            if(Objects.nonNull(facilityLocation)) {
+            if (Objects.nonNull(facilityLocation)) {
                 FindNearest find = new FindNearest(dataController);
                 Location currentLocation = find.findFacilityByName(facilityLocation).getLocation();
                 String facilityType = parser.getFindFacilityType(input);
-                if(Objects.nonNull(facilityType)) {
+                if (Objects.nonNull(facilityType)) {
                     int topK = parser.getTopK(input);
-                    if(topK !=0) find.findTopKFacility(currentLocation, facilityType, topK);
+                    if (topK != 0) {
+                        find.findTopKFacility(currentLocation, facilityType, topK);
+                    }
                 }
             }
             break;
@@ -101,6 +113,10 @@ public class Map {
 
     }
 
+    /**
+     * Main driver function
+     * @param args
+     */
     public static void main(String[] args) {
         show_welcome_msg();
         Command command;
