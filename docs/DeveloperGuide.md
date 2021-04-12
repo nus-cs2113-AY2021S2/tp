@@ -136,10 +136,8 @@ API: `Parser.java` and `Command.java`
 1. Within the `execute()` method, the `Command` object can instruct the `Ui` to perform certain actions, such as
    displaying the command output to the screen
 
-Given below is the Sequence Diagram for interactions within the `Logic` component after Patient Manager
-receives `add S1234567D`
-as an input, and the `execute()` API call is made.\
-{TODO: Add sequence diagram here}
+Detailed explanations of the implementation of each `Command` subclass can be found
+in [Section 4: Implementation](#implementation).
 
 ### Model Component
 
@@ -196,6 +194,10 @@ API: `BaseException.java` and its subclasses
 * handles all exceptions that occur during the execution of Patient Manager
 * can report an error message, prompting the user to provide a syntactically correct command
 * may also report the cause of error for debugging purposes
+
+Each subclass of `BaseException`:
+* has at most one component that is dependent on it (e.g `InvalidInputException` and the `UI` component)
+* contains an enumeration of error messages specific to that component
 
 ### Common Classes
 
