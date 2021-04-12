@@ -1,4 +1,4 @@
-@startuml Edit_Sequence_Diagram
+@startuml Edit_Reco_Sequence_Diagram
 !define LIGHTBLUE
 !includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
 skinparam style strictuml
