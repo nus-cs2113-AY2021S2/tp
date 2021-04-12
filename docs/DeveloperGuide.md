@@ -79,7 +79,7 @@ If you plan to use IntelliJ IDEA (highly recommended):
 1. Import the project as a Gradle project: Follow the guide
    [IntelliJ IDEA: Importing a Gradle project @SE-EDU/guides](https://se-education.org/guides/tutorials/intellijImportGradleProject.html)
    to import the project into IDEA.
-   > ❗ Note: Importing a Gradle project is slightly different from importing a normal Java project.
+   > :information_source: Note: Importing a Gradle project is slightly different from importing a normal Java project.
 1. Verify the setup: Run `seedu.duke.PatientManager` and try a few commands.
 1. [Run the tests](#appendix-e-instructions-for-manual-testing) to ensure they all pass.
 
@@ -282,7 +282,7 @@ result of the initialization (i.e. the instance of the command class) is returne
 Since all command classes implements the abstract method `execute()`, the main loop just need to execute this method to
 call out the actual logic of this command.
 
-> ❗ Note: Since we are tokenizing the user input with **any number of white spaces** and concatenate all tokens belong to the
+> :information_source: Note: Since we are tokenizing the user input with **any number of white spaces** and concatenate all tokens belong to the
 > same key back using **single whitespace**, the number of white spaces input has no effect on the actual arguments being parsed.
 > For example, the following two input has exactly the same result after being parsed.
 > ```
