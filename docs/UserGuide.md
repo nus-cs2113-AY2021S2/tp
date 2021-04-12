@@ -731,6 +731,7 @@ NUSMaze will inform you whether the data has been successfully loaded by display
 ------------------------------------------------------------------------------------------------------------
 ```
 > :information_source: If the saved data is corrupted, NUSMaze will automatically clear the data for that feature.<br>
+
 For example if favourite data is corrupted, NUSMaz will display:<br> 
 ```
 ------------------------------------------------------------------------------------------------------------
