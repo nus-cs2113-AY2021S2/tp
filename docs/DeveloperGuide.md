@@ -571,3 +571,43 @@ Below is our analysis of our target user and the importance in which he/she woul
     1.1 Enter `clear history`<br>
    Expected: `Your history has been successfully cleared`<br>
    
+
+### 5.6 Alias
+1. Adding an alias that is a block name<br>
+    1.1 Enter `add alias` → Enter block → `e3`, Enter the alias name → `e4`<br>
+   Expected: The error message for invalid alias will be displayed<br>
+2. Adding an alias that already exists<br>
+   1.1 Enter `add alias` → Enter block → `e1`, Enter the alias name → `alias that already exists`<br>
+   Expected: Similar to previous<br>
+3. Showing aliases when there are no aliases that were set prior.<br>
+    1.1 Enter `show alias`<br>
+   Expected: `You haven't set any aliases yet!`<br>
+4. Showing aliases when aliases have been previously set.<br>
+   1.1 Enter `show alias`<br>
+   Expected: A list of alias and block pairs will be displayed<br>
+5. Deleting an alias that was not previously set<br>
+    1.1 Enter `delete alias` → `alias that does not exist`<br>
+   Expected: `Invalid alias! Please enter an alias name that exists!`<br>
+6. Deleting an alias that was previously set<br>
+   1.1 Enter `delete alias` → `alias that exists`<br>
+   Expected: `Got it! Successfully deleted ALIAS THAT EXISTS from alias list!`<br>
+   
+
+### 5.8 Favourites
+1. Adding favourite routes<br>
+   1.1 Test case: Starting block → `E1`, Destination block → `E7`<br>
+   Expected: `Got it! Successfully added new favourite route!`<br>
+   1.2 Test case: Starting block → `E1`, Destination block → `Invalid`<br>
+   Expected `Invalid block! Please try again with a block that exists :(`<br>
+2. Showing favourite routes when favourites have not been set before<br>
+    1.1 Enter `show favourite`<br>
+   Expected: `You haven't set any favourite routes yet!`<br>
+3. Showing favourite routes when favourites have been set before<br>
+   1.1 Enter `show favourite`<br>
+   Expected: A list of all the favourite routes that have been previously set will be displayed<br>
+4. Deleting favourite routes<br>
+   1.1 Test case `delete favourite` → `VALID_FAVOURITE_INDEX`<br>
+   Expected: `Got it! Successfully deleted favourite route :)`<br>
+   1.1 Test case `delete favourite` → `INVALID_FAVOURITE_INDEX`<br>
+   Expected: `Oops! You must enter an Integer that is within the bounds :(`<br>
+   
