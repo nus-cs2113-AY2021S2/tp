@@ -21,17 +21,18 @@ ol ol > li:before {
 1. [Introduction](#introduction)
 1. [Setting up the project in your computer](#setting-up-the-project-in-your-computer)
 1. [Design & Implementation](#design--implementation)
-    1. [Architecture](#architecture)
-        1. [How the architecture components interact with each other](#how-the-architecture-components-interact-with-each-other)
-    1. [UI Component](#ui-component)
-    1. [Logic Component](#logic-component)
-    1. [Model Component](#model-component)
-    1. [Storage Component](#storage-component)
-    1. [Exception Component](#exception-component)
-    1. [Commons](#commons)
+   1. [Architecture](#architecture)
+      1. [Interaction Among Architecture Components](#interaction-among-architecture-components)
+   1. [UI Component](#ui-component)
+   1. [Logic Component](#logic-component)
+   1. [Model Component](#model-component)
+   1. [Storage Component](#storage-component)
+   1. [Exception Component](#exception-component)
+   1. [Commons](#commons)
 1. [Implementation](#implementation)
-    1. [Parsing User Input and Initializing Command Class](#parsing-user-input-and-initializing-command-class)
-    1. [Exception Handling](#exception-handling)
+   1. [Parsing User Input](#parsing-user-input)
+   1. [Initializing Command Class](#initializing-command-class)
+   1. [Exception Handling](#exception-handling)
 1. [Appendix A: Product scope](#appendix-a-product-scope)
     1. [Target user profile](#target-user-profile)
     1. [Value proposition](#value-proposition)
@@ -39,13 +40,12 @@ ol ol > li:before {
 1. [Appendix C: Non-Functional Requirements](#appendix-c-non-functional-requirements)
 1. [Appendix D: Glossary](#appendix-d-glossary)
 1. [Appendix E: Instructions for Manual Testing](#appendix-e-instructions-for-manual-testing)
-    1. [Launch, Help and Shutdown](#launch-help-and-shutdown)
-    1. [Adding and Loading Patients](#adding-and-loading-patients)
-    1. [Adding, Viewing and Deleting a Patient's Visit Records](#adding-viewing-and-deleting-a-patients-visit-records)
-    1. [Saving Data](#saving-data)
-
+   1. [Launch, Help and Shutdown](#launch-help-and-shutdown)
+   1. [Adding and Loading Patients](#adding-and-loading-patients)
+   1. [Adding, Viewing and Deleting a Patient's Visit Records](#adding-viewing-and-deleting-a-patients-visit-records)
+   1. [Saving Data](#saving-data)
+1. [Appendix F: Command Summary](#appendix-f-command-summary)
 <!-- ^ The above table of content is auto generated -->
-<!-- * [Instructions for manual testing](#instructions-for-manual-testing) -->
 
 ## Introduction
 
@@ -101,7 +101,7 @@ This class is responsible for:
 
 `Storage` reads data from, and writes data to, the hard disk.
 
-#### How the architecture components interact with each other
+#### Interaction Among Architecture Components
 
 The Sequence Diagram below shows how the components interact with each other for the scenario where the user issues the
 command `add S1234567D`.
@@ -190,7 +190,7 @@ API: `BaseException.java` and its subclasses
 * can report an error message, prompting the user to provide a syntactically correct command
 * may also report the cause of error for debugging purposes
 
-### Commons
+### Common Classes
 
 There are two common classes, `Constants` and `Common`.
 
@@ -204,7 +204,7 @@ includes `isValidID()` for checking the validity of an NRIC/FIN number.
 
 This section describes some noteworthy details on how certain details are implemented.
 
-### Parsing User Input and Initializing Command Class
+### Parsing User Input
 
 The parser is one of the core components in charge of parsing all user input commands into program-understandable
 commands and arguments. For the ease of expansion of this program's functionality as well as for its testability,
@@ -248,10 +248,14 @@ At the end, we have an argument hashmap like this:
 | s       | coughing, fever                |
 | p       | Panadol Paracetamol 500 mg\*20 |
 
-Next step is the initialization of a command class. Since we have command `record`, the program finds a class called
-`RecordCommand` under the module `seedu.duke.command` (first character being capitalized, then concatenated with '
-Command'). Since this is a valid command, this class exists. If the class does not exist, it means the command is not
-yet implemented by this program.
+### Initializing Command Class
+
+Continuing from the command parsing above. Next step is the initialization of a command class. Since we
+have command `record`, the program finds a class called `RecordCommand` under the module `seedu.duke.command`
+(first character being capitalized, then concatenated with 'Command').
+
+Since this is a valid command, this class exists. If the class does not exist, it means the command is not yet
+implemented by this program.
 
 After finding the command class, it is initialized with `(ui, data, arguments)`. `ui` and `data` are the two references
 passed in when initializing the parser, and the `arguments` is the hash map we just obtained by parsing the input. The
@@ -468,3 +472,20 @@ input.
     1. Delete the file `pm.save`, which should be in the same folder as `tp.jar`.
     1. Launch the app with `java -jar tp.jar`.
     1. Expected: Application should start up without any data.
+
+## Appendix F: Command Summary
+
+Listed below are all currently implemented commands in alphabetical order. For a more
+detailed explanation and input/output samples, please refer to the [User Guide](UserGuide.md).
+
+| Command                                                                             | Usage                                                         |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| [add](UserGuide.md#adding-a-patient-add)                                            | `add IC_NUMBER`                                               |
+| [current](UserGuide.md#displaying-the-current-loaded-patient-current)               | `current`                                                     |
+| [delete](UserGuide.md#deleting-a-patient-or-a-patients-consultation-details-delete) | `delete [/p IC_NUMBER]  [/r DATE]`                            |
+| [exit](UserGuide.md#exiting-the-program-exit)                                       | `exit`                                                        |
+| [help](UserGuide.md#print-a-help-message-help)                                      | `help [OPTIONAL_COMMAND]...`                                  |
+| [list](UserGuide.md#listing-all-patients-list)                                      | `list`                                                        |
+| [load](UserGuide.md#loading-a-patients-medical-records-load)                        | `load IC_NUMBER`                                              |
+| [record](UserGuide.md#recording-a-patients-consultation-details-record)             | `record [DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]` |
+| [retrieve](UserGuide.md#retrieving-a-patients-consultation-details-retrieve)        | `retrieve [DATE]`                                             |
