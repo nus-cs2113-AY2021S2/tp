@@ -1,0 +1,18 @@
+@startuml
+
+hide members
+hide circle
+
+class UiText
+class ParserForCapCalculator
+class CommandsForCapCalculator
+class ModuleStorage
+class ModuleList
+
+UiText--> ParserForCapCalculator
+ParserForCapCalculator --> CommandsForCapCalculator
+CommandsForCapCalculator --> UiText
+CommandsForCapCalculator --> ModuleList
+CommandsForCapCalculator --> ModuleStorage
+
+@enduml

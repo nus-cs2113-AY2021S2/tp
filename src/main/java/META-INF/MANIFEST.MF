@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Main-Class: seedu.allinonenus.AllinOneNus
+Class-Path: junit-jupiter-api-5.5.0.jar junit-jupiter-engine-5.5.0.jar a
+ piguardian-api-1.1.0.jar opentest4j-1.2.0.jar junit-platform-engine-1.5
+ .0.jar junit-platform-commons-1.5.0.jar
+

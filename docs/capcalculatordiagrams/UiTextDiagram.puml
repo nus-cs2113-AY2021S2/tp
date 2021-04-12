@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide members
+hide circle
+package "storageforcapcalculator" {
+class ModuleStorage
+}
+package "uiforcapcalculator" #DDD {
+ class UiText
+ UiText -- ModuleStorage
+}
+
+package "parserforcapcalculator" {
+ class ParserForCapCalculator
+ UiText -- ParserForCapCalculator
+
+
+}
+@enduml

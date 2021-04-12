@@ -29,18 +29,19 @@ test {
 }
 
 application {
-    mainClassName = "seedu.duke.Duke"
+    mainClassName = "seedu.allinonenus.AllinOneNus"
 }
 
 shadowJar {
-    archiveBaseName = "duke"
+    archiveBaseName = "AllinOneNus"
     archiveClassifier = null
 }
 
 checkstyle {
-    toolVersion = '8.23'
+    toolVersion = '8.29'
 }
 
 run{
+    enableAssertions = true
     standardInput = System.in
 }

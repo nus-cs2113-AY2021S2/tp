@@ -1,0 +1,4 @@
+Alice | 1 | true | 1
+Cayla | 1 | true | 2
+Bob | 1 | false | 1
+Duke | 1 | true | 3

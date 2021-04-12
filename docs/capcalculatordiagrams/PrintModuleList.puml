@@ -1,0 +1,89 @@
+@startuml
+
+hide footbox
+title "PrintModuleListCommand"
+
+activate ":PrintModuleListCommand"
+":PrintModuleListCommand" -> ":PrintModuleListCommand" : modulesExist
+activate ":PrintModuleListCommand"
+":PrintModuleListCommand" -> ":ModuleList" : size
+activate ":ModuleList"
+":ModuleList" --> ":PrintModuleListCommand"
+deactivate ":ModuleList"
+":PrintModuleListCommand" --> ":PrintModuleListCommand"
+deactivate ":PrintModuleListCommand"
+":PrintModuleListCommand" -> ":UiText" : printModuleDataHeading
+activate ":UiText"
+":UiText" --> ":PrintModuleListCommand"
+deactivate ":UiText"
+":PrintModuleListCommand" -> ":PrintModuleListCommand" : listModulesForSem
+activate ":PrintModuleListCommand"
+":PrintModuleListCommand" -> ":ModuleList" : size
+activate ":ModuleList"
+":ModuleList" --> ":PrintModuleListCommand"
+deactivate ":ModuleList"
+":PrintModuleListCommand" -> ":UiText" : printModuleData
+activate ":UiText"
+":UiText" --> ":PrintModuleListCommand"
+deactivate ":UiText"
+":PrintModuleListCommand" --> ":PrintModuleListCommand"
+deactivate ":PrintModuleListCommand"
+":PrintModuleListCommand" -> ":ModuleList" : calculate
+activate ":ModuleList"
+":ModuleList" -> ":ModuleList" : totalMcsTimesGrade
+activate ":ModuleList"
+":ModuleList" -> ":ModuleList" : gradesToPoints
+activate ":ModuleList"
+":ModuleList" --> ":ModuleList"
+deactivate ":ModuleList"
+":ModuleList" --> ":ModuleList"
+deactivate ":ModuleList"
+":ModuleList" -> ":ModuleList" : totalMcs
+activate ":ModuleList"
+":ModuleList" --> ":ModuleList"
+deactivate ":ModuleList"
+":ModuleList" --> ":PrintModuleListCommand"
+deactivate ":ModuleList"
+":PrintModuleListCommand" -> ":UiText" : printCurrentSemCap
+activate ":UiText"
+":UiText" --> ":PrintModuleListCommand"
+deactivate ":UiText"
+":PrintModuleListCommand" -> ":ModuleList" : checkOverallCap
+activate ":ModuleList"
+":ModuleList" --> ":PrintModuleListCommand"
+deactivate ":ModuleList"
+":PrintModuleListCommand" -> ":ModuleList" : calculate
+activate ":ModuleList"
+":ModuleList" -> ":ModuleList" : totalMcsTimesGrade
+activate ":ModuleList"
+":ModuleList" -> ":ModuleList" : gradesToPoints
+activate ":ModuleList"
+":ModuleList" --> ":ModuleList"
+deactivate ":ModuleList"
+":ModuleList" --> ":ModuleList"
+deactivate ":ModuleList"
+":ModuleList" -> ":ModuleList" : totalMcs
+activate ":ModuleList"
+":ModuleList" --> ":ModuleList"
+deactivate ":ModuleList"
+":ModuleList" --> ":PrintModuleListCommand"
+deactivate ":ModuleList"
+":PrintModuleListCommand" -> ":UiText" : printOverallCap
+activate ":UiText"
+":UiText" --> ":PrintModuleListCommand"
+deactivate ":UiText"
+":PrintModuleListCommand" -> ":UiText" : requestUsertoUpdatePriorSem
+activate ":UiText"
+":UiText" --> ":PrintModuleListCommand"
+deactivate ":UiText"
+":PrintModuleListCommand" -> ":UiText" : warnUserOfEmptySemester
+activate ":UiText"
+":UiText" --> ":PrintModuleListCommand"
+deactivate ":UiText"
+":PrintModuleListCommand" -> ":UiText" : separationLine
+activate ":UiText"
+":UiText" --> ":PrintModuleListCommand"
+deactivate ":UiText"
+
+return
+@enduml

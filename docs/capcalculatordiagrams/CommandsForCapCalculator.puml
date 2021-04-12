@@ -1,0 +1,35 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide members
+hide circle
+package "storageforcapcalculator" {
+class ModuleStorage
+}
+package "commandsforcapcalculator" #DDD {
+abstract class CommandsForCapCalculator
+class AddNewModuleCommand
+class ChangeSemesterViewCommand
+class DeleteModuleCommand
+class DisplayHelpCommand
+class EditModuleCommand
+class ExitCapCalculatorCommand
+class PrintModuleListCommand
+class ShowAllModulesCommand
+class SuggestGoalCommand
+class UpdateStudentSemesterCommand
+CommandsForCapCalculator <|-- AddNewModuleCommand
+CommandsForCapCalculator <|-- ChangeSemesterViewCommand
+CommandsForCapCalculator <|-up- DeleteModuleCommand
+CommandsForCapCalculator <|-up- DisplayHelpCommand
+CommandsForCapCalculator <|-up- EditModuleCommand
+CommandsForCapCalculator <|-up- ExitCapCalculatorCommand
+CommandsForCapCalculator <|-left- PrintModuleListCommand
+CommandsForCapCalculator <|-right- ShowAllModulesCommand
+CommandsForCapCalculator <|-- SuggestGoalCommand
+CommandsForCapCalculator <|-- UpdateStudentSemesterCommand
+ModuleStorage <--CommandsForCapCalculator
+}
+
+
+
+@enduml

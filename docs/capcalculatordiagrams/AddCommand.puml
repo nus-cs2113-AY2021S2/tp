@@ -1,0 +1,66 @@
+@startuml
+
+hide footbox
+title AddNewModuleCommand
+
+ -> ":AddNewModuleCommand" :
+activate ":AddNewModuleCommand"
+":AddNewModuleCommand" -> ":ModuleStorage" : getSem
+activate ":ModuleStorage"
+":ModuleStorage" --> ":AddNewModuleCommand"
+deactivate ":ModuleStorage"
+":AddNewModuleCommand" -> ":AddNewModuleCommand" : checkGradeFormat
+activate ":AddNewModuleCommand"
+":AddNewModuleCommand" -> ":ModuleList" : gradesToPoints
+activate ":ModuleList"
+":ModuleList" --> ":AddNewModuleCommand"
+deactivate ":ModuleList"
+
+deactivate ":AddNewModuleCommand"
+":AddNewModuleCommand" -> ":AddNewModuleCommand" : checkMcFormat
+activate ":AddNewModuleCommand"
+":AddNewModuleCommand" --> ":AddNewModuleCommand"
+
+activate ":AddNewModuleCommand"
+":AddNewModuleCommand" -> ":ModuleList" : size
+activate ":ModuleList"
+":ModuleList" --> ":AddNewModuleCommand"
+deactivate ":ModuleList"
+":AddNewModuleCommand" --> ":AddNewModuleCommand"
+deactivate ":AddNewModuleCommand"
+":AddNewModuleCommand" -> ":ModuleList" : add
+activate ":ModuleList"
+":ModuleList" --> ":AddNewModuleCommand"
+deactivate ":ModuleList"
+":AddNewModuleCommand" -> ":UiText" : confirmModuleUpdate
+activate ":UiText"
+":UiText" --> ":AddNewModuleCommand"
+deactivate ":UiText"
+":AddNewModuleCommand" -> ":AddNewModuleCommand" : saveToStorage
+activate ":AddNewModuleCommand"
+":AddNewModuleCommand" -> ":ModuleStorage" : writeToFile
+activate ":ModuleStorage"
+":ModuleStorage" -> ":ModuleList" : printString
+activate ":ModuleList"
+
+":ModuleList" --> ":ModuleStorage"
+deactivate ":ModuleList"
+":ModuleStorage" --> ":AddNewModuleCommand"
+deactivate ":ModuleStorage"
+":AddNewModuleCommand" -> ":ModuleStorage" : fileDoesntExist
+activate ":ModuleStorage"
+":ModuleStorage" --> ":AddNewModuleCommand"
+deactivate ":ModuleStorage"
+":AddNewModuleCommand" --> ":AddNewModuleCommand"
+deactivate ":AddNewModuleCommand"
+":AddNewModuleCommand" -> ":UiText" : moduleAlreadyExists
+activate ":UiText"
+":UiText" --> ":AddNewModuleCommand"
+deactivate ":UiText"
+":AddNewModuleCommand" -> ":UiText" : separationLine
+activate ":UiText"
+":UiText" --> ":AddNewModuleCommand"
+deactivate ":UiText"
+return
+
+@enduml

@@ -1,0 +1,80 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+'abstract class AbstractList
+'abstract AbstractCollection
+'interface List
+'interface Collection
+'
+'List <|-- AbstractList
+'Collection <|-- AbstractCollection
+'
+'Collection <|- List
+'AbstractCollection <|- AbstractList
+'AbstractList <|-- ArrayList
+'
+'class ArrayList {
+'Object[] elementData
+'size()
+'}
+ModulePlanner "1..*" *-- Student
+ModulePlanner "1" *-- Storage
+ModulePlanner --> Ui
+ModulePlanner --> Parser
+ModulePlanner --> Priority
+
+class ModulePlanner {
+    {static} #String moduleCode
+    {static} #ArrayList<Student> students
+    {static} #int totalSlots
+    {static} +String setModuleCode()
+    {static} +int setTotalSlots()
+    {static} +String getModuleCode()
+    {static} +int getTotalSlots()
+    {static} +void getStudent()
+    {static} +void findStudent()
+    {static} +Priority getChances()
+    {static} +void readInput()
+    +void run()
+}
+
+class Parser {
+    {static} #int parserToInteger()
+    {static} #boolean parserToBoolean()
+ }
+
+class Storage {
+    {static} void writeFile()
+    {static} void createFile()
+    {static} void readFile()
+}
+
+class Student {
+    # String name
+    # boolean graduationRequirement
+    # int year
+    # int score
+    # int rank
+    + String getName()
+    + boolean isGraduationRequirement()
+    + int getYear()
+    + int getGraduationRequirementScore()
+    + int getScore()
+    + boolean getGraduationRequirement()
+    + int getRank()
+    + String toString()
+    + int compareTo()
+}
+
+enum Priority {
+    LOW,
+    MEDIUM,
+    HIGH
+}
+class Ui {
+    + {static} void showException()
+    + {static} void showEmptyDescriptionException()
+}
+
+
+@enduml

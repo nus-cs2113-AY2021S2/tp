@@ -1,0 +1,121 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+FoodStore <|-- TechnoStore
+FoodStore <|-- FrontierStore
+FoodStore <|-- DeckStore
+FoodStore <|-- UTownStore
+FoodRecommendation *--> FoodStoreUi
+FoodRecommendation *--> FoodStoreParser
+FoodRecommendation *..> FoodStoreStorage
+FoodRecommendation --> FoodStore
+FoodRecommendation --> TechnoStore
+FoodRecommendation --> FrontierStore
+FoodRecommendation --> DeckStore
+FoodRecommendation --> UTownStore
+
+
+
+class FoodRecommendation {
+    {static} #String OUT_OF_BOUNDS_MESSAGE
+    -ArrayList<FoodStore> foodStoreList
+    -FoodStoreParser foodStoreParser
+    -FoodStoreUi foodStoreUi
+    +void addStore(FoodStore toAdd)
+    +void deleteStore(int index)
+    +void clearList()
+    +void recommendStore()
+    +void handleHalalCommand(Integer index)
+    +void handleFindCommand(String keyword)
+    +int getLocationInput()
+    +void run()
+    +void runTillExit()
+}
+
+class FoodStore {
+    -String storeName
+    -String storeDescription
+    -boolean isHalal
+    +String getStoreName()
+    +String getStoreDescription()
+    +boolean isHalal()
+    +void setHalal()
+    +void clearHalal()
+    +String toString()
+}
+
+class FoodStoreParser {
+    {static} -String INVALID_ADD_MESSAGE
+    {static} -String OUT_OF_BOUNDS_MESSAGE
+    {static} -String INVALID_HALAL_MESSAGE
+    {static} -String INVALID_FIND_MESSAGE
+    {static} -String INVALID_DELETE_MESSAGE
+    +FoodStore parseAddCommand(String input, int locationIndex)
+    +int parseDeleteCommand(String input, int listSize)
+    +int parseHalalCommand(String input, int listSize)
+    +String parseFindCOmmand(String input)
+}
+
+class FoodStoreStorage {
+    {static} -String filepath
+    {static} +void saveFile(Arraylist<FoodStore> foodStores)
+    {static} +void loadFile(Arraylist<FoodStore> foodStores)
+}
+
+class FoodStoreUi {
+    {static} -String FIND_ERROR_MESSAGE
+    {static} -String WELCOME_MESSAGE
+    {static} -String AVAILABLE_COMMANDS
+    {static} -String EXIT_MESSAGE
+    {static} -String RECOMMEND_MESSAGE
+    {static} -String CLEAR_MESSAGE
+    {static} -String REMOVE_STORE_MESSAGE
+    {static} -String LIST_MESSAGE
+    {static} -String ADD_STORE_COMMANDS
+    {static} -String FILE_NOT_FOUND_MESSAGE
+    {static} -String NEW_LOCATION_INPUT_MESSAGE
+    {static} -String AVAILABLE_LOCATIONS_MESSAGE
+    {static} -String INVALID_LOCATION_INPUT_MESSAGE
+    {static} -String UPDATE_STORE_MESSAGE
+    {static} -String DIVIDER
+    {static} -String FIND_MESSAGE
+    {static} -String UNKNOWN_COMMAND_MESSAGE
+    +void printExitMessage()
+    +void printAvailableCommands()
+    +void printWelcomeMessage()
+    +void addStore(FoodStore foodStore)
+    +void deleteStore(FoodStore foodStore)
+    +void clearList()
+    +void printDivider()
+    +void recommendStore(FoodStore foodStore)
+    +void printList(Arraylist<FoodStore> foodStores)
+    +void printUnknownCommand()
+    +void printFileNotFound()
+    +void printFindError()
+    +void printStore(FoodStore foodStore)
+    +void showAvailableLocations()
+    +void showRecommendAvailableLocations()
+    +void printInvalidLocationInput()
+    +void printUpdatedStore()
+    +void showFindMessage()
+    +void showToUser(String... message)
+}
+
+class DeckStore {
+}
+
+class FrontierStore {
+
+}
+
+class TechnoStore {
+
+}
+
+class UTownStore {
+
+}
+
+
+@enduml

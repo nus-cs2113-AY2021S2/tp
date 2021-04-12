@@ -1,0 +1,6 @@
+Location: Techno Edge [Halal] chicken rice: white chicken
+Location: Techno Edge [Non-Halal] western: chicken chop
+Location: Techno Edge [Non-Halal] taiwan food: chicken cutlet
+Location: Techno Edge [Non-Halal] curry rice: pork cutlet
+Location: Techno Edge [Non-Halal] muslim food: nasi lemak
+Location: Frontier [Non-Halal] Chicken Rice: Roasted Chicken
