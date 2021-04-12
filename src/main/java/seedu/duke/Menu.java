@@ -14,7 +14,6 @@ public class Menu {
         Parser parser = new Parser();
         Ui ui = new Ui();
         Scanner sc = new Scanner(System.in);
-        DataManager dataManager = new DataManager();
         String userInput;
         String userCommand;
         String userArguments;
@@ -35,7 +34,6 @@ public class Menu {
                         controller.controllerForCommandsOnly(userCommand, deliveryman);
                     }
                 }
-                dataManager.saveAll(deliveryman);
             } while (!userCommand.equalsIgnoreCase("bye"));
         } catch (NoSuchElementException e) {
             System.out.println("Please enter a valid command!");
