@@ -8,6 +8,7 @@ import seedu.duke.goal.Goal;
 import seedu.duke.goal.IntervalType;
 import seedu.duke.goal.timemanager.TimeController;
 import seedu.duke.record.*;
+
 import seedu.duke.ui.UI;
 
 
@@ -85,7 +86,8 @@ public class FitCenter {
         RecordList list = getRecordListByType(type);
         double timeSpentDaily = 0;
         if (type == SLEEP || type == EXERCISE) {
-            timeSpentDaily = exerciseRecordList.getDailyTime(record.getDate()) / 60.0 + sleepRecordList.getDailyTime(record.getDate());
+            timeSpentDaily = exerciseRecordList.getDailyTime(record.getDate()) / 60.0 +
+                    sleepRecordList.getDailyTime(record.getDate());
             if (type == EXERCISE) {
                 Exercise exercise = (Exercise) record;
                 timeSpentDaily += exercise.getDuration() / 60.0;

@@ -7,7 +7,9 @@ import seedu.duke.record.comparator.RecordDateComparator;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import static seedu.duke.record.RecordType.*;
+import static seedu.duke.record.RecordType.EXERCISE;
+import static seedu.duke.record.RecordType.SLEEP;
+
 
 /**
  * Represents the list that contains all records of one type.
