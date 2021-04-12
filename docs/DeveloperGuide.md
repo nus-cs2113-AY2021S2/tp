@@ -957,14 +957,15 @@ respective methods to return the object type of it. (In this case, `Expense`, `L
 
 ***Step 3***\
 With the returned objects, they are now parsed into the `processParsedObject` method to be added into their respective
-classes. With the instances of `Record` being added into the `RecordList` and the `creditScoreReturnedLoansMap` into
-the `HashMap` of itself.
+classes. With the instances of `Record` being added into an ArrayList of `Record` and the `creditScoreReturnedLoansMap` 
+into a HashMap<String, Integer>.
 
 ***Step 4***\
 The `start` method in the `Finux` class will then call the `getRecordListData` method to retrieve the loaded 
-`RecordList` from the `Storage` class, this is also the same with the `CreditScoreReturnedLoansMap` where the `start`
-method in the `Finux` class will call the `getMapData` method from the `Storage` class which will then return the
-`HashMap`.
+ArrayList<Record> from the `Storage` class and to load it into the `RecordList` object, this is also the same with the 
+`CreditScoreReturnedLoansMap` where the `start` method in the `Finux` class will call the `getMapData` method from the 
+`Storage` class which will then return the HashMap<String, Integer> and load it into the `CreditScoreReturnedLoansMap` 
+object.
 
 
 

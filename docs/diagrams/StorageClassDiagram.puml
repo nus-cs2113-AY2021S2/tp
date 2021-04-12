@@ -5,7 +5,7 @@ hide circle
 
 
 class Storage {
-- recordList: ArrayList
+- recordList: ArrayList <Record>
 - creditScoreReturnedLoansMap: HashMap
 - dataFilePath: Path
 + saveData(:RecordList, :CreditScoreReturnedLoansMap)
