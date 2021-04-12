@@ -5,39 +5,29 @@
 ## Content Page
 
 1. [Introduction](#1-introduction)
-	1. [What is HealthVault?](#11-what-is-healthvault) 
-	2. [About the Developer Guide](#12-about-the-developer-guide)
+	- [What is HealthVault?](#11-what-is-healthvault) 
+	- [About the Developer Guide](#12-about-the-developer-guide)
 1. [How to use this guide](#2-how-to-use-the-guide)
-	1. [Technical Terms](#21-technical-terms)
-	2. [Symbols & Icons](#22-symbols-and-icons)
+	- [Technical Terms](#21-technical-terms)
+	- [Symbols & Icons](#22-symbols-and-icons)
 1. [Getting Started](#3-getting-started)
 1. [Design](#4-design) 
-    1. [Architecture](#41-architecture)
-    2. [UI component](#42-ui-component) 
-    3. [Logic Component](#43-logic-component)
-    4. [Model component](#44-model-component) 
-    5. [Storage component](#45-storage-component)
+    - [Architecture](#41-architecture)
+    - [UI component](#42-ui-component) 
+    - [Logic Component](#43-logic-component)
+    - [Model component](#44-model-component) 
+    - [Storage component](#45-storage-component)
 1. [Implementation](#5-implementation)
     - [Staff](#51-staff) 
-    	
     	- [Staff Menu](#511-staff-menu)
-    
     	- [Staff Add](#512-staff-add)
-    	
     	- [Staff Delete](#513-staff-delete)
-    	
     	- [Staff List](#514-staff-list)
-    	
     	- [Staff Find](#515-staff-find)
-    	
     - [Patient](#52-patient)
-    	
     	- [Patient Menu](#521-patient-menu)
-    	- 
     	- [Patient Add](#522-patient-add)
-    	- 
     	- [Patient Delete](#523-patient-delete)
-    	- 
     	- [Patient List](#524-patient-list)
     	- [Patient Find](#525-patient-find)
     - [Doctor Appointment](#53-doctor-appointment)
