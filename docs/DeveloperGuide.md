@@ -1253,6 +1253,8 @@ coding and typing can speed up the process of their finance management through t
 
 1. To exit Finux, enter the `exit` command.
 
+<div style="page-break-after: always;"></div>
+
 ### D.2: Adding an expense to the record list
 
 1. Prerequisite: None.
@@ -1267,8 +1269,6 @@ coding and typing can speed up the process of their finance management through t
    1. `add -e -a -d`
    1. `add -e lunch -a x -d 28/03/2021`
       (where `x` is a negative number or a word)
-
-<div style="page-break-after: always;"></div>
 
 ### D.3: Adding a loan to the record list
 
@@ -1287,6 +1287,8 @@ coding and typing can speed up the process of their finance management through t
    1. `add -l -a -d -p`
    1. `add -l loan to Andy -a x -d 28/03/2021 -p Andy`
       (where `x` is a negative number or a word)
+
+<div style="page-break-after: always;"></div>
 
 ### D.4: Adding a saving to the record list
 
