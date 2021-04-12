@@ -1,0 +1,21 @@
+@startuml
+!include ../Style.puml
+'https://plantuml.com/sequence-diagram
+
+
+[-> ":Ui" :showRecords()
+activate ":Ui"
+":Ui" -> ":Deliveryman": getRecords()
+    activate ":Deliveryman"
+        Loop Each Delivery in records
+            ":Deliveryman" -> ":Delivery": toString()
+            activate ":Delivery"
+                ":Delivery" --> ":Deliveryman"
+            deactivate ":Delivery"
+        end
+    ":Deliveryman" --> ":Ui"
+    deactivate ":Deliveryman"
+":Ui" ->[
+
+
+@enduml

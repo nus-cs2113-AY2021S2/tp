@@ -1,0 +1,7 @@
+NTU Hall 5 | 5.00 | 10
+NTU Hall 3 | 3.00 | 3
+NTU Hall Oween | 11.00 | 11
+NTU Hall 6 | 6.00 | 6
+NTU Hall 1 | 1.00 | 1
+NTU Hall 14 | 14.00 | 14
+NTU Hall Othere | 15.00 | 15
