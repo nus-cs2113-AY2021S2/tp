@@ -24,7 +24,7 @@ alt is instance of Record
     Storage -[hidden]> Storage
 
 else instance of CreditScore
-    Storage -> Storage : put(:String, Integer)
+    Storage -> Storage : put(:String, :int)
     activate Storage
         Storage --> Storage
         deactivate Storage
