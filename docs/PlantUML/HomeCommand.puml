@@ -7,7 +7,7 @@ box HomeCommand
 -> ":HomeCommand" : execute(canteens, ui)
 activate ":HomeCommand"
 
-":HomeCommand" -> ":NusFoodReviews" : resetAllIndexes()
+":HomeCommand" -> ":NusFoodReviews" : resetCanteenStoreIndex()
 activate ":NusFoodReviews"
 ":NusFoodReviews" -> ":HomeCommand"
 deactivate ":NusFoodReviews"

@@ -5,6 +5,7 @@ import exceptions.DukeExceptions;
 import menus.Menu;
 import nusfoodreviews.NusFoodReviews;
 import storage.Storage;
+import storage.WriteToFile;
 import ui.Ui;
 
 import java.io.FileWriter;
@@ -36,8 +37,8 @@ public class AddMenuCommand extends Command {
 
     public void getMenu(ArrayList<Canteen> canteens, Ui ui) throws NumberFormatException, IOException, DukeExceptions {
         String menuName;
-        double menuPrice;
-        Integer currentStoreIndex;
+        double menuPrice = 0;
+        Integer currentStoreIndex = 0;
 
         nusFoodReviews.setCanteenIndex();
         int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
@@ -57,7 +58,14 @@ public class AddMenuCommand extends Command {
             ui.menuNotAdded();
             return;
         } else {
-            currentStoreIndex = Integer.parseInt(line) - 1;
+            try {
+                currentStoreIndex = Integer.parseInt(line) - 1;
+            } catch (NumberFormatException e) {
+                System.out.println(Ui.LINESPACING);
+                System.out.println("Wrong input, please enter a correct integer.");
+                System.out.println(Ui.LINESPACING);
+                return;
+            }
         }
 
         //check selected store input range
@@ -76,18 +84,26 @@ public class AddMenuCommand extends Command {
 
         ui.enterMenuPrice();
         line = ui.readCommand();
+
         if (line.equals("cancel")) {
             ui.menuNotAdded();
             return;
         } else {
-            menuPrice = Double.parseDouble(line);
+            try {
+                menuPrice = Double.parseDouble(line);
+            } catch (NumberFormatException e) {
+                System.out.println(Ui.LINESPACING);
+                System.out.println("Wrong input, please enter a correct integer.");
+                System.out.println(Ui.LINESPACING);
+                return;
+            }
         }
 
         Canteen canteen = canteens.get(currentCanteenIndex);
         Menu menu = new Menu(menuName,menuPrice);
         canteen.getStore(currentStoreIndex).addMenu(menu);
         ui.menuAdded(menuName,line);
-        Storage.saveMenu(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH,true),
+        WriteToFile.saveMenu(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH,true),
                 canteen.getCanteenName(),canteen.getStore(currentStoreIndex).getStoreName(),menuName,line);
     }
 

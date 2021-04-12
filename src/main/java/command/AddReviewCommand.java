@@ -4,6 +4,7 @@ import canteens.Canteen;
 import exceptions.DukeExceptions;
 import reviews.Review;
 import storage.Storage;
+import storage.WriteToFile;
 import stores.Store;
 import ui.Ui;
 
@@ -15,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import static ui.Ui.LINESPACING;
-
 
 public class AddReviewCommand extends Command {
     private Store store;
@@ -85,7 +85,7 @@ public class AddReviewCommand extends Command {
         ui.reviewAdded();
         Date dateTime = new Date();
         Format formatter = new SimpleDateFormat("yyy-MM-dd");
-        Storage.saveReview(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH,true),canteen,store,description,line,
+        WriteToFile.saveReview(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH,true),canteen,store,description,line,
                 formatter.format(dateTime));
     }
 }

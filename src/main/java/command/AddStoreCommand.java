@@ -4,6 +4,7 @@ import canteens.Canteen;
 import exceptions.DukeExceptions;
 import nusfoodreviews.NusFoodReviews;
 import storage.Storage;
+import storage.WriteToFile;
 import stores.Store;
 import ui.Ui;
 
@@ -64,7 +65,7 @@ public class AddStoreCommand extends Command {
         //add store to canteen
         currentCanteen.addStore(storeName);
         ui.printStoreAdded(storeName, currentCanteen.getCanteenName());
-        Storage.saveStore(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH,true),
+        WriteToFile.saveStore(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH,true),
                 canteens.get(currentCanteenIndex).getCanteenName(),storeName);
     }
 
