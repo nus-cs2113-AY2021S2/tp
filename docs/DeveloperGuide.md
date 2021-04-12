@@ -13,6 +13,7 @@ ol ol > li:before {
     content: counters(item, ".") ". ";
 }
 </style>
+<title>Patient Manager Developer Guide</title>
 
 # Patient Manager Developer Guide
 
