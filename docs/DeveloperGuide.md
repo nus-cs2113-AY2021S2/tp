@@ -303,6 +303,8 @@ the resultant constant is `...final String COMMAND_ADD = "add";`.
 
 Below shows the command format the user has to type into the Application.
 
+<div style="page-break-after: always;"></div>
+
 #### Command Format
 > _**Commands in Finux follow these argument orders (depending on the command):**_
 > * `CMD -OPT <FIELD> [-OPT <FIELD>...]`
@@ -330,6 +332,8 @@ More on the different types of commands and usages, please refer to our [User Gu
 The `Command` component contains the `abstract Command` class and its extensions (child classes).
 Each child class inherits the `Command` class.
 The child classes of `Command` are the `AddCommand`, `CreditScoreCommand`, `ViewCommand`, etc...
+
+<div style="page-break-after: always;"></div>
 
 #### Design
 The only `abstract` method of `Command` is `execute(...)`, where it is called by `Finux` everytime a `Command`
@@ -367,6 +371,8 @@ sets the `recordType` to `ALL`.
 If no violations are present in the arguments, then the subsequent `Command` object is returned.\
 If violations occur at any point of the input validation, the `Command` is not created and `CommandException` 
 is thrown back to the `CommandHandler`.
+
+<div style="page-break-after: always;"></div>
 
 ### 3.6 RecordList Component
 ![RecordList](img/RecordListClassDiagram.png)
@@ -408,6 +414,7 @@ following snippet of pseudo code:
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PRINT  getRecordAt(i)\
 > END LOOP
 
+<div style="page-break-after: always;"></div>
 
 ### 3.8 Storage Component
 
