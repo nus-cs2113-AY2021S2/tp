@@ -18,14 +18,6 @@ Contributions can be found on [RepoSense](https://nus-cs2113-ay2021s2.github.io/
 
 ### Contribution to Implementation
 
-* Code contributions
-    * Class `CommandHandler.java`
-    * Class `Command.java` (abstract) and its child classes (base version)
-    * Class `AddCommand.java`
-    * Class `Utils.java`
-    * Enumerations `ArgumentType.java` and `RecordType.java`
-    * others
-
 #### CommandHandler class
 To kick off the coding of the project, Andy and I started early by planning on the 
 style of parsing user input and command handling. We decided to follow the parsing 
