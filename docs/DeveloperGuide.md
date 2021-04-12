@@ -135,7 +135,7 @@ First fork this repo, and clone the fork into your computer.
 
 **Before writing code**
 
-1. If using IDEA, configuring the code style to set up IDEA’s coding style to match ours.
+1. If you are using IDEA, configure the code style to set up IDEA’s coding style to match ours.
 2. When you are ready to start coding, we recommend that you get some sense of the overall design by reading about HealthVault’s architecture.
 
 <br>
