@@ -227,7 +227,7 @@ existing module.
 
 Given below is the sequence diagram of the feature: 
 
-![Diagram](diagrams/moduleInfo/addComponent1.png)  
+![Diagram](diagrams/moduleInfo/addComponent.png)  
 *Figure 6*
 
 A general 3-step explanation of how this feature works is shown below:
@@ -325,7 +325,7 @@ with 2 decimal places of precision, and total number of modular credits(MCs) tha
 
 Given below is the sequence diagram for the feature:
 
-![Diagram](diagrams/capCalculator/addCapAndMcs1.png)  
+![Diagram](diagrams/capCalculator/addCapAndMcs.png)  
 *Figure 8*
 
 A general 3-step explanation of how this feature works is shown below:  
