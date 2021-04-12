@@ -1,4 +1,4 @@
-//@@author {jhjhjajh}
+//@@author jhjhjajh
 
 package seedu.connoisseur.commands;
 
@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Test;
 import seedu.connoisseur.recommendation.Recommendation;
 import seedu.connoisseur.review.Review;
 import seedu.connoisseur.ui.Ui;
-
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;

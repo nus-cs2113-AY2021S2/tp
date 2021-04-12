@@ -1,4 +1,3 @@
-//@@author {}
 
 package seedu.connoisseur.commands;
 
@@ -30,8 +29,6 @@ public class CommandsTest {
         reviewList.reviews.add(reviewa);
         reviewList.reviews.add(reviewb);
     }
-
-    //@@author {}
 
     @Test
     public void deleteReview_reviewExists_removesNormally() {
