@@ -196,10 +196,12 @@ API: `BaseException.java` and its subclasses
 * may also report the cause of error for debugging purposes
 
 Each subclass of `BaseException`:
+
 * has at most one component that is dependent on it (e.g `InvalidInputException` and the `UI` component)
 * contains an enumeration of error messages specific to that component
 
-More details on the specific implementation can be found at [Section 4.3: Exception Handling](#exception-handling).
+More details on the specific implementation of each subclass can be found
+at [Section 4.3: Exception Handling](#exception-handling).
 
 ### Common Classes
 
@@ -282,6 +284,16 @@ call out the actual logic of this command.
 > record 01/05/2021 /s coughing, fever
 > record 01/05/2021 /s coughing,                 fever
 > ```
+
+### Adding Patients
+
+Adding of patients is implemented via the `AddCommand`, which is created by the `Parser.parse()` method. As
+per [Section 4.1: Parsing User Input](#parsing-user-input), the arguments to the command are stored in
+a `HashMap<String, String>` and passed to the `AddCommand` during initialization.
+
+Below is a sequence diagram when the user executes the command `add S1234567D`.
+
+<img src="./images/sequence_diagram_add.png" width="600">
 
 ### Exception Handling
 
