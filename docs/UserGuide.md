@@ -47,7 +47,6 @@
 ## 1. Introduction
 
 Welcome to the user guide for our application, Connoisseur!
-With over 4.6 thousand restaurants in Singapore, endless number of entertainment options and never-ending lists of streaming shows and movies to watch, many of us are left deciding for a long time on what is worthwhile to spend our limited leisure time on. 
 
 Fret-not! Connoisseur is a desktop application for managing and storing personal reviews on experiences and recommendations to try next. It is a revolutionary app that not only provides an organised user-friendly database, but provides customisable categories to enhance your experience. Through its intuitive command line interface, you will be able to store and access your reviews & recommendation easily!
 
@@ -90,7 +89,9 @@ and can be completed in a few simple steps. Follow the instructions below to try
    locating the file. Figure 1 shows how to download version 2.1 of Connoisseur. CS2113T-F08-3.Connoisseur.jar has been highlighted in
    red for your convenience.   
    ![Figure 1 - How to download Connoisseur](./images/ug/jarfile.png)
-   <p align="center">Figure 1. How to download Connoisseur</p>
+
+    <p align="center">Figure 1. How to download Connoisseur</p>
+
 
 3. Copy the file to the folder you want to use as the _home folder_ for Connoisseur
    
@@ -133,7 +134,7 @@ category. The review mode can be accessed using the `review` command as shown in
 This feature allows you to add a new review. There is a choice of quick review or full review.
 
 Command: `add [quick | full]`, `new [quick | full]`<br>
-`[quick | full]` : optional arguments to specify quick or full review. <br>
+`[quick | full]` Optional arguments to specify quick or full review. <br>
 
 <span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed in between the two words in the command. <br>
 
@@ -174,7 +175,7 @@ the reviews.
 
 Command: `list [SORTING METHOD]`
 
-`[SORTING METHOD]` : (optional argument) temporary sort method by which to sort the reviews. Leaving this blank would
+`[SORTING METHOD]` (optional argument) temporary sort method by which to sort the reviews. Leaving this blank would
 allow Connoisseur to use the saved _sort method_ (refer to [4.1.3](#413-sort-reviews)) as shown in Figure 8. Currently, supported methods are:
 
 * `title`
@@ -185,7 +186,8 @@ allow Connoisseur to use the saved _sort method_ (refer to [4.1.3](#413-sort-rev
   
 <span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed before or after the command.
 
-<span>&#10071;</span> The command 'list' is case-insensitive. On the other hand, when inputting sorting method ensure it is in lower case.<br>
+<span>&#10071;</span> For usage, Connoisseur commands are case insensitive.<br>
+For example, `list` is equivalent to `LiSt`.
 
 <span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed in between the two words in the command. <br>
 
@@ -218,7 +220,9 @@ This feature allows you to change the saved sorting method as shows in Figure 11
 
 Command: `sort [SORTING METHOD]`
 
-`[SORTING METHOD]` : sort method to be used. Default sorting method is `latest`. Refer [above](#412-list-reviews) for
+
+`[SORTING METHOD]` Sort method to be used. Default sorting method is `latest`. Refer [above](#4.1.2-list-reviews) for
+
 a list of recognised sorting methods.
 
 <span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed before or after the command.
@@ -237,7 +241,7 @@ This feature allows you to view all the details of the specified review as shown
 
 Command: `view [TITLE_OF_REVIEW]`
 
-`[TITLE_OF_REVIEW]` : title of review that you want to view.
+`[TITLE_OF_REVIEW]`  Title of review that you want to view.
 
 <span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed before or after the command.
 
@@ -260,7 +264,7 @@ This feature allows you to make edits to the Title / Category / Rating / Descrip
 
 Command : `edit [TITLE_OF_REVIEW] `
 
-`[TITLE_OF_REVIEW]` : title of review that you want to edit.
+`[TITLE_OF_REVIEW]` Title of review that you want to edit.
 
 <span>&#10071;</span> Ensure the title of the review you want to edit already exists in your lists of reviews.
 Otherwise, Connoisseur will prompt you saying that no such review exits. When typing the title you want to edit, ensure spelling and the number of blank spaces in between words is the same as the title in the list.
@@ -295,7 +299,7 @@ This feature allows you to delete a review from your list as shown in Figure 14.
 
 Command: `delete [TITLE_OF_REVIEW]`
 
-`[TITLE_OF_REVIEW]` : title of review that you want to delete.
+`[TITLE_OF_REVIEW]` Title of review that you want to delete.
 
 <span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed before or after the command.
 
@@ -373,7 +377,7 @@ list.
 
 Command : `edit [TITLE_OF_RECOMMENDATION]`
 
-`[TITLE_OF_RECOMMENDATION]` : title of recommendation that you want to edit.
+`[TITLE_OF_RECOMMENDATION]` Title of recommendation that you want to edit.
 
 <span>&#10071;</span>Ensure the title of the recommendation you want to edit already exists in your lists of recommendations.
 Otherwise, Connoisseur will prompt you saying that no such recommendation exists. When typing the title you want to edit, ensure spelling and the number of blank spaces in between words is the same as the title in the list.
@@ -403,7 +407,7 @@ This feature allows you to delete a recommendation from your list as shown in Fi
 
 Command: `delete [TITLE_OF_RECOMMENDATION]`
 
-`[TITLE_OF_RECOMMENDATION]` : title of recommendation that you want to delete.
+`[TITLE_OF_RECOMMENDATION]` Title of recommendation that you want to delete.
 
 ![delete_Reco.png](images/ug/delete_Reco.png)
 <p align="center">Figure 19. Deleting a recommendation</p>
@@ -463,7 +467,7 @@ If you want help with a specific command simple key in `help` followed by the `[
 This feature allows you to exit Connoisseur. All you reviews and recommendations are automatically stored in
 `connoisseur.json` in the _data folder_ as shown in Figure 23.
 
-command: `exit` or `bye`
+Command: `exit` or `bye`
 ![img_6.png](images/ug/exit.png)
 <p align="center"> Figure 23. Exiting Connoisseur</p>
 <span>&#10071;</span> The commands are case-insensitive.
