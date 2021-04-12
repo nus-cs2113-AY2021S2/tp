@@ -13,6 +13,7 @@ public class MovieFilter {
 
     /**
      * Display the list of (filtered) movies.
+     *
      * @param MovieList the full list of movies.
      */
     public static void printMovieList(ArrayList<Movie> MovieList) {
@@ -29,6 +30,7 @@ public class MovieFilter {
 
     /**
      * Display the filters users can choose from and prompt users to make a choice.
+     *
      * @return an int value that indicates user's choice.
      */
     public static int getFilter() {
@@ -65,6 +67,7 @@ public class MovieFilter {
 
     /**
      * Display the genres users can choose from and prompt users to make a choice.
+     *
      * @return a string value that indicates user's choice.
      */
     public static String getGenre() {
@@ -116,6 +119,7 @@ public class MovieFilter {
 
     /**
      * Display the movies filtered by selected genre.
+     *
      * @param movieList the full list of movies.
      * @return a list of filtered movies.
      */
@@ -136,6 +140,7 @@ public class MovieFilter {
 
     /**
      * Display the rating users can choose from and prompt users to make a choice.
+     *
      * @return a float value that indicates user's choice.
      */
     public static float getRating() {
@@ -159,6 +164,7 @@ public class MovieFilter {
 
     /**
      * Display the movies filtered by selected rating.
+     *
      * @param movieList the full list of movies.
      * @return a list of filtered movies.
      */
@@ -179,6 +185,7 @@ public class MovieFilter {
 
     /**
      * Display the showing status users can choose from and prompt users to make a choice.
+     *
      * @return a String value that indicates user's choice.
      */
     public static String getShowingStatus() {
@@ -222,6 +229,7 @@ public class MovieFilter {
 
     /**
      * Display the movies filtered by selected showing status.
+     *
      * @param movieList the full list of movies.
      * @return a list of filtered movies.
      */
@@ -242,6 +250,7 @@ public class MovieFilter {
 
     /**
      * Display the cineplex users can choose from and prompt users to make a choice.
+     *
      * @return an int value that indicates user's choice.
      */
     public static int getCineplex() {
@@ -270,6 +279,7 @@ public class MovieFilter {
 
     /**
      * Display the movies filtered by selected cineplex.
+     *
      * @param movieList the full list of movies.
      * @param CineplexDatabase the list of cineplex.
      * @return a list of filtered movies.
@@ -294,6 +304,7 @@ public class MovieFilter {
 
     /**
      * Prompt users to enter the title they want to search.
+     *
      * @return a String value that indicates user's input.
      */
     public static String getTitle() {
@@ -304,6 +315,7 @@ public class MovieFilter {
 
     /**
      * Display the movies filtered by selected title.
+     *
      * @param movieList the full list of movies.
      * @return a list of filtered movies.
      */
@@ -324,6 +336,7 @@ public class MovieFilter {
 
     /**
      * Prompt users to choose a movie by index.
+     *
      * @param size the length of the movie list.
      * @return an int value that indicates user's choice.
      */
@@ -348,6 +361,7 @@ public class MovieFilter {
 
     /**
      * Display the movies selected by the user.
+     *
      * @param movieList the full list of movies.
      * @return a list of selected movies.
      */
@@ -360,6 +374,7 @@ public class MovieFilter {
 
     /**
      * Display the types of filters users can choose from and prompt users to make a choice.
+     *
      * @param movieList the full list of movies.
      * @param CineplexDatabase the list of cineplex.
      * @param user the list of users.

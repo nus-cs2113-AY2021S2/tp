@@ -12,6 +12,9 @@ public class Booking implements Serializable {
     private Status status;
     private Date date;
 
+    /**
+     * Class constructor.
+     */
     public Booking(Showtimes showtimes, ArrayList<Seat> seats) {
         this.showtimes = showtimes;
         this.seats = seats;
@@ -20,7 +23,9 @@ public class Booking implements Serializable {
         printBookingDetails();
     }
 
-
+    /**
+     * Display the booking details.
+     */
     public void printBookingDetails() {
         Calendar d = getShowtimes().getDateTime();
         Date movieDate = d.getTime();
