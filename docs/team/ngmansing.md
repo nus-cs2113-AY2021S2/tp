@@ -46,12 +46,10 @@ Given below are my contributions to the project.
     * Try to make the code in line with coding standard
     * Adopt abstraction to split long methods into multiple short methods.
     * Adopt better encapsulation by separating a large class into smaller classes.
-    * Reduced coupling between classes (In previous design, both `Main` and `Logic` stores the address of `Model`. In the current version, only `Logic` stores the address of `Model`.)
-    * Removing magic numbers/literals
-  * Post/resolve issues in the Issue tracker
+  * Reduced coupling between classes (In previous design, both `Main` and `Logic` stores the address of `Model`. In the current version, only `Logic` stores the address of `Model`.)
+  * Post/resolve issues on the Issue tracker
   * Released TraceYourProj v2.0
   * Developer Guide & User Guide:
-    * Beautify Developer Guide.
     * Edit typo
     * Enrich content
   * Review/mentoring contributions:
