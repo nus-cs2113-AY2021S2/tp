@@ -44,7 +44,7 @@ The rest of TraceYourProj comprises the following components:
 - `MainUi`: The user interface of the application.
 - `Logic`: The core of the application that is to execute commands from the user.
 - `Model`: It stores the data of the application in memory.
-- `Storage`: It reads/writes the data to the hard disk (local file system).
+- `Storage`: It reads/writes the data from/to the hard disk (local file system).
 
 ---
 
@@ -80,10 +80,11 @@ API: [`CommandHandler.java`](https://github.com/AY2021S2-CS2113-W10-3/tp/blob/ma
 The `Logic` Component
 
 * The API of `Logic` is the class CommandHandler.
-* Class `CommandHandler` uses class `CommandParser` to parse infoFragments from class `InputParser`.
+* Class `CommandHandler` uses class `CommandParser` to parse infoFragments from class `InputParser` with suitable keywords.
 * The parsed arguments would be passed to suitable classes (`ResourceManager/ProjectManager`) for command execution.
 * Class `ResourceManager/ProjectManager` executes user command based on the parsed arguments.
-* The Model may be modified during command execution(e.g. added/deleted a resource)
+* The Model may be modified during command execution. (e.g. added/deleted a resource)
+* data.txt, a local text file, may be modified during command execution. (e.g. save a project list)
   
 ---
 
