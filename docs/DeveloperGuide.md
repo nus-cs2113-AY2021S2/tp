@@ -4,19 +4,19 @@
 
 ## Content Page
 
-1. [Introduction](#1-introduction) (jia en)
+1. [Introduction](#1-introduction)
 	1. [What is HealthVault?](#11-what-is-healthvault) 
 	2. [About the Developer Guide](#12-about-the-developer-guide)
-2. [How to use this guide](#2-how-to-use-the-guide) (sarrah)
+2. [How to use this guide](#2-how-to-use-the-guide)
 	1. [Technical Terms](#21-technical-terms)
 	2. [Symbols & Icons](#22-symbols-and-icons)
-4. [Getting Started](#3-getting-started) (Owen)
+4. [Getting Started](#3-getting-started)
 5. [Design](#4-design) 
-    1. [Architecture](#41-architecture) (owen)
-    2. [UI component](#42-ui-component) (ms)
-    3. [Logic Component](#43-logic-component) (jiaen)
-    4. [Model component](#44-model-component) (alex)
-    5. [Storage component](#45-storage-component) (sarrah)
+    1. [Architecture](#41-architecture)
+    2. [UI component](#42-ui-component) 
+    3. [Logic Component](#43-logic-component)
+    4. [Model component](#44-model-component) 
+    5. [Storage component](#45-storage-component)
 6. [Implementation](#5-implementation)
     1. [Staff](#51-staff) 
     	1. [Staff Menu](#511-staff-menu)
@@ -52,16 +52,15 @@
     	2. [Personalized Account Login](#562-personalized-account-login)
     	3. [Inventory Alerts](#563-inventory-alerts)
 
-[Appendix A: Product Scope](#appendix-a-product-scope) (jiaen)
+[Appendix A: Product Scope](#appendix-a-product-scope)
 
-[Appendix B: User Stories](#appendix-b-user-stories) (alex)
+[Appendix B: User Stories](#appendix-b-user-stories)
 
-[Appendix C: Non Functional Requirements](#appendix-c-non-functional-requirements) (mingshun)
+[Appendix C: Non Functional Requirements](#appendix-c-non-functional-requirements)
 
-[Appendix D: Glossary](#appendix-d-glossary) (owen)
+[Appendix D: Glossary](#appendix-d-glossary)
 
-[Appendix E: Instructions for Manual Testing](#appendix-e-instructions-for-manual-testing) (sarrah)
-
+[Appendix E: Instructions for Manual Testing](#appendix-e-instructions-for-manual-testing)
 
 ## 1. Introduction
 ### 1.1 What is HealthVault?
@@ -70,7 +69,7 @@ In light of the recent COVID-19 pandemic. The weakness of modern healthcare syst
 Many of which are unsatisfactory in coping with the current needs.
 HealthVault was thus created to improve the efficiency of hospital and healthcare information management.
 <br>
-**HealthVault** is a desktop application made for healthcare workers as their one stop application for recording and 
+**HealthVault** is a desktop application made for healthcare workers as their one-stop application for recording and 
 accessing critical patient or staff information.
 It is optimized for the Command Line Interface, where an experienced typist will be able to 
 make full use of the informative and minimalistic GUI to achieve significant gains in efficiency
@@ -82,7 +81,7 @@ implemented. Such personnel may include: students, technical support staff, web 
 
 This Developer guide seeks to inform and instruct readers on the architecture and specific implementation of the various
 functions within HealthVault. So that if they wish to make any fixes or edits to improve on the code for their own 
-usage, they will be well equipped with both the knowledge and expertise to do so. 
+usage, they will be well-equipped with both the knowledge and expertise to do so. 
 
 The Developer Guide hopes to impart to you the following:
 1. Properly set up for HealthVault
@@ -107,7 +106,7 @@ We hope you will have a fruitful time learning about HealthVault.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **[]** - Square brackets for compulsory user inputs.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :information_source: This icon denotes a important information to note.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :information_source: This icon denotes an important piece of information to take note of.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :exclamation: Warning sign to inform user against doing certain actions 
 
@@ -129,7 +128,7 @@ First fork this repo, and clone the fork into your computer.
 
 **Setting up the project in your computer**
 
-1. Configuring the JDK to to ensure Intellij is configured to use JDK 11.
+1. Configuring the JDK to ensure Intellij is configured to use JDK 11.
 2. Import the project as a Gradle project.
 3. Run the seedu.duke.HealthVault and try a few commands as stated in the User Guide.
 4. Run the tests to ensure they all pass.
@@ -150,7 +149,7 @@ First fork this repo, and clone the fork into your computer.
 
 **Overview Architecture:**
 
-Our application utilises many layers of abstraction which allows each individual component to be self contained yet able to work with other components. Each component has been absracted and grouped together based on its function and purpose in the system.
+Our application utilises many layers of abstraction which allows each individual component to be self-contained yet able to work with other components. Each component has been abstracted and grouped together based on its function and purpose in the system.
 
 The above diagram shows how each component interacts with the other components. The directed arrows represent the direction in which functions of each component is called and used. For example, the Instance Component utilises the Storage Component.
 
@@ -177,7 +176,7 @@ The above diagram shows how each component interacts with the other components. 
 
 **Storage Component:** Manages all file I/O.
 
-
+<br>
 
 ### 4.2 UI component
 
@@ -195,12 +194,13 @@ The UI of this program can be found under the package named UI. It consists of `
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Is responsible for handling all input and output of the program. 
 
+<br>
 
 ### 4.3 Logic Component
 
 The `Logic` component is responsible for the following tasks:
 
-- Run each instance that accepts user inputs in order to access various functionalities.
+- Run instances of the various features within HealthVault.
 - Converts user inputs into data that is usable by the HealthVault.
 - Executes the Command based on interpreted data.
 
@@ -226,11 +226,11 @@ The following class diagram illustrates the interactions between various logic c
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="diagrams/LogicComponent.png">
 
-The following class diagram illustrates the group of Commands under the doctorappointment package. Due to the similar Commands in each of the Command packages, the information in the doctorappointment package should be representative of the other Command packages.
+The following class diagram illustrates the group of Commands under the `doctorappointment` package. Due to the similar Commands in each of the Command packages, the information in the doctorappointment package should be representative of the other Command packages.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="diagrams/ExampleCommandPackage.png">
 
->:information_source: Similar classes are represented by abbreviations ie. ABCCommand. The actual class names are written in the notes beside the classes. 
+>:information_source: Similar classes are represented by abbreviations i.e. ABCCommand. The actual class names are written in the notes beside the classes. 
 > 
 >1. ABCInstance represents the different `Instance` classes.
 >2. PQRParser represents the different `Parser` classes.
@@ -243,15 +243,15 @@ The following class diagram illustrates the group of Commands under the doctorap
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/UML Model.png">
 
-The Model component consists of classes that represents the tasks and things that a nurse has to do in the real world. 
+The Model component consists of classes that represents the collection of objects that a nurse has to interact with.
 
-The `Model`, consists of 5 different types of lists.
+The `Model`, consists of 5 different types of arraylists.
 
-- AppointmentList stores DoctorAppointment objects. AppointmentList also has methods needed to modify the list with objects.
-- InventoryList stores Inventory objects. InventoryList also has methods to modify the list with objects.
-- NurseScheduleList stores NurseSchedule objects. NurseScheduleList also has methods to modify the list with objects.
-- PatientList stores Patient objects. PatientList also has methods to modify the list with objects.
-- StaffList stores Staff objects. StaffList also has methods to modify the list with objects.
+- AppointmentList stores DoctorAppointment objects. AppointmentList also has methods needed to interact with objects in the arraylist.
+- InventoryList stores Inventory objects. InventoryList also has methods needed to interact with objects in the arraylist.
+- NurseScheduleList stores NurseSchedule objects. NurseScheduleList also has methods needed to interact with objects in the arraylist.
+- PatientList stores Patient objects. PatientList also has methods needed to interact with objects in the arraylist.
+- StaffList stores Staff objects. StaffList also has methods needed to interact with objects in the arraylist.
 
 <br>
 
@@ -262,8 +262,8 @@ The Storage component consists of classes that individually reads data from, and
 
 The `Storage`, consists of 5 different types of classes:
 
-- DoctorApointmentStorage implements `writeToFile()` to write information regarding doctorID, name, date, appointmentID, and gender into DoctorAppointment.txt file. `loadFile()`loads the data in the DoctorAppointment.txt file into an array list to be returned. `loadDoctorFile()` loads the doctor information from the staff database.
-- IventoryStorage implements `storeInventory()` to write information regarding drug name, price, and quantity into Inventory.txt file. `loadInventory()`loads the data in the Inventory.txt file into an array list to be returned.
+- DoctorAppointmentStorage implements `writeToFile()` to write information regarding doctorID, name, date, appointmentID, and gender into DoctorAppointment.txt file. `loadFile()`loads the data in the DoctorAppointment.txt file into an array list to be returned. `loadDoctorFile()` loads the doctor information from the staff database.
+- InventoryStorage implements `storeInventory()` to write information regarding drug name, price, and quantity into Inventory.txt file. `loadInventory()`loads the data in the Inventory.txt file into an array list to be returned.
 - NurseScheduleStorage implements `writeToFile()` to write information regarding nurseID, patientID, date into NurseSchedule.txt file. `loadPatientFile()` loads the patient information from the patient database.
 - StaffStorage implements `writeToFile()` to write information regarding staffID, name, age, and specialisation into Staff.txt file. `loadFile()`loads the data in the Patients.txt file into an array list to be returned.
 - PatientStorage implements `storePatients()` to write information regarding patientID, name, age, gender, illness, and drugsNeeded into Patient.txt file. `loadPatients()`loads the data in the Patient.txt file into an array list to be returned.
@@ -285,7 +285,7 @@ Whenever a user input is given to the Staff Menu, the following steps will occur
 **Launching Staff Menu**
 
 1. `ToStaffInstance.execute()` will create and call `StaffInstance.run()`
-2. `StaffInstance.run()` will start by loading/creating the Staff data .txt file for Staff database records. It will check for any signs of corrupted file when loading. Exception will be thrown if any corruption occurs.
+2. `StaffInstance.run()` will start by loading/creating the Staff data .txt file for Staff database records. It will check for any signs of corrupted file when loading. An Exception will be thrown if any corruption occurs.
 3. `StaffInstance.run()` will then repeatedly call `commandHandler()`.
 
 **Getting User Input**
@@ -300,7 +300,7 @@ Whenever a user input is given to the Staff Menu, the following steps will occur
 
 **Implementation:**
 
-The function Add takes in 4 compulsory fields (Staff ID, Name, Age, Specialisation) to create the Staff Object and adds it to an aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. A StaffAdd Command object is created. StaffAdd command object will be executed to create the Staff Object which will be added to the aggregation of Staff Objects.
+The function Add takes in 4 compulsory fields (Staff ID, Name, Age, Specialisation) to create the Staff Object and adds it to an aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. A StaffAddCommand object is created. StaffAddCommand object will be executed to create the Staff Object which will be added to the aggregation of Staff Objects.
 
 Invalid Input includes:
 
@@ -326,14 +326,14 @@ Invalid Input includes:
 	- checkBlankInput2()
 	- invalidCharactersStaffChecker()
 
-**Creating StaffAdd command**
+**Creating StaffAddCommand object**
 
-3. If the input data is valid, a StaffAdd Command object is created. Else a relevant error is thrown.
-4. The StaffAdd Command object is returned to `StaffInstance.run()`
+3. If the input data is valid, a StaffAddCommand object is created. Else a relevant error is thrown.
+4. The StaffAddCommand object is returned to `StaffInstance.run()`
 
 **Creating Staff Object with User Input**
 
-5. StaffInstance then executes the StaffAdd Command object to begin the process of creating the Staff object
+5. StaffInstance then executes the StaffAddCommand object to begin the process of creating the Staff object
 
 6. `StaffAdd.execute()` will call the function in `StaffList.add()`
 
@@ -425,7 +425,7 @@ Invalid Input includes:
 
 **Implementation:**
 
-The function Add takes in 1 compulsory field (keyword) to find the relvant Staff Objects within the aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. The given input is used to match with every single field of the Staff Object. If there is a match, the Staff Object will be displayed. Else, an error message will be displayed.
+The function Add takes in 1 compulsory field (keyword) to find the relevant Staff Objects within the aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. The given input is used to match with every single field of the Staff Object. If there is a match, the Staff Object will be displayed. Else, an error message will be displayed.
 
 Invalid Input includes:
 
@@ -466,13 +466,13 @@ Whenever a user input is given to the Patient Menu, the following steps will occ
 
 1. `ToPatientInstance.execute()` will create and call `PatientInstance.run()`
 2. `PatientInstance.run()` will start by loading/creating the Patient data .txt file for Patient database records. It will check for any signs of corrupted file when loading and exception will be thrown if any corruption is detected.
-3. `PatientInstance.run()` will then enters its running for loop and repeatedly take in user inputs for data processing.
+3. `PatientInstance.run()` will then enter its running for loop and repeatedly take in user inputs for data processing.
 
 **Getting User Input**
 
 4. `PatientInstance.run()` will repeatedly request for user input and call `PatientParser.patientParse()`.
 5. `patientParse()` will call the `smartCommandRecognition()` to assess the given user input and determine which command is most similar to the input.
-6. The most relevant command is then returned to the parser and the parser then scans the input thoroughly based on the command returned. Relevant errors in the input are detected and the appropriate exceptions thrown.
+6. The most relevant command is then returned to the parser, and the parser then scans the input thoroughly based on the command returned. Relevant errors in the input are detected and the appropriate exceptions thrown.
 7. Only after scanning the input for errors, will the proper command be returned to `PatientInstance` where it will then be executed.
 8. After getting an input, and parsing it into string tokens, a new instance of PatientChecker class `checker` is instantiated to perform error checking.
 
@@ -593,8 +593,8 @@ Option 1 (Final choice): Not using an iterator
 * Cons: The flexibility of the data manipulation may be restrictive and this may result in future functions being harder to implement.
 
 Option 2 : Using an iterator
-* Pros: An iterator allows for more flexible data access as it allows for more efficient deletion of a block of data and it helps to keep the location of where data was manipulated.
-* Cons: Maintenance of the iterator is very difficult and it may not be worth the effort to implement when solutions exist that only require inbuilt functions.
+* Pros: An iterator allows for more flexible data access as it allows for more efficient deletion of a block of data, and it helps to keep the location of where data was manipulated.
+* Cons: Maintenance of the iterator is very difficult, and it may not be worth the effort to implement when solutions exist that only require inbuilt functions.
   <br>
   
 ### 5.2.4 List
@@ -645,7 +645,7 @@ Option 2 : Printing the patients in blocks with no common rows or columns.
 
 **Implementation:**
 
-The function Find takes in 1 compulsory field (keyword) to find the relvant Patient Objects within the list of Patient Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. The given input is used to match with every single field of the Patient Object. If there is a match, the Patient Object will be displayed. Else, an error message will be displayed.
+The function Find takes in 1 compulsory field (keyword) to find the relevant Patient Objects within the list of Patient Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. The given input is used to match with every single field of the Patient Object. If there is a match, the Patient Object will be displayed. Else, an error message will be displayed.
 
 Invalid Input includes:
 
@@ -682,7 +682,7 @@ Invalid Input includes:
 5. PatientInstance then executes the PatientFind Command object to begin the process of finding and displaying relevant Patient objects.
 6. `PatientFind.execute()` will call the function `PatientList.findPatient()`
 7. `PatientList.findPatient()` will iterate through the objects in ArrayList<Patient> PatientList.
-8. `PatientList.findPatient()` will compare the the patient details of every Patient Object in the current list of Patient Objects with the keywork inputted by the user and discover any matches.
+8. `PatientList.findPatient()` will compare the patient details of every Patient Object in the current list of Patient Objects with the keyword inputted by the user and discover any matches.
 9. The relevant Patient Objects are then displayed.
 10. Control is then returned to PatientInstance.
 
@@ -709,14 +709,14 @@ Whenever a user input is given to the Doctor Appointment Menu, the following ste
 
 **Launching Doctor Appointment Menu**
 
-1. `ToDoctorAppointment.execute()` will create and call `DoctorAppointmentInstance.run()`
+1. `ToDoctorAppointmentInstance.execute()` will be created and call upon `DoctorAppointmentInstance.run()`.
 2. `DoctorAppointmentInstance.run()` will start by loading/creating the DoctorAppointment data .txt file for database records. It will check for any signs of corrupted file when loading. Exception will be thrown if any corruption occurs.
 3. `DoctorAppointmentInstance.run()` will then repeatedly call `DoctorAppointmentParser.parse()`.
 
 **Getting User Input**
 
-4. `DoctorAppointmentInstance.run()` will repeatedly, requesting for user input and calling `DoctorAppointmentParser.parse()`.
-5. `parse()` will call the `smartCommandRecognition()` to assess the given user input and determine which command is most similar to the input
+4. `DoctorAppointmentInstance.run()` will repeatedly request for user input and call `DoctorAppointmentParser.parse()`.
+5. `parse()` will call the `smartCommandRecognition()` to assess the given user input and determine which command is most similar to the input.
 6. Based on the recognised command by the system, the relevant commands will be carried out.
 
 <br>
@@ -749,7 +749,9 @@ Invalid Input includes:
 1. If the command recognised is the add command, `DoctorAppointmentParser.parse()` calls `MainChecker.checkNumInput()` and `DoctorAppointmentChecker.checkValidDataForAdd()` to ensure data entered is valid.
 2. `checkValidDataForAdd()` will call the following function in sequence:
 
-	- isValidDocID()	
+	- checkDoctorIDFormat()
+	- isValidDocId()
+	- checkAptIdFormat()	
 	- isValidAppointmentID()
 	- illegalCharacterChecker()
 	- isValidGender()
@@ -757,12 +759,12 @@ Invalid Input includes:
 
 **Creating DoctorAppointmentAdd command**
 
-3. If the input data is valid, a DoctorAppointment Command object is created. Otherwise a relevant error will be thrown.
-4. The Command object is returned to `DoctorAppoitmentInstance.run()`
+3. If the input data is valid, a DoctorAppointment Command object is created. Otherwise, a relevant error will be thrown.
+4. The Command object is returned to `DoctorAppointmentInstance.run()`
 
 **Creating DoctorAppointment Object with User Input**
 
-5. DoctorAppointmentInstance then executes the DoctorAppointment Add Command object by running `DoctorAppointmentAdd.execute()`.
+5. DoctorAppointmentInstance then executes the DoctorAppointment Add Command object by running `DoctorAppointmentAddCommand.execute()`.
 6. `AppointmentList.addAppointment()` will be called in which a DoctorAppointment object will be created and added into the ArrayList<DoctorAppointment> appointmentList, which contains all the DoctorAppointment Objects. 
 
 **Saving DoctorAppointment Objects into .txt file**
@@ -795,20 +797,25 @@ Invalid Input includes:
 
 1. If the command is recognised as the delete command, `DoctorAppointmentParser.parse()` calls `MainChecker.checkNumInput()` and `DoctorAppointmentChecker.checkValidDataForDelete()` to ensure that the inputs are valid.
 
+2. `checkValidDataForDelete()` will call the following function in sequence:
+
+	- checkIdDuringParse()
+	- isValidIdToDelete()
+
 **Creating DoctorAppointmentDelete command**
 
-2. A DoctorAppointmentDelete Command object is created if the inputs are valid. 
-3. The Command object is returned to `DoctorAppointmentInstance.run()`
+3. A DoctorAppointmentDelete Command object is created if the inputs are valid. 
+4. The Command object is returned to `DoctorAppointmentInstance.run()`.
 
 **Deleting DoctorAppointment Object using User Input**
 
-4. DoctorAppointmentInstance then executes the DoctorAppointmentDelete Command object by running `DoctorAppointmentDelete.execute()`.
-5. `AppointmentList.deleteAppointment()` is called, which iterates through the objects in ArrayList<DoctorAppointment> appointmentList. The DoctorAppointment Object matching the input given by the user will be removed from the array list.
+5. DoctorAppointmentInstance then executes the DoctorAppointmentDelete Command object by running `DoctorAppointmentDeleteCommand.execute()`.
+6. `AppointmentList.deleteAppointment()` is called, which iterates through the objects in ArrayList<DoctorAppointment> appointmentList. The DoctorAppointment Object matching the input given by the user will be removed from the array list.
 
 **Saving changed DoctorAppointment Objects into .txt file**
 
-6. `AppointmentList.deleteAppointment()` then calls `DoctorAppointmentStorage.writeToFile()` which rewrites the updated appointmentList into the DoctorAppointment.txt file.
-7. Control is then returned to StaffInstance.
+7. `AppointmentList.deleteAppointment()` then calls `DoctorAppointmentStorage.writeToFile()` which rewrites the updated appointmentList into the DoctorAppointment.txt file.
+8. Control is then returned to DoctorAppointmentInstance.
 
 <br>
 
@@ -816,7 +823,7 @@ Invalid Input includes:
 
 **Implementation:**
 
-The function lists all Doctor Appointment Objects currently in ArrayList <DoctorAppointment> appointmentList. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a DoctorAppointmentList Command object is created and executed in which the program will iterate and display all DoctorAppoinment Objects currently within the array list.
+The function lists all Doctor Appointment Objects currently in ArrayList <DoctorAppointment> appointmentList. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a DoctorAppointmentList Command object is created and executed in which the program will iterate and display all DoctorAppointment Objects currently within the array list.
 
 Invalid Input includes:
 
@@ -829,17 +836,23 @@ Invalid Input includes:
 
 1. If the command recognised is the list command, `DoctorAppointmentParser.parse()` calls `MainChecker.checkNumInput()` and `DoctorAppointmentChecker.checkValidDataForList()` to check and verify the validity of inputs accompanied by the list command, if any.
 
+2. `checkValidDataForList()` will call the following function in sequence:
+
+	- checkIdDuringParse()
+	- isValidDocId()
+	- isValidListAppointmentID()
+	
 **Creating DoctorAppointmentList command**
 
-2. A DoctorAppointmentList Command object is created if the inputs are valid.
-3. The Command object is returned to `DoctorAppointmentInstance.run()`
+3. A DoctorAppointmentList Command object is created if the inputs are valid.
+4. The Command object is returned to `DoctorAppointmentInstance.run()`.
 
 **Viewing DoctorAppointment Objects**
 
-4. DoctorAppointmentInstance then executes the DoctorAppointmentList Command object by running `DoctorAppointmentList.execute()`.
-5. `AppointmentList.listAppointment()` is called, and will iterate through the objects in ArrayList<DoctorAppointment> appointmentList.
-6. All DoctorAppointment Objects in the array list will be displayed.
-7. Control is then returned to DoctorAppointmentInstance.
+5. DoctorAppointmentInstance then executes the DoctorAppointmentList Command object by running `DoctorAppointmentListCommand.execute()`.
+6. `AppointmentList.listAppointment()` is called, and will iterate through the objects in ArrayList<DoctorAppointment> appointmentList.
+7. All DoctorAppointment Objects in the array list will be displayed.
+8. Control is then returned to DoctorAppointmentInstance.
 
 <br>
 
@@ -847,7 +860,7 @@ Invalid Input includes:
 
 **Implementation:**
 
-The function list takes in 1 compulsory field (keyword) to list the relevant DoctorAppoitment Objects currently in ArrayList <DoctorAppointment> appointmentList.Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a DoctorAppointmentList Command object is created and executed in which the program will iterate and display the DoctorAppoinment Objects matching the user input currently within the array list.
+The function list takes in 1 compulsory field (keyword) to list the relevant DoctorAppointment Objects currently in ArrayList <DoctorAppointment> appointmentList.Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a DoctorAppointmentList Command object is created and executed in which the program will iterate and display the DoctorAppointment Objects matching the user input currently within the array list.
 Invalid Input includes:
 
 > 
@@ -862,11 +875,11 @@ Invalid Input includes:
 **Creating DoctorAppointmentList command**
 
 2. A DoctorAppointmentList Command object is created if the inputs are valid.
-3. The Command object is returned to `DoctorAppointmentInstance.run()`
+3. The Command object is returned to `DoctorAppointmentInstance.run()`.
 
 **Viewing DoctorAppointment Objects**
 
-4. DoctorAppointmentInstance then executes the DoctorAppointmentList Command object by running `DoctorAppointmentList.execute()`.
+4. DoctorAppointmentInstance then executes the DoctorAppointmentList Command object by running `DoctorAppointmentListCommand.execute()`.
 5. `AppointmentList.listAppointment()` is called, and will iterate through the objects in ArrayList<DoctorAppointment> appointmentList.
 6. DoctorAppointment Objects matching the user input present in the array list will be displayed.
 7. Control is then returned to DoctorAppointmentInstance.
@@ -901,7 +914,7 @@ Whenever a user input is given to the Nurse Schedule Menu, the following steps w
 
 **Implementation**
 
-The function Add takes in 3 compulsory fields (Nurse ID, Patient ID, Date) to create a new Nurse Schedule object to be added. The Nurse ID, Patient ID and Date inputs will be first checked to ensure validty. Any invalid input detected will result in an Exception thrown and command will be aborted. Else, a NurseScheduleAddCommand object is created and executed which will create a NurseSchedule object to be added.
+The function Add takes in 3 compulsory fields (Nurse ID, Patient ID, Date) to create a new Nurse Schedule object to be added. The Nurse ID, Patient ID and Date inputs will be first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command will be aborted. Else, a NurseScheduleAddCommand object is created and executed which will create a NurseSchedule object to be added.
 
 Invalid Inputs include:
 
@@ -917,7 +930,7 @@ Invalid Inputs include:
 
 **Checking validity of data input**
 
-1. If the command recognised is the add command, the parameters will first be checked for their validity. The following functios will be called in sequence:
+1. If the command recognised is the add command, the parameters will first be checked for their validity. The following functions will be called in sequence:
 	- isValidDate()
 	- checkNumInput()
 	- illegalCharacterChecker()
@@ -926,11 +939,11 @@ Invalid Inputs include:
 
 2. If the parameters are valid, a NurseScheduleAddCommand object is created, which will be passed back to `NurseScheduleInstance.runCommandLoopUntilExit()`.
 
-3. The Command objected is then executed and `NurseScheduleList.addSchedule()` will be called which creates a NurseSchedule object an adds it into the array list.
+3. The Command objected is then executed and `NurseScheduleList.addSchedule()` will be called which creates a NurseSchedule object and adds it into the array list.
 
 **Saving NurseSchedule objects into .txt file**
 
-4. The command loop then calls `NurseScheduleStorage.writeToFile()` which starts the process of writing detials of all existing Nurse Schedule objects within the Arraylist into a specific .txt file.
+4. The command loop then calls `NurseScheduleStorage.writeToFile()` which starts the process of writing details of all existing Nurse Schedule objects within the Arraylist into a specific .txt file.
 
 5. Control is then returned to NurseScheduleInstance.
 
@@ -966,7 +979,7 @@ Invalid Inputs include:
 
 **Saving updated NurseSchedule objects into .txt file**
 
-5. `runCommandLoopUntilExit()` will then call `NurseScheduleStorage.writeToFile()` which starts the process of writing detials of all existing Nurse Schedule objects within the Arraylist into a specific .txt file.
+5. `runCommandLoopUntilExit()` will then call `NurseScheduleStorage.writeToFile()` which starts the process of writing details of all existing Nurse Schedule objects within the Arraylist into a specific .txt file.
 
 6. Control is then returned to NurseScheduleInstance.
 
@@ -1090,14 +1103,14 @@ Invalid Input includes:
 
 **Creating InventoryAdd command**
 
-3. If the input data is valid, a InventoryAdd Command object is created. Otherwise a relevant error is thrown.
+3. If the input data is valid, a InventoryAdd Command object is created. Otherwise, a relevant error is thrown.
 4. The InventoryAdd Command object is returned to `InventoryInstance.run()`
 
 **Creating Inventory Object with User Input**
 
 5. InventoryInstance then executes the InventoryAdd Command object by running `InventoryAdd.execute()`.
 
-6. `InventoryList.addDrugs()` will be called in which a Inventory object will be created and added into the ArrayList<Inventory> inventoryList which contains all the Inventory Objects. 
+6. `InventoryList.addDrugs()` will be called in which an Inventory object will be created and added into the ArrayList<Inventory> inventoryList which contains all the Inventory Objects. 
 
 7. If the list already contains data with the same Drug Name and Price, the Quantity of the Drug will be increased in the list by the value in the user input Quantity field. `InventoryList.addDrugs()` will call `Inventory.addQuantity`. This will modify the Quantity of that specified Drug.
  
@@ -1135,10 +1148,10 @@ Invalid Input includes:
 2. If the input data is valid, a InventoryDelete Command object is created 
 3. The Command object is returned to `InventoryInstance.run()`
 
-**Deleting Quantity from a Inventory Object using User Input**
+**Deleting Quantity from an Inventory Object using User Input**
 
-4. InventoryInstance then executes the InventoryDelete Command object to begin the process of deleting the referenced Quantitiy of the Inventory object
-5. `InventoryList.deleteDrugs()` is called, which iterate through the objects in ArrayList<Inventory> InventoryList. The Inventory Object referenced by the input given by the user, will have its Quanitity reduced by the Quantity indicated in the user input.
+4. InventoryInstance then executes the InventoryDelete Command object to begin the process of deleting the referenced Quantity of the Inventory object
+5. `InventoryList.deleteDrugs()` is called, which iterate through the objects in ArrayList<Inventory> InventoryList. The Inventory Object referenced by the input given by the user, will have its Quantity reduced by the Quantity indicated in the user input.
 
 **Saving changed Inventory Objects into .txt file**
 
@@ -1177,7 +1190,7 @@ This function lists all the Inventories currently in the ArrayList<Inventory> In
 
 ### 5.6.1 Auto Schedule Generator for Nurses
 
-This feature will be able to generate the daily schedule for individual nurses with the schedules in the database. This will allow nurses to have a clear view of their daily tasks, allowing them to plan their day better. Hence this feature has been proposed as one of the goals of HealthVault is to improve the efficiency of hospital and healthcare information management, something we believe this feature will do.
+This feature will be able to generate the daily schedule for individual nurses with the schedules in the database. This will allow nurses to have a clear view of their daily tasks, allowing them to plan their day better. Hence, this feature has been proposed as one of the goals of HealthVault is to improve the efficiency of hospital and healthcare information management, something we believe this feature will do.
 
 **Brief Implementation**
 
@@ -1205,9 +1218,8 @@ This feature will alert nurses whenever an inventory of a drug is low. This ensu
 
 **Target user profile:**
 <br>
-HealtVault targets users who work primarily in the healthcare industry. Such users include: Nurses, Hospital 
-Administrative Staff and Hospital Management Staff. Its features optimize it for users seeking:
-* Speed in recording down new details relating to critical healthcare services like nurse schedules and doctors appointments.
+HealthVault primarily targets nurses. Its features optimize it for users seeking:
+* Efficiency in recording down new details relating to critical healthcare services like nurse schedules and doctors appointments.
 * A cohesive database that records the critical information of everyone in the hospital, staff and patients included.
 * A desktop CLI application that has a minimalistic GUI.
 
@@ -1217,33 +1229,34 @@ With its organized and portable database and its features to improve efficiency,
 HealthVault aspires to help its users achieve the following results:
 * Improve working speed of healthcare staff, as they can store and retrieve critical information quickly and accurately.
 * Minimize administrative errors with its inbuilt cross validation.
-* Easy implementation within a hospital environment with minimal setup steps and data reusability.
-<br>
-  
+* Easy implementation within a hospital environment with minimal setup steps and data re-usability.
+
 Every second matters in the healthcare industry when patient lives are at stake. We believe that HealthVault can help
 its users save those precious seconds.
+
+<br>
 
 ## Appendix B: User Stories
 
 | Priority | As a... |                          I want to...                         |                 So that I can...                 |
-|:--------:|:-------:|:-------------------------------------------------------------:|:------------------------------------------------:|
+|:--------:|:--------:|:-------------------------------------------------------------:|:------------------------------------------------:|
 |   * * *  |  nurse  |              quickly refer to usage instructions              |      quickly get on track with the workflow      |
-|   * * *  |  nurse  |                    add a new staff/patient                    |                                                  |
+|   * * *  |  nurse  |                    add a new staff/patient                    |     record information of staff and patients     |
 |   * * *  |  nurse  |                     delete staff/patients                     |          remove entries i no longer need         |
-|   * * *  |  nurse  |                         view all staff                        |                                                  |
+|   * * *  |  nurse  |                         view all staff                        |       quickly get an overview of staff           |
 |   * * *  |  nurse  | quickly add schedules for nurses and appointments for doctors |       reduce the waiting time for patients       |
 |   * * *  |  nurse  |     quickly look up schedules for both nurses and doctors     |              plan my schedule better             |
 |   * * *  |  nurse  |                 delete schedules/appointments                 |        eliminate wasted time and resources       |
-|   * * *  |  nurse  |              quickly add/delete drug inventories              |           manage our inventories better          |
-|   * * *  |  nurse  |                quickly look up drug inventories               |  plan what and when to restock our drug supplies |
+|   * * *  |  nurse  |              quickly add/delete inventories                   |           manage our inventories better          |
+|   * * *  |  nurse  |                quickly look up inventories                    |  plan what and when to restock our supplies      |
 |     *    |  nurse  |       have the program recognize slight errors in typing      | have leeway working in a high-stress environment |
 <br>
 
 ## Appendix C: Non Functional Requirements
 
-* Should work on any mainstream OS if it has Java 11 or above installed.
+* Should work on any Mainstream OS if it has Java 11 or above installed.
 
-* Database should be able to hold up to 1000 patients, staff, appointments, nurses’ schedules, and drugs inventory without feeling a noticeable lag in the program. 
+* Database should be able to hold up to 1000 patients, staff, appointments, nurses’ schedules, and inventory without feeling a noticeable lag in the program. 
 
 * A user with above average typing speed should be able to accomplish most of the tasks faster using commands than using the mouse.
 
@@ -1251,11 +1264,11 @@ its users save those precious seconds.
 
 * New features for example, auto generation of nurses’ schedules and personalized account login are currently in the works to demonstrate that this program is still being developed to be better and accommodate more of the concerns medical personnel have. 
 
-* Application would be affordable to the general masses
+* Application would be affordable to the general masses.
 
 * The security and accessibility of the system is relatively secure, but authorization and authentication scheme is in consideration to be implemented for greater protection.
 
-* All data process and management is in accordance to Singapore IMDA and MOH policy
+* All data process and management is in accordance to Singapore IMDA and MOH policy.
 
 * Healthvault is not accountable for any data lost due to individuals computer failure. 
 
@@ -1275,80 +1288,83 @@ its users save those precious seconds.
  
 * *No Input* - Refers to no input given. 
 
+* *Mainstream OS* - Windows/macOS/Linux
+
 <br>
 
 ## Appendix E: Instructions for Manual Testing
 
 Given below are instructions to test HealthVault manually.
 
-> * These instructions only provide a starting point for testers to work on;
-> testers are expected to do more *exploratory* testing.
-> * You can refer to the [User Guide]() for further information regarding the command formats.
+* These instructions only provide a starting point for testers to work on; testers are expected to do more *exploratory* testing.
+* You can refer to the [User Guide](https://github.com/AY2021S2-CS2113T-F08-2/tp/blob/master/docs/UserGuide.md) for further information regarding the command formats.
 
 ### Launching HealthVault
-1. Initial launch of HealthVault
-    1.1 Download the jar file [here](https://github.com/AY2021S2-CS2113T-FO8-2/tp/releases) and copy into an empty folder.
-    1.2 Open up a command window to that folder with the jar file.
-    1.3 Run the command `java -jar tp.jar` 
+
+Initial launch of HealthVault
+    1. Download the jar file [here](https://github.com/AY2021S2-CS2113T-FO8-2/tp/releases) and copy into an empty folder.
+    2. Open up a command window to that folder with the jar file.
+    3. Run the command `java -jar tp.jar` 
         
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** HealthVault will be loaded, and a welcome message will be shown. Ensure &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;that the version number in the welcome matches version of the jar file downloaded.
 
 ### Start Menu
-1. Choose a directory from the Start Menu
-    > Ensure that the location that you are trying to access is in the Start Menu or else 
-    > error message will pop up
-    >
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.1 **Test case:** `staff` (where you will be directed to the Staff Menu)
+
+Choose a directory from the Start Menu
+
+> ℹ️ Ensure that the location that you are trying to access is in the Start Menu or else an error message will pop up.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. **Test case:** `staff` (where you will be directed to the Staff Menu)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 
-	```
+	
 	Welcome to Staff Menu!
 	Type "help" for staff menu commands
-	```
 	
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.2 **Test case:** `patient` (where you will be directed to the Patient Menu)
+	
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. **Test case:** `patient` (where you will be directed to the Patient Menu)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 	
-	```
+	
 	Welcome to the patient Commands section!
 	Type "help" for patient menu command
-	```
 	
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.3 **Test case:** `appointments` (where you will be directed to the Appointments' Menu)
+	
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. **Test case:** `appointments` (where you will be directed to the Appointments' Menu)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
-	```
+	
 	Welcome to the Appointments' Menu!
 	Type 'help' for appointment menu commands
-	```
 	
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.4 **Test case:** `schedules` (where you will be directed to the Schedules' Menu)
+	
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4. **Test case:** `schedules` (where you will be directed to the Schedules' Menu)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 	
-	```
+	
 	Welcome to Nurse Schedules!
 	Type "help" to for nurse schedules commands
-	```
 	
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.5 **Test case:** `inventory` (where you will be directed to the Staff Menu)
+	
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5. **Test case:** `inventory` (where you will be directed to the Staff Menu)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 
-	```
+	
 	Welcome to Inventory Menu!
 	Type "help" for Inventory menu commands
-	```
+	
 	
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.6 **Test case:** `help` (where you will be directed to the Help Menu)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6. **Test case:** `help` (where you will be directed to the Help Menu)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
-	```
+	
 	Commands       Description                             Format    
 	____________________________________________________________________________________________________
 	staff          To go to staff                          -         
@@ -1358,9 +1374,9 @@ Given below are instructions to test HealthVault manually.
 	inventory      To go to inventory                      -         
 	help           To see what commands for Start Menu     -         
 	exit           To exit the application                 -         
-	```
 	
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.7 **Test case:** `exit` (where you will exit the program)
+	
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7. **Test case:** `exit` (where you will exit the program)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Goodbye! Have a nice day!```
 	 
@@ -1379,9 +1395,18 @@ Given below are instructions to test HealthVault manually.
 >2. Any input field in HealthVault only accepts space and alphanumeric characters
 >3. The age field input should be a positive integer starting from 0 but less than 150
     
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```add/D12345/MingShun/30/Pediatrician```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Positive Test case:** ```add/D12345/MingShun/30/Pediatrician```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Doctor MingShun hired :)```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `add/D1/MingShun/40/Pediatrician`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+
+``` 
+Error in Staff ID input
+Please input with the following format [D/N][5 digit ID number]
+```
 
 <br/>
  
@@ -1405,33 +1430,33 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
-	```
+	
 	ID         | Name       | Age   | Specialisation      
 	____________________________________________________________
 	N12345     | Sarrah     | 30    | Emergency    
-	```
+	
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.2 **Test case:** ```list/doctors ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
-	```
+	
 	ID         | Name       | Age   | Specialisation      
 	____________________________________________________________
 	D12345     | MingShun   | 30    | Pediatrician    
-	```
+	
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.3 **Test case:** ```list ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 		
-	```
+	
 	ID         | Name       | Age   | Specialisation      
 	____________________________________________________________
 	N12345     | Sarrah     | 30    | Emergency  
 	D12345     | MingShun   | 30    | Pediatrician    
 	D12355     | Alex       | 28    | Oncology
-	```		
+			
 	
 <br/>
 
@@ -1444,13 +1469,13 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 	
-	```
+	
 	ID         | Name       | Age   | Specialisation      
 	____________________________________________________________
 	D12355     | Alex       | 28    | Oncology            
 
 	Staff -->
-	```
+
 
 <br/>
 
@@ -1468,7 +1493,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
-	```
+	
 	Here is a list of Staff commands: 
 	
 	Commands  Description                                                 Format                                            
@@ -1479,7 +1504,7 @@ Given below are instructions to test HealthVault manually.
 	delete    Deletes the Staff with the specified ID from the list!      delete/[Staff ID]                                 
 	find      Finds a matching Staff using a keyword or phrase!           find/[keyword or phrase]                          
 	return    Returns you to the Start Menu!                              -                                 
-	```
+	
 
 <br/><br/>
 
@@ -1488,15 +1513,26 @@ Given below are instructions to test HealthVault manually.
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted user ID starts with a P and has **exactly** 5 digits in the number following! 
->2. Any input field in HealthVault only accepts space and alphanumeric characters
->3. The gender field input should only be "M", "F" or "Others"
->4. The age field input should be a positive integer starting from 0 but less than 150
+>1. Make sure that the inputted user ID starts with an upper case P and has **exactly** 5 digits in the number following!
 >
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `P12345`, `P54321`
+>
+>2. Any input field in HealthVault only accepts space and alphanumeric characters.
+>3. The gender field input is case-insensitive but should only be "M", "F" or "Others" or any other upper and lower case versions.
+>4. The age field input should be a positive integer including 0, starting from 0 to inclusive of 150.
     
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```add/P55555/Sam/40/M/Fever/Paracetamol```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Positive Test case:** ```add/P55555/Sam/40/M/Fever/Paracetamol```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Sam is now a patient here!```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `add/P1/Jill/40/F/Covid19/Macrolides`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+
+``` 
+Error in Patient ID input
+Please input with the following format [P][5 digit ID number]
+```
 
 <br/>
  
@@ -1504,61 +1540,82 @@ Given below are instructions to test HealthVault manually.
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted user ID starts with a P and has **exactly** 5 digits in the number following! 
+>1. Make sure that the inputted user ID starts with an upper-case P and has **exactly** 5 digits in the number following!
+>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `P12345`, `P54321`
+>
   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```delete/P55555```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Positive Test case:** ```delete/P55555```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
-	```
+	
 	Noted. I've removed this patient: 
 	Sam
 	Now you have 0 patients in the list
-	```
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `delete/P123456`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+
+``` 
+Error in Patient ID input
+Please input with the following format [P][5 digit ID number]
+```
 <br/>
 
 3. Listing all patients
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```list```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Positive Test case:** ```list```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
-	```
+	
 	Here are the patients currently in the list!
 	ID       | Name                 | Age    | Gender   | Illness              | Medication Required 
 	____________________________________________________________________________________________________
 	P55555   | Sam                  | 40     | M        | Fever                | Paracetamol    
 	P12345   | Amy                  | 35     | F        | Flu                  | Panadol
-	```
-	
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `list/a`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** `OOPS! There are too many inputs for this command`
+
 <br/>
 
 4. Finding a patient
 
 >:information_source: Important notes about the input format
 >1. Any keyword input will be searched through every field of Patient details. i.e. It can be used to search Patient ID, name, age, illness, medication required.
-> The keyword input can be case insensitive and still find matches in the database.
+> The keyword input can be case-insensitive and still find matches in the database.
 > 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.1 **Test case:** ```find/P55555```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Postive Test case:** ```find/P55555```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
-	```
+	
 	ID       | Name                 | Age    | Gender   | Illness              | Medication Required 
 	____________________________________________________________________________________________________
 	P55555   | Sam                  | 40     | M        | Fever                | Paracetamol    
-	```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.2 **Test case:** ```find/Sam```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** ```find/```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** `OOPS! There are too few inputs for this command`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Positive Test case:** ```find/Sam```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
-	```
+
 	ID       | Name                 | Age    | Gender   | Illness              | Medication Required 
 	____________________________________________________________________________________________________
 	P55555   | Sam                  | 40     | M        | Fever                | Paracetamol    
-	```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** ```find/Same```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** `There is no patient in the list that matches your keywords!`
+
 <br/>
 
 5. Returning to Start Menu
@@ -1575,7 +1632,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 
-	```
+
 	Here is a list of Patient commands: 
 
 	Commands  Description                                                 Format                                                                
@@ -1586,7 +1643,7 @@ Given below are instructions to test HealthVault manually.
 	delete    Deletes the Patient with the specified ID from the list!    delete/[Patient ID]                                                   
 	find      Finds a matching Patient using a keyword or phrase!         find/[keyword or phrase]                                              
 	return    Returns you to the Start Menu!                              -                                
-	```
+	
 
 <br/><br/>
 
@@ -1603,6 +1660,16 @@ Given below are instructions to test HealthVault manually.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```add/D12345/A12345/Alex/M/21012021```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Appointment Added```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `add/D3/A12345/Alex/M/21012021`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+
+``` 
+Error in Doctor ID input
+Please input with the following format [D][5 digit ID number]
+```
+
 	
 <br/>
  
@@ -1615,9 +1682,27 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```DoctorID / Appointment ID: D12345/A12345 has been deleted!```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.2 **Test case:** ```delete/A12346```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `delete/D123`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```DoctorID / Appointment ID: D12345/A12345 has been deleted!```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+
+``` 
+Error in ID input
+Please input with the following format [D/A] followed by [5 digit ID number]
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.2 **Test case:** ```delete/A54321```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Appointment ID: A54321 has been deleted!```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `delete/A123`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+
+``` 
+Error in ID input
+Please input with the following format [D/A] followed by [5 digit ID number]
+```
 
 <br/>
 
@@ -1631,32 +1716,57 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 
-	```
+	
 	Doctor ID      | Appointment ID | Name           | Gender         | Date          
 	____________________________________________________________
 	D11111         | A54321         | Owen           | M              | 01/04/2021
 	D12345         | A12345         | Alex           | M              | 21/01/2021  
-	```
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `list/a`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+
+``` 
+Error in ID input
+Please input with the following format [all/D/A] followed by [5 digit ID number]
+```
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.2 **Test case:** ```list/D12345```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 
-	```
+	
 	Doctor ID      | Appointment ID | Name           | Gender         | Date          
 	____________________________________________________________
 	D12345         | A12345         | Alex           | M              | 21/01/2021  
-	```
+	
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `list/D111`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+
+``` 
+Error in ID input
+Please input with the following format [all/D/A] followed by [5 digit ID number]
+```
 	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.3 **Test case:** ```list/A12345 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 
-	```
-	Doctor ID      | Appointment ID | Name           | Gender         | Date          
+	
+	Appointment ID | Name           | Gender         | Date          
 	____________________________________________________________
-	D12345         | A12345         | Alex           | M              | 21/01/2021  
-	```		
+	A12345         | Alex           | M              | 21/01/2021  
+		
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `list/A111`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+
+``` 
+Error in ID input
+Please input with the following format [all/D/A] followed by [5 digit ID number]
+```
 	
 <br/>
 
@@ -1664,7 +1774,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```return```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to start menu!```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to Start Menu!```
 
 <br/>
 
@@ -1674,18 +1784,19 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 
-	```
+	
 	Here is a list of Doctor Appointments Commands: 
 	Commands  Description                                                           Format                                            
 	____________________________________________________________________________________________________
 	help      Brings up the list of commands for Doctor Appointments!               -                                                 
 	add       Adds Doctor Appointment details to the database!                      add/[Doctor ID]/[Appointment ID]/[Name]/[Gender]/[Date (DDMMYYYY)]
-	list      Brings up the list of all current Doctors' Appointments in database!  list/[DoctorID/AppointmentID]                     
+	list      Brings up the list of all current Doctors' Appointments in database!  list/[all/DoctorID/AppointmentID]                     
 	delete    Deletes the Appointment with the specified ID from the list!          delete/[DoctorID/Appointment ID]                  
 	return    Returns you to the Start Menu!                   
-	```
+	
 
 <br/><br/>
+
 
 ### Choose which feature you want to use from Schedules' Menu	 
 1. Adding a new schedule
@@ -1696,9 +1807,19 @@ Given below are instructions to test HealthVault manually.
 >3. Any input fields in HealthVault only accepts space and alphanumeric characters.
 >4. HealhVault currently only allows the adding of **1** schedule per patient per day.
     
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```add/N12345/P12345/30012020```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Positive Test case:** ```add/N12345/P12345/30012020```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Trip to P12345 on 30/01/2020 added!```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `add/N1/P12345/30012020`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+
+```
+OOPS! Looks like your ID value is incorrect! 
+Please ensure that the ID includes 5 numbers after "N" or "P" 
+eg. N12345 or P67891
+```
 	
 <br/>
  
@@ -1709,9 +1830,13 @@ Given below are instructions to test HealthVault manually.
 >1. Make sure that the inputted Nurse ID starts with a N for Nurse, and have **exactly** 5 digits in the number following! 
 >2. HealthVault only accepts valid Date inputs.
     
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```delete/N12345/30012020```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Positive Test case:** ```delete/N12345/30012020```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Trip to P12345 on 30/01/2020 has been cancelled!```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `delete/N1/30012020`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** `NurseID does not exist! Please check Staff List and try again!`
 
 <br/>
 
@@ -1721,26 +1846,39 @@ Given below are instructions to test HealthVault manually.
 >
 >1. Make sure that the inputted Nurse ID starts with a N for Nurse, and have **exactly** 5 digits in the number following! 
     
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.1 **Test case:** ```list/N12345 ```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.1 **Positive Test case:** ```list/N12345 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 
-	```
+	
 	Nurse ID   | Patient ID | Date      
 	____________________________________________________________
 	N12345     | P12345     | 30/01/2020 
-	```
 	
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.2 **Test case:** ```list/all```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `list/N1`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
-	```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** `NurseID does not exist! Please check Staff List and try again!`
+
+<br>
+	
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.2 **Positive Test case:** ```list/all```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+	
 	Nurse ID   | Patient ID | Date      
 	____________________________________________________________
 	N12345     | P12345     | 30/01/2020
 	N55555     | P55555     | 30/01/2020   
-	```
-		
+	
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Negative Test case:** `list`
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+
+```
+OOPS! Please check to see if your command is properly formatted!
+Please input with the following format: list/[NurseID/all]
+```
+
 <br/>
 
 4. Returning to Start Menu
@@ -1757,7 +1895,7 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
 
-	```
+	
 	Here is a list of Nurse Schedule commands: 
 	Commands  Description                                                      Format                                            
 	____________________________________________________________________________________________________
@@ -1766,12 +1904,12 @@ Given below are instructions to test HealthVault manually.
 	list      Brings up the list of all current Nurse Schedules in database!   list/[NurseID/all]                                
 	delete    Deletes the Schedule with the specified ID from the list!        delete/[Nurse ID]/[Date (DDMMYYYY)]               
 	return    Returns you to the Start Menu!                                   -    
-	```
+	
 
 <br/><br/>
 
 ### Choose which feature you want to use from Inventory Menu	 
-1. Adding a new drug or increasing quantity of current drug
+1. Adding a new item or increasing quantity of current items.
 
 >:information_source: Important notes about the input format
 >
@@ -1785,7 +1923,7 @@ Given below are instructions to test HealthVault manually.
 
 <br/>
  
-2. Decreasing quantity of drugs
+2. Decreasing quantity of items.
 
 >:information_source: Important notes about the format
 >1. Avoid using uppercase letters
@@ -1796,19 +1934,19 @@ Given below are instructions to test HealthVault manually.
 
 <br/>
 
-3. Listing all drugs
+3. Listing all items
     
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```list```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 
-	```
-	DrugName        | Price      | Quantity
+	
+	ItemName        | Price      | Quantity
 	------------------------------------------------------------
 
 	paracetamol     | 3.00       | 70   
 	Panadol         | 4.80       | 36 
-	```		
+		
 	
 <br/>
 
@@ -1826,16 +1964,16 @@ Given below are instructions to test HealthVault manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 
-	```
+	
 	Here is a list of Inventory commands: 
 
 	Commands  Description                                                 Format                                            
 	____________________________________________________________________________________________________
 	help      Brings up the list of commands for Inventory!               -                                                 
-	add       Adds Inventory details to the database!                     add/[Drug name]/[Price]/[Quantity]                
+	add       Adds Inventory details to the database!                     add/[Item name]/[Price]/[Quantity]                
 	list      Brings up the list of all current Inventory in database!    list                                              
-	delete    Deletes the Inventory item from the list!                   delete/[Drug Name]                                
+	delete    Deletes the Inventory item from the list!                   delete/[Item Name]                                
 	return    Returns you to the Start Menu!                              -            
-	```
+	
 
 <br/><br/>

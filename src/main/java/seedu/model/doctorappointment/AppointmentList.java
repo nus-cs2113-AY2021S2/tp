@@ -3,6 +3,7 @@ package seedu.model.doctorappointment;
 
 import seedu.exceptions.HealthVaultException;
 import seedu.exceptions.EmptyListException;
+import seedu.exceptions.doctorappointment.AppointmentIdDoesNotExistException;
 import seedu.exceptions.doctorappointment.DoctorIdDoesNotExistException;
 import seedu.storage.DoctorAppointmentStorage;
 import seedu.ui.DoctorAppointmentUI;
@@ -59,7 +60,6 @@ public class AppointmentList {
     public static void listAppointment(String input) throws HealthVaultException, EmptyListException, ParseException {
 
         String indicator = "A";
-        String doctorID;
         String[] inputArray = input.split("");
         String id = inputArray[0];
         if (appointmentList.size() == 0) {
@@ -117,16 +117,17 @@ public class AppointmentList {
      * @throws IOException if writing to storage throws an error.
      */
 
-    public static void deleteAppointment(String inputID) throws IOException, DoctorIdDoesNotExistException {
+    public static void deleteAppointment(String inputID) throws IOException, HealthVaultException {
         String[] id = inputID.split("");
         boolean isWithin = false;
-        for (int i = 0; i < appointmentList.size(); i++) {
-            if (appointmentList.get(i).getDoctorId().equals(inputID)) {
-                isWithin = true;
+
+        if (id[0].equals("A")) {
+            for (int i = 0; i < appointmentList.size(); i++) {
+                if (appointmentList.get(i).getAppointmentId().equals(inputID)) {
+                    isWithin = true;
+                }
             }
-        }
-        if (isWithin) {
-            if (id[0].equals("A")) {
+            if (isWithin) {
                 for (int i = 0; i < appointmentList.size(); i++) {
                     if (appointmentList.get(i).getAppointmentId().equals(inputID)) {
                         DoctorAppointmentUI.deletedAptID(appointmentList.get(i).getAppointmentId());
@@ -134,7 +135,16 @@ public class AppointmentList {
                         DoctorAppointmentStorage.writeToFile(appointmentList);
                     }
                 }
-            } else if (id[0].equals("D")) {
+            } else {
+                throw new AppointmentIdDoesNotExistException();
+            }
+        } else if (id[0].equals("D")) {
+            for (int i = 0; i < appointmentList.size(); i++) {
+                if (appointmentList.get(i).getDoctorId().equals(inputID)) {
+                    isWithin = true;
+                }
+            }
+            if (isWithin) {
                 for (int i = appointmentList.size() - 1; i >= 0; i--) {
                     if (appointmentList.get(i).getDoctorId().equals(inputID)) {
                         DoctorAppointmentUI.deletedDocID(appointmentList.get(i).getDoctorId(),
@@ -143,9 +153,9 @@ public class AppointmentList {
                         DoctorAppointmentStorage.writeToFile(appointmentList);
                     }
                 }
+            } else {
+                throw new DoctorIdDoesNotExistException();
             }
-        } else {
-            throw new DoctorIdDoesNotExistException();
         }
     }
 
