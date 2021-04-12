@@ -13,22 +13,29 @@ activate CreditScoreReturnedLoansMap
 CreditScoreReturnedLoansMap --> CreditScoreCommand : creditScore : int
 deactivate CreditScoreReturnedLoansMap
 
-loop For each record at index i
+CreditScoreCommand -> RecordList : getRecordCount()
+activate RecordList
+RecordList --> CreditScoreCommand : : int
+deactivate RecordList
+
+
+loop For each record in RecordList
     CreditScoreCommand -> RecordList : getRecordAt(i : int)
     activate RecordList
-    RecordList --> CreditScoreCommand : record : Record
+    RecordList --> CreditScoreCommand : currentRecord : Record
     deactivate RecordList
-    opt record is a Loan
+    opt currentRecord is a Loan
         CreditScoreCommand -> Loan : getBorrowerName()
         activate Loan
         Loan --> CreditScoreCommand : :String
-        CreditScoreCommand -> Loan : isReturn()
-        Loan --> CreditScoreCommand : :boolean
-        opt loaned to current borrower and not returned
-            ref over CreditScoreCommand, Loan : Re-compute creditScore
-        end
-        Loan -[hidden]-> CreditScoreCommand
         deactivate Loan
+        CreditScoreCommand -> Loan : isReturn()
+        activate Loan
+        Loan --> CreditScoreCommand : :boolean
+        deactivate Loan
+        opt loaned to current borrower and not returned
+                ref over CreditScoreCommand, Loan : Re-compute creditScore
+        end
     end
 end
 CreditScoreCommand -> Ui : printMessage()
@@ -37,5 +44,6 @@ Ui --> CreditScoreCommand
 deactivate Ui
 [<-- CreditScoreCommand
 deactivate CreditScoreCommand
-
+[<-[hidden]- CreditScoreCommand
+destroy CreditScoreCommand
 @enduml
