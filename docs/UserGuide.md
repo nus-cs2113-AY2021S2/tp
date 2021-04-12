@@ -33,6 +33,9 @@
    &nbsp;&nbsp;&nbsp;&nbsp; 4.7.2. [Showing favourite routes](#472-showing-favourite-routes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.7.3. [Repeating favourite routes](#473-repeating-favourite-routes) <br> 
    &nbsp;&nbsp;&nbsp;&nbsp; 4.7.4. [Deleting favourite routes](#474-deleting-favourite-routes) <br>
+   
+   <div style="page-break-after: always;"></div>
+   
    4.8. [Notes](#48-notes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.8.1. [Adding notes](#481-adding-notes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.8.2. [Showing notes](#482-showing-notes) <br>
