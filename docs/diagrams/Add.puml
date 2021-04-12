@@ -1,0 +1,52 @@
+@startuml
+hide footbox
+
+box Adding Resource
+participant ":CommandHandler" as CH
+participant "<<class>>\n:CommandParser" as CP
+participant "<<class>>\n:ResourceManager" as RM
+participant ":Project" as P1
+participant "projectInStorage:Project" as P2
+
+[-> CH: processCommand()
+activate CH
+
+CH -> CH: switchCommand()
+activate CH
+
+CH -> CH: processInputBeforeAdding()
+activate CH
+
+CH -> CP: decodeInfoFragments()
+activate CP
+return projectInfo
+
+CH -> RM: addResource()
+activate RM
+opt ProjectNotExist
+    RM -> RM: createNewProject()
+    activate RM
+    create P1
+    RM -> P1:
+    return
+end
+
+alt UrlAlreadyExist
+    RM -> RM: promptUserUrlAlreadyExist()
+    activate RM
+    return
+else else
+    RM -> RM: addNewResource()
+    activate RM
+    RM -> P2: addResources()
+    activate P2
+    return
+    return
+end
+
+return
+return
+return
+return
+
+@enduml

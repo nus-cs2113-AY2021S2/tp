@@ -1,0 +1,25 @@
+@startuml
+hide footbox
+
+box Exiting TraceYourProj
+participant ":CommandHandler" as CH
+participant ":MainUI" as MUI
+end box
+
+
+[-> CH : processCommand()
+activate CH
+
+CH -> CH : switchCommand()
+activate CH
+
+CH -> MUI : showExitMessage()
+activate MUI
+return
+
+return
+return
+
+
+
+@enduml

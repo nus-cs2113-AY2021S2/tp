@@ -1,0 +1,71 @@
+@startuml
+hide footbox
+
+box Finding Resource
+participant ":CommandHandler" as CH
+participant "<<class>>\n:CommandParser" as CP
+participant ":ProjectManager" as PM
+participant ":Project" as P
+participant ":ResourceManager" as RM
+participant ":Resource" as R
+
+
+[-> CH : processCommand()
+activate CH
+
+CH -> CH : switchCommand()
+activate CH
+
+CH -> CH : processInputBeforeFinding()
+activate CH
+
+CH -> CP : decodeInfoFragments(infoFragments, keywords, firstOptionalKeyword)
+activate CP
+return projectInfo
+
+CH -> CH : findResources()
+activate CH
+alt Indicated Specific Project
+    CH -> CH : searchExistingProjectIndex(projectName)
+    alt project name exists
+
+        CH -> RM : printResourcesMatchingKeyword(resources, keyword)
+        activate RM
+        loop resource in all Resources
+            RM -> R : checkKeywordMatch()
+            activate R
+            return
+            alt keyword match found
+                RM -> R : printResource()
+            end
+        end
+        deactivate RM
+else Did Not Indicate Specific Project
+    CH -> PM : getAllProjectsAndResourcesMatchingKeyword(keyword, projects)
+    activate PM
+    loop project in all Projects
+        PM -> RM : printResourcesMatchingKeyword()
+        activate RM
+        loop resource in all Resources
+            RM -> R : checkKeywordMatch()
+            activate R
+            return
+            alt keyword match found
+                RM -> R : printResource()
+                activate R
+                return
+
+            end
+        deactivate RM
+        end
+    end
+    deactivate PM
+end
+
+return
+return
+return
+return
+
+
+@enduml

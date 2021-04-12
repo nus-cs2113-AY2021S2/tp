@@ -1,0 +1,54 @@
+@startuml
+hide footbox
+'https://plantuml.com/sequence-diagram
+
+box Deleting Resource
+participant ":Command Handler" as CommandHandler
+participant ":Command Parser" as CommandParser
+participant ":Resource Manager" as ResourceManager
+participant ":Project Manager" as ProjectManager
+participant "targetProj:Project" as targetedProj
+
+[-> CommandHandler : processCommand()
+activate CommandHandler
+CommandHandler -> CommandHandler : switchCommand()
+CommandHandler -> CommandHandler : processInputBeforeDeleting()
+activate CommandHandler
+
+
+CommandHandler -> CommandParser: decodeInfoFragment()
+activate CommandParser
+CommandHandler <-- CommandParser : String[] projectInfo
+deactivate CommandParser
+
+CommandHandler -> ResourceManager : deleteResource(projectInfo)
+activate ResourceManager
+ResourceManager -> ProjectManager : getProjByProjName(projectName)
+activate ProjectManager
+ResourceManager <-- ProjectManager : targetedProj
+deactivate ProjectManager
+
+alt targetedProj ==  null
+    [<-- ResourceManager : ProjectNotFoundException
+else invalidIndex
+    [<-- ResourceManager : ResourceNotFoundException
+else indexNotIndicated
+    ResourceManager -> ProjectManager: deleteWholeProject(targetedProject)
+    activate ProjectManager
+    [<-- ProjectManager :
+    deactivate ProjectManager
+
+else else
+    ResourceManager -> targetedProj : targetedProj.getResources().remove(idx)
+    activate targetedProj
+    return
+    return
+
+return
+return
+
+
+end
+
+
+@enduml

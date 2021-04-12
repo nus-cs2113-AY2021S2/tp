@@ -1,0 +1,26 @@
+@startuml
+hide footbox
+
+box
+participant ":CommandHandler" as CommandHandler
+participant ":ProjectManager" as ProjectManager
+participant ":Storage" as Storage
+end box
+
+activate CommandHandler
+[-> CommandHandler : execute("save")]
+
+CommandHandler -> ProjectManager : getProjects()
+activate ProjectManager
+
+ProjectManager --> CommandHandler : projects
+deactivate ProjectManager
+
+CommandHandler -> Storage :  updateStorage(projects)
+activate Storage
+
+Storage --> CommandHandler : "Saved projects to storage"
+deactivate Storage
+[<-- CommandHandler :
+deactivate CommandHandler
+@enduml
