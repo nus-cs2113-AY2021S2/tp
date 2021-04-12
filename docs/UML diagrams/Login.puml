@@ -1,0 +1,59 @@
+@startuml
+
+hide circle
+skinparam classAttributeIconSize 0
+hide empty members
+
+class login.LoginUi {
++ LoginInfo getNewUserLoginInfo()
++ LoginInfo getLoginInfo()
++ LoginInfo getUserInputForLogin()
+}
+class login.LoginController {
+- LoginManager loginManager
+- LoginUi loginUi
+- LoginInfo loginInfo
+- LoginInfoFileManager loginInfoFileManager
++ LoginInfo run()
++ void modifyLoginInfo(String,String)
++ LoginInfo addUser()
++ boolean checkUserIdExists(String)
+}
+class login.LoginInfo {
+- String userId
+- String password
++ void setPassword(String)
++ String getPassword()
++ String getUserId()
++ String strAddToTxt()
++ boolean equals(Object)
+}
+class login.LoginInfoFileManager {
+- File loginInfoFile
++ void addLoginInfoForNewUser(LoginInfo)
++ ArrayList<LoginInfo> retrieveLoginInfoList()
++ void writeToTxt(ArrayList<LoginInfo>)
+}
+class login.LoginManager {
+- LoginInfoFileManager loginInfoFileManager
+- LoginController loginController
++ void verifyLoginInfo(LoginInfo)
++ void modifyLoginInfo(LoginInfo)
+}
+
+
+utilities.Ui <|-- login.LoginUi
+
+login.LoginInfoFileManager "1" <--* "1" login.LoginManager
+login.LoginInfoFileManager "1" <--* "1" login.LoginController
+login.LoginInfoFileManager  -[dotted]-> login.LoginInfo
+
+
+login.LoginManager "1" <--* "1" login.LoginController
+login.LoginManager  -[dotted]-> login.LoginInfo
+
+login.LoginController "1" *--> "1" login.LoginInfo
+login.LoginController "1" *--* "1" login.LoginUi
+
+login.LoginUi  -[dotted]-> login.LoginInfo
+@enduml

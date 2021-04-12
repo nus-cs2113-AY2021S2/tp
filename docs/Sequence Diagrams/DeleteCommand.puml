@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+participant ":DeleteCommand" as DeleteCommand
+participant "<<class>>\n:Parser" as Parser
+participant ":EmailManager" as EmailManager
+participant ":Storage" as Storage
+hide footbox
+
+[-> DeleteCommand: execute()
+activate DeleteCommand
+
+DeleteCommand -> Parser: extractIndex(userInput)
+activate Parser
+Parser --> DeleteCommand: index
+deactivate Parser
+
+DeleteCommand -> EmailManager: getListedEmailsList()
+activate EmailManager
+EmailManager --> DeleteCommand: listedEmails
+deactivate EmailManager
+
+DeleteCommand -> EmailManager: deleteEmail(deletedEmail)
+activate EmailManager
+EmailManager --> DeleteCommand:
+deactivate EmailManager
+
+alt deletedEmail is not instanceof Delete
+DeleteCommand -> EmailManager: addToDeleted(deletedEmail)
+activate EmailManager
+EmailManager --> DeleteCommand:
+deactivate EmailManager
+end
+
+
+DeleteCommand -> Storage: updateAllTypeEmails(listedEmails)
+activate Storage
+Storage --> DeleteCommand:
+deactivate Storage
+
+[<- DeleteCommand
+deactivate DeleteCommand
+
+@enduml

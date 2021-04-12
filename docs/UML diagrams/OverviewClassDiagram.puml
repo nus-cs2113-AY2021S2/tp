@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+hide circle
+hide members
+skinparam classAttributeIconSize 0
+
+allowmixing
+actor user
+database "hard disk"
+
+Package " "<<Rectangle>>{
+    class Main
+    class Login
+    class Email
+    Package "Utilities"<<Rectangle>>{
+        class Parser
+        class Ui
+        class Storage
+    }
+}
+
+user ..> Ui
+Ui --> Main
+
+Main --> Ui
+Main --> Login
+Main --> Email
+
+Main --> Storage
+Main --> Parser
+Storage ..> "hard disk"
+
+@enduml
