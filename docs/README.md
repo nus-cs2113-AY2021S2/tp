@@ -1,6 +1,6 @@
-# Duke
+# Movie Booking System
 
-{Give product intro here}
+This app is for movie lovers who want to know movie details, make online booking, and are in need of a user-friendly interface.
 
 Useful links:
 * [User Guide](UserGuide.md)
