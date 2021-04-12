@@ -599,7 +599,7 @@ The fridge at program launch will be empty, and the limits of all food categorie
 
 |Corruption Type| Error Message| Behaviour|
 |---------------|--------------|----------|
-|Corrupted `fridgeData.txt` file| ```There was an error loading the data for FridgeFriend!Index 1 out of bounds for length 1```|`FridgeFriend` will load the contents of the text file until the point in the file where corrupted/invalid data is encountered. User can recover the contents of the file by manually inspecting the text file and removing invalid content.|
+|Corrupted `fridgeData.txt` file| ```There was an error loading the data for FridgeFriend! Index 1 out of bounds for length 1```|`FridgeFriend` will load the contents of the text file until the point in the file where corrupted/invalid data is encountered. User can recover the contents of the file by manually inspecting the text file and removing invalid content.|
 |Corrupted readable categories in `limitsData.txt`|No error message|User can only identify that data has been corrupted when using the `runninglow` command. The quantity of the invalid categories due to corruption will be reset to `500`.|
 |Corrupted unreadable categories in `limitsData.txt`|```There was an error loading the data for FridgeFriend! Index 1 out of bounds for length 1```|The quantity limits will be parsed up until the corrupted unreadable category. Subsequent quantity limits in the file would not be parsed, and will be reset to the default of `500`.|
 |Corrupted integer quantities in `limitsData.txt`|No error message|User can only identify that data has been corrupted when using the `runninglow` command. The limit will be updated to the corrupted value.|
