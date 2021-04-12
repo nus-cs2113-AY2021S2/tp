@@ -20,6 +20,7 @@ public class StaffReturnCommand extends Command {
      * @param staffStorage Not utilised here.
      */
     public void execute(StaffList staffList, StaffUI staffUI, StaffStorage staffStorage) throws IOException {
+        System.out.println("Returning to Start Menu!");
         staffList.resetList();
     }
 

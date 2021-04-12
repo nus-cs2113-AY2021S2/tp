@@ -127,7 +127,6 @@ public class StaffList {
         for (Staff staff : list) {
             if (search(keyword, staff)) {
                 if (!isFirstItemFound) {
-                    UI.printEmptyLine();
                     StaffUI.staffListHeader();
                     UI.showLine();
                     isFirstItemFound = true;
@@ -148,8 +147,10 @@ public class StaffList {
      * @return boolean for whether the keyword can be found in the Staff object.
      */
     public boolean search(String keyword, Staff staff) {
-        return staffChecker.isSameInt(staff.getAge(), keyword) || staff.getName().contains(keyword)
-                    || staff.getId().contains(keyword) || staff.getSpecialisation().contains(keyword);
+        return staffChecker.isSameInt(staff.getAge(), keyword)
+                || staff.getName().toLowerCase().contains(keyword.toLowerCase())
+                || staff.getId().toLowerCase().contains(keyword.toLowerCase())
+                || staff.getSpecialisation().toLowerCase().contains(keyword.toLowerCase());
     }
 
 

@@ -29,7 +29,6 @@ public class StaffListCommand extends Command {
      * @param staffStorage Not utilised here.
      */
     public void execute(seedu.model.staff.StaffList staffList, StaffUI staffUI, StaffStorage staffStorage) {
-        UI.printEmptyLine();
         staffList.list(this.input);
     }
 

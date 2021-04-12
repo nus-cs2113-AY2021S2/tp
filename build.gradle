@@ -7,7 +7,7 @@ plugins {
 jar {
     manifest {
         attributes(
-                'Main-Class': 'seedu.duke.Duke'
+                'Main-Class': 'seedu.duke.HealthVault'
         )
     }
 }
@@ -36,7 +36,7 @@ test {
 }
 
 application {
-    mainClassName = "seedu.duke.Duke"
+    mainClassName = "seedu.duke.HealthVault"
 }
 
 shadowJar {
