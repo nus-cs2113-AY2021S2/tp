@@ -139,7 +139,7 @@ The ***Exception Class Diagram*** given above shows the custom `Exceptions`
 used by `FridgeFriend`, and stored inside the `Exceptions` component.
 All exceptions extend from the Java default `Exception` class. They only differ with regard
 to the throwable error message.
-The `Exceptions` component currently consists of eleven (11) custom Exceptions, as of v2.0:
+The `Exceptions` component currently consists of eleven (11) custom Exceptions:
 
 Among these eleven custom exceptions, the `Exceptions` component can generally be
 classified into three broad categories:
@@ -178,7 +178,7 @@ Given below is the sequence diagram for the interactions within the main applica
 
 ![MainLogicSequenceDiagram](diagrams/diagram_images/MainLogicSequenceDiagram.png)
 
-:information_source: The lifeline for `Ui`, `Parser`, and `Command`, should end at the destroy marker. However, due to a limitation of PlantUML, the three lifelines reach the end of the diagram.
+:information_source: The lifelines for `Ui`, `Parser`, and `Command`, should end at the destroy marker. However, due to a limitation of PlantUML, the three lifelines reach the end of the diagram.
 
 ### Add Command
 
