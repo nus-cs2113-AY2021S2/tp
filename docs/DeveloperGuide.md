@@ -290,13 +290,60 @@ call out the actual logic of this command.
 
 ### Adding Patients
 
-Adding of patients is implemented via the `AddCommand`, which is created by the `Parser.parse()` method. As
+Adding of patients is implemented via `AddCommand`, which is created by the `Parser.parse()` method. As
 per [Section 4.1: Parsing User Input](#parsing-user-input), the arguments to the command are stored in
 a `HashMap<String, String>` and passed to the `AddCommand` during initialization.
 
-Below is a sequence diagram when the user executes the command `add S1234567D`.
+Below is a sequence diagram when the user executes the command `add S1234567D`. For clarity, arguments are
+excluded from some function invocations.
 
 <img src="./images/sequence_diagram_add.png" width="800">
+
+Internally, the `addPatient` method will check if the requested patient exists, and throw an error if the patient
+already exists. Otherwise,`Data` will create a new `Patient` object, and add that to the `HashMap<String, Patient>` of
+registered patients.
+
+### Loading Patients
+
+Loading of patients is implemented via `LoadCommand`, which is created by the `Parser.parse()` method. As
+per [Section 4.1: Parsing User Input](#parsing-user-input), the arguments to the command are stored in
+a `HashMap<String, String>` and passed to the `LoadCommand` during initialization.
+
+Below is a sequence diagram when the user executes the command `add S1234567D`. For clarity, arguments are
+excluded from some function invocations.
+
+<img src="./images/sequence_diagram_load.png" width="800">
+
+Internally, the `loadPatient` method will check if the requested patient exists, and throw an error if the patient
+does not exist. Otherwise,`Data` will update the current loaded patient to the requested patient. 
+
+### Adding Medical Records to Patients
+
+Adding medical records to a patient is implemented via `RecordCommand`, which is created by the `Parser.parse()` method.
+As per [Section 4.1: Parsing User Input](#parsing-user-input), the arguments to the command are stored in
+a `HashMap<String, String>` and passed to the `RecordCommand` during initialization.
+
+Below is a sequence diagram when the user executes the command `record /s coughing`. For clarity, arguments are
+excluded from some function invocations.
+
+<img src="./images/sequence_diagram_record.png" width="800">
+
+Internally, the `addRecord` method will first verify that there is a loaded patient, and it will also verify that at
+least one of the three fields (symptoms, diagnosis and prescription) is not null and not blank, before adding the
+medical record(s) to the patient.
+
+### Retrieving a Patient's Medical Records
+
+Loading of patients is implemented via the `RetrieveCommand`, which is created by the `Parser.parse()` method. As
+per [Section 4.1: Parsing User Input](#parsing-user-input), the arguments to the command are stored in
+a `HashMap<String, String>` and passed to the `RetrieveCommand` during initialization.
+
+Below is a sequence diagram when the user executes the command `retrieve`.
+
+<img src="./images/sequence_diagram_retrieve.png" width="800">
+
+Internally, the `getRecords` method will first verify that there is a loaded patient before trying to load their
+records.
 
 ### Loading Patients
 
@@ -423,6 +470,9 @@ input.
   they have particular skills in treating people with multiple health issues.
 * *Visit Record* - Details taken down by the doctor during one's visit. In this case, Patient Manager can record the
   patient's symptoms, the diagnosis made by the doctor, and any prescriptions or referrals given.
+* *NRIC/FIN Number* - A unique identification number for all Singaporean citizens, Permanent Residents and Long-term
+  Pass Holders. The number begins with a single character (S, T, F or G), followed by 7 numeric digits, and ends with
+  a checksum letter. 
 
 ## Appendix E: Instructions for Manual Testing
 
