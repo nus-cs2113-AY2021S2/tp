@@ -6,7 +6,7 @@
 ## Overview
 Control Your Crowd (CYC) is a desktop application used for managing crowd levels at any location or events.
 The user interacts with it using a Command Line Interface (CLI). It is written in Java using the
-Object-oriented programming (OOP) paradigm, and has about xxx LoC.
+Object-oriented programming (OOP) paradigm, and has about 5168 LoC.
 
 Given below are my contributions to the project.
 
