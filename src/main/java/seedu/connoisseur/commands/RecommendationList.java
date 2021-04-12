@@ -1,4 +1,4 @@
-//@@author {jhjhajh}
+//@@author jhjhajh
 
 package seedu.connoisseur.commands;
 
@@ -81,7 +81,7 @@ public class RecommendationList {
         }
     }
 
-//@@author {}
+    //@@author
 
     /**
      * Displays the recommendations.
@@ -210,14 +210,14 @@ public class RecommendationList {
                 continue;
             }
 
-            //@@author {jhjhajh}
+            //@@author jhjhajh
 
             if (title.length() > 20) {
                 ui.printInputTooLongMessage_20Char();
                 continue;
             }
 
-            //@@author {}
+            //@@author
 
             if (reviewList.checkAndPrintDuplicateReview(title)) {
                 ui.println(CHANGE_RECO_TITLE);
@@ -249,14 +249,14 @@ public class RecommendationList {
                 continue;
             }
 
-            //@@author {jhjhajh}
+            //@@author jhjhajh
 
             if (category.length() > 15) {
                 ui.printInputTooLongMessage_15Char();
                 continue;
             }
 
-            //@@author {}
+            //@@author
 
             break;
         }
@@ -291,14 +291,14 @@ public class RecommendationList {
                 continue;
             }
 
-            //@@author {jhjhajh}
+            //@@author jhjhajh
 
             if (recommendedBy.length() > 15) {
                 ui.printInputTooLongMessage_15Char();
                 continue;
             }
 
-            //@@author {}
+            //@@author
 
             break;
         }
@@ -310,14 +310,14 @@ public class RecommendationList {
                 continue;
             }
 
-            //@@author {jhjhajh}
+            //@@author jhjhajh
 
             if (location.length() > 15) {
                 ui.printInputTooLongMessage_15Char();
                 continue;
             }
 
-            //@@author {}
+            //@@author
 
             break;
         }
@@ -493,14 +493,14 @@ public class RecommendationList {
                     continue;
                 }
 
-                //@@author {jhjhajh}
+                //@@author jhjhajh
 
                 if (newTitle.length() > 20) {
                     ui.printInputTooLongMessage_20Char();
                     continue;
                 }
 
-                //@@author {}
+                //@@author
 
 
                 if (reviewList.checkAndPrintDuplicateReview(newTitle)) {
@@ -557,14 +557,14 @@ public class RecommendationList {
                     continue;
                 }
 
-                //@@author {jhjhajh}
+                //@@author jhjhajh
 
                 if (newLocation.length() > 15) {
                     ui.printInputTooLongMessage_15Char();
                     continue;
                 }
 
-                //@@author {}
+                //@@author
 
                 break;
             }
@@ -580,14 +580,14 @@ public class RecommendationList {
                     continue;
                 }
 
-                //@@author {jhjhajh}
+                //@@author jhjhajh
 
                 if (newCategory.length() > 15) {
                     ui.printInputTooLongMessage_15Char();
                     continue;
                 }
 
-                //@@author {}
+                //@@author
 
                 break;
             }
@@ -603,14 +603,14 @@ public class RecommendationList {
                     continue;
                 }
 
-                //@@author {jhjhajh}
+                //@@author jhjhajh
 
                 if (newRecBy.length() > 15) {
                     ui.printInputTooLongMessage_15Char();
                     continue;
                 }
 
-                //@@author {}
+                //@@author
 
                 break;
             }

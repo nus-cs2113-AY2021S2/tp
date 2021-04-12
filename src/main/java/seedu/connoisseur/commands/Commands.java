@@ -1,4 +1,4 @@
-//@@author {jhjhajh}
+//@@author jhjhajh
 
 package seedu.connoisseur.commands;
 
@@ -60,7 +60,7 @@ public class Commands {
         reviewList = new ReviewList(ui);
         recommendationList = new RecommendationList(ui, reviewList);
     }
-//@@author {}
+    //@@author
 
     /**
      * Goes into review mode.
@@ -91,7 +91,7 @@ public class Commands {
         reviewList.changeDisplay(displayType);
     }
 
-    //@@author {jhjhajh}
+    //@@author jhjhajh
 
     /**
      * Print text to help user with using the application.
@@ -142,7 +142,7 @@ public class Commands {
         ui.println(INVALID_PARAMETERS);
     }
 
-//@@author {}
+    //@@author
 
     /**
      * Exits connoisseur.
@@ -153,7 +153,7 @@ public class Commands {
         ui.println(EXIT_MESSAGE);
     }
 
-    //@@author {jhjhajh}
+    //@@author jhjhajh
 
     /**
      * List reviews or recommendations depending on the mode.

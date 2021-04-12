@@ -216,7 +216,7 @@ public class Ui {
         println("Please try again with a unique title!");
     }
 
-    //@@author {jhjhajh}
+    //@@author jhjhajh
 
 
     public void printInputTooLongMessage_20Char() {
