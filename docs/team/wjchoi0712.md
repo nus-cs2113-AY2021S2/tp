@@ -30,6 +30,8 @@ Shown below are some features/aspects that I have contributed to the team.<br>
 * Designed the `DataDecoder` and `DataEncoder` class to encode and decode data. 
 * Added in exceptions to find corrupted data while loading past data. 
 
+<div style="page-break-after: always;"></div>
+
 #### UI
 
 * Collaborated with Rizavur(rizavur) to develop the UI of NUSMaze.
