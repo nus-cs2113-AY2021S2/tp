@@ -1,3 +1,5 @@
+//@@author {}
+
 package seedu.connoisseur.commands;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -28,6 +30,8 @@ public class CommandsTest {
         reviewList.reviews.add(reviewa);
         reviewList.reviews.add(reviewb);
     }
+
+    //@@author {}
 
     @Test
     public void deleteReview_reviewExists_removesNormally() {

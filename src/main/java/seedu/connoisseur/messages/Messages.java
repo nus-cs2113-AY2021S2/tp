@@ -24,6 +24,8 @@ public class Messages {
     public static final String INVALID_PARAMETERS = "Invalid command. Please do not enter extra parameters or less "
             + "parameters than required.";
 
+    //@@author {jhjhajh}
+
     // Help
     public static final String HELP_MESSAGE = "Connoisseur is an application to keep track of all your reviews and"
             + " recommendations!\n"
@@ -84,6 +86,9 @@ public class Messages {
     public static final String RECO_MODE_MESSAGE = "Reco will allow you to switch over to recommendation mode. The"
             + " default mode of this application is review mode.\n\nCommand syntax: reco";
     public static final String INVALID_HELP_MESSAGE = "Invalid help command!";
+
+    //@@author {}
+
 
     // Storage
     public static final String FILE_ALREADY_EXISTS = "Data file already exists";

@@ -1,3 +1,5 @@
+//@@author {jhjhajh}
+
 package seedu.connoisseur.commands;
 
 import seedu.connoisseur.exceptions.DuplicateException;
@@ -78,6 +80,8 @@ public class RecommendationList {
             displayRecommendations(recommendations);
         }
     }
+
+//@@author {}
 
     /**
      * Displays the recommendations.
@@ -205,10 +209,16 @@ public class RecommendationList {
                 ui.printEmptyInputMessage();
                 continue;
             }
+
+            //@@author {jhjhajh}
+
             if (title.length() > 20) {
                 ui.printInputTooLongMessage_20Char();
                 continue;
             }
+
+            //@@author {}
+
             if (reviewList.checkAndPrintDuplicateReview(title)) {
                 ui.println(CHANGE_RECO_TITLE);
                 boolean invalidCommand;
@@ -238,10 +248,16 @@ public class RecommendationList {
                 ui.printEmptyInputMessage();
                 continue;
             }
+
+            //@@author {jhjhajh}
+
             if (category.length() > 15) {
                 ui.printInputTooLongMessage_15Char();
                 continue;
             }
+
+            //@@author {}
+
             break;
         }
         while (true) {
@@ -274,10 +290,16 @@ public class RecommendationList {
                 ui.printEmptyInputMessage();
                 continue;
             }
+
+            //@@author {jhjhajh}
+
             if (recommendedBy.length() > 15) {
                 ui.printInputTooLongMessage_15Char();
                 continue;
             }
+
+            //@@author {}
+
             break;
         }
         while (true) {
@@ -287,10 +309,16 @@ public class RecommendationList {
                 ui.printEmptyInputMessage();
                 continue;
             }
+
+            //@@author {jhjhajh}
+
             if (location.length() > 15) {
                 ui.printInputTooLongMessage_15Char();
                 continue;
             }
+
+            //@@author {}
+
             break;
         }
         DecimalFormat df = new DecimalFormat("0.00");
@@ -464,10 +492,17 @@ public class RecommendationList {
                     ui.printEmptyInputMessage();
                     continue;
                 }
+
+                //@@author {jhjhajh}
+
                 if (newTitle.length() > 20) {
                     ui.printInputTooLongMessage_20Char();
                     continue;
                 }
+
+                //@@author {}
+
+
                 if (reviewList.checkAndPrintDuplicateReview(newTitle)) {
                     ui.println(CHANGE_RECO_TITLE);
                     continue;
@@ -521,10 +556,16 @@ public class RecommendationList {
                     ui.printEmptyInputMessage();
                     continue;
                 }
+
+                //@@author {jhjhajh}
+
                 if (newLocation.length() > 15) {
                     ui.printInputTooLongMessage_15Char();
                     continue;
                 }
+
+                //@@author {}
+
                 break;
             }
             recommendations.get(index).setLocation(newLocation);
@@ -538,10 +579,16 @@ public class RecommendationList {
                     ui.printEmptyInputMessage();
                     continue;
                 }
+
+                //@@author {jhjhajh}
+
                 if (newCategory.length() > 15) {
                     ui.printInputTooLongMessage_15Char();
                     continue;
                 }
+
+                //@@author {}
+
                 break;
             }
             recommendations.get(index).setCategory(newCategory);
@@ -555,10 +602,16 @@ public class RecommendationList {
                     ui.printEmptyInputMessage();
                     continue;
                 }
+
+                //@@author {jhjhajh}
+
                 if (newRecBy.length() > 15) {
                     ui.printInputTooLongMessage_15Char();
                     continue;
                 }
+
+                //@@author {}
+
                 break;
             }
             recommendations.get(index).setRecommendedBy(newRecBy);
