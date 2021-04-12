@@ -136,6 +136,8 @@ _Figure 1: **Finux** Architecture Diagram_
 The _**Architecture Diagram**_ above details the high-level design of the **Finux** application.
 Brief explanations of the components involved are given below.
 
+<div style="page-break-after: always;"></div>
+
 The `Finux` component is the object class itself, It is responsible for,
 * At launch: Initializes the components in the correct sequence and attempts to load data from file.  
 * At shut down: Shuts down the components and invokes cleanup method where necessary.
@@ -150,6 +152,8 @@ The rest of the application consists of six main components.
 
 The application has another background component `CreditScoreReturnedLoansMap` that supports the [credit score feature](#47-credit-score-feature).
 
+<div style="page-break-after: always;"></div>
+
 Given below are sequence diagrams describing the general application flow and how the different objects
 interact with each other.
 
@@ -158,6 +162,8 @@ _Figure 2: Initialization_
 
 The initialization sequence diagram above shows the systematic flow of object creation and record
 retrieval from storage file for creation of the `RecordList` object.
+
+<div style="page-break-after: always;"></div>
 
 ![Main program flow](img/CommandLooperSequenceDiagram.png)\
 _Figure 3: Main Application Loop & Exit Sequence_
@@ -170,6 +176,8 @@ This sequence diagram follows suit after initialization in _Figure 2_.\
 This shows the main flow until the `exit` command is input by the user.
 
 The following sections below will provide more details of each component.
+
+<div style="page-break-after: always;"></div>
 
 ### 3.2 UI Component
 
@@ -235,12 +243,15 @@ program needs to parse a user input, the ParserHandler calls the method `getPars
    and option-argument pairwise logic.
 6. `getParseInput()` should always return a new `ArrayList<String>` per new input.
 
+<div style="page-break-after: always;"></div>
 
 ### 3.4 CommandHandler Component
 ![CommandHandlerClassDiagram](img/CommandHandlerClassDiagram.png)\
 _Figure 6: **CommandHandler** Class Diagram_\
 ![CommandHandlerSequenceDiagram](img/CommandHandlerSequenceDiagram.png)\
 _Figure 7: **CommandHandler** Sequence Diagram_
+
+<div style="page-break-after: always;"></div>
 
 #### Description
 The `CommandHandler` component is the object class itself.
