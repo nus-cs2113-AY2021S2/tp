@@ -54,7 +54,7 @@ applications in the market.
 ## 2. Quick Start
 
 1. Ensure you have Java `11` or above installed in your Computer.
-2. Download the latest `finux.jar` from [here](https://github.com/AY2021S2-CS2113T-W09-1/tp/releases/tag/v2.0).
+2. Download the latest `finux.jar` from [here](https://github.com/AY2021S2-CS2113T-W09-1/tp/releases/tag/v2.1).
 3. Copy the `finux.jar` file to the folder you want to use as the *home folder* of Finux.
 4. For Windows users, pull up your **Command Prompt**.\
    For Mac users, pull up your **Terminal**.\
