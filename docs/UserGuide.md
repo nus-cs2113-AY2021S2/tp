@@ -36,7 +36,7 @@
    4.8. [Notes](#48-notes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.8.1. [Adding notes](#481-adding-notes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.8.2. [Showing notes](#482-showing-notes) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.8.3. [Deleting notes](#478-deleting-notes) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.8.3. [Deleting notes](#483-deleting-notes) <br>
    4.9. [Exiting the application](#49-exiting-the-application) <br>
    4.10. [Saving the Data](#410-saving-the-data) <br>
    4.11. [Loading Past Data](#411-loading-past-data) <br>
@@ -668,6 +668,7 @@ Here is the list of notes:
 > :warning: The `BLOCK` must be one of the Engineering or Computing buildings. <br>
 
 #### 4.8.3 Deleting notes
+
 Delete the specified note based on index number tagged to the given existing location.<br/>
 Format : `delete note` → `BLOCK` → `NOTE_INDEX` <br>
 Example :
