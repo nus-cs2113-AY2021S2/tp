@@ -2,6 +2,9 @@
 ol {
     counter-reset: item
 }
+ul {
+    counter-reset: item
+}
 ol > li {
     counter-increment: item;
 }
@@ -15,20 +18,17 @@ ol ol > li:before {
 
 # Patient Manager User Guide
 
-
 Patient Manager is a **Command Line Interface** (CLI) application for **general practitioners** (GP)
-to manage their patient list. Patient Manger allows you to easily register new patients to your clinic with their NRIC
+to manage their patient list. It allows you to easily register new patients to your clinic with their NRIC
 or FIN number. Once a patient's records have been loaded, you can easily add new medical records and retrieve a summary
-of past records
+of past records.
 
 With the Patient Manager, GPs will be able to reduce paperwork and have a more efficient way to organize the records of
 their patients.
 
-
 ---
 
 ## Table of Contents
-
 
 1. [User Guide Information](#user-guide-information)
 1. [Quick Start](#quick-start)
@@ -36,15 +36,17 @@ their patients.
 1. [Features](#features)
    1. [Print a help message: `help`](#print-a-help-message-help)
    1. [Adding a patient: `add`](#adding-a-patient-add)
-   1. [Loading a patient's medical records: `load`](#loading-a-patients-medical-records-load)
-   1. [Deleting a patient or a patient's consultation details: `delete`](#deleting-a-patient-or-a-patients-consultation-details-delete)
    1. [Listing all patients: `list`](#listing-all-patients-list)
+   1. [Deleting a patient: `delete /p`](#deleting-a-patient-delete-p)
+   1. [Loading a patient's medical records: `load`](#loading-a-patients-medical-records-load)
    1. [Displaying the current loaded patient: `current`](#displaying-the-current-loaded-patient-current)
    1. [Recording a patient's consultation details: `record`](#recording-a-patients-consultation-details-record)
    1. [Retrieving a patient's consultation details: `retrieve`](#retrieving-a-patients-consultation-details-retrieve)
+   1. [Deleting a day's record: `delete /r`](#deleting-a-days-record-delete-r)
    1. [Exiting the program: `exit`](#exiting-the-program-exit)
 1. [Frequently Asked Questions](#frequently-asked-questions)
 1. [Command Summary](#command-summary)
+<!-- ^ The above table of content is auto generated -->
 
 ---
 
@@ -133,7 +135,6 @@ Before you start using our application, you may want to know about some of its a
 > and `exit`) will be ignored.\
 > e.g. if the command given is `list 123`, it will be interpreted as `list`.
 
-
 > :warning: Notes on valid and invalid user input:
 >
 > - Due to how Patient Manager stores its records to disk, the following ASCII characters are not allowed
@@ -188,7 +189,7 @@ Usage: exit
 Adds a patient to the system based on their NRIC/FIN number so that consultation details for the
 patient can be recorded.
 
-If the patient already exists in the system, the `add` command will not add the patient in and
+If the patient already exists in the system, the `add` command will not add the patient in, and
 it will display a message to inform you that the patient already exists in the system.
 
 <!-- So that ..., This means that ... -->
@@ -213,6 +214,44 @@ Patient S1234567D has been added!
 ----------------------------------------------------------------------
 ```
 
+### Listing all patients: `list`
+
+Shows a list of all patients in alphanumeric order.
+
+Usage: `list`
+
+Example output:
+
+```
+----------------------------------------------------------------------
+List of patients (in alphanumeric order):
+1. S1234567D
+2. S7654321F
+----------------------------------------------------------------------
+```
+
+### Deleting a patient: `delete /p`
+
+Deletes a patient from the list of patients.
+
+The `/p` flag is used to delete patients based on their NRIC/FIN number. This flag is necessary, and please do not
+be confused with the `delete /r` command below.
+
+Usage: `delete /p [IC_NUMBER]`
+
+Example of usage:
+
+```
+delete /p S1234567D
+```
+
+Expected output:
+```
+----------------------------------------------------------------------
+Patient S1234567D has been deleted!
+----------------------------------------------------------------------
+```
+
 ### Loading a patient's medical records: `load`
 
 Finds the patient whose IC number matches the given search query and loads their medical records
@@ -232,61 +271,6 @@ Expected output:
 ```
 ----------------------------------------------------------------------
 Patient S1234567D's data has been found and loaded.
-----------------------------------------------------------------------
-```
-
-### Deleting a patient or a patient's consultation details: `delete`
-
-Deletes a patient from the list or deletes a patient's consultation details for a specific date.\
-The `/p` flag is used to delete patients based on their NRIC/FIN number, while the `/r` flag
-is used to delete records from a certain date. Exactly one of the `/p` or `/r` flags and their 
-corresponding arguments must be specified.
-
-> :warning: Note: Before deleting a patient's record, you must have previously loaded a patient with the
-> [`load`](#loading-a-patients-medical-records-load) command. If no patient has been loaded, Patient Manager
-> will print an error message.
-
-Usage: `delete [/p IC_NUMBER] [/r DATE]`
-
-Example of usage:
-
-```
-delete /p S1234567D
-```
-
-Expected output:
-```
-----------------------------------------------------------------------
-Patient S1234567D has been deleted!
-----------------------------------------------------------------------
-```
-
-Example of usage:
-
-```
-delete /r 10/04/2021
-```
-
-Expected output:
-```
-----------------------------------------------------------------------
-Record for 10/04/2021 has been deleted!
-----------------------------------------------------------------------
-```
-
-### Listing all patients: `list`
-
-Shows a list of all patients in alphanumeric order.
-
-Usage: `list`
-
-Example output:
-
-```
-----------------------------------------------------------------------
-List of patients (in alphanumeric order):
-1. S1234567D
-2. S7654321F
 ----------------------------------------------------------------------
 ```
 
@@ -372,6 +356,30 @@ Prescriptions:
 ----------------------------------------------------------------------
 ```
 
+### Deleting a day's record: `delete /r`
+
+Deletes a record fom the list of records of a specific patient.
+
+The `/r` flag is used to delete a visit record based on the date of visit. This flag is necessary, and please do not
+be confused with the `delete /p` command above.
+
+> :warning: Note: Before deleting a patient's record, you must have previously loaded a patient with the
+> [`load`](#loading-a-patients-medical-records-load) command. If no patient has been loaded, Patient Manager
+> will print an error message.
+
+Example of usage:
+
+```
+delete /r 10/04/2021
+```
+
+Expected output:
+```
+----------------------------------------------------------------------
+Record for 10/04/2021 has been deleted!
+----------------------------------------------------------------------
+```
+
 ### Exiting the program: `exit`
 
 Exits the program
@@ -404,7 +412,8 @@ Click on the commands to navigate to specific feature details.
 |-------------------------------------------------------------------------|------------------------------------|
 | [add](#adding-a-patient-add)                                            | `add IC_NUMBER`                    |
 | [current](#displaying-the-current-loaded-patient-current)               | `current`                          |
-| [delete](#deleting-a-patient-or-a-patients-consultation-details-delete) | `delete [/p IC_NUMBER]  [/r DATE]` |
+| [delete(patient)](#deleting-a-patient-delete-p)                         | `delete [/p IC_NUMBER]`            |
+| [delete(record)](#deleting-a-days-record-delete-r)                      | `delete [/r DATE]`                 |
 | [exit](#exiting-the-program-exit)                                       | `exit`                             |
 | [help](#print-a-help-message-help)                                      | `help [OPTIONAL_COMMAND]...`       |
 | [list](#listing-all-patients-list)                                      | `list`                             |

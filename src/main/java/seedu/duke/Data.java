@@ -5,6 +5,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 import seedu.duke.exception.DataException;
+import seedu.duke.exception.InvalidInputException;
 import seedu.duke.exception.StorageException;
 import seedu.duke.model.Patient;
 
@@ -97,6 +98,19 @@ public class Data {
      */
     public void setPatient(Patient patient) {
         patients.put(patient.getID(), patient);
+    }
+
+    /**
+     * Add a new patient to the hashmap of this database.
+     *
+     * @param id the ID number of the patient to be added
+     */
+    public void addPatient(String id) throws InvalidInputException {
+        if (patients.containsKey(id)) {
+            throw new InvalidInputException(InvalidInputException.Type.PATIENT_EXISTED);
+        }
+        Patient patient = new Patient(id);
+        patients.put(id, patient);
     }
 
     /**

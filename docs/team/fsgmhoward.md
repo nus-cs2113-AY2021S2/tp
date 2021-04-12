@@ -39,13 +39,14 @@ https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?breakdown=true&search=fsgmho
 ### Contribution to User Guide
 
 * Limitations of the application
-* General formatting and fixing
+* General formatting, rearrangement of sections, and bug fixing
 
 ### Contribution to Developer Guide
 
 * Explanation of design decision for Parser, as well as a detailed implementation steps
 * Explanation of design decision for all exception class and how they are used
 * Explanation for common classes
+* Appendix F: Command Summary
 * General formatting and fixing
 
 ### Contribution to Team-Based Tasks
