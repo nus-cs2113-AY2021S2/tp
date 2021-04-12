@@ -84,7 +84,7 @@ The `Logic` Component
 * The parsed arguments would be passed to suitable classes (`ResourceManager/ProjectManager`) for command execution.
 * Class `ResourceManager/ProjectManager` executes user command based on the parsed arguments.
 * The Model may be modified during command execution. (e.g. added/deleted a resource)
-* data.txt, a local text file, may be modified during command execution. (e.g. save a project list)
+* data.txt, a local text file, may be created/modified during command execution. (e.g. save a project list)
   
 ---
 <div style="page-break-after: always;"></div>
