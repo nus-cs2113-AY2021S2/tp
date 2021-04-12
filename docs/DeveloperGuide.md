@@ -17,7 +17,7 @@
    3.4 [CommandHandler Component](#34-commandhandler-component)\
    3.5 [Command Component](#35-command-component)\
    3.6 [RecordList Component](#36-recordlist-component)\
-   3.7 [CreditScoreReturnedLoansMap](#37-creditscorereturnedloansmap)\
+   3.7 [CreditScoreReturnedLoansMap](#37-creditscorereturnedloansmap-component)\
    3.8 [Storage Component](#38-storage-component)
 4. [Implementation](#4-implementation)\
    4.1 [Add Feature](#41-add-feature)\
@@ -419,7 +419,7 @@ following snippet of pseudo code:
 
 ### 3.7 CreditScoreReturnedLoansMap Component
 ![CreditScoreReturnedLoansMap Class Diagram](img/CreditScoreReturnedLoansMapClassDiagram.png)\
-_Figure 21: **CreditScoreReturnedLoansMap** Class Diagram_
+_Figure 12: **CreditScoreReturnedLoansMap** Class Diagram_
 
 #### Description
 The `CreditScoreReturnedLoansMap` component consists of only one class which is the `CreditScoreReturnedLoansMap`. 
@@ -1221,8 +1221,7 @@ coding and typing can speed up the process of their finance management through t
 1. Download the jar file and copy it into an empty folder where the application will save its files in.
 1. Open a new command prompt (Windows) or terminal (MacOS) and navigate to the directory containing `Finux.jar`.
 1. Enter the command `java -jar Finux.jar` to launch Finux.
-1. Program will create a new save file if there are no existing one or load a previously saved file, thereafter Finux
-will be ready for use.
+1. Program will create a new save file if there are currently no existing save file, else it will load the save file.
    
 **Shutdown**
 
@@ -1234,7 +1233,7 @@ will be ready for use.
 1. Test case: `add -e Plain bread loaf -a 2.50 -d 28/03/2021`
    Expected: Adds an `expense` with the description '`Plain bread loaf`' with an amount of `2.50` dollars on `28th March 2021`.
 1. Test case: `add -e Gym equipment -a 500 -d 02/04/2021`
-   Expected: Adds an `expense` with the description '`Gym equipment`' with an amount of `500`. dollars on `2nd April 2021`.
+   Expected: Adds an `expense` with the description '`Gym equipment`' with an amount of `500` dollars on `2nd April 2021`.
 1. Other incorrect commands to try:
    1. `add`
    1. `add -e`
@@ -1331,7 +1330,7 @@ will be ready for use.
    1. The record list must contain a loan record.
    1. Add a loan into the list `add -l Loan to Jason -a 500 -d 28/03/2021 -p Jason`
 1. Test case: `return -i 1 -d 02/04/2021`
-   Expected: The loan with index 1 will be marked as returned and will be indicated with `[v]` at the end of the entry
+   Expected: The loan with record ID 1 will be marked as returned and will be indicated with `[v]` at the end of the entry
    in the record list.
 1. Other incorrect commands to try:
    1. `return`
@@ -1346,13 +1345,12 @@ will be ready for use.
    1. Assuming your current record list is empty.
    1. The record list must contain any instance of record (`Expense`, `Loan`, `Saving`)
    1. Add a record into the list `add -e Chicken Rice Lunch at Deck -a 2.50 -d 30/03/2021`
-1. Test case: `remove -i 1` Expected: The record with index 1 will be removed from the record list.
+1. Test case: `remove -i 1` Expected: The record with record ID 1 will be removed from the record list.
 1. Other incorrect commands to try:
    1. `remove`
    1. `remove -i`
    1. `remove -i 0`
-   1. `remove -i -x` (where x is any integer)
-   1. `remove -i y` (where y is any integer that is greater than the size of the array)
+   1. `remove -i x` (where x is any integer that is greater than the size of the array or a negative integer)
 
 ### D.15 Checking the CreditScore of a person
 
@@ -1367,12 +1365,17 @@ will be ready for use.
    1. `creditscore`
    1. `creditscore -p jason`
    1. `creditscore -i x` (where x is any integer)
-   
-Note: The `creditscore` command will also calculate the person's credit score should the loan not be returned.
+
+💡 Note: The `creditscore` command will also calculate the person's credit score should the loan not be returned.
 
 ### D.16 Displaying the help list
 1. Prerequisite: None.
 1. Test case: `help` Expected: The summary table of all commands and  format will be displayed.
+1. Test case: `help x` (where x is a valid command) Expected: The detailed explanation of `x` command will be displayed.
+1. Other incorrect commands to try:
+   1. `help -i`
+   1. `help -i 0`
+   1. `help y` (where y is an invalid command)
 
 ### D.17 Exiting Finux application
 1. Prerequisite: None.
