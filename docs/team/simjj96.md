@@ -1,9 +1,7 @@
 # Sim Jing Jie- Project Portfolio Page
 
 ## Overview
-This is a student project for university software development course.
-
-I am one of the contributors to FridgeFriend project.
+This is a student project for university software development course. I am one of the contributors to FridgeFriend project.
 
 ## Summary of Contributions
 Version 1  
