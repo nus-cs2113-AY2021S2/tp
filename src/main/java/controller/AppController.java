@@ -83,6 +83,7 @@ public class AppController {
                     System.out.println("invalid command");
                 }
             }
+            System.out.println("\n----------------------------------------------------------------------------\n");
         }
     }
 }
