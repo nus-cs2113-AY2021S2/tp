@@ -1,7 +1,7 @@
 # Kwek Ming Shun's Project Portfolio Page
 
 ## Overview
-HealthVault is a hospital information recording system made for nurses. HealthVault is a desktop app for managing doctor, nurse, patient and inventory information, optimised for use through the command line interface. A user with fast typing skills would be able to navigate through the application with ease and at greater efficiency as compared to a normal database application. The program is written entirely in Java.
+HealthVault is a hospital information database system made for nurses. HealthVault is a desktop app for managing doctor, nurse, patient and inventory information, optimised for use through the command line interface. A user with fast typing skills would be able to navigate through the application with ease and at greater efficiency as compared to a normal database application. The program is written entirely in Java.
 
 ### Summary of Contributions
 

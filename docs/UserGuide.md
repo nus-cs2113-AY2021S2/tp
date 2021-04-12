@@ -342,7 +342,7 @@ When you first enter the Patient menu, you will be greeted with the following we
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `add/[Patient ID]/[Name]/[Age]/[Gender]/[Illness]/[Drugs needed]`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `add/[Patient ID]/[Name]/[Age]/[Gender]/[Illness]/[Items needed]`
 
 >:information_source: Important notes about the input format
 >
@@ -756,7 +756,7 @@ This is an example of the welcome screen for the Inventory Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **List example**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```DrugName        | Price      | Quantity```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```ItemName        | Price      | Quantity```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```------------------------------------------------------------```
 
@@ -772,7 +772,7 @@ This is an example of the welcome screen for the Inventory Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **List example**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```DrugName        | Price      | Quantity```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```ItemName        | Price      | Quantity```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```------------------------------------------------------------```
 
@@ -802,7 +802,7 @@ This is an example of the welcome screen for the Inventory Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **List example**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```DrugName        | Price      | Quantity```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```ItemName        | Price      | Quantity```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```------------------------------------------------------------```
 
@@ -885,7 +885,7 @@ This is an example of the welcome screen for the Inventory Menu.
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |
 | **Patient**         |                                                                                                            |
-| add                 | `add/[Patient ID]/[Name] [Age]/[Gender]/[Illness]/[Drugs needed]`<br/><br/>`add/P55555/Sam/40/Male Fever/Paracetamol`   |
+| add                 | `add/[Patient ID]/[Name] [Age]/[Gender]/[Illness]/[Items needed]`<br/><br/>`add/P55555/Sam/40/Male Fever/Paracetamol`   |
 | delete              | `delete/[Patient ID]`<br/><br/>`delete/P55555`                                                                          |
 | find                | `find/[keyword]`<br/><br/>`find/P55555`                                                                              |
 | list                | `list`                                                                                                     |
