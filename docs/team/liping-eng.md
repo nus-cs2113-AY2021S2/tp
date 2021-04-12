@@ -17,7 +17,7 @@ Feature #2:
 - What it does: Allows users to simulate their CAP base on information from Feature #1 and grade details* from each module.
 - Justification: This feature helps the users see how different grades affect their CAP.
 
-**Code contributed:** [RepoSense link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&since=&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false&tabOpen=true&tabType=authorship&tabAuthor=BlubberMonster&tabRepo=AY2021S2-CS2113T-F08-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code~other)
+**Code contributed:** [RepoSense link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=&tabOpen=true&tabType=zoom&zA=liping-eng&zR=AY2021S2-CS2113T-F08-4%2Ftp%5Bmaster%5D&zACS=142.81974817760107&zS=2021-03-05&zFS=&zU=2021-04-12&zMG=undefined&zFTF=commit&zFGS=groupByRepos&zFR=false)
 
 ### Enhancements implemented
 **Documentation:**
