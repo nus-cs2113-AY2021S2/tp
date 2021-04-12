@@ -16,6 +16,10 @@ import static seedu.duke.common.Constant.FINUX_LOGGER;
 
 import java.util.ArrayList;
 
+/**
+ * Maps the command word to the subsequent {@code Command} object.
+ * Creates the {@code Command} object with the arguments.
+ */
 public class CommandHandler {
     private static final String ERROR_INVALID_COMMAND = "Invalid command: ";
     private static final String LOGGER_OKAY_MESSAGE = "command object successfully created.";
@@ -51,6 +55,13 @@ public class CommandHandler {
         }
     }
 
+    /**
+     * Parses the {@code parsedArguments} into a subsequent {@code Command}.
+     *
+     * @param parsedArguments the {@code ArrayList<String>} of arguments.
+     * @param recordList the {@code RecordList} required for some {@code Command} objects.
+     * @return the parsed {@code Command}.
+     */
     public Command parseCommand(ArrayList<String> parsedArguments, RecordList recordList) {
         try {
             Command command = createCommand(parsedArguments, recordList);

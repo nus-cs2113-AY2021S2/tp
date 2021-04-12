@@ -2,6 +2,9 @@ package seedu.duke.common;
 
 import static seedu.duke.common.Constant.FILE_DELIMITER_CHAR;
 
+/**
+ * Container for most user visible messages.
+ */
 public class Messages {
     public static final String ERROR_NON_NUM_AMOUNT = "Amount contains a non-numeric value.";
     public static final String ERROR_FUTURE_ISSUE_DATE = "Issue date cannot be in the future!";

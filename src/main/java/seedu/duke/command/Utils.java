@@ -302,7 +302,14 @@ public class Utils {
         assert argument != null : "argument is null!";
         return Pattern.matches(REGEX_OPTION, argument);
     }
-    
+
+    /**
+     * Computes the difference in days between two {@code LocalDate} objects.
+     *
+     * @param issueDate the date of issue.
+     * @param returnDate the date of return.
+     * @return the day difference.
+     */
     public static long getDaysDifference(LocalDate issueDate, LocalDate returnDate) {
         LocalDate toDate;
         if (returnDate == null) {
@@ -313,6 +320,15 @@ public class Utils {
         return ChronoUnit.DAYS.between(issueDate, toDate);
     }
 
+    /**
+     * Computes the new credit score based on the {code daysDifference}, {code currentCreditScore}
+     * and whether the loan was returned in the first week.
+     *
+     * @param daysDifference the day difference from the loan's issue and return.
+     * @param currentCreditScore the current credit score of a borrower.
+     * @param isReturn a check if current loan is returned.
+     * @return the new credit score.
+     */
     public static int computeCreditScore(long daysDifference, int currentCreditScore, boolean isReturn) {
         long computedCreditScore = currentCreditScore;
         if (daysDifference < FIRST_WEEK) {

@@ -59,7 +59,7 @@ public class RemoveCommand extends Command {
     }
 
     /**
-     * Get the index field in String.
+     * Gets the index field in String.
      * @param arguments parsed input containing options and arguments.
      * @return a String containing the index of the record.
      * @throws CommandException contains the error messages when a incorrect format is detected.
@@ -72,7 +72,7 @@ public class RemoveCommand extends Command {
     }
 
     /**
-     * Get the index field in Integer.
+     * Gets the index field in Integer.
      * @param arguments parsed input containing options and arguments.
      * @param recordList is the recordList.
      * @return a Integer containing the index of the record.

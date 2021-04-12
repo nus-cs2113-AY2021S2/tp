@@ -201,8 +201,8 @@ program needs to parse a user input, the ParserHandler calls the method `getPars
    * Any leading or trailing white space of the argument field will be removed.
    * If no argument is provided, the argument would be stored as an empty string.
 4. `extractFinalPart()` will check if the final input ends with option. If yes, extract the option and
-   add an empty string as the argument, else just add the final input to the ArrayList<String>.
-5. Finally, after the extraction to ArrayList<String> is complete, `extractFinalPart()` will
+   add an empty string as the argument, else just add the final input to the `ArrayList<String>`.
+5. Finally, after the extraction to `ArrayList<String>` is complete, `extractFinalPart()` will
    call `checkFirstBlock()` for the final check to parse any `help` or `creditscore` in the first argument block.
    
 #### Parser Component Design Consideration
@@ -225,10 +225,10 @@ program needs to parse a user input, the ParserHandler calls the method `getPars
    * `StringUtils.endsWithAny()`   - detection of end option with non-fixed order.
    * `StringUtils.indexOfAny()`    - detection of during processing option with non-fixed order.
 4. As multiple whitespaces is allowed, options and arguments should be fully trimmed (leading and trailing).
-5. As the ArrayList<String> is passed back to the main program and is being used by CommandHandler,
+5. As the `ArrayList<String>` is passed back to the main program and is being used by CommandHandler,
    the argument field should be compulsory and appended with an empty string if it is empty to facilitate validations 
    and option-argument pairwise logic.
-6. `getParseInput()` should always return a new ArrayList<String> per new input.
+6. `getParseInput()` should always return a new `ArrayList<String>` per new input.
 
 
 ### 3.4 CommandHandler Component
@@ -356,17 +356,17 @@ _Figure 11: **RecordList** Class Diagram_
 
 #### Description
 The `RecordList` component consists of only one class which is the `RecordList`. The role of the `RecordList` 
-is to maintain an internal `ArrayList` of `Record` objects created throughout `Finux`’s execution. 
+is to maintain an internal `ArrayList<Record>` objects created throughout `Finux`’s execution. 
 
 #### Design
 This maintenance is achieved through the traditional Object Oriented Programming (OOP) style, where operations
 relating to the list can only be performed through the interfaces defined in the `RecordList` class. Doing so allows
-us to restrict the access to the internal `ArrayList` from the outside world, successfully achieving the information
+us to restrict the access to the internal `ArrayList<Record>` from the outside world, successfully achieving the information
 hiding aspect under the Encapsulation concept of OOP.
 
 When `Finux` starts up, `Finux` instantiates the `RecordList` with data loaded from the save file, `finux.txt`. This is done
-by the `Finux` class calling the constructor `RecordList(ArrayList)`, passing in the `ArrayList` returned from the method
-call `storage.getRecordListData()`. This `ArrayList` returned from `storage.getRecordListData()` is loaded from the save file
+by the `Finux` class calling the constructor `RecordList(ArrayList<Record>)`, passing in the `ArrayList<Record>` returned from the method
+call `storage.getRecordListData()`. This `ArrayList<Record>` returned from `storage.getRecordListData()` is loaded from the save file
 by a prior method call `storage.loadFile()`, also performed by the `Finux` class. For more information on `Storage` component,
 refer to [section 3.7](#37-storage-component).
 
@@ -420,14 +420,14 @@ the `finux.txt` file back into the Finux application.
    in the `creditScoreReturnLoansMap` into a user readable format and store them in the same `finux.txt` file as the `records`.
   
 4. `loadFile` method does the opposite of the `writeRecordListToSaveFile()` method. In the `loadFile()` method, a new 
-   ArrayList of `Record` is instantiated. It will then call the `saveFileExist()` method. If the method returns false, 
+   `ArrayList<Record>` is instantiated. It will then call the `saveFileExist()` method. If the method returns false, 
    `initSaveFile()` method will be called and a new `finux.txt` will be created in the same directory of the FINUX 
-   application. The `loadFile()` method will then return a new and empty ArrayList of `Record` back to the `start()` method 
+   application. The `loadFile()` method will then return a new and empty `ArrayList<Record>` back to the `start()` method 
    in the `Finux` class. Should the `saveFileExist()` returns true, for each line of text in the `finux.txt` file will be 
    parsed into the `parseRecord()` method which will call the individual load methods `loadExpense()`, `loadLoan()`, 
    `loadSaving()` based on a REGEX expression of the text data. Should the pattern be unrecognisable, or the file is 
    unable to be read, an exception will be thrown to the `start()` method and FINUX will terminate. If all the text data 
-   is properly loaded, the `loadFile()` method will return the ArrayList of `Record` to the `RecordList` object in the 
+   is properly loaded, the `loadFile()` method will return the `ArrayList<Record>` to the `RecordList` object in the 
    `start()` method.
    
 5. `initSaveFile()` method will create a new `finux.txt` specified by the constant `SAVED_FILE_PATH`. It will call 
@@ -913,7 +913,7 @@ The following commands and scenarios where these `records` will be saved locally
 * `return`
 
 The sequence below will show you how the `Storage` class behaves at each step. As all three methods above generally
-behave similarly in the way they call the `saveData` method, the following will be generalised to prevent repetition
+behave similarly in the way they call the `saveData()` method, the following will be generalised to prevent repetition
 for all the three methods above.
 
 ***Step 1***\
@@ -925,14 +925,14 @@ recordList back to the `RecordList` class to invoke the `getRecordAt()` method.
 
 ***Step 3***\
 The `getRecordAt()` method will return the `record` that is identified by its index. With this `record`, the
-method `writeRecordListToSaveFile` will then call on the `convertFileFormat()` method in the `RecordList` class. This
+method `writeRecordListToSaveFile()` will then call on the `convertFileFormat()` method in the `RecordList` class. This
 method will convert the `record` that is stored in the `recordList` into a text readable format.
 
 ***Step 4***\
-The text format of the `record` will then be written into the `finux.txt` file through the `FileWriter` write method.
+The text format of the `record` will then be written into the `finux.txt` file through the `FileWriter#write()` method.
 
 ***Step 5***\
-The `writeRecordListToSaveFile()` will repeat Steps 2 to 4 until the last `record` in the `recordList`. And each 
+The `writeRecordListToSaveFile()` will repeat Steps 2 to 4 until the last `record` in the `recordList`, and each 
 `record` will be written and separated by a newline.
 
 ---
@@ -940,29 +940,29 @@ The `writeRecordListToSaveFile()` will repeat Steps 2 to 4 until the last `recor
 ![LoadingFeatureSequenceDiagram](img/StorageSequenceDiagramLoad.png)
 *Figure 20: Sequence Diagram for Storage's load function*
 
-Finux will automatically load the data from the save file: `finux.txt`. When the Finux application is launched, the
+`Finux` will automatically load the data from the save file: `finux.txt`. When the Finux application is launched, the
 data from the file will be loaded during the initialising phase, even before the welcome message is printed. The error
 and exception handling is omitted from the diagram above as the application will print a failed initialization message
 and terminate.
 
 ***Step 1***\
-When the user launches the `finux.jar` application, in the `start` method. The `loadFile` method will be invoked.
+When the user launches the `finux.jar` application, in the `start` method. The `loadFile()` method will be invoked.
 
 ***Step 2***\
-The `loadFile` method will first check for the save file, if it exists it will then call upon the `parseRawData` method
+The `loadFile()` method will first check for the save file, if it exists it will then call upon the `parseRawData()` method
 which will read and match the contents of the `finux.txt` file with the regex patterns. It will then call on the 
 respective methods to return the object type of it. (In this case, `Expense`, `Loan`, `Savings`, 
-`creditScoreReturnLoansMap`)
+`CreditScoreReturnLoansMap`)
 
 ***Step 3***\
 With the returned objects, they are now parsed into the `processParsedObject` method to be added into their respective
-classes. With the instances of `Record` being added into an ArrayList of `Record` and the `creditScoreReturnedLoansMap` 
-into a HashMap<String, Integer>.
+classes. With the instances of `Record` being added into an `ArrayList<Record>` and the `creditScoreReturnedLoansMap` 
+into a `HashMap<String, Integer>`.
 
 ***Step 4***\
-The `start` method in the `Finux` class will then call the `getRecordListData` method to retrieve the loaded 
+The `start` method in the `Finux` class will then call the `getRecordListData()` method to retrieve the loaded 
 `ArrayList<Record>` from the `Storage` class and to load it into the `RecordList` object, this is also the same with the 
-`CreditScoreReturnedLoansMap` where the `start` method in the `Finux` class will call the `getMapData` method from the 
+`CreditScoreReturnedLoansMap` where the `start()` method in the `Finux` class will call the `getMapData()` method from the 
 `Storage` class which will then return the `HashMap<String, Integer>` and load it into the `CreditScoreReturnedLoansMap` 
 object.
 

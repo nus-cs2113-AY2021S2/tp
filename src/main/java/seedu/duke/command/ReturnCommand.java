@@ -68,7 +68,7 @@ public class ReturnCommand extends Command {
     }
 
     /**
-     * Get the index field in String.
+     * Gets the index field in String.
      *
      * @param arguments parsed input containing options and arguments.
      * @return a String containing the index of the record.
@@ -82,7 +82,7 @@ public class ReturnCommand extends Command {
     }
 
     /**
-     * Get the index field in Integer.
+     * Gets the index field in Integer.
      *
      * @param arguments  parsed input containing options and arguments.
      * @param recordList is the recordList.
