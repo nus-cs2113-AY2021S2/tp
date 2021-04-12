@@ -729,6 +729,7 @@ Date Booked:     Mon Apr 12 19:21:27 SGT 2021
 
 </details>
 
+
 **2. View movie details:  `2`**  
 View the details of selected movie.
 
@@ -758,6 +759,7 @@ Rating content: great movie concept!
 ```
 
 </details>
+
 
 **3. Add review: `3`**  
 Add new review for the selected movie
