@@ -17,7 +17,8 @@
    3.4 [CommandHandler Component](#34-commandhandler-component)\
    3.5 [Command Component](#35-command-component)\
    3.6 [RecordList Component](#36-recordlist-component)\
-   3.7 [Storage Component](#37-storage-component)
+   3.7 [CreditScoreReturnedLoansMap](#37-creditscorereturnedloansmap-component)\
+   3.8 [Storage Component](#38-storage-component)
 4. [Implementation](#4-implementation)\
    4.1 [Add Feature](#41-add-feature)\
    4.2 [List Feature](#42-list-feature)\
@@ -86,9 +87,7 @@ Firstly, **fork** this [repo](https://github.com/AY2021S2-CS2113T-W09-1/tp) and 
 
 If you plan to use IntelliJ IDEA:
 1. **Ensure IntelliJ is configured to develop in JDK 11.**
-   1. If you are not at the welcome screen, click `File` > `Close Projects` to close any currently opened projects.
-   1. Click on `Configure` > `Structure for New Projects` > `Project Settings` > `Project`, ensure
-      the `Project SDK` is using **JDK 11**.
+   1. Visit this website to get the latest method of configuring it: [IntelliJ IDEA Help](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk)
 1. **Import the project as a Gradle Project.**
    1. Click on `Import Project` and locate the `build.gradle` file and select it. Click `OK`.
    1. If prompted, choose to `Open as Project` (not `Open as File`).
@@ -392,10 +391,10 @@ following snippet of pseudo code:
 > END LOOP
 
 
-### 3.7 Storage Component
+### 3.8 Storage Component
 
 ![StorageClassDiagram](img/StorageClassDiagram.png)\
-_Figure 12: **Storage** Class Diagram_
+_Figure 13: **Storage** Class Diagram_
 
 #### Description
 The `storage` component consists of only 1 class called `Storage`. The role of the `Storage` is to translate all
@@ -499,7 +498,7 @@ By calling the `execute()` method,
 * Finally, a notification is printed onto the console with the help of `Ui`.
 
 ![AddFeatureSequenceDiagram](img/AddFeatureSequenceDiagram.png)\
-_Figure 13: Sequence Diagram for `AddCommand`_
+_Figure 14: Sequence Diagram for `AddCommand`_
 
 > 📝 The sequence diagram starts from Step 2 onward.
 
@@ -570,7 +569,7 @@ options, `{-e | -l | -s | -a}`, and the `ParserHandler` will parse the input for
 displayed on the screen.
 
 ![ListFeatureSequenceDiagram](img/ListFeatureSequenceDiagram.png)\
-_Figure 14: Sequence Diagram for `ListCommand`_
+_Figure 15: Sequence Diagram for `ListCommand`_
 
 > 📝 The sequence diagram starts from Step 2 onward.
 
@@ -643,7 +642,7 @@ The `view` feature is facilitated by `ViewCommand`. By typing in `view` and foll
 By calling the `execute()` method, the total amount will be printed onto the console with the help of `Ui`.
 
 ![ViewFeatureSequenceDiagram](img/ViewFeatureSequenceDiagram.png)\
-_Figure 15: Sequence Diagram for `ViewCommand`_
+_Figure 16: Sequence Diagram for `ViewCommand`_
 
 > 📝 The sequence diagram starts from Step 2 onward.
 
@@ -714,7 +713,7 @@ parameters, our `CommandHandler` will construct the `ReturnCommand` object which
 the validated parameters that will be used in the execute function.
 
 ![ReturnFeatureSequenceDiagram](img/ReturnFeatureSequenceDiagram.png)\
-_Figure 16: Sequence Diagram for `ReturnCommand`_
+_Figure 17: Sequence Diagram for `ReturnCommand`_
 
 The sequence diagram presented above depicts the interaction between the components for running the command.
 `return -i 1 -d 2021-03-28`.
@@ -815,7 +814,7 @@ parameters, our `CommandHandler` will construct the `RemoveCommand` object which
 validated parameters that will be used in the execute function.
 
 ![RemoveFeatureSequenceDiagram](img/RemoveFeatureSequenceDiagram.png)\
-_Figure 17: Sequence Diagram for `RemoveCommand`_
+_Figure 18: Sequence Diagram for `RemoveCommand`_
 
 The sequence diagram presented above depicts the interaction between the components for running the command.
 `remove -i 1`.
@@ -901,7 +900,7 @@ classes. During the launch of the Finux application, in the `start()` method, `g
 data from the saved file: `finux.txt`. 
 
 ![SavingFeatureSequenceDiagram](img/StorageSequenceDiagramSave.png)
-_Figure 18: Sequence Diagram for Storage's save function_
+_Figure 19: Sequence Diagram for Storage's save function_
 
 Saving of data works differently, the data will be automatically saved into `finux.txt` only with a few 
 particular command calls, these calls are the commands that will alter the `records` in the `RecordList`. As
@@ -939,7 +938,7 @@ The `writeRecordListToSaveFile()` will repeat Steps 2 to 4 until the last `recor
 ---
 
 ![LoadingFeatureSequenceDiagram](img/StorageSequenceDiagramLoad.png)
-*Figure 19: Sequence Diagram for Storage's load function*
+*Figure 20: Sequence Diagram for Storage's load function*
 
 Finux will automatically load the data from the save file: `finux.txt`. When the Finux application is launched, the
 data from the file will be loaded during the initialising phase, even before the welcome message is printed. The error
@@ -957,14 +956,15 @@ respective methods to return the object type of it. (In this case, `Expense`, `L
 
 ***Step 3***\
 With the returned objects, they are now parsed into the `processParsedObject` method to be added into their respective
-classes. With the instances of `Record` being added into the `RecordList` and the `creditScoreReturnedLoansMap` into
-the `HashMap` of itself.
+classes. With the instances of `Record` being added into an ArrayList of `Record` and the `creditScoreReturnedLoansMap` 
+into a HashMap<String, Integer>.
 
 ***Step 4***\
 The `start` method in the `Finux` class will then call the `getRecordListData` method to retrieve the loaded 
-`RecordList` from the `Storage` class, this is also the same with the `CreditScoreReturnedLoansMap` where the `start`
-method in the `Finux` class will call the `getMapData` method from the `Storage` class which will then return the
-`HashMap`.
+ArrayList<Record> from the `Storage` class and to load it into the `RecordList` object, this is also the same with the 
+`CreditScoreReturnedLoansMap` where the `start` method in the `Finux` class will call the `getMapData` method from the 
+`Storage` class which will then return the HashMap<String, Integer> and load it into the `CreditScoreReturnedLoansMap` 
+object.
 
 
 
