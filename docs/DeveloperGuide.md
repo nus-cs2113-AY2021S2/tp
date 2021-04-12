@@ -194,7 +194,7 @@ Given below is the sequence diagram for the AddCommand workflow.
 :information_source: Information:
 
 * The `UniqueFoodnameChecker` object will be destroyed after use, but the `Food` object and `Fridge` object will still exist after the command finishes.
-* The lifeline for `UniqueFoodnameCheck` should end at the destroy marker. However, due to a limitation of PlantUML, the lifelines reach the end of the diagram.
+* The lifeline for `UniqueFoodnameChecker` should end at the destroy marker. However, due to a limitation of PlantUML, the lifelines reach the end of the diagram.
 
 ### List Command
 
