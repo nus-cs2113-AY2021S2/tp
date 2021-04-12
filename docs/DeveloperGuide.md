@@ -87,6 +87,7 @@ The `Logic` Component
 * data.txt, a local text file, may be modified during command execution. (e.g. save a project list)
   
 ---
+<div style="page-break-after: always;"></div>
 
 #### Model Component
 
@@ -313,7 +314,7 @@ The user executes the following command to edit the url and link description of 
 **Step 4**:
 The user can execute `list p/CS2113` to verify that the specified resource has been successfully edited.
 
-The following sequence diagram shows how the delete operation works:
+The following sequence diagram shows how the edit operation works:
 ![edit_puml](puml_img/Edit.png)
 ---
 <div style="page-break-after: always;"></div>
