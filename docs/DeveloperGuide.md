@@ -184,6 +184,8 @@ The `Storage` component is responsible for:
 
 ### Exception Component
 
+<img src="./images/class_diagram_execption.png" width="500">
+
 API: `BaseException.java` and its subclasses
 
 `BaseException.java`:
