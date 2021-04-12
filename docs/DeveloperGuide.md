@@ -17,7 +17,7 @@
    3.4 [CommandHandler Component](#34-commandhandler-component)\
    3.5 [Command Component](#35-command-component)\
    3.6 [RecordList Component](#36-recordlist-component)\
-   3.7 [CreditScoreReturnedLoansMap](#37-creditscorereturnedloansmap-component)\
+   3.7 [CreditScoreReturnedLoansMap](#37-creditscorereturnedloansmap)\
    3.8 [Storage Component](#38-storage-component)
 4. [Implementation](#4-implementation)\
    4.1 [Add Feature](#41-add-feature)\
@@ -72,6 +72,8 @@ list of icons:
 > 📝 Pressing the `Home` button on your keyboard will bring you to the top of the Developer's Guide when you want to
 > refer to the table of content at any time.
 
+<div style="page-break-after: always;"></div>
+
 ## 2. Setting Up
 
 ### 2.1 Setting up the project in your computer
@@ -96,6 +98,8 @@ If you plan to use IntelliJ IDEA:
       and choose `Run...`. If the setup is correct, you should see the following:
    ![Login_Page](img/LoginPageExampleOutput.png)
       (This screenshot is taken on `IntelliJ IDEA Community Edition 2020.3.1`)
+
+<div style="page-break-after: always;"></div>
 
 ### 2.2 Before writing code
 
