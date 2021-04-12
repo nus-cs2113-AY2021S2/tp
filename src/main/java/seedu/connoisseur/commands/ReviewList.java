@@ -45,6 +45,7 @@ public class ReviewList {
     protected final Sorter sorter;
     private final Ui ui;
     private boolean displayStars;
+    private RecommendationList recoList;
 
     /**
      * Constructor for ReviewList with stored data.
@@ -138,7 +139,7 @@ public class ReviewList {
         }
         while (true) {
             ui.println(CATEGORY_PROMPT);
-            category = ui.readCommand().toLowerCase();
+            category = ui.readCommand().toLowerCase().trim();
             if (category.isBlank()) {
                 ui.printEmptyInputMessage();
                 continue;
@@ -209,7 +210,7 @@ public class ReviewList {
         }
         while (true) {
             ui.println(CATEGORY_PROMPT);
-            category = ui.readCommand().toLowerCase();
+            category = ui.readCommand().toLowerCase().trim();
             if (category.isBlank()) {
                 ui.printEmptyInputMessage();
                 continue;
@@ -243,7 +244,7 @@ public class ReviewList {
         }
         while (true) {
             ui.println(DESCRIPTION_PROMPT);
-            description = ui.readCommand();
+            description = ui.readCommand().trim();
             if (description.isBlank()) {
                 ui.printEmptyInputMessage();
                 continue;
