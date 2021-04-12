@@ -24,7 +24,7 @@ public class Map {
     private static UI ui = new UI();
     private static SearchFacility searchFacility = new SearchFacility(dataController);
     private static FindInBuilding findInBuilding = new FindInBuilding(dataController);
-
+    //@@author zhangyongzhe20
     //logger
     private static final Logger LOGGER = Logger.getLogger(Map.class.getName());
     public static FileManager getDataController() {
@@ -40,7 +40,7 @@ public class Map {
             LOGGER.log(Level.WARNING, "An error occur when trying to read logger configuration file.", e);
         }
     }
-
+    //@@chenling
     /**
      * Prints welcome message at initial run.
      */
