@@ -99,7 +99,7 @@ loops through all items inside the `Delivery` and prints details about each item
 
 ### [Implementation] : List Assigned Deliveries
 
-All deliverymen would want have a list of deliveries that are assigned to them so that they would be able to get an 
+All deliverymen would want to have a list of deliveries that are assigned to them so that they would be able to get an 
 overview delivery jobs that have on that day.
 
 The primary class involved executing this function is `Delivery`.
@@ -117,14 +117,14 @@ information for each delivery job.
 The sequence of program flow was chosen as it allows for proper abstraction of the classes. The `Ui` class will only 
 handle the User Interface aspect of the code execution. 
 
-The general interaction between the abovementioned classes are briefly illustrated in the sequence diagram
+The general interaction between the aforementioned classes are briefly illustrated in the sequence diagram
 shown below. 
 
 ![Retrieve Records](diagrams/List.png "Retrieving Records Sequence Diagram")
 
 ### [Implementation] : Print Shortest Delivery Path
 
-Every deliverymen would want to the most efficient path for their deliveries so that they can save time and fuel.
+Every deliverymen would want the most efficient path for their deliveries so that they can save time and fuel.
 Furthermore, the quicker their delivery turnover, the more deliveries they can complete.
 
 The primary class involved in executing this function is `Map`.
@@ -191,7 +191,7 @@ Given below are the instructions to test Deliveri manually. Do note that these i
 ### Launching Deliveri
 1. Initial launch of Deliveri.
 2. Download the jar file and copy into an empty folder.
-3. Open up a command pormpt window and change directory to that folder with the jar file. 
+3. Open up a command prompt window and change directory to that folder with the jar file. 
 4. Run the command java -jar tp.jar.
 
 Expected: Deliveri will be loaded, and a welcome message will be displayed. Do ensure that the version number in the welcome matches version of the jar file downloaded.
