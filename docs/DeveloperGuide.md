@@ -913,7 +913,7 @@ The following commands and scenarios where these `records` will be saved locally
 * `return`
 
 The sequence below will show you how the `Storage` class behaves at each step. As all three methods above generally
-behave similarly in the way they call the `saveData` method, the following will be generalised to prevent repetition
+behave similarly in the way they call the `saveData()` method, the following will be generalised to prevent repetition
 for all the three methods above.
 
 ***Step 1***\
@@ -925,14 +925,14 @@ recordList back to the `RecordList` class to invoke the `getRecordAt()` method.
 
 ***Step 3***\
 The `getRecordAt()` method will return the `record` that is identified by its index. With this `record`, the
-method `writeRecordListToSaveFile` will then call on the `convertFileFormat()` method in the `RecordList` class. This
+method `writeRecordListToSaveFile()` will then call on the `convertFileFormat()` method in the `RecordList` class. This
 method will convert the `record` that is stored in the `recordList` into a text readable format.
 
 ***Step 4***\
-The text format of the `record` will then be written into the `finux.txt` file through the `FileWriter` write method.
+The text format of the `record` will then be written into the `finux.txt` file through the `FileWriter#write()` method.
 
 ***Step 5***\
-The `writeRecordListToSaveFile()` will repeat Steps 2 to 4 until the last `record` in the `recordList`. And each 
+The `writeRecordListToSaveFile()` will repeat Steps 2 to 4 until the last `record` in the `recordList`, and each 
 `record` will be written and separated by a newline.
 
 ---
@@ -940,19 +940,19 @@ The `writeRecordListToSaveFile()` will repeat Steps 2 to 4 until the last `recor
 ![LoadingFeatureSequenceDiagram](img/StorageSequenceDiagramLoad.png)
 *Figure 20: Sequence Diagram for Storage's load function*
 
-Finux will automatically load the data from the save file: `finux.txt`. When the Finux application is launched, the
+`Finux` will automatically load the data from the save file: `finux.txt`. When the Finux application is launched, the
 data from the file will be loaded during the initialising phase, even before the welcome message is printed. The error
 and exception handling is omitted from the diagram above as the application will print a failed initialization message
 and terminate.
 
 ***Step 1***\
-When the user launches the `finux.jar` application, in the `start` method. The `loadFile` method will be invoked.
+When the user launches the `finux.jar` application, in the `start` method. The `loadFile()` method will be invoked.
 
 ***Step 2***\
-The `loadFile` method will first check for the save file, if it exists it will then call upon the `parseRawData` method
+The `loadFile()` method will first check for the save file, if it exists it will then call upon the `parseRawData()` method
 which will read and match the contents of the `finux.txt` file with the regex patterns. It will then call on the 
 respective methods to return the object type of it. (In this case, `Expense`, `Loan`, `Savings`, 
-`creditScoreReturnLoansMap`)
+`CreditScoreReturnLoansMap`)
 
 ***Step 3***\
 With the returned objects, they are now parsed into the `processParsedObject` method to be added into their respective
