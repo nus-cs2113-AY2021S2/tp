@@ -42,6 +42,8 @@ package Command <<Rectangle>> {
         }
         class ShowDailyRouteCommand COMMAND_COLOR {
         }
+        class DeleteDailyRouteCommand COMMAND_COLOR {
+        }
     }
 
     package favouritecommand {
@@ -80,7 +82,7 @@ dailyroutecommand -[hidden]up- routecommand
 notecommand -[hidden]- favouritecommand
 historycommand -[hidden]down- aliascommand
 
-"{abstract}\nCommand" <|-up- GoCommand
+"{abstract}\nCommand" <|-left- GoCommand
 "{abstract}\nCommand" <|-down- ByeCommand
 "{abstract}\nCommand" <|-down- HelpCommand
 "{abstract}\nCommand" <|-up- AddCustomAliasCommand
@@ -99,6 +101,7 @@ historycommand -[hidden]down- aliascommand
 "{abstract}\nCommand" <|-down- DeleteNoteCommand
 "{abstract}\nCommand" <|-down- ListNoteCommand
 "{abstract}\nCommand" <|-down- ShowVenuesCommand
+"{abstract}\nCommand" <|-down- DeleteDailyRouteCommand
 
 hide members
 show "{abstract}\nCommand" members
