@@ -561,18 +561,18 @@ Below is our analysis of our target user and the importance in which he/she woul
     1.1 Enter `history`<br>
    Expected: `Oops! You have no past history!`<br>
 2. Viewing history when routing has been previously used <br>
-   1.1 Enter `history`<br>
+   2.1 Enter `history`<br>
    Expected: A list of the past routing history will be displayed (Capped at 10)<br>
 3. Repeating history when history is empty<br>
-    1.1 Enter `repeat history`<br>
+    3.1 Enter `repeat history`<br>
     Expected: `Oops! You have no past history!`<br>
 4. Repeating history when there is 1 record in the history<br>
-   1.1 Test case: `repeat history` → `1`<br>
+   4.1 Test case: `repeat history` → `1`<br>
    Expected: The result of the routing will be displayed<br>
-   1.2 Test case: `repeat history` → `2`<br>
+   4.2 Test case: `repeat history` → `2`<br>
    Expected: `Oops! You must enter an Integer that is within the bounds :(`<br>
 5. Clearing history<br>
-    1.1 Enter `clear history`<br>
+    5.1 Enter `clear history`<br>
    Expected: `Your history has been successfully cleared`<br>
 
 ### 5.6 Alias
@@ -580,19 +580,19 @@ Below is our analysis of our target user and the importance in which he/she woul
     1.1 Enter `add alias` → Enter block → `e3`, Enter the alias name → `e4`<br>
    Expected: The error message for invalid alias will be displayed<br>
 2. Adding an alias that already exists<br>
-   1.1 Enter `add alias` → Enter block → `e1`, Enter the alias name → `alias that already exists`<br>
+   2.1 Enter `add alias` → Enter block → `e1`, Enter the alias name → `alias that already exists`<br>
    Expected: Similar to previous<br>
 3. Showing aliases when there are no aliases that were set prior.<br>
-    1.1 Enter `show alias`<br>
+    3.1 Enter `show alias`<br>
    Expected: `You haven't set any aliases yet!`<br>
 4. Showing aliases when aliases have been previously set.<br>
-   1.1 Enter `show alias`<br>
+   4.1 Enter `show alias`<br>
    Expected: A list of alias and block pairs will be displayed<br>
 5. Deleting an alias that was not previously set<br>
-    1.1 Enter `delete alias` → `alias that does not exist`<br>
+    5.1 Enter `delete alias` → `alias that does not exist`<br>
    Expected: `Invalid alias! Please enter an alias name that exists!`<br>
 6. Deleting an alias that was previously set<br>
-   1.1 Enter `delete alias` → `alias that exists`<br>
+   6.1 Enter `delete alias` → `alias that exists`<br>
    Expected: `Got it! Successfully deleted ALIAS THAT EXISTS from alias list!`<br>
 
 
@@ -601,14 +601,14 @@ Below is our analysis of our target user and the importance in which he/she woul
    1.1 Enter `show daily route`<br>
    Expected: `Oops! You haven't planned any daily routes yet :(`<br>
 2. Adding daily route<br>
-   1.1 Test case: `add daily route` → `1` → `ea` → `end`<br>
+   2.1 Test case: `add daily route` → `1` → `ea` → `end`<br>
    Expected: `Got it! Successfully added MONDAY's schedule!` <br>
-   1.2 Test case: `add daily route` → `8`<br>
+   2.2 Test case: `add daily route` → `8`<br>
    Expected: `Oops! You must enter an Integer that is within the bounds :(`<br>
 3. Deleting daily route when only Monday's schedule is planned<br>
-   1.1 Test case: `delete daily route` → `1`<br>
+   3.1 Test case: `delete daily route` → `1`<br>
    Expected: `Got it! Successfully cleared MONDAY's schedule!`<br>
-   1.2 Test case: `delete daily route` → `2` <br>
+   3.2 Test case: `delete daily route` → `2` <br>
    Expected: `Oops! You must enter an Integer that is within the bounds :(`<br>
    
 
@@ -619,15 +619,15 @@ Below is our analysis of our target user and the importance in which he/she woul
    1.2 Test case: Starting block → `E1`, Destination block → `Invalid`<br>
    Expected `Invalid block! Please try again with a block that exists :(`<br>
 2. Showing favourite routes when favourites have not been set before<br>
-    1.1 Enter `show favourite`<br>
+    2.1 Enter `show favourite`<br>
    Expected: `You haven't set any favourite routes yet!`<br>
 3. Showing favourite routes when favourites have been set before<br>
-   1.1 Enter `show favourite`<br>
+   3.1 Enter `show favourite`<br>
    Expected: A list of all the favourite routes that have been previously set will be displayed<br>
 4. Deleting favourite routes<br>
-   1.1 Test case `delete favourite` → `VALID_FAVOURITE_INDEX`<br>
+   4.1 Test case `delete favourite` → `VALID_FAVOURITE_INDEX`<br>
    Expected: `Got it! Successfully deleted favourite route :)`<br>
-   1.1 Test case `delete favourite` → `INVALID_FAVOURITE_INDEX`<br>
+   4.2 Test case `delete favourite` → `INVALID_FAVOURITE_INDEX`<br>
    Expected: `Oops! You must enter an Integer that is within the bounds :(`<br>
 
 ### 5.9 Notes
