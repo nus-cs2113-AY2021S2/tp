@@ -70,7 +70,9 @@ public class Component {
                 System.out.println("The components' weightage added should not be negative "
                         + "or exceed 100 percent in total.");
             } catch (ArrayIndexOutOfBoundsException e) {
-                Ui.printModuleComponentPrompt();
+                System.out.println("Invalid Input!");
+                System.out.println("Leave space between component and weightage only.\n"
+                        + "Example: FinalExam 20");
             }
 
         } else {
