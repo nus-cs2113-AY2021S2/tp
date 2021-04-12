@@ -116,12 +116,12 @@ Format : `add p/PROJECT_NAME url/URL [d/DESCRIPTION c/CHECK]`
   * If the given URL exists in the resource list of the project:
     * Prompt the user that the resource with the same URL has already existed in the project.
   * If the given URL does **not** exist in the resource list of the project:
-    * The resource will be appended to the resource project's resource list
+    * The resource will be appended to the project's resource list
 * If the given project name does **not** exist in the project list:
   * A new project with the given project name will be created, and the resource will be appended to its resource list.
 * d/DESCRIPTION and c/true are optional.
-* If c/true is provided, a URL check will be performed (Requires online access).
-    *The program only accepts c/ture, c/{other words} (e.g. c/Happy) would be omitted.
+* If c/true is provided, a URL check will be performed (It requires internet access).
+    * The program only accepts c/ture, c/{other words} (e.g. c/Happy) would be omitted.
 
 **Example of usage:**
 1. Project "NUS" **does not exist** in the list:  
@@ -151,7 +151,7 @@ Format : `add p/PROJECT_NAME url/URL [d/DESCRIPTION c/CHECK]`
    The user is prompted that the resource with the same URL has already existed in the project. 
    
 
-3. Assume a project "NUS" **exists** in the project list, and a resource with URL = https://nusmods.com/ **does not exist**:  
+3. A project "NUS" **exists** in the project list, and a resource with URL = https://nusmods.com/ **does not exist**:  
    **Input:**  
    ```
    add p/NUS url/https://nusmods.com/
@@ -164,7 +164,7 @@ Format : `add p/PROJECT_NAME url/URL [d/DESCRIPTION c/CHECK]`
    
    It will **append** the resource to the resource list of the project "NUS".  
 
-4. Assume the user's device could access internet:  
+4. The user's device could access internet:  
    **Input:**
    ```
    add p/NUS url/nusmods c/true
