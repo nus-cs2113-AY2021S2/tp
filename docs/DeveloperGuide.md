@@ -866,7 +866,7 @@ Invalid Input includes:
 6. `AppointmentList.deleteAppointment()` is called, which iterates through the objects in ArrayList<DoctorAppointment> appointmentList. The DoctorAppointment Object matching the input given by the user will be removed from the array list.
 
 **Saving changed DoctorAppointment Objects into .txt file**
-
+ 
 7. `AppointmentList.deleteAppointment()` then calls `DoctorAppointmentStorage.writeToFile()` which rewrites the updated appointmentList into the DoctorAppointment.txt file.
 8. Control is then returned to DoctorAppointmentInstance.
 
