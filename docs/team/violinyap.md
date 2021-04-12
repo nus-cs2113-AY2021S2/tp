@@ -10,7 +10,7 @@ We have several functions catered to your movie-craving, like seeing a movie rev
 1. Improving user interface to better enhance the user experience.
 2. Implementing add movie function for admin.
 3. Improving the book movie function base and showing show time list.
-4. Building the user guide with detailed explanation and example while complementing it with formatting.
+4. Building the user guide with detailed explanation and example while complementing it with HTML formatting.
 5. Making test cases for movie and menu classes.
 
 
