@@ -472,10 +472,10 @@ input.
 ### Launch, Help and Shutdown
 
 1. Initial launch
-    1. Download `tp.jar` and copy into an empty folder.
+    1. Download `PatientManager.jar` and copy into an empty folder.
     1. Open a terminal/Command Prompt (cmd)/PowerShell. A Windows 10 OS' screenshot is here:
        <img src="./images/WindowsPowerShell.png" width="600">
-    1. Execute `java -jar tp.jar` to start the Patient Manager.\
+    1. Execute `java -jar PatientManager.jar` to start the Patient Manager.\
        Expected: Shows the welcome message as shown below
        <img src="./images/start_program.png" width="600">
 1. View help
@@ -486,7 +486,7 @@ input.
 1. Exiting
     1. Test case: `exit`\
        Expected: Application prints goodbye message and exits. All data will be saved to
-       `pm.save` in the same folder as `tp.jar`.
+       `pm.save` in the same folder as `PatientManager.jar`.
 
 ### Adding and Loading Patients
 
@@ -563,8 +563,8 @@ input.
 ### Saving Data
 
 1. Missing data files
-    1. Delete the file `pm.save`, which should be in the same folder as `tp.jar`.
-    1. Launch the app with `java -jar tp.jar`.
+    1. Delete the file `pm.save`, which should be in the same folder as `PatientManager.jar`.
+    1. Launch the app with `java -jar PatientManager.jar`.
     1. Expected: Application should start up without any data.
 
 ## Appendix F: Command Summary
