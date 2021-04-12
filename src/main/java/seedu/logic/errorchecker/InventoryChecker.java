@@ -123,7 +123,7 @@ public class InventoryChecker extends MainChecker {
         for (Inventory inventory : InventoryList.list) {
             String itemName = inventory.getItemName();
             Double itemPrice = inventory.getDoublePrice();
-            if (itemName.equals(inputString) && !itemPrice.equals(price)) {
+            if (itemName.equalsIgnoreCase(inputString) && !itemPrice.equals(price)) {
                 throw new DuplicateItemException();
             }
         }
