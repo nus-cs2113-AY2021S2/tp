@@ -17,6 +17,14 @@ Given below are my contributions to the project:
     challenging as it required changes to the components. Provided methods for commands as an API to abstract away the
     details of handling visitor log. Used existing implementation of StorageFile class to store the data into a file.
 
+* **New Feature**: Added a functionality to handle `Ctrl + c` interrupts.
+  * What it does: Allows user to press `Ctrl + c` to exit program gracefully, instead of interrupting CYC abruptly
+  * Justification: This functionality improves user experience as many CLI experienced users might use `Ctrl + c`
+    to stop the program.
+  * Highlights: This enhancement was challenging as the Shutdown Hook catches both `System.exit()` and interrupts. Thus,
+    when exiting CYC normally, exit procedure will be executed twice. Hence, changes to existing CYC program flow was
+    required.
+
 * **Code contributed**: [RepoSense link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=hussain1998&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2021-03-05)
     
 * **Project management**:
