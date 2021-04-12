@@ -1,0 +1,22 @@
+@startuml
+participant Actor
+Actor -> Ui : processDeliveryRoute
+activate Ui
+Ui -> Ui : printDivider
+activate Ui
+Ui --> Ui
+deactivate Ui
+Ui -> Filter : uncompletedDeliveriesFilter
+activate Filter
+Filter --> Ui
+deactivate Filter
+Ui -> Map : shortestPathGenerator
+activate Map
+Map --> Ui
+deactivate Map
+Ui -> Ui : printMap
+activate Ui
+Ui --> Ui
+deactivate Ui
+return
+@enduml

@@ -1,23 +1,27 @@
 package seedu.duke;
 
-import java.util.Scanner;
-
 public class Duke {
+    public Ui ui;
+    public Deliveryman deliveryman;
+    public Menu menu;
+
     /**
      * Main entry-point for the java.duke.Duke application.
      */
+    public Duke() {
+        ui = new Ui();
+        menu = new Menu();
+    }
+
     public static void main(String[] args) {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
-        System.out.println("What is your name?");
+        new Duke().run();
+    }
 
-        Scanner in = new Scanner(System.in);
-        System.out.println("Hello " + in.nextLine());
-
+    public void run() {
+        deliveryman = DataManager.loadProfile();
+        assert deliveryman != null : "Profile not properly loaded";
+        Route.loadRoutes();
+        ui.showWelcomeScreen();
+        menu.showLoopingMenuUntilExit(deliveryman);
     }
 }
-// Am I doing this right?
