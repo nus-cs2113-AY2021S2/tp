@@ -621,7 +621,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `P54321`
 >
 >3. Any input fields in HealthVault only accepts space and alphanumeric characters.
->4. HealhVault currently only allows the adding of **1** schedule per patient per day.
+>4. HealthVault currently only allows the adding of **1** schedule per patient per day.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:<br/>
 
