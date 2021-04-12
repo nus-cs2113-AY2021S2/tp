@@ -759,6 +759,8 @@ For example if favourite data is corrupted, NUSMaze will display:<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## 5. FAQ
 
 **Q** : Do I lose all my personalised routes and preferences when I close the application? <br>
