@@ -20,7 +20,7 @@ activate Storage
 Loop all records
 Storage -> RecordList : getRecordAt()
 activate RecordList
-RecordList --> Storage : currentRecord : Record
+RecordList --> Storage : currentRecord:Record
 deactivate RecordList
 Storage -> RecordList : convertFileFormat()
 activate RecordList
@@ -42,7 +42,7 @@ deactivate CSRLM
 Loop Each borrower in creditScoreReturnedLoansMap
 Storage -> CSRLM : getCreditScoreOf(borrowerName:String)
 activate CSRLM
-CSRLM --> Storage : creditScore :Integer
+CSRLM --> Storage : creditScore:int
 deactivate CSRLM
 CSRLM --[Hidden]> Storage
 end loop
