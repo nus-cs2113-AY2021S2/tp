@@ -96,7 +96,23 @@ public class RecordList {
             int i = 1;
             for (Record record : records) {
                 if (record.getDate().isEqual(date)) {
-                    recordStringBuilder.append(i).append(record.getRecordData()).append("\n");
+                    lengthOfIndex = ("" + i).length();
+                    switch (lengthOfIndex) {
+                    case 1:
+                        separatorBetweenIndexAndContent = "    ";
+                        break;
+                    case 2:
+                        separatorBetweenIndexAndContent = "   ";
+                        break;
+                    case 3:
+                        separatorBetweenIndexAndContent = "   ";
+                        break;
+                    default:
+                        separatorBetweenIndexAndContent = " ";
+                        break;
+                    }
+                    recordStringBuilder.append(i).append(separatorBetweenIndexAndContent).append(record.getRecordData())
+                            .append("\n");
                     i++;
                 }
             }
@@ -313,7 +329,23 @@ public class RecordList {
             Diet diet = (Diet) record;
             FoodCategory paramCategory = getFoodCategory(optionalParam);
             if (diet.getFoodCategory().equals(paramCategory)) {
-                recordStringBuilder.append(i).append(record.getRecordData()).append("\n");
+                lengthOfIndex = ("" + i).length();
+                switch (lengthOfIndex) {
+                case 1:
+                    separatorBetweenIndexAndContent = "    ";
+                    break;
+                case 2:
+                    separatorBetweenIndexAndContent = "   ";
+                    break;
+                case 3:
+                    separatorBetweenIndexAndContent = "   ";
+                    break;
+                default:
+                    separatorBetweenIndexAndContent = " ";
+                    break;
+                }
+                recordStringBuilder.append(i).append(separatorBetweenIndexAndContent).append(record.getRecordData())
+                        .append("\n");
                 i++;
             }
         }
@@ -330,7 +362,23 @@ public class RecordList {
             Diet diet = (Diet) record;
             FoodCategory paramCategory = getFoodCategory(optionalParam);
             if (diet.getDate().isEqual(date) && diet.getFoodCategory().equals(paramCategory)) {
-                recordStringBuilder.append(i).append(record.getRecordData()).append("\n");
+                lengthOfIndex = ("" + i).length();
+                switch (lengthOfIndex) {
+                case 1:
+                    separatorBetweenIndexAndContent = "    ";
+                    break;
+                case 2:
+                    separatorBetweenIndexAndContent = "   ";
+                    break;
+                case 3:
+                    separatorBetweenIndexAndContent = "   ";
+                    break;
+                default:
+                    separatorBetweenIndexAndContent = " ";
+                    break;
+                }
+                recordStringBuilder.append(i).append(separatorBetweenIndexAndContent).append(record.getRecordData())
+                        .append("\n");
                 i++;
             }
         }
@@ -347,7 +395,23 @@ public class RecordList {
             Exercise exercise = (Exercise) record;
             WorkoutCategory paramCategory = getWorkOutCategory(optionalParam);
             if (exercise.getWorkoutCategory().equals(paramCategory)) {
-                recordStringBuilder.append(i).append(record.getRecordData()).append("\n");
+                lengthOfIndex = ("" + i).length();
+                switch (lengthOfIndex) {
+                case 1:
+                    separatorBetweenIndexAndContent = "    ";
+                    break;
+                case 2:
+                    separatorBetweenIndexAndContent = "   ";
+                    break;
+                case 3:
+                    separatorBetweenIndexAndContent = "   ";
+                    break;
+                default:
+                    separatorBetweenIndexAndContent = " ";
+                    break;
+                }
+                recordStringBuilder.append(i).append(separatorBetweenIndexAndContent).append(record.getRecordData())
+                        .append("\n");
                 i++;
             }
         }
@@ -364,7 +428,23 @@ public class RecordList {
             Exercise exercise = (Exercise) record;
             WorkoutCategory paramCategory = getWorkOutCategory(optionalParam);
             if (exercise.getDate().isEqual(date) && exercise.getWorkoutCategory().equals(paramCategory)) {
-                recordStringBuilder.append(i).append(record.getRecordData()).append("\n");
+                lengthOfIndex = ("" + i).length();
+                switch (lengthOfIndex) {
+                case 1:
+                    separatorBetweenIndexAndContent = "    ";
+                    break;
+                case 2:
+                    separatorBetweenIndexAndContent = "   ";
+                    break;
+                case 3:
+                    separatorBetweenIndexAndContent = "   ";
+                    break;
+                default:
+                    separatorBetweenIndexAndContent = " ";
+                    break;
+                }
+                recordStringBuilder.append(i).append(separatorBetweenIndexAndContent).append(record.getRecordData())
+                        .append("\n");
                 i++;
             }
         }
