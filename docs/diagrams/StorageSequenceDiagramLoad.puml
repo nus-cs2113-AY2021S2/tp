@@ -34,11 +34,11 @@ deactivate Storage
 
 Finux -> Storage : getRecordListData()
 activate Storage
-Storage --> Finux : :ArrayList <Record>
+Storage --> Finux : :ArrayList<Record>
 deactivate Storage
 Finux -> Storage : getMapData()
 activate Storage
-Storage --> Finux : :HashMap<String: Integer>
+Storage --> Finux : :HashMap<String, Integer>
 deactivate Storage
 
 @enduml
