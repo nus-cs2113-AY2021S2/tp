@@ -412,6 +412,8 @@ Output:
 > considered trustworthy. The Finux application will display a credit score of `100` for people whom you have not added 
 > any loans prior.
 
+<div style="page-break-after: always;"></div>
+
 ### 3.7 Exit the program: `exit`
 
 ---
@@ -442,6 +444,8 @@ Output:
 If you would like to know the specifications in details, simply type
 `help` followed by the `feature` name from the available list below:
 
+<div style="page-break-after: always;"></div>
+
 * `add`: display the help section for `add` command.
 * `list`: display the help section for `list` command.
 * `view`: display the help section for `view` command.
@@ -463,6 +467,8 @@ Example: `help remove`
 Output:
 
 ![help example output](img/HelpExampleOutput.png)
+
+<div style="page-break-after: always;"></div>
 
 ### 3.9 Records storage
 
@@ -493,6 +499,8 @@ Output:
   
 > ❗ Do **NOT** modify the contents of the `finux.txt` save file.
 
+<div style="page-break-after: always;"></div>
+
 ## 4. Frequently Asked Questions
 
 **Q1**: How can I transfer my saved tasks information to another computer?
@@ -507,6 +515,8 @@ Output:
 
 **Q4**: Finux keeps having a `bad init` error message, but it is my first time launching Finux. <br>
 > Do check and ensure that Finux has the proper write permissions in the directory.
+
+<div style="page-break-after: always;"></div>
 
 ## 5. Command Summary
 
