@@ -83,7 +83,7 @@ public class Component {
      * Checks if the component name is numeric.
      *
      * @param componentName the name of the component.
-     * @throws NumberFormatException
+     * @throws NumberFormatException if component name is numeric
      */
     private static void isNumeric(String componentName) throws NumberFormatException {
         boolean isNumeric = componentName.chars().allMatch(Character::isDigit);
@@ -123,11 +123,12 @@ public class Component {
     }
 
     /**
-     * Checks if the weightage for all the component names does not exceed 100.
+     * Checks for all weightages in a module does not exceed 100
+     * and are valid weightages, i.e. weightage cannot be negative.
      *
      * @param components the components and its weightage in Hashtable.
      * @param newWeightage the next weightage entered by the user.
-     * @throws InvalidComponentException
+     * @throws InvalidComponentException if total weightage exceeds 100 or negative.
      */
     public static void checkHundredPercent(Hashtable<String, Integer> components,
                                            int newWeightage) throws InvalidComponentException {
