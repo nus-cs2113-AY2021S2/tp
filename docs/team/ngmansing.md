@@ -54,15 +54,13 @@ Given below are my contributions to the project.
     * Beautify Developer Guide.
     * Edit typo
     * Enrich content
-
-* **Review/mentoring contributions:**
+  * Review/mentoring contributions:
     * Reviewed PRs: [GitHub](https://github.com/AY2021S2-CS2113-W10-3/tp/pulls?q=state%3Aclosed+type%3Apr+reviewed-by%3ANgManSing)
     * Resolved minor conflicts from some PRs.
     * Provided my suggestions when teammates encountered problems. Example:
       ```
       Use print( ... + "\n") instead of println(...) to deal with different line separator problem.
       ```
-
-* **Contributions beyond the project team:**
+  * Contributions beyond the project team:
     * Post common question regarding IDE on the [forum](https://github.com/nus-cs2113-AY2021S2/forum/issues/14).
     * Provide suggestions for other team's product on [GitHub](https://github.com/nus-cs2113-AY2021S2/tp/pull/20/files/6a997527bc6fcbafea346f18d41fa926169dda38).
