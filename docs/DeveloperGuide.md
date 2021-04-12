@@ -100,6 +100,19 @@ the parsed parameters in `CommandParser` will be cleared to get ready for next p
 
 ### Components
 
+#### Entity classes component
+
+![Structure of the Entity Classes](./diagrams/DG_Images/entityClasses.png)
+<h5 align="center">Figure 3: class structure for entity classes</h5>
+
+* Each`User` stores a `FitCenter` object that holds all the records and goals for the user.
+* Each `FitCenter` stores four `RecordList` and four `GoalList` for `EXERCISE`, `DIET`, `SLEEP`, `BODY_WEIGHT` type respectively.
+* `Record` is an abstract class, which is the superclass for different types of records.
+* `Goal` is an abstract class, which is the superclass for different types of goals. 
+* Each `RecordList` is composed of `Record`. Each `GoalList` is composed of `Goal`.
+
+
+
 [**Get back to Table of Contents**](#table-of-contents)
 
 ---
@@ -131,40 +144,16 @@ input.
 Step 2. The `AddCommand` initializes a `Record` and
 calls `FitCenter#FitCenter#addRecordToList(CommandRecordType type, Record record)` to add the record.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a any of the parameters passed in are invalid, `AddCommand` will throw an error and will not call `FitCenter#FitCenter#addRecordToList(CommandRecordType type, Record record)`, so the record will not be saved into the `RecordList`.
+> 💡  If any of the parameters passed are invalid, `AddCommand` will throw an error and will not call `FitCenter#FitCenter#addRecordToList(CommandRecordType type, Record record)`, so the record will not be saved into the `RecordList`.
 
-</div>
 
 Step 3.`FitCenter#FitCenter#addRecordToList(CommandRecordType type, Record record)`
 calls `RecordList#addRecord(Record newRecord)` to modify the list.
 
 The following sequence diagram shows how the `add` command works:
 
-![UndoSequenceDiagram](images/UndoSequenceDiagram.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-
-</div>
-
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once
-to the right, pointing to the previously undone state, and restores the address book to that state.
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest address book state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-
-</div>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such
-as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`.
-Thus, the `addressBookStateList` remains unchanged.
-
-![UndoRedoState4](images/UndoRedoState4.png)
-
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not
-pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be
-purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern
-desktop applications follow.
-
-![UndoRedoState5](images/UndoRedoState5.png)
+![Sequence diagram of adding a new record](./diagrams/DG_Images/addRecordSequence.png)
+<h5 align="center">Figure 3: Sequence Diagram of adding a record</h5>
 
 [**Get back to Table of Contents**](#table-of-contents)
 

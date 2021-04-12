@@ -109,6 +109,8 @@ public class Messages {
     public static final String MESSAGE_INVALID_COMMAND = "Sorry, the command you entered cannot be recognized.\n\n";
     public static final String MESSAGE_INVALID_COMMAND_WORD = "The command word is invalid. "
             + "Enter help to see help messages\n";
+    public static final String MESSAGE_EXCEED_24_HOURS_A_DAY = "To add this record, your exercise and sleep time "
+            + "on %s will exceed 24 hours.\nYou can use delete command to delete a record.\n";
     public static final String MESSAGE_INVALID_COMMAND_SYNTAX = "Sorry, "
             + "the syntax of the command entered is incorrect.\n\n";
     public static final String MESSAGE_SYNTAX_ADD_COMMAND = "The syntax for add command is:\n"

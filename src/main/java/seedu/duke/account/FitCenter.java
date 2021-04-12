@@ -2,13 +2,17 @@ package seedu.duke.account;
 
 import seedu.duke.command.CommandRecordType;
 import seedu.duke.common.Messages;
+import seedu.duke.exception.ExceedTimeInOneDayException;
 import seedu.duke.goal.GoalList;
 import seedu.duke.goal.Goal;
 import seedu.duke.goal.IntervalType;
 import seedu.duke.goal.timemanager.TimeController;
-import seedu.duke.record.Record;
 import seedu.duke.record.RecordList;
 import seedu.duke.record.RecordType;
+import seedu.duke.record.Record;
+import seedu.duke.record.Exercise;
+import seedu.duke.record.Sleep;
+
 import seedu.duke.ui.UI;
 
 
@@ -82,9 +86,24 @@ public class FitCenter {
      * @param type   the type of the record.
      * @param record the record to add.
      */
-    public void addRecordToList(CommandRecordType type, Record record) {
+    public void addRecordToList(CommandRecordType type, Record record) throws ExceedTimeInOneDayException {
         RecordList list = getRecordListByType(type);
+        double timeSpentDaily = 0;
+        if (type == SLEEP || type == EXERCISE) {
+            timeSpentDaily = exerciseRecordList.getDailyTime(record.getDate()) / 60.0
+                    + sleepRecordList.getDailyTime(record.getDate());
+            if (type == EXERCISE) {
+                Exercise exercise = (Exercise) record;
+                timeSpentDaily += exercise.getDuration() / 60.0;
+            } else {
+                Sleep sleep = (Sleep) record;
+                timeSpentDaily += sleep.getDuration();
+            }
+        }
         if (list != null) {
+            if (timeSpentDaily >= 24) {
+                throw new ExceedTimeInOneDayException();
+            }
             list.addRecord(record);
         }
     }

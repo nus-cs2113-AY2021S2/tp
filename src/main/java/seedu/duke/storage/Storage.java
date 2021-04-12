@@ -1,6 +1,7 @@
 package seedu.duke.storage;
 
 import seedu.duke.account.User;
+import seedu.duke.exception.ExceedTimeInOneDayException;
 import seedu.duke.exception.TypeException;
 
 import java.io.File;
@@ -120,7 +121,7 @@ public class Storage {
      * @throws FileNotFoundException when the file path or file cannot be found.
      */
     public void readRecords(User user) throws TypeException, NumberFormatException, ParseException,
-            FileNotFoundException {
+            FileNotFoundException, ExceedTimeInOneDayException {
         fileInfoReader.parseToRecordList(user);
     }
 
