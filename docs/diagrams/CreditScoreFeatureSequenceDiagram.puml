@@ -38,12 +38,15 @@ loop For each record in RecordList
         end
     end
 end
+
 CreditScoreCommand -> Ui : printMessage()
 activate Ui
 Ui --> CreditScoreCommand
 deactivate Ui
+note right: Some method parameters are omitted for brevity
 [<-- CreditScoreCommand
 deactivate CreditScoreCommand
 [<-[hidden]- CreditScoreCommand
 destroy CreditScoreCommand
+
 @enduml
