@@ -53,8 +53,7 @@ Allowing to choose the mode “Admin” or “Customer” based on user’s acco
    password1
 ```
 
-<details>
-  <summary> <strong>Display:</strong> </summary>
+<details><summary> <strong>Display:</strong> </summary>
 
 ```
  ___  ___           _       ___                    
