@@ -992,12 +992,15 @@ Logging out..
 
 ## Command Summary  
 ### Customer  
+
 | Action      | Input Example  |
 | :----------- | :----------- |
 | View Movies      | 1         |
 | Filter movies   | 1, [1-5 for adding filter, 6 to select choice, 7 to remove filters, 8 to return to main page]     |
 | Exit Application   | 2         |
+
 ### Administrator
+
 | Action      | Input Example |
 | :----------- | :----------- |
 | View Movies      | 1       |
