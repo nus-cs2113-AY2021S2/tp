@@ -41,14 +41,9 @@ time spent on clearing emails.
 
 2. Download the latest version of `MojoHr` from [here](https://github.com/AY2021S2-CS2113-W10-2/tp/releases).
 
-3. Download the sample test datasets `data.zip` folder from [here](https://github.com/AY2021S2-CS2113-W10-2/tp/releases)
-   and unzip it.
+3. `cd` to locate the file path of the JAR file that you have downloaded
 
-4. Make sure you put the folder `data` under the same path(folder) of `duke.jar`. 
-
-5. `cd` to locate the file path of the JAR file and data folder that you have downloaded
-
-6. Run the following command: `java -jar [JAR file name]`
+4. Run the following command: `java -jar [JAR file name]`
 
 ## Logging in
 
@@ -204,27 +199,35 @@ Example of usage:
 
 ````
 ____________________________________________________________
-1. [Archive][UNREAD]
-|| Subject: This is subject 5
-|| From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T10:30:00
+Enter Command:
+list Inbox
+____________________________________________________________
+1. [Inbox][UNREAD]
+|| Subject: S1
+|| From: testC@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
 || Tags: []
-2. [Archive][UNREAD]
-|| Subject: This is subject 6
-|| From: 11312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T11:30:00
+2. [Inbox][UNREAD]
+|| Subject: S2
+|| From: testA@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
+|| Tags: []
+3. [Inbox][UNREAD]
+|| Subject: S1
+|| From: testC@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
 || Tags: []
 ____________________________________________________________
 Enter Command:
 read 1
 ____________________________________________________________
-[Archive][READ]
-|| Subject: This is subject 5
-|| From: 21312@gmail.com --> To: [12312@gmail.com]
-|| Time: 2021-02-20T10:30:00
+[Inbox][READ]
+|| Subject: S1
+|| From: testC@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
 || Tags: []
 || Content: 
-This is content for s5.
+C1
 ____________________________________________________________
 ````
 
@@ -431,18 +434,20 @@ Example of usage:
 
 ````
 ____________________________________________________________
-Enter Command:
-list draft
-____________________________________________________________
-1. [Draft][UNREAD]
-|| Subject: This is subject 3
-|| From: 12312@gmail.com --> To: [test@yahoo.com]
-|| Time: 2021-02-20T08:30:00
+1. [Inbox][READ]
+|| Subject: S1
+|| From: testC@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
 || Tags: []
-2. [Draft][UNREAD]
-|| Subject: LilySubject
-|| From: 12312@gmail.com --> To: [lily@gmail.com]
-|| Time: 2021-03-30T15:30:09
+2. [Inbox][UNREAD]
+|| Subject: S2
+|| From: testA@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
+|| Tags: []
+3. [Inbox][UNREAD]
+|| Subject: S1
+|| From: testC@gmail.com --> To: [12312@gmail.com]
+|| Time: 2021-04-09T13:08:33
 || Tags: []
 ____________________________________________________________
 Enter Command:
@@ -685,6 +690,14 @@ Format: `reset`
 * If the old password is correct, the program will ask for the new password from user.
 * The number of wrong attempt is 3.
 * If the old password is wrong for 3 times, the program will back to main menu asking for command.
+* The new password should meet the following requirements:
+   1. Password should not be the same as the old one.
+   2. Password should not contain any space.
+   3. Password should contain at least one digit(0-9).
+   4. Password length should be between 8 to 15 characters.
+   5. Password should contain at least one lowercase letter(a-z).
+   6. Password should contain at least one uppercase letter(A-Z).
+   7. Password should contain at least one special character ( @, #, %, &, !, $, etc….)
 
 Example of usage:
 

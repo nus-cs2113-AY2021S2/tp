@@ -41,5 +41,8 @@ Emails should be able to be sent to multiple users.
 
 ### Contributions to DG
 * Add table of contents
-* Add overview descriptions and UML diagrams.
+* Add Architecture descriptions and UML diagrams.
 * Add TagCommand implementation and UML diagram.
+
+### Contributions to Team-based Task
+* Include data files into jar file. Add code to handle resource.

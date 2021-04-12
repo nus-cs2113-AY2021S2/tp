@@ -12,17 +12,21 @@ import seedu.duke.email.Inbox;
 import seedu.duke.email.Junk;
 import seedu.duke.email.Sent;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Storage {
     private String fileName;
@@ -30,19 +34,51 @@ public class Storage {
     private String pwd;
     private String emailAccount;
 
-    public Storage(String fileName, String account, String pwd) {
-        this.fileName = fileName;
-        this.filePath = System.getProperty("user.dir") + File.separator + "data" + File.separator + fileName;
-        this.pwd = pwd;
-        this.emailAccount = account;
-    }
-
     public Storage() {
         this.fileName = null;
         this.filePath = null;
         this.pwd = null;
         this.emailAccount = null;
 
+    }
+
+    /**
+     * Checks if the data folder exist. If it does not,
+     * it means that the jar file is loaded for the first time,
+     * so it will copy the data files from inside jar into the
+     * data folder.
+     */
+    public void init() {
+        if (createDirectory()) {
+            loadResources();
+        }
+    }
+
+    private void loadResources() {
+        String[] files = {"/LoginInfo.txt",
+                          "/12312@gmail.com.json",
+                          "/test@gmail.com.json",
+                          "/test@yahoo.com.json"
+        };
+
+        for (String file : files) {
+            try {
+                InputStream in = getClass().getResourceAsStream("/data" + file);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+
+                String outputPath = System.getProperty("user.dir") + File.separator + "data" + File.separator + file;
+                FileWriter writer = new FileWriter(outputPath);
+
+                String line = reader.readLine();
+                while (line != null) {
+                    writer.write(line + System.lineSeparator());
+                    line = reader.readLine();
+                }
+                writer.flush();
+            } catch (IOException | NullPointerException e) {
+                System.out.println("Error loading resources...");
+            }
+        }
     }
 
     public String getEmailAccount() {
@@ -53,7 +89,13 @@ public class Storage {
         return pwd;
     }
 
-    public ArrayList<Email> load() throws IOException, ParseException, NullPointerException {
+    public ArrayList<Email> load(String fileName, String account, String pwd)
+            throws IOException, ParseException, NullPointerException {
+        this.fileName = fileName;
+        this.filePath = System.getProperty("user.dir") + File.separator + "data" + File.separator + fileName;
+        this.pwd = pwd;
+        this.emailAccount = account;
+
         try {
             JSONObject accountInfo = readJson();
             pwd = getPassword(accountInfo);
@@ -75,15 +117,7 @@ public class Storage {
      * @throws ParseException if file is corrupted.
      */
     private JSONObject readJson() throws IOException, ParseException {
-        String localDir = System.getProperty("user.dir");
-        Path dirPath = Paths.get(localDir, "data");
-        if (!Files.exists(dirPath)) {
-            try {
-                Files.createDirectory(dirPath);
-            } catch (IOException e) {
-                System.err.println("Failed to create directory 'data'!" + e.getMessage());
-            }
-        }
+        createDirectory();
         File file = new File(filePath);
         if (!file.exists()) {
             createJsonFile(file);
@@ -94,6 +128,25 @@ public class Storage {
         JSONObject jsonObject = (JSONObject) obj;
         return jsonObject;
 
+    }
+
+    /**
+     * Creates the data folder if it does not exist.
+     *
+     * @return true if folder is created (i.e. folder does not exist), false otherwise.
+     */
+    private boolean createDirectory() {
+        String localDir = System.getProperty("user.dir");
+        Path dirPath = Paths.get(localDir, "data");
+        if (!Files.exists(dirPath)) {
+            try {
+                Files.createDirectory(dirPath);
+                return true;
+            } catch (IOException e) {
+                System.err.println("Failed to create directory 'data'!" + e.getMessage());
+            }
+        }
+        return false;
     }
 
     private ArrayList<Email> parse(JSONObject jsonObject) throws NullPointerException {

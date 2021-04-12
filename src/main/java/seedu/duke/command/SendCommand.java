@@ -92,9 +92,9 @@ public class SendCommand extends Command {
                 recipientEmails = senderEmails;
                 recipientStorage = senderStorage;
             } else {
-                recipientStorage = new Storage(recipient + ".json", recipient, "");
+                recipientStorage = new Storage();
                 try {
-                    ArrayList<Email> emailList = recipientStorage.load();
+                    ArrayList<Email> emailList = recipientStorage.load(recipient + ".json", recipient, "");
                     recipientEmails = new EmailManager(emailList);
                 } catch (IOException | ParseException e) {
                     recipientEmails = new EmailManager();

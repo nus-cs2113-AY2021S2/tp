@@ -41,7 +41,7 @@
 The Architecture Diagram above gives an overview of the different components in the application. Details of the
 individual components are given below.
 
-Mojo class controls the overall logic for the application. It is responsible for
+Main class controls the overall logic for the application. It is responsible for
 
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.

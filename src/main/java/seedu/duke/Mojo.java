@@ -17,11 +17,10 @@ public class Mojo {
     private static Ui ui;
     private static EmailManager emails;
     private static Parser parser;
-    private final Storage storage;
+    private final static Storage storage;
 
     public Mojo(String filePath, LoginInfo providedLoginInfo) throws NullPointerException {
         ui = new Ui();
-        storage = new Storage(filePath, providedLoginInfo.getUserId(), providedLoginInfo.getPassword());
         try {
             emails = new EmailManager(storage.load());
         } catch (IOException | ParseException e) {
@@ -45,15 +44,18 @@ public class Mojo {
     }
 
     public static void main(String[] args) {
+        storage = new Storage();
+        storage.init();
+
         LoginController lc = new LoginController();
         LoginInfo providedLoginInfo = lc.run();
         String userId = providedLoginInfo.getUserId();
+
         try {
             new Mojo(userId + ".json", providedLoginInfo).run();
         } catch (NullPointerException e) {
             System.out.println("The form of your emails in json file is incorrect! Please check your json file.");
         }
-
     }
 }
 

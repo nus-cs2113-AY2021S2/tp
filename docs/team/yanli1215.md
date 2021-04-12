@@ -14,14 +14,13 @@ This will help reduce the time spent on clearing emails and allow the user to fo
     2. Load the data from json file to ArrayList with the help of googlecode.json-simple package;
     3. Save the updated emails or password back to the user's json file;
     
-
 * Features implemented:
     1. Delete emails to delete folder;
     2. Archive emails to archive folder;
     3. Find emails by keywords;
     4. Reset the password;
     
-Refer to this [link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=jalvinchan&sort=groupTitle&sortWithin=title&since=&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false)
+Refer to this [link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=yanli&sort=groupTitle&sortWithin=title&since=2021-03-05&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false)
 to see the contributed code.
 
 ### Enhancements implemented
@@ -50,17 +49,9 @@ The find command `find KEYWORD`allows users to find emails that containing certa
 
 2. The new password should not be the same as the old one.
 
-3. The password should meet the following requirements:
-    * Password should not contain any space.
-    * Password should contain at least one digit(0-9).
-    * Password length should be between 8 to 15 characters.
-    * Password should contain at least one lowercase letter(a-z).
-    * Password should contain at least one uppercase letter(A-Z).
-    * Password should contain at least one special character ( @, #, %, &, !, $, etc….)
+3. The password should meet a certain requirements
 4. update the new password in account.json file
 5. update the new password in the loginInfo.txt file;
-
-  
 
 ### Documentation
 #### 1. User Guide
@@ -68,4 +59,8 @@ The find command `find KEYWORD`allows users to find emails that containing certa
 
 #### 2. Developer Guide
 * Added documentation (Architecture, Implementation, Manual Testing) for features `delete`, `archive`, `find`, `reset`
-  
+
+### Contributions to team-based tasks
+1. Necessary general code enhancements
+2. Maintaining the issue tracker
+3. Updating user/developer docs that are not specific to a feature(e.g. user stories, quick start)
