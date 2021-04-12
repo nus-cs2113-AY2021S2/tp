@@ -1,13 +1,16 @@
 package seedu.duke;
 
 public class Constants {
-
     // String constants for the main class
     public static final String EXIT_MESSAGE = "Goodbye, we hope to see you again!";
     public static final String WELCOME_MESSAGE = "Welcome to the Patient Manager.\n";
     public static final String INPUT_PROMPT = "Please input a command: ";
 
     // Help messages
+    public static final String COMMAND_LIST_MESSAGE = "Here is a list of available commands:\n"
+            + "  add\n  delete\n  list\n  load\n  record\n  retrieve\n  current\n  exit\n"
+            + "Type 'help' followed by one or more commands for more details\n"
+            + "Example: help record";
     public static final String ADD_INFO_MESSAGE = "Add a patient to the list\n"
             + "Command prefix: add\n"
             + "Argument(s): IC number\n"
@@ -37,7 +40,7 @@ public class Constants {
             + "Usage: retrieve\n";
     public static final String CURRENT_INFO_MESSAGE = "Print out the current patient being loaded.\n"
             + "Usage: current\n";
-    public static final String HELP_INFO_MESSAGE = "Display information about all commands or selected commands only\n"
+    public static final String HELP_INFO_MESSAGE = "Displays a list of commands or information of selected commands\n"
             + "Command prefix: help\n"
             + "Argument(s): commands\n"
             + "Usage: help [OPTIONAL_COMMANDS]\n"
@@ -80,6 +83,9 @@ public class Constants {
     public static final String INVALID_INPUT_EMPTY_DATE_ARGUMENT = "Please key in a date of record to delete";
     public static final String INVALID_INPUT_PATIENT_NOT_FOUND = "Patient with this IC number does not exist!";
     public static final String INVALID_INPUT_END_OF_FILE = "End of file reached, exiting application.";
+    public static final String INVALID_INPUT_FORBIDDEN_SUBSTRING =
+            "These substrings are not allowed in the input command:\n"
+            + "~   `   %   #   @   !";
 
     public static final String STORAGE = "Something wrong happen when trying to save/load data";
     public static final String STORAGE_FILE_CREATION_FAIL = "Failed to create a save file.";
