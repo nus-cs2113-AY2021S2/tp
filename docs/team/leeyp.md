@@ -3,13 +3,6 @@
 ## Overview
 This is a student project for university software development course. I am one of the contributors to the FridgeFriend project.
 
-## Project: FridgeFriend
-
-FridgeFriend is an app for managing food in the fridge, optimised for use via a Command Line Interface (CLI).
-If you can type fast, FridgeFriend can track your cold or frozen groceries faster and easier than any other apps.
-It is written in Java, and has more than 5500 lines of code.
-
-
 ## Summary of Contributions
 Given below are my contributions to the project:
 
