@@ -331,7 +331,7 @@ to analyse patterns in their purchasing of food.
 |v1.0|user|remove items from the fridge|keep track of what is in the fridge|
 |v1.0|user|list all food items in the fridge|know inside the fridge without having to open the fridge itself|
 |v1.0|forgetful user|search for a specific food item|recall if I have that food item inside the fridge|
-|v1.0|organised user|tag the food’s category when I add into fridge(e.g. veggies, meat, dairy)|track what kinds of food I have in the fridge|
+|v1.0|organised user|tag the food’s category when I add into fridge (e.g. veggies, meat, dairy)|track what kinds of food I have in the fridge|
 |v1.0|organised user|list food items by category|check specific categories of food|
 |v1.0|organised user|add a storage location for a specific food item|know which part of the fridge is stored in|
 |v1.0|organised user|add the expiry date to each food item I put into the fridge|keep track of what is going to expire|
