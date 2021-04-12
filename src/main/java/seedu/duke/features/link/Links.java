@@ -101,6 +101,4 @@ public class Links {
         }
         Ui.printZoomLinks(ZoomLinkInfo.zoomLinksList);
     }
-
-
 }

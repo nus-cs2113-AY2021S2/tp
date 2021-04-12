@@ -34,8 +34,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[4.13 Delete a Task](#413-delete-a-task)  
 &nbsp;&nbsp;&nbsp;&nbsp;[4.14 View all Task](#414-view-all-tasks)  
 &nbsp;&nbsp;&nbsp;&nbsp;[4.15 Pin a Task](#415-pin-a-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.16 Add Zoom Link](#416-add-zoom-link)
-&nbsp;&nbsp;&nbsp;&nbsp;[4.17 Add External Links](#417-add-external-links)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.16 Add Zoom Link](#416-add-zoom-link)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.17 Add External Links](#417-add-external-links)
 
 [5. Product scope](#5-product-scope)    
 
