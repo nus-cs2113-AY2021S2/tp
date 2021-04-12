@@ -32,6 +32,8 @@ Contributions can be found on [RepoSense](https://nus-cs2113-ay2021s2.github.io/
 #### UI & Finux classes
 * Created the skeleton for both UI and Finux classes
 * Refactoring done on both classes to better fit team project.
+* 
+<div style="page-break-after: always;"></div>
 
 #### Record types and Commands
 * Created base Command class with Mark
