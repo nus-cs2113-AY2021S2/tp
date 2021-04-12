@@ -125,23 +125,6 @@ the parsed parameters in `CommandParser` will be cleared to get ready for next p
 * Returns a new `Command` instance initialized with relevant parameters according to the user input.
 * Returns `InvalidCommand` if an erroneous input is received.
 
-#### Command component
-
-**APIs**: `Command.java`, `CommandResult.java`, etc
-
-* Consists of an abstract class `Command.java` from which all other command classes (subclasses) inherit.
-* Each subclass corresponds to one text command defined in the user guide.
-* Each subclass must implement the abstract `execute` method, which invokes APIs defined in `Entity` classes to perform
-  an operation.
-* Each subclass has an attribute `feedback`, which is a `String` that stores the result of the command execution.
-
-How the command is executed?
-
-1. `UI` component takes in user's input, which is then passed to `Parser` component.
-2. `Parser` component processes the user input and create a `Command` object initialized with relevant parameters.
-3. The `Command` object is returned to `Healthier`, in which the `execute` method is invoked.
-4. The `execute` method returns the execution result in `String`, which is displayed by `UI`.
-
 #### Entity component
 
 **APIs**: `Goal.java`,`Record.java`,`GoalList.java`, `RecordList.java`, etc
@@ -158,6 +141,8 @@ How the command is executed?
 
 #### Command component
 
+**APIs**: `Command.java`, `CommandResult.java`, etc
+
 ![Structure of the Commands](./diagrams/DG_Images/CommandStructure.png)
 <h5 align="center">Figure 3: class structure for Command</h5>
 
@@ -165,8 +150,20 @@ How the command is executed?
 * `AddCommand`,`ViewCommand`,`DeleteCommand`,`SetCommand`,`CheckCommand`,`CancelCommand`,`HelpCommand`,`ExitCommand` are concrete command classes inherit from `Command` class to carry out different tasks.
 * `InvalidCommand` represents commands whose syntax are invalid.
 * `CommandResult` stores the feedback message of command execution and will interact with UI to display the feedback.
+* Each subclass must implement the abstract `execute` method, which invokes APIs defined in `Entity` classes to perform
+  an operation.
+* Each subclass has an attribute `feedback`, which is a `String` that stores the result of the command execution.
+
+How the command is executed?
+
+1. `UI` component takes in user's input, which is then passed to `Parser` component.
+2. `Parser` component processes the user input and create a `Command` object initialized with relevant parameters.
+3. The `Command` object is returned to `Healthier`, in which the `execute` method is invoked.
+4. The `execute` method returns the execution result in `String`, which is displayed by `UI`.
 
 #### Storage component
+
+**APIs**: `Storage.java`, `FileInfoReader.java`, `FileInfoWriter.java`
 
 ![Structure of the Storage](./diagrams/DG_Images/StorageClasses.png)
 <h5 align="center">Figure 3: class structure for entity classes</h5>
