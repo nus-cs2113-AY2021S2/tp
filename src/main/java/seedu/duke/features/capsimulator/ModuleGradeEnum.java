@@ -1,5 +1,9 @@
 package seedu.duke.features.capsimulator;
 
+/**
+ * ModuleGradeEnum contains the list of grades base on NUS website,
+ * and its associated grade points.
+ */
 public enum ModuleGradeEnum {
     A_PLUS("A+", 5.0),
     A("A", 5.0),
@@ -30,6 +34,13 @@ public enum ModuleGradeEnum {
         return score;
     }
 
+    /**
+     * Checks if the grade from user input exists
+     * in the table of letter grades on NUS website.
+     *
+     * @param grade the grade of a module.
+     * @return boolean value of whether grade exists.
+     */
     public static boolean checkGradeExist(String grade) {
         if (grade == null) {
             return false;
@@ -42,6 +53,13 @@ public enum ModuleGradeEnum {
         return false;
     }
 
+    /**
+     * Returns the grade point associated with the grade of a module.
+     *
+     * @param grade the grade of a module.
+     * @param module the module name.
+     * @return the grade point associated with the grade.
+     */
     public static double checkScoreAgainstGrade(String grade, String module) {
         double score = 0;
 

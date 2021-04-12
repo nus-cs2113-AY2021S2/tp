@@ -747,8 +747,10 @@ public class Ui {
 
     public static void printInvalidCapMessage() {
         System.out.println("Invalid CAP score. Entries is not registered.");
+    }
 
     public static void printZoomLinkNotTagged() {
         System.out.println("Alright! The Zoom Link shall not be tagged to a module...");
     }
+
 }

@@ -6,6 +6,8 @@ import seedu.duke.features.capsimulator.AcademicRecords;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.duke.features.capsimulator.ModularCreditEnum.checkMcsExist;
+import static seedu.duke.features.capsimulator.ModuleGradeEnum.checkGradeExist;
 
 public class CapSimulatorTest {
 
@@ -21,6 +23,31 @@ public class CapSimulatorTest {
                 .capCalculator(grades, mcs, 20));
 
     }
+
+    @Test
+    public void checkMcsExist_validMCs_true() {
+        Integer Mcs = 1;
+        assertEquals(true, checkMcsExist(Mcs));
+    }
+
+    @Test
+    public void checkMcsExist_validMCs_false() {
+        Integer Mcs = 100;
+        assertEquals(false, checkMcsExist(Mcs));
+    }
+
+    @Test
+    public void checkGradeExist_validMCs_true() {
+        String grade = "A+";
+        assertEquals(true, checkGradeExist(grade));
+    }
+
+    @Test
+    public void checkGradeExist_validMCs_false() {
+        String grade = "Q";
+        assertEquals(false, checkGradeExist(grade));
+    }
+
 
 
 

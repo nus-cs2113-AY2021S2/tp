@@ -10,7 +10,13 @@ import java.util.logging.Logger;
 public class CapSimulatorManager {
 
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-    
+
+    /**
+     * Executes the features under CAP Simulator/Calculator. Features includes,
+     * adding current CAP and MCs counted into CAP,
+     * viewing current CAP and MCs counted into CAP, and
+     * simulating CAP.
+     */
     public static void execute() {
 
         while (true) {
@@ -50,6 +56,9 @@ public class CapSimulatorManager {
         }
     }
 
+    /**
+     * Adds current CAP and the total number of MCs counted into the CAP score.
+     */
     private static void addCapAndMcs() {
         Ui.getCurrentCapPrompt();
         double cap = Double.parseDouble(Ui.readCommand());

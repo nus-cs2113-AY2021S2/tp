@@ -18,6 +18,11 @@ public class Component {
         this.components = components;
     }
 
+    /**
+     * Adds components and its associated weightage for a module to a Hashtable.
+     *
+     * @param modules the list of modules users entered.
+     */
     public static void addComponent(ArrayList<Module> modules) {
 
 
@@ -74,6 +79,12 @@ public class Component {
 
     }
 
+    /**
+     * Checks if the component name is numeric.
+     *
+     * @param componentName the name of the component.
+     * @throws NumberFormatException
+     */
     private static void isNumeric(String componentName) throws NumberFormatException {
         boolean isNumeric = componentName.chars().allMatch(Character::isDigit);
         if (isNumeric) {
@@ -81,6 +92,13 @@ public class Component {
         }
     }
 
+    /**
+     * Prompts user for a module and
+     * allows users to view the components and its associated weightages
+     * for the module specified by the user.
+     *
+     * @param modules the list of modules users entered.
+     */
     public static void viewComponent(ArrayList<Module> modules) {
 
         boolean isModuleExist = false;
@@ -103,16 +121,14 @@ public class Component {
 
 
     }
-    /*
-    public static void deleteComponent(String component) {
-        components.remove(component);
-    }*/
 
-
-    public static void setComponentsHere(Hashtable<String, Integer> components) {
-        Component.components = components;
-    }
-
+    /**
+     * Checks if the weightage for all the component names does not exceed 100.
+     *
+     * @param components the components and its weightage in Hashtable.
+     * @param newWeightage the next weightage entered by the user.
+     * @throws InvalidComponentException
+     */
     public static void checkHundredPercent(Hashtable<String, Integer> components,
                                            int newWeightage) throws InvalidComponentException {
 
@@ -132,6 +148,10 @@ public class Component {
             logger.log(Level.WARNING, "Weightage falls below 0.");
             throw new InvalidComponentException();
         }
+    }
+
+    public static void setComponentsHere(Hashtable<String, Integer> components) {
+        Component.components = components;
     }
 
 }
