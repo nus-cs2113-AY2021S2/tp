@@ -67,6 +67,8 @@ If you are interested, jump to [Section 2 - Quick Start](#2-quick-start) to lear
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## 2. Quick start
 
 This section gives you step-by-step instructions on how to download and open the application. <br>
@@ -97,6 +99,8 @@ This section gives you step-by-step instructions on how to download and open the
 |Key in `cmd` and press enter.|Right click on the folder and click on "New Terminal at Folder"|
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
+
 ## 3. About
 
 ### 3.1. Structure of this document
@@ -148,6 +152,8 @@ More examples will be provided for each command in [Section 4 - Features](#4-fea
 5. In each example, lines starting with * signifies a user input after being prompted by NUSMaze. <br>
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## 4. Features
 
@@ -760,6 +766,8 @@ can be found on the second computer. <br>
 **A** : You can refer to this [map](http://map.nus.edu.sg) to view the directions. <br>
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
+
 ## 6. Command summary
 
 |Action | Format |
