@@ -43,7 +43,7 @@ I contributed to the information under **features**, namely the `history` and `f
 
 #### Contributions to Developer Guide
 
-I contributed to the information under **features**, namely the `history` and `favourite route` features.
+I contributed to the information and diagrams under **features**, namely the `history` and `favourite route` features.
 
 #### Contributions to team-based tasks
 
