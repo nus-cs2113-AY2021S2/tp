@@ -317,7 +317,7 @@ Given below is an example usage scenario and how the add/view/delete mechanism b
 
 5. The user executes `delete alias` command. The user input will be parsed by the `Parser` which will create a new `DeleteCustomAliasCommand` command. The new command will then invoke the UI which will prompt the user `Enter the alias name that you wish to delete:` where the user will enter the alias name that the user wishes to remove. The user input for the alias to be removed will be checked against the hashmap and return an exception if the key does not exist. If the alias to be removed exists in the hashmap, the key-value pair will be removed, and a success message will be displayed to the user.
 
-Shown below is the sequence diagram when a valid block name and alias are added:
+Shown below is the sequence diagram when a valid block name and alias are **added**:
 ![img.png](images/AliasFeatureSequence.png)
 
 #### Design Consideration
