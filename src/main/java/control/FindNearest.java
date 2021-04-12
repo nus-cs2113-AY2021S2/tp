@@ -8,6 +8,10 @@ import entity.Location;
 import exceptions.FacilityNotFoundException;
 
 //@author geezzzyyy
+
+/**
+ * This class implements the main functionality of find top K nearest facility.
+ */
 public class FindNearest {
     private static FileManager dataController;
     public FindNearest(FileManager dataController) {
@@ -15,12 +19,15 @@ public class FindNearest {
     }
 
     /**
-     * Find a facility by it's name.
-     * @param facilityName name of facility.
-     * @return a Facility object
-     * @throws FacilityNotFoundException
+
+     * This function searches a user inputted facility from all our existing facility and returns the facility found.
+     * If facility not found, there will be an error message.
+     * @param facilityLocation the user input facility name
+     * @return Facility the facility object found
+     * @throws FacilityNotFoundException if the user inputted invalid facility that does not match with any of our existing facilities
      */
-    public static Facility findFacilityByName(String facilityName) throws FacilityNotFoundException {
+    public static Facility findFacilityByName(String facilityLocation) throws FacilityNotFoundException {
+
         for (Facility f: FileManager.getLibraries()) {
             if (f.getName().equals(facilityName)) {
                 return f;
@@ -40,14 +47,17 @@ public class FindNearest {
     }
 
     /**
-     * Find the top K facilities from a certain location, where K is a user-defined parameter
-     * @param currentLocation
-     * @param facilityType
-     * @param topK
-     * @throws FacilityNotFoundException
+
+     * This function search for a specific fype of facility near user's current location.
+     * It returns the top K nearest facility of this type.
+     * @param currentLocation the current of the user
+     * @param facilityType type of the facility to look for
+     * @param topK top K nearest facility
+     * @throws FacilityNotFoundException if the input facilityType is invalid.
+     * @throws ArrayIndexOutOfBoundsException if top K nearest facility cannot be found as K is larger than the number of existing facilities
      */
-    public static void findTopKFacility(Location currentLocation, String facilityType, int topK)
-            throws FacilityNotFoundException {
+    public static void findTopKFacility(Location currentLocation, String facilityType, int topK) throws FacilityNotFoundException {
+
         List<Facility> facilityList = new ArrayList<Facility>();
         switch (facilityType.toUpperCase()) {
         case "CANTEEN":

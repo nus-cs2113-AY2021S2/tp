@@ -3,8 +3,18 @@ package seedu.duke;
 import exceptions.InvalidSearchException;
 
 //@@chenling
+
+/**
+ * This class deals with user input commands.
+ */
 public class Parser {
 
+    /**
+     * This function handles input of the search facilityType/id command and returns the user input for facilityType
+     * @param userInput the user input command
+     * @return String, name of the facility type
+     * @throws InvalidSearchException if the there are some parameters missing or if the syntax of the command is wrong
+     */
     public static String getFacilitySearch(String userInput) throws InvalidSearchException {
         if (userInput.length() < 7) {
             throw new InvalidSearchException("No parameters provided for search function :(");
@@ -18,6 +28,12 @@ public class Parser {
         return facility;
     }
 
+    /**
+     * This function handles input of the search facilityType/id command and returns the user input for facility ID
+     * @param userInput  the user input command
+     * @return String, name of the facilityid
+     * @throws InvalidSearchException if the there are some parameters missing or if the syntax of the command is wrong
+     */
     public static int getIdSearch(String userInput) throws InvalidSearchException {
         int index = userInput.indexOf('/');
         if (index == -1) {
@@ -34,10 +50,22 @@ public class Parser {
 
     }
 
+    /**
+     * This function handles user input for the search in building_name command and returns the user input for the buiding name
+     * @param userInput the user input command
+     * @return building name
+     */
     public static String getBuildingName(String userInput) {
         return userInput.substring(9).strip();
     }
 
+    /**
+     * This function handles input of the findFacility<facility><facility_type><top k> command and returns the user input for facility
+     * @param userInput the user input command
+     * @return facility name
+     * @throws NumberFormatException if the there are some parameters missing or if the syntax of the command is wrong
+     * @throws StringIndexOutOfBoundsException if the there are some parameters missing or if the syntax of the command is wrong
+     */
     public static String getFindFacilityLocation(String userInput) {
         try {
             int index1 = userInput.indexOf('<');
@@ -60,6 +88,13 @@ public class Parser {
 
     }
 
+    /**
+     * This function handles input of the findFacility<facility><facility_type><top k> command and returns the user input for facilityType
+     * @param userInput the user input command
+     * @return facilityType
+     * @throws NumberFormatException if the there are some parameters missing or if the syntax of the command is wrong
+     * @throws StringIndexOutOfBoundsException if the there are some parameters missing or if the syntax of the command is wrong
+     */
     public static String getFindFacilityType(String userInput) {
         try {
             int index1 = userInput.indexOf('>');
@@ -82,6 +117,13 @@ public class Parser {
         return null;
     }
 
+    /**
+     * This function handles input of the findFacility<facility><facility_type><top k> command and returns the user input for top K
+     * @param userInput the user input command
+     * @return int topK
+     * @throws NumberFormatException if the there are some parameters missing or if the syntax of the command is wrong
+     * @throws StringIndexOutOfBoundsException if the there are some parameters missing or if the syntax of the command is wrong
+     */
     public static int getTopK(String userInput) {
         try {
             int index1 = userInput.indexOf('>');
@@ -110,6 +152,12 @@ public class Parser {
         return 0;
     }
 
+    /**
+     * This function handles input of the listAllLocations<facility_type> command and returns the user input for facility_type
+     * @param userInput the user input command
+     * @return facility_type
+     * @throws StringIndexOutOfBoundsException if the syntax of the user input command is invalid
+     */
     public static String getLocationsList(String userInput) {
         try {
             int index1 = userInput.indexOf('<');
@@ -125,9 +173,11 @@ public class Parser {
     }
 
     /**
-     * Check if the command to execute is to listAllLocations
-     * @param userInput
-     * @return
+
+     * Check if the user input command is of type: listAllLocations<facility_type>
+     * @param userInput user input command
+     * @return boolean, true if the command is of type: listAllLocations<facility_type>
+
      */
     public static boolean isList(String userInput) {
         if (userInput.length() >= 16) {
@@ -137,9 +187,11 @@ public class Parser {
     }
 
     /**
-     * Check if the command to execute is to search for a specific facility
-     * @param userInput
-     * @return
+
+     * Check if the user input command is of type: search facilityType/id
+     * @param userInput user input command
+     * @return boolean, true if the command is of type: search facilityType/id
+
      */
     public static boolean isSearch(String userInput) {
         if (userInput.length() >= 6) {
@@ -149,9 +201,11 @@ public class Parser {
     }
 
     /**
-     * Check if the command to execute is to search within a building
-     * @param userInput
-     * @return
+
+     * Check if the user input command is of type: search in building_name
+     * @param userInput user input command
+     * @return boolean, true if the command is of type: search in building_name
+
      */
     public static boolean isSearchIn(String userInput) {
         if (userInput.length() >= 9) {
@@ -161,9 +215,11 @@ public class Parser {
     }
 
     /**
-     * Check if the command to execute is to find the top K facilities
-     * @param userInput
-     * @return
+
+     * Check if the user input command is of type: findFacility<facility><facility_type><top k>
+     * @param userInput user input command
+     * @return boolean, true if the command is of type: findFacility<facility><facility_type><top k>
+
      */
     public static boolean isFind(String userInput) {
         if (userInput.length() >= 12) {
@@ -172,6 +228,11 @@ public class Parser {
         return false;
     }
 
+    /**
+     * Check if the user input command is of type: bye
+     * @param userInput user input command
+     * @return boolean, true if the command is of type: bye
+     */
     public static boolean isBye(String userInput) {
         return userInput.equalsIgnoreCase("bye");
     }
