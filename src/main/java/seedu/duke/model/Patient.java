@@ -1,6 +1,10 @@
 package seedu.duke.model;
 
+import seedu.duke.Common;
+import seedu.duke.exception.DataException;
+
 import java.time.LocalDate;
+import java.util.Map;
 import java.util.TreeMap;
 
 /**
@@ -50,6 +54,12 @@ public class Patient {
         return id;
     }
 
+    private void checkRecordExists(LocalDate date) throws DataException {
+        if (!records.containsKey(date)) {
+            throw new DataException(DataException.Type.NO_RECORD_FOUND);
+        }
+    }
+
     /* Functionals for manipulating records */
 
     /**
@@ -62,14 +72,16 @@ public class Patient {
     }
 
     /**
-     * Add a single record into the patient's record list.
+     * Add a record into the patient's record list. This record can contain up to 3 fields,
+     * patient's symptom, diagnosis and prescription.
      *
      * @param date         Appointment date to add the record to
      * @param symptom      Patient's symptoms to add to the record
      * @param diagnosis    Patient's diagnosis to add to the record
      * @param prescription Patient's prescription to add to the record
+     * @return a string containing a confirmation that the records were added to the patient
      */
-    public void addRecord(LocalDate date, String symptom, String diagnosis, String prescription) {
+    public String addRecord(LocalDate date, String symptom, String diagnosis, String prescription) {
         if (!records.containsKey(date)) {
             records.put(date, new Record());
         }
@@ -78,35 +90,9 @@ public class Patient {
         this.symptom = symptom;
         this.diagnosis = diagnosis;
         this.prescription = prescription;
-    }
-
-    /**
-     * Checks if a record exists from the patient's record list.
-     * @param date Appointment date of record to check
-     * @return     Boolean for whether the record exists
-     */
-    public boolean recordExist(LocalDate date) {
-        if (records.containsKey(date)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Deletes a record from the patient's record list.
-     * @param date Appointment date of record to delete
-     */
-    public void deleteRecord(LocalDate date) {
-        records.remove(date);
-    }
-
-    /**
-     * This returns a printable string with recently added information.
-     * @return a printable string for information about recently added symptoms, diagnosis and prescription
-     */
-    public String recentlyAdded() {
-        String recentDetails = System.lineSeparator();
+        String recentDetails = "Added new details to patient "
+                + id + "'s consultation at "
+                + Common.formatDate(date) + System.lineSeparator();
         if (symptom != null) {
             recentDetails += "Symptom: " + symptom + System.lineSeparator();
         }
@@ -117,5 +103,51 @@ public class Patient {
             recentDetails += "Prescription: " + prescription + System.lineSeparator();
         }
         return recentDetails;
+    }
+
+    /**
+     * Checks if the patient has a visit from the specified date, and returns the records from that date.
+     *
+     * @param date the date of the patient's consultation
+     * @return a string containing the records of the patient's visit on the date
+     * @throws DataException if the patient has no visit record from the specified date
+     */
+    public String getRecord(LocalDate date) throws DataException {
+        checkRecordExists(date);
+        Record record = records.get(date);
+        String recordString = "Here are " + id + "'s records:" + System.lineSeparator()
+                + Common.formatDate(date) + ":" + System.lineSeparator()
+                + record.toString();
+        return recordString;
+    }
+
+    /**
+     * Returns all the medical records of a patient. If a patient does not have any records,
+     * the returned string will notify the user that there are no records
+     *
+     * @return a string containing all the records of the patient
+     */
+    public String getRecord() {
+        if (records.isEmpty()) {
+            return id + " has no medical records.";
+        }
+        String recordString = "Here are " + id + "'s records:" + System.lineSeparator();
+        for (Map.Entry<LocalDate, Record> recordIterator : records.entrySet()) {
+            LocalDate date = recordIterator.getKey();
+            Record record = recordIterator.getValue();
+            recordString += Common.formatDate(date) + ":" + System.lineSeparator()
+                    + record.toString();
+        }
+        return recordString;
+    }
+
+    /**
+     * Deletes a record from the patient's record list.
+     *
+     * @param date Appointment date of record to delete
+     */
+    public void deleteRecord(LocalDate date) throws DataException {
+        checkRecordExists(date);
+        records.remove(date);
     }
 }

@@ -19,10 +19,7 @@ public class CurrentCommand extends Command {
 
     @Override
     public void execute() {
-        if (data.currentPatient != null) {
-            ui.printMessage("The currently loaded patient's ID is " + data.currentPatient.getID() + ".");
-        } else {
-            ui.printMessage("There is no patient being loaded now.");
-        }
+        String currentMessage = data.getCurrentPatientDetails();
+        ui.printMessage(currentMessage);
     }
 }

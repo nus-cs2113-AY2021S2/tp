@@ -2,6 +2,7 @@ package seedu.duke;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.command.DeleteCommand;
+import seedu.duke.exception.DataException;
 import seedu.duke.exception.InvalidInputException;
 import seedu.duke.model.Patient;
 
@@ -63,7 +64,7 @@ public class DeleteCommandTest {
             deleteCommand.execute();
         });
 
-        assertEquals("Record for 2021-03-29 has been deleted!" + System.lineSeparator(), bos.toString());
+        assertEquals("Record for 29/03/2021 has been deleted." + System.lineSeparator(), bos.toString());
         System.setOut(originalOut);
     }
 
@@ -75,10 +76,10 @@ public class DeleteCommandTest {
         arguments.put("command", "delete");
         DeleteCommand deleteCommand = new DeleteCommand(ui, data, arguments);
 
-        Exception exception = assertThrows(Exception.class, () -> {
+        InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
             deleteCommand.execute();
         });
-        assertEquals(Constants.INVALID_INPUT_UNKNOWN_DELETE_ARGUMENT, exception.getMessage());
+        assertEquals(Constants.INVALID_INPUT_UNKNOWN_DELETE_ARGUMENT, invalidInputException.getMessage());
     }
 
     @Test
@@ -90,10 +91,10 @@ public class DeleteCommandTest {
         arguments.put("p", "S1234567D");
         DeleteCommand deleteCommand = new DeleteCommand(ui, data, arguments);
 
-        Exception exception = assertThrows(Exception.class, () -> {
+        DataException dataException = assertThrows(DataException.class, () -> {
             deleteCommand.execute();
         });
-        assertEquals(Constants.INVALID_INPUT_PATIENT_NOT_FOUND, exception.getMessage());
+        assertEquals(Constants.DATA_PATIENT_NOT_FOUND, dataException.getMessage());
     }
 
     @Test
@@ -108,16 +109,10 @@ public class DeleteCommandTest {
         Ui ui = new Ui();
         DeleteCommand deleteCommand = new DeleteCommand(ui, data, arguments);
 
-        final PrintStream originalOut = System.out;
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(bos));
-
-        assertDoesNotThrow(() -> {
+        DataException dataException = assertThrows(DataException.class, () -> {
             deleteCommand.execute();
         });
-
-        assertEquals("Record for 2021-03-29 does not exist!" + System.lineSeparator(), bos.toString());
-        System.setOut(originalOut);
+        assertEquals(Constants.DATA_NO_RECORD_FOUND, dataException.getMessage());
     }
 
     @Test

@@ -31,9 +31,8 @@ public abstract class BaseException extends Exception {
             } else {
                 errorString += System.lineSeparator();
             }
-            errorString += Constants.EXCEPTION_INDENT + errorLine;
+            errorString += Constants.INDENT + errorLine;
         }
-
         return errorString;
     }
 }

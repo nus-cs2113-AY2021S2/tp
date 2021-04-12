@@ -55,30 +55,24 @@ public class Constants {
     public static final String LONG_LINE = "----------------------------------------------------------------------";
 
     // Exception messages
-    public static final String EXCEPTION_INDENT = "\t";
+    public static final String INDENT = "\t";
 
     public static final String INVALID_INPUT = "Input command and/or arguments are invalid";
-    public static final String INVALID_INPUT_EMPTY_STRING = "Please enter a command for me to process";
-    public static final String INVALID_INPUT_UNKNOWN_COMMAND = "Invalid command provided. Please enter \"help\""
-            + "(without quotes) for a list of commands and how to use them";
-    public static final String INVALID_INPUT_INVALID_NRIC = "Please key in a valid NRIC number";
+    public static final String INVALID_INPUT_EMPTY_STRING = "Please enter a command for me to process.";
+    public static final String INVALID_INPUT_UNKNOWN_COMMAND = "Invalid command provided.";
+    public static final String INVALID_INPUT_INVALID_NRIC = "Please key in a valid NRIC number.";
     public static final String INVALID_INPUT_INVALID_NRIC_FIRST_LETTER =
             "Please ensure that NRIC starts with S,T,F or G";
     public static final String INVALID_INPUT_INVALID_NRIC_CHECKSUM =
             "NRIC does not pass the checksum test, please ensure NRIC is valid eg. G1234567X";
-    public static final String INVALID_INPUT_PATIENT_EXISTED = "Patient already exists";
-    public static final String INVALID_INPUT_NO_PATIENT_LOADED =
-            "Please load a patient with the load command before adding or viewing records";
-
-    public static final String INVALID_INPUT_EMPTY_DESCRIPTION =
-            "Please provide more details about the patient's visit!\n"
-                    + "(At least one symptom, diagnosis or prescription must be specified)";
+    public static final String INVALID_INPUT_PATIENT_EXISTED = "Patient already exists.";
     public static final String INVALID_INPUT_INVALID_DATE =
             "Please provide a valid date (format: dd/MM/yyyy).\n"
                     + "It should also be a valid date in the Gregorian calendar.";
     public static final String INVALID_FUTURE_DATE = "You cannot save a visit record for a future date.";
     public static final String INVALID_INPUT_UNKNOWN_DELETE_ARGUMENT =
-            "Kindly use /p or /r to indicate patient or record, refer to help for more clarification";
+            "Please use exactly one of /p or /r to indicate whether to delete a patient or a record.\n"
+                    + "You may use the help command for more clarification.";
     public static final String INVALID_INPUT_EMPTY_NRIC_ARGUMENT = "Please key in NRIC number of patient to delete";
     public static final String INVALID_INPUT_EMPTY_DATE_ARGUMENT = "Please key in a date of record to delete";
     public static final String INVALID_INPUT_PATIENT_NOT_FOUND = "Patient with this IC number does not exist!";
@@ -87,7 +81,15 @@ public class Constants {
             "These substrings are not allowed in the input command:\n"
             + "~   `   %   #   @   !";
 
-    public static final String STORAGE = "Something wrong happen when trying to save/load data";
+    public static final String DATA_NO_RECORD_FOUND = "No records found for the specified date.";
+    public static final String DATA_NO_PATIENT_LOADED =
+            "Please load a patient with the load command before adding or viewing records.";
+    public static final String DATA_EMPTY_DESCRIPTION =
+            "Please provide more details about the patient's visit.\n"
+                    + "(At least one symptom, diagnosis or prescription must be specified.)";
+    public static final String DATA_PATIENT_NOT_FOUND = "The patient with this IC number does not exist.";
+
+    public static final String STORAGE = "Something wrong happened when trying to save/load data";
     public static final String STORAGE_FILE_CREATION_FAIL = "Failed to create a save file.";
     public static final String STORAGE_FILE_WRITE_FAIL = "Failed to write content to the save file.";
     public static final String STORAGE_FILE_NOT_FOUND = "Save file does not exist so we use an empty patient list!";
@@ -110,6 +112,10 @@ public class Constants {
     public static final int FIFTH_DIGIT = 5;
     public static final int SIXTH_DIGIT = 6;
     public static final int LAST_DIGIT = 7;
+
+    // Checksum letters for NRIC numbers
+    public static final char[] ST_NRIC_CHECKDIGIT = {'J', 'Z', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A'};
+    public static final char[] FG_NRIC_CHECKDIGIT = {'X', 'W', 'U', 'T', 'R', 'Q', 'P', 'N', 'M', 'L', 'K'};
 
     // Keys for the argument HashMap
     public static final String PAYLOAD_KEY = "payload";
