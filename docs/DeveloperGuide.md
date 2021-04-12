@@ -636,9 +636,9 @@ Below is our analysis of our target user and the importance in which he/she woul
    Expected: `Got it! Successfully added and tagged note to E1`<br>
    1.2 Test case: `add note` → `e20` → `crowded`<br>
    Expected: `Invalid block! Please try again with a block that exists :(`<br>
-   1.3 Test case: `add note` → `e20` → `""`<br>
+   1.3 Test case: `add note` → `e1` → `""`<br>
    Expected: `Your note description cannot be empty or contain "/". Please try the command again :)`<br>
-   1.4 Test case: `add note` → `e20` → `very/crowded`<br>
+   1.4 Test case: `add note` → `e1` → `very/crowded`<br>
    Expected: `Your note description cannot be empty or contain "/". Please try the command again :)`<br>
 2. Viewing notes tagged to specific block<br>
    2.1 Test case: `show note` → `e1`<br>
