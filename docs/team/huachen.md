@@ -1,4 +1,4 @@
-# Huachen - Project Portfolio Page
+# Wang Huachen - Project Portfolio Page
 
 ## Overview
 Connoisseur is a desktop application for managing and storing personal reviews on experiences and recommendations to try next, that you would like to keep. It is a revolutionary app that not only provides an organised user-friendly database, but provides customisable categories to enhance your experience. Through its intuitive command line interface, you will be able to store and access your reviews & recommendation easily.
@@ -50,3 +50,6 @@ My code contribution can be found [here](https://nus-cs2113-ay2021s2.github.io/t
     * [#78](https://github.com/AY2021S2-CS2113T-F08-3/tp/pull/78)
     * [#123](https://github.com/AY2021S2-CS2113T-F08-3/tp/pull/123)    
     * [#129](https://github.com/AY2021S2-CS2113T-F08-3/tp/pull/129)
+
+#### Contributions beyond the project team
+* Raised [issues](https://github.com/huachen24/ped/issues) on the projects of other groups
