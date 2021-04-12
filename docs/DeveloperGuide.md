@@ -356,17 +356,17 @@ _Figure 11: **RecordList** Class Diagram_
 
 #### Description
 The `RecordList` component consists of only one class which is the `RecordList`. The role of the `RecordList` 
-is to maintain an internal `ArrayList` of `Record` objects created throughout `Finux`’s execution. 
+is to maintain an internal `ArrayList<Record>` objects created throughout `Finux`’s execution. 
 
 #### Design
 This maintenance is achieved through the traditional Object Oriented Programming (OOP) style, where operations
 relating to the list can only be performed through the interfaces defined in the `RecordList` class. Doing so allows
-us to restrict the access to the internal `ArrayList` from the outside world, successfully achieving the information
+us to restrict the access to the internal `ArrayList<Record>` from the outside world, successfully achieving the information
 hiding aspect under the Encapsulation concept of OOP.
 
 When `Finux` starts up, `Finux` instantiates the `RecordList` with data loaded from the save file, `finux.txt`. This is done
-by the `Finux` class calling the constructor `RecordList(ArrayList)`, passing in the `ArrayList` returned from the method
-call `storage.getRecordListData()`. This `ArrayList` returned from `storage.getRecordListData()` is loaded from the save file
+by the `Finux` class calling the constructor `RecordList(ArrayList<Record>)`, passing in the `ArrayList<Record>` returned from the method
+call `storage.getRecordListData()`. This `ArrayList<Record>` returned from `storage.getRecordListData()` is loaded from the save file
 by a prior method call `storage.loadFile()`, also performed by the `Finux` class. For more information on `Storage` component,
 refer to [section 3.7](#37-storage-component).
 
