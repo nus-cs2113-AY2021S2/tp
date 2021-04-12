@@ -689,6 +689,7 @@ Lastly, the program will print out the record's information with the help of `ge
 methods.
 > `getId()` and `toString()` omitted for brevity in the sequence diagram.
 
+<div style="page-break-after: always;"></div>
 
 #### 4.2.2 Design Consideration
 
@@ -764,6 +765,8 @@ record type.
 
 ***Step 5:***\
 Finally, the `totalAmount` will set to two decimal place before printing onto the console.
+
+<div style="page-break-after: always;"></div>
 
 #### 4.3.2 Design Consideration
 
@@ -997,6 +1000,8 @@ particular command calls, these calls are the commands that will alter the `reco
 the `creditScoreReturnLoansMap` is also altered by changes in the `Loans` object. It will also be stored and updated
 together with the commands below.
 
+<div style="page-break-after: always;"></div>
+
 The following commands and scenarios where these `records` will be saved locally into the save file:
 * `add`
 * `remove`
@@ -1206,6 +1211,7 @@ coding and typing can speed up the process of their finance management through t
 
 > ❗ Finux does not provide any finance advise.
 
+<div style="page-break-after: always;"></div>
 
 ## Appendix B: User Stories
 
@@ -1222,6 +1228,8 @@ coding and typing can speed up the process of their finance management through t
 |v2.0|new user|know what function I can use|tell what are the valid inputs for the application.|
 |v2.0|lender|know the loanee's punctuality on returning the loan|gauge who to continue lending money the next time.|
 |v2.0|student|know how trustworthy a person is according to a score indicator|decide how risk-free it is to lend money to the said person.|
+
+<div style="page-break-after: always;"></div>
 
 ## Appendix C: Non-Functional Requirements
 
@@ -1260,6 +1268,8 @@ coding and typing can speed up the process of their finance management through t
    1. `add -e lunch -a x -d 28/03/2021`
       (where `x` is a negative number or a word)
 
+<div style="page-break-after: always;"></div>
+
 ### D.3: Adding a loan to the record list
 
 1. Prerequisite: None.
@@ -1292,7 +1302,9 @@ coding and typing can speed up the process of their finance management through t
    1. `add -s -a -d`
    1. `add -s Savings from Intern -a x -d 30/03/2021`
       (where `x` is a negative number or a word)
-   
+
+<div style="page-break-after: always;"></div>
+
 ### D.5 Listing expense(s) in the record list
 
 1. Prerequisite: None.
@@ -1340,6 +1352,8 @@ coding and typing can speed up the process of their finance management through t
 1. Prerequisite: None.
 1. Test case: `view -a`
    Expected: Views the total amount of all records currently in the record list.
+
+<div style="page-break-after: always;"></div>
 
 ### D.13 Mark a loan as returned
 
