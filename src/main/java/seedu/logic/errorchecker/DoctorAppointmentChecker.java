@@ -1,17 +1,23 @@
 package seedu.logic.errorchecker;
 
 import seedu.duke.Constants;
-import seedu.exceptions.CorruptedFileException;
-import seedu.exceptions.DuplicateIdException;
-import seedu.exceptions.EmptyListException;
 import seedu.exceptions.HealthVaultException;
 import seedu.exceptions.IdNotFoundException;
-import seedu.exceptions.IllegalCharacterException;
-import seedu.exceptions.InvalidDateException;
 import seedu.exceptions.InvalidIdException;
-import seedu.exceptions.InvalidGenderException;
-import seedu.exceptions.doctorappointment.*;
+import seedu.exceptions.IllegalCharacterException;
+import seedu.exceptions.EmptyListException;
+import seedu.exceptions.CorruptedFileException;
 import seedu.exceptions.InvalidIntegerException;
+import seedu.exceptions.InvalidDateException;
+import seedu.exceptions.DuplicateIdException;
+
+import seedu.exceptions.doctorappointment.DocIdNotFoundException;
+import seedu.exceptions.doctorappointment.WrongAptIdFormatException;
+import seedu.exceptions.doctorappointment.WrongDocIdFormatException;
+import seedu.exceptions.doctorappointment.WrongIdFormatForListException;
+import seedu.exceptions.doctorappointment.WrongIdFormatForDeleteException;
+import seedu.exceptions.doctorappointment.InvalidGenderException;
+
 import seedu.logger.HealthVaultLogger;
 import seedu.model.doctorappointment.AppointmentList;
 import seedu.model.doctorappointment.DoctorAppointment;
@@ -51,7 +57,7 @@ public class DoctorAppointmentChecker extends MainChecker {
         gender = input[4];
         date = input[5];
         logger.log(Level.INFO, "Checking for Valid data after add command");
-        checkDoctorIDFormat(doctorID);
+        checkDoctorIdFormat(doctorID);
         if (!isValidDocId(doctorID)) {
             throw new DocIdNotFoundException(doctorID);
         }
@@ -111,7 +117,7 @@ public class DoctorAppointmentChecker extends MainChecker {
      * @throws WrongAptIdFormatException If the data does not fit the parameters.
      */
 
-    public static void checkDoctorIDFormat(String id) throws WrongDocIdFormatException {
+    public static void checkDoctorIdFormat(String id) throws WrongDocIdFormatException {
         try {
             Integer.parseInt(id.substring(1));
             logger.log(Level.INFO, "Checking for Valid Doctor ID");
