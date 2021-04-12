@@ -72,8 +72,8 @@ Interface (GUI).
 ### 1.1 About UniTracker
 
 UniTracker consists of 4 key features (refer to [Section 3. Features](#3-features)) that helps to
-organise all the information they need in one place. You can add and edit module information, tasks,
-zoom links to suit their needs.
+organise all the information you need in one place. You can add and edit module information, tasks,
+zoom links to suit your needs.
 
 ### 1.2 About This User Guide
 
@@ -203,8 +203,7 @@ Main Menu:
 ````
 ### 3.1 Module Information
 
-The Module Information feature allows you to add/delete modules,  
-and add information to the module of your choice.
+The Module Information feature allows you to add/delete modules, and add information to the module of your choice.
 
 **Navigating to the Module Information Menu**  
 
@@ -345,7 +344,7 @@ Here are the modules in your Modules List:
 
 Deletes a module from the list of modules.  
 >**<span style="color: red"> WARNING! </span>**  
-> Deleted modules cannot be retrieved.   
+> Deleted modules cannot be retrieved. Any tasks under the module will also be deleted.   
   
 * Format: enter the index (integer) of the module that you want to delete.  
 
@@ -385,7 +384,7 @@ Returning to module information menu...
 Adds or displays components, 
 and their weightages that adds up to 100 for an existing module.
 
-In this sub-section, the word, "components", will be use interchangeably
+In this sub-section, the word, "components", will be used interchangeably
 to mean components or components and its associated weightage for simplicity.
 
 
@@ -401,7 +400,7 @@ to mean components or components and its associated weightage for simplicity.
 > * Parsing is designed such as any inputs after weightage will be ignored. E.g. FinalExam 20 2, '2' will be ignored.  
 
 
-* Example for adding component and weightage to a module: 
+Example for adding component and weightage to a module: 
 
 ````
 > 5
@@ -434,7 +433,7 @@ Component and weightage added!
  
 
 
-* Example for viewing the components and weightage of an existing module:  
+Example for viewing the components and weightage of an existing module:  
   
 ````
 > 5  
@@ -704,7 +703,7 @@ MCs that counts into your CAP does not include modules with zero grade points.
 > CAP entered is rounded to 2 decimal places (2dp).  
 > The program exits back to CAP Simulator/Calculator menu if CAP is invalid.    
 > [i.e. negative CAP or CAP > 5.0]   
-> There is no strict restriction to number of MCs user can add and its up to user's discretion.
+> The maximum number of MCs you can add is 220.
 
 Example of adding CAP and total MCs counted towards CAP:  
 
@@ -755,7 +754,7 @@ Returning to CAP simulator/calculator menu...
 #### 3.2.3 Simulate future CAP
 
 Simulates future CAP base on the current CAP and MCs counted into the CAP.
-The CAP calculated with be rounded to 2 decimal places.  
+The CAP calculated will be rounded to 2 decimal places.  
 
 > **Note!**  
 > All simulated CAP will not be stored as it is a simulation.  
@@ -771,8 +770,7 @@ To begin,
 2. Choose the choice of your simulation. 
    * If your choice is v1.0, v1.0 CAP Simulator will calculate from the grades present in existing modules
      and returns to CAP Simulator/Calculator menu once simulation is completed.
-   * If your choice is v2.0, v2.0 CAP Simulator will prompt you for a grade, 
-   follow by a prompt for MCs.
+   * If your choice is v2.0, v2.0 CAP Simulator will prompt you for a grade, followed by a prompt for MCs.
 
 Once done, enter `ok` when prompt with entering a new grade again (for v2.0 only). 
 
@@ -793,7 +791,7 @@ Key in 2 to simulate cap base on your own input.
 
 Example on CAP simulator:  
 
-###### Version 1  
+**Version 1**  
 
 > **Note!**  
 > Ensure the MCs and grade entered into each module is up to date for meaningful simulation. You may update the MCs and grade of each module in [3.1.6](#316-add-modules-modular-credits-mc) and [3.1.7](#317-add-module-grade) respectively.
@@ -813,7 +811,7 @@ The simulated cumulative average point (rounded to 2 d.p) you have is:
 Returning to CAP simulator/calculator menu...
 ````  
 
-###### Version 2  
+**Version 2**  
 
 > **Note!**  
 > Empty entries will be shown as "[]" to denote you have not entered any grades and MCs.  
@@ -859,7 +857,7 @@ Task Manager menu:
 
 ````
 Welcome to the Task Manager menu ^o^
-Please choose which action you would like to do and enter the number:\n"
+Please choose which action you would like to do and enter the number:
 [1] --- Add New Task
 [2] --- Mark/Unmark a Task as Done
 [3] --- Delete a Task
@@ -942,9 +940,9 @@ message being `Wow yay~`:
 
 For adding an `assignment`, `midterm` or `final exam`, there will be two additional fields which cannot be empty:
 
-1. Date: Format is YYYY-MM-DD.  
+1. Date: Format is YYYY-MM-DD  
   (Y stands for the year, M stands for the month and D stands for the day)
-2. Time: Format is HH:MM.  
+2. Time: Format is HH:MM  
   (H stands for hour in 24H standard and M stands for minute)
 
 If you were to input an invalid date format, you will see this error message to prompt you to try again:
@@ -1020,13 +1018,13 @@ Example for marking a task type `normal task` with a task description of `Work o
 message being `Wow yay~`:
 ````
 Please choose which type of task you would like to mark/unmark as done and enter the number:
-[1] --- Task
+[1] --- Normal Task
 [2] --- Assignment
 [3] --- Midterm
 [4] --- Final Exam
 > 1
 --------------------------------------------
-This is the list of your tasks:  
+This is the list of your normal tasks:  
 1. [CS2113T][    ] Work on User Guide  
 
 What is the number of the task you want to mark/unmark?
@@ -1043,13 +1041,13 @@ Example for unmarking a task of type `normal task` with a task description of `W
 message being `Wow yay~`:
 ````
 Please choose which type of task you would like to mark/unmark as done and enter the number:
-[1] --- Task
+[1] --- Normal Task
 [2] --- Assignment
 [3] --- Midterm
 [4] --- Final Exam
 > 1
 --------------------------------------------
-This is the list of your tasks:  
+This is the list of your normal tasks:  
 1. [CS2113T][DONE] Work on User Guide  
 
 What is the number of the task you want to mark/unmark?
@@ -1088,13 +1086,13 @@ Example for deleting a task of type `normal task` with the task description of `
 
   ````
   Please choose which type of task you would like to delete and enter the number:
-  [1] --- Task
+  [1] --- Normal Task
   [2] --- Assignment
   [3] --- Midterm
   [4] --- Final Exam
   > 1
   --------------------------------------------
-  This is the list of your tasks:  
+  This is the list of your normal tasks:  
   1. [CS2113T][DONE] Work on User Guide  
   
   What is the number of the task you want to delete?
@@ -1156,13 +1154,13 @@ Example of pinning a task of type `normal task` with the task description of `Wo
 
   ````
   Please choose which type of task you would like to pin and enter the number:  
-  [1] --- Task  
+  [1] --- Normal Task  
   [2] --- Assignment  
   [3] --- Midterm  
   [4] --- Final Exam  
   > 1
   --------------------------------------------
-  This is the list of your tasks:  
+  This is the list of your normal tasks:  
   1. [CS2113T][DONE] Work on User Guide  
   
   What is the number of the task you want to pin? 
@@ -1181,7 +1179,7 @@ Following this, if you were to [view all your tasks](#334-view-all-tasks), it wi
   This is the list of your pinned tasks:  
   1. [CS2113T][DONE] Work on User Guide
   
-  This is the list of your tasks:  
+  This is the list of your normal tasks:  
   1. [CS2113T][DONE] Work on User Guide  
   
   This is the list of your assignments:  

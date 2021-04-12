@@ -62,15 +62,15 @@ This product is optimal for NUS students who prefer Command Line Interface (CLI)
 
 ### 1.1 About This Developer Guide
 
-This developer guide was made to help you set up UniTracker on your computer for usage, testing and further implementations. It also provides you with
-all the information you need to use UniTracker alongside detailed diagrams on the implementation of our different features and how they integrate together.
+This developer guide was made to help the user set up UniTracker on their computer for usage, testing and further implementations. It also provides the user with
+all the information they need to use UniTracker alongside detailed diagrams on the implementation of our different features and how they integrate together.
 
 ### 1.2 How to Use This Developer Guide
 
-Firstly, refer to [Section 2. Setting Up](#2-setting-up) for instructions on setting up UniTracker
-on an IDE on your local computer.
+Firstly, the user can refer to [Section 2. Setting Up](#2-setting-up) for instructions on setting up UniTracker
+on an IDE on their local computer.
 
-Once UniTracker is up and running, you can refer to the [table of contents](#table-of-contents) to
+Once UniTracker is up and running, the user can refer to the [table of contents](#table-of-contents) to
 navigate to specific sections to explore and learn about our different features and how they were implemented.
 
 ### 1.3 Conventions in This Developer Guide
@@ -84,14 +84,14 @@ In this developer guide, all text that appears on the CLI or in code will be wri
 
 # 2. Setting Up
 
-1. Ensure you have version 11 of Java. You can install it
+1. Ensure version 11 of Java is installed. It can be installed
    from [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
 2. Fork the UniTracker repo from [here](https://github.com/AY2021S2-CS2113T-F08-4/tp).
-3. Clone the fork on to your computer. We recommend using Sourcetree for this. You can download
-   Sourcetree from [here](https://www.sourcetreeapp.com/).
-4. Download and open Intellij. You can download Intellij
-   from [here](https://www.jetbrains.com/idea/)
-5. If you are not in the welcome screen, click `File` -> 'Close project' to close the existing
+3. Clone the fork on to the desired computer. We recommend using Sourcetree for this. Sourcetree can be downloaded
+   from [here](https://www.sourcetreeapp.com/).
+4. Download and open Intellij. Intellij can be downloaded
+   from [here](https://www.jetbrains.com/idea/).
+5. If the welcome screen cannot be seen, click `File` -> 'Close project' to close the existing
    project dialog.
 6. Set up the correct JDK version for Gradle.
     1. Click `Configure` -> `Project Defaults` -> `Project Structure`
@@ -101,7 +101,7 @@ In this developer guide, all text that appears on the CLI or in code will be wri
 9. If asked, choose to `Open as Project`.
 10. Click `OK` to accept the default settings.
 11. Right-click on the `Duke.java` file and select `Run Duke.main()`.
-12. If the set up was done right, you should see this welcome message:
+12. If the set up was done right, this welcome message should be seen:
     ````  
      Welcome to 
        _   _               _      _____                                _
@@ -327,7 +327,7 @@ Given below is the sequence diagram for the feature:
 A general 3-step explanation of how this feature works is shown below:  
 
 Step 1. The feature is facilitated by the `CapSimulatorManager` object, and a call to the 
-classto `AddCapAndMcs` method is performed upon entering this sequence of numbers from the main menu:  
+class to `AddCapAndMcs` method is performed upon entering this sequence of numbers from the main menu:  
 `2`, `1`.  
 
 Step 2. A call to `readCommand()` method in the `Ui` object is performed to get the CAP score.  
