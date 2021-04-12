@@ -68,9 +68,9 @@
 ## *1. Introduction*  
 ### 1.1. Overview
 
-NUSMaze is a Command Line Interface (CLI) based application that aims to simplify NUS Engineering students’ journey from one point to another within the Engineering and Computing faculties of NUS. The application allows users to find the best route from one block to another, add favourite locations, locate the nearest eatery and much more.
+NUSMaze is a Command Line Interface (CLI) based application that aims to simplify NUS Engineering students’ journey from one point to another within the Engineering and Computing faculties of NUS. The application allows users to find the best route from one block to another, add favourite locations, locate the nearest eatery and much more. <br>
 
-The purpose of this developer guide is to aid any curious or interested contributor in developing NUSMaze further by providing more insight on how the features were implemented.
+The purpose of this developer guide is to aid any curious or interested contributor in developing NUSMaze further by providing more insight on how the features were implemented. <br>
 
 ### 1.2. Setting up and getting started 
 1. Ensure that Java 11 and IntelliJ Idea (or your preferred Java IDE) are installed in your computer.  
@@ -92,7 +92,7 @@ If the set up process had been completed successfully, you should see the follow
 ![img.png](images/architecture.png)
 
 The **Architecture Diagram** above depicts the high-level design of the NUSMaze. You can always refer to this diagram
-to understand how the different components of NUSMaze interact with each other.
+to understand how the different components of NUSMaze interact with each other. <br>
 
 The class [`NusMaze`](https://github.com/AY2021S2-CS2113T-T09-2/tp/blob/master/src/main/java/seedu/duke/NusMaze.java) is where the `main()` 
 method belongs and is responsible for:
@@ -109,35 +109,35 @@ Architecture Components of NUSMaze:
 * **`Text Files`**: Holds the data of the app in memory
 
 Explanations on how each component is designed and how it functions are further elaborated in the following 
-chapters of the developer guide.
+chapters of the developer guide. <br>
 
 ### 2.2. UIManager Component 
 ![img.png](images/ui_design.png)  
 
 The UI of the application is managed by the [`UiManager`](https://github.com/AY2021S2-CS2113T-T09-2/tp/blob/master/src/main/java/seedu/duke/ui/UiManager.java) class as shown by the class diagram above. The individual UI classes for each feature such as `AliasUi`, `DailyRouteUi` and
-`FavouriteUi` extend the `UiManager` class. The UiManager class consists of the methods that are used to display recurrent messages on the *CLI* and also the utilities to get the user's inputs.
+`FavouriteUi` extend the `UiManager` class. The UiManager class consists of the methods that are used to display recurrent messages on the *CLI* and also the utilities to get the user's inputs. <br>
 
 The `UiManager` requires the static string variables from the `CommonMessages` class to obtain the commonly used messages that
-such as the divider and input headers.
+such as the divider and input headers. <br>
 
 The individual UI classes contain the methods that are used to get user inputs specific to the needs of the specific feature that
 it is responsible for. For example, when the routing feature is to be executed, the UI will need to prompt the user to obtain 2
 inputs, namely the `from block` and the `to block`. Hence, the `RouterUi` contains the `getRoutingInfo()` method which will prompt
-the user for these two inputs using the utility methods from the UiManager. Methods to get user input are called upon directly from the command classes of the specific feature command.
+the user for these two inputs using the utility methods from the UiManager. Methods to get user input are called upon directly from the command classes of the specific feature command. <br>
 
-The `UiManager` component,
-* displays messages in the *CLI*.
-* provides the Ui classes of the respective features with the utilities to obtain user input specific to their needs.
+The `UiManager` Component:
+* displays messages in the *CLI*. <br>
+* provides the Ui classes of the respective features with the utilities to obtain user input specific to their needs. <br>
 
 ### 2.3. Parser Component 
 ![img.png](images/ParserComponent.png)
 
 As shown above in the class diagram, **Parser component** is made out of the `Parser` class.
 After the `UiManager` reads in the user command, `NusMaze` makes use of the `Parser` to interpret 
-the user command and it will instantiate a new Command object to execute the command. 
+the user command and it will instantiate a new Command object to execute the command. <br>
 
 The Sequence diagram shown below is of a scenario where the user inputs an `invalid input`. It will allow you to 
-get a better understanding of how the `Parser` class interacts with `NusMaze` and `UiManager`.
+get a better understanding of how the `Parser` class interacts with `NusMaze` and `UiManager`. <br>
 
 ![img.png](images/Parsersequencediagram.png)
 
@@ -149,7 +149,7 @@ The **Command Component** of NUSMaze is made out of `Command` class, which is th
 all the other classes in the component (eg. `GoCommand`, `ByeCommand`). Depending on which command the user inputs, the
 `Parser` creates different `Command` class to execute the task. 
 
-Each `Command` class has :
+Each `Command` class has:
 * A distinct `execute()` method which is overrides the parent class, therefore tailored to execute the given command.
 * An `ui` specifically for taking in further user input in order to carry out the command.
 
@@ -158,7 +158,7 @@ Each `Command` class has :
 
 The **Router Component** consist of the `Router` class which is responsible for finding the shortest route to get from
 one location to another. In finding the shortest route, it utilises the breath-first-search algorithm, which will be 
-further elaborated in the implementation section.
+further elaborated in the implementation section. <br>
 
 As shown in the diagram above, `Router` is used by the following classes:
 * `GoCommand`
@@ -171,10 +171,10 @@ As shown in the diagram above, `Router` is used by the following classes:
 
 The **Data Component** is where all the data that are needed to execute a command is stored. For example when `"go"`
 command is executed, the `GoCommand` object will use data stored in `NusMap`, `EateryList` and `BlockAlias` in order to find
-the shortest route.
+the shortest route. <br>
 
 On the other hand, the **Storage Component** is responsible for saving from and loading data into stored in the **Data Component**. This will be
-further elaborated in the following section.
+further elaborated in the following section. <br>
 
 ### 2.7. Storage Component
 ![img.png](images/StorageComponent.png)
@@ -202,8 +202,8 @@ The image below depicts how the `GoCommand` is implemented.
 Given below is an example scenario of how the routing algorithm functions.
 
 1. User executes `GoCommand` and the `RouterUi` reads in the starting location and destination.<br />
-2. The input is changed to the name of the block if applicable. 
-3. The blocks are then checked to see if they are valid blocks.
+2. The input is changed to the name of the block if applicable. <br />
+3. The blocks are then checked to see if they are valid blocks. <br />
 4. `GoCommand` will then check if the second entry is eatery. If it is not "EATERY", step 3 and 4 are skipped for step 5.<br />
 5. `GoCommand` will then create an instance of `EateryList` and invokes its method `sortEateriesByDistance()` which returns a list of eateries in order of the closest distance.<br />
 6. `GoCommand` then takes in the selection of eatery that the user is chosen and sets the destination.<br/>
@@ -391,13 +391,13 @@ The user can enter the command `clear history` to delete all the contents of `hi
 A message: `"Your history has been successfully cleared"` will be shown to the user upon successful deletion of the contents of `historyList`.
 
 #### 3.5.6. Design Consideration
-Alternative 1 (current choice): Each command to add, view and delete are implemented using separate classes.  
-Pros: Easy to understand and each command is standalone.  
-Cons: Might have to repeat some code fragments.  
+**Alternative 1 (current choice):** Each command to add, view and delete are implemented using separate classes. <br> 
+Pros: Easy to understand and each command is standalone.  <br>
+Cons: Might have to repeat some code fragments.  <br>
 
-Alternative 2: Place all commands (add, view, delete) as functions in 1 command class.  
-Pros: Less code to be written and hashmap can be shared by the 3 commands in 1 class.  
-Cons: Might be confusing since there is less distinction between each command.
+**Alternative 2:** Place all commands (add, view, delete) as functions in 1 command class. <br>
+Pros: Less code to be written and hashmap can be shared by the 3 commands in 1 class. <br>
+Cons: Might be confusing since there is less distinction between each command. <br>
 
 ### 3.6. Save feature  
 #### 3.6.1. Current Implementation  
@@ -434,21 +434,28 @@ Given below is an example usage scenario and how the save mechanism behaves at e
    When `#saveData()` for each of the storage objects are called, data from the `blockAlias`, `dailyRoute`, `favourite`, `history` or `nusMap` object is saved into the respective text file. <br>
    ![img_1.png](images/SaveFeatureStep2.png)
 
-<div markdown="block" class="alert alert-info">
-**:information_source:** At any point when a command is called, the `AliasStorage#saveData()`, `DailyRouteStorage#saveData()`, `FavouriteStorage#saveData()`, `HistoryStorage#saveData()`, `NotesStorage#saveData()` will be executed,
+<div markdown="span" class="alert alert-primary">
+
+:information_source: At any point when a command is called, the `AliasStorage#saveData()`, `DailyRouteStorage#saveData()`, `FavouriteStorage#saveData()`, `HistoryStorage#saveData()`, `NotesStorage#saveData()` will be executed,
 but not all text files will be modified. <br>
 * The `history` text file is modified by the `go`, `clear history` and `repeat history` commands. <br>
 * The `aliasList` text file is modified by the `add alias` and `delete alias` commands. <br>
 * The `dailyRouteList` text file is modified by the `add daily route` and `delete daily route` commands. <br>
 * The `noteList` text file is modified by the `add note` and `delete note` commands. <br>
 * The `favouriteList` text file is modified by the `add favourite`, `repeat favourite` and `delete favourite` commands <br>
+
 </div>
+
 <br>
 
 <div markdown="block" class="alert alert-info">
-**:information_source:** If a command fails its execution, it will not call `#saveData()` for all the storage objects,
+
+:information_source: If a command fails its execution, it will not call `#saveData()` for all the storage objects,
 so the content from the `nusMap`, `blockAlias`, `history`, `favourite`, or `dailyRoute` objects will not be saved into the text files.
+
 </div>
+
+<br>
 
 #### 3.6.3. Design Consideration
 **Current choice:** Saves the entire list of block aliases, visited routes, tagged notes, daily routes and favourite locations. <br/>
@@ -601,3 +608,43 @@ Below is our analysis of our target user and the importance in which he/she woul
    Expected: `Got it! Successfully deleted note tagged to E1` <br>
    3.2 Test case: `delete note` → `e1` → `1` (When there are no notes tagged to e1)<br>
    Expected: `Oops! There are no notes tagged to E1` <br>
+
+### 5.6 Alias
+1. Adding an alias that is a block name<br>
+    1.1 Enter `add alias` → Enter block → `e3`, Enter the alias name → `e4`<br>
+   Expected: The error message for invalid alias will be displayed<br>
+2. Adding an alias that already exists<br>
+   1.1 Enter `add alias` → Enter block → `e1`, Enter the alias name → `alias that already exists`<br>
+   Expected: Similar to previous<br>
+3. Showing aliases when there are no aliases that were set prior.<br>
+    1.1 Enter `show alias`<br>
+   Expected: `You haven't set any aliases yet!`<br>
+4. Showing aliases when aliases have been previously set.<br>
+   1.1 Enter `show alias`<br>
+   Expected: A list of alias and block pairs will be displayed<br>
+5. Deleting an alias that was not previously set<br>
+    1.1 Enter `delete alias` → `alias that does not exist`<br>
+   Expected: `Invalid alias! Please enter an alias name that exists!`<br>
+6. Deleting an alias that was previously set<br>
+   1.1 Enter `delete alias` → `alias that exists`<br>
+   Expected: `Got it! Successfully deleted ALIAS THAT EXISTS from alias list!`<br>
+   
+
+### 5.8 Favourites
+1. Adding favourite routes<br>
+   1.1 Test case: Starting block → `E1`, Destination block → `E7`<br>
+   Expected: `Got it! Successfully added new favourite route!`<br>
+   1.2 Test case: Starting block → `E1`, Destination block → `Invalid`<br>
+   Expected `Invalid block! Please try again with a block that exists :(`<br>
+2. Showing favourite routes when favourites have not been set before<br>
+    1.1 Enter `show favourite`<br>
+   Expected: `You haven't set any favourite routes yet!`<br>
+3. Showing favourite routes when favourites have been set before<br>
+   1.1 Enter `show favourite`<br>
+   Expected: A list of all the favourite routes that have been previously set will be displayed<br>
+4. Deleting favourite routes<br>
+   1.1 Test case `delete favourite` → `VALID_FAVOURITE_INDEX`<br>
+   Expected: `Got it! Successfully deleted favourite route :)`<br>
+   1.1 Test case `delete favourite` → `INVALID_FAVOURITE_INDEX`<br>
+   Expected: `Oops! You must enter an Integer that is within the bounds :(`<br>
+   
