@@ -197,6 +197,7 @@ Output:
 
 ![add expense example output](img/AddExpenseExampleOutput.png)
 
+<div style="page-break-after: always;"></div>
 
 #### 3.1.2 Add a loan record
 
@@ -229,6 +230,8 @@ Output:
 
 > 💡 Do note that for an `expense`, you will have to use `-e` as the option. This follows for `loan` with `-l` and
 > `saving` with `-s`.
+
+<div style="page-break-after: always;"></div>
 
 ### 3.2 List the records details: `list`
 
