@@ -420,31 +420,31 @@ No items will be listed if no food in the fridge match the conditions specified 
 
   * Expected:
 
-  ```lang-none
-  Here are the items in your fridge:
-    1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
-    2. Food name: milk, category: DAIRY, expiry: 31-12-2021, stored in: FRIDGE_DOOR, quantity: 2
-    3. Food name: Coke, category: BEVERAGE, expiry: 30-07-2021, stored in: UPPER_SHELF, quantity: 5
-    4. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, quantity: 100
-  ```
+```lang-none
+Here are the items in your fridge:
+1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
+2. Food name: milk, category: DAIRY, expiry: 31-12-2021, stored in: FRIDGE_DOOR, quantity: 2
+3. Food name: Coke, category: BEVERAGE, expiry: 30-07-2021, stored in: UPPER_SHELF, quantity: 5
+4. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, quantity: 100
+```
   
 * Test case: `list meat`
 
   * Expected:
 
-  ```lang-none
-  These are the MEAT in your fridge:
-    1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
-  ```
+```lang-none
+These are the MEAT in your fridge:
+1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
+```
 
 * Test case: `list freezer`
 
   * Expected:
 
-  ```lang-none
-  These are the food stored in FREEZER:
-   1. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, quantity: 100
-  ```
+```lang-none
+These are the food stored in FREEZER:
+1. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, quantity: 100
+```
 
 ### Removing a food
 
@@ -477,10 +477,10 @@ If it is not found, outputs `You do not have FOOD_INPUT in your fridge.`
 
   * Expected:
 
-  ```lang-none
-  These are the chicken in your fridge:
-        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
-  ```
+```lang-none
+These are the chicken in your fridge:
+    1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
+```
   
 * Test case: `search pear`
   * Expected: `You do not have pear in your fridge.`
@@ -489,10 +489,10 @@ If it is not found, outputs `You do not have FOOD_INPUT in your fridge.`
 
   * Expected:
 
-  ```lang-none
-  These are the chick in your fridge:
-        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
-  ```
+```lang-none
+These are the chick in your fridge:
+    1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
+```
 
 ### Expiring food
 
@@ -507,10 +507,10 @@ that has an expiry date within 7 days of their **local system time**, as of the 
 2. Test case: `expiring`
     * Expected:
 
-   ```lang-none
-   These are the food expiring in the next week:
-        1. Food name: duck, category: MEAT, expiry: 30-03-2021, stored in: LOWER_SHELF, quantity: 100
-   ```
+```lang-none
+These are the food expiring in the next week:
+    1. Food name: duck, category: MEAT, expiry: 30-03-2021, stored in: LOWER_SHELF, quantity: 100
+```
 
 ### Runninglow and Setlimit
 
@@ -525,17 +525,17 @@ By default, the `limits` for all food is set at `500`. Use `setlimit` to modify 
 2. Test case: `runninglow`
     * Expected:
 
-   ```lang-none
-   You are running low on food in these categories:
-   1. VEGETABLE quantity: 0 out of 500
-   2. FRUIT quantity: 0 out of 500
-   3. EGG quantity: 0 out of 500
-   4. DAIRY quantity: 2 out of 5
-   5. COOKED_DISH quantity: 0 out of 500
-   6. READY_TO_EAT quantity: 0 out of 500
-   7. FROZEN quantity: 0 out of 500
-   8. OTHER quantity: 0 out of 500
-    ```
+```lang-none
+You are running low on food in these categories:
+1. VEGETABLE quantity: 0 out of 500
+2. FRUIT quantity: 0 out of 500
+3. EGG quantity: 0 out of 500
+4. DAIRY quantity: 2 out of 5
+5. COOKED_DISH quantity: 0 out of 500
+6. READY_TO_EAT quantity: 0 out of 500
+7. FROZEN quantity: 0 out of 500
+8. OTHER quantity: 0 out of 500
+```
 
 Note that `MEAT`,`SEAFOOD` AND `BEVERAGE` category are omitted from the above list,
 as they are not "running low". There is sufficient food from the given category in the
@@ -559,13 +559,13 @@ during testing, and see if they correspond.
 2. Test case: `history`
     * Expected:
 
-    ```lang-none
-    This is the full history of items you've added in the fridge:
-        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
-        2. Food name: milk, category: DAIRY, expiry: 31-12-2021, stored in: FRIDGE_DOOR, quantity: 2
-        3. Food name: Coke, category: BEVERAGE, expiry: 30-07-2021, stored in: UPPER_SHELF, quantity: 5
-        4. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, quantity: 100
-    ```
+```lang-none
+This is the full history of items you've added in the fridge:
+    1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
+    2. Food name: milk, category: DAIRY, expiry: 31-12-2021, stored in: FRIDGE_DOOR, quantity: 2
+    3. Food name: Coke, category: BEVERAGE, expiry: 30-07-2021, stored in: UPPER_SHELF, quantity: 5
+    4. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, quantity: 100
+```
 
 ### Saving data
 
