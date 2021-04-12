@@ -48,10 +48,14 @@ Allowing to choose the mode “Admin” or “Customer” based on user’s acco
 **Example**:
 1. Customer Account
    Input:
-   `customer1`  
-   `password1`
+   ```
+   customer1  
+   password1
+   ```
 
-   Display:
+<details>
+  <summary> <strong>Display:</strong> </summary>
+
 ```
  ___  ___           _       ___                    
  |  \/  |          (_)     / _ \                 
@@ -77,12 +81,17 @@ Allowing to choose the mode “Admin” or “Customer” based on user’s acco
  Please indicate your choice:
 ```
 
+</details>
+
 2. Admin Account
    Input:
-   `admin1`  
-   `password1`
+   ```
+   admin1  
+   password1
+   ```
+<details>
+  <summary> <strong>Display:</strong> </summary>
 
-   Display:
 ```
   ___  ___           _       ___                    
   |  \/  |          (_)     / _ \                 
@@ -110,21 +119,23 @@ Allowing to choose the mode “Admin” or “Customer” based on user’s acco
   ============================
   Please indicate your choice:
 ```
+</details>
 
 **2. Exit the app: `out`**  
 Exit the app from login page
 
 **Format**: `out`
 
-**Display:**
+<details>
+  <summary> <strong>Display:</strong> </summary>
 
 ```
  Thank you for your time.
  Have a good day!
->
+
  System Exiting…
 ```
-
+</details>
  ___________  
 
 ###  Customer Main Menu
@@ -141,7 +152,8 @@ Please indicate your choice:
 View all movies and movie filters.
 
 **Format**: 1  
-**Display**:
+<details>
+  <summary> <strong>Display:</strong> </summary>
 
 ```
 ======= Movie Filter =======   
@@ -156,12 +168,15 @@ View all movies and movie filters.
 ============================   
 Please indicate your choice:
 ```
+</details>
 
 **2. Exit the app: `2`**  
 Exit and terminate the app.
 
 **Format**: `2`  
-**Display**:
+<details>
+  <summary> <strong>Display:</strong> </summary>
+
 
 ```
 Thank you for your time.   
@@ -170,7 +185,7 @@ Have a good day!
 Logging out...
 ```
 
-
+</details>
   ___________  
 
 ### View Movie Guide
@@ -193,7 +208,9 @@ Logging out...
 Filter movies by genre.
 
 **Format**: 1
-**Display:**
+<details>
+  <summary> <strong>Display:</strong> </summary>
+
 
 ```
 Please indicate your choice:
@@ -209,13 +226,16 @@ Please indicate your choice:
  7 Drama
 ============================
 ```
+</details>
+
+<details>
+  <summary> <strong>Example:</strong> </summary>
 
 
-**Example**:
+   ` 2 `
 
-    2 
 
-**Display:**
+**Display**:
 
 ```
 ===== Filter by Genre ======
@@ -242,14 +262,16 @@ Movie List:
 ============================
 To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 ```
-
+</details>
 
 
 **2. Filter by rating: `2`**  
 Filter movie by the rating .
 
 **Format**: 2  
-**Display**:
+<details>
+  <summary> <strong>Display:</strong> </summary>
+
 
 ```
 Please indicate your choice:
@@ -257,13 +279,16 @@ Please indicate your choice:
 ===== Filter by Rating =====
 Select the cut-off rating (0-5):
 ```
+<details>
 
-**Example**:
+<details>
+  <summary> <strong>Example:</strong> </summary>
 
-    3  
 
 
-**Display:**
+    `3`  
+
+**Display**:
 
 ```
 ===== Filter by Rating =====
@@ -288,7 +313,9 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 Filter by show status (Coming Soon, Pre-Order, Now Showing, End of Showing).
 
 **Format**: `3`  
-**Display**:
+<details>
+  <summary> <strong>Display:</strong> </summary>
+
 
 ```
 = Filter by Showing Status =
@@ -302,12 +329,15 @@ Filter by show status (Coming Soon, Pre-Order, Now Showing, End of Showing).
 Please indicate your choice:
 ```
 
-**Example**:
+</details>
 
-    3 
+<details>
+  <summary> <strong>Example:</strong> </summary>
 
+    `3` 
 
-**Display:**
+**Display**:
+
 
 ```
 = Filter by Showing Status =
@@ -332,11 +362,15 @@ Movie List:
 To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 ```
 
+</details>
+
 **4. Filter by cineplex: `4`**  
 Filter by cinema location (Coming Soon, Pre-Order, Now Showing, End of Showing).
 
 **Format**: `4`  
-**Display:**
+<details>
+  <summary> <strong>Display:</strong> </summary>
+
 
 ```
 Please indicate your choice:
@@ -348,13 +382,16 @@ Please indicate your choice:
 ============================
 Please indicate your choice:
 ```
+</details>
 
-**Example**:
+<details>
+  <summary> <strong>Example:</strong> </summary>
 
-    2 
 
+    `2` 
 
 **Display**:
+
 
 ```
 ==== Filter by Cineplex ====
@@ -381,7 +418,9 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 Filter movie by title keyword.
 
 **Format**: `5`  
-**Display:**
+<details>
+  <summary> <strong>Display:</strong> </summary>
+
 
 ```
 Please indicate your choice:
@@ -390,12 +429,14 @@ Please indicate your choice:
 Search: 
 ```
 
-**Example:**
+<details>
+  <summary> <strong>Example:</strong> </summary>
 
-    The
 
+    `The`
 
-**Display:**
+**Display**:
+
 
 ```
 ===== Filter by Title ======
@@ -410,11 +451,15 @@ Movie List:
 To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 ```
 
+</details>
+
 **6. Select a movie: `6`**  
 Select a movie to view information about the movie and book the code.
 
 **Format**: `6`  
-**Display**:
+<details>
+  <summary> <strong>Display:</strong> </summary>
+
 
 ```
 Please indicate your choice:
@@ -439,11 +484,15 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 Please indicate your choice:
 ```
 
-**Example:**
+</details>
 
-    1  
+<details>
+  <summary> <strong>Example:</strong> </summary>
 
-Display:
+
+    `1`  
+
+**Display**:
 
 ```
 ======= Select Movie =======
@@ -474,12 +523,15 @@ Please indicate your choice:
 ============================
 Please indicate your choice:
 ```
+
+</details>
+
 **7. List all filtered movies:  `7`**  
 List movies based on the filters performed.
 
 **Format:** `7`  
-**Display:**
-
+<details>
+  <summary> <strong>Display:</strong> </summary>
 
 ```
 Please indicate your choice:
@@ -502,12 +554,15 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 
 ```
 
+</details>
 
 **8. Clear all filters:  `8`**  
 Clear all selected filters.
 
 **Format:** `8`  
-**Display:**
+<details>
+  <summary> <strong>Display:</strong> </summary>
+
 
 
 ```
@@ -531,11 +586,15 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 
 ```
 
+</details>
+
 **10. Go back to main menu: `10`**  
 Go back to access the main menu.
 
 **Format**: `10`  
-**Display**:
+<details>
+  <summary> <strong>Display:</strong> </summary>
+
 [Customer]
 
 ```
@@ -546,6 +605,7 @@ Go back to access the main menu.
 Please indicate your choice:
 ```
 
+</details>
  ___________  
 
 ### Selected Movie Menu
@@ -563,20 +623,115 @@ Please indicate your choice:
 Buy ticket of the selected movie.
 
 **Format**: `1`  
-**Display**:
+<details>
+  <summary> <strong>Display:</strong> </summary>
+
 
 ```
-======== Book Ticket ========   
-The movie is not available for sale.
-COMING SOON
+======== Book Ticket ========
+
+Enter 0 for the timing below: 
+--------------------------
+[Timing] 2021/5/19 19:12
+[Location] Cineplex: Jurong Point -> Cinema: 2
+
+Enter 1 for the timing below: 
+--------------------------
+[Timing] 2021/5/19 19:12
+[Location] Cineplex: Jurong Point -> Cinema: 3
+
+Enter 2 for the timing below: 
+--------------------------
+[Timing] 2021/5/19 19:12
+[Location] Cineplex: VivoCity -> Cinema: 6
+
+Enter 3 for the timing below: 
+--------------------------
+[Timing] 2021/5/19 19:12
+[Location] Cineplex: Bishan -> Cinema: 9
+
+>>Please enter your choice: (input "back" to go back)
+2
+You have selected: 
+--------------------------
+[Timing] 2021/5/19 19:12
+[Location] Cineplex: VivoCity -> Cinema: 6
+There are 30 empty seats.
+How many tickets do you need? 
+3
+---------------- <THE SCREEN>-----------------
+
+columns  1     2     3     4     5     6     
+row 1   --    --    --    --    --    --  
+row 2   --    --    --    --    --    --  
+row 3   --    --    --    --    --    --  
+row 4   --    --    --    --    --    --  
+row 5   --    --    --    --    --    --  
+
+Please select the seat for buyer No. 1
+Please enter the row number:  
+2
+Please enter the column number: 
+4
+Buyer no 1's seat = [2, 4]
+---------------- <THE SCREEN>-----------------
+
+columns  1     2     3     4     5     6     
+row 1   --    --    --    --    --    --  
+row 2   --    --    --    XX    --    --  
+row 3   --    --    --    --    --    --  
+row 4   --    --    --    --    --    --  
+row 5   --    --    --    --    --    --  
+
+Please select the seat for buyer No. 2
+Please enter the row number:  
+1
+Please enter the column number: 
+6
+Buyer no 2's seat = [1, 6]
+---------------- <THE SCREEN>-----------------
+
+columns  1     2     3     4     5     6     
+row 1   --    --    --    --    --    XX  
+row 2   --    --    --    XX    --    --  
+row 3   --    --    --    --    --    --  
+row 4   --    --    --    --    --    --  
+row 5   --    --    --    --    --    --  
+
+Please select the seat for buyer No. 3
+Please enter the row number:  
+3
+Please enter the column number: 
+2
+Buyer no 3's seat = [3, 2]
+---------------- <THE SCREEN>-----------------
+
+columns  1     2     3     4     5     6     
+row 1   --    --    --    --    --    XX  
+row 2   --    --    --    XX    --    --  
+row 3   --    XX    --    --    --    --  
+row 4   --    --    --    --    --    --  
+row 5   --    --    --    --    --    --  
+
+The Transaction is made, total ticket number: 3 
+==========================================
+Movie Title:     Tenet
+Show Time:       Wed May 19 19:12:32 SGT 2021
+Seats Booked:    [2,4] [1,6] [3,2] 
+Status:          COMPLETED
+Date Booked:     Mon Apr 12 19:21:27 SGT 2021
+==========================================
 ```
 
+</details>
 
 **2. View movie details:  `2`**  
 View the details of selected movie.
 
 **Format**: `2`  
-**Display**:
+<details>
+  <summary> <strong>Display:</strong> </summary>
+
 
 ```
 ====================================================================   Movie Title: Frozen 2   
@@ -598,12 +753,15 @@ Rating: 5
 Rating content: great movie concept!
 ```
 
+</details>
 
 **3. Add review: `3`**  
 Add new review for the selected movie
 
 **Format**: 3  
-**Display:**
+<details>
+  <summary> <strong>Display:</strong> </summary>
+
 
 ```
 Comment:   
@@ -624,12 +782,15 @@ The comment 'it's very good!' and the rating 5 have been successfully added to t
 Thank you for your review!
 ```
 
+</details>
 
 **4. Back to main menu: `4`**  
 Go back to access the main menu
 
 **Format**: `4`  
-**Display**:
+<details>
+  <summary> <strong>Display:</strong> </summary>
+
 [Customer]
 
 ```
@@ -639,6 +800,7 @@ Go back to access the main menu
 ============================   
 Please indicate your choice:
 ```
+</details>
 
  ___________  
 
@@ -663,8 +825,10 @@ Same as Customer Main Menu.
 Add a new movie to the movie list.
 
 **Format**: `2` 
-**Example**:
 
+<details>
+  <summary> <strong>Example:</strong> </summary>
+```
     Hi, Mom
     12
     2
@@ -676,8 +840,9 @@ Add a new movie to the movie list.
     Jia Ling, Shen Teng, Zhang Xiaofei, Chen He, Liu Jia, He He, Ding Jiali, Bao Wenjing, Han Yunyun, Wang Lin, Xu Juncong, Qiao Shan
     3
     After her mother Li Huanying is fatally injured in a car accident in 2001, grief-stricken Jia Xiaoling finds herself transported back in time to the year 1981, where she becomes her mother's close friend.
+```
 
-**Display:**
+**Display**:
 
 ```
 Movie title: 
@@ -718,12 +883,15 @@ After her mother Li Huanying is fatally injured in a car accident in 2001, grief
 The new movie "Hi, Mom" have been saved to the database.
 ```
 
+</details>
 
 **3. Delete Movie: 3**  
 Delete a movie in the movie list.
 
 **Format**: `3` 
-**Display**:
+<details>
+  <summary> <strong>Display:</strong> </summary>
+
 
 ```
 Select a movie to be deleted from the list (enter the number)
@@ -735,21 +903,29 @@ Select a movie to be deleted from the list (enter the number)
 6. Hi, Mom
 Please enter your choice: 
 ```
-**Example**:
+</details>
 
-    6
 
-**Display:**
+<details>
+  <summary> <strong>Example:</strong> </summary>
+
+
+    `6`
+
+**Display**:
+
 ```
 The movie has been removed from the database. 
 ```
-
+</details>
 
 **4. Update Movie: 4**  
 Update the movie details of a movie in the movie list.
 
 **Format**: `4` 
-**Display**:
+<details>
+  <summary> <strong>Display:</strong> </summary>
+
 
 ```
 Select a movie to be edited from the list (enter the number)
@@ -760,13 +936,19 @@ Select a movie to be edited from the list (enter the number)
 5. Frozen 2
 Please enter your choice: 
 ```
-**Example**:
+</details>
 
+<details>
+  <summary> <strong>Example:</strong> </summary>
+
+```
     1
     3
     Set several centuries in the future, the abandoned Alita is found in the scrapyard of Iron City by Ido, a compassionate cyber-doctor who takes the unconscious cyborg Alita to his clinic. As Alita learns to navigate her new life and the treacherous streets of Iron City, Ido tries to shield her from her mysterious past.
+```
 
-**Display:**
+**Display**:
+
 ```
 You have selected Alita: Battle Angel
 
@@ -782,16 +964,20 @@ Insert new synopsis:
 Set several centuries in the future, the abandoned Alita is found in the scrapyard of Iron City by Ido, a compassionate cyber-doctor who takes the unconscious cyborg Alita to his clinic. As Alita learns to navigate her new life and the treacherous streets of Iron City, Ido tries to shield her from her mysterious past.
 The changes have been saved to the database.
 ```
-
+</details>
 
 **5. Logout: 5**  
 Logout current admin user.
 
 **Format**: `5` 
-**Display**:
+
+<details>
+  <summary> <strong>Display:</strong> </summary>
+
 ```
 Logging out..
 ```
+</details>
 
 ## Command Summary  
 ### Customer  
