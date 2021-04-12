@@ -280,6 +280,8 @@ Not stated explicitly in the diagrams, when the `exit` command is entered, the `
 sets the `isExit = true`, ending control of the `commandLooper()` and resulting in `Finux` 
 proceeding to call `end()` to exit the Application.
 
+<div style="page-break-after: always;"></div>
+
 ### 3.5 Command Component
 ![CommandClassDiagram](img/CommandClassDiagram.png)\
 _Figure 8: **Command** Class Diagram (Part 1)_
