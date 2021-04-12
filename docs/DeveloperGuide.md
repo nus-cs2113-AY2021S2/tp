@@ -39,15 +39,18 @@ password is `Password`. When run as admin the user is able to `add` or `remove` 
 functions allows the app to be moderated and maintained by the person in charge. 
 
 ### Architecture
-![Architecture Diagram](./img/architecture%20diagram.png)
+![architecture diagram](./img/architecture%20diagram.png)
 
 The Architecture Diagram shown above explains the high-level design of NusFoodReviews Application. The following is a brief overview of each component.
 
-*Main* is responsible for,
+`Main` is responsible for,
 + At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 + At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
-*Commons* represents a collection of classes used by multiple other components.
+`Resources` contains the bundled resource(database file) of the application. When user run the application for the first time, 
+it will read from this resource and copy it to the local machine. Return user will not need to read from this resource anymore. 
+
+`Commons` represents a collection of classes used by multiple other components.
   
 
   
@@ -60,7 +63,7 @@ The rest of the App consists of four components.
 ### UI-Component
 
 ### Logic-Component
-![Architecture Diagram](./img/LoginClassDiagram.png)
+![Architecture Diagram](img/LogicClassDiagram.png)
 API: `NusFoodReviews.java`
 1. `NusFoodReviews` uses the `Parser` class to parse the user command.
 2. A `Command` object will be created and executed by the `NusFoodReviews`
@@ -77,6 +80,14 @@ Composition relationships exist between these classes.
 For example, when a Canteen is deleted, all Stores, Menus and Reviews will also be deleted.
 
 ### Storage-Component
+![Storage Class Diagram](./img/storage%20CD.png)
+
+The `Storage` component,
+* For new user, will first create a new directory and text file.
+* Next, will load the data from resource and write it into the newly created text file.
+* At the same time, it will also load into the in-app data.
+* If it is an existing user, it will only loads data from the text file into in-App data.  
+
 
 ## Implementation
 For public users, the list of commands is shown below:
@@ -147,6 +158,16 @@ To reset the store index in nusFoodReviews, `ResetStoreCommand#execute()` is cal
 passing in an ArrayList of canteens, and the ui object instantiated in NusFoodReviews.
 
 When `ResetStoreCommand` is first called, we pass the main NusFoodReviews object to the 
+constructor. This allows the `Command` to interact with the main object when `execute` is called.
+
+### Login Feature
+#### Implementation
+![DisplayMenus Sequence Diagram](./img/LoginCommand.png)
+
+To reset the application back to login page, `LoginCommand#execute()` is called,
+passing in an ArrayList of canteens, and the ui object instantiated in NusFoodReviews.
+
+When `LoginCommand` is first called, we pass main NusFoodReviews object to the 
 constructor. This allows the `Command` to interact with the main object when `execute` is called.
 
 ### Home Feature

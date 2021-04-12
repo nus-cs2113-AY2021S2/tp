@@ -6,14 +6,13 @@ import menus.Menu;
 import nusfoodreviews.NusFoodReviews;
 import parser.Parser;
 import storage.Storage;
+import storage.UpdateFile;
 import stores.Store;
 import ui.Ui;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
-
 
 public class DeleteMenuCommand extends Command {
     private NusFoodReviews nusFoodReviews;
@@ -75,7 +74,7 @@ public class DeleteMenuCommand extends Command {
         String menuName = store.getMenus().get(menuNumber).getItemName();
         store.deleteMenu(menuNumber);
         ui.menuDeleted(menuName);
-        Storage.save(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH),canteens);
+        UpdateFile.deleteAndUpdateFile(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH),canteens);
     }
 
 }
