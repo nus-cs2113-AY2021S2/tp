@@ -215,6 +215,8 @@ Output:
 
 ![add loan example output](img/AddLoanExampleOutput.png)
 
+<div style="page-break-after: always;"></div>
+
 #### 3.1.3 Add a saving record
 
 Lastly, you may have saved a sum of money over the past month of March and you recorded your `saving`
@@ -259,6 +261,8 @@ Output:
 
 ![list loan example output](img/ListLoanExampleOutput.png)
 
+<div style="page-break-after: always;"></div>
+
 #### 3.2.3 List all saving records
 
 Furthermore, all your saved savings can also be listed with the `saving` option `-s`. 
@@ -278,6 +282,8 @@ Format: `list -a`
 Output:
 
 ![list all example output](img/ListAllExampleOutput.png)
+
+<div style="page-break-after: always;"></div>
 
 ### 3.3 View category total amount: `view`
 
@@ -306,6 +312,8 @@ Output:
 
 ![view loan example output](img/ViewLoanExampleOutput.png)
 
+<div style="page-break-after: always;"></div>
+
 #### 3.3.3 View total savings
 
 Your total savings can also be calculated using `view` and the option `-s`.
@@ -326,6 +334,8 @@ Format: `view -a`
 Output:
 
 ![view all example output](img/ViewAllExampleOutput.png)
+
+<div style="page-break-after: always;"></div>
 
 ### 3.4 Mark a loan as returned: `return`
 
@@ -349,6 +359,8 @@ Output:
 
 ![return example output](img/ReturnExampleOutput.png)
 
+<div style="page-break-after: always;"></div>
+
 ### 3.5 Remove a record: `remove`
 
 ---
@@ -371,6 +383,8 @@ Output:
 >  
 > 💡 After removing a record from the application, you will have to use the list command again to retrieve the latest 
 > updated record IDs.
+
+<div style="page-break-after: always;"></div>
 
 ### 3.6 Check a person's credit score: `creditscore`
 
