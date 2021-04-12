@@ -255,13 +255,39 @@ choose `Run 'ABC'`.
 
 Crowd Your Control uses Gradle for **build automation and dependency management**.
 
+Given below are how to use Gradle for some important project tasks.
+
+* **`shadowJar`**: Uses the ShadowJar plugin to creat a fat JAR file in the `build/lib` folder, *if the current file is outdated*.<br>
+  e.g. `./gradlew shadowJar`.
+
+* **`run`**: Builds and runs the application.<br>
+  **`runShadow`**: Builds the application as a fat JAR, and then runs it.
+
+* **`checkstyleMain`**: Runs the code style check for the main code base.<br>
+  **`checkstyleTest`**: Runs the code style check for the test code base.
+
+* **`test`**: Runs all tests.<
+    * `./gradlew test` — Runs all tests
+    * `./gradlew clean test` — Cleans the project and runs tests
+
 
 ## Continous Integration (CI)
-* Code Coverage
+
+This project uses GitHub Actions for CI. The project comes with the necessary GitHub Actions configurations 
+files (in the `.github/workflows` folder). No further setting up required.
 
 * Repository-wide checks
 
 ### Making a release
+
+## Making a release
+
+Here are the steps to create a new release.
+
+1. Update the version number in [`Main.java`](https://github.com/AY2021S2-CS2113T-T09-1/tp/blob/master/src/main/java/seedu/duke/Main.java).
+1. Generate a fat JAR file using Gradle (i.e., `gradlew shadow`).
+1. Tag the repo with the version number. e.g. `v0.1`
+1. [Create a new release using GitHub](https://help.github.com/articles/creating-releases/). Upload the JAR file you created.
 
 ## Appendix
 
