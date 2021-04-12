@@ -35,16 +35,12 @@ indices given are not symbols, alphabets, negative numbers, unknown symbols, etc
 This command was partially done and I included some of my own implementations for better usability. This command is 
 used hand in hand with the `validateIndex` and hence I took up this.
 
----
-
 ### Contributions to UG
 
 * My groupmate Andy has designed the UG skeleton with reference to my 
 [individual Project(iP)](https://tzexern.github.io/ip/) User Guide.
 * Tasked to finish the `3.5 remove`, `3.6 creditscore` and `3.7 exit` under our `3. Features` section.
 * Taken all the screenshots used in our UG and updated them whenever necessary.
-
----
 
 ### Contributions to DG
 
@@ -55,16 +51,12 @@ and hyperlinks after we have finalized our rough template for DG.
     `Appendix B: User Stories`, `Appendix C: Non-Functional Requirements`, `Appendix D: Instructions for Manual Testing` 
     was done together by me and Jonah
 
----
-
 ### Contributions to Team-based Tasks
 
 1. Initiated to have a better documentation system to better facilitate each meeting for our team.
 1. Contributed in maintaining each meetings' Agenda, Meeting Minutes and Project Log with Andy.
 1. Facilitated meetings along with Andy.
 1. Vetting UG, DG.
-
----
 
 ### Contributions Beyond Project Team
 
