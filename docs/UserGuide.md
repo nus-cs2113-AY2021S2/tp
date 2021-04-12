@@ -74,7 +74,8 @@ These are the list of available commands:
         bye
 
 This is the list of food categories:
-        [VEGETABLE, FRUIT, MEAT, SEAFOOD, EGG, DAIRY, BEVERAGE, COOKED_DISH, READY_TO_EAT, FROZEN, OTHER]
+        [VEGETABLE, FRUIT, MEAT, SEAFOOD, EGG, DAIRY, BEVERAGE, COOKED_DISH, READY_TO_EAT, 
+FROZEN, OTHER]
 
 This is the list of storage locations:
         [FREEZER, UPPER_SHELF, MIDDLE_SHELF, LOWER_SHELF, DRAWERS, FRIDGE_DOOR, OTHER]
@@ -116,7 +117,8 @@ Example of usage:
 ```lang-none
 >> add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 800
 Great! I have added chicken into your fridge.
-Details: Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 800
+Details: Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, 
+quantity: 800
 
 >> add chicken /cat meat /exp 07-10-2021 /loc freezer /qty 200
 Sorry my friend, you have added this food before.
@@ -125,7 +127,8 @@ Please specify another foodname.
 
 >> add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 200
 Great! I have added chicken into your fridge.
-Details: Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 1000
+Details: Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, 
+quantity: 1000
 
 >> add pork /cat meat /exp 04-07-2021 /loc freezer /qty 500
 Great! I have added pork into your fridge.
@@ -133,11 +136,13 @@ Details: Food name: pork, category: MEAT, expiry: 04-07-2021, stored in: FREEZER
 
 >> add chicken wings /cat ready_to_eat /exp 17-04-2021 /loc upper_shelf /qty 500
 Great! I have added chicken wings into your fridge.
-Details: Food name: chicken wings, category: READY_TO_EAT, expiry: 17-04-2021, stored in: UPPER_SHELF, quantity: 500
+Details: Food name: chicken wings, category: READY_TO_EAT, expiry: 17-04-2021, stored in: 
+UPPER_SHELF, quantity: 500
 
 >> add lettuce /cat vegetable /exp 08-04-2021 /loc lower_shelf /qty 3
 Great! I have added lettuce into your fridge.
-Details: Food name: lettuce, category: VEGETABLE, expiry: 08-04-2021, stored in: LOWER_SHELF, quantity: 3
+Details: Food name: lettuce, category: VEGETABLE, expiry: 08-04-2021, stored in: LOWER_SHELF, 
+quantity: 3
 ```
 
 ### Display the list of all foods: `list`
@@ -153,10 +158,14 @@ Example of usage:
 ```lang-none
 >> list
 Here are the items in your fridge:
-        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 1000
-        2. Food name: pork, category: MEAT, expiry: 04-07-2021, stored in: FREEZER, quantity: 500
-        3. Food name: chicken wings, category: READY_TO_EAT, expiry: 17-04-2021, stored in: UPPER_SHELF, quantity: 500
-        4. Food name: lettuce, category: VEGETABLE, expiry: 08-04-2021, stored in: LOWER_SHELF, quantity: 3
+        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, 
+quantity: 1000
+        2. Food name: pork, category: MEAT, expiry: 04-07-2021, stored in: FREEZER, quantity: 
+500
+        3. Food name: chicken wings, category: READY_TO_EAT, expiry: 17-04-2021, stored in: 
+UPPER_SHELF, quantity: 500
+        4. Food name: lettuce, category: VEGETABLE, expiry: 08-04-2021, stored in: LOWER_SHELF, 
+quantity: 3
 ```
 
 ### Display the list of foods by category: `list <CATEGORY>`
@@ -175,8 +184,10 @@ Example of usage:
 ```lang-none
 >> list meat
 These are the MEAT in your fridge:
-        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 1000
-        2. Food name: pork, category: MEAT, expiry: 04-07-2021, stored in: FREEZER, quantity: 500
+        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, 
+quantity: 1000
+        2. Food name: pork, category: MEAT, expiry: 04-07-2021, stored in: FREEZER, quantity: 
+500
 
 >> list dairy
 These are the DAIRY in your fridge:
@@ -198,7 +209,8 @@ Example of usage:
 ```lang-none
 >> list freezer
 These are the food stored in FREEZER:
-        1. Food name: pork, category: MEAT, expiry: 04-07-2021, stored in: FREEZER, quantity: 500
+        1. Food name: pork, category: MEAT, expiry: 04-07-2021, stored in: FREEZER, quantity: 
+500
 
 >> list drawers
 These are the food stored in DRAWERS:
@@ -222,10 +234,14 @@ Example of usage:
 ```lang-none
 >> list
 Here are the items in your fridge:
-        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 1000
-        2. Food name: pork, category: MEAT, expiry: 04-07-2021, stored in: FREEZER, quantity: 500
-        3. Food name: chicken wings, category: READY_TO_EAT, expiry: 17-04-2021, stored in: UPPER_SHELF, quantity: 500
-        4. Food name: lettuce, category: VEGETABLE, expiry: 08-04-2021, stored in: LOWER_SHELF, quantity: 3
+        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, 
+quantity: 1000
+        2. Food name: pork, category: MEAT, expiry: 04-07-2021, stored in: FREEZER, quantity: 
+500
+        3. Food name: chicken wings, category: READY_TO_EAT, expiry: 17-04-2021, stored in: 
+UPPER_SHELF, quantity: 500
+        4. Food name: lettuce, category: VEGETABLE, expiry: 08-04-2021, stored in: LOWER_SHELF, 
+quantity: 3
 
 >> remove chicken /qty 200
 Noted! I've removed 200 of the food chicken from your fridge.
@@ -259,8 +275,10 @@ Example of usage:
 ```lang-none
 >> search chicken
 These are the chicken in your fridge:
-        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 300
-        2. Food name: chicken wings, category: READY_TO_EAT, expiry: 17-04-2021, stored in: UPPER_SHELF, quantity: 500
+        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, 
+quantity: 300
+        2. Food name: chicken wings, category: READY_TO_EAT, expiry: 17-04-2021, stored in: 
+UPPER_SHELF, quantity: 500
 
 >> search oyster
 You do not have oyster in your fridge.
@@ -277,10 +295,12 @@ Example of usage:
 ```lang-none
 >> expiring
 These are the food expiring in the next week:
-1. Food name: chicken wings, category: READY_TO_EAT, expiry: 17-04-2021, stored in: UPPER_SHELF, quantity: 500
+1. Food name: chicken wings, category: READY_TO_EAT, expiry: 17-04-2021, stored in: UPPER_SHELF, 
+    quantity: 500
 
 These are the food that has already expired, please consider removing them:
-1. Food name: lettuce, category: VEGETABLE, expiry: 08-04-2021, stored in: LOWER_SHELF, quantity: 3
+1. Food name: lettuce, category: VEGETABLE, expiry: 08-04-2021, stored in: LOWER_SHELF, 
+quantity: 3
 
 >> remove lettuce /qty 3
 Noted! I've removed lettuce from your fridge.
@@ -290,7 +310,8 @@ Total VEGETABLE quantity: 0
 
 >> expiring
 These are the food expiring in the following week:
-1. Food name: chicken wings, category: READY_TO_EAT, expiry: 17-04-2021, stored in: UPPER_SHELF, quantity: 500
+1. Food name: chicken wings, category: READY_TO_EAT, expiry: 17-04-2021, stored in: UPPER_SHELF, 
+quantity: 500
 ```
 
 ### List categories with food running low: `runninglow`
@@ -378,11 +399,16 @@ Example of usage:
 ```lang-none
 >> history
 This is the full history of items you've added in the fridge:
-        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 800
-        2. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 1000
-        3. Food name: pork, category: MEAT, expiry: 04-07-2021, stored in: FREEZER, quantity: 500
-        4. Food name: chicken wings, category: READY_TO_EAT, expiry: 09-04-2021, stored in: UPPER_SHELF, quantity: 500
-        5. Food name: lettuce, category: VEGETABLE, expiry: 08-04-2021, stored in: LOWER_SHELF, quantity: 3
+        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, 
+quantity: 800
+        2. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF,
+quantity: 1000
+        3. Food name: pork, category: MEAT, expiry: 04-07-2021, stored in: FREEZER, quantity: 
+500
+        4. Food name: chicken wings, category: READY_TO_EAT, expiry: 09-04-2021, stored in: 
+UPPER_SHELF, quantity: 500
+        5. Food name: lettuce, category: VEGETABLE, expiry: 08-04-2021, stored in: LOWER_SHELF, 
+quantity: 3
 ```
 
 ### Clear list history of items added: `history clear`
@@ -416,8 +442,10 @@ Example of usage:
 ```lang-none
 >> list
 Here are the items in your fridge:
-        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 300
-        2. Food name: chicken wings, category: READY_TO_EAT, expiry: 09-04-2021, stored in: UPPER_SHELF, quantity: 500
+        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, 
+quantity: 300
+        2. Food name: chicken wings, category: READY_TO_EAT, expiry: 09-04-2021, stored in: 
+UPPER_SHELF, quantity: 500
 
 >> clear
 Fridge has been cleared!
