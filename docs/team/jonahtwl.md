@@ -41,14 +41,12 @@ Contributions can be found on [RepoSense](https://nus-cs2113-ay2021s2.github.io/
 ---
 
 ### Contributions to UG
-As with the features implemented, I have documented the storage feature of our application and wrote the introduction
-of our application.
-
-Other contributions to the UG are:
-* Rewritten the UG to be more user-friendly (added personal touches to the UG) 
-* Simplified some explanations
+* Wrote section on the Storage feature
+* Wrote the introduction and description of our application
+* Rewritten the UG to be more user-friendly
+* Simplified some explanations of teammate's features after discussing with them
 * Added relatable examples to the features (e.g. Mark bought a bread for lunch at $3.45)
-* Frequently Asked Questions
+* Did the Frequently Asked Questions section with Gerard and Andy
 
 ---
 
