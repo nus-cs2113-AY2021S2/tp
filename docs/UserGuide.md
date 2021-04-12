@@ -829,7 +829,7 @@ paracetamol     | 3.00       | 120
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/InventoryList.PNG" width = "600">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/InventoryListFinal.PNG" width = "600">
 
 <br/><br/>
 
