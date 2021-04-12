@@ -429,21 +429,28 @@ Given below is an example usage scenario and how the save mechanism behaves at e
    When `#saveData()` for each of the storage objects are called, data from the `blockAlias`, `dailyRoute`, `favourite`, `history` or `nusMap` object is saved into the respective text file. <br>
    ![img_1.png](images/SaveFeatureStep2.png)
 
-<div markdown="block" class="alert alert-info">
-**:information_source:** At any point when a command is called, the `AliasStorage#saveData()`, `DailyRouteStorage#saveData()`, `FavouriteStorage#saveData()`, `HistoryStorage#saveData()`, `NotesStorage#saveData()` will be executed,
+<div markdown="span" class="alert alert-primary">
+
+:information_source: At any point when a command is called, the `AliasStorage#saveData()`, `DailyRouteStorage#saveData()`, `FavouriteStorage#saveData()`, `HistoryStorage#saveData()`, `NotesStorage#saveData()` will be executed,
 but not all text files will be modified. <br>
 * The `history` text file is modified by the `go`, `clear history` and `repeat history` commands. <br>
 * The `aliasList` text file is modified by the `add alias` and `delete alias` commands. <br>
 * The `dailyRouteList` text file is modified by the `add daily route` and `delete daily route` commands. <br>
 * The `noteList` text file is modified by the `add note` and `delete note` commands. <br>
 * The `favouriteList` text file is modified by the `add favourite`, `repeat favourite` and `delete favourite` commands <br>
+
 </div>
+
 <br>
 
 <div markdown="block" class="alert alert-info">
-**:information_source:** If a command fails its execution, it will not call `#saveData()` for all the storage objects,
+
+:information_source: If a command fails its execution, it will not call `#saveData()` for all the storage objects,
 so the content from the `nusMap`, `blockAlias`, `history`, `favourite`, or `dailyRoute` objects will not be saved into the text files.
+
 </div>
+
+<br>
 
 #### 3.6.3. Design Consideration
 **Current choice:** Saves the entire list of block aliases, visited routes, tagged notes, daily routes and favourite locations. <br/>
