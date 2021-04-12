@@ -11,14 +11,11 @@ public class MovieList {
     /**
      * If movieList.txt is missing, this is the default data that is used to populate the file that will
      * be created in its place
+     *
      * @return an ArrayList of Movie, containing default Movie objects.
      */
-    public static ArrayList<Movie> getDefaultMovieList(){
+    public static ArrayList<Movie> getDefaultMovieList() {
 
-        /*
-        Movie(String movieTitle, int movieID, int startY, int startM, int startD, int endY, int endM, int endD,
-				 String director, String[] cast, String genre, String synopsis, int choice, ArrayList<Review> reviews)
-         */
         ArrayList<Review> tempReview1 = new ArrayList<Review>();
         tempReview1.add(new Review("Good movie", 5));
         ArrayList<Review> tempReview2 = new ArrayList<Review>();
@@ -47,29 +44,29 @@ public class MovieList {
                         " Tenet, and fighting for the survival of the entire world, a Protagonist journeys through" +
                         " a twilight world of international espionage on a mission that will unfold in something" +
                         " beyond real time.", 3, tempReview1),
-                new Movie("Soul", 2, 2021, 4,10, 2021, 4, 20,
+                new Movie("Soul", 2, 2021, 4, 10, 2021, 4, 20,
                         "Pete Docter", new String[]{"Kemp Powers", "Jamie Foxx", "Tina Fey", "Graham Norton",
                         "Rachel House"}, "Comedy", "After landing the gig of a lifetime, a New" +
                         "York jazz pianist suddenly finds himself trapped in a strange land between Earth" +
                         "and the afterlife.", 3, tempReview2),
                 new Movie("Wonder Woman 1984", 3, 2021, 4, 10, 2021,
                         4, 20, "Patty Jenkins", new String[]{"Gal Gadot", "Chris Pine",
-                        "Kristen Wiig", "Pedro Pascal"},"Action", "Diana must contend with a" +
+                        "Kristen Wiig", "Pedro Pascal"}, "Action", "Diana must contend with a" +
                         "work colleague and businessman, whose desire for extreme wealth sends the world" +
                         "down a path of destruction, after an ancient artifact that grants wishes goes missing.",
                         3, tempReview3),
                 new Movie("Birds of Prey", 4, 2021, 5, 10, 2021,
                         6, 10, "Cathy Yan", new String[]{"Margot Robbie", "Rosie Perez",
-                       " Mary Elizabeth Winstead", "Jurnee Smollett"}, "Action", "After splitting " +
+                        " Mary Elizabeth Winstead", "Jurnee Smollett"}, "Action", "After splitting " +
                         "with the Joker," + "Harley Quinn joins superheroes Black Canary, Huntress and Renee " +
                         "Montoya to save a" + "young girl from an evil crime lord.", 2, tempReview4),
-                new Movie("The Invisible Man",5, 2021, 8, 10, 2021, 9,
-                        10, "Leigh Whannell", new String[]{"Elisabeth Moss","Oliver Jackson-Cohen",
+                new Movie("The Invisible Man", 5, 2021, 8, 10, 2021, 9,
+                        10, "Leigh Whannell", new String[]{"Elisabeth Moss", "Oliver Jackson-Cohen",
                         "Harriet Dyer", "Aldis Hodge"}, "Drama", "When Cecilia's abusive ex takes his" +
                         "own life and leaves her his fortune, she suspects his death was a hoax. As a series " +
                         "of coincidences turn lethal, Cecilia works to prove that she is being hunted by someone " +
                         "nobody can see.", 1, tempReview5),
-                new Movie("Avengers: Endgame", 6, 	2020, 1, 1, 2020,
+                new Movie("Avengers: Endgame", 6, 2020, 1, 1, 2020,
                         1, 10, "Joe Russo", new String[]{"Anthony Russo", "Chris Evans",
                         "Chris Hemsworth", "Robert Downey, Jr."}, "Action", "After Thanos, an" +
                         "intergalactic warlord, disintegrates half of the universe, the Avengers must reunite" +
@@ -90,10 +87,10 @@ public class MovieList {
                         "Jennifer Lee", new String[]{"Chris Buck", "Idina Menzel", "Kristen Bell"},
                         "Family", "Queen Elsa starts hearing a mysterious melodic voice calling to" +
                         "her. Unsettled, she answers it and that awakens the elemental spirits that lead her" +
-                        "to a quest to restore an old injustice.", 1,new ArrayList<Review>()),
+                        "to a quest to restore an old injustice.", 1, new ArrayList<Review>()),
                 new Movie("Charlie's Angels", 10, 2020, 3, 10, 2020, 3,
-                        20, "Elizabeth Banks",	new String[]{"Kristen Stewart", "Naomi Scott"},
-                        "Action",	"A team of female private agents, popularly known as Charlie's" +
+                        20, "Elizabeth Banks", new String[]{"Kristen Stewart", "Naomi Scott"},
+                        "Action", "A team of female private agents, popularly known as Charlie's" +
                         "Angels, are tasked by their mysterious boss to expose an international conspiracy to" +
                         " weaponise an energy conservation device.", 1, tempReview10)
         ));

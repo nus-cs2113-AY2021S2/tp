@@ -7,12 +7,12 @@ import java.util.Date;
 
 public class Booking implements Serializable {
     private static final long serialVersionUID = 7709150072267421383L;
-    private Showtimes showtimes;
-    private ArrayList<Seat> seats;
-    private Status status;
-    private Date date;
+    private final Showtimes showtimes;
+    private final ArrayList<Seat> seats;
+    private final Status status;
+    private final Date date;
 
-    public Booking(Showtimes showtimes, ArrayList<Seat> seats){
+    public Booking(Showtimes showtimes, ArrayList<Seat> seats) {
         this.showtimes = showtimes;
         this.seats = seats;
         this.status = Status.COMPLETED;
@@ -21,28 +21,28 @@ public class Booking implements Serializable {
     }
 
 
-    public void printBookingDetails(){
+    public void printBookingDetails() {
         Calendar d = getShowtimes().getDateTime();
         Date movieDate = d.getTime();
         System.out.println("==========================================");
         System.out.println("Movie Title:     " + showtimes.getMovieTitle());
         System.out.println("Show Time:       " + movieDate);
         System.out.print("Seats Booked:    ");
-        for(int i = 0; i<seats.size(); i++){
-            System.out.print("[" + (seats.get(i).getRow()+1)
-                    + "," + (seats.get(i).getColumn()+1)+"] ");
+        for (int i = 0; i < seats.size(); i++) {
+            System.out.print("[" + (seats.get(i).getRow() + 1)
+                    + "," + (seats.get(i).getColumn() + 1) + "] ");
         }
         System.out.println();
-        System.out.println("Status:          "+ status);
-        System.out.println("Date Booked:     "+ date);
+        System.out.println("Status:          " + status);
+        System.out.println("Date Booked:     " + date);
         System.out.println("==========================================");
     }
 
-    public ArrayList<Seat> getSeats(){
+    public ArrayList<Seat> getSeats() {
         return seats;
     }
 
-    public Showtimes getShowtimes(){
+    public Showtimes getShowtimes() {
         return this.showtimes;
     }
 
