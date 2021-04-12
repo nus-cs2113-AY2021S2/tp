@@ -593,6 +593,7 @@ Option 1 (Final choice): Using an ArrayList
 Option 2 : Using a List
 * Pros: Able to load and store very fast and also able to perform functions like "list" fast.
 * Cons: No random access and thus made certain functions more troublesome code wise.
+
 <br>
 
 ### 5.2.3 Patient Delete
@@ -644,7 +645,8 @@ Option 1 (Final choice): Not using an iterator
 Option 2 : Using an iterator
 * Pros: An iterator allows for more flexible data access as it allows for more efficient deletion of a block of data, and it helps to keep the location of where data was manipulated.
 * Cons: Maintenance of the iterator is very difficult, and it may not be worth the effort to implement when solutions exist that only require inbuilt functions.
-  <br>
+
+<br>
   
 ### 5.2.4 Patient List
 
@@ -689,7 +691,7 @@ Option 2 : Printing the patients in blocks with no common rows or columns.
 * Pros: Easy to implement and may be easier to show a single patient.
 * Cons: Very difficult to view when the list of patients became increasingly large.
 
-  <br>
+<br>
 
 ### 5.2.5 Patient Find
 
@@ -747,7 +749,8 @@ Option 1 (Final choice): Allowing case-insensitive inputs.
 Option 2 : Only allowing case-sensitive inputs.
 * Pros: Easy to implement and can be more specific.
 * Cons: Harder to consistently type and very punishing for users who don't know if what they are searching for has capital letters.
-  <br>
+  
+<br>
 
 ###  5.3 Doctor Appointment
 
@@ -960,6 +963,8 @@ Whenever a user input is given to the Nurse Schedule Menu, the following steps w
 
 6. Based on the recognised command, the relevant execution will be carried out.
 
+<br>
+
 ### 5.4.2 Nurse Schedule Add
 
 **Implementation**
@@ -997,6 +1002,7 @@ Invalid Inputs include:
 
 5. Control is then returned to NurseScheduleInstance.
 
+<br>
 
 ### 5.4.3 Nurse Schedule Delete
 
@@ -1033,6 +1039,8 @@ Invalid Inputs include:
 
 6. Control is then returned to NurseScheduleInstance.
 
+<br>
+
 ### 5.4.4 Nurse Schedule List all
 
 **Implementation**
@@ -1066,6 +1074,7 @@ Invalid Inputs include:
 
 6. `listAllSchedules()` iterates through the arraylist of Nurse Schedule objects, printing all schedules.
 
+<br>
 
 ### 5.4.5 Nurse Schedule List by Nurse ID
 
@@ -1300,6 +1309,7 @@ its users save those precious seconds.
 |   * * *  |  nurse  |              quickly add/delete inventories                   |           manage our inventories better          |
 |   * * *  |  nurse  |                quickly look up inventories                    |  plan what and when to restock our supplies      |
 |     *    |  nurse  |       have the program recognize slight errors in typing      | have leeway working in a high-stress environment |
+
 <br>
 
 ## Appendix C: Non Functional Requirements
@@ -1409,7 +1419,6 @@ Choose a directory from the Start Menu
 	Type "help" for Inventory menu commands
 	
 	
-
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6. **Test case:** `help` (where you will be directed to the Help Menu)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
@@ -1430,7 +1439,7 @@ Choose a directory from the Start Menu
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Goodbye! Have a nice day!```
 	 
-<br/><br/>
+<br>
 
 ### Choose which feature you want to use from Staff Menu	 
 1. Adding a new staff
@@ -1452,8 +1461,7 @@ Choose a directory from the Start Menu
 	Error in Staff ID input
 	Please input with the following format [D/N][5 digit ID number]
 
-
-<br/>
+<br>
  
 2. Deleting staff
 
@@ -1471,7 +1479,7 @@ Choose a directory from the Start Menu
 	Error in Staff ID input
 	Please input with the following format [D/N][5 digit ID number]
 
-<br/>
+<br>
 
 3. Listing all doctors and nurses
 
@@ -1536,7 +1544,7 @@ Choose a directory from the Start Menu
 		list/doctors
 
 	
-<br/>
+<br>
 
 4. Finding a staff
 
@@ -1559,7 +1567,7 @@ Choose a directory from the Start Menu
 
 	OOPS! There are too few inputs for this command
 
-<br/>
+<br>
 
 5. Returning to Start Menu
 
@@ -1567,7 +1575,7 @@ Choose a directory from the Start Menu
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to start menu!```
 
-<br/>
+<br>
 
 6. Directing to help function
 
@@ -1588,7 +1596,7 @@ Choose a directory from the Start Menu
 	return    Returns you to the Start Menu!                              -                                 
 	
 
-<br/><br/>
+<br>
 
 ### Choose which feature you want to use from Patient Menu	 
 1. Adding a new patient
@@ -1701,7 +1709,7 @@ Please input with the following format [P][5 digit ID number]
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** `There is no patient in the list that matches your keywords!`
 
-<br/>
+<br>
 
 5. Returning to Start Menu
 
@@ -1709,7 +1717,7 @@ Please input with the following format [P][5 digit ID number]
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to start menu!```
 
-<br/>
+<br>
 
 6. Directing to help function
 
@@ -1730,7 +1738,7 @@ Please input with the following format [P][5 digit ID number]
 	return    Returns you to the Start Menu!                              -                                
 	
 
-<br/><br/>
+<br>
 
 ### Choose which feature you want to use from Appointments' Menu
 
@@ -1755,8 +1763,7 @@ Error in Doctor ID input
 Please input with the following format [D][5 digit ID number]
 ```
 
-	
-<br/>
+<br>
  
 2. Deleting an appointment
 
@@ -1863,7 +1870,7 @@ Error in ID input
 Please input with the following format [all/D/A] followed by [5 digit ID number]
 ```
 	
-<br/>
+<br>
 
 4. Returning to Start Menu
 
@@ -1871,7 +1878,7 @@ Please input with the following format [all/D/A] followed by [5 digit ID number]
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to Start Menu!```
 
-<br/>
+<br>
 
 5. Directing to help function
 
@@ -1890,7 +1897,7 @@ Please input with the following format [all/D/A] followed by [5 digit ID number]
 	return    Returns you to the Start Menu!                   
 	
 
-<br/><br/>
+<br>
 
 
 ### Choose which feature you want to use from Schedules' Menu	 
@@ -1916,7 +1923,7 @@ Please ensure that the ID includes 5 numbers after "N" or "P"
 eg. N12345 or P67891
 ```
 	
-<br/>
+<br>
  
 2. Deleting schedule
 
@@ -1933,7 +1940,7 @@ eg. N12345 or P67891
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** `NurseID does not exist! Please check Staff List and try again!`
 
-<br/>
+<br>
 
 3. Listing schedules
 
@@ -1978,7 +1985,7 @@ OOPS! Please check to see if your command is properly formatted!
 Please input with the following format: list/[NurseID/all]
 ```
 
-<br/>
+<br>
 
 4. Returning to Start Menu
 
@@ -1986,7 +1993,7 @@ Please input with the following format: list/[NurseID/all]
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to start menu!```
 
-<br/>
+<br>
 
 5. Directing to help function
 
@@ -2005,7 +2012,7 @@ Please input with the following format: list/[NurseID/all]
 	return    Returns you to the Start Menu!                                   -    
 	
 
-<br/><br/>
+<br>
 
 ### Choose which feature you want to use from Inventory Menu
 1. Adding a new item or increasing quantity of current items.
@@ -2024,7 +2031,7 @@ Please input with the following format: list/[NurseID/all]
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Please enter a valid price!```
 
-<br/>
+<br>
 
 2. Decreasing quantity of items.
 
@@ -2039,7 +2046,7 @@ Please input with the following format: list/[NurseID/all]
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```OOPS! This item does not exist in the Inventory!```
 
-<br/>
+<br>
 
 3. Listing all items
 
@@ -2058,7 +2065,7 @@ Please input with the following format: list/[NurseID/all]
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```OOPS! There are too many inputs for this command```
 
-<br/>
+<br>
 
 4. Returning to Start Menu
 
@@ -2066,7 +2073,7 @@ Please input with the following format: list/[NurseID/all]
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to start Menu!```
 
-<br/>
+<br>
 
 5. Directing to help function
 
@@ -2085,5 +2092,4 @@ Please input with the following format: list/[NurseID/all]
 	delete    Deletes the Inventory item from the list!                   delete/[Item Name]/[Quantity]                                
 	return    Returns you to the Start Menu!                              -            
 
-
-<br/><br/>
+<br>
