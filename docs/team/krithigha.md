@@ -38,7 +38,7 @@ project: [RepoSense Link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?se
 #### Contributions to documentation
 
 * User Guide
-    * I contributed majority of the UG content. From [section 1](https://ay2021s2-cs2113t-f08-3.github.io/tp/UserGuide.html#1-introduction) to [section 4.2.5](https://ay2021s2-cs2113t-f08-3.github.io/tp/UserGuide.html#425-review-a-recommendation)
+    * I contributed to the majority of the UG content. From [section 1](https://ay2021s2-cs2113t-f08-3.github.io/tp/UserGuide.html#1-introduction) to [section 4.2.5](https://ay2021s2-cs2113t-f08-3.github.io/tp/UserGuide.html#425-review-a-recommendation)
     * Included updated code snippets that reflect V2.1 and added in important additional information for each section the user needs to take note of.
 * Developer Guide
   * Wrote the table of contents and sections to be included in the DG. This facilitated the allocation of workload amongst team members as we were able to split the sections to work on easily.
@@ -46,8 +46,8 @@ project: [RepoSense Link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?se
 
 #### Contributions to team-based tasks :
 
-* Reviewed teammates PRs, approved and merged PRs
-* Created and assigned issues to team members which can be found [here](https://github.com/AY2021S2-CS2113T-F08-3/tp/issues?q=is%3Aissue+author%3A%40me+is%3Aclosed)
+* Reviewed teammates PRs, approved and merged PRs which can be found [here](https://github.com/AY2021S2-CS2113T-F08-3/tp/pulls?q=reviewed-by%3AKrithigha24)
+* Created and assigned issues to team members which can be found [here](https://github.com/AY2021S2-CS2113T-F08-3/tp/issues?q=is%3Aissue+is%3Aclosed+author%3AKrithigha24)
 
 ### Contributions beyond the project team:
 

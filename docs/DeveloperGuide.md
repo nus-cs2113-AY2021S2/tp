@@ -1,4 +1,4 @@
-# Developer Guide
+# Connoisseur Developer Guide
 
 ## Table of Contents
 
@@ -14,7 +14,7 @@
    
     3.3 [Verifying the setup](#33-verifying-the-setup)
    
-    3.4 [Configure coding style](#34-configure-the-coding-style)
+    3.4 [Configure coding style](#34-Configure-Coding-style)
    
 4. [Design](#4-design)
     
@@ -24,7 +24,7 @@
     
     4.3 [Logic component](#43-logic-component)
     
-    4.4 [Model component](#44-model-componenet)
+    4.4 [Model component](#44-model-component)
     
     4.5 [Sorter component](#45-sorter-component)
     
@@ -56,6 +56,8 @@
 
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.3 [Edit a Recommendation Feature](#533-edit-a-recommendation-feature)
 
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.4 [Delete a Recommendation Feature](#534-delete-a-recommendation-feature)
+   
    5.4 [Storage](#54-storage)
 
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.4.1 [Storage Format](#541-storage-format)
@@ -64,31 +66,13 @@
 
    5.5 [Error handling](#55-error-handling)
 
-   5.6 [Personalised Messages](#56-personalised-messages)
-
-6. [Planned Features](#6-planned-features)
-
-7. [Documentation](#7-documentation)
-
-   7.1 [Setting up and maintaining the project website](#71-setting-up-and-maintaining-the-project-website)
-
-   7.2 [Style guidance](#72-style-guidance)
-
-   7.3 [Diagrams](#73-diagrams)
-
-8. [Testing](#8-testing)
-
-   8.1 [Running tests](#81-running-tests)
-
-   8.2 [Types of tests](#82-types-of-tests)
-
-9. [Appendix](#appendix)
+6. [Appendix](#6-appendix)
 
    Appendix A: [Product Scope](#appendix-a-product-scope)
-    * [Target User Profile](#target-user-profile)
-    * [Value Proposition](#value-proposition)
+    * [Target User Profile](#appendix-a-product-scope)
+    * [Value Proposition](#appendix-a-product-scope)
 
-   Appendix B: [User Stores](#appendix-b-user-stories)
+   Appendix B: [User Stories](#appendix-b-user-stories)
 
    Appendix C: [Non-Functional Requirements](#appendix-c-non-functional-requirements)
 
@@ -119,15 +103,15 @@ code to improve Connoisseur.
 ### 3.1 Prerequisites
 
 1. JDK 11 <br>
-   [Download JDK 11](#https://www.oracle.com/sg/java/technologies/javase-jdk11-downloads.html)
+   [Download JDK 11](https://www.oracle.com/sg/java/technologies/javase-jdk11-downloads.html)
 2. *Recommended integrated development environment for coding* : IntelliJ IDEA<br>
-   [Download IntelliJ IDEA](#https://www.jetbrains.com/idea/)
+   [Download IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
 ### 3.2 Setting up the project in your computer
 
-> <p>&#10071 Follow the steps in the following guide precisely. Things will not work out if you deviate in some steps.
+> <span>&#10071;</span> Follow the steps in the following guide precisely. Things will not work out if you deviate in some steps.
 
-1. **Fork** this repo, and **clone** the fork into your computer.
+1. **Fork** this [repo](https://github.com/AY2021S2-CS2113T-F08-3/tp), and **clone** the fork into your computer.
 2. Open IntelliJ (if you are not in the welcome screen, click **`File`** > **`Close Project`** to close the existing
    project dialog first).
 3. Set up the correct JDK version for Gradle  
@@ -139,6 +123,9 @@ code to improve Connoisseur.
 7. Click **`OK`** to accept the default settings.
 
 ### 3.3 Verifying the setup
+1. Run Connoisseur.main()
+2. Try a few commands.
+3. Run the [tests](TestingGuide.md) to ensure they all pass.
 
 ### 3.4 Configure Coding style
 
@@ -154,17 +141,17 @@ to set up IDEA’s coding style to match ours.
 The following section describes the design and implementation of the product. We use UML diagrams and code snippets to
 explain some aspects of the code. If you are unfamiliar with UML, the diagrams should still be fairly understandable.
 However, you may wish to
-consult [[CS2113/T] Modeling](https://nus-cs2113-ay2021s1.github.io/website/se-book-adapted/chapters/modeling.html) for
+consult [[CS2113/T] Modeling](https://nus-cs2113-ay2021s2.github.io/website/se-book-adapted/chapters/modeling.html) for
 a quick introduction to UML.
 
 ### 4.1 Architecture: High Level View
 
-**How the architecture components interact with each other**
+**This section illustrates how the architecture components interact with each other**
 
 The following Figure 1, provides a rough overview of how **Connoisseur** is built.<br>
 
 ![Architecture.png](./diagrams/Architecture.png)<br>
-Figure 1. Architecture of Connoisseur <br>
+<p align="center">Figure 1. Architecture of Connoisseur <br>
 
 As shown in Figure 1, the user interacts with `UI`, which takes in commands and displays output to the user. 
 
@@ -190,12 +177,12 @@ The *ui.readCommand()* method reads the input which is then passed on to the `Lo
 The *ui.println(output)* method prints output to the console. Default output messages are stored as static String constants in the `Messages` class, while commonly used output messages are made methods by themselves. *ui.printGreeting()* is one such method and is called to display the welcome message to the user. 
 
 
-### 4.3. Logic component
+### 4.3 Logic component
 
 ![LogicComponent.png](./diagrams/LogicComponent.png)<br>
-Figure 2. Logic Component of Connoisseur <br>
+<p align="center">Figure 2. Logic Component of Connoisseur <br>
 
-The Logic component of Connoisseur consists of the classes `Parser` and `Commands`. 
+As show in Figure 2, the Logic component of Connoisseur consists of the classes `Parser` and `Commands`. 
 It is instantiated in the connoisseur() method and serves to translate user input into commands which are recognised by the application. 
 
 The *determineCommand()* method of the `Parser` class deciphers the command word of the input, calling the respective command's method in `Commands`. 
@@ -203,12 +190,12 @@ The *determineCommand()* method of the `Parser` class deciphers the command word
 Each method in `Commands` will then check the arguments provided with the commands to make sure that they are valid, before executing the command in `Storage`, `ReviewList` or `RecommendationList`. 
 
 
-### 4.4. Model component
+### 4.4 Model component
 
 ![ModelComponent.png](./diagrams/ModelComponent.png)<br>
-Figure 2. Model Component of Connoisseur <br>
+<p align="center">Figure 3. Model Component of Connoisseur <br>
 
-The Model component of Connoisseur consists of the classes `ReviewList` and `RecommendationList`. 
+As shown in Figure 3, the Model component of Connoisseur consists of the classes `ReviewList` and `RecommendationList`. 
 It is instantiated in the connoissuer() method and serves to store data as the program runs. 
 
 Both the classes in the Model component contain methods which modify the content of their respective ArrayLists, which consist of either Reviews or Recommendations. 
@@ -216,9 +203,9 @@ Both the classes in the Model component contain methods which modify the content
 ### 4.5. Sorter component
 
 ![SorterComponent.png](./diagrams/SorterComponent.png)<br>
-Figure 3. Sorter Component of Connoisseur <br>
+<p align="center">Figure 4. Sorter Component of Connoisseur <br>
 
-The Sorter component is a separate component which serves to sort the reviews based on a few sorting methods. 
+As shown in Figure 4, The Sorter component is a separate component which serves to sort the reviews based on a few sorting methods. 
 
 When the *sortReviews()* method is called in the `ReviewList`, a sortMethod parameter is passed together with it to the `Sorter`, which then determines which of the Sorts to sort the reviews by. If the sortMethod parameter is empty, `Sorter` will use the default sortMethod saved. The sorted reviews are then passed back to `ReviewList`. 
 
@@ -235,17 +222,17 @@ The following section describes the implementation of certain key features in th
 provides some background into our (the original developers of Connoisseur) thinking and the rationale behind the decisions.
 
 ### 5.1 Mode Switch Feature
-The mode switch feature is shown in Figure 4. The two modes in Connoisseur are Review and Recommendation. These two modes have some overlapping commands. 
+The mode switch feature is shown in Figure 5. The two modes in Connoisseur are Review and Recommendation. These two modes have some overlapping commands. 
 However, depending on the mode Connoisseur is currently in, the same command displays different output to the user. Each mode has its own
 unique features and commands as well. This section explains how the mode switch feature is implemented.
 
 ![img.png](images/modeSwitchingCodeSnippet.png)
-Figure 4. Mode Switching in Connoisseur
+<p align="center">Figure 5. Mode Switching in Connoisseur
 
-The following Figure 5 is the Sequence diagram to _Switch Mode_.<br>
+The following Figure 6 is the Sequence diagram to _Switch Mode_.<br>
 
 ![img_1.png](diagrams/ModeSwitch.png)
-Figure 5. Sequence Diagram for Mode Switch Feature
+<p align="center">Figure 6. Sequence Diagram for Mode Switch Feature
 
 A general explanation of how this feature works:: <br>
 
@@ -255,19 +242,27 @@ A general explanation of how this feature works:: <br>
 4. Finally, `reviewMode()` and `recommendationMode()` calls `Ui` class method `println()` to display message _"You are in review mode"_ or _"You are in recommendation mode"_ 
    respectively as shown in Figure 4.<br>
 
-
 ### 5.2 Review Mode
 When User inputs a command, `Commands` class checks for the value of the attribute
 `boolean isReviewMode` before executing the command. As explained in [section 5.1](#51-mode-switch-feature), when in review mode, `boolean isReviewMode` is equal to _true_. 
 Hence, only commands that are recognised by the Review Mode are executed when input by user. Else, inavild command message is displayed to the user.
 
-### 5.2.1 Add a Review Feature
+This mode implements the following features:
+
+*`add`/`new`/`add quick`/`add full`/`new quick`/`new full` - Add a Review
+*`list [SORT_TYPE(optional parameter)]` - List Review sorted by SORT_TYPE parameter
+* `sort [SORT_TYPE(Optional parameter)]` - Displays current saved sorting method or changes saved sorting method to that specified by SORT_TYPE parameter
+* `view [TITLE_OF_REVIEW]` - View a Review
+* `edit [TITLE_OF_REVIEW]` - Edit a Review
+*`delete [TITLE_OF_REVIEW]` - Delete a Review
+  
+#### 5.2.1 Add a Review Feature
 The mechanism to add a review is facilitated by the `ReviewList` class. The user is able to add in a new review using `new` , `add` ,`new quick`,`add quick`, `new full` or `add full` commands.
 
-The following Figure 6 is the Sequence diagram to _add a review_.
+The following Figure 7 is the Sequence diagram to _add a review_.
 
 ![img_2.png](diagrams/addReviewSeq.png)
-Figure 6. Sequence Diagram for Add a Review Feature <br>
+<p align="center">Figure 7. Sequence Diagram for Add a Review Feature <br>
 
 A general explanation of how this feature works: <br>
 
@@ -286,16 +281,16 @@ A general explanation of how this feature works: <br>
 
 6. The new `Review` object is added into an ArrayList `reviews`.
 
-### 5.2.2 List Reviews Feature 
+#### 5.2.2 List Reviews Feature 
 This feature prints out `Title`, `Category`, `Rating` and `Date` string attributes for each `Review` object in the ArrayList `reviews`.
 The mechanism to list reviews is facilitated by the `ReviewList` class. The user is able to list all reviews using `list` command.
 The mechanism to list reviews sorted alphabetically according to either `Title`, `Cateogry` or from highest to lowest `rating` or from earliest/ latest `Date` of entry of the review is facilitated by the `Sorter` class.
 
-The following Figure 7 is the Sequence diagram to _list a review_.
+The following Figure 8 is the Sequence diagram to _list a review_.
 
 
 ![img_4.png](diagrams/listReviewSeq.png)
-Figure 7. Sequence Diagram for List a Review Feature
+<p align="center">Figure 8. Sequence Diagram for List a Review Feature
 
 A general explanation of how this feature works:
 
@@ -304,13 +299,13 @@ A general explanation of how this feature works:
 3. If additional parameters specifying sort method in addition to list command is input (for e.g `list rating`) , `ReviewList` calls `Sorter#SortReviews(sortMethod)`.
 4. `ReviewList` class executes `displayReviews()` method to display a list of reviews to the user.
 
-### 5.2.3 Sort Reviews Feature
+#### 5.2.3 Sort Reviews Feature
 The mechanism to change the saved sorting method is implemented by `Sorter` class
 
-The following Figure 8 is the Sequence diagram to _Sort a review_.<br>
+The following Figure 9 is the Sequence diagram to _Sort a review_.<br>
 
 ![sortReviewSeq.png](diagrams/sortReviewSeq.png)
-Figure 8. Sequence Diagram for Sort Reviews Feature
+<p align="center">Figure 9. Sequence Diagram for Sort Reviews Feature
 
 A general explanation of how this feature works:
 1. User inputs command `sort [sortType]`, where sortType is additional parameters the user can specify such as `TITLE`, `CATEGORY`, `RATING`, `EARLIEST` or `LATEST`. 
@@ -319,13 +314,13 @@ A general explanation of how this feature works:
 3. Else if `private boolean isReviewMode` attribute of `Commands` class is set to _true_, if user did not specify `sortType`, `ReviewList` calls `Ui#printCurrentSortMethod()`.
 4. If user did specify `sortType`, `ReviewList` calls `Sorter#changeSortMethod()` which changes and saves to the specified sort method.
 
-### 5.2.4 View a Review Feature
+#### 5.2.4 View a Review Feature
 The mechanism to view a single specified review is implemented by `ReviewList` class
 
-The following Figure 9 is the Sequence diagram to _View a review_.<br>
+The following Figure 10 is the Sequence diagram to _View a review_.<br>
 
 ![img_11.png](diagrams/ViewReviewSeq.png)
-Figure 9. Sequence Diagram for View a Review Feature
+<p align="center">Figure 10. Sequence Diagram for View a Review Feature
 
 A general explanation of how this feature works:
 1. User inputs command `view [title]`, where parameter title is the title of review that should be specified by the user.
@@ -334,12 +329,12 @@ A general explanation of how this feature works:
 3. Else if `private boolean isReviewMode` attribute of `Commands` class is set to _true_, if user did not specify title of review, or it does not exist in the list , `ReviewList` calls `Ui#missingTitle` and `Ui#invalidTitle` respectively .
 4. If title of review exists in ArrayList `reviews`, `ReviewList` calls `displaySingleReview()` method which displays the specified review.
 
-### 5.2.5 Edit a Review Feature
+#### 5.2.5 Edit a Review Feature
 The mechanism to edit a specified review is implemented by `ReviewList` class
 
-The following Figure 10 is the Sequence diagram to _Edit a review_.<br>
+The following Figure 11 is the Sequence diagram to _Edit a review_.<br>
 ![img_9.png](diagrams/EditReviewSeq.png)
-Figure 10. Sequence Diagram for Edit a Review Feature
+<p align="center">Figure 11. Sequence Diagram for Edit a Review Feature
 
 A general explanation of how this feature works:
 1. User inputs command `edit [title]`, where parameter title is the title of review that should be specified by the user.
@@ -347,12 +342,12 @@ A general explanation of how this feature works:
 3. Since the command `edit [title]` is recognised in both review and recommendation mode, `private boolean isReviewMode` attribute of `Commands` class is set to true in this case.
 4. `ReviewList` class implements edits to the specified review object in ArrayList `reviews` and sets details.
 
-###5.2.6 Delete a Review Feature
+#### 5.2.6 Delete a Review Feature
 The mechanism to delete a specified review is implemented by `ReviewList` class
 
-The following Figure 11 is the Sequence diagram to _Delete a review_.<br>
+The following Figure 12 is the Sequence diagram to _Delete a review_.<br>
 ![img_10.png](diagrams/DeleteReviewSeq.png)
-Figure 11. Sequence Diagram for Delete a Review Feature
+<p align="center">Figure 12. Sequence Diagram for Delete a Review Feature
 
 A general explanation of how this feature works:
 1. User inputs command `delete [title]`, where parameter title is the title of review that should be specified by the user.
@@ -362,7 +357,10 @@ A general explanation of how this feature works:
 
 ### 5.3 Recommendation Mode
 This section provides details on the implementation of the various commands that occurs in the recommendation mode.
-This mode allows users to keep a list of recommendations that they have not tried/completed.
+This mode allows users to keep a list of recommendations that they have not tried/completed. When User inputs a command, `Commands` class checks for the value of the attribute
+`boolean isReviewMode` before executing the command. As explained in [section 5.1](#51-mode-switch-feature), when in recommendation mode, `boolean isReviewMode` is equal to _false_.
+Hence, only commands that are recognised by the Review Mode are executed when input by user. Else, inavild command message is displayed to the user.
+
 This mode implements the following features:
 
 *`add`/`new` - Add a Recommendation
@@ -371,17 +369,17 @@ This mode implements the following features:
 *`delete [TITLE_OF_RECOMMENDATION]` - Delete a Recommendation
 *`done [TITLE_OF_RECOMMENDATION]` - Review a Recommendation
 
-### 5.3.1 Add a Recommendation Feature
+#### 5.3.1 Add a Recommendation Feature
 This feature allows user to add a recommendation for any of the activities that they have not completed.
 
 <span>&#10071;</span> Title of a new recommendation cannot exist in current list of reviews. An error message would be printed out.
 
 The mechanism to add a recommendation is facilitated by the `RecommendationList` class. The user is able to add in a new recommendation using `new` or `add` command.
 
-The following is the Sequence diagram to `add a recommendation`.
+The following Figure 13 is the Sequence diagram to `add a recommendation`.
 
 ![add reco seq](./diagrams/Add_Reco_Sequence_Diagram.png)
-<p align="center">Figure !!. Sequence Diagram for add recommendations</p>
+<p align="center">Figure 13. Sequence Diagram for add recommendations</p>
 
 A general explanation of add recommendation works:
 1. `Ui` will read in user command, calls `Paser#determineCommand()` to determine the input.
@@ -399,28 +397,30 @@ A general explanation of add recommendation works:
 
 6. The new `Recommendation` is added into an ArrayList `recommendations`.
 
-### 5.3.2 List Recommendation Feature
+#### 5.3.2 List Recommendation Feature
 This feature prints out `title`, `category`, `price range`,`recommendedby` and `location` String attributes for each `Recommendation` class in the ArrayList `recommendations`.
 
 The mechanism to list recommendations is facilitated by the `RecommendationList` class. The user is able to list all recommendations using `list` command.
 
-The following is the Sequence diagram to `list a recommendation`.
+The following Figure 14 is the Sequence diagram to `list recommendations`.
 ![List_Reco_seq](./diagrams/List_Reco_Sequence_Diagram.png)
+<p align="center">Figure 14. Sequence Diagram for list recommendations</p>
 
 A general explanation of how this feature works:
 
 1. `Commands` calls `RecommendationList#listRecommendations` to retrieve `Recommendation` in `recommendations`
 2. `RecommendationList` calls itself `displayRecommendations` to iterate through and print `Recommendation` in `recommendations`.
 
-### 5.3.3 Edit a Recommendation Feature
+#### 5.3.3 Edit a Recommendation Feature
 This feature allows the user to change the fields in a specific `Recommendation` Class in the ArrayList `recommendations`.
 
 The mechanism to edit a recommendation is facilitated by the `RecommendationList` class. The user is able to edit in an existing recommendation using `edit [TITLE]` command.
 
-The following is the Sequence diagram to `edit a recommendation`.
+The following Figure 15 is the Sequence diagram to `edit a recommendation`.
 ![Edit_Reco_seq](./diagrams/Edit_Reco_Sequence_Diagram.png)
- 
-A general explaination of how this feature works:
+<p align="center">Figure 15. Sequence Diagram for Edit recommendations</p>
+
+A general explanation of how this feature works:
 
 1. `Commands` will call `RecommendationList#editRecommendation` to determine which `Recommendation` from the ArrayList `recommendatios` should be editied.
 
@@ -428,26 +428,28 @@ A general explaination of how this feature works:
 Similar to [adding a recommendation](#531-add-a-recommendation-feature), edit will take in either `title`, `category`, `price range`,`recommendedby` and `location` String attributes for that specific `Recommendation` class and replace previous String stored with new user input.
 After checking for duplicates, the violation of any constraints for each attribute will print an error message from `ui` and prompt for a valid input.
 
-### 5.3.4 Delete a Recommendation Feature
+#### 5.3.4 Delete a Recommendation Feature
 This feature allows the user to remove a specific `Recommendation` from the ArrayList `recommendations`.
 
 The mechanism to remove a recommendation is facilitated by the `RecommendationList` class. The user is able to delete in an existing recommendation using `delete [TITLE]` command.
 
-The following is the Sequence diagram to `delete a recommendation`.
+The following Figure 16 is the Sequence diagram to `delete a recommendation`.
 ![Delete_Reco_seq](./diagrams/Delete_Reco_Sequence_Diagram.png)
+<p align="center">Figure 16. Sequence Diagram for Edit recommendations</p>
 
 A general explanation of how this feature works:
 
 1. `Commands` calls for `RecommendationList#deleteRecommendation`, Connoisseur will check if the title given exists.
 2. If title exists, Connoisseur will remove it from the ArrayList `recommendations`.
 
-### 5.3.5 Review a Recommendation Feature
+#### 5.3.5 Review a Recommendation Feature
 This feature allows the user to change a specific `Recommendation` to a `Review` class, removing it from the ArrayList `recommendations` and adding it to the ArrayList `reviws`.
 
 The mechanism to review a recommendation is facilitated by the `RecommendationList` class. The user is able to review in an existing recommendation using `done [TITLE]` command.
 
-The following is the Sequence diagram to `review a recommendation`.
+The following Figure 17 is the Sequence diagram to `review a recommendation`.
 ![Review_a_Reco_seq](./diagrams/Done_Sequence_Diagram.png)
+<p align="center">Figure 17. Sequence Diagram for Edit recommendations</p>
 
 A general explanation of how this feature works:
 
@@ -458,11 +460,11 @@ A general explanation of how this feature works:
 ### 5.4 Storage
 The `Storage` class is responsible for loading data from memory and saving data to memory. The location of this data can be found at *./data/connoisseur.json* and serves to retain all the information of the user after the application has exited. Other than the reviews and recommendations, it also saves the preferences of the user such as the sorting method as well as the display type. 
 
-### 5.4.1 Storage Format
+#### 5.4.1 Storage Format
 The information is saved as a JSON Object in the data file. It consists of two strings, the sort method and display type, as well as two JSON Arrays which hold the reviews and recommendations. 
 To facilitate easier conversion between the raw data and JSON object, a `ConnoisseurData` class was created to store all the data as a single object before conversion. 
 
-### 5.4.2 Implementation
+#### 5.4.2 Implementation
 The following is a Sequence diagram to illustrate how Connoisseur saves data on exit. 
 ![saving_sequence](./diagrams/Save_Sequence_Diagram.png)
 
@@ -486,11 +488,7 @@ input is found, duplicate exception will be thrown.
 The Duplicate Exception is thrown in addRecommendationDetails(), if the checkAndPrintDuplicateRecommendation(title)
 returns true. This error will be caught in the addRecommendation() method.
 
-### 5.6 Personalised Messages
-
-## 6. Planned Features
-
-## Appendix
+## 6 Appendix
 
 ### Appendix A: Product Scope
 
@@ -616,7 +614,7 @@ Allow user to add a review or recommendation, depending on whether they are in r
 
    **Expected**: Connoisseur will prompt user to add details of recommendation.
 
-*Duplicate review or recommendation title, case insensitive)*
+*Duplicate review or recommendation title, case-insensitive)*
 
 1. **Test Case**: `Avengers`
 
@@ -645,7 +643,7 @@ Allow user to edit a review or recommendation, depending on whether they are in 
 
    **Expected**: `Specified review/ recommendation does not exist!`
 
-*Duplicate review or recommendation title, case insensitive)*
+*Duplicate review or recommendation title, case-insensitive)*
 
 1. **Test Case**: `Avengers`
 
@@ -708,7 +706,7 @@ Mark a recommendation as done and convert it to a review.
 
 **Prerequisite**: Connoisseur must be in `reco` mode. Type `reco` to switch to `reco` mode.
 
-1. **Test case**: `done <recommendation title>` (case insensitive, recommendation exist)
+1. **Test case**: `done <recommendation title>` (case-insensitive, recommendation exist)
 
    **Expected**: Prompts to enter rating and option to enter description of review. 
    This is followed by `<recommendation title> has been made a review!`.
@@ -726,7 +724,7 @@ Viewing a review details with review descriptions.
 
 **Prerequisite**: Connoisseur is in `reco` mode. This can be accomplished with the command `reco`.
 
-1. **Test case**: `view <review title>` (case insensitive)
+1. **Test case**: `view <review title>` (case-insensitive)
 
    **Expected**: Details of the task with the title in the review list is shown.
 
@@ -748,7 +746,7 @@ Test if Connoisseur is able to handle corrupted data files.
 
    **Problem**: File is corrupted and not in JSON format.
 
-   **Expected**: The error is handled by program. The commandline interface with welcome message will be shown.
+   **Expected**: The error is handled by a program. The commandline interface with welcome message will be shown.
 
 2. **Test case**: Remove one of the commas (`,`) from the file if connoisseur.json is not empty.
 
