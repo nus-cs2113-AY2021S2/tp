@@ -25,7 +25,7 @@ Given below are my contributions to the project.
 #### Other code implementation
 
 * Code contributed: [RepoSense link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=NgManSing&sort=groupTitle&sortWithin=title&since=2021-03-05&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false)
-  Wrote fundamental classes such as CommandParse and InputParser
+* Wrote fundamental classes such as CommandParse and InputParser
 * Wrote JUnit tests and Integration tests related to CommandParse, InputParser and `add` feature.
 * Wrote assertion, exception handling and logging related to `add` methods.
 
