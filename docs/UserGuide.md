@@ -21,18 +21,18 @@
    &nbsp;&nbsp;&nbsp;&nbsp; 4.4.2. [Repeating History](#442-repeating-history) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.4.3. [Clearing History](#443-clearing-history) <br>
    4.5. [Alias](#45-alias) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.5.1. [Adding an alias for block name](#451-adding-an-alias-for-block-name) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.5.2. [Showing all aliases](#452-showing-all-aliases) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.5.1. [Adding alias for block name](#451-adding-alias-for-block-name) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.5.2. [Showing aliases](#452-showing-aliases) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.5.3. [Deleting aliases](#453-deleting-aliases) <br>
    4.6. [Daily Routes](#46-daily-routes) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.1. [Adding a daily route](#461-adding-a-daily-route) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.2. [Showing daily route](#462-showing-daily-route) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.3. [Deleting daily route](#463-deleting-daily-route) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.1. [Adding daily routes](#461-adding-daily-routes) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.2. [Showing daily routes](#462-showing-daily-routes) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.3. [Deleting daily routes](#463-deleting-daily-routes) <br>
    4.7. [Favourite Routes](#47-favourite-routes) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.1. [Adding favourite route](#471-adding-favourite-route) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.2. [Showing all favourite routes](#472-showing-all-favourite-routes) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.3. [Repeating favourite route](#473-repeating-favourite-route) <br> 
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.4. [Deleting favourite route](#474-deleting-favourite-route) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.1. [Adding favourite routes](#471-adding-favourite-routes) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.2. [Showing favourite routes](#472-showing-favourite-routes) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.3. [Repeating favourite routes](#473-repeating-favourite-routes) <br> 
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.4. [Deleting favourite routes](#474-deleting-favourite-routes) <br>
    4.8. [Notes](#48-notes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.8.1. [Adding notes](#481-adding-notes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.8.2. [Showing notes](#482-showing-notes) <br>
@@ -388,7 +388,7 @@ Your history has been successfully cleared
 ```
 
 ### 4.5 Alias
-#### 4.5.1 Adding an alias for block name
+#### 4.5.1 Adding alias for block name
 Creates an alias for existing blocks.<br>
 Format : `add alias` → `BLOCK` → `ALIAS_NAME`<br>
 Example :
@@ -416,7 +416,7 @@ Got it! Successfully added FOOD as TECHNO EDGE's alias
 > :warning: Aliases cannot be used in the `Daily route feature` and `favourite feature`. <br>
 > :information_source: Alias is **case-insensitive** for all commands <br>
 
-#### 4.5.2 Showing all aliases
+#### 4.5.2 Showing aliases
 Lists all aliases that are currently active.<br>
 Format : `show alias` <br>
 Example :
@@ -447,7 +447,7 @@ Got it! Successfully deleted FOOD from alias list!
   `ALIAS_NAME` that you wish to delete.
 
 ### 4.6 Daily Routes
-#### 4.6.1 Adding a daily route
+#### 4.6.1 Adding daily routes
 Adds a schedule for the selected day.<br>
 Format : `add daily route` → `DAY_ENTRY` → `BLOCK` → ... → `end` <br>
 Example : 
@@ -491,7 +491,8 @@ Got it! Successfully added MONDAY's schedule!
 > :warning: Entries must be the original block names. Aliases are not allowed.<br>
 
 
-#### 4.6.2 Showing daily route
+#### 4.6.2 Showing daily routes
+
 Shows the generated route for the schedule of the selected day, if applicable.<br>
 Format : `show daily route` → `DAY_NUMBER` <br>
 Example :
@@ -524,7 +525,7 @@ Route: E7 -> E6 -> EW2 -> E4A -> E4 -> E3 -> E2 -> EA
 > :warning: The `DAY_NUMBER` must be the index of one of the available days which has been displayed. <br>
 
 
-#### 4.6.3 Deleting daily route
+#### 4.6.3 Deleting daily routes
 
 Clears the schedule of the selected day, if applicable.<br>
 Format : `delete daily route` → `DAY_NUMBER` <br>
@@ -552,7 +553,7 @@ Got it! Successfully cleared MONDAY's schedule!
 > :warning: The `DAY_NUMBER` must be the index of one of the available days which has been displayed. <br>
 
 ### 4.7 Favourite Routes
-#### 4.7.1 Adding favourite route
+#### 4.7.1 Adding favourite routes
 You can add a route to favourites to easily access it in the future.<br>
 Format : `add favourite` → `STARTING_BLOCK` → `DESTINATION_BLOCK` <br>
 Example :
@@ -573,7 +574,7 @@ Got it! Successfully added new favourite route!
 > :warning: Aliases cannot be used in this feature.<br>
 
 
-#### 4.7.2 Show all favourite routes
+#### 4.7.2 Showing favourite routes
 You can request NUSMaze to display all the saved favourites, if you have stored at least one route to favourites.<br>
 Format : `show favourite` <br>
 Example :
@@ -586,7 +587,7 @@ Here are your favourite routes:
 ------------------------------------------------------------------------------------------------------------
 ```
 
-#### 4.7.3 Repeating favourite route
+#### 4.7.3 Repeating favourite routes
 You can execute and obtain the route to take for your favourite routes.<br>
 Format : `repeat favourite` → `ROUTE_INDEX` <br>
 Example :
@@ -605,7 +606,7 @@ Route: EA -> E2 -> E3 -> E4
 ```
 > :warning: `ROUTE_INDEX` must be an integer within the bounds of the favourite list. <br>
 
-#### 4.7.4 Deleting favourite route
+#### 4.7.4 Deleting favourite routes
 You can delete a favourite route if it is not frequently used anymore.<br>
 Format : `delete favourite` → `ROUTE_INDEX` <br>
 Example :
@@ -767,18 +768,18 @@ can be found on the second computer. <br>
 |[**Finding the route**](#431-routing-between-blocks)       | `go` → `STARTING_BLOCK` → `DESTINATION_BLOCK`|
 |[**Routing to the closest eatery**](#433-routing-to-the-closest-eatery)       | `go` → `STARTING_BLOCK` → `eatery` → `EATERY_ENTRY` |
 |[**Viewing history**](#441-viewing-history)     | `history` |
-|[**Repeating history**](#442-repeating history)       | `repeat history` → `REPEAT_ENTRY` |
+|[**Repeating history**](#442-repeating-history)       | `repeat history` → `REPEAT_ENTRY` |
 |[**Clearing history**](#443-clearing-history)       | `clear history` |
-|[**Adding alias for block names**](#451-adding-an-alias-for-block-name)| `add alias` → `BLOCK` → `ALIAS_NAME` | 
-|[**Showing all aliases**](#452-showing-all-aliases)  | `show alias` | 
+|[**Adding alias for block names**](#451-adding-alias-for-block-name)| `add alias` → `BLOCK` → `ALIAS_NAME` | 
+|[**Showing aliases**](#452-showing-aliases)  | `show alias` | 
 |[**Deleting alias**](#453-deleting-aliases)       | `delete alias` → `ALIAS_NAME` |
-|[**Adding a daily route**](#461-adding-a-daily-route)     | `add daily route` → `DAY_NUMBER` → `BLOCK` → … → `BLOCK` → `end` | 
-|[**Showing a daily route**](#462-showing-daily-route)       | `show daily route` → `DAY_NUMBER` |
-|[**Deleting a daily route**](#463-deleting-daily-route)       | `delete daily route` → `DAY_NUMBER` |
-|[**Adding favourite route**](#471-adding-favourite-route)       | `add favourite` → `STARTING_BLOCK` → `DESTINATION_BLOCK` |
-|[**Showing all favourite routes**](#472-showing-all-favourite-routes)       | `show favourite` |
-|[**Repeating favourite route**](#473-repeating-favourite-route)       | `repeat favourite` → `ROUTE_INDEX` |
-|[**Deleting favourite route**](#474-deleting-favourite-route)       | `delete favourite` → `ROUTE_INDEX` |
+|[**Adding daily routes**](#461-adding-daily-routes)     | `add daily route` → `DAY_NUMBER` → `BLOCK` → … → `BLOCK` → `end` | 
+|[**Showing daily routes**](#462-showing-daily-routes)       | `show daily route` → `DAY_NUMBER` |
+|[**Deleting daily routes**](#463-deleting-daily-routes)       | `delete daily route` → `DAY_NUMBER` |
+|[**Adding favourite routes**](#471-adding-favourite-routes)       | `add favourite` → `STARTING_BLOCK` → `DESTINATION_BLOCK` |
+|[**Showing favourite routes**](#472-showing-favourite-routes)       | `show favourite` |
+|[**Repeating favourite routes**](#473-repeating-favourite-routes)       | `repeat favourite` → `ROUTE_INDEX` |
+|[**Deleting favourite routes**](#474-deleting-favourite-routes)       | `delete favourite` → `ROUTE_INDEX` |
 |[**Adding notes**](#481-adding-notes)       | `add note` → `BLOCK` → `NOTE` |
 |[**Showing notes**](#482-showing-notes)      | `show note` → `BLOCK` | 
 |[**Deleting notes**](#483-deleting-notes)       | `delete note` → `BLOCK` → `NOTE_INDEX` |
