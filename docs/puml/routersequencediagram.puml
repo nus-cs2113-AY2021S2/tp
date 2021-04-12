@@ -6,12 +6,15 @@ participant "ui:RouterUi"
 participant "blockAlias:BlockAlias"
 ":NUSMaze"-> "command:GoCommand" : execute()
 activate "command:GoCommand"
-"command:GoCommand" -> "ui:RouterUi": getUserCommandInput()
+"command:GoCommand" -> "ui:RouterUi": getRoutingInfo()
 activate "ui:RouterUi"
 "ui:RouterUi" --> "command:GoCommand":
 deactivate "ui:RouterUi"
 "command:GoCommand" -> "blockAlias:BlockAlias": changeAliasToBlock(String, String)
 activate "blockAlias:BlockAlias"
+return
+"command:GoCommand" -> "nusMap:NusMap": checkIfValidBlock(String)
+activate "nusMap:NusMap"
 return
 deactivate "blockAlias:BlockAlias"
 create ":Router"

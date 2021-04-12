@@ -15,6 +15,9 @@ public class GoCommand extends Command {
         this.ui = new RouterUi();
     }
 
+    /**
+     * This method Gets user input for the start and end location and prints the shortest route to get from start to end.
+     */
     @Override
     public void execute() {
         try {

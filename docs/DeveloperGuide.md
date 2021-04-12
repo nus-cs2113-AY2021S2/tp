@@ -156,7 +156,7 @@ The **Storage Component**:
 
 ## *3. Implementation*
 ### 3.1. Finding The Shortest Route Feature
-#### Current Implementation
+#### 3.1.1. Current Implementation
 
 The current implementation of finding the shortest route is facilitated by the `Router` class which uses data stored in `NusMap`, `Block`, and `BlockAlias` class to return the shortest path.
 
@@ -166,20 +166,23 @@ The image below depicts how the `GoCommand` is implemented.
 
 ![img.png](images/router.png)
 
+#### 3.1.2. Routing Implementation
 Given below is an example scenario of how the routing algorithm functions.
 
 1. User executes `GoCommand` and the `RouterUi` reads in the starting location and destination.<br />
-2. `GoCommand` will then check if the second entry is eatery. If it is not "EATERY", step 3 and 4 are skipped for step 5.<br />
-3. `GoCommand` will then create an instance of `EateryList` and invokes its method `sortEateriesByDistance()` which returns a list of eateries in order of the closest distance.<br />
-4. `GoCommand` then takes in the selection of eatery that the user is chosen and sets the destination.<br/>
-5. The Router will then run the `findShortestRoute()` method which is a routing algorithm based on breath-first search. This returns the shortest route as a string<br />
-6. The `RouterUi` will then show the shortest route to the user through `showMessageWithDivider()` method.<br />
+2. The input is changed to the name of the block if applicable. 
+3. The blocks are then checked to see if they are valid blocks.
+4. `GoCommand` will then check if the second entry is eatery. If it is not "EATERY", step 3 and 4 are skipped for step 5.<br />
+5. `GoCommand` will then create an instance of `EateryList` and invokes its method `sortEateriesByDistance()` which returns a list of eateries in order of the closest distance.<br />
+6. `GoCommand` then takes in the selection of eatery that the user is chosen and sets the destination.<br/>
+7. The Router will then run the `findShortestRoute()` method which is a routing algorithm based on breath-first search. This returns the shortest route as a string<br />
+8. The `RouterUi` will then show the shortest route to the user through `showMessageWithDivider()` method.<br />
 
 Shown below is the sequence diagram when a valid block is entered for the starting location and destination.
 ![img.png](images/routersequencediagram.png)
 
 ### 3.2. Daily route planning feature
-#### Current Implementation
+#### 3.2.1. Current Implementation
 The current implementation is facilitated by `DailyRoute` class, with the `AddDailyRouteCommand`, `ShowDailyRouteCommand` and `DeleteDailyRouteCommand` subclasses invoking methods that the `DailyRoute` class provides. <br>
 `AddDailyRouteCommand`, `ClearDailyRouteCommand` and `DeleteDailyRouteCommand` extend `Command` (superclass). <br>
 `AddDailyRouteCommand` implements the feature of adding the schedule of the day to the `DailyRoute` object. `ShowDailyRouteCommand` accesses the `DailyRoute` object to retrieve an ArrayList with the location schedule provided from the `AddDailyRouteCommand` and run the routing algorithm present in the `Router` object. `DeleteDailyRouteCommand` clears the schedule mapped to the selected day.<br>
@@ -193,6 +196,7 @@ Additionally, `DailyRoute` implements the following operations:
 
 These operations are exposed in the `DailyRoute` class  as `DailyRoute#addDailyRoute()`, `DailyRoute#getDailyRoute(String)`, `DailyRoute#getSelectableDay()`, `DailyRoute#getValidDay()`. <br>
 
+#### 3.2.2. Adding daily route 
 Given below is an example usage scenario and how the addDailyRoute mechanism behaves at each step. <br>
 1. The user launches the application.<br>
 2. The user executes `add daily route` command. UI will then prompt the user `Select entry to add:`  to input a day index. <br>
@@ -204,6 +208,7 @@ Given below is an example usage scenario and how the addDailyRoute mechanism beh
 The following image shows the sequence diagram in which the addDailyRoute command is executed.
 ![img.png](images/addday.png)
 
+#### 3.2.3. Showing daily route
 Given below is an example usage scenario and how the showDailyRoute mechanism behaves at each step.
 
 1. The user launches the application.<br>
@@ -214,6 +219,7 @@ Given below is an example usage scenario and how the showDailyRoute mechanism be
 The following image shows the sequence diagram in which the showDailyRoute command is executed.
 ![img.png](images/showday.png)
 
+#### 3.2.4. Deleting daily route
 Given below is an example usage scenario and how the deleteDailyRoute mechanism behaves at each step.
 
 1. The user launches the application.<br>
@@ -227,20 +233,20 @@ The following image shows the sequence diagram in which the deleteDailyRoute com
 
 ### 3.3. Favourite Routes feature
 
-#### Current Implementation
+#### 3.3.1. Current Implementation
 
 The favourite routes feature acts as an independent storage of the user's favourites routes,
 allowing the user to call of the route without going through the hassle of the `go` command.
 The start and destination of the favourite routes are saved within an ArrayList named `favourites`.
 The contents of `favourites` will be stored into a text file named `favouritesList.txt` when NUSMaze terminates.
 
-#### Loading of saved favourite routes
+#### 3.3.2. Loading of saved favourite routes
 
 When NUSMaze launches, the contents of the text file `favouritesList.txt` will be read,
 and stored into `favourites`.
 Refer to the section on **Storage** for more information.
 
-#### Adding of favourite route
+#### 3.3.3. Adding of favourite route
 
 The command to add a favourite route is `add favourite`.
 Upon calling the `add favourite` command, the user will be prompted to enter the starting block,
@@ -248,13 +254,13 @@ followed by the destination block. If valid blocks are given,
 the route from the starting block to destination block will be added into `favourites`.
 If any invalid block is given, `InvalidBlockException` will be thrown.
 
-#### Reviewing saved favourite routes
+#### 3.3.4. Reviewing saved favourite routes
 
 The command to display all the saved favourite routes is `show favourite`.
 If there are no saved routes, `EmptyFavouriteException` will be thrown.
 If there are any saved favourite routes, a numbered list of the saved routes will be shown to the user.
 
-#### Repeating favourite route
+#### 3.3.5. Repeating favourite route
 
 The command to repeat a favourite route is `repeat favourite`.
 Upon calling the `repeat favourite` command, the user would be shown a numbered list of saved favourite routes.
@@ -263,7 +269,7 @@ After the numbered list of saved favourite routes is shown, the user would be pr
 route to be executed. Any invalid input such as decimals or alphabets will result in
 `InvalidIndexException` to be thrown.
 
-#### Deleting favourite route
+#### 3.3.6. Deleting favourite route
 
 The command to delete a favourite route is `delete favourite`.
 If there are no saved favourite routes, `EmptyFavouriteException` will be thrown.
@@ -273,7 +279,7 @@ Any invalid input such as decimals or alphabets will result in
 `InvalidIndexException` to be thrown.
 
 ### 3.4. Custom aliases feature
-#### Current Implementation
+#### 3.4.1. Current Implementation
 The following diagram illustrates the class diagram for implementation of the alias feature:
 ![img.png](images/AliasFeature.png)
 The command entered by the user in the `Main()` function of NUSMaze will be parsed in the `Parser` class. Thereafter, the parser will decide which of the 3 alias commands,
@@ -303,30 +309,30 @@ Shown below is the sequence diagram when a valid block name and alias are added:
 ![img.png](images/AliasFeatureSequence.png)
 ### 3.5. History feature
 ![img.png](images/history.png)
-#### Current Implementation
+#### 3.5.1. Current Implementation
 Whenever the user inputs the `go` command, and enters a valid start and destination address, a String consisting the start and end block is created and stored in `historyList`. 
 The contents of the `historyList` will be stored into a text file named `historyList.txt` when NUSMaze terminates.
 
-#### Loading of saved history
+#### 3.5.2. Loading of saved history
 When NUSMaze starts running, any contents from `historyList.txt` file would be loaded and stored into `historyList`.
 Refer to the section on **Storage** for more information.
 
-#### Showing past searches
+#### 3.5.3. Showing past searches
 The user can enter the command `history`, and a numbered list of past searches will be shown to the user.
 If there were no past searches, a line of text `"Oops! You have no past history!"` will be shown to the user.
 
-#### Repeat past searches
+#### 3.5.4. Repeat past searches
 The user can enter the command `repeat history` to request for a repeat of past searches.
 If there are no past searches, a line of text `"Oops! You have no past history!"` will be shown to the user.
 If there is at least one entry in `historyList`, then all past searches would be shown to the user, in a numbered list format. 
 (Only the starting location and destination location will be shown.)
 The user is then prompted to enter the index of the past search to repeat.
 
-#### Clear past searches
+#### 3.5.5. Clear past searches
 The user can enter the command `clear history` to delete all the contents of `historyList`.
 A message: `"Your history has been successfully cleared"` will be shown to the user upon successful deletion of the contents of `historyList`.
 
-#### Design Consideration
+#### 3.5.6. Design Consideration
 Alternative 1 (current choice): Each command to add, view and delete are implemented using separate classes.  
 Pros: Easy to understand and each command is standalone.  
 Cons: Might have to repeat some code fragments.  
@@ -336,7 +342,7 @@ Pros: Less code to be written and hashmap can be shared by the 3 commands in 1 c
 Cons: Might be confusing since there is less distinction between each command.
 
 ### 3.6. Save feature
-#### Current Implementation
+#### 3.6.1. Current Implementation
 The save mechanism is facilitated by `AliasStorage`, `DailyRouteStorage`, `FavouriteStorage`, `HistoryStorage` and `NotesStorage` subclasses. </br>
 They extend `Storage` (superclass) with a feature to save the blocks' aliases, daily routes, favourite locations, history of visited routes and tagged notes, stored internally as `aliasList`,  `dailyRouteList`, `favouriteList`, `history`, `noteList` text files. <br />
 Additionally, they implement the following operations: <br/>
@@ -354,6 +360,7 @@ Additionally, they implement the following operations: <br/>
 These 'saveData()' operations are exposed in the `DataEncoder` interface as `DataEncoder#encodeAlias(:BlockAlias) `, `DataEncoder#encodeDailyRoute(:DailyRoute)`, `DataEncoder#encodeFavourite(:Favourite)`, `DataEncoder#encodeHistory(:History)` and `DataEncoder#encodeNotes(:NusMap)` respectively.<br />
 These 'loadData()' operations are exposed in the `DataDecoder` interface as `DataDecoder#decodeAliasAndNoteData()`, `DataDecoder#decodeDailyRouteData()` and `DataDecoder#decodeHistoryAndFavouriteData()`.
 
+#### 3.6.2. Saving/Loading data
 Given below is an example usage scenario and how the save mechanism behaves at each step. <br />
 1. The user launches the application for the first time.
    `AliasStorage`, `DailyRouteStorage`, `FavouriteStorage`, `HistoryStorage` and `NotesStorage` objects
@@ -385,7 +392,7 @@ but not all text files will be modified. <br>
 so the content from the `nusMap`, `blockAlias`, `history`, `favourite`, or `dailyRoute` objects will not be saved into the text files.
 </div>
 
-#### Design Consideration
+#### 3.6.3. Design Consideration
 **Current choice:** Saves the entire list of block aliases, visited routes, tagged notes, daily routes and favourite locations. <br/>
 - Pros: Easy to implement. <br/>
 - Cons: Only highly effective when limited to use of one user. <br/>
