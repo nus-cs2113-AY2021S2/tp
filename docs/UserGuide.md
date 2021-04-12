@@ -188,7 +188,7 @@ Expected Output:
 --------------------------------------------------------------------
 A new EXERCISE record is added successfully!
 Record summary:
-40 minute(s) of RUNNING exercise on 03-04-2021
+40.0 minute(s) of RUNNING exercise on 12-04-2021
 --------------------------------------------------------------------
 ```
 
@@ -201,7 +201,7 @@ Expected Output:
 --------------------------------------------------------------------
 A new EXERCISE record is added successfully!
 Record summary:
-60 minute(s) of CYCLING exercise on 05-01-2020
+60.0 minute(s) of CYCLING exercise on 05-01-2020
 --------------------------------------------------------------------
 ```
 
@@ -230,13 +230,12 @@ Expected Output:
 ```
 --------------------------------------------------------------------
 Displaying all eligible exercise records:
-Index        Date          Activity        Duration        Calories
-1            05-01-2020    CYCLING         60 minute(s)    414.0 cal
-2            31-03-2021    WALKING         1440 minute(s)  8640.0 cal
-3            01-04-2021    WALKING         1440 minute(s)  8640.0 cal
-4            01-04-2021    YOGA            40 minute(s)    208.0 cal
-5            01-04-2021    STAIRSTEPPER    50 minute(s)    175.0 cal
-6            03-04-2021    RUNNING         40 minute(s)    264.0 cal
+Index        Date          Activity        Duration          Calories
+1            05-01-2020    CYCLING         60.0 minute(s)    414.0 Kcal
+2            01-04-2021    WALKING         60.0 minute(s)    360.0 Kcal
+3            01-04-2021    WALKING         50.0 minute(s)    300.0 Kcal
+4            12-04-2021    WALKING         120.0 minute(s)   720.0 Kcal
+5            12-04-2021    RUNNING         40.0 minute(s)    264.0 Kcal
 
 --------------------------------------------------------------------
 ```
@@ -249,8 +248,8 @@ Expected Output:
 ```
 --------------------------------------------------------------------
 Displaying all eligible exercise records:
-Index        Date          Activity        Duration        Calories
-1            05-01-2020    CYCLING         60 minute(s)    414.0 cal
+Index        Date          Activity        Duration          Calories
+1            05-01-2020    CYCLING         60.0 minute(s)    414.0 Kcal
 
 --------------------------------------------------------------------
 ```
@@ -263,8 +262,9 @@ Expected Output:
 ```
 --------------------------------------------------------------------
 Displaying all eligible exercise records:
-Index        Date          Activity        Duration        Calories
-1            03-04-2021    RUNNING         40 minute(s)    264.0 cal
+Index        Date          Activity        Duration          Calories
+1            01-04-2021    WALKING         60.0 minute(s)    360.0 Kcal
+2            01-04-2021    WALKING         50.0 minute(s)    300.0 Kcal
 
 --------------------------------------------------------------------
 ```
@@ -291,13 +291,12 @@ Expected Output:
 ```
 --------------------------------------------------------------------
 You have successfully deleted the EXERCISE record of index 1!
-Record summary: 60 minute(s) of CYCLING exercise on 05-01-2020
+Record summary: 60.0 minute(s) of CYCLING exercise on 05-01-2020
 Displaying current EXERCISE records:
-1            31-03-2021    WALKING         1440 minute(s)  8640.0 cal
-2            01-04-2021    WALKING         1440 minute(s)  8640.0 cal
-3            01-04-2021    YOGA            40 minute(s)    208.0 cal
-4            01-04-2021    STAIRSTEPPER    50 minute(s)    175.0 cal
-5            03-04-2021    RUNNING         40 minute(s)    264.0 cal
+1            01-04-2021    WALKING         60.0 minute(s)    360.0 Kcal
+2            01-04-2021    WALKING         50.0 minute(s)    300.0 Kcal
+3            12-04-2021    WALKING         120.0 minute(s)   720.0 Kcal
+4            12-04-2021    RUNNING         40.0 minute(s)    264.0 Kcal
 
 --------------------------------------------------------------------
 ```

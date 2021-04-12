@@ -159,7 +159,7 @@ How the command is executed?
 #### Command component
 
 ![Structure of the Commands](./diagrams/DG_Images/CommandStructure.png)
-<h5 align="center">Figure 3: class structure for Command</h5>
+<h5 align="center">Figure 4: class structure for Command</h5>
 
 * `Command` is an abstract class to interact with other components of the system.
 * `AddCommand`,`ViewCommand`,`DeleteCommand`,`SetCommand`,`CheckCommand`,`CancelCommand`,`HelpCommand`,`ExitCommand` are concrete command classes inherit from `Command` class to carry out different tasks.
@@ -169,7 +169,7 @@ How the command is executed?
 #### Storage component
 
 ![Structure of the Storage](./diagrams/DG_Images/StorageClasses.png)
-<h5 align="center">Figure 3: class structure for entity classes</h5>
+<h5 align="center">Figure 5: class structure for entity classes</h5>
 
 * `FileInfoReader` reads information stored in text files, hence the status can be resumed when users start the application again.
 * `FileInfoWriter` stores information into text files in real-time, hence users can leave the application at any time without losing any data.
@@ -222,7 +222,7 @@ calls `RecordList#addRecord(Record newRecord)` to modify the list.
 The following sequence diagram shows how the `add` command works:
 
 ![Sequence diagram of adding a new record](./diagrams/DG_Images/addRecordSequence.png)
-<h5 align="center">Figure 3: Sequence Diagram of adding a record</h5>
+<h5 align="center">Figure 6: Sequence Diagram of adding a record</h5>
 
 [**Get back to Table of Contents**](#table-of-contents)
 
@@ -258,8 +258,7 @@ calls `GoalList#addGoal(Goal newGoal)` to update the list and the progress of th
 
 The following *Sequence Diagram* illustrates how the `set` command works:
 ![Sequence Diagram of SetCommand](./diagrams/DG_Images/SetCommand.png)
-
-<h5 align="center">Figure 5: Sequence Diagram of Setting a Goal</h5>
+<h5 align="center">Figure 7: Sequence Diagram of Setting a Goal</h5>
 
 ---
 
