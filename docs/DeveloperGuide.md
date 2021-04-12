@@ -422,10 +422,14 @@ No items will be listed if no food in the fridge match the conditions specified 
 
 ```lang-none
 Here are the items in your fridge:
-1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
-2. Food name: milk, category: DAIRY, expiry: 31-12-2021, stored in: FRIDGE_DOOR, quantity: 2
-3. Food name: Coke, category: BEVERAGE, expiry: 30-07-2021, stored in: UPPER_SHELF, quantity: 5
-4. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, quantity: 100
+1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, 
+quantity: 100
+2. Food name: milk, category: DAIRY, expiry: 31-12-2021, stored in: FRIDGE_DOOR, 
+quantity: 2
+3. Food name: Coke, category: BEVERAGE, expiry: 30-07-2021, stored in: UPPER_SHELF, 
+quantity: 5
+4. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, 
+quantity: 100
 ```
   
 * Test case: `list meat`
@@ -434,7 +438,8 @@ Here are the items in your fridge:
 
 ```lang-none
 These are the MEAT in your fridge:
-1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
+1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, 
+quantity: 100
 ```
 
 * Test case: `list freezer`
@@ -443,7 +448,8 @@ These are the MEAT in your fridge:
 
 ```lang-none
 These are the food stored in FREEZER:
-1. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, quantity: 100
+1. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, 
+quantity: 100
 ```
 
 ### Removing a food
@@ -479,7 +485,8 @@ If it is not found, outputs `You do not have FOOD_INPUT in your fridge.`
 
 ```lang-none
 These are the chicken in your fridge:
-    1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
+    1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, 
+    quantity: 100
 ```
   
 * Test case: `search pear`
@@ -491,7 +498,8 @@ These are the chicken in your fridge:
 
 ```lang-none
 These are the chick in your fridge:
-    1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
+    1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, 
+    quantity: 100
 ```
 
 ### Expiring food
@@ -509,7 +517,8 @@ that has an expiry date within 7 days of their **local system time**, as of the 
 
 ```lang-none
 These are the food expiring in the next week:
-    1. Food name: duck, category: MEAT, expiry: 30-03-2021, stored in: LOWER_SHELF, quantity: 100
+    1. Food name: duck, category: MEAT, expiry: 30-03-2021, stored in: LOWER_SHELF, 
+    quantity: 100
 ```
 
 ### Runninglow and Setlimit
@@ -561,10 +570,14 @@ during testing, and see if they correspond.
 
 ```lang-none
 This is the full history of items you've added in the fridge:
-    1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
-    2. Food name: milk, category: DAIRY, expiry: 31-12-2021, stored in: FRIDGE_DOOR, quantity: 2
-    3. Food name: Coke, category: BEVERAGE, expiry: 30-07-2021, stored in: UPPER_SHELF, quantity: 5
-    4. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, quantity: 100
+    1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, 
+quantity: 100
+    2. Food name: milk, category: DAIRY, expiry: 31-12-2021, stored in: FRIDGE_DOOR, 
+quantity: 2
+    3. Food name: Coke, category: BEVERAGE, expiry: 30-07-2021, stored in: UPPER_SHELF, 
+quantity: 5
+    4. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, 
+quantity: 100
 ```
 
 ### Saving data
