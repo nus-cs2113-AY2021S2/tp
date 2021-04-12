@@ -75,6 +75,10 @@ public class PatientInstance {
                 System.out.println("Your age input is not an accepted integer!");
                 ui.lineBreak();
                 logger.log(Level.WARNING, "Handling NumberFormatException.");
+            } catch (Exception e) {
+                System.out.println("OOPS! Something went wrong!");
+                logger.log(Level.WARNING, "Something went wrong that is not handled by Healthvault exception");
+                UI.printEmptyLine();
             }
         }
     }
