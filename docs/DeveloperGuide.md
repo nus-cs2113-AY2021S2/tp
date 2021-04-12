@@ -28,7 +28,7 @@ ol ol > li:before {
    1. [Model Component](#model-component)
    1. [Storage Component](#storage-component)
    1. [Exception Component](#exception-component)
-   1. [Commons](#commons)
+   1. [Common Classes](#common-classes)
 1. [Implementation](#implementation)
    1. [Parsing User Input](#parsing-user-input)
    1. [Initializing Command Class](#initializing-command-class)
@@ -467,14 +467,15 @@ The typical paperwork, such as recording of symptoms, diagnoses and prescription
 Listed below are all currently implemented commands in alphabetical order. For a more
 detailed explanation and input/output samples, please refer to the [User Guide](UserGuide.md).
 
-| Command                                                                             | Usage                                                         |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------------------- |
-| [add](UserGuide.md#adding-a-patient-add)                                            | `add IC_NUMBER`                                               |
-| [current](UserGuide.md#displaying-the-current-loaded-patient-current)               | `current`                                                     |
-| [delete](UserGuide.md#deleting-a-patient-or-a-patients-consultation-details-delete) | `delete [/p IC_NUMBER]  [/r DATE]`                            |
-| [exit](UserGuide.md#exiting-the-program-exit)                                       | `exit`                                                        |
-| [help](UserGuide.md#print-a-help-message-help)                                      | `help [OPTIONAL_COMMAND]...`                                  |
-| [list](UserGuide.md#listing-all-patients-list)                                      | `list`                                                        |
-| [load](UserGuide.md#loading-a-patients-medical-records-load)                        | `load IC_NUMBER`                                              |
-| [record](UserGuide.md#recording-a-patients-consultation-details-record)             | `record [DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]` |
-| [retrieve](UserGuide.md#retrieving-a-patients-consultation-details-retrieve)        | `retrieve [DATE]`                                             |
+| Command                                                                      | Usage                                                         |
+| ---------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| [add](UserGuide.md#adding-a-patient-add)                                     | `add IC_NUMBER`                                               |
+| [current](UserGuide.md#displaying-the-current-loaded-patient-current)        | `current`                                                     |
+| [delete(patient)](UserGuide.md#deleting-a-patient-delete-p)                  | `delete [/p IC_NUMBER]`                                       |
+| [delete(record)](UserGuide.md#deleting-a-days-record-delete-r)               | `delete [/r DATE]`                                            |
+| [exit](UserGuide.md#exiting-the-program-exit)                                | `exit`                                                        |
+| [help](UserGuide.md#print-a-help-message-help)                               | `help [OPTIONAL_COMMAND]...`                                  |
+| [list](UserGuide.md#listing-all-patients-list)                               | `list`                                                        |
+| [load](UserGuide.md#loading-a-patients-medical-records-load)                 | `load IC_NUMBER`                                              |
+| [record](UserGuide.md#recording-a-patients-consultation-details-record)      | `record [DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]` |
+| [retrieve](UserGuide.md#retrieving-a-patients-consultation-details-retrieve) | `retrieve [DATE]`                                             |
