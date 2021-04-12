@@ -239,8 +239,8 @@ Movie List:
 3. Birds of Prey (3.3)
 4. Avengers: Endgame (3.0)
 5. Charlie's Angels (1.0)
-To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 ============================
+To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 ```
 
 
@@ -280,8 +280,8 @@ Movie List:
 5. The Invisible Man (3.0)
 6. Avengers: Endgame (3.0)
 7. Toy Story 4 (5.0)
-To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 ============================
+To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 ```
 
 **3. Filter by status: `3`**  
@@ -328,8 +328,8 @@ Movie List:
 1. Tenet (5.0)
 2. Soul (4.0)
 3. Wonder Woman 1984 (3.0)
-To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 ============================
+To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 ```
 
 **4. Filter by cineplex: `4`**  
@@ -372,8 +372,8 @@ Movie List:
 2. Soul (4.0)
 3. Wonder Woman 1984 (3.0)
 4. Birds of Prey (3.3)
-To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 ============================
+To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 ```
 
 
@@ -406,8 +406,8 @@ The selected keyword is: The
 ============================
 Movie List:
 1. The Invisible Man (3.0)
-To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 ============================
+To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 ```
 
 **6. Select a movie: `6`**  
@@ -433,8 +433,8 @@ Movie List:
 8. Joker (No ratings yet. You can start by adding one!)
 9. Frozen 2 (No ratings yet. You can start by adding one!)
 10. Charlie's Angels (1.0)
-To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 ============================
+To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 
 Please indicate your choice:
 ```
@@ -460,8 +460,8 @@ Movie List:
 8. Joker (No ratings yet. You can start by adding one!)
 9. Frozen 2 (No ratings yet. You can start by adding one!)
 10. Charlie's Angels (1.0)
-To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 ============================
+To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 
 Please indicate your choice:
 1
@@ -497,8 +497,9 @@ Movie List:
 8. Joker (No ratings yet. You can start by adding one!)
 9. Frozen 2 (No ratings yet. You can start by adding one!)
 10. Charlie's Angels (1.0)
-To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 ============================
+To select a single movie, select "6 Select movie" from the Movie Filter menu below.
+
 ```
 
 
@@ -525,8 +526,9 @@ Movie List:
 8. Joker (No ratings yet. You can start by adding one!)
 9. Frozen 2 (No ratings yet. You can start by adding one!)
 10. Charlie's Angels (1.0)
-To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 ============================
+To select a single movie, select "6 Select movie" from the Movie Filter menu below.
+
 ```
 
 **10. Go back to main menu: `10`**  
@@ -642,6 +644,7 @@ Please indicate your choice:
 
 ###  Admin Main Menu
 
+```
 ======== Menu Choice =======   
 1 View Movies   
 2 Add Movie   
@@ -650,7 +653,7 @@ Please indicate your choice:
 5 Logout  
 ============================
 Please indicate your choice:
-
+```
 
 **1. View all movies and all movie filter: 1**  
 Same as Customer Main Menu.
