@@ -162,7 +162,7 @@ public class ShiftController {
         System.out.println("No such shift in database. Please add shift for this index.");
     }
 
-//@@justinaquak
+//@@beaniestanley
     public static void unassignEmployee(ArrayList<Employee> employees, ArrayList<Shift> shifts) {
         viewAllShifts(shifts);
         if (shifts.isEmpty()) {
@@ -188,7 +188,7 @@ public class ShiftController {
         }
         System.out.println("No such shift in database. Please add shift for this index.");
     }
-
+//@@justinaquak
     public static void viewAllShifts(ArrayList<Shift> shifts) {
         if (shifts.isEmpty()) {
             System.out.println("No shift in database. Please add shift first.");
