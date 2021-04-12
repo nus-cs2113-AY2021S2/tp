@@ -24,6 +24,8 @@ This application was created with the aim of helping NUS Computing and Engineeri
     - Justification: The ability to save previous data of the user is useful for the features of the app which requires saving data from previous interactions.
     - Highlights: It required an in-depth analysis of design alternatives to minimise the amount of redundancy on our code for the storage classes.
 
+<div style="page-break-after: always;"></div>
+
 ### Documentation
 - **User Guide:**
     - Added documentation for Section 4.8 'Notes' (under Section 4 'Features')
@@ -33,8 +35,6 @@ This application was created with the aim of helping NUS Computing and Engineeri
         - UML Diagrams added: (1 diagram) Storage Component Diagram 
     - Added documentation for Section 3.6 'Save Feature' (under Section 3 'Implementation')
         - UML Diagrams added: (5 diagrams) 1 overall sequence diagram for Save Feature, 3 close-up Sequence diagrams for Step 1, 1 close-up Sequence diagram for Step 2
-
-<div style="page-break-after: always;"></div>
 
 ### Contribution to Team-based Tasks 
 - Managed releases v2.0 (1 release) on GitHub
