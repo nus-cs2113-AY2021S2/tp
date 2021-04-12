@@ -14,18 +14,13 @@ ol ol > li:before {
 }
 </style>
 
----
-layout: page
-title: Developer Guide
----
-
 # Patient Manager Developer Guide
 
 ## Table of Contents
 
 1. [Introduction](#introduction)
 1. [Setting up the project in your computer](#setting-up-the-project-in-your-computer)
-1. [Design & Implementation](#design--implementation)
+1. [Application Design](#application-design)
     1. [Architecture](#architecture)
         1. [Interaction Among Architecture Components](#interaction-among-architecture-components)
     1. [UI Component](#ui-component)
@@ -80,7 +75,7 @@ If you plan to use IntelliJ IDEA (highly recommended):
 1. Verify the setup: Run `seedu.duke.PatientManager` and try a few commands.
 1. [Run the tests](#appendix-e-instructions-for-manual-testing) to ensure they all pass.
 
-## Design & Implementation
+## Application Design
 
 ### Architecture
 
