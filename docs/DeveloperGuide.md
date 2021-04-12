@@ -258,7 +258,7 @@ A general explanation of how this feature works:: <br>
 
 ### 5.2 Review Mode
 When User inputs a command, `Commands` class checks for the value of the attribute
-`boolean isReviewMode` before executing the command .As explained in [section 5.1](#51-mode-switch-feature), when in review mode, `boolean isReviewMode` is equal to _true_. 
+`boolean isReviewMode` before executing the command. As explained in [section 5.1](#51-mode-switch-feature), when in review mode, `boolean isReviewMode` is equal to _true_. 
 Hence, only commands that are recognised by the Review Mode are executed when input by user. Else, inavild command message is displayed to the user.
 
 ### 5.2.1 Add a Review Feature
