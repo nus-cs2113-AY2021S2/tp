@@ -58,20 +58,20 @@ and improvements have been done throughout the project with peer-review feedback
 
 ### Contributions to UG
 
-My groupmate Andy has designed the UG skeleton with reference to my 
-[individualProject(iP)](https://tzexern.github.io/ip/). \
-I have also given feedback with regards on the layout of the UG and made some fixes. \
-I'm tasked to finish the `3.5 remove`, `3.6 creditscore` and `3.7 exit` under our `3. Features` section. \
-I have also taken all the screenshots used in our UG and updated them whenever necessary.
+* My groupmate Andy has designed the UG skeleton with reference to my 
+[individualProject(iP)](https://tzexern.github.io/ip/).
+* I have also given feedback with regards on the layout of the UG and made some fixes.
+* I'm tasked to finish the `3.5 remove`, `3.6 creditscore` and `3.7 exit` under our `3. Features` section.
+* I have also taken all the screenshots used in our UG and updated them whenever necessary.
 
 
 ---
 
 ### Contributions to DG
 
-I have provided my team with an improved version of DG skeleton building on top of Mark's. These include proper headers
+* I have provided my team with an improved version of DG skeleton building on top of Mark's. These include proper headers
 and hyperlinks after we have finalized our rough template for DG. \
-I'm also tasked to complete several subsections of the DG, these include `Introduction`, `Setting Up`, `UI Component`
+* I'm also tasked to complete several subsections of the DG, these include `Introduction`, `Setting Up`, `UI Component`
 under `Design`, `Remove Feature` under `Implementation`, `Appendix B: User Stories`, 
 `Appendix C: Non-Functional Requirements` and part of `Appendix D: Instructions for Manual Testing`. \
 `Appendix D: Instructions for Manual Testing` was done together by me and Jonah.
@@ -86,6 +86,7 @@ under `Design`, `Remove Feature` under `Implementation`, `Appendix B: User Stori
 1. Contribtued in maintaining Project Log.
 1. Facilitated meetings along with Andy.
 1. Made sure that deliverables are submitted and gave proper reminders from time to time.
+1. Vetting DG
 
 ---
 
