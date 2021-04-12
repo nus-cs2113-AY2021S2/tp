@@ -1,1 +1,5 @@
-James Gosling
+help
+profile
+start
+list
+bye

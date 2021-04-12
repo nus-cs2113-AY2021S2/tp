@@ -25,7 +25,7 @@ public class Delivery implements Comparable<Delivery> {
     public Delivery(String deliveryStatus, String deliveryID, String address, String recipient, ArrayList<Item> items) {
         this.deliveryID = deliveryID;
         this.address = address;
-        this. recipient = recipient;
+        this.recipient = recipient;
         this.items = items;
         this.isComplete = !deliveryStatus.equals("N");
         for (Item item : items) {
