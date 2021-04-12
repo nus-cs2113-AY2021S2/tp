@@ -46,9 +46,9 @@ public class StaffInstance {
         logger.log(Level.INFO, "Staff instance accessed.");
         while (true) {
             String line;
-            UI.printEmptyLine();
             line = staffUI.getInput("Staff");
             try {
+                UI.printEmptyLine();
                 Command c = staffParser.commandHandler(line, staffList);
                 if (c == null) {
                     continue;
@@ -56,8 +56,7 @@ public class StaffInstance {
                 c.execute(staffList, staffUI, staffStorage);
                 UI.printEmptyLine();
                 if (c.isExit()) {
-                    System.out.println("Returning to Start Menu!\n");
-                    logger.log(Level.WARNING, "Handling HealthVaultException.");
+                    logger.log(Level.INFO, "Exiting Staff Menu.");
                     break;
                 }
             } catch (HealthVaultException e) {
