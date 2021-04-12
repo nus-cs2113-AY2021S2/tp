@@ -29,7 +29,7 @@ This application was created with the aim of helping NUS Computing and Engineeri
 ### Documentation
 - **User Guide:**
     - Added documentation for Section 4.8 'Notes' (under Section 4 'Features')
-    - Edited documentation for 'add, view, delete notes' rows (under Section 6 'Command Summary' Table)
+    - Edited documentation for 'add, view, delete notes' rows (under Section 6 'Command Summary')
 - **Developer Guide:**
     - Added documentation for Section 2.7 'Storage Component' (under Section 2 'Design')
         - UML Diagrams added: (1 diagram) Storage Component Diagram 
