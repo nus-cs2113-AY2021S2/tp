@@ -11,7 +11,7 @@
    &nbsp;&nbsp;&nbsp;&nbsp; 3.2.3. [Format of commands](#323-format-of-commands) <br>
 4. [Features](#4-features)  <br>
    4.1. [Viewing Help](#41-viewing-help)<br>
-   4.2. [Viewing all venues](#42-viewing-all-venues) <br>
+   4.2. [Showing all venues](#42-showing-all-venues) <br>
    4.3. [Routing](#43-routing) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.3.1. [Routing between blocks](#431-routing-between-blocks) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.3.2. [Routing to an eatery](#432-routing-to-an-eatery) <br>
@@ -22,21 +22,21 @@
    &nbsp;&nbsp;&nbsp;&nbsp; 4.4.3. [Clearing History](#443-clearing-history) <br>
    4.5. [Alias](#45-alias) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.5.1. [Adding an alias for block name](#451-adding-an-alias-for-block-name) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.5.2. [Viewing all aliases](#452-viewing-all-aliases) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.5.2. [Showing all aliases](#452-showing-all-aliases) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.5.3. [Deleting aliases](#453-deleting-aliases) <br>
    4.6. [Daily Routes](#46-daily-routes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.6.1. [Adding a daily route](#461-adding-a-daily-route) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.2. [Viewing daily route](#462-viewing-daily-route) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.2. [Showing daily route](#462-showing-daily-route) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.6.3. [Deleting daily route](#463-deleting-daily-route) <br>
    4.7. [Favourite Routes](#47-favourite-routes) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.1. [Adding Favourite route](#471-adding-favourite-route) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.2. [Show stored favourites](#472-show-stored-favourites) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.1. [Adding favourite route](#471-adding-favourite-route) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.2. [Showing all favourite routes](#472-showing-all-favourite-routes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.7.3. [Repeating favourite route](#473-repeating-favourite-route) <br> 
    &nbsp;&nbsp;&nbsp;&nbsp; 4.7.4. [Deleting favourite route](#474-deleting-favourite-route) <br>
    4.8. [Notes](#48-notes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.8.1. [Adding notes](#481-adding-notes) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.8.2. [Viewing notes](#482-viewing-notes) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.8.3. [Delete note](#478-delete-note) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.8.2. [Showing notes](#482-showing-notes) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.8.3. [Deleting notes](#478-deleting-notes) <br>
    4.9. [Exiting the application](#49-exiting-the-application) <br>
    4.10. [Saving the Data](#410-saving-the-data) <br>
    4.11. [Loading Past Data](#411-loading-past-data) <br>
@@ -202,7 +202,7 @@ Example :
 ------------------------------------------------------------------------------------------------------------
 ```
 
-### 4.2 Viewing all venues
+### 4.2 Showing all venues
 
 List all the venues in Engineering and Computing campus. <br>
 Format : `show venues` <br>
@@ -237,10 +237,7 @@ Eateries:
 ------------------------------------------------------------------------------------------------------------
 ```
 
-
-:information_source: These are the venue names that can be used in the features below. <br>
-
-
+> :information_source: These are the venue names that can be used in the features below. <br>
 
 ### 4.3 Routing
 #### 4.3.1 Routing between blocks
@@ -264,9 +261,9 @@ Route: E2 -> E3 -> E4 -> E5 -> LT3 -> CHINESE LIBRARY -> CENTRAL LIBRARY -> AS6 
   followed by the `DESTINATION BLOCK`. <br>
 
 
-:information_source: All the parameters for the Routing feature are **case-insensitive**. <br>
-:warning: Both parameters must be one of the Engineering or Computing venues. <br>
-:warning: The `STARTING_BLOCK` and the `DESTINATION_BLOCK` cannot be the same. <br>
+> :information_source: All the parameters for the Routing feature are **case-insensitive**. <br>
+> :warning: Both parameters must be one of the Engineering or Computing venues. <br>
+> :warning: The `STARTING_BLOCK` and the `DESTINATION_BLOCK` cannot be the same. <br>
 
 
 #### 4.3.2 Routing to an eatery
@@ -291,7 +288,7 @@ Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
   desired eatery. <br>
 
 
-:warning: The `STARTING_BLOCK` must be one of the Engineering or Computing buildings. <br>
+> :warning: The `STARTING_BLOCK` must be one of the Engineering or Computing buildings. <br>
 
 
 #### 4.3.3 Routing to the closest eatery
@@ -328,8 +325,8 @@ Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
 - NUSMaze then prompts for the index of the eatery that you wish to go to. This is when you can enter `EATERY_ENTRY`. <br>
 
 
-:warning: The `STARTING_BLOCK` must be one of the Engineering or Computing buildings. <br>
-:warning: `EATERY_ENTRY` must be an integer from 1 to 7. <br>
+> :warning: The `STARTING_BLOCK` must be one of the Engineering or Computing buildings. <br>
+> :warning: `EATERY_ENTRY` must be an integer from 1 to 7. <br>
 
 
 ### 4.4 History
@@ -347,7 +344,7 @@ There are 2 records in your history:
 2. E1 -> STARBUCKS
 ------------------------------------------------------------------------------------------------------------
 ```
-:information_source: NUSMaze will automatically update your history to the most recent 10 searches.<br>
+> :information_source: NUSMaze will automatically update your history to the most recent 10 searches.<br>
 
 
 #### 4.4.2 Repeating History
@@ -374,8 +371,7 @@ Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
 
 - Followed by a prompt asking for the `REPEAT_ENTRY` index that you want to repeat. <br>
 
-
-:warning: `REPEAT_ENTRY` must be an integer that is within the bounds of the history list shown.
+> :warning: `REPEAT_ENTRY` must be an integer that is within the bounds of the history list shown.
 
 
 #### 4.4.3 Clearing History
@@ -408,9 +404,7 @@ Enter the alias name:
 Got it! Successfully added FOOD as TECHNO EDGE's alias
 ------------------------------------------------------------------------------------------------------------
 ```
-<div markdown="block" class="alert alert-warning">
-:warning: Aliases cannot be used in the `Daily route feature` and `favourite feature`. <br>
-</div>
+
 
 - When `add alias` command is called, NUSMaze will prompt for the `BLOCK` that you
   wish to set the alias for. <br>
@@ -419,9 +413,10 @@ Got it! Successfully added FOOD as TECHNO EDGE's alias
 
 - Note that there cannot be multiple blocks sharing the same alias. <br>
 
-:information_source: Alias is **case-insensitive** for all commands <br>
+> :warning: Aliases cannot be used in the `Daily route feature` and `favourite feature`. <br>
+> :information_source: Alias is **case-insensitive** for all commands <br>
 
-#### 4.5.2 Viewing all aliases
+#### 4.5.2 Showing all aliases
 Lists all aliases that are currently active.<br>
 Format : `show alias` <br>
 Example :
@@ -491,13 +486,12 @@ Got it! Successfully added MONDAY's schedule!
 
 - NUSMaze will continuously ask for locations until you input `end`. <br>
 
-:warning: `DAY_ENTRY` must be an integer between 1 and 7, each representing a day of the week
-(1 represents Monday and 7 represents Sunday).<br>
-:warning: There must be at least one block entered for the schedule.<br>
-:warning: Entries must be the original block names. Aliases are not allowed.<br>
+> :warning: `DAY_ENTRY` must be an integer between 1 and 7, each representing a day of the week (1 represents Monday and 7 represents Sunday).<br>
+> :warning: There must be at least one block entered for the schedule.<br>
+> :warning: Entries must be the original block names. Aliases are not allowed.<br>
 
 
-#### 4.6.2 Viewing daily route
+#### 4.6.2 Showing daily route
 Shows the generated route for the schedule of the selected day, if applicable.<br>
 Format : `show daily route` → `DAY_NUMBER` <br>
 Example :
@@ -527,7 +521,7 @@ Route: E7 -> E6 -> EW2 -> E4A -> E4 -> E3 -> E2 -> EA
 
 - NUSMaze will then prompt you for a `DAY_NUMBER`. <br>
 
-:warning: The `DAY_NUMBER` must be the index of one of the available days which has been displayed. <br>
+> :warning: The `DAY_NUMBER` must be the index of one of the available days which has been displayed. <br>
 
 
 #### 4.6.3 Deleting daily route
@@ -555,10 +549,10 @@ Got it! Successfully cleared MONDAY's schedule!
 
 - NUSMaze will then prompt you for a `DAY_NUMBER`. <br>
 
-:warning: The `DAY_NUMBER` must be the index of one of the available days which has been displayed. <br>
+> :warning: The `DAY_NUMBER` must be the index of one of the available days which has been displayed. <br>
 
 ### 4.7 Favourite Routes
-#### 4.7.1 Adding Favourite Route
+#### 4.7.1 Adding favourite route
 You can add a route to favourites to easily access it in the future.<br>
 Format : `add favourite` → `STARTING_BLOCK` → `DESTINATION_BLOCK` <br>
 Example :
@@ -574,12 +568,12 @@ Destination Block:
 Got it! Successfully added new favourite route!
 ------------------------------------------------------------------------------------------------------------
 ```
-:information_source: All the parameters for the Favourite feature are **case-insensitive**. <br>
-:warning: The `STARTING_BLOCK` and the `DESTINATION_BLOCK` cannot be the same. <br>
-:warning: Aliases cannot be used in this feature.<br>
+> :information_source: All the parameters for the Favourite feature are **case-insensitive**. <br>
+> :warning: The `STARTING_BLOCK` and the `DESTINATION_BLOCK` cannot be the same. <br>
+> :warning: Aliases cannot be used in this feature.<br>
 
 
-#### 4.7.2 Show stored favourites
+#### 4.7.2 Show all favourite routes
 You can request NUSMaze to display all the saved favourites, if you have stored at least one route to favourites.<br>
 Format : `show favourite` <br>
 Example :
@@ -609,7 +603,7 @@ Select Entry to Repeat:
 Route: EA -> E2 -> E3 -> E4
 ------------------------------------------------------------------------------------------------------------
 ```
-:warning: `ROUTE_INDEX` must be an integer within the bounds of the favourite list. <br>
+> :warning: `ROUTE_INDEX` must be an integer within the bounds of the favourite list. <br>
 
 #### 4.7.4 Deleting favourite route
 You can delete a favourite route if it is not frequently used anymore.<br>
@@ -628,7 +622,7 @@ Select Entry to delete:
 Got it! Successfully deleted favourite route :)
 ------------------------------------------------------------------------------------------------------------
 ```
-:warning: `ROUTE_INDEX` must be an integer within the bounds of the favourite list. <br>
+> :warning: `ROUTE_INDEX` must be an integer within the bounds of the favourite list. <br>
 
 ### 4.8 Notes
 #### 4.8.1 Adding notes
@@ -650,10 +644,10 @@ Got it! Successfully added and tagged note to STARBUCKS
 - When the `add note` command is entered, NUSMaze will prompt you for a `BLOCK`. <br>
 - After a valid location is keyed in,  NUSMaze will prompt you for a `NOTE` to be tagged to the location. <br>
 
-:warning: The `BLOCK` must be one of the Engineering or Computing buildings. <br>
-:warning: The `NOTE` will be invalid if it is empty. <br>
+> :warning: The `BLOCK` must be one of the Engineering or Computing buildings. <br>
+> :warning: The `NOTE` will be invalid if it is empty. <br>
 
-#### 4.8.2 Viewing notes
+#### 4.8.2 Showing notes
 Lists all notes which had been tagged to the given location, if it exists.<br/>
 Format : `show note` → `BLOCK` <br>
 Example :
@@ -670,9 +664,9 @@ Here is the list of notes:
 ```
 - When the `show note` command is entered, NUSMaze will prompt you for a `BLOCK`. <br>
 
-:warning: The `BLOCK` must be one of the Engineering or Computing buildings. <br>
+> :warning: The `BLOCK` must be one of the Engineering or Computing buildings. <br>
 
-#### 4.8.3 Delete note
+#### 4.8.3 Deleting notes
 Delete the specified note based on index number tagged to the given existing location.<br/>
 Format : `delete note` → `BLOCK` → `NOTE_INDEX` <br>
 Example :
@@ -696,9 +690,8 @@ Got it! Successfully deleted note tagged to STARBUCKS
 - After a valid location is keyed in,  NUSMaze will prompt you for a `NOTE_INDEX` of the note to be deleted,
   which is the index of the note in the location's notes list. <br>
 
-:warning: The `BLOCK` must be one of the Engineering or Computing buildings. <br>
-
-:warning: The `NOTE_INDEX` must be an integer within the total number of notes that the location has. <br>
+> :warning: The `BLOCK` must be one of the Engineering or Computing buildings. <br>
+>:warning: The `NOTE_INDEX` must be an integer within the total number of notes that the location has. <br>
 
 
 ### 4.9 Exiting the application
@@ -722,7 +715,7 @@ Your saved data can be found in the *data folder* within your *home folder* of *
 In the data folder you will find 5 text files as shown below.<br>
 ![image.png](images/textfiles.png)
 
-:warning: It is highly recommended that you do not edit the saved data as it can cause loading issues in future sessions! <br>
+> :warning: It is highly recommended that you do not edit the saved data as it can cause loading issues in future sessions! <br>
 
 ### 4.11 Loading Past Data
 
@@ -737,7 +730,7 @@ NUSMaze will inform you whether the data has been successfully loaded by display
 [X] Note data has been successfully loaded!
 ------------------------------------------------------------------------------------------------------------
 ```
-:information_source: If the saved data is corrupted, NUSMaze will automatically clear the data for that feature.<br>
+> :information_source: If the saved data is corrupted, NUSMaze will automatically clear the data for that feature.<br>
 For example if favourite data is corrupted, NUSMaz will display:<br> 
 ```
 ------------------------------------------------------------------------------------------------------------
@@ -769,24 +762,24 @@ can be found on the second computer. <br>
 |Action | Format |
 |---------------|------------------------------------------------------------------|
 |[**Viewing help**](#41-viewing-help)        | `help` | 
-|[**Viewing all venues**](#42-viewing-all-venues)        | `show venues` | 
+|[**Showing all venues**](#42-showing-all-venues)        | `show venues` | 
 |[**Finding the route**](#431-routing-between-blocks)       | `go` → `STARTING_BLOCK` → `DESTINATION_BLOCK`|
 |[**Routing to the closest eatery**](#433-routing-to-the-closest-eatery)       | `go` → `STARTING_BLOCK` → `eatery` → `EATERY_ENTRY` |
-|[**Viewing history**](#441-viewing-history)     | `history` | 
-|[**Clearing history**](#442-repeating-history)       | `clear history` |
-|[**Repeating history**](#443-clearing-history)       | `repeat history` → `REPEAT_ENTRY` |
+|[**Viewing history**](#441-viewing-history)     | `history` |
+|[**Repeating history**](#442-repeating history)       | `repeat history` → `REPEAT_ENTRY` |
+|[**Clearing history**](#443-clearing-history)       | `clear history` |
 |[**Adding alias for block names**](#451-adding-an-alias-for-block-name)| `add alias` → `BLOCK` → `ALIAS_NAME` | 
-|[**Showing all aliases**](#452-viewing-all-aliases)  | `show alias` | 
+|[**Showing all aliases**](#452-showing-all-aliases)  | `show alias` | 
 |[**Deleting alias**](#453-deleting-aliases)       | `delete alias` → `ALIAS_NAME` |
 |[**Adding a daily route**](#461-adding-a-daily-route)     | `add daily route` → `DAY_NUMBER` → `BLOCK` → … → `BLOCK` → `end` | 
-|[**Showing a daily route**](#462-viewing-daily-route)       | `show daily route` → `DAY_NUMBER` |
+|[**Showing a daily route**](#462-showing-daily-route)       | `show daily route` → `DAY_NUMBER` |
 |[**Deleting a daily route**](#463-deleting-daily-route)       | `delete daily route` → `DAY_NUMBER` |
-|[**Adding Favourite Route**](#471-adding-favourite-route)       | `add favourite` → `STARTING_BLOCK` → `DESTINATION_BLOCK` |
-|[**Show stored favourites**](#472-show-stored-favourites)       | `show favourite` |
+|[**Adding favourite route**](#471-adding-favourite-route)       | `add favourite` → `STARTING_BLOCK` → `DESTINATION_BLOCK` |
+|[**Showing all favourite routes**](#472-showing-all-favourite-routes)       | `show favourite` |
 |[**Repeating favourite route**](#473-repeating-favourite-route)       | `repeat favourite` → `ROUTE_INDEX` |
 |[**Deleting favourite route**](#474-deleting-favourite-route)       | `delete favourite` → `ROUTE_INDEX` |
 |[**Adding notes**](#481-adding-notes)       | `add note` → `BLOCK` → `NOTE` |
-|[**Viewing notes**](#482-viewing-notes)      | `show note` → `BLOCK` | 
-|[**Deleting notes**](#483-delete-note)       | `delete note` → `BLOCK` → `NOTE_INDEX` |
+|[**Showing notes**](#482-showing-notes)      | `show note` → `BLOCK` | 
+|[**Deleting notes**](#483-deleting-notes)       | `delete note` → `BLOCK` → `NOTE_INDEX` |
 |[**Exiting the application**](#49-exiting-the-application)       | `bye` |
 
