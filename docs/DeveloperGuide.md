@@ -6,6 +6,9 @@ MovieApp is a desktop app for users to see the upcoming shows, book a movie and 
 The app is optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).\
 If you can type fast, MovieApp can help you view and book movies conveniently.
 
+## Getting Started
+Refer to the guide [Setting up and getting started](https://se-education.org/addressbook-level3/SettingUp.html#before-writing-code).
+
 ## Design 
 
 ### Architecture
@@ -80,8 +83,10 @@ They can either view, add, delete, or update movies.
 Based on their chosen options, the interface would then call
 the respective classes and functions to perform the actions.
 
-**Delete/ Edit movie feature**\
+**Add, Delete, and Edit movie feature**\
 This feature is implemented by methods from the ui component, and database component.
+
+Add movie function utilises the addMovie() property of Database which is invoked in the UI. 
 
 For Delete movie, the ui uses displayDeleteMovieMenu(ArrayList<Movie> movieDatabase) to print out a list of movies,
 and prompts the user to enter the index they would like to delete. The database then uses
