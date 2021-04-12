@@ -7,6 +7,10 @@ import seedu.duke.record.comparator.RecordDateComparator;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import static seedu.duke.record.RecordType.EXERCISE;
+import static seedu.duke.record.RecordType.SLEEP;
+
+
 /**
  * Represents the list that contains all records of one type.
  */
@@ -147,6 +151,16 @@ public class RecordList {
         }
     }
 
+    public double getDailyTime(LocalDate recordDate) {
+        if (type == SLEEP) {
+            return getDailySleepTime(recordDate);
+        }
+        if (type == EXERCISE) {
+            return getDailyExerciseTime(recordDate);
+        }
+        return 0;
+    }
+
     /**
      * Calculates progress based on all records on a specified date.
      *
@@ -187,6 +201,28 @@ public class RecordList {
         default:
             return 0;
         }
+    }
+
+    private double getDailyExerciseTime(LocalDate recordDate) {
+        double dailyExerciseTime = 0;
+        for (Record record : records) {
+            Exercise exercise = (Exercise) record;
+            if (exercise.getDate().isEqual(recordDate)) {
+                dailyExerciseTime += exercise.getDuration();
+            }
+        }
+        return dailyExerciseTime;
+    }
+
+    private double getDailySleepTime(LocalDate recordDate) {
+        double dailySleepTime = 0;
+        for (Record record : records) {
+            Sleep sleep = (Sleep) record;
+            if (sleep.getDate().isEqual(recordDate)) {
+                dailySleepTime += sleep.getDuration();
+            }
+        }
+        return dailySleepTime;
     }
 
     private double getDietProgress(LocalDate currentDate) {

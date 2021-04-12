@@ -2,6 +2,7 @@ package seedu.duke.storage;
 
 import seedu.duke.account.FitCenter;
 import seedu.duke.account.User;
+import seedu.duke.exception.ExceedTimeInOneDayException;
 import seedu.duke.exception.TypeException;
 
 import seedu.duke.goal.timemanager.TimeController;
@@ -97,7 +98,7 @@ public class FileInfoReader {
      * @throws ParseException        when the file path or file cannot be found.
      */
     public void parseToRecordList(User user) throws FileNotFoundException, TypeException, NumberFormatException,
-            ParseException {
+            ParseException, ExceedTimeInOneDayException {
         Scanner sc = new Scanner(recordSource);
         while (sc.hasNext()) {
             String currentLine = sc.nextLine();

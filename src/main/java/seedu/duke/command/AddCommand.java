@@ -2,6 +2,7 @@ package seedu.duke.command;
 
 import seedu.duke.account.FitCenter;
 import seedu.duke.common.Messages;
+import seedu.duke.exception.ExceedTimeInOneDayException;
 import seedu.duke.exception.FutureDateException;
 import seedu.duke.exception.TypeException;
 import seedu.duke.goal.timemanager.TimeController;
@@ -15,8 +16,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
+
+import static seedu.duke.common.Messages.MESSAGE_EXCEED_24_HOURS_A_DAY;
 
 /**
  * Represents a command of adding a new record to current record list.
@@ -67,14 +71,19 @@ public class AddCommand extends Command {
      * @return the feedback message of execution.
      */
     public CommandResult execute(FitCenter fitCenter) {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate currentDate = LocalDate.now();
         int currentWeekOfYear = TimeController.getSystemWeekOfYear();
-        if (record != null) {
-            fitCenter.addRecordToList(recordType, record);
-            fitCenter.updateProgressAtAdding(record, currentDate, currentWeekOfYear);
-            feedback = String.format(FEEDBACK_FORMAT, record.getType(), record.getRecordSummary());
-        } else {
-            feedback = Messages.MESSAGE_CANT_ADD_RECORD;
+        try {
+            if (record != null) {
+                fitCenter.addRecordToList(recordType, record);
+                fitCenter.updateProgressAtAdding(record, currentDate, currentWeekOfYear);
+                feedback = String.format(FEEDBACK_FORMAT, record.getType(), record.getRecordSummary());
+            } else {
+                feedback = Messages.MESSAGE_CANT_ADD_RECORD;
+            }
+        } catch (ExceedTimeInOneDayException e) {
+            feedback = String.format(MESSAGE_EXCEED_24_HOURS_A_DAY, record.getDate().format(dateFormatter));
         }
         return new CommandResult(feedback);
     }

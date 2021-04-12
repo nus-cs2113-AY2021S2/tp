@@ -100,6 +100,27 @@ the parsed parameters in `CommandParser` will be cleared to get ready for next p
 
 ### Components
 
+#### Entity classes component
+
+![Structure of the Entity Classes](./diagrams/DG_Images/entityClasses.png)
+<h5 align="center">Figure 3: class structure for entity classes</h5>
+
+* Each`User` stores a `FitCenter` object that holds all the records and goals for the user.
+* Each `FitCenter` stores four `RecordList` and four `GoalList` for `EXERCISE`, `DIET`, `SLEEP`, `BODY_WEIGHT` type respectively.
+* `Record` is an abstract class, which is the superclass for different types of records.
+* `Goal` is an abstract class, which is the superclass for different types of goals. 
+* Each `RecordList` is composed of `Record`. Each `GoalList` is composed of `Goal`.
+
+#### Storage component
+
+![Structure of the Storage](./diagrams/DG_Images/StorageClasses.png)
+<h5 align="center">Figure 3: class structure for entity classes</h5>
+
+* `FileInfoReader` reads information stored in text files, hence the status can be resumed when users start the application again.
+* `FileInfoWriter` stores information into text files in real-time, hence users can leave the application at any time without losing any data.
+* `Storage` has a `FileInfoReader` and a `FileInfoWriter` to provide a generalized interface.
+
+
 [**Get back to Table of Contents**](#table-of-contents)
 
 ---
@@ -131,40 +152,16 @@ input.
 Step 2. The `AddCommand` initializes a `Record` and
 calls `FitCenter#FitCenter#addRecordToList(CommandRecordType type, Record record)` to add the record.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a any of the parameters passed in are invalid, `AddCommand` will throw an error and will not call `FitCenter#FitCenter#addRecordToList(CommandRecordType type, Record record)`, so the record will not be saved into the `RecordList`.
+> 💡  If any of the parameters passed are invalid, `AddCommand` will throw an error and will not call `FitCenter#FitCenter#addRecordToList(CommandRecordType type, Record record)`, so the record will not be saved into the `RecordList`.
 
-</div>
 
 Step 3.`FitCenter#FitCenter#addRecordToList(CommandRecordType type, Record record)`
 calls `RecordList#addRecord(Record newRecord)` to modify the list.
 
 The following sequence diagram shows how the `add` command works:
 
-![UndoSequenceDiagram](images/UndoSequenceDiagram.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-
-</div>
-
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once
-to the right, pointing to the previously undone state, and restores the address book to that state.
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest address book state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-
-</div>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such
-as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`.
-Thus, the `addressBookStateList` remains unchanged.
-
-![UndoRedoState4](images/UndoRedoState4.png)
-
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not
-pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be
-purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern
-desktop applications follow.
-
-![UndoRedoState5](images/UndoRedoState5.png)
+![Sequence diagram of adding a new record](./diagrams/DG_Images/addRecordSequence.png)
+<h5 align="center">Figure 3: Sequence Diagram of adding a record</h5>
 
 [**Get back to Table of Contents**](#table-of-contents)
 
@@ -237,6 +234,180 @@ desktop applications follow.
 ---
 
 ## Instructions for manual testing
+
+Given below are instructions to test the app manually.
+
+Note: The instructions serve as a starting point for test, only basic test cases are listed for reference.
+
+### Launch and shutdown
+
+1. Initial launch
+
+    1. Download the jar file and copy into an empty folder
+
+    1. Execute the jar file in command line window by command `java -jar tp.jar`.
+
+1. Use command `exit` to terminate the application/
+
+### Adding a record
+
+1. Adding an exercise record
+    1. Test case: `add t/E a/walking d/40` <br>
+       Expected: A record of walking for 40 minutes on the current system date is added.
+       
+    1.  Test case: `add t/E a/abc d/40` <br>
+        Expected: An error message is displayed since "abc" is not a valid workout type.
+
+    1.  Test case: `add t/E a/running d/40 date/10-04-2021` <br>
+       Expected: A record of walking for 40 minutes on 10/04/2021 is added.
+
+1. Adding a diet record
+    1. Test case: `add t/D f/fruit w/50` <br>
+     Expected: A record of having 50g fruit on the current system date is added.
+
+    1.  Test case: `add t/D f/fruit w/abc` <br>
+      Expected: An error message is displayed since "abc" is not a food amount value.
+
+    1.  Test case: `add t/D f/fruit w/50 date/10-04-2021` <br>
+      Expected: A record of having 50g fruit on 10/04/2021 is added.
+
+1. Adding a sleep record
+    1. Test case: `add t/S d/8` <br>
+   Expected: A record of sleeping for 8 hours on the current system date is added.
+
+    1.  Test case: `add t/S` <br>
+    Expected: An error message is displayed since the syntax for `add` command is invalid.
+
+    1.  Test case: `add t/S d/8 date/10-04-2021` <br>
+    Expected: A record of sleeping for 8 hours on 10/04/2021 is added.
+
+1. Adding a sleep record
+    1. Test case: `add t/W w/68` <br>
+     Expected: A record for body weight of 68.0kg on the current system date is added.
+
+    1.  Test case: `add t/W w/abc` <br>
+      Expected: An error message is displayed since "abc" is not a valid value for body weight.
+
+    1.  Test case: `add t/W w/68 date/10-04-2021` <br>
+      Expected: A record for body weight of 68.0kg on 10/04/2021 is added.
+
+### View record lists
+
+1. View exercise records
+    1. Test case: `view t/E` <br>
+     Expected: All exercise records are displayed.
+
+    1.  Test case: `view t/E a/running` <br>
+      Expected: All exercise records of running are displayed.
+
+1. View diet records
+    1. Test case: `view t/D` <br>
+     Expected: All diet records are displayed.
+
+    1.  Test case: `view t/E f/abc` <br>
+      Expected: An error message is displayed since "abc" is not a valid food type.
+
+1. View sleep records
+    1. Test case: `view t/S` <br>
+     Expected: All sleep records are displayed.
+
+    1.  Test case: `view t/S date/10-04-2021` <br>
+      Expected: All sleep records on date 10/04/2021 are displayed.
+
+1. View body weight records
+    1. Test case: `view t/W` <br>
+      Expected: All body weight records are displayed.
+
+    1.  Test case: `view t/W date/2021-04-10` <br>
+      Expected: An error message is displayed since the date is not in the supported format.
+
+### Delete a record
+
+1. Delete a record of specific type
+
+    1. Prerequisites: List all records using `view` command.
+
+    1. Test case: `delete t/E i/1` <br>
+     Expected: First exercise record is deleted from the list.
+
+    1.  Test case: `delete t/D i/0` <br>
+      Expected: An error message is displayed since 0 is out of valid range of record index.
+        
+    1. Test case: `delete t/S i/2` <br>
+       Precondition: The sleep record list has at least 2 records.<br>
+     Expected: The second sleep record is deleted from the list.
+
+    1.  Test case: `delete t/W` <br>
+      Expected: An error message is displayed since the syntax for `delete` command is invalid.
+
+### Setting a goal
+
+1. Setting an exercise goal
+    1. Test case: `set t/E p/D target/300` <br>
+     Expected: A goal of taking exercises to burn 300Kcal every day is set.
+
+    1. Test case: `set t/E p/W target/3000` <br>
+      Expected: A goal of taking exercises to burn 3000Kcal every week is set.
+
+1. Setting a diet goal
+    1. Test case: `set t/D p/D target/1500` <br>
+     Expected: A goal of taking in 1500Kcal every day is set.
+
+    1. Test case: `set t/D p/W target/abc` <br>
+     Expected: An error message is displayed since "abc" is not a valid value for target calorie input.
+
+1. Setting a sleep goal
+    1. Test case: `set t/S p/D target/8` <br>
+     Expected: A goal of sleeping 8 hours every day is set.
+
+    1. Test case: `set t/S p/A target/8` <br>
+     Expected: An error message is displayed since "A" is not a valid goal type.
+
+1. Setting a body weight goal
+    1. Test case: `set t/W p/W target/60` <br>
+     Expected: A weekly goal of reaching the body weight of 60kg is set.
+
+    1. Test case: `set t/W p/W target/abc` <br>
+     Expected: An error message is displayed since "abc" is not a valid body weight target value.
+
+### Checking progress of goals
+
+1. Checking progress of goals of a specific type.
+   
+    1. Test case: `check t/E` <br>
+     Expected: Progress of all exercise goals are displayed.
+
+    1. Test case: `check t/D p/D` <br>
+     Expected: Progress of all daily diet goals are displayed.
+       
+    1. Test case: `check t/S p/W` <br>
+     Expected: Progress of all weekly sleep goals are displayed.
+
+    1. Test case: `check t/W` <br>
+     Expected: Progress of all body weight goals are displayed.
+
+    1. Test case: `check t/W p/a` <br>
+      Expected: An error message is displayed since "a" is not a valid goal type.
+
+### Canceling a goal
+
+1. Delete a record of specific type
+
+    1. Prerequisites: check the list of all goals using `check` command.
+
+    1. Test case: `cancel t/E i/1` <br>
+     Expected: First exercise goal is cancelled and removed from the list.
+
+    1.  Test case: `cancel t/D i/0` <br>
+      Expected: An error message is displayed since 0 is out of valid range of goal index.
+
+    1. Test case: `cancel t/S i/2` <br>
+     Precondition: The sleep goal list has at least 2 goals.<br>
+     Expected: The second sleep goal is cancelled and removed from the list.
+
+    1.  Test case: `cancel t/W` <br>
+      Expected: An error message is displayed since the syntax for `cancel` command is invalid.
+
 
 [**Get back to Table of Contents**](#table-of-contents)  
 [Home](README.md)
