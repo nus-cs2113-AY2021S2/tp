@@ -2,13 +2,9 @@ package seedu.connoisseur;
 
 import org.json.JSONException;
 import seedu.connoisseur.commands.Commands;
-import seedu.connoisseur.exceptions.ConnoisseurException;
 import seedu.connoisseur.parser.Parser;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
-
-import java.nio.file.NoSuchFileException;
-import java.util.NoSuchElementException;
 
 import static seedu.connoisseur.messages.Messages.COMMAND_PROMPT;
 
