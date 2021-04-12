@@ -30,7 +30,7 @@ This application was created with the aim of helping NUS Computing and Engineeri
 - **User Guide:**
     - Added documentation for Section 4.8 'Notes' (under Section 4 'Features')
     - Edited documentation for 'add, view, delete notes' rows (under Section 6 'Command Summary' Table)
-- **Developer's Guide:**
+- **Developer Guide:**
     - Added documentation for Section 2.7 'Storage Component' (under Section 2 'Design')
         - UML Diagrams added: (1 diagram) Storage Component Diagram 
     - Added documentation for Section 3.6 'Save Feature' (under Section 3 'Implementation')
@@ -48,8 +48,8 @@ This application was created with the aim of helping NUS Computing and Engineeri
 ### Contributions beyond the project team
 - **Evidence of helping others:**
   - Contributed suggestions for improving product for Team W09-1:
-    - https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/183
-    - https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/181
-    - https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/182
+    - [Suggestion 1](https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/183)
+    - [Suggestion 2](https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/181)
+    - [Suggestion 3](https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/182)
       
         
