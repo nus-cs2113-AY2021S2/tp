@@ -16,12 +16,12 @@ application. For v2.1, the last iteration, we focused on bug fixing and making i
 
 This is a link to the RepoSense dashboard, which has a detailed analysis of the lines of code contributed by me:
 
-https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?breakdown=true&search=Emkay16
+[https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?breakdown=true&search=Emkay16](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?breakdown=true&search=Emkay16)
 
 ### Enhancement Implemented
 
 * Implemented `help` and `exit` commands, and updated and improved the `help` command according
-  to changes made to the project.   
+  to changes made to the project. 
 * Implemented loading of save data in the `storage` class.
 
 ### Contribution to User Guide
@@ -44,7 +44,7 @@ https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?breakdown=true&search=Emkay1
 Along the way of development, I have reviewed a number of pull requests opened by other team members.
 For a full list of PRs reviewed by me, you may refer to this link:
 
-https://github.com/AY2021S2-CS2113T-W09-4/tp/pulls?q=is%3Apr+reviewed-by%3AEmkay16+
+[https://github.com/AY2021S2-CS2113T-W09-4/tp/pulls?q=is%3Apr+reviewed-by%3AEmkay16+](https://github.com/AY2021S2-CS2113T-W09-4/tp/pulls?q=is%3Apr+reviewed-by%3AEmkay16+)
 
 Other than PR reviews, I have also provided general help to teammates encountering difficulties.
 
@@ -53,4 +53,4 @@ Other than PR reviews, I have also provided general help to teammates encounteri
 I have reviewed other peer teams' product and documentation during tutorials and PE-D. The list of bugs reported in PE-D
 can be accessed by clicking the following link:
 
-https://github.com/Emkay16/ped/issues
+[https://github.com/Emkay16/ped/issues](https://github.com/Emkay16/ped/issues)

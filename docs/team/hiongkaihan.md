@@ -68,4 +68,4 @@ team members. I have also given support and general help to the team during the 
 I have reviewed other peer teams' product and documentation during tutorials and PE-D. The list of bugs reported in PE-D
 can be accessed by clicking the following link:
 
-https://github.com/hiongkaihan/ped/issues
+[https://github.com/hiongkaihan/ped/issues](https://github.com/hiongkaihan/ped/issues)

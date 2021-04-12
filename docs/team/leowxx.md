@@ -15,7 +15,7 @@ application. For v2.1, the last iteration, we focused on bug fixing and making i
 ### Summary of Contributions
 
 RepoSense dashboard: \
-https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=leowxx
+[https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=leowxx](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=leowxx)
 
 ### Enhancement Implemented
 
@@ -40,7 +40,7 @@ https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=leowxx
 ### Review/Mentoring Contributions
 
 List of PRs reviewed: \
-https://github.com/AY2021S2-CS2113T-W09-4/tp/pulls?q=is%3Apr+reviewed-by%3Aleowxx+
+[https://github.com/AY2021S2-CS2113T-W09-4/tp/pulls?q=is%3Apr+reviewed-by%3Aleowxx+](https://github.com/AY2021S2-CS2113T-W09-4/tp/pulls?q=is%3Apr+reviewed-by%3Aleowxx+)
 
 I have also assisted teammates who faced difficulties during the development cycle.
 
@@ -49,4 +49,4 @@ I have also assisted teammates who faced difficulties during the development cyc
 I have reviewed other peer teams' product and documentation during tutorials and PE-D.
 
 List of bugs reported during PE-D: \
-https://github.com/leowxx/ped/issues
+[https://github.com/leowxx/ped/issues](https://github.com/leowxx/ped/issues)
