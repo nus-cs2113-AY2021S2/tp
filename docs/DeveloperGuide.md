@@ -69,6 +69,8 @@
 
 ---------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## *1. Introduction*  
 ### 1.1. Overview
 
@@ -90,6 +92,8 @@ If the set up process had been completed successfully, you should see the follow
 ![img.png](images/NUSMazecli.png)
 
 ---------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## *2. Design* 
 ### 2.1. Architecture
@@ -189,6 +193,8 @@ The **Storage Component**:
 - saves the app's data from `nusMap`, `blockAlias`, `history`, `favourite`, or `dailyRoute` objects into the relevant text file using the `filepath`.
 
 ---------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## *3. Implementation*
 ### 3.1. Finding The Shortest Route Feature
@@ -468,6 +474,8 @@ so the content from the `nusMap`, `blockAlias`, `history`, `favourite`, or `dail
 
 ---------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## *4. Appendix: Requirements*
 ### 4.1. Product Scope
 
@@ -512,6 +520,8 @@ Below is our analysis of our target user and the importance in which he/she woul
 * *JDK* - Java Development Kit.
 
 ---------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## *5. Appendix: Instructions for manual testing*
 
