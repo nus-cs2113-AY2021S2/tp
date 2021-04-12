@@ -9,8 +9,8 @@ participant ":Parser" as parser PARSER_COLOR
 create ui
 nusMaze -> ui
 nusMaze -> ui ++ : getUserCommandInput()
-user -> ui : "invalid input"
-return "invalid input"
+user -> ui : invalid input
+return invalid input
 
 create parser
 nusMaze -> parser
