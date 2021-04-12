@@ -46,8 +46,8 @@ The Model:
 5. Does not depend on any of the other three components.
 
 ### Storage Component
-![Storage Diagram](Database.png)
-1. Database is 
+1. Storage contains the functions to read and create the data from the text files upon execution.
+2. Storage contains the functions to write back to the text files.
 
 ## Implementation
 Our team is going to use breadth-first iterative approach as it allows us to focus on all features in parallel throughout the version 1.0, 2.0 and 2.1.
