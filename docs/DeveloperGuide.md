@@ -29,11 +29,8 @@
    4.7 [Credit Score Feature](#47-credit-score-feature)
 
 [Appendix A: Product Scope](#appendix-a-product-scope)\
-\
 [Appendix B: User Stories](#appendix-b-user-stories)\
-\
 [Appendix C: Non-Functional Requirements](#appendix-c-non-functional-requirements)\
-\
 [Appendix D: Instructions For Manual Testing](#appendix-d-instructions-for-manual-testing)
 
 
