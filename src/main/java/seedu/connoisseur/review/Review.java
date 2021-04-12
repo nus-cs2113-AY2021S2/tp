@@ -2,6 +2,7 @@ package seedu.connoisseur.review;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
 //@@author Krithigha24
 public class Review {
     protected String title;
@@ -166,6 +167,7 @@ public class Review {
     }
 
     //@@author Krithigha24
+
     /**
      * Converts the rating to visual form.
      *

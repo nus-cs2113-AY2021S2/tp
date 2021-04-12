@@ -281,6 +281,7 @@ public class ReviewList {
         ui.println("+---------------------+--------------------------------------------------------------------+");
     }
     //@@author Krithigha24
+
     /**
      * View a selected review.
      *
@@ -373,6 +374,7 @@ public class ReviewList {
     }
 
     //@@author Krithigha24
+
     /**
      * Edit a review.
      *
@@ -561,6 +563,7 @@ public class ReviewList {
     }
 
     //@@author Krithigha24
+
     /**
      * Check for duplicate review titles in existing review list during editing.
      *
