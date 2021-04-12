@@ -81,6 +81,8 @@ Allowing to choose the mode “Admin” or “Customer” based on user’s acco
 ```
 
 </details>
+<br />
+
 
 2. Admin Account
    Input:
@@ -118,6 +120,8 @@ Allowing to choose the mode “Admin” or “Customer” based on user’s acco
   Please indicate your choice:
 ```
 </details>
+<br />
+
 
 **2. Exit the app: `out`**  
 Exit the app from login page
@@ -133,6 +137,8 @@ Exit the app from login page
  System Exiting…
 ```
 </details>
+<br />
+
  ___________  
 
 ###  Customer Main Menu
@@ -165,6 +171,8 @@ View all movies and movie filters.
 Please indicate your choice:
 ```
 </details>
+<br />
+
 
 **2. Exit the app: `2`**  
 Exit and terminate the app.
@@ -181,6 +189,8 @@ Logging out...
 ```
 
 </details>
+<br />
+
   ___________  
 
 ### View Movie Guide
@@ -221,6 +231,8 @@ Please indicate your choice:
 ============================
 ```
 </details>
+<br />
+
 
 <details><summary markdown="span"> <strong>Example:</strong> </summary>
 
@@ -256,6 +268,8 @@ Movie List:
 To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 ```
 </details>
+<br />
+
 
 
 
@@ -273,6 +287,8 @@ Select the cut-off rating (0-5):
 ```
 
 </details>
+<br />
+
 
 <details><summary markdown="span"> <strong>Example:</strong> </summary>
 
@@ -300,6 +316,8 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 ```
 
 </details>
+<br />
+
 
 **3. Filter by status: `3`**  
 Filter by show status (Coming Soon, Pre-Order, Now Showing, End of Showing).
@@ -321,6 +339,8 @@ Please indicate your choice:
 ```
 
 </details>
+<br />
+
 
 <details><summary markdown="span"> <strong>Example:</strong> </summary>
 
@@ -353,6 +373,8 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 ```
 
 </details>
+<br />
+
 
 **4. Filter by cineplex: `4`**  
 Filter by cinema location (Coming Soon, Pre-Order, Now Showing, End of Showing).
@@ -372,6 +394,8 @@ Please indicate your choice:
 Please indicate your choice:
 ```
 </details>
+<br />
+
 
 <details><summary markdown="span"> <strong>Example:</strong> </summary>
 
@@ -402,6 +426,8 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 ```
 
 </details>
+<br />
+
 
 **5. Filter by title: `5`**  
 Filter movie by title keyword.
@@ -417,6 +443,8 @@ Please indicate your choice:
 Search: 
 ```
 </details>
+<br />
+
 
 <details><summary markdown="span"> <strong>Example:</strong> </summary>
 
@@ -440,6 +468,8 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 ```
 
 </details>
+<br />
+
 
 **6. Select a movie: `6`**  
 Select a movie to view information about the movie and book the code.
@@ -472,6 +502,10 @@ Please indicate your choice:
 ```
 
 </details>
+<br />
+
+<br />
+
 
 <details><summary markdown="span"> <strong>Example:</strong> </summary>
 
@@ -511,6 +545,8 @@ Please indicate your choice:
 ```
 
 </details>
+<br />
+
 
 **7. List all filtered movies:  `7`**  
 List movies based on the filters performed.
@@ -540,6 +576,8 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 ```
 
 </details>
+<br />
+
 
 **8. Clear all filters:  `8`**  
 Clear all selected filters.
@@ -571,6 +609,8 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 ```
 
 </details>
+<br />
+
 
 **10. Go back to main menu: `10`**  
 Go back to access the main menu.
@@ -589,6 +629,8 @@ Please indicate your choice:
 ```
 
 </details>
+<br />
+
 
  ___________  
 
@@ -707,6 +749,8 @@ Date Booked:     Mon Apr 12 19:21:27 SGT 2021
 ```
 
 </details>
+<br />
+
 
 
 **2. View movie details:  `2`**  
@@ -737,6 +781,8 @@ Rating content: great movie concept!
 ```
 
 </details>
+<br />
+
 
 
 **3. Add review: `3`**  
@@ -751,6 +797,8 @@ Comment:
 Rating:
 ```
 </details>
+<br />
+
 
 <details><summary markdown="span"> <strong>Example:</strong> </summary>
 
@@ -770,6 +818,8 @@ Thank you for your review!
 ```
 
 </details>
+<br />
+
 
 **4. Back to main menu: `4`**  
 Go back to access the main menu
@@ -787,6 +837,8 @@ Go back to access the main menu
 Please indicate your choice:
 ```
 </details>
+<br />
+
 
  ___________  
 
@@ -870,6 +922,8 @@ The new movie "Hi, Mom" have been saved to the database.
 ```
 
 </details>
+<br />
+
 
 **3. Delete Movie: 3**  
 Delete a movie in the movie list.
@@ -889,6 +943,8 @@ Select a movie to be deleted from the list (enter the number)
 Please enter your choice: 
 ```
 </details>
+<br />
+
 
 
 <details><summary markdown="span"> <strong>Example:</strong> </summary>
@@ -902,6 +958,8 @@ Please enter your choice:
 The movie has been removed from the database. 
 ```
 </details>
+<br />
+
 
 **4. Update Movie: 4**  
 Update the movie details of a movie in the movie list.
@@ -920,6 +978,8 @@ Select a movie to be edited from the list (enter the number)
 Please enter your choice: 
 ```
 </details>
+<br />
+
 
 <details><summary markdown="span"> <strong>Example:</strong> </summary>
 
@@ -947,6 +1007,8 @@ Set several centuries in the future, the abandoned Alita is found in the scrapya
 The changes have been saved to the database.
 ```
 </details>
+<br />
+
 
 **5. Logout: 5**  
 Logout current admin user.
@@ -959,6 +1021,8 @@ Logout current admin user.
 Logging out..
 ```
 </details>
+<br />
+
 
 ## Command Summary  
 ### Customer  
