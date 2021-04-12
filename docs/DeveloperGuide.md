@@ -146,6 +146,8 @@ The rest of the application consists of six main components.
 * `RecordList`: The list of records of the application stored in memory.
 * `Storage`: The storage manager that handles the saving of data, or data retrieval to/from file. 
 
+The application has another background component `CreditScoreReturnedLoansMap` that supports the [credit score feature](#47-credit-score-feature).
+
 Given below are sequence diagrams describing the general application flow and how the different objects
 interact with each other.
 
