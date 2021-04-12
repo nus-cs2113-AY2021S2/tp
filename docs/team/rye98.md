@@ -10,7 +10,7 @@ This section shows a brief summary of my contributions towards the **NUSMaze** p
 
 ### Code Contributed
 The link to the code contributed by me can be found 
-[here](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=09&sort=groupTitle&sortWithin=title&since=2021-03-05&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false)
+[here](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/#breakdown=true&search=rye98)
 
 ### Enhancements implemented
 
