@@ -533,7 +533,7 @@ Whenever a user input is given to the Patient Menu, the following steps will occ
 **Implementation:**
 
 The function Add takes in 6 compulsory fields (Patient ID, Name, Age, Gender, Illness and Medication Required) to create the Patient Object and adds it to a list of Patient Objects.
-Data input is first checked to ensure validity. Any invalid input detected will result in an exception thrown and command aborted. If there are no exceptions thrown, a PatientAdd Command object is created.
+Data input is first checked to ensure validity. Any invalid input detected will result in an exception thrown and command aborted. If there are no exceptions thrown, a PatientAddCommand object is created.
 The PatientAdd command object will be executed to create the Patient Object which will be added to the list of Patient Objects.
 
 Invalid Input includes:
@@ -562,18 +562,18 @@ Invalid Input includes:
 		- illegalCharacterChecker();
 		- checkGender();
 
-**Creating PatientAdd command**
+**Creating PatientAddCommand**
 
-3. If the input data is valid, a PatientAdd Command object is created. Else a relevant error is thrown.
-4. The StaffAdd Command object is returned to `PatientInstance.run()`
+3. If the input data is valid, a PatientAddCommand object is created. Else a relevant error is thrown.
+4. The PatientAddCommand object is returned to `PatientInstance.run()`
 
 **Creating Patient Object with User Input**
 
-5. PatientInstance then executes the PatientAdd Command object to begin the process of creating the Patient object
+5. PatientInstance then executes the PatientAddCommand object to begin the process of creating the Patient object
 
 6. `PatientAdd.execute()` will call the function in `PatientList.add()`
 
-7. `PatientList.add()` will instantiate a new Staff object and add it to the ArrayList<Patient> PatientList. which contains all the Patient Objects.
+7. `PatientList.add()` will instantiate a new Patient object and add it to the ArrayList<Patient> PatientList. which contains all the Patient Objects.
 
 **Saving Patient Objects into .txt file**
 
@@ -599,7 +599,7 @@ Option 2 : Using a List
 
 **Implementation:**
 
-The function Delete takes in 1 compulsory field (Patient ID) to identity and delete the Patient Object from the list of Patient Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a PatientDelete Command object is created. The PatientDelete command object will be executed to iterate through the list of Patient Objects. If Patient Object exists, it will be removed. Else an error message will be displayed.
+The function Delete takes in 1 compulsory field (Patient ID) to identity and delete the Patient Object from the list of Patient Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a PatientDeleteCommand object is created. The PatientDelete command object will be executed to iterate through the list of Patient Objects. If Patient Object exists, it will be removed. Else an error message will be displayed.
 
 Invalid Input includes:
 
@@ -615,14 +615,14 @@ Invalid Input includes:
 
 1. If the command recognised is the delete command, `patientParse()` calls `checker.checkLength()` and `checker.checkID()` to ensure data entered is valid.
 
-**Creating PatientDelete command**
+**Creating PatientDeleteCommand**
 
-2. If the input data is valid, a PatientDelete Command object is created
-3. The PatientDelete Command object is returned to `PatientInstance.run()`
+2. If the input data is valid, a PatientDeleteCommand object is created
+3. The PatientDeleteCommand object is returned to `PatientInstance.run()`
 
 **Deleting Patient Object using User Input**
 
-4. PatientInstance then executes the PatientDelete Command object to begin the process of deleting the referenced Patient object
+4. PatientInstance then executes the PatientDeleteCommand object to begin the process of deleting the referenced Patient object
 5. `PatientDelete.execute()` will call the function `PatientList.deletePatient()`
 6. `PatientList.deletePatient()` will iterate through the objects in ArrayList<Patient> PatientList. The Patient Object referenced by the input given by the user will be deleted.
 
@@ -650,7 +650,7 @@ Option 2 : Using an iterator
 
 **Implementation:**
 
-The function List does not take in any additional inputs, in order to show the user a list of current Patient objects in the database. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a PatientList Command object is created. PatientList command object will be executed to iterate through the list of Patient Objects. Patient Objects will then be displayed based on the user given input.
+The function List does not take in any additional inputs, in order to show the user a list of current Patient objects in the database. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a PatientListCommand object is created. PatientList command object will be executed to iterate through the list of Patient Objects. Patient Objects will then be displayed based on the user given input.
 
 Invalid Input includes:
 
@@ -664,14 +664,14 @@ Invalid Input includes:
 
 1. If the command recognised is the list command, `patientParse()` calls `checker.checkLength()` to ensure data entered is valid.
 
-**Creating PatientList command**
+**Creating PatientListCommand**
 
 2. If the input data is valid, a PatientList Command object is created
-3. The PatientList Command object is returned to `PatientInstance.run()`
+3. The PatientListCommand object is returned to `PatientInstance.run()`
 
 **Viewing Patient Objects**
 
-4. PatientInstance then executes the PatientList Command object to begin the process of displaying all Patient objects.
+4. PatientInstance then executes the PatientListCommand object to begin the process of displaying all Patient objects.
 5. `PatientList.execute()` will call the function `PatientList.listPatients()`
 6. `PatientList.listPatients()` will iterate through the objects in ArrayList<Patient> PatientList.
 7. Patient Objects will be displayed.
@@ -722,14 +722,14 @@ Invalid Input includes:
 		- checkLength();
 		- illegalCharacterChecker();
 
-**Creating PatientFind command**
+**Creating PatientFindCommand**
 
-3. If the input data exist, a PatientFind Command object is created
-4. The PatientFind Command object is returned to `PatientInstance.run()`
+3. If the input data exist, a PatientFindCommand object is created
+4. The PatientFindCommand object is returned to `PatientInstance.run()`
 
 **Finding relevant Patient Objects**
 
-5. PatientInstance then executes the PatientFind Command object to begin the process of finding and displaying relevant Patient objects.
+5. PatientInstance then executes the PatientFindCommand object to begin the process of finding and displaying relevant Patient objects.
 6. `PatientFind.execute()` will call the function `PatientList.findPatient()`
 7. `PatientList.findPatient()` will iterate through the objects in ArrayList<Patient> PatientList.
 8. `PatientList.findPatient()` will compare the patient details of every Patient Object in the current list of Patient Objects with the keyword inputted by the user and discover any matches.
