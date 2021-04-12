@@ -46,8 +46,8 @@ This application was created with the aim of helping NUS Computing and Engineeri
 ### Contributions beyond the project team
 - **Evidence of helping others:**
   - Contributed suggestions for improving product for Team W09-1:
-    - [Suggestion 1](https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/183)
+    - [Suggestion 1](https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/182)
     - [Suggestion 2](https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/181)
-    - [Suggestion 3](https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/182)
+    - [Suggestion 3](https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/183)
       
         
