@@ -2,15 +2,17 @@
 
 ## Introduction
 
-Healthier targets people who care about fitness, who exercise regularly (at least 3 times/week) and have diet plans. It
-is designed for users of age group 18-30.  
-This app is used via **Command Line Interface (CLI)**. If the user is proficient in using command-line tools & typing,
+**Healthier** is a cross-platform desktop application developed using `Java SE 11`, which is used for health and fitness
+data management.  
+It targets people who care about fitness, who exercise regularly (at least 3 times/week) and have diet plans. It is
+designed for users of age group 18-30.  
+The app is used via **Command Line Interface (CLI)**. If the user is proficient in using command-line tools & typing,
 then it could be very efficient to use. This app also provides several shortcut commands for advanced users for further
 efficient operations.
 
 ---
 
-## Table of Content
+## Table of Contents
 
 * [Quick start](#quick-start)
 * [Features](#features)
