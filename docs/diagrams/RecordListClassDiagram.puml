@@ -1,0 +1,67 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide circle
+
+class RecordList {
+    -recordList: ArrayList<Record>
+    +RecordList()
+    +RecordList(:ArrayList<Record>)
+    +addRecord(:Record)
+    +getRecordAt(:int): Record
+    +deleteRecordAt(:int): Record
+    +deleteAllRecords()
+    +isEmpty(): boolean
+    +getRecordCount(): int
+}
+
+abstract class "{abstract}\nRecord" as Record {
+    -amount: BigDecimal
+    -issueDate: LocalDate
+    -description: String
+    +Record(:BigDecimal, :LocalDate, :String)
+    +getIssueDate(): LocalDate
+    +getAmount(): BigDecimal
+    +getDescription(): String
+    {abstract} +convertFileFormat() : String
+}
+
+class Expense {
+    +Expense(:BigDecimal, :LocalDate, :String)
+    +convertFileFormat() : String
+}
+
+class Loan {
+    -borrowerName: String
+    -returnDate: LocalDate
+    -isReturn: boolean
+    +Loan(:BigDecimal, :LocalDate, :String, :String)
+    +Loan(:BigDecimal, :LocalDate, :String, :String, :LocalDate, :boolean)
+    +getBorrowerName(): String
+    +getReturnDate(): LocalDate
+    +markAsReturned(:LocalDate)
+    +isReturn(): boolean
+    +convertFileFormat() : String
+}
+
+class Saving {
+    +Saving(:BigDecimal, :LocalDate, :String)
+    +convertFileFormat() : String
+}
+
+class Finux {
+    +main()
+}
+
+Finux -> "1"RecordList
+
+skinparam linetype polyline
+skinparam groupInheritance 3
+
+Record <|-- Expense
+Record <|-- Saving
+Record <|-- Loan
+
+note "Some methods and attributes are omitted for brevity." as N1
+
+
+@enduml

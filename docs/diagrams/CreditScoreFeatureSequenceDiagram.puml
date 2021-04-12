@@ -1,0 +1,52 @@
+@startuml
+!include style.puml
+Participant ":CreditScoreCommand" as CreditScoreCommand
+Participant ":Loan" as Loan
+Participant ":Ui" as Ui
+Participant ":RecordList" as RecordList
+Participant ":CreditScoreReturnedLoansMap" as CreditScoreReturnedLoansMap
+
+[-> CreditScoreCommand: execute()
+activate CreditScoreCommand
+CreditScoreCommand -> CreditScoreReturnedLoansMap : getCreditScoreOf(borrowerName : String)
+activate CreditScoreReturnedLoansMap
+CreditScoreReturnedLoansMap --> CreditScoreCommand : creditScore : int
+deactivate CreditScoreReturnedLoansMap
+
+CreditScoreCommand -> RecordList : getRecordCount()
+activate RecordList
+RecordList --> CreditScoreCommand : : int
+deactivate RecordList
+
+
+loop For each record in RecordList
+    CreditScoreCommand -> RecordList : getRecordAt(i : int)
+    activate RecordList
+    RecordList --> CreditScoreCommand : currentRecord : Record
+    deactivate RecordList
+    opt currentRecord is a Loan
+        CreditScoreCommand -> Loan : getBorrowerName()
+        activate Loan
+        Loan --> CreditScoreCommand : :String
+        deactivate Loan
+        CreditScoreCommand -> Loan : isReturn()
+        activate Loan
+        Loan --> CreditScoreCommand : :boolean
+        deactivate Loan
+        opt loaned to current borrower and not returned
+                ref over CreditScoreCommand, Loan : Re-compute creditScore
+        end
+    end
+end
+
+CreditScoreCommand -> Ui : printMessage()
+activate Ui
+Ui --> CreditScoreCommand
+deactivate Ui
+note right: Some method parameters are omitted for brevity
+[<-- CreditScoreCommand
+deactivate CreditScoreCommand
+[<-[hidden]- CreditScoreCommand
+destroy CreditScoreCommand
+
+@enduml

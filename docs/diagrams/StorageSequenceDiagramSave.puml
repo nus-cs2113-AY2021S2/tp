@@ -1,0 +1,52 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+!include style.puml
+
+Participant ":XYZCommand" as XYZCommand
+Participant ":Storage" as Storage
+Participant ":CreditScoreReturnedLoansMap" as CSRLM
+Participant ":RecordList" as RecordList
+
+note right of XYZCommand
+Add, Remove, and Return Commands
+calls the same saveData method,we will
+simplify it by grouping them together.
+end note
+
+XYZCommand -> Storage : saveData(:RecordList, :CreditScoreReturnedLoansMap)
+activate Storage
+Storage -> Storage : writeRecordListToSaveFile(:RecordList)
+activate Storage
+Loop all records
+Storage -> RecordList : getRecordAt()
+activate RecordList
+RecordList --> Storage : currentRecord:Record
+deactivate RecordList
+Storage -> RecordList : convertFileFormat()
+activate RecordList
+RecordList --> Storage
+deactivate RecordList
+RecordList --[Hidden]> Storage
+end loop
+
+activate Storage
+Storage --> Storage
+deactivate Storage
+Storage -> Storage : writeMapToSaveFile(:CreditScoreReturnedLoansMap)
+
+activate Storage
+Storage -> CSRLM : getBorrowersNames()
+activate CSRLM
+CSRLM --> Storage :  :Set<String>
+deactivate CSRLM
+Loop Each borrower in creditScoreReturnedLoansMap
+Storage -> CSRLM : getCreditScoreOf(borrowerName:String)
+activate CSRLM
+CSRLM --> Storage : creditScore:int
+deactivate CSRLM
+CSRLM --[Hidden]> Storage
+end loop
+Storage --> Storage
+deactivate Storage
+
+@enduml

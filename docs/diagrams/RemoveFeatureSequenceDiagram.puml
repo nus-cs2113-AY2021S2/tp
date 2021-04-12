@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+!include style.puml
+
+[-> ":RemoveCommand": execute()
+activate ":RemoveCommand"
+
+":RemoveCommand" -> ":RecordList" : getRecordAt(:Int)
+activate ":RecordList"
+":RecordList" --> ":RemoveCommand"
+deactivate ":RecordList"
+
+
+":RemoveCommand" -> ":Ui" : printMessage()
+activate ":Ui"
+":Ui" --> ":RemoveCommand"
+deactivate ":Ui"
+
+":RemoveCommand" -> ":RecordList" : deleteRecordAt(:Int)
+activate ":RecordList"
+":RecordList" --> ":RemoveCommand"
+deactivate ":RecordList"
+
+":RemoveCommand" -> ":Storage" : saveData()
+activate ":Storage"
+":Storage" --> ":RemoveCommand"
+deactivate ":Storage"
+
+[<-- ":RemoveCommand"
+deactivate ":RemoveCommand"
+":RemoveCommand" -[hidden]-> ":RemoveCommand"
+destroy ":RemoveCommand"
+
+note right: some parameters are omitted for brevity.
+
+@enduml

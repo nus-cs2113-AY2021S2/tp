@@ -1,9 +1,10 @@
 # About us
 
-Display | Name | Github Profile | Portfolio 
---------|:----:|:--------------:|:---------:
-![](https://via.placeholder.com/100.png?text=Photo) | John Doe | [Github](https://github.com/) | [Portfolio](docs/team/johndoe.md)
-![](https://via.placeholder.com/100.png?text=Photo) | Don Joe | [Github](https://github.com/) | [Portfolio](docs/team/johndoe.md)
-![](https://via.placeholder.com/100.png?text=Photo) | Ron John | [Github](https://github.com/) | [Portfolio](docs/team/johndoe.md)
-![](https://via.placeholder.com/100.png?text=Photo) | John Roe | [Github](https://github.com/) | [Portfolio](docs/team/johndoe.md)
-![](https://via.placeholder.com/100.png?text=Photo) | Don Roe | [Github](https://github.com/) | [Portfolio](docs/team/johndoe.md)
+Name | Github Profile | Portfolio 
+:----:|:--------------:|:---------:
+ Jonah Tham Wen Long | [Github](https://github.com/jonahtwl) | [Portfolio](team/jonahtwl)
+ Gerard Tan Wei Kiat | [Github](https://github.com/gerardtwk) | [Portfolio](team/gerardtwk)
+ Lee Han Yong Andy | [Github](https://github.com/LeeHanYongAndy) | [Portfolio](team/leehanyongandy)
+ Mark Low Seng Keong | [Github](https://github.com/marklowsk) | [Portfolio](team/marklowsk)
+ Tan Tze Xern | [Github](https://github.com/tzexern/) | [Portfolio](team/tzexern)
+

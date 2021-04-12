@@ -1,0 +1,47 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+!include style.puml
+
+[-> ":ListCommand": execute()
+activate ":ListCommand"
+
+note right
+    Parameters in execute() are omitted for brevity.
+end note
+
+alt EXPENSE
+
+    ":ListCommand" -> ":Ui": printExpenses(:RecordList)
+    activate ":Ui"
+    ":Ui" --> ":ListCommand"
+    deactivate ":Ui"
+
+else LOAN
+
+    ":ListCommand" -> ":Ui": printLoans(:RecordList)
+    activate ":Ui"
+    ":Ui" --> ":ListCommand"
+    deactivate ":Ui"
+
+else SAVING
+
+    ":ListCommand" -> ":Ui": printSavings(:RecordList)
+    activate ":Ui"
+    ":Ui" --> ":ListCommand"
+    deactivate ":Ui"
+
+else ALL
+
+    ":ListCommand" -> ":Ui": printAllRecords(:RecordList)
+    activate ":Ui"
+    ":Ui" --> ":ListCommand"
+    deactivate ":Ui"
+
+end
+
+[<-- ":ListCommand"
+deactivate ":ListCommand"
+[<-[hidden]- ":ListCommand"
+destroy ":ListCommand"
+
+@enduml

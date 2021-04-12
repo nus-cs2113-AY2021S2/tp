@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+hide circle
+skinparam classAttributeIconSize 0
+skinparam monochrome false
+
+note "Some private attributes and methods are omitted." as N1
+
+class ParserHandler {
+    +ParserHandler()
+    +getParseInput(:String): ArrayList<String>
+    -startExtraction(:ArrayList<String>, :String): ArrayList<String>
+    -extractSubsequentPart(:ArrayList<String>, :String): ArrayList<String>
+    -extractFinalPart(:ArrayList<String>, :String): ArrayList<String>
+    -checkFirstBlock(:ArrayList<String>): ArrayList<String>
+}
+
+class Finux {
+
+    +main()
+}
+
+Finux -> "1"ParserHandler
+
+@enduml

@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+!include style.puml
+
+Participant ":Finux" as Finux
+Participant ":Storage" as Storage
+
+Finux -> Storage : loadFile()
+activate Storage
+note right
+    Methods called by the
+    parseRawData method are
+    omitted for brevity.
+end note
+Storage -> Storage : parseRawData(rawData)
+activate Storage
+Storage --> Storage : processParsedObject(parsedObject)
+deactivate Storage
+alt is instance of Record
+    Storage -> Storage : add(:Record)
+    activate Storage
+    Storage --> Storage
+    deactivate Storage
+    Storage -[hidden]> Storage
+
+else instance of CreditScore
+    Storage -> Storage : put(:String, :int)
+    activate Storage
+        Storage --> Storage
+        deactivate Storage
+    Storage -[hidden]> Storage
+end
+deactivate Storage
+
+Finux -> Storage : getRecordListData()
+activate Storage
+Storage --> Finux : :ArrayList<Record>
+deactivate Storage
+Finux -> Storage : getMapData()
+activate Storage
+Storage --> Finux : :HashMap<String, Integer>
+deactivate Storage
+
+@enduml

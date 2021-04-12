@@ -1,0 +1,71 @@
+@startuml
+!include style.puml
+
+Participant ":Finux" as Finux
+Participant ":ParserHandler" as ParserHandler
+Participant ":CommandHandler" as CommandHandler
+Participant ":Ui" as UI
+Participant ":Command" as Command
+Participant ":RecordList" as RecordList
+Participant ":Storage" as Storage
+
+
+activate Finux
+Finux -> Finux : commandLooper()
+activate Finux
+
+loop while not exit
+    Finux -> UI : getUserInput()
+    activate UI
+    UI --> Finux : rawInput : String
+    deactivate UI
+
+    Finux -> ParserHandler : getParseInput(rawInput : String)
+    activate ParserHandler
+    ParserHandler --> Finux : parsedArguments : ArrayList<String>
+    deactivate ParserHandler
+
+    Finux -> CommandHandler : parseCommand(parsedArguments : ArrayList<String>)
+    activate CommandHandler
+    CommandHandler -> CommandHandler :createCommand(parsedArguments : ArrayList<String>)
+    activate CommandHandler
+    create Command
+    CommandHandler -> Command : Command(parsedArguments : ArrayList<String>)
+    activate Command
+    Command --> CommandHandler
+    deactivate Command
+    CommandHandler --> CommandHandler
+    deactivate CommandHandler
+    CommandHandler --> Finux : command : Command
+    deactivate CommandHandler
+
+    Finux -> Command : execute()
+    activate Command
+    ref over Command, RecordList, Storage, UI : Command execute logic
+    Command --> Finux
+    deactivate Command
+    Command --[hidden]> Finux
+    destroy Command
+end
+Finux --> Finux
+deactivate Finux
+
+destroy ParserHandler
+destroy CommandHandler
+destroy RecordList
+destroy Storage
+
+Finux -> Finux : end()
+activate Finux
+Finux -> UI : printGoodByeMessage()
+activate UI
+UI --> Finux
+deactivate UI
+Finux --> Finux
+deactivate Finux
+
+destroy UI
+Finux --[hidden]> Finux
+destroy Finux
+
+@enduml

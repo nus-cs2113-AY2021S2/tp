@@ -1,0 +1,22 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide circle
+
+note "Private attributes and methods are omitted." as N1
+
+class CommandHandler {
+    -isExit : boolean
+    +CommandHandler()
+    +isExit() : boolean
+    +setExit(:boolean)
+    +parseCommand(:ArrayList<String>, :RecordList): Command
+    -createCommand(:ArrayList<String>, :RecordList): Command
+}
+
+class Finux {
+    +main()
+}
+
+CommandHandler"1" <-- Finux
+Finux -right> N1
+@enduml
