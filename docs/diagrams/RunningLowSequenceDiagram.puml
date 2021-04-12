@@ -24,7 +24,7 @@ loop foodCategory in FoodCategory
     RunningLowCommand -> MinimumQuantity: getMinimumQuantity()
     return
     alt minimumQuantity == 0
-        RunningLowCommand -> RunningLowCommand: increaseNumberOfCategoryDisabled
+        RunningLowCommand -> RunningLowCommand: increaseNumberOfCategoryDisabled()
         return
     else minimumQuantity > 0
         RunningLowCommand -> Fridge: isRunningOut(foodCategory)
@@ -48,10 +48,10 @@ loop foodCategory in FoodCategory
 end
 
     alt isAllCategoryDisabled
-        RunningLowCommand -> RunningLowCommand: disabledMessage
+        RunningLowCommand -> RunningLowCommand: disabledMessage()
         return
     else isStockedUp
-        RunningLowCommand -> RunningLowCommand: stockedUpMessage
+        RunningLowCommand -> RunningLowCommand: stockedUpMessage()
         return
     end
 

@@ -139,7 +139,7 @@ The ***Exception Class Diagram*** given above shows the custom `Exceptions`
 used by `FridgeFriend`, and stored inside the `Exceptions` component.
 All exceptions extend from the Java default `Exception` class. They only differ with regard
 to the throwable error message.
-The `Exceptions` component currently consists of eleven (11) custom Exceptions, as of v2.0:
+The `Exceptions` component currently consists of eleven (11) custom Exceptions:
 
 Among these eleven custom exceptions, the `Exceptions` component can generally be
 classified into three broad categories:
@@ -178,7 +178,7 @@ Given below is the sequence diagram for the interactions within the main applica
 
 ![MainLogicSequenceDiagram](diagrams/diagram_images/MainLogicSequenceDiagram.png)
 
-:information_source: The lifeline for `Ui`, `Parser`, and `Command`, should end at the destroy marker. However, due to a limitation of PlantUML, the three lifelines reach the end of the diagram.
+:information_source: The lifelines for `Ui`, `Parser`, and `Command`, should end at the destroy marker. However, due to a limitation of PlantUML, the three lifelines reach the end of the diagram.
 
 ### Add Command
 
@@ -194,7 +194,7 @@ Given below is the sequence diagram for the AddCommand workflow.
 :information_source: Information:
 
 * The `UniqueFoodnameChecker` object will be destroyed after use, but the `Food` object and `Fridge` object will still exist after the command finishes.
-* The lifeline for `UniqueFoodnameCheck` should end at the destroy marker. However, due to a limitation of PlantUML, the lifelines reach the end of the diagram.
+* The lifeline for `UniqueFoodnameChecker` should end at the destroy marker. However, due to a limitation of PlantUML, the lifelines reach the end of the diagram.
 
 ### List Command
 
@@ -307,7 +307,7 @@ Additionally, the command `history clear` deletes the contents of `historyData.t
 ### Target User Profile
 
 * is a new homeowner who cooks
-* has a needs to manage a significant number of foods in the fridge
+* has a need to manage a significant number of food items in the fridge
 * has a tendency to forget expiry date and location of the food stored
 * can type fast
 * prefers typing to mouse interactions
@@ -331,7 +331,7 @@ to analyse patterns in their purchasing of food.
 |v1.0|user|remove items from the fridge|keep track of what is in the fridge|
 |v1.0|user|list all food items in the fridge|know inside the fridge without having to open the fridge itself|
 |v1.0|forgetful user|search for a specific food item|recall if I have that food item inside the fridge|
-|v1.0|organised user|tag the food’s category when I add into fridge(e.g. veggies, meat, dairy)|track what kinds of food I have in the fridge|
+|v1.0|organised user|tag the food’s category when I add into fridge (e.g. veggies, meat, dairy)|track what kinds of food I have in the fridge|
 |v1.0|organised user|list food items by category|check specific categories of food|
 |v1.0|organised user|add a storage location for a specific food item|know which part of the fridge is stored in|
 |v1.0|organised user|add the expiry date to each food item I put into the fridge|keep track of what is going to expire|
@@ -546,7 +546,7 @@ You are running low on food in these categories:
 8. OTHER quantity: 0 out of 500
 ```
 
-Note that `MEAT`,`SEAFOOD` AND `BEVERAGE` category are omitted from the above list,
+Note that `MEAT`, `SEAFOOD` and `BEVERAGE` category are omitted from the above list,
 as they are not "running low". There is sufficient food from the given category in the
 fridge, because it is above the quantity we have specified by `setlimit`.
 
@@ -599,7 +599,7 @@ The fridge at program launch will be empty, and the limits of all food categorie
 
 |Corruption Type| Error Message| Behaviour|
 |---------------|--------------|----------|
-|Corrupted `fridgeData.txt` file| ```There was an error loading the data for FridgeFriend!Index 1 out of bounds for length 1```|`FridgeFriend` will load the contents of the text file until the point in the file where corrupted/invalid data is encountered. User can recover the contents of the file by manually inspecting the text file and removing invalid content.|
+|Corrupted `fridgeData.txt` file| ```There was an error loading the data for FridgeFriend! Index 1 out of bounds for length 1```|`FridgeFriend` will load the contents of the text file until the point in the file where corrupted/invalid data is encountered. User can recover the contents of the file by manually inspecting the text file and removing invalid content.|
 |Corrupted readable categories in `limitsData.txt`|No error message|User can only identify that data has been corrupted when using the `runninglow` command. The quantity of the invalid categories due to corruption will be reset to `500`.|
 |Corrupted unreadable categories in `limitsData.txt`|```There was an error loading the data for FridgeFriend! Index 1 out of bounds for length 1```|The quantity limits will be parsed up until the corrupted unreadable category. Subsequent quantity limits in the file would not be parsed, and will be reset to the default of `500`.|
 |Corrupted integer quantities in `limitsData.txt`|No error message|User can only identify that data has been corrupted when using the `runninglow` command. The limit will be updated to the corrupted value.|

@@ -33,7 +33,7 @@ end
 alt isFound
     return
 else !isFound
-    SearchCommand -> SearchCommand: getMessagePrintedToUser
+    SearchCommand -> SearchCommand: getMessagePrintedToUser()
     activate SearchCommand
     return
 end
