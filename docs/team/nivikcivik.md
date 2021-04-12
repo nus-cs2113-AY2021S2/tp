@@ -62,9 +62,9 @@ Here are my implementations and the links to the following sections of our Devel
 1. [View a Module](https://ay2021s2-cs2113t-f08-4.github.io/tp/DeveloperGuide.html#402-view-a-module)
 1. [View All Modules](https://ay2021s2-cs2113t-f08-4.github.io/tp/DeveloperGuide.html#403-view-all-modules)
 1. [Delete a Module](https://ay2021s2-cs2113t-f08-4.github.io/tp/DeveloperGuide.html#404-delete-a-module)
-1. [Add a Review](https://ay2021s2-cs2113t-f08-4.github.io/tp/DeveloperGuide.html#405-add-new-review)
-1. [View All Reviews]()
-1. [Delete a Review](https://ay2021s2-cs2113t-f08-4.github.io/tp/DeveloperGuide.html#406-delete-a-review)
+1. [Add a Review](https://ay2021s2-cs2113t-f08-4.github.io/tp/DeveloperGuide.html#407-add-new-review)
+1. [View All Reviews](https://ay2021s2-cs2113t-f08-4.github.io/tp/DeveloperGuide.html#408-view-all-reviews)
+1. [Delete a Review](https://ay2021s2-cs2113t-f08-4.github.io/tp/DeveloperGuide.html#409-delete-a-review)
 1. [Instructions for manual testing](https://ay2021s2-cs2113t-f08-4.github.io/tp/DeveloperGuide.html#9-instructions-for-manual-testing)
 
 The following are the diagrams I have added:  
