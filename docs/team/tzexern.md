@@ -22,21 +22,18 @@ Contributions can be found on
 
 I was tasked to do up these simple yet foundational building blocks of our application. I was working with Gerard where
 he worked on the remaining building block classes Saving and RecordList. We worked on them as soon as possible as it is
-really crucial for other parts of the application where testing requires these classes. 
-I have also worked on the inner methods and the `toString()` for output.
+really crucial for other parts of the application where testing requires these classes.
 
 #### Validators
 
 Along with Andy and Mark, we have introduced several validators to validate inputs and parameters to make sure that the
 values are in the correct format before being utilized. I was responsible for the `validateIndex` to make sure that the
-indices given are not symbols, alphabets, negative numbers, unknown symbols, etc. `validateIndex` makes sure that the
-index is benign and in the wanted format.
+indices given are not symbols, alphabets, negative numbers, unknown symbols, etc.
 
 #### RemoveCommand
 
-I've taken over this task from Mark as help was needed to help spread out the workload a bit. This command was partially
-done and I included some of my own implementations for better usability. This command is used hand in hand with the
-`validateIndex` and hence I took up this.
+This command was partially done and I included some of my own implementations for better usability. This command is 
+used hand in hand with the `validateIndex` and hence I took up this.
 
 ---
 
@@ -44,8 +41,8 @@ done and I included some of my own implementations for better usability. This co
 
 * My groupmate Andy has designed the UG skeleton with reference to my 
 [individual Project(iP)](https://tzexern.github.io/ip/) User Guide.
-* I'm tasked to finish the `3.5 remove`, `3.6 creditscore` and `3.7 exit` under our `3. Features` section.
-* I have also taken all the screenshots used in our UG and updated them whenever necessary.
+* Tasked to finish the `3.5 remove`, `3.6 creditscore` and `3.7 exit` under our `3. Features` section.
+* Taken all the screenshots used in our UG and updated them whenever necessary.
 
 ---
 
@@ -54,10 +51,9 @@ done and I included some of my own implementations for better usability. This co
 * I have provided my team with an improved version of DG skeleton building on top of Mark's. These include proper headers
 and hyperlinks after we have finalized our rough template for DG. 
 * I'm also tasked to complete several subsections of the DG, these include:
-  * `Introduction`, `Setting Up`
-  * `UI Component` under `Design`
-  * `Remove Feature` under `Implementation`
-  * `Appendix B: User Stories`, `Appendix C: Non-Functional Requirements`, `Appendix D: Instructions for Manual Testing` was done together by me and Jonah
+  * `Introduction`, `Setting Up`, `UI Component` under `Design`, `Remove Feature` under `Implementation`, 
+    `Appendix B: User Stories`, `Appendix C: Non-Functional Requirements`, `Appendix D: Instructions for Manual Testing` 
+    was done together by me and Jonah
 
 ---
 
