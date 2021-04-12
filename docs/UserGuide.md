@@ -48,10 +48,10 @@ Allowing to choose the mode “Admin” or “Customer” based on user’s acco
 **Example**:
 1. Customer Account
    Input:
-   ```
+```
    customer1  
    password1
-   ```
+```
 
 <details>
   <summary> <strong>Display:</strong> </summary>
@@ -85,10 +85,10 @@ Allowing to choose the mode “Admin” or “Customer” based on user’s acco
 
 2. Admin Account
    Input:
-   ```
+```
    admin1  
    password1
-   ```
+```
 <details>
   <summary> <strong>Display:</strong> </summary>
 
@@ -232,7 +232,7 @@ Please indicate your choice:
   <summary> <strong>Example:</strong> </summary>
 
 
-   ` 2 `
+` 2 `
 
 
 **Display**:
@@ -285,9 +285,7 @@ Select the cut-off rating (0-5):
 <details>
   <summary> <strong>Example:</strong> </summary>
 
-
-
-    `3`  
+`3`  
 
 **Display**:
 
@@ -337,7 +335,7 @@ Please indicate your choice:
 <details>
   <summary> <strong>Example:</strong> </summary>
 
-    `3` 
+`3` 
 
 **Display**:
 
@@ -391,7 +389,7 @@ Please indicate your choice:
   <summary> <strong>Example:</strong> </summary>
 
 
-    `2` 
+ `2` 
 
 **Display**:
 
@@ -438,7 +436,7 @@ Search:
   <summary> <strong>Example:</strong> </summary>
 
 
-    `The`
+ `The`
 
 **Display**:
 
@@ -495,7 +493,7 @@ Please indicate your choice:
   <summary> <strong>Example:</strong> </summary>
 
 
-    `1`  
+ `1`  
 
 **Display**:
 
@@ -773,13 +771,18 @@ Add new review for the selected movie
 Comment:   
 Rating:
 ```
+</details>
 
-Example:
+<details>
+  <summary> <strong>Example:</strong> </summary>
 
+
+```
     It’s very good  
     5  
+```
 
-Display:
+**Display**:
 
 ```
 Comment:   it's very good!
@@ -834,6 +837,7 @@ Add a new movie to the movie list.
 
 <details>
   <summary> <strong>Example:</strong> </summary>
+
 ```
     Hi, Mom
     12
@@ -916,7 +920,7 @@ Please enter your choice:
   <summary> <strong>Example:</strong> </summary>
 
 
-    `6`
+ `6`
 
 **Display**:
 
