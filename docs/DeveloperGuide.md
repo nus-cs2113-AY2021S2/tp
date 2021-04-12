@@ -20,10 +20,15 @@
 6. [Implementation](#5-implementation)
     1. [Staff](#51-staff) 
     	- [Staff Menu](#511-staff-menu)
+    	
     	- [Staff Add](#512-staff-add)
+    	
     	- [Staff Delete](#513-staff-delete)
+    	
     	- [Staff List](#514-staff-list)
+    	
     	- [Staff Find](#515-staff-find)
+    	
     2. [Patient](#52-patient)
     	1. [Patient Menu](#521-patient-menu)
     	2. [Patient Add](#522-patient-add)
