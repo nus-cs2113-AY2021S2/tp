@@ -344,7 +344,8 @@ public class RecordList {
                     separatorBetweenIndexAndContent = " ";
                     break;
                 }
-                recordStringBuilder.append(i).append(separatorBetweenIndexAndContent).append(record.getRecordData()).append("\n");
+                recordStringBuilder.append(i).append(separatorBetweenIndexAndContent).append(record.getRecordData())
+                        .append("\n");
                 i++;
             }
         }
@@ -376,7 +377,8 @@ public class RecordList {
                     separatorBetweenIndexAndContent = " ";
                     break;
                 }
-                recordStringBuilder.append(i).append(separatorBetweenIndexAndContent).append(record.getRecordData()).append("\n");
+                recordStringBuilder.append(i).append(separatorBetweenIndexAndContent).append(record.getRecordData())
+                        .append("\n");
                 i++;
             }
         }
@@ -408,7 +410,8 @@ public class RecordList {
                     separatorBetweenIndexAndContent = " ";
                     break;
                 }
-                recordStringBuilder.append(i).append(separatorBetweenIndexAndContent).append(record.getRecordData()).append("\n");
+                recordStringBuilder.append(i).append(separatorBetweenIndexAndContent).append(record.getRecordData())
+                        .append("\n");
                 i++;
             }
         }
@@ -440,7 +443,8 @@ public class RecordList {
                     separatorBetweenIndexAndContent = " ";
                     break;
                 }
-                recordStringBuilder.append(i).append(separatorBetweenIndexAndContent).append(record.getRecordData()).append("\n");
+                recordStringBuilder.append(i).append(separatorBetweenIndexAndContent).append(record.getRecordData())
+                        .append("\n");
                 i++;
             }
         }
