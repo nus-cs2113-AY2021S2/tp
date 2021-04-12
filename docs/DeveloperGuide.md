@@ -193,7 +193,7 @@ taking in these input and create commands object for admin user to execute.
 
 
 ### View Canteens
-![DisplayCanteens Sequence Diagram](./img/DeleteCanteen.png)
+![DisplayCanteens Sequence Diagram](./img/DisplayCanteens.png)
 
 To see the list of canteens, `DisplayCanteensCommand.execute()` is called passing in an ArrayList of
 canteens and the Ui object instantiated in nusFoodReviews.
