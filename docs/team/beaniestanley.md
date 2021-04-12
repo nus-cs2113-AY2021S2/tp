@@ -4,6 +4,8 @@
 
 ---
 
+---
+
 ## Overview
 
 ```FastScheduler (FS)``` is a desktop app for restaurant managers to schedule employees for work, optimised for use via
