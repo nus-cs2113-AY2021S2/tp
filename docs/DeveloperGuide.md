@@ -953,6 +953,8 @@ parameter inputs.
 
 This consideration is much similar to the one in [Return Feature](#442-design-consideration)
 
+<div style="page-break-after: always;"></div>
+
 |Approach | Pros | Cons| 
 |---------|------|-----|
 |During command execution.|No additional class required.|A new argument for the `execute()` method is needed. It also increases coupling and decreases cohesion.|
@@ -974,6 +976,8 @@ As the user has to specify the index of which record to remove, the index has to
 With the two approaches considered, we have decided to adopt the first approach as it gives consistency for the
 user experience, and it will not cause any confusion. The time wasted is negligible, and the consistency provides
 long-term benefit.
+
+<div style="page-break-after: always;"></div>
 
 ### 4.6 Storage Feature
 The `storage` feature allows all `record` and `creditScoreReturnedLoansMap` to be stored locally on the device and for `record` 
@@ -1141,6 +1145,7 @@ by `Utils#computeCreditScore()` is as described above in the
 ***Step 8***\
 Lastly after the loop mentioned in step 3 ends, the final score is displayed onto the console via the `UI` component.
 
+<div style="page-break-after: always;"></div>
 
 #### 4.7.2 Design Consideration
 This section shows the design considerations taken when implementing the Credit Score Feature.
@@ -1163,6 +1168,8 @@ the very first loan made to them, to throughout the entire application lifetime 
 the loan history is persisted on every new startup, and hence factored in every instance of the credit score 
 computation. Even though there is the downside arising from the extra memory space needed, it is a small price to pay
 as compared to the benefits it brings to the user when enhancing their decision on loaning money to others.
+
+<div style="page-break-after: always;"></div>
 
 ## Appendix A: Product Scope
 
