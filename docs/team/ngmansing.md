@@ -37,8 +37,8 @@ Given below are my contributions to the project.
 
 <i>Developers Guide</i>
 * Added documentations & sequence diagram for `add` feature. [[GitHub](https://ay2021s2-cs2113-w10-3.github.io/tp/DeveloperGuide.html#add)]
-* Added Architecture and its diagram under **Design**.[[GitHub](https://ay2021s2-cs2113-w10-3.github.io/tp/DeveloperGuide.html#design)]
-* Added `Logic Components` and its UML class diagram under **Design**.[[GitHub](https://ay2021s2-cs2113-w10-3.github.io/tp/DeveloperGuide.html#design)]
+* Added Architecture and its diagram under **Design**. [[GitHub](https://ay2021s2-cs2113-w10-3.github.io/tp/DeveloperGuide.html#design)]
+* Added `Logic Components` and its UML class diagram under **Design**. [[GitHub](https://ay2021s2-cs2113-w10-3.github.io/tp/DeveloperGuide.html#design)]
 
 <i>Team-based tasks</i>
   * Set up the GitHub team organisation
