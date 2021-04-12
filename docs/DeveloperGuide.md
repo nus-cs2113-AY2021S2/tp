@@ -365,7 +365,7 @@ Option 2 : Using a Dictionary
 
 **Implementation:**
 
-The function Delete takes in 1 compulsory field (Staff ID) to identify and delete the Staff Object from the aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a StaffDelete Command object is created. StaffDelete command object will be executed to iterate through the aggregation of Staff Objects. If Staff Object exists, it will be removed. Else an error message will be displayed.
+The function Delete takes in 1 compulsory field (Staff ID) to identify and delete the Staff Object from the aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a StaffDeleteCommand object is created. StaffDeleteCommand object will be executed to iterate through the aggregation of Staff Objects. If Staff Object exists, it will be removed. Else an error message will be displayed.
 
 Invalid Input includes:
 
@@ -383,12 +383,12 @@ Invalid Input includes:
 
 **Creating StaffDelete command**
 
-2. If the input data is valid, a StaffDelete Command object is created 
-3. The StaffDelete Command object is returned to `StaffInstance.run()`
+2. If the input data is valid, a StaffDeleteCommand object is created 
+3. The StaffDeleteCommand object is returned to `StaffInstance.run()`
 
 **Deleting Staff Object using User Input**
 
-4. StaffInstance then executes the StaffDelete Command object to begin the process of deleting the referenced Staff object
+4. StaffInstance then executes the StaffDeleteCommand object to begin the process of deleting the referenced Staff object
 5. `StaffDelete.execute()` will call the function `StaffList.delete()`
 6. `StaffList.delete()` will iterate through the objects in ArrayList<Staff> StaffList. The Staff Object referenced by the input given by the user will be deleted.
 
@@ -418,7 +418,7 @@ Option 2 : Using an iterator
 
 **Implementation:**
 
-The function list takes in 1 option field (nurses/doctors) to identity and list the category of Staff Objects required from the aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a StaffList Command object is created. StaffList command object will be executed to iterate through the aggregation of Staff Objects. Staff Objects will then be displayed based on the user given input.
+The function list takes in 1 option field (nurses/doctors) to identity and list the category of Staff Objects required from the aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a StaffListCommand object is created. StaffListCommand object will be executed to iterate through the aggregation of Staff Objects. Staff Objects will then be displayed based on the user given input.
 
 Invalid Input includes:
 
@@ -433,12 +433,12 @@ Invalid Input includes:
 
 **Creating StaffList command**
 
-2. If the input data is valid, a StaffList Command object is created 
-3. The StaffList Command object is returned to `StaffInstance.run()` 
+2. If the input data is valid, a StaffListCommand object is created 
+3. The StaffListCommand object is returned to `StaffInstance.run()` 
 
 **Viewing Staff Objects**
 
-4. StaffInstance then executes the StaffList Command object to begin the process of displaying all Staff objects.
+4. StaffInstance then executes the StaffListCommand object to begin the process of displaying all Staff objects.
 5. `StaffList.execute()` will call the function `StaffList.list()`
 6. `StaffList.list()` will iterate through the objects in ArrayList<Staff> StaffList. 
 7. Depending on the input given by the user, the relevant Staff Objects will be displayed.
@@ -477,12 +477,12 @@ Invalid Input includes:
 
 **Creating StaffFind command**
 
-2. If the input data exist, a StaffFind Command object is created 
-3. The StaffFind Command object is returned to `StaffInstance.run()` 
+2. If the input data exist, a StaffFindCommand object is created 
+3. The StaffFindCommand object is returned to `StaffInstance.run()` 
 
 **Finding relevant Staff Objects**
 
-4. StaffInstance then executes the StaffList Command object to begin the process of finding and displaying relevant Staff objects.
+4. StaffInstance then executes the StaffFindCommand object to begin the process of finding and displaying relevant Staff objects.
 5. `StaffFind.execute()` will call the function `StaffList.find()`
 6. `StaffList.find()` will iterate through the objects in ArrayList<Staff> StaffList. 
 7. `StaffList.find()` will utilise a search function in StaffList to find any Staff Objects that matches the given keyword by the user. 
@@ -534,7 +534,7 @@ Whenever a user input is given to the Patient Menu, the following steps will occ
 
 The function Add takes in 6 compulsory fields (Patient ID, Name, Age, Gender, Illness and Medication Required) to create the Patient Object and adds it to a list of Patient Objects.
 Data input is first checked to ensure validity. Any invalid input detected will result in an exception thrown and command aborted. If there are no exceptions thrown, a PatientAddCommand object is created.
-The PatientAdd command object will be executed to create the Patient Object which will be added to the list of Patient Objects.
+The PatientAddCommand object will be executed to create the Patient Object which will be added to the list of Patient Objects.
 
 Invalid Input includes:
 
@@ -599,7 +599,7 @@ Option 2 : Using a List
 
 **Implementation:**
 
-The function Delete takes in 1 compulsory field (Patient ID) to identity and delete the Patient Object from the list of Patient Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a PatientDeleteCommand object is created. The PatientDelete command object will be executed to iterate through the list of Patient Objects. If Patient Object exists, it will be removed. Else an error message will be displayed.
+The function Delete takes in 1 compulsory field (Patient ID) to identity and delete the Patient Object from the list of Patient Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a PatientDeleteCommand object is created. The PatientDeleteCommand object will be executed to iterate through the list of Patient Objects. If Patient Object exists, it will be removed. Else an error message will be displayed.
 
 Invalid Input includes:
 
@@ -650,7 +650,7 @@ Option 2 : Using an iterator
 
 **Implementation:**
 
-The function List does not take in any additional inputs, in order to show the user a list of current Patient objects in the database. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a PatientListCommand object is created. PatientList command object will be executed to iterate through the list of Patient Objects. Patient Objects will then be displayed based on the user given input.
+The function List does not take in any additional inputs, in order to show the user a list of current Patient objects in the database. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a PatientListCommand object is created. PatientListCommand object will be executed to iterate through the list of Patient Objects. Patient Objects will then be displayed based on the user given input.
 
 Invalid Input includes:
 
@@ -666,7 +666,7 @@ Invalid Input includes:
 
 **Creating PatientListCommand**
 
-2. If the input data is valid, a PatientList Command object is created
+2. If the input data is valid, a PatientListCommand object is created
 3. The PatientListCommand object is returned to `PatientInstance.run()`
 
 **Viewing Patient Objects**
@@ -775,7 +775,7 @@ Whenever a user input is given to the Doctor Appointment Menu, the following ste
 
 **Implementation:**
 
-The function Add takes in 5 compulsory fields (Doctor ID, Appointment ID, Patient's Name, Gender, Date) to create the DoctorAppointment Object to be added. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. A DoctorAppointmentAdd Command object is created and executed to create the DoctorAppointment Object to be added.
+The function Add takes in 5 compulsory fields (Doctor ID, Appointment ID, Patient's Name, Gender, Date) to create the DoctorAppointment Object to be added. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. A DoctorAppointmentAddCommand object is created and executed to create the DoctorAppointment Object to be added.
 
 Invalid Input includes:
 
@@ -807,14 +807,14 @@ Invalid Input includes:
 	- isValidGender()
 	- checkValidDate(); 
 
-**Creating DoctorAppointmentAdd command**
+**Creating DoctorAppointmentAddCommand**
 
-3. If the input data is valid, a DoctorAppointment Command object is created. Otherwise, a relevant error will be thrown.
+3. If the input data is valid, a DoctorAppointmentCommand object is created. Otherwise, a relevant error will be thrown.
 4. The Command object is returned to `DoctorAppointmentInstance.run()`
 
 **Creating DoctorAppointment Object with User Input**
 
-5. DoctorAppointmentInstance then executes the DoctorAppointment Add Command object by running `DoctorAppointmentAddCommand.execute()`.
+5. DoctorAppointmentInstance then executes the DoctorAppointmentAddCommand object by running `DoctorAppointmentAddCommand.execute()`.
 6. `AppointmentList.addAppointment()` will be called in which a DoctorAppointment object will be created and added into the ArrayList<DoctorAppointment> appointmentList, which contains all the DoctorAppointment Objects. 
 
 **Saving DoctorAppointment Objects into .txt file**
@@ -829,7 +829,7 @@ Invalid Input includes:
 
 **Implementation:**
 
-The delete function takes in 1 compulsory field (Doctor ID/ Appointment ID) to identity and delete the corresponding DoctorAppointment Object from ArrayList <DoctorAppointment> appointmentList . Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a DoctorAppointmentDelete Command object is created and executed in which the program will iterate through appointmentList. If the desired DoctorID or Appointment ID exists, it will be removed. Else an error message will be displayed.
+The delete function takes in 1 compulsory field (Doctor ID/ Appointment ID) to identity and delete the corresponding DoctorAppointment Object from ArrayList <DoctorAppointment> appointmentList . Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a DoctorAppointmentDeleteCommand object is created and executed in which the program will iterate through appointmentList. If the desired DoctorID or Appointment ID exists, it will be removed. Else an error message will be displayed.
 
 Invalid Input includes:
 
@@ -852,14 +852,14 @@ Invalid Input includes:
 	- checkIdDuringParse()
 	- isValidIdToDelete()
 
-**Creating DoctorAppointmentDelete command**
+**Creating DoctorAppointmentDeleteCommand**
 
-3. A DoctorAppointmentDelete Command object is created if the inputs are valid. 
+3. A DoctorAppointmentDeleteCommand object is created if the inputs are valid. 
 4. The Command object is returned to `DoctorAppointmentInstance.run()`.
 
 **Deleting DoctorAppointment Object using User Input**
 
-5. DoctorAppointmentInstance then executes the DoctorAppointmentDelete Command object by running `DoctorAppointmentDeleteCommand.execute()`.
+5. DoctorAppointmentInstance then executes the DoctorAppointmentDeleteCommand object by running `DoctorAppointmentDeleteCommand.execute()`.
 6. `AppointmentList.deleteAppointment()` is called, which iterates through the objects in ArrayList<DoctorAppointment> appointmentList. The DoctorAppointment Object matching the input given by the user will be removed from the array list.
 
 **Saving changed DoctorAppointment Objects into .txt file**
@@ -873,7 +873,7 @@ Invalid Input includes:
 
 **Implementation:**
 
-The function lists all Doctor Appointment Objects currently in ArrayList <DoctorAppointment> appointmentList. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a DoctorAppointmentList Command object is created and executed in which the program will iterate and display all DoctorAppointment Objects currently within the array list.
+The function lists all Doctor Appointment Objects currently in ArrayList <DoctorAppointment> appointmentList. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a DoctorAppointmentListCommand object is created and executed in which the program will iterate and display all DoctorAppointment Objects currently within the array list.
 
 Invalid Input includes:
 
@@ -892,9 +892,9 @@ Invalid Input includes:
 	- isValidDocId()
 	- isValidListAppointmentID()
 	
-**Creating DoctorAppointmentList command**
+**Creating DoctorAppointmentListCommand**
 
-3. A DoctorAppointmentList Command object is created if the inputs are valid.
+3. A DoctorAppointmentListCommand object is created if the inputs are valid.
 4. The Command object is returned to `DoctorAppointmentInstance.run()`.
 
 **Viewing DoctorAppointment Objects**
@@ -922,14 +922,14 @@ Invalid Input includes:
 
 1. If the command recognised is the list command, `DoctorAppointmentParser.parse()` calls `MainChecker.checkNumInput()` and `DoctorAppointmentChecker.checkValidDataForList()` to check and verify the validity of inputs accompanied by the list command, if any.
 
-**Creating DoctorAppointmentList command**
+**Creating DoctorAppointmentListCommand**
 
-2. A DoctorAppointmentList Command object is created if the inputs are valid.
+2. A DoctorAppointmentListCommand object is created if the inputs are valid.
 3. The Command object is returned to `DoctorAppointmentInstance.run()`.
 
 **Viewing DoctorAppointment Objects**
 
-4. DoctorAppointmentInstance then executes the DoctorAppointmentList Command object by running `DoctorAppointmentListCommand.execute()`.
+4. DoctorAppointmentInstance then executes the DoctorAppointmentListCommand object by running `DoctorAppointmentListCommand.execute()`.
 5. `AppointmentList.listAppointment()` is called, and will iterate through the objects in ArrayList<DoctorAppointment> appointmentList.
 6. DoctorAppointment Objects matching the user input present in the array list will be displayed.
 7. Control is then returned to DoctorAppointmentInstance.
