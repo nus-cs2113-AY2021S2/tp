@@ -78,7 +78,6 @@ public class StaffUI extends UI {
      */
     public static void printStaffHelpMessage() {
 
-        UI.printEmptyLine();
         System.out.println("Here is a list of Staff commands: ");
 
         UI.printEmptyLine();
@@ -91,7 +90,6 @@ public class StaffUI extends UI {
         printer(new String[]{DELETE_COMMAND, STAFF_DELETE_DESCRIPTION, STAFF_DELETE_FORMAT}, lengthPara);
         printer(new String[]{FIND_COMMAND, STAFF_FIND_DESCRIPTION, STAFF_FIND_FORMAT}, lengthPara);
         printer(new String[]{RETURN_COMMAND, RETURN_DESCRIPTION, MARK_BLANK}, lengthPara);
-        UI.printEmptyLine();
 
     }
 
