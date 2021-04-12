@@ -2,11 +2,9 @@
 
 ## Overview
 **NUSMaze** is a Command Line Interface (CLI) based application that aims to **simplify NUS Computer Engineering students’ journey** from one point to another within the NUS Engineering and Computing buildings.
-The application allows users to find the shortest route from one block to another, locate the nearest eatery, add personal notes to the location and many more.
-The main target audience of NUSMaze are freshmen who are unfamiliar with the campus and need help travelling between Engineering and computing.
 
 ## Summary of Contributions
-This section shows a brief summary of my contributions to the team project, including coding, documentation and other helpful contribution throughout the development of NUSMaze.
+This section shows a brief summary of my contributions to the team project.
 
 ### Code contributed
 The link to the code contributed by me can be found
@@ -17,7 +15,7 @@ The link to the code contributed by me can be found
 I implemented the UI of NUSMaze together with Choi Wonjae (wjChoi0712).<br>
 
 **What it does:** <br>
-The UI of NUSMaze provides the users an enjoyable experience as they can easily differentiate between their inputs and the outputs of NUSMaze. The UI of NUSMaze is based on the Command Line Interface.
+The UI of NUSMaze is based on the Command Line Interface and provides the users an enjoyable experience.
 
 **Justification:** <br>
 The UI is needed to show messages to the user so that they can be affirmed that the application is working correctly or if there are any errors, it will be easier for them to identify what went wrong.
@@ -48,16 +46,14 @@ The show help and venues feature helps new users get accustomed to the applicati
 I implemented the alias feature of NUSMaze.<br>
 
 **What it does:** <br>
-The user may use the `add alias` command to activate the add alias feature. Upon activation, NUSMaze will prompt the user for a block name and the alias that they wish to set to that block. The application will then store this alias.
-The user may use the `show alias` command to activate the show alias feature. Upon activation, NUSMaze will display all the alias names and block pairs that the user has defined thus far.
-The user may use the `delete alias` command to activate the delete alias feature. Upon activation, NUSMaze will prompt the user for the alias name that they wish to delete. The application will then remove this alias from the stored list of aliases.
+The user may use the `add alias`, `show alias` or the `delete alias` command to activate the respective alias features. This feature enables users to input block names by entering a custom alias for them.
 
 **Justification:** <br>
-The user can use their custom defined alias instead of the pre-defined block names when calling the `go` command so as to save time as they would have to type less and the alias might make more sense to them as compared to the pre-defined block names.
+The user can use their custom defined alias instead of the pre-defined block names when calling the `go` command so that they can save time.
 <br>
 
 #### *User Data Storage*
-I implemented the data storage feature of NUSMaze with Sim Bowen (simbowen), Kimberley (kimideas8) and Choi Wonjae (wjChoi0712). More specifically, I was in charge of the storages for alias and favourites features.<br>
+I implemented the data storage feature of NUSMaze with Sim Bowen (simbowen), Kimberley (kimideas8) and Choi Wonjae (wjChoi0712). More specifically, I did the storages for alias and favourites features.<br>
 
 **What it does:** <br>
 The storage feature ensures that the user's data for the respective features are saved in the computers memory and can be retrieved even if the user exits and reopens NUSMaze.
@@ -73,7 +69,7 @@ I contributed to the information about the alias features namely `Add alias`, `S
 I contributed to the parts of the DG that describe and explain `UIManager Component`, `Custom Alias Feature` and parts of the `Appendix: Instructions for manual testing`, including the UML diagrams.
 
 ### Contributions to team-based tasks
-I contributed in the developer testing of NUSMaze by creating JUnit tests ro ensure that NUSMaze runs correctly and any changes in the codebase do not accidentally deviate from the intended outcomes. <br>
+I contributed in the developer testing of NUSMaze by creating JUnit tests to ensure that NUSMaze runs correctly and any changes in the codebase do not accidentally deviate from the intended outcomes. <br>
 
 ### Review contributions
 The link to PR reviews by me can be found [here](https://github.com/AY2021S2-CS2113T-T09-2/tp/pulls?q=is%3Apr+is%3Aclosed+author%3ARizavur).
