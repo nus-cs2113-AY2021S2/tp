@@ -7,11 +7,9 @@ import movieApp.Showtimes;
 import movieApp.generator.CineplexList;
 import movieApp.generator.MovieList;
 import movieApp.generator.ShowtimeList;
-import movieApp.parser.MovieFilter;
-import movieApp.user.Admin;
-import movieApp.user.Customer;
-import movieApp.user.User;
 import movieApp.generator.UserList;
+import movieApp.parser.MovieFilter;
+import movieApp.user.User;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -47,32 +45,32 @@ public class Database {
         importDatabase();
     }
 
-    private static void checkIfUserListExists() throws IOException{
-        if(!Files.exists(userListDirectory)){
+    private static void checkIfUserListExists() throws IOException {
+        if (!Files.exists(userListDirectory)) {
             File newFile = new File(String.valueOf(userListDirectory));
             newFile.createNewFile();
             writeToFile("data/userSerialList.txt", UserList.getDefaultUsers());
         }
     }
 
-    private static void checkIfShowtimeListExists() throws IOException{
-        if(!Files.exists(showtimeListDirectory)){
+    private static void checkIfShowtimeListExists() throws IOException {
+        if (!Files.exists(showtimeListDirectory)) {
             File newFile = new File(String.valueOf(showtimeListDirectory));
             newFile.createNewFile();
             writeToFile("data/showtimeList.txt", ShowtimeList.getDefaultShowtimes());
         }
     }
 
-    private static void checkIfCineplexListExists() throws IOException{
-        if(!Files.exists(cineplexListDirectory)){
+    private static void checkIfCineplexListExists() throws IOException {
+        if (!Files.exists(cineplexListDirectory)) {
             File newFile = new File(String.valueOf(cineplexListDirectory));
             newFile.createNewFile();
             writeToFile("data/cineplexList.txt", CineplexList.getDefaultCineplexes());
         }
     }
 
-    private static void checkIfMovieListExists() throws IOException{
-        if(!Files.exists(movieListDirectory)){
+    private static void checkIfMovieListExists() throws IOException {
+        if (!Files.exists(movieListDirectory)) {
             File newFile = new File(String.valueOf(movieListDirectory));
             newFile.createNewFile();
             writeToFile("data/movieList.txt", MovieList.getDefaultMovieList());
@@ -80,13 +78,13 @@ public class Database {
     }
 
     private static void checkIfDirectoryExists() throws IOException {
-        if(!Files.exists(dataDirectory)){
+        if (!Files.exists(dataDirectory)) {
             Files.createDirectory(dataDirectory);
         }
     }
 
     private static void checkIfFileExists(Path databaseFile) throws IOException {
-        if(!Files.exists(databaseFile)){
+        if (!Files.exists(databaseFile)) {
             File newFile = new File(String.valueOf(databaseFile));
             newFile.createNewFile();
         }
@@ -98,37 +96,6 @@ public class Database {
         ShowtimesDatabase = importShowtimesDatabase();
         users = importUserDatabaseUsingSerialization();
     }
-
-    // TODO: THIS CHUNK OF CODE IS NO LONGER USED, KEEP FOR REFERENCE
-    /*
-    private static ArrayList<User> importUserDatabaseUsingFileReader() throws Exception {
-        File f_user = new File("data/userList.txt");
-        FileReader r_user = new FileReader(f_user);
-        BufferedReader br_user = new BufferedReader(r_user);
-        String line;
-
-        ArrayList<User> users = new ArrayList<>();
-
-        while ((line = br_user.readLine()) != null) {
-            String[] userSplit = line.split("\\|");
-            String username = userSplit[1].trim();
-            String password = userSplit[2].trim();
-            String type = userSplit[0].trim().toUpperCase();
-            switch (type) {
-            case "USER":
-                users.add(new Customer(username, password));
-                break;
-            case "ADMIN":
-                users.add(new Admin(username, password));
-                break;
-            default:
-                throw new Exception(type);
-            }
-        }
-        r_user.close();
-        return users;
-    }
-    */
 
     private static ArrayList<User> importUserDatabaseUsingSerialization() throws Exception {
         File f_movie = new File("data/userSerialList.txt");
@@ -210,80 +177,80 @@ public class Database {
         Movie selectedMovie = MovieDatabase.get(choice - 1);
         Scanner select = new Scanner(System.in);
         switch (type) {
-        case 1:
-            System.out.println("Current title: " + selectedMovie.getMovieTitle() + "\nInsert new title:");
-            String newTitle = select.nextLine();
-            while (newTitle.equals("")) {
-                System.out.println("Insert new title: ");
-                newTitle = select.nextLine();
-            }
-            selectedMovie.setMovieTitle(newTitle);
-            break;
-        case 2:
-            System.out.println("Current director: " + selectedMovie.getDirector() + "\nInsert new director:");
-            String newDirector = select.nextLine();
-            while (newDirector.equals("")) {
-                System.out.println("Insert new director: ");
-                newDirector = select.nextLine();
-            }
-            selectedMovie.setDirector(newDirector);
-            break;
-        case 3:
-            System.out.println("Current synopsis: " + selectedMovie.getSynopsis() + "\nInsert new synopsis:");
-            String newSynopsis = select.nextLine();
-            while (newSynopsis.equals("")) {
-                System.out.println("Insert new synopsis: ");
-                newSynopsis = select.nextLine();
-            }
-            selectedMovie.setSynopsis(newSynopsis);
-            break;
-        case 4:
-            int newStartDate, newStartMonth, newStartYear, newEndDate, newEndMonth, newEndYear;
-            do {
-                System.out.println("Insert new start date:");
-                int[] newStart = getDateTime();
-                newStartDate = newStart[0];
-                newStartMonth = newStart[1];
-                newStartYear = newStart[2];
-
-                System.out.println("Insert new end date:");
-                int[] newEnd = getDateTime();
-                newEndDate = newEnd[0];
-                newEndMonth = newEnd[1];
-                newEndYear = newEnd[2];
-
-                if (newEndYear < newStartYear) {
-                    System.out.println("The end year cannot be earlier than the start year.");
-                    continue;
-                } else if (newEndYear == newStartYear && newEndMonth < newStartMonth) {
-                    System.out.println("The end month cannot be earlier than the start month.");
-                    continue;
-                } else if (newEndYear == newStartYear && newEndMonth == newStartMonth && newEndDate < newStartDate) {
-                    System.out.println("The end date cannot be earlier than the start date.");
-                    continue;
+            case 1:
+                System.out.println("Current title: " + selectedMovie.getMovieTitle() + "\nInsert new title:");
+                String newTitle = select.nextLine();
+                while (newTitle.equals("")) {
+                    System.out.println("Insert new title: ");
+                    newTitle = select.nextLine();
                 }
+                selectedMovie.setMovieTitle(newTitle);
                 break;
-            } while (true);
-            Calendar startDate = Calendar.getInstance();
-            startDate.set(newStartYear, newStartMonth-1, newStartDate,0,0,0);
-            selectedMovie.setStartDate(startDate);
-            Calendar endDate = Calendar.getInstance();
-            endDate.set(newEndYear, newEndMonth-1, newEndDate,0,0,0);
-            selectedMovie.setEndDate(endDate);
-            MovieDatabase = updateMovieStatus(MovieDatabase);
-            break;
-        case 5:
-            System.out.println("Insert new movie casts (separated with comma): ");
-            String casts = select.nextLine();
-            while (casts.equals("")) {
-                System.out.println("Movie casts (separated with comma): ");
-                casts = select.nextLine();
-            }
-            String[] castList = casts.split(",");
-            selectedMovie.setCast(castList);
-            break;
-        default:
-            System.out.println("Please input a integer between 1 and 5.\n");
+            case 2:
+                System.out.println("Current director: " + selectedMovie.getDirector() + "\nInsert new director:");
+                String newDirector = select.nextLine();
+                while (newDirector.equals("")) {
+                    System.out.println("Insert new director: ");
+                    newDirector = select.nextLine();
+                }
+                selectedMovie.setDirector(newDirector);
+                break;
+            case 3:
+                System.out.println("Current synopsis: " + selectedMovie.getSynopsis() + "\nInsert new synopsis:");
+                String newSynopsis = select.nextLine();
+                while (newSynopsis.equals("")) {
+                    System.out.println("Insert new synopsis: ");
+                    newSynopsis = select.nextLine();
+                }
+                selectedMovie.setSynopsis(newSynopsis);
+                break;
+            case 4:
+                int newStartDate, newStartMonth, newStartYear, newEndDate, newEndMonth, newEndYear;
+                do {
+                    System.out.println("Insert new start date:");
+                    int[] newStart = getDateTime();
+                    newStartDate = newStart[0];
+                    newStartMonth = newStart[1];
+                    newStartYear = newStart[2];
+
+                    System.out.println("Insert new end date:");
+                    int[] newEnd = getDateTime();
+                    newEndDate = newEnd[0];
+                    newEndMonth = newEnd[1];
+                    newEndYear = newEnd[2];
+
+                    if (newEndYear < newStartYear) {
+                        System.out.println("The end year cannot be earlier than the start year.");
+                        continue;
+                    } else if (newEndYear == newStartYear && newEndMonth < newStartMonth) {
+                        System.out.println("The end month cannot be earlier than the start month.");
+                        continue;
+                    } else if (newEndYear == newStartYear && newEndMonth == newStartMonth && newEndDate < newStartDate) {
+                        System.out.println("The end date cannot be earlier than the start date.");
+                        continue;
+                    }
+                    break;
+                } while (true);
+                Calendar startDate = Calendar.getInstance();
+                startDate.set(newStartYear, newStartMonth - 1, newStartDate, 0, 0, 0);
+                selectedMovie.setStartDate(startDate);
+                Calendar endDate = Calendar.getInstance();
+                endDate.set(newEndYear, newEndMonth - 1, newEndDate, 0, 0, 0);
+                selectedMovie.setEndDate(endDate);
+                MovieDatabase = updateMovieStatus(MovieDatabase);
+                break;
+            case 5:
+                System.out.println("Insert new movie casts (separated with comma): ");
+                String casts = select.nextLine();
+                while (casts.equals("")) {
+                    System.out.println("Movie casts (separated with comma): ");
+                    casts = select.nextLine();
+                }
+                String[] castList = casts.split(",");
+                selectedMovie.setCast(castList);
+                break;
+            default:
+                System.out.println("Please input a integer between 1 and 5.\n");
         }
 
         try {

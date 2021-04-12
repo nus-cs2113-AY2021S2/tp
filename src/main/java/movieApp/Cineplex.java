@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 public class Cineplex implements Serializable {
     private static final long serialVersionUID = 7128894551549758309L;
-    protected ArrayList<Cinema> cinemaList;
     private final int cineplexID;
     private final String cineplexName;
     private final ArrayList<Integer> movieList;
+    protected ArrayList<Cinema> cinemaList;
 
     /**
      * Class constructor.
@@ -23,7 +23,8 @@ public class Cineplex implements Serializable {
     /**
      * Returns an int, which is the id of the Cineplex object
      * that can then be used in operations.
-     * @return      the id of the specified Cineplex object
+     *
+     * @return the id of the specified Cineplex object
      */
     public int getCineplexID() {
         return cineplexID;
@@ -31,7 +32,8 @@ public class Cineplex implements Serializable {
 
     /**
      * Returns a String, which is the name of the Cineplex, for display purposes.
-     * @return      the name of the specified Cineplex object
+     *
+     * @return the name of the specified Cineplex object
      */
     public String getCineplexName() {
         return cineplexName;
@@ -39,7 +41,8 @@ public class Cineplex implements Serializable {
 
     /**
      * Returns an ArrayList of movie IDs, contained in the Cineplex object
-     * @return      an ArrayList of movie IDs, contained in the Cineplex object
+     *
+     * @return an ArrayList of movie IDs, contained in the Cineplex object
      */
     public ArrayList<Integer> getMovieList() {
         return movieList;
@@ -47,7 +50,8 @@ public class Cineplex implements Serializable {
 
     /**
      * Returns an ArrayList of Cinema objects, contained in the Cineplex object
-     * @return      an ArrayList of movie IDs, contained in the Cineplex object
+     *
+     * @return an ArrayList of movie IDs, contained in the Cineplex object
      */
     public ArrayList<Cinema> getCinemaList() {
         return cinemaList;

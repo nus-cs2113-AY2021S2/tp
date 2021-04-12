@@ -10,9 +10,9 @@ import java.util.Scanner;
 
 public class ViewBooking {
 
+    private static final Scanner sc = new Scanner(System.in);
     private ArrayList<Booking> bookings = null;
     private User user = null;
-    private static Scanner sc = new Scanner(System.in);
 
     public ViewBooking(User user) {
         this.bookings = downcastToSpecificUser(user);
@@ -20,10 +20,10 @@ public class ViewBooking {
     }
 
     public void printBookings() {
-        if (bookings.size()==0){
+        if (bookings.size() == 0) {
             System.out.println("No bookings available.");
             System.out.println();
-        }else{
+        } else {
             printAllBookings();
             displayCancelBookingMenu(bookings);
         }
@@ -31,8 +31,7 @@ public class ViewBooking {
 
     private void displayCancelBookingMenu(ArrayList<Booking> bookings) {
         int functionSelection = -1;
-        do
-        {
+        do {
             System.out.println("======== Menu Choice =======");
             System.out.println(" 1 Cancel a booking");
             System.out.println(" 2 Go Back");
@@ -46,31 +45,31 @@ public class ViewBooking {
                 continue;
             }
 
-            switch(functionSelection) {
-            case 1:
-                printAllBookings();
-                CancelBooking cancelUserBooking = new CancelBooking(user, bookings);
-                cancelUserBooking.cancelOneBooking();
-                break;
-            case 2:
-                return;
-            default:
-                System.out.println("Invalid selection, please select again!");
+            switch (functionSelection) {
+                case 1:
+                    printAllBookings();
+                    CancelBooking cancelUserBooking = new CancelBooking(user, bookings);
+                    cancelUserBooking.cancelOneBooking();
+                    break;
+                case 2:
+                    return;
+                default:
+                    System.out.println("Invalid selection, please select again!");
             }
-        }while(functionSelection != 2);
+        } while (functionSelection != 2);
     }
 
     private void printAllBookings() {
-        for(int i=0; i<bookings.size();i++){
-            System.out.println("Booking Number "+ (i+1));
+        for (int i = 0; i < bookings.size(); i++) {
+            System.out.println("Booking Number " + (i + 1));
             bookings.get(i).printBookingDetails();
         }
     }
 
     private ArrayList<Booking> downcastToSpecificUser(User user) {
-        if(user.getUserType().equals("Customer")){
+        if (user.getUserType().equals("Customer")) {
             return ((Customer) user).getBookings();
-        } else{
+        } else {
             return ((Admin) user).getBookings();
         }
     }

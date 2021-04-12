@@ -13,9 +13,9 @@ import java.util.Scanner;
 
 public class CancelBooking {
 
+    private static final Scanner sc = new Scanner(System.in);
     private ArrayList<Booking> currentBookings = null;
     private User user = null;
-    private static Scanner sc = new Scanner(System.in);
 
     public CancelBooking(User user, ArrayList<Booking> bookings) {
         this.user = user;
@@ -24,18 +24,18 @@ public class CancelBooking {
 
     public void cancelOneBooking() {
         int thisBookingNumber = getBookingNumber();
-        if(thisBookingNumber!=0) {
+        if (thisBookingNumber != 0) {
             deleteThisBooking(thisBookingNumber);
-        }else{
+        } else {
             System.out.println("No more bookings available.");
             System.out.println();
         }
     }
 
     private void deleteThisBooking(int thisBookingNumber) {
-        if(checkIfCurrDateOverBookingDate(currentBookings.get(thisBookingNumber - 1))){
+        if (checkIfCurrDateOverBookingDate(currentBookings.get(thisBookingNumber - 1))) {
             System.out.println("The movie screening is over. Cancelling of booking is unsuccessful.");
-        }else{
+        } else {
             resetSeatStatus(currentBookings.get(thisBookingNumber - 1));
             currentBookings.remove(thisBookingNumber - 1);
             System.out.println("Booking Number " + thisBookingNumber + " has been removed successfully.");
@@ -47,31 +47,15 @@ public class CancelBooking {
         Date currentDate = new Date();
         Calendar calendar = selectedBooking.getShowtimes().getDateTime();
         Date movieDate = calendar.getTime();
-        if (currentDate.compareTo(movieDate) > 0) {
-            return true;
-        }else{
-            return false;
-        }
+        return currentDate.compareTo(movieDate) > 0;
     }
 
     private void resetSeatStatus(Booking booking) {
-        /*
         Showtimes showtimes = booking.getShowtimes();
         ArrayList<Seat> seats = booking.getSeats();
-        for(int i=0;i<seats.size();i++){
-            showtimes.setSeatStatus(seats.get(i).getRow()-1, seats.get(i).getRow()-1, false);
-            seats.get(i).setStatus(false);
-            System.out.println((seats.get(i).getRow()-1) + " , " + (seats.get(i).getRow()-1));
-            System.out.println(showtimes.getShowtimeID());
-            System.out.println("Seat: "+(seats.get(j).getRow()) + " , " + (seats.get(j).getRow()) + " status: "
-                            + Database.ShowtimesDatabase.get(i).getSeat(seats.get(j).getRow(), seats.get(j).getRow()).getStatus());
-        }
-         */
-        Showtimes showtimes = booking.getShowtimes();
-        ArrayList<Seat> seats = booking.getSeats();
-        for(int i=0;i<Database.ShowtimesDatabase.size();i++){
-            if(Database.ShowtimesDatabase.get(i).getShowtimeID()==showtimes.getShowtimeID()){
-                for(int j=0;j<seats.size();j++){
+        for (int i = 0; i < Database.ShowtimesDatabase.size(); i++) {
+            if (Database.ShowtimesDatabase.get(i).getShowtimeID() == showtimes.getShowtimeID()) {
+                for (int j = 0; j < seats.size(); j++) {
                     showtimes.setSeatStatus(seats.get(j).getRow(), seats.get(j).getRow(), false);
                     Database.ShowtimesDatabase.get(i).setSeatStatus(seats.get(j).getRow(), seats.get(j).getRow(), false);
                 }
@@ -80,9 +64,9 @@ public class CancelBooking {
     }
 
     private int getBookingNumber() {
-        int booking_choice=0;
+        int booking_choice = 0;
 
-        if(checkIfBookingListIsEmpty()){
+        if (checkIfBookingListIsEmpty()) {
             return booking_choice;
         }
 
@@ -94,18 +78,14 @@ public class CancelBooking {
                 continue;
             }
             booking_choice = sc.nextInt();
-            if ((booking_choice < 1) ||(booking_choice > currentBookings.size())) {
-                System.out.println("Please input an integer between 1 and "+ currentBookings.size() +".\n");
+            if ((booking_choice < 1) || (booking_choice > currentBookings.size())) {
+                System.out.println("Please input an integer between 1 and " + currentBookings.size() + ".\n");
             }
         }
         return booking_choice;
     }
 
     private boolean checkIfBookingListIsEmpty() {
-        if(this.currentBookings.size()==0){
-            return true;
-        }else{
-            return false;
-        }
+        return this.currentBookings.size() == 0;
     }
 }

@@ -1,20 +1,18 @@
 package movieApp.generator;
 
-import movieApp.Cinema;
 import movieApp.Cineplex;
-import movieApp.Showtimes;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class CineplexList {
 
     /**
      * If cineplexList.txt is missing, this is the default data that is used to populate the file that will
      * be created in its place
+     *
      * @return an ArrayList of Cineplexes, containing default Cineplex objects.
      */
-    public static ArrayList<Cineplex> getDefaultCineplexes(){
+    public static ArrayList<Cineplex> getDefaultCineplexes() {
         ArrayList<Cineplex> returnList = new ArrayList<Cineplex>();
 
         ArrayList<Integer> temp = new ArrayList<Integer>();

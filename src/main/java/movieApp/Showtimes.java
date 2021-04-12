@@ -5,7 +5,6 @@ import java.util.Calendar;
 
 public class Showtimes implements Serializable {
     private static final long serialVersionUID = -6009080018075884803L;
-    protected Movie mv;
     private final int showtimeID;
     private final Calendar dateTime;
     private final int cinemaID;
@@ -13,6 +12,7 @@ public class Showtimes implements Serializable {
     private final int movieID;
     private final String movieTitle;
     private final Seat[][] seatPlan; //true means taken, false means empty
+    protected Movie mv;
 
     /**
      * Class constructor.
@@ -22,7 +22,6 @@ public class Showtimes implements Serializable {
         int c = cinema.getC();
         this.seatPlan = new Seat[r][c];
 
-        //seatplan for each showtime
         for (int row = 0; row < r; row++) {
             for (int col = 0; col < c; col++) {
                 seatPlan[row][col] = new Seat(row, col, false);
@@ -49,7 +48,8 @@ public class Showtimes implements Serializable {
     /**
      * Returns an int, which is the id of the Showtimes object
      * that can then be used in operations.
-     * @return      the id of the specified Showtimes object
+     *
+     * @return the id of the specified Showtimes object
      */
     public int getShowtimeID() {
         return showtimeID;
@@ -58,7 +58,8 @@ public class Showtimes implements Serializable {
     /**
      * Returns an int, which is the id of the movie attached to this
      * Showtimes object, that can then be used in operations regarding Movie objects.
-     * @return      the id of the movie attached to the specified Showtimes object
+     *
+     * @return the id of the movie attached to the specified Showtimes object
      */
     public int getMovieID() {
         return movieID;
@@ -67,7 +68,8 @@ public class Showtimes implements Serializable {
     /**
      * Returns a Movie object, which an instance of Movie class, which can be directly
      * used in operations, or for using the necessary methods
-     * @return      the Movie object, corresponding to the object attached to the specified Showtimes object
+     *
+     * @return the Movie object, corresponding to the object attached to the specified Showtimes object
      */
     public Movie getMovie() {
         return mv;
@@ -75,7 +77,8 @@ public class Showtimes implements Serializable {
 
     /**
      * Returns a String, containing the name of the movie
-     * @return      the name of the movie attached to the specified Showtimes object
+     *
+     * @return the name of the movie attached to the specified Showtimes object
      */
     public String getMovieTitle() {
         return movieTitle;
@@ -83,7 +86,8 @@ public class Showtimes implements Serializable {
 
     /**
      * Returns a Calendar object, containing date and time information about the movie screenign.
-     * @return      the date and time of the movie attached to the specified Showtimes object, in Calendar format.
+     *
+     * @return the date and time of the movie attached to the specified Showtimes object, in Calendar format.
      */
     public Calendar getDateTime() {
         return dateTime;
@@ -117,8 +121,9 @@ public class Showtimes implements Serializable {
 
     /**
      * Returns a boolean value, which depends on the status of a seat.
-     * @param  RC   an int array containing positional information, of a selected seat
-     * @return      A boolean value, corresponding to whether or not a selected seat is chosen
+     *
+     * @param RC an int array containing positional information, of a selected seat
+     * @return A boolean value, corresponding to whether or not a selected seat is chosen
      */
     public boolean checkSeatTaken(int[] RC) {
         return seatPlan[RC[0] - 1][RC[1] - 1].getStatus();
@@ -126,9 +131,10 @@ public class Showtimes implements Serializable {
 
     /**
      * Returns a boolean value, which depends on the status of a seat.
-     * @param  row   an int containing positional information, row number, of a selected seat
-     * @param  col   an int containing positional information, column number, of a selected seat
-     * @return      A boolean value, corresponding to whether or not a selected seat is chosen
+     *
+     * @param row an int containing positional information, row number, of a selected seat
+     * @param col an int containing positional information, column number, of a selected seat
+     * @return A boolean value, corresponding to whether or not a selected seat is chosen
      */
     public boolean checkSeatTaken(int row, int col) {
         return seatPlan[row][col].getStatus();
@@ -136,7 +142,8 @@ public class Showtimes implements Serializable {
 
     /**
      * Returns the number of available seats there are, for display purposes.
-     * @return      A int, which counts the number of available seats.
+     *
+     * @return A int, which counts the number of available seats.
      */
     public int getEmptySeats() {
         int num = 0;
@@ -154,9 +161,10 @@ public class Showtimes implements Serializable {
 
     /**
      * Returns the number of available seats there are, for display purposes.
-     * @param  row      an int containing positional information, row number, of a selected seat
-     * @param  col      an int containing positional information, column number, of a selected seat
-     * @param  status   a boolean value, which is used to mark the seat's taken status accordingly
+     *
+     * @param row    an int containing positional information, row number, of a selected seat
+     * @param col    an int containing positional information, column number, of a selected seat
+     * @param status a boolean value, which is used to mark the seat's taken status accordingly
      */
     public void setSeatStatus(int row, int col, boolean status) {
         seatPlan[row][col].setStatus(status);
@@ -164,9 +172,10 @@ public class Showtimes implements Serializable {
 
     /**
      * Returns a seat object, for use in operations.
-     * @param  row  an int containing positional information, row number, of a selected seat
-     * @param  col  an int containing positional information, column number, of a selected seat
-     * @return     a Seat object, corresponding to the seat at the selected position
+     *
+     * @param row an int containing positional information, row number, of a selected seat
+     * @param col an int containing positional information, column number, of a selected seat
+     * @return a Seat object, corresponding to the seat at the selected position
      */
     public Seat getSeat(int row, int col) {
         return seatPlan[row][col];
@@ -174,7 +183,8 @@ public class Showtimes implements Serializable {
 
     /**
      * Returns the id of the cinema attached to this Showtimes object
-     * @return     an int, corresponding to the id of the cinema attached to this Showtimes object
+     *
+     * @return an int, corresponding to the id of the cinema attached to this Showtimes object
      */
     public int getCinemaID() {
         return cinemaID;
@@ -182,7 +192,8 @@ public class Showtimes implements Serializable {
 
     /**
      * Returns the id of the cineplex attached to this Showtimes object
-     * @return     an int, corresponding to the id of the cineplex attached to this Showtimes object
+     *
+     * @return an int, corresponding to the id of the cineplex attached to this Showtimes object
      */
     public int getCineplexID() {
         return cineplexID;
@@ -190,7 +201,8 @@ public class Showtimes implements Serializable {
 
     /**
      * Returns the number of rows in the cinema attached to this Showtimes object
-     * @return     an int, which is the number of rows
+     *
+     * @return an int, which is the number of rows
      */
     public int getMaxRow() {
         return seatPlan.length;
@@ -198,7 +210,8 @@ public class Showtimes implements Serializable {
 
     /**
      * Returns the number of columns in the cinema attached to this Showtimes object
-     * @return     an int, which is the number of columns
+     *
+     * @return an int, which is the number of columns
      */
     public int getMaxColumn() {
         return seatPlan[0].length;
