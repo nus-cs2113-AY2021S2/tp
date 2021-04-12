@@ -34,6 +34,7 @@ Given below are my contributions to the project
         - Added implementation details of Doctors' Appointment, including all of its features. [\#1b1a7c2](), [\#6d353a7]()
         - Added UI component / diagram. [\#f4f6e62](), [\#088bff6]()
         - Added Non-functional requirements Component. [\#ac6f3eb]()
+        - Added Negative Test Cases for Doctor Appointment Feature. [\#418]()
 
 - **Contributions to Team-Based Tasks**:
     - Weekly meeting host
