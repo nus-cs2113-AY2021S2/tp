@@ -36,7 +36,7 @@ public class PatientInstance {
         //tries to load patients from the storage.
         try {
             patients = new PatientList(patientStorage.loadPatients());
-        } catch (HealthVaultException | NumberFormatException e) {
+        } catch (HealthVaultException | NumberFormatException | ArrayIndexOutOfBoundsException e) {
             logger.log(Level.WARNING, "Patient file corrupted. Access Denied");
             ui.corruptedFileErrorMessage();
             patients = new PatientList();
