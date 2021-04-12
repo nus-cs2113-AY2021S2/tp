@@ -124,10 +124,16 @@ public class ReviewList {
                 ui.printEmptyInputMessage();
                 continue;
             }
+
+            //@@author jhjhajh
+
             if (title.length() > 20) {
                 ui.printInputTooLongMessage_20Char();
                 continue;
             }
+
+            //@@author
+
             break;
         }
         while (true) {
@@ -137,10 +143,16 @@ public class ReviewList {
                 ui.printEmptyInputMessage();
                 continue;
             }
+
+            //@@author jhjhajh
+
             if (category.length() > 15) {
                 ui.printInputTooLongMessage_15Char();
                 continue;
             }
+
+            //@@author
+
             break;
         }
         while (true) {
@@ -183,10 +195,16 @@ public class ReviewList {
                 ui.printEmptyInputMessage();
                 continue;
             }
+
+            //@@author jhjhajh
+
             if (title.length() > 20) {
                 ui.printInputTooLongMessage_20Char();
                 continue;
             }
+
+            //@@author
+
             break;
         }
         while (true) {
@@ -196,10 +214,16 @@ public class ReviewList {
                 ui.printEmptyInputMessage();
                 continue;
             }
+
+            //@@author jhjhajh
+
             if (category.length() > 15) {
                 ui.printInputTooLongMessage_15Char();
                 continue;
             }
+
+            //@@author
+
             break;
         }
         while (true) {
@@ -451,10 +475,16 @@ public class ReviewList {
                     ui.printEmptyInputMessage();
                     continue;
                 }
+
+                //@@author jhjhajh
+
                 if (newTitle.length() > 20) {
                     ui.printInputTooLongMessage_20Char();
                     continue;
                 }
+
+                //@@author
+
                 if (checkDuplicateReviewWhenEditing(newTitle, index)) {
                     ui.printNoUniqueTitleMessage();
                     continue;
@@ -503,10 +533,16 @@ public class ReviewList {
                     ui.printEmptyInputMessage();
                     continue;
                 }
+
+                //@@author jhjhajh
+
                 if (newCategory.length() > 15) {
                     ui.printInputTooLongMessage_15Char();
                     continue;
                 }
+
+                //@@author
+
                 break;
             }
             reviews.get(index).setCategory(newCategory);
