@@ -136,6 +136,7 @@ public class RecommendationList {
         return true;
     }
 
+    //@@author Krithigha24
     /**
      * Check for duplicate recommendation titles in existing recommendation list during editing.
      *
@@ -171,6 +172,7 @@ public class RecommendationList {
         ui.println(currentRecommendation.getRecommendedBy() + "\n");
         return true;
     }
+    //@@author
 
     /**
      * Adds a recommendation.
@@ -397,6 +399,7 @@ public class RecommendationList {
 
     }
 
+    //@@author Krithigha24
     /**
      * Edit a recommendation.
      *
@@ -441,6 +444,7 @@ public class RecommendationList {
             }
         }
     }
+    //@@author
 
     /**
      * Edit specific fields of the recommendation.

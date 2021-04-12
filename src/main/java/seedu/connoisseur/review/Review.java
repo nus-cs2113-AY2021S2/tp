@@ -2,7 +2,7 @@ package seedu.connoisseur.review;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
+//@@author Krithigha24
 public class Review {
     protected String title;
     protected String category;
@@ -126,6 +126,7 @@ public class Review {
     public String getDescription() {
         return description;
     }
+    //@@author
 
     /**
      * Print description to fit.
@@ -164,6 +165,7 @@ public class Review {
         this.description = description;
     }
 
+    //@@author Krithigha24
     /**
      * Converts the rating to visual form.
      *
@@ -183,6 +185,7 @@ public class Review {
         }
         return starRating;
     }
+    //@@author
 
     /**
      * Converts the review to a string.
