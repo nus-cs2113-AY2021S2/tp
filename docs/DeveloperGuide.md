@@ -17,11 +17,38 @@
     2.7. [Storage Component](#27-storage-component)  
 3. [Implementation](#3-implementation)  
     3.1. [Finding The Shortest Route Feature](#31-finding-the-shortest-route-feature)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.1.1. [Current implementation](#311-current-implementation)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.1.2. [Routing](#312-routing)    
     3.2. [Daily Route Planning Feature](#32-daily-route-planning-feature)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.2.1. [Current implementation](#321-current-implementation)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.2.2. [Adding daily route](#322-adding-daily-route)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.2.3. [Showing daily route](#323-showing-daily-route)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.1.1. [Deleting daily route](#324-deleting-daily-route)  
     3.3. [Favourite Routes Feature](#33-favourite-routes-feature)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.3.1. [Current implementation](#331-current-implementation)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.3.2. [Loading of saved favourite routes](#332-loading-of-saved-favourite-routes)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.3.3. [Adding of favourite routes](#333-adding-of-favourite-route)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.3.4. [Reviewing saved favourite routes](#334-reviewing-saved-favourite-routes)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.3.5. [Repeating favourite route](#335-repeating-favourite-route)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.3.6. [Deleting favourite route](#336-deleting-favourite-route)  
     3.4. [Custom Aliases Feature](#34-custom-aliases-feature)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.4.1. [Current implementation](#341-current-implementation)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.4.2. [Adding of custom aliases](#342-adding-of-custom-aliases)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.4.3. [Showing custom aliases](#343-showing-custom-aliases)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.4.4. [Deleting a custom alias](#344-deleting-a-custom-alias)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.4.5. [Example for alias feature](#345-example-for-alias-feature)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.4.6. [Design consideration](#346-design-consideration)  
     3.5. [History Feature](#35-history-feature)  
-    3.6. [Save Feature](#36-save-feature)
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.5.1. [Current implementation](#351-current-implementation)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.5.2. [Loading of saved history](#352-loading-of-saved-history)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.5.3. [Showing past searches](#353-showing-past-searches)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.5.4. [Repeat past searches](#354-repeat-past-searches)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.5.5. [Clear past searches](#355-clear-past-searches)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.5.6. [Design consideration](#356-design-consideration)  
+    3.6. [Save Feature](#36-save-feature)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.6.1. [Current implementation](#311-current-implementation)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.6.2. [Saving/Loading Data](#362-savingloading-data)  
+    &nbsp;&nbsp;&nbsp;&nbsp; 3.6.3. [Design consideration](#363-design-consideration)  
 4. [Appendix: Requirements](#4-appendix-requirements)  
     4.1. [Product Scope](#41-product-scope)  
     4.2. [User Stories](#42-user-stories)  
@@ -74,7 +101,7 @@ Architecture Components of NUSMaze:
 * [**`Router`**](#25-router-component): Searches the shortest route
 * [**`Data`**](#26-data-component): Holds the data of the app to be used 
 * [**`Storage`**](#27-storage-component): Reads app data from and writes the app data to created text files
-* [**`Text Files`**](#28-text-file-component): Holds the data of the app in memory
+* **`Text Files`**: Holds the data of the app in memory
 
 Explanations on how each component is designed and how it functions are further elaborated in the following 
 chapters of the developer guide.
@@ -118,13 +145,13 @@ all the other classes in the component (eg. `GoCommand`, `ByeCommand`). Dependin
 `Parser` creates different `Command` class to execute the task. 
 
 Each `Command` class has :
-* An distinct `execute()` method which is overrides the parent class, therefore tailored to execute the given command.
+* A distinct `execute()` method which is overrides the parent class, therefore tailored to execute the given command.
 * An `ui` specifically for taking in further user input in order to carry out the command.
 
 ### 2.5. Router Component
 ![img.png](images/RouterComponent.png)
 
-The **Router Component** consist of the `Router` class which is reponsible for finding the shortest route to get from
+The **Router Component** consist of the `Router` class which is responsible for finding the shortest route to get from
 one location to another. In finding the shortest route, it utilises the breath-first-search algorithm, which will be 
 further elaborated in the implementation section.
 
@@ -166,7 +193,7 @@ The image below depicts how the `GoCommand` is implemented.
 
 ![img.png](images/router.png)
 
-#### 3.1.2. Routing Implementation
+#### 3.1.2. Routing
 Given below is an example scenario of how the routing algorithm functions.
 
 1. User executes `GoCommand` and the `RouterUi` reads in the starting location and destination.<br />
@@ -295,24 +322,24 @@ The data model for this feature is facilitated by the `BlockAlias` class which c
 The hashmap will have the `custom alias name` as the `key` and the `block name` as the `value` for each key-value pair. The
 `BlockAlias` class also depends on the `NusMap` class to ensure that valid blocks are input by the user.
 
-#### Adding of custom aliases
+#### 3.4.2. Adding of custom aliases
 The user can enter `add alias` invoke an instance of `AddCustomAliasCommand` which will prompt them for the
 alias and block names. If the alias name already exists, or the alias name conflicts
 with a block name, the application will display an error message and the addition of the custom alias will not be executed. If there
 were no errors, the alias and block pair would be added to the hashmap in the instance of the `BlockAlias` class and it will also be
 stored in the `AliasStorage`.
 
-#### Showing custom aliases
+#### 3.4.3. Showing custom aliases
 The user can enter `show alias` to invoke an instance of `ShowCustomAliasCommand` to view all the alias and block pairs that have been stored previously by them.
 If there are no alias and block pairs, then the message `You haven't set any aliases yet!` will be displayed to the user. If there 
 are valid alias and block pairs stored in the application, then the list of alias and block pairs will be displayed.
 
-#### Deleting a custom alias
+#### 3.4.4. Deleting a custom alias
 The user can enter `delete alias` to invoke an instance of `DeleteCustomAliasCommand` which will prompt them for the alias name that they
 wish to delete. If the entered alias name exists in the alias hashmap stored in the instance of `BlockAlias`, then that alias will be removed.
 However, if the alias does not exist in the hashmap, then an invalid alias error message will be displayed.
 
-#### Example for alias feature
+#### 3.4.5. Example for alias feature
 Given below is an example usage scenario and how the add/view/delete mechanism behaves at each step:
 
 1. The user launches the application for the first time. If there is a storage file with pre-existing alias-block pairs, then the hashmap in `BlockAlias` class will be initialized with those data, or an empty hashmap if it does not exist.  
@@ -328,7 +355,7 @@ Given below is an example usage scenario and how the add/view/delete mechanism b
 Shown below is the sequence diagram when a valid block name and alias are **added**:
 ![img.png](images/AliasFeatureSequence.png)
 
-#### Design Consideration
+#### 3.4.6. Design Consideration
 **Current choice:** Saves the alias and block names in a hashmap stored within a data model class which is the `BlockAlias` class. <br/>
 - Pros: Easy to implement. <br/>
 - Cons: The same instance of `BlockAlias` needs to be shared among the other classes that may use the alias feature. <br/>
