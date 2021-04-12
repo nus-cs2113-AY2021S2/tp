@@ -1221,8 +1221,7 @@ coding and typing can speed up the process of their finance management through t
 1. Download the jar file and copy it into an empty folder where the application will save its files in.
 1. Open a new command prompt (Windows) or terminal (MacOS) and navigate to the directory containing `Finux.jar`.
 1. Enter the command `java -jar Finux.jar` to launch Finux.
-1. Program will create a new save file if there are no existing one or load a previously saved file, thereafter Finux
-will be ready for use.
+1. Program will create a new save file if there are currently no existing save file, else it will load the save file.
    
 **Shutdown**
 
