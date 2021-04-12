@@ -188,46 +188,4 @@ public class ShiftController {
         System.out.println("No such shift in database. Please add shift for this index.");
     }
 
-    public static void viewAllShifts(ArrayList<Shift> shifts) {
-        if (shifts.isEmpty()) {
-            System.out.println("No shift in database. Please add shift first.");
-        }
-        else {
-            for (Shift shift : shifts) {
-                viewSelectedShift(shift);
-            }
-        }
-    }
-
-    public static void viewSelectedShift(Shift shift){
-        System.out.println("On " + shift.getShiftDateToString() + " shift index " + shift.getShiftIndex() +  ", the employees on shift are: " + shift.getEmployees());
-        System.out.println("Vacancy left: " + shift.getVacancy());
-    }
-
-    public static void viewOneShift(ArrayList<Shift> shifts) {
-        LocalDate shiftDate = getShiftDate();
-        Scanner sc = new Scanner(System.in);
-        boolean dateFound = false;
-        for (Shift item : shifts) {
-            if (item.getShiftDate().equals(shiftDate)) {
-                System.out.println("Enter Shift index:");
-                try {
-                    int shiftIndex = Integer.parseInt(sc.nextLine());
-                    if (item.getShiftIndex() == shiftIndex) {
-                        System.out.println("The people assigned to the shift are:" + item.getEmployees());
-                    } else {
-                        System.out.println("Shift Index selected is not available");
-                    }
-                    dateFound = true;
-                }
-                catch (NumberFormatException | NullPointerException e ){
-                    System.out.println("Shift Index value not accepted. Please input integer values from 1 to 6.");
-                    return;
-                }
-            }
-        }
-        if (!dateFound) {
-            System.out.println("Date chosen has no shifts");
-        }
-    }
 }
