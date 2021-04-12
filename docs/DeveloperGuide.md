@@ -56,6 +56,11 @@
     4.4. [Non-functional Requirements](#44-non-functional-requirements)  
     4.5. [Glossary](#45-glossary)
 5. [Appendix: Instructions for manual testing](#5-appendix-instructions-for-manual-testing)
+   5.1. [Launch and shutdown](#51-launch-and-shutdown)  
+   5.2. [Viewing help](#52-viewing-help)  
+   5.3. [Viewing venues in NUSMaze](#53-viewing-venues-in-nusmaze)  
+   5.4. [Routing](#54-routing)  
+   5.5. [History](#55-history)
 <!-- TOC -->
 
 ---------------------------------------------------------------------------------------------
@@ -501,15 +506,27 @@ Below is our analysis of our target user and the importance in which he/she woul
 
 ### 5.1 Launch and shutdown
 1. Initial launch<br>
-    1.1. Download the latest jar file from [here](https://github.com/AY2021S2-CS2113T-T09-2/tp/releases) and copy it into an empty folder.  
+    1.1. Download the latest jar file from [here](https://github.com/AY2021S2-CS2113T-T09-2/tp/releases) and copy it into an empty folder.  <br>
     1.2. Open the terminal/powershell console and navigate to the folder in which the `.jar` file was saved.<br>
    Expected: Greeting message of NUSMaze  to be shown<br>
 2. Exiting the application<br>
-    2.1 Type `bye` and press enter<br>
+    2.1 Enter `bye` and press enter<br>
     Expected: The application shows thank you message and exits successfully.<br>
    
 
-### 5.2 Routing
+### 5.2 Viewing help
+1. Viewing help for NUSMaze <br>
+    1.1 Enter `help`<br>
+   Expected: A list of all the commands that can be used in NUSMaze should be displayed.<br>
+   
+
+### 5.3 Viewing venues in NUSMaze
+1. Viewing all the blocks in NUSMaze (Currently only the Engineering and Computing blocks) <br>
+    1.1 Enter `show venues`<br>
+   Expected: A table of all the blocks that have been pre-loaded into NUSMaze.<br>
+
+
+### 5.4 Routing
 1. Routing with valid blocks<br>
     1.1 Launch the application and type 'Go' followed by the enter key.<br>
     1.2 Test case: Starting block → `E1`, Destination block → `E7`<br>
@@ -517,7 +534,7 @@ Below is our analysis of our target user and the importance in which he/she woul
     1.3 Test case: Starting block → `e4`, Destination block → `techno edge`<br>
     Expected:  `Route: E4 -> E3 -> LT5 -> TECHNO EDGE` should be displayed<br>
 2. Routing with invalid blocks<br>
-    2.1 Test case: Starting block → `E10`, Destination block → `E7`<br>
+    2.1 Test case: Starting block → `E20`, Destination block → `E7`<br>
     Expected:  `Invalid block! Please enter the command again to retry!` should be displayed<br>
     2.2 Test case: Starting block → `Invalid block`, Destination block → `Invalid block`<br>
     Expected:  Similar to previous<br>
@@ -526,4 +543,24 @@ Below is our analysis of our target user and the importance in which he/she woul
     Expected: `Route: E3 -> E2 -> EA -> SPINELLI COFFEE` should be displayed<br>
     3.2 Test case: Starting block → `e3`, Destination block → `spinelli coffee`<br>
     Expected: Similar to previous<br>
+   
+
+### 5.5 History
+1. Viewing history when routing has not been used or history has been cleared <br>
+    1.1 Enter `history`<br>
+   Expected: `Oops! You have no past history!`<br>
+2. Viewing history when routing has been previously used <br>
+   1.1 Enter `history`<br>
+   Expected: A list of the past routing history will be displayed (Capped at 10)<br>
+3. Repeating history when history is empty<br>
+    1.1 Enter `repeat history`<br>
+    Expected: `Oops! You have no past history!`<br>
+4. Repeating history when there is 1 record in the history<br>
+   1.1 Test case: `repeat history` → `1`<br>
+   Expected: The result of the routing will be displayed<br>
+   1.2 Test case: `repeat history` → `2`<br>
+   Expected: `Oops! You must enter an Integer that is within the bounds :(`<br>
+5. Clearing history<br>
+    1.1 Enter `clear history`<br>
+   Expected: `Your history has been successfully cleared`<br>
    
