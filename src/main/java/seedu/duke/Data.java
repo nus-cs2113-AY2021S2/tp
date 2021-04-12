@@ -229,7 +229,7 @@ public class Data {
      * to inform the user that there is no patient loaded.
      *
      * @return a string containing the current patient's ID, or a message to inform that there is no loaded patient if
-     * there is no loaded patient
+     *         there is no loaded patient
      */
     public String getCurrentPatientDetails() {
         if (currentPatient == null) {
