@@ -22,13 +22,15 @@ UniTracker was created with Java, and has about 7 kLOC.
     - Added documentation for the Links feature (Section 3.4)
 
 - Developer Guide:
-    - Added implementation details for Add Zoom Link and Add External Link
+    - Added implementation details for Add Zoom Link and Add External Link (Section 4.16 and Section 4.17)
     
 **Contributions to team-based tasks**
 - Helped set up the team repo
 - Documented the command summary of the user guide
 - Added main architecture design
+- Helped to identify bugs, reported them to team mates and set up bug issues on GitHub
 
-
+**Community**
+- [Helped review another team's Developer Guide](https://github.com/nus-cs2113-AY2021S2/tp/pull/30)
 
       

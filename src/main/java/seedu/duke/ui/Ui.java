@@ -740,11 +740,15 @@ public class Ui {
                 "The module you specified already has a zoom link! Bringing you back to the links menu...");
     }
 
+
     public static void printInvalidMcsMessage() {
         System.out.println("Invalid MCs. Entries is not registered.\n");
     }
 
     public static void printInvalidCapMessage() {
         System.out.println("Invalid CAP score. Entries is not registered.");
+
+    public static void printZoomLinkNotTagged() {
+        System.out.println("Alright! The Zoom Link shall not be tagged to a module...");
     }
 }

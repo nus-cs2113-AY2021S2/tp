@@ -47,12 +47,14 @@ public class ZoomLinkInfo {
         } else {
             moduleCode = addModuleWhenModuleIsEmpty();
         }
+        if (moduleCode.equals("")) {
+            moduleCode = "Zoom link has no module code";
+            Ui.printZoomLinkNotTagged();
+        }
         Ui.printEnterZoomLinkMessage();
         String linkDescription = Ui.readCommand();
         String passwordCommand = Ui.printEnterRequirePassword();
-        if (moduleCode.equals("")) {
-            moduleCode = "Zoom link has no module code";
-        }
+
         if (passwordCommand.equals("y")) {
             String password = Ui.printEnterPassword();
             assert !password.isEmpty() : "password cannot be empty";
