@@ -412,7 +412,8 @@ Click on the commands to navigate to specific feature details.
 |-------------------------------------------------------------------------|------------------------------------|
 | [add](#adding-a-patient-add)                                            | `add IC_NUMBER`                    |
 | [current](#displaying-the-current-loaded-patient-current)               | `current`                          |
-| [delete](#deleting-a-patient-or-a-patients-consultation-details-delete) | `delete [/p IC_NUMBER]  [/r DATE]` |
+| [delete(patient)](#deleting-a-patient-delete-p)                         | `delete [/p IC_NUMBER]`            |
+| [delete(record)](#deleting-a-days-record-delete-r)                      | `delete [/r DATE]`                 |
 | [exit](#exiting-the-program-exit)                                       | `exit`                             |
 | [help](#print-a-help-message-help)                                      | `help [OPTIONAL_COMMAND]...`       |
 | [list](#listing-all-patients-list)                                      | `list`                             |
