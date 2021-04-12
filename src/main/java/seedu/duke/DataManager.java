@@ -44,6 +44,9 @@ public class DataManager {
                 vehicleModel = userInfo[2];
                 licensePlate = userInfo[1];
                 maxWeight = Integer.parseInt(userInfo[3]);
+                assert driverName != null : "invalid driver name!";
+                assert vehicleModel != null : "invalid vehicle model!";
+                assert maxWeight != 0 : "invalid max weight!";
                 deliverymanProfile = new Deliveryman(driverName, licensePlate, vehicleModel, maxWeight);
             }
 

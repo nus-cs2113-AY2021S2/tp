@@ -82,11 +82,15 @@ public class Ui {
      */
     public void showDeliveryList() {
         printDivider();
-        System.out.println("No. || Delivery ID || Status || Address || Recipient");
-        int i = 1;
-        for (Delivery delivery : DeliveryList.deliveries) {
-            System.out.println(i + ". " + delivery);
-            i++;
+        if (DeliveryList.deliveries.size() == 0) {
+            System.out.println("Please load deliveries with the 'start' command first!");
+        } else {
+            System.out.println("No. || Delivery ID || Status || Address || Recipient");
+            int i = 1;
+            for (Delivery delivery : DeliveryList.deliveries) {
+                System.out.println(i + ". " + delivery);
+                i++;
+            }
         }
     }
 
@@ -97,18 +101,22 @@ public class Ui {
      */
     public void showRecords(ArrayList<Delivery> records) {
         printDivider();
-        System.out.println("Congratulations on completing the following deliveries:");
-        System.out.println(" Number | ID | Location | Earned Amount ");
-        int i = 1;
-        double total = 0;
-        for (Delivery delivery : records) {
-            total += delivery.getDeliveryFee();
-            System.out.println(i + " | "
-                + delivery.getDeliveryID() + " | "
-                + delivery.getAddress() + " | " + delivery.getDeliveryFee());
-            i++;
+        if (records.size() == 0) {
+            System.out.println("You haven't completed any deliveries yet!");
+        } else {
+            System.out.println("Congratulations on completing the following deliveries:");
+            System.out.println(" Number | ID | Location | Earned Amount ");
+            int i = 1;
+            double total = 0;
+            for (Delivery delivery : records) {
+                total += delivery.getDeliveryFee();
+                System.out.println(i + " | "
+                        + delivery.getDeliveryID() + " | "
+                        + delivery.getAddress() + " | " + delivery.getDeliveryFee());
+                i++;
+            }
+            System.out.println("Total Earnings: " + total);
         }
-        System.out.println("Total Earnings: " + total);
     }
 
     /**
@@ -117,13 +125,17 @@ public class Ui {
      * @param deliveryNumber is the index of the delivery in the ArrayList that is to be displayed
      */
     public void showDeliveryDetails(int deliveryNumber) {
-        printDivider();
-        Delivery delivery = DeliveryList.deliveries.get(deliveryNumber);
-        System.out.println(delivery);
-        int i = 1;
-        for (Item item : delivery.getItems()) {
-            System.out.println(i + ": \n" + item);
-            i++;
+        if (DeliveryList.deliveries.size() == 0) {
+            System.out.println("Please load deliveries using the 'start' command first!");
+        } else {
+            printDivider();
+            Delivery delivery = DeliveryList.deliveries.get(deliveryNumber);
+            System.out.println(delivery);
+            int i = 1;
+            for (Item item : delivery.getItems()) {
+                System.out.println(i + ": \n" + item);
+                i++;
+            }
         }
 
     }
@@ -134,9 +146,13 @@ public class Ui {
      * @param deliveryNumber is the index of the delivery to be marked as completed
      */
     public void showCompletedDelivery(int deliveryNumber) {
-        Delivery delivery = DeliveryList.deliveries.get(deliveryNumber);
-        System.out.println("The following delivery has been marked as completed:");
-        System.out.println(delivery);
+        if (DeliveryList.deliveries.size() == 0) {
+            System.out.println("Please load deliveries using the 'start' command first!");
+        } else {
+            Delivery delivery = DeliveryList.deliveries.get(deliveryNumber);
+            System.out.println("The following delivery has been marked as completed:");
+            System.out.println(delivery);
+        }
     }
 
     /**

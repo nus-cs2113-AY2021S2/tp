@@ -79,6 +79,9 @@ public class Deliveryman {
                 splitInputProfileData[3]
             );
             try {
+                if (Integer.parseInt(splitInputProfileData[3]) == 0) {
+                    throw new NumberFormatException();
+                }
                 editProfile(
                     splitInputProfileData[0],
                     splitInputProfileData[1],
