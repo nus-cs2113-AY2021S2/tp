@@ -158,7 +158,7 @@ specify if you would like to input a quick review. Input the command: `y` for qu
 ![img_4.png](images/ug/add_Review.png)
 <p align="center">Figure 7. Adding a quick or full review </p>
 
-<span>&#10071;</span> Ensure the rating is an integer whole number from 0 to 5. Inputting -0 is treated as 0 and is a valid number.
+<span>&#10071;</span> Ensure the rating is an integer whole number from 0 to 5. Inputting -0 is treated as 0.
 If you input an invalid number Connoisseur will prompt you until a valid number is input. <br />
 
 <span>&#10071;</span> Ensure the title of the review added is unique and does not already exist in the list. Connoisseur 
