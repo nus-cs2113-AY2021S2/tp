@@ -18,7 +18,10 @@ interacts with it using CLI.
       * DeleteCanteen
       * AddStore
       * DisplayMenus
-  * Contributions to documentation: Developer Guide, User Guide v1.0/v2.0
+  * Contributions to documentation: 
+      * Developer Guide
+      * User Guide v1.0/v2.0
+      * JavaDoc
   * Contributions to DG: 
       * Sequence Diagrams and Explanations for:
           * Main
