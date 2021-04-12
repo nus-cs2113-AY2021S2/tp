@@ -273,13 +273,13 @@ Filter movie by the rating .
 <details>
   <summary> <strong>Display:</strong> </summary>
 
-
 ```
 Please indicate your choice:
 2
 ===== Filter by Rating =====
 Select the cut-off rating (0-5):
 ```
+
 </details>
 
 <details>
@@ -309,6 +309,8 @@ Movie List:
 ============================
 To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 ```
+
+</details>
 
 **3. Filter by status: `3`**  
 Filter by show status (Coming Soon, Pre-Order, Now Showing, End of Showing).
@@ -609,6 +611,7 @@ Please indicate your choice:
 ```
 
 </details>
+
  ___________  
 
 ### Selected Movie Menu
