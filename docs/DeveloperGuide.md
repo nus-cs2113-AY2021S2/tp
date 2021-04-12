@@ -29,11 +29,8 @@
    4.7 [Credit Score Feature](#47-credit-score-feature)
 
 [Appendix A: Product Scope](#appendix-a-product-scope)\
-\
 [Appendix B: User Stories](#appendix-b-user-stories)\
-\
 [Appendix C: Non-Functional Requirements](#appendix-c-non-functional-requirements)\
-\
 [Appendix D: Instructions For Manual Testing](#appendix-d-instructions-for-manual-testing)
 
 
@@ -75,6 +72,8 @@ list of icons:
 > 📝 Pressing the `Home` button on your keyboard will bring you to the top of the Developer's Guide when you want to
 > refer to the table of content at any time.
 
+<div style="page-break-after: always;"></div>
+
 ## 2. Setting Up
 
 ### 2.1 Setting up the project in your computer
@@ -100,6 +99,8 @@ If you plan to use IntelliJ IDEA:
    ![Login_Page](img/LoginPageExampleOutput.png)
       (This screenshot is taken on `IntelliJ IDEA Community Edition 2020.3.1`)
 
+<div style="page-break-after: always;"></div>
+
 ### 2.2 Before writing code
 
 #### 2.2.1 Configuring the Coding Style
@@ -119,6 +120,8 @@ branch or to any PR.
 Before starting to write any code, we recommend that you have a look at Finux's overall design by reading
 [Finux's Architecture](#31-architecture) section.
 
+<div style="page-break-after: always;"></div>
+
 ## 3. Design
 
 ### 3.1 Architecture
@@ -133,6 +136,8 @@ _Figure 1: **Finux** Architecture Diagram_
 The _**Architecture Diagram**_ above details the high-level design of the **Finux** application.
 Brief explanations of the components involved are given below.
 
+<div style="page-break-after: always;"></div>
+
 The `Finux` component is the object class itself, It is responsible for,
 * At launch: Initializes the components in the correct sequence and attempts to load data from file.  
 * At shut down: Shuts down the components and invokes cleanup method where necessary.
@@ -145,6 +150,10 @@ The rest of the application consists of six main components.
 * `RecordList`: The list of records of the application stored in memory.
 * `Storage`: The storage manager that handles the saving of data, or data retrieval to/from file. 
 
+The application has another background component `CreditScoreReturnedLoansMap` that supports the [credit score feature](#47-credit-score-feature).
+
+<div style="page-break-after: always;"></div>
+
 Given below are sequence diagrams describing the general application flow and how the different objects
 interact with each other.
 
@@ -153,6 +162,8 @@ _Figure 2: Initialization_
 
 The initialization sequence diagram above shows the systematic flow of object creation and record
 retrieval from storage file for creation of the `RecordList` object.
+
+<div style="page-break-after: always;"></div>
 
 ![Main program flow](img/CommandLooperSequenceDiagram.png)\
 _Figure 3: Main Application Loop & Exit Sequence_
@@ -165,6 +176,8 @@ This sequence diagram follows suit after initialization in _Figure 2_.\
 This shows the main flow until the `exit` command is input by the user.
 
 The following sections below will provide more details of each component.
+
+<div style="page-break-after: always;"></div>
 
 ### 3.2 UI Component
 
@@ -201,8 +214,8 @@ program needs to parse a user input, the ParserHandler calls the method `getPars
    * Any leading or trailing white space of the argument field will be removed.
    * If no argument is provided, the argument would be stored as an empty string.
 4. `extractFinalPart()` will check if the final input ends with option. If yes, extract the option and
-   add an empty string as the argument, else just add the final input to the ArrayList<String>.
-5. Finally, after the extraction to ArrayList<String> is complete, `extractFinalPart()` will
+   add an empty string as the argument, else just add the final input to the `ArrayList<String>`.
+5. Finally, after the extraction to `ArrayList<String>` is complete, `extractFinalPart()` will
    call `checkFirstBlock()` for the final check to parse any `help` or `creditscore` in the first argument block.
    
 #### Parser Component Design Consideration
@@ -225,17 +238,20 @@ program needs to parse a user input, the ParserHandler calls the method `getPars
    * `StringUtils.endsWithAny()`   - detection of end option with non-fixed order.
    * `StringUtils.indexOfAny()`    - detection of during processing option with non-fixed order.
 4. As multiple whitespaces is allowed, options and arguments should be fully trimmed (leading and trailing).
-5. As the ArrayList<String> is passed back to the main program and is being used by CommandHandler,
+5. As the `ArrayList<String>` is passed back to the main program and is being used by CommandHandler,
    the argument field should be compulsory and appended with an empty string if it is empty to facilitate validations 
    and option-argument pairwise logic.
-6. `getParseInput()` should always return a new ArrayList<String> per new input.
+6. `getParseInput()` should always return a new `ArrayList<String>` per new input.
 
+<div style="page-break-after: always;"></div>
 
 ### 3.4 CommandHandler Component
 ![CommandHandlerClassDiagram](img/CommandHandlerClassDiagram.png)\
 _Figure 6: **CommandHandler** Class Diagram_\
 ![CommandHandlerSequenceDiagram](img/CommandHandlerSequenceDiagram.png)\
 _Figure 7: **CommandHandler** Sequence Diagram_
+
+<div style="page-break-after: always;"></div>
 
 #### Description
 The `CommandHandler` component is the object class itself.
@@ -264,6 +280,8 @@ Not stated explicitly in the diagrams, when the `exit` command is entered, the `
 sets the `isExit = true`, ending control of the `commandLooper()` and resulting in `Finux` 
 proceeding to call `end()` to exit the Application.
 
+<div style="page-break-after: always;"></div>
+
 ### 3.5 Command Component
 ![CommandClassDiagram](img/CommandClassDiagram.png)\
 _Figure 8: **Command** Class Diagram (Part 1)_
@@ -275,6 +293,8 @@ All Commands contain a command word constant named as `COMMAND_*` (as underlined
 e.g. `protected static final String COMMAND_XYZ = "xyz";`\
 These constants are used by the `CommandHandler` to map to each `Command`.
 
+<div style="page-break-after: always;"></div>
+
 #### 3.5.1 Add Command
 
 ![AddCommandClassDiagram](img/AddCommandClassDiagram.png)\
@@ -282,6 +302,8 @@ _Figure 10: **Add Command** Class Diagram_
 
 In the case of `AddCommand` in the above _Figure 10_,\
 the resultant constant is `...final String COMMAND_ADD = "add";`.
+
+<div style="page-break-after: always;"></div>
 
 Below shows the command format the user has to type into the Application.
 
@@ -312,6 +334,8 @@ More on the different types of commands and usages, please refer to our [User Gu
 The `Command` component contains the `abstract Command` class and its extensions (child classes).
 Each child class inherits the `Command` class.
 The child classes of `Command` are the `AddCommand`, `CreditScoreCommand`, `ViewCommand`, etc...
+
+<div style="page-break-after: always;"></div>
 
 #### Design
 The only `abstract` method of `Command` is `execute(...)`, where it is called by `Finux` everytime a `Command`
@@ -345,6 +369,8 @@ will check which option was given, and sets the `RecordType` enumeration, `recor
 For other cases, like in the `ViewCommand` and `ListCommand`, it supports an additional `-a` option. This option 
 sets the `recordType` to `ALL`.
 
+<div style="page-break-after: always;"></div>
+
 ##### Command validation
 If no violations are present in the arguments, then the subsequent `Command` object is returned.\
 If violations occur at any point of the input validation, the `Command` is not created and `CommandException` 
@@ -356,19 +382,19 @@ _Figure 11: **RecordList** Class Diagram_
 
 #### Description
 The `RecordList` component consists of only one class which is the `RecordList`. The role of the `RecordList` 
-is to maintain an internal `ArrayList` of `Record` objects created throughout `Finux`’s execution. 
+is to maintain an internal `ArrayList<Record>` object created throughout `Finux`’s execution. 
 
 #### Design
-This maintenance is achieved through the traditional Object Oriented Programming (OOP) style, where operations
+This design follows the Object Oriented Programming (OOP) style, where operations
 relating to the list can only be performed through the interfaces defined in the `RecordList` class. Doing so allows
-us to restrict the access to the internal `ArrayList` from the outside world, successfully achieving the information
+us to restrict the access to the internal `ArrayList<Record>` from the external classes, successfully achieving the information
 hiding aspect under the Encapsulation concept of OOP.
 
 When `Finux` starts up, `Finux` instantiates the `RecordList` with data loaded from the save file, `finux.txt`. This is done
-by the `Finux` class calling the constructor `RecordList(ArrayList)`, passing in the `ArrayList` returned from the method
-call `storage.getRecordListData()`. This `ArrayList` returned from `storage.getRecordListData()` is loaded from the save file
+by the `Finux` class calling the constructor `RecordList(ArrayList<Record>)`, passing in the `ArrayList<Record>` returned from the method
+call `storage.getRecordListData()`. This `ArrayList<Record>` returned from `storage.getRecordListData()` is loaded from the save file
 by a prior method call `storage.loadFile()`, also performed by the `Finux` class. For more information on `Storage` component,
-refer to [section 3.7](#37-storage-component).
+refer to [section 3.8](#38-storage-component).
 
 When any of the commands of the listed features in [section 4](#4-implementation) are requested to run, `Finux` will pass
 the `RecordList` into the `execute()` method call of the respective commands’ classes for their intended operations. 
@@ -377,7 +403,7 @@ During runtime, any executions of the `execute()` method of `AddCommand` will in
 Conversely, any executions of the `execute()` method of `RemoveCommand` will remove the requested `Record` object from 
 the `RecordList` via the `deleteRecordAt(recordIndex)` method call of the `RecordList` class, where `recordIndex` refers
 to the index of the requested `Record` to delete. Upon successful addition or deletion, the state of the `RecordList` 
-will be saved into the save file via the method call `storage.saveData(recordList, creditScoreReturnedLoansMap)`
+will be saved into the save file via the method call `storage.saveData(recordList, creditScoreReturnedLoansMap)`.
 
 When any of the `Finux`’s components is required to retrieve a `Record` object from the `RecordList`, the following methods
 are utilized:
@@ -390,6 +416,52 @@ following snippet of pseudo code:
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PRINT  getRecordAt(i)\
 > END LOOP
 
+<div style="page-break-after: always;"></div>
+
+### 3.7 CreditScoreReturnedLoansMap Component
+![CreditScoreReturnedLoansMap Class Diagram](img/CreditScoreReturnedLoansMapClassDiagram.png)\
+_Figure 12: **CreditScoreReturnedLoansMap** Class Diagram_
+
+#### Description
+The `CreditScoreReturnedLoansMap` component consists of only one class which is the `CreditScoreReturnedLoansMap`. 
+The role of the `CreditScoreReturnedLoansMap` is to maintain an internal `HashMap` of borrower names mapped to their 
+respective credit score, inserted throughout `Finux`’s execution. The credit score referred to in this case is computed 
+based on the **list of confirmed returned loans made by the borrower** and **is not the final score**.
+
+#### Design
+Similar to `RecordList`, the maintenance of `CreditScoreReturnedLoansMap` is also achieved through the 
+OOP style, where operations relating to the internal `HashMap` can only be performed through the defined interfaces
+in `CreditScoreReturnedLoansMap` class. By adopting this design, it allows us to restrict the access to the internal
+`HashMap` from the external classes, hence satisfying the information hiding aspect under the Encapsulation concept of OOP.
+
+When `Finux` starts up, `Finux` instantiates the `CreditScoreReturnedLoansMap` with data loaded from the save file, 
+`finux.txt`. This is done by the `Finux` class calling the constructor `CreditScoreReturnedLoansMap(HashMap)`, passing 
+in the `HashMap` returned from the method call `storage.getMapData()`. This `HashMap` returned from 
+`storage.getMapData()` is loaded from the save file by a prior method call `storage.loadFile()`, also performed by the
+`Finux` class. For more information on `Storage` component, refer to [section 3.8](#38-storage-component).
+
+When any of the commands of the listed features in [section 4](#4-implementation) are requested to run, `Finux` will pass the
+`CreditScoreReturnedLoansMap` into `execute()` method call of the respective commands’ classes for their intended
+operations. As of V2.1 implementation, only both `ReturnCommand` and `CreditScoreCommand` operate on
+`CreditScoreReturnedLoansMap`. When a loan is marked as returned by the `ReturnCommand`, the command will first retrieve
+the borrower’s credit score from `CreditScoreReturnedLoansMap` via `CreditScoreReturnedLoansMap#getCreditScoreOf()`.
+If the borrower’s name does not exist in `CreditScoreReturnedLoansMap`, `getCreditScoreOf()` will return a max 
+credit score of 100, indicating that the borrower is trustable **based solely on his loan history of returned loans prior
+to the current loan that has just been returned.**
+
+Next, the `ReturnCommand` will compute the days taken for the borrower to return this loan. With this information
+together with the retrieved score, the `ReturnCommand` will recompute the borrower’s credit score by executing 
+`Utils#computeCreditScore()`. The formula used by `Utils#computeCreditScore()` is as described in 
+[section 4.7](#47-credit-score-feature). With this newly recomputed score, the `ReturnCommand` will proceed to update
+`CreditScoreReturnedLoansMap` with the Borrower’s new credit score via 
+`CreditScoreReturnedLoansMap#insertCreditScoreOf()`. Upon successful update, the state of the 
+`CreditScoreReturnedLoansMap` will be saved into the save file via the method call 
+`storage.saveData(recordList, creditScoreReturnedLoansMap)`.
+
+Lastly, when the `CreditScoreCommand` is requested by the user, the command will likewise
+first retrieve the borrower’s credit score from `CreditScoreReturnedLoansMap` via 
+`CreditScoreReturnedLoansMap#getCreditScoreOf()`. With the retrieved value, the command will proceed to compute and
+display the final credit score of the borrower as described in [section 4.7.1](#471-current-implementation).
 
 ### 3.8 Storage Component
 
@@ -420,14 +492,14 @@ the `finux.txt` file back into the Finux application.
    in the `creditScoreReturnLoansMap` into a user readable format and store them in the same `finux.txt` file as the `records`.
   
 4. `loadFile` method does the opposite of the `writeRecordListToSaveFile()` method. In the `loadFile()` method, a new 
-   ArrayList of `Record` is instantiated. It will then call the `saveFileExist()` method. If the method returns false, 
+   `ArrayList<Record>` is instantiated. It will then call the `saveFileExist()` method. If the method returns false, 
    `initSaveFile()` method will be called and a new `finux.txt` will be created in the same directory of the FINUX 
-   application. The `loadFile()` method will then return a new and empty ArrayList of `Record` back to the `start()` method 
+   application. The `loadFile()` method will then return a new and empty `ArrayList<Record>` back to the `start()` method 
    in the `Finux` class. Should the `saveFileExist()` returns true, for each line of text in the `finux.txt` file will be 
    parsed into the `parseRecord()` method which will call the individual load methods `loadExpense()`, `loadLoan()`, 
    `loadSaving()` based on a REGEX expression of the text data. Should the pattern be unrecognisable, or the file is 
    unable to be read, an exception will be thrown to the `start()` method and FINUX will terminate. If all the text data 
-   is properly loaded, the `loadFile()` method will return the ArrayList of `Record` to the `RecordList` object in the 
+   is properly loaded, the `loadFile()` method will return the `ArrayList<Record>` to the `RecordList` object in the 
    `start()` method.
    
 5. `initSaveFile()` method will create a new `finux.txt` specified by the constant `SAVED_FILE_PATH`. It will call 
@@ -476,6 +548,8 @@ the `finux.txt` file back into the Finux application.
    * Error has to be thrown if the saved text is unable to be parsed, as allowing ambiguous values to be parsed into
    the application may cause unknown and unwanted outputs.
 
+<div style="page-break-after: always;"></div>
+
 ## 4. Implementation
 
 This section introduces the specific implementation details and design thought processes
@@ -497,6 +571,8 @@ By calling the `execute()` method,
 * Next, the `saveData(...)` from the `Storage` object is invoked to store the records to file.
 * Finally, a notification is printed onto the console with the help of `Ui`.
 
+<div style="page-break-after: always;"></div>
+
 ![AddFeatureSequenceDiagram](img/AddFeatureSequenceDiagram.png)\
 _Figure 14: Sequence Diagram for `AddCommand`_
 
@@ -512,6 +588,8 @@ parsed input in the `new AddCommand()` constructor before returning the construc
 
 ***Step 2:***\
 The application next invokes the `AddCommand#execute()` to execute the user's instruction.
+
+<div style="page-break-after: always;"></div>
 
 ***Step 3:***\
 Inside the `AddCommand#execute()`, the method conducts a check on the `RecordType` enumeration before creating
@@ -558,6 +636,8 @@ modular changes,
 Other than increased complexity of regex Strings, any changes to command and option structure requires a completely
 new regex String. Therefore, systematic validation is the preferred approach, for the current and future developers.
 
+<div style="page-break-after: always;"></div>
+
 ### 4.2 List Feature
 The `list` feature allows the users to display the record's information of the respective category of
 *expense*, *loan*, and *saving* of the added records.
@@ -574,6 +654,8 @@ _Figure 15: Sequence Diagram for `ListCommand`_
 > 📝 The sequence diagram starts from Step 2 onward.
 
 Given below is an example usage scenario of how `ListCommand` behaves at each step.
+
+<div style="page-break-after: always;"></div>
 
 ***Step 1:***\
 The user execute the `list` command with one of the available options, `{-e | -l | -s | -a}`. The program 
@@ -607,6 +689,7 @@ Lastly, the program will print out the record's information with the help of `ge
 methods.
 > `getId()` and `toString()` omitted for brevity in the sequence diagram.
 
+<div style="page-break-after: always;"></div>
 
 #### 4.2.2 Design Consideration
 
@@ -630,6 +713,7 @@ record ID rather than just a single number printout to provide the user a better
 `getId()` is needed, the price to pay is very little compared to confusing the user as indices can be interpreted
 differently by different people.
 
+<div style="page-break-after: always;"></div>
 
 ### 4.3 View Feature
 The `view` feature aims to allow the users to view the total expenditures, loans, and savings for the respective 
@@ -647,6 +731,8 @@ _Figure 16: Sequence Diagram for `ViewCommand`_
 > 📝 The sequence diagram starts from Step 2 onward.
 
 Given below is an example usage scenario of how `ViewCommand` behaves at each step.
+
+<div style="page-break-after: always;"></div>
 
 ***Step 1:***\
 The user execute the `view` command with one of the available options, `{-e | -l | -s | -a}`. The program invokes 
@@ -680,6 +766,8 @@ record type.
 ***Step 5:***\
 Finally, the `totalAmount` will set to two decimal place before printing onto the console.
 
+<div style="page-break-after: always;"></div>
+
 #### 4.3.2 Design Consideration
 
 This section shows the design considerations taken when implementing the view feature.
@@ -700,6 +788,7 @@ Having considered two of the approaches, we have decided to adopt the second app
 The deterministic factor was the possibility of very large number such as 1000 billions. Thus, covering more than
 what the integer data type provided can cater to higher flexibility of the application.
 
+<div style="page-break-after: always;"></div>
 
 ### 4.4 Return Feature
 The `return` feature aims to allow users to mark a loan as return after querying the ID with the `list` command. The
@@ -867,6 +956,8 @@ parameter inputs.
 
 This consideration is much similar to the one in [Return Feature](#442-design-consideration)
 
+<div style="page-break-after: always;"></div>
+
 |Approach | Pros | Cons| 
 |---------|------|-----|
 |During command execution.|No additional class required.|A new argument for the `execute()` method is needed. It also increases coupling and decreases cohesion.|
@@ -889,6 +980,8 @@ With the two approaches considered, we have decided to adopt the first approach 
 user experience, and it will not cause any confusion. The time wasted is negligible, and the consistency provides
 long-term benefit.
 
+<div style="page-break-after: always;"></div>
+
 ### 4.6 Storage Feature
 The `storage` feature allows all `record` and `creditScoreReturnedLoansMap` to be stored locally on the device and for `record` 
 and `creditScoreReturnedLoansMap` to be loaded from a saved file into the Finux application. This is the only feature implemented 
@@ -899,7 +992,7 @@ As the saving and loading methods have no explicit command calls, these methods 
 classes. During the launch of the Finux application, in the `start()` method, `getRecordListData()` is called to load the
 data from the saved file: `finux.txt`. 
 
-![SavingFeatureSequenceDiagram](img/StorageSequenceDiagramSave.png)
+![SavingFeatureSequenceDiagram](img/StorageSequenceDiagramSave.png)\
 _Figure 19: Sequence Diagram for Storage's save function_
 
 Saving of data works differently, the data will be automatically saved into `finux.txt` only with a few 
@@ -907,13 +1000,15 @@ particular command calls, these calls are the commands that will alter the `reco
 the `creditScoreReturnLoansMap` is also altered by changes in the `Loans` object. It will also be stored and updated
 together with the commands below.
 
+<div style="page-break-after: always;"></div>
+
 The following commands and scenarios where these `records` will be saved locally into the save file:
 * `add`
 * `remove`
 * `return`
 
 The sequence below will show you how the `Storage` class behaves at each step. As all three methods above generally
-behave similarly in the way they call the `saveData` method, the following will be generalised to prevent repetition
+behave similarly in the way they call the `saveData()` method, the following will be generalised to prevent repetition
 for all the three methods above.
 
 ***Step 1***\
@@ -925,45 +1020,45 @@ recordList back to the `RecordList` class to invoke the `getRecordAt()` method.
 
 ***Step 3***\
 The `getRecordAt()` method will return the `record` that is identified by its index. With this `record`, the
-method `writeRecordListToSaveFile` will then call on the `convertFileFormat()` method in the `RecordList` class. This
+method `writeRecordListToSaveFile()` will then call on the `convertFileFormat()` method in the `RecordList` class. This
 method will convert the `record` that is stored in the `recordList` into a text readable format.
 
 ***Step 4***\
-The text format of the `record` will then be written into the `finux.txt` file through the `FileWriter` write method.
+The text format of the `record` will then be written into the `finux.txt` file through the `FileWriter#write()` method.
 
 ***Step 5***\
-The `writeRecordListToSaveFile()` will repeat Steps 2 to 4 until the last `record` in the `recordList`. And each 
+The `writeRecordListToSaveFile()` will repeat Steps 2 to 4 until the last `record` in the `recordList`, and each 
 `record` will be written and separated by a newline.
 
 ---
 
-![LoadingFeatureSequenceDiagram](img/StorageSequenceDiagramLoad.png)
+![LoadingFeatureSequenceDiagram](img/StorageSequenceDiagramLoad.png)\
 *Figure 20: Sequence Diagram for Storage's load function*
 
-Finux will automatically load the data from the save file: `finux.txt`. When the Finux application is launched, the
+`Finux` will automatically load the data from the save file: `finux.txt`. When the Finux application is launched, the
 data from the file will be loaded during the initialising phase, even before the welcome message is printed. The error
 and exception handling is omitted from the diagram above as the application will print a failed initialization message
 and terminate.
 
 ***Step 1***\
-When the user launches the `finux.jar` application, in the `start` method. The `loadFile` method will be invoked.
+When the user launches the `finux.jar` application, in the `start` method. The `loadFile()` method will be invoked.
 
 ***Step 2***\
-The `loadFile` method will first check for the save file, if it exists it will then call upon the `parseRawData` method
+The `loadFile()` method will first check for the save file, if it exists it will then call upon the `parseRawData()` method
 which will read and match the contents of the `finux.txt` file with the regex patterns. It will then call on the 
 respective methods to return the object type of it. (In this case, `Expense`, `Loan`, `Savings`, 
-`creditScoreReturnLoansMap`)
+`CreditScoreReturnLoansMap`)
 
 ***Step 3***\
 With the returned objects, they are now parsed into the `processParsedObject` method to be added into their respective
-classes. With the instances of `Record` being added into an ArrayList of `Record` and the `creditScoreReturnedLoansMap` 
-into a HashMap<String, Integer>.
+classes. With the instances of `Record` being added into an `ArrayList<Record>` and the `creditScoreReturnedLoansMap` 
+into a `HashMap<String, Integer>`.
 
 ***Step 4***\
-The `start` method in the `Finux` class will then call the `getRecordListData` method to retrieve the loaded 
-ArrayList<Record> from the `Storage` class and to load it into the `RecordList` object, this is also the same with the 
-`CreditScoreReturnedLoansMap` where the `start` method in the `Finux` class will call the `getMapData` method from the 
-`Storage` class which will then return the HashMap<String, Integer> and load it into the `CreditScoreReturnedLoansMap` 
+The `start` method in the `Finux` class will then call the `getRecordListData()` method to retrieve the loaded 
+`ArrayList<Record>` from the `Storage` class and to load it into the `RecordList` object, this is also the same with the 
+`CreditScoreReturnedLoansMap` where the `start()` method in the `Finux` class will call the `getMapData()` method from the 
+`Storage` class which will then return the `HashMap<String, Integer>` and load it into the `CreditScoreReturnedLoansMap` 
 object.
 
 
@@ -995,7 +1090,7 @@ compared to the second approach, the third approach minimises the coupling withi
 
 
 ### 4.7 Credit Score Feature
-The credit score feature aims to provide users with a way to assess the credibility of his/her borrowers through
+The `creditscore` feature aims to provide users with a way to assess the credibility of his/her borrowers through
 a point scoring system. On a high level view, credit score ranges from 0 to 100 inclusive, and is generally computed
 based on the following pseudo code:
 
@@ -1010,71 +1105,76 @@ based on the following pseudo code:
 
 
 #### 4.7.1 Current Implementation
-The credit score feature is facilitated by the CreditScoreCommand. By providing the name of a borrower as an argument
-to the CreditScoreCommand, the ParserHandler will parse the input for CommandHandler to create an instance of
-CreditScoreCommand. Upon successful creation, the execute() method of the instance will be called to compute and
+The `creditscore` feature is facilitated by the `CreditScoreCommand`. By providing the name of a borrower as an argument
+to the `CreditScoreCommand`, the `ParserHandler` will parse the input for `CommandHandler` to create an instance of
+`CreditScoreCommand`. Upon successful creation, the `execute()` method of the instance will be called to compute and
 display the credit score of the borrower.
 
-![CreditscoreFeatureSequenceDiagram](img/CreditScoreFeatureSequenceDiagram.png)
-_Figure 20: Sequence Diagram for `CreditScoreCommand`_
+![CreditscoreFeatureSequenceDiagram](img/CreditScoreFeatureSequenceDiagram.png)\
+_Figure 21: Sequence Diagram for `CreditScoreCommand`_
 
 ***Step 1***\
-User enters the command “creditscore Mark”. Finux class invokes ParserHandler#getParseInput() to provide the parsed
-input to CommandHandler#createCommand().  Since the command requested by the user in this case is the
-CreditScoreCommand, an instance of the CreditScoreCommand is created and returned by createCommand() to the Finux
-class. Validation of the input provided to CreditScoreCommand is performed by the constructor new CreditScoreCommand()
+User enters the command `creditscore Mark`. `Finux` class invokes `ParserHandler#getParseInput()` to provide the parsed
+input to `CommandHandler#createCommand()`.  Since the command requested by the user in this case is the
+`CreditScoreCommand`, an instance of the `CreditScoreCommand` is created and returned by `createCommand()` to the `Finux`
+class. Validation of the input provided to `CreditScoreCommand` is performed by the constructor `new CreditScoreCommand()`
 during the creation of this instance.
 
 ***Step 2***\
-Finux class executes the CreditScoreCommand#execute() to compute and display the credit score of the borrower.
+`Finux` class executes the `CreditScoreCommand#execute()` to compute and display the credit score of the borrower.
 
 ***Step 3***\
-Within the execute() of the CreditScoreCommand class, the method first retrieves the borrower’s credit score via
-CreditScoreReturnedLoansMap#getCreditScoreOf(). This retrieved score is computed based on the list of confirmed
-returned loans made by the borrower and is not the final score. Data stored within CreditScoreReturnedLoansMap are
-computed by the ReturnCommand, when a loan is marked as returned.
+Within the `execute()` of the `CreditScoreCommand` class, the method first retrieves the borrower’s credit score via
+`CreditScoreReturnedLoansMap#getCreditScoreOf()`. This retrieved score is computed based on the **list of confirmed
+returned loans made by the borrower** and **is not the final score.** Data stored within `CreditScoreReturnedLoansMap` are
+computed by the `ReturnCommand`, when a loan is [marked as returned](#44-return-feature).
 
 ***Step 4***\
-Continuing the computation from the score retrieved in step 3, the method proceeds to loop through the entire RecordList.
+Continuing the computation from the score retrieved in step 3, the method proceeds to loop through the entire `RecordList`.
 
 ***Step 5***\
-Within each iteration, a Record object is first retrieved via RecordList#getRecordAt(). If this retrieved Record
-object is an instance of the Loan class, the method will proceed to check if the loan represented by this loan object
-is being loaned to the specified borrower (in this example, Mark) and has not yet returned.
+Within each iteration, a `Record` object is first retrieved via `RecordList#getRecordAt()`. If this retrieved `Record`
+object is an instance of the `Loan` class, the method will proceed to check if the loan represented by this loan object
+is being loaned to the specified borrower (in this example, Mark) and **has not yet returned.**
 
 ***Step 6***\
-If true, the method will proceed to call the method Utils#getDaysDifference(), which will  compute the difference in
+If true, the method will proceed to call `Utils#getDaysDifference()`, which will compute the difference in
 days between the current date and the issue date of the loan.
 
 ***Step 7***\
-Next, Utils#computeCreditScore() will be used to compute a new credit score of the borrower. This computation is
-cumulative to the score retrieved in step 3 and takes into account the value computed in step 6. The formula used
-by Utils#computeCreditScore() is as described above in the description section.
+Next, `Utils#computeCreditScore()` will be used to compute a new credit score of the borrower. This computation is
+cumulative to the score retrieved in step 3 and takes into account of the value computed in step 6. The formula used
+by `Utils#computeCreditScore()` is as described above in the 
+[introduction section of Credit Score Feature](#47-credit-score-feature).
 
 ***Step 8***\
-Lastly after the loop mentioned in step 3 ends, the final score is displayed on the console via the UI component.
+Lastly after the loop mentioned in step 3 ends, the final score is displayed onto the console via the `UI` component.
 
+<div style="page-break-after: always;"></div>
 
 #### 4.7.2 Design Consideration
 This section shows the design considerations taken when implementing the Credit Score Feature.
 
 Aspect: **How can we preserve the accuracy of the credit score system?**
 
-As the credit score calculation is calculated based on the loan records of a person, the following methods of
+As the credit score calculation is calculated based on the loan records of a borrower, the following methods of
 calculation can be implemented:
-* Calculating the credit score at run time based on the current record list
-* Persisting the credit score of returned loans and storing into the save file
+* Calculating the credit score at run time based on the current contents of the record list.
+* Persisting the credit score of returned loans by storing into the save file.
 
 |Approach|Pros|Cons|
 |--------|----|----|
 |Non-persistent|Straight forward and no additional resources needed|Credit score is bias towards the current record list and does not factor in any borrowing history|
-|Persistent|Provide more accurate credit score based on the history regardless of the current record list|Additional resources required to save each person’s current score when exiting the program|
+|Persistent|Provide a more accurate credit score computation based on the borrower's borrowing history regardless of the current contents of the record list|Additional resources required to save each borrower’s current score when exiting the program|
 
-Having considered the two approaches, we have decided to adopt the second approach.
-To preserve the integrity of the credit score system, persisting the credit score of each person throughout the
-application lifetime from the first instance of loan is important. This will ensure that the loan history is kept
-and persisted on every new start up. Even though there is the downside arising from the extra memory space needed, it
-is a small price to pay compared to the benefit it brings to the user when enhancing their decision.
+Having considered the two approaches, we have decided to adopt the second approach. 
+To preserve the accuracy of the credit score system, the persistence of each borrower's credit score starting from 
+the very first loan made to them, to throughout the entire application lifetime is important. This will ensure that
+the loan history is persisted on every new startup, and hence factored in every instance of the credit score 
+computation. Even though there is the downside arising from the extra memory space needed, it is a small price to pay
+as compared to the benefits it brings to the user when enhancing their decision on loaning money to others.
+
+<div style="page-break-after: always;"></div>
 
 ## Appendix A: Product Scope
 
@@ -1111,6 +1211,7 @@ coding and typing can speed up the process of their finance management through t
 
 > ❗ Finux does not provide any finance advise.
 
+<div style="page-break-after: always;"></div>
 
 ## Appendix B: User Stories
 
@@ -1128,6 +1229,8 @@ coding and typing can speed up the process of their finance management through t
 |v2.0|lender|know the loanee's punctuality on returning the loan|gauge who to continue lending money the next time.|
 |v2.0|student|know how trustworthy a person is according to a score indicator|decide how risk-free it is to lend money to the said person.|
 
+<div style="page-break-after: always;"></div>
+
 ## Appendix C: Non-Functional Requirements
 
 1. The application should be responsive.
@@ -1142,14 +1245,15 @@ coding and typing can speed up the process of their finance management through t
 **Initial Launch**
 
 1. Download the jar file and copy it into an empty folder where the application will save its files in.
-1. Open a new command prompt (Windows) or terminal (MacOS) and navigate to the directory containing `Finux.jar`.
-1. Enter the command `java -jar Finux.jar` to launch Finux.
-1. Program will create a new save file if there are no existing one or load a previously saved file, thereafter Finux
-will be ready for use.
+1. Open a new command prompt (Windows) or terminal (MacOS) and navigate to the directory containing `finux.jar`.
+1. Enter the command `java -jar finux.jar` to launch Finux.
+1. Program will create a new save file if there are currently no existing save file, else it will load the save file.
    
 **Shutdown**
 
 1. To exit Finux, enter the `exit` command.
+
+<div style="page-break-after: always;"></div>
 
 ### D.2: Adding an expense to the record list
 
@@ -1157,7 +1261,7 @@ will be ready for use.
 1. Test case: `add -e Plain bread loaf -a 2.50 -d 28/03/2021`
    Expected: Adds an `expense` with the description '`Plain bread loaf`' with an amount of `2.50` dollars on `28th March 2021`.
 1. Test case: `add -e Gym equipment -a 500 -d 02/04/2021`
-   Expected: Adds an `expense` with the description '`Gym equipment`' with an amount of `500`. dollars on `2nd April 2021`.
+   Expected: Adds an `expense` with the description '`Gym equipment`' with an amount of `500` dollars on `2nd April 2021`.
 1. Other incorrect commands to try:
    1. `add`
    1. `add -e`
@@ -1184,6 +1288,8 @@ will be ready for use.
    1. `add -l loan to Andy -a x -d 28/03/2021 -p Andy`
       (where `x` is a negative number or a word)
 
+<div style="page-break-after: always;"></div>
+
 ### D.4: Adding a saving to the record list
 
 1. Prerequisite: None.
@@ -1198,7 +1304,7 @@ will be ready for use.
    1. `add -s -a -d`
    1. `add -s Savings from Intern -a x -d 30/03/2021`
       (where `x` is a negative number or a word)
-   
+
 ### D.5 Listing expense(s) in the record list
 
 1. Prerequisite: None.
@@ -1222,6 +1328,8 @@ will be ready for use.
 1. Prerequisite: None.
 1. Test case: `list -a`
    Expected: Lists all the records currently in the record list.
+
+<div style="page-break-after: always;"></div>
 
 ### D.9 Viewing total expense amount in the record list
 
@@ -1247,6 +1355,8 @@ will be ready for use.
 1. Test case: `view -a`
    Expected: Views the total amount of all records currently in the record list.
 
+<div style="page-break-after: always;"></div>
+
 ### D.13 Mark a loan as returned
 
 1. Prerequisite:
@@ -1254,7 +1364,7 @@ will be ready for use.
    1. The record list must contain a loan record.
    1. Add a loan into the list `add -l Loan to Jason -a 500 -d 28/03/2021 -p Jason`
 1. Test case: `return -i 1 -d 02/04/2021`
-   Expected: The loan with index 1 will be marked as returned and will be indicated with `[v]` at the end of the entry
+   Expected: The loan with record ID 1 will be marked as returned and will be indicated with `[v]` at the end of the entry
    in the record list.
 1. Other incorrect commands to try:
    1. `return`
@@ -1269,13 +1379,14 @@ will be ready for use.
    1. Assuming your current record list is empty.
    1. The record list must contain any instance of record (`Expense`, `Loan`, `Saving`)
    1. Add a record into the list `add -e Chicken Rice Lunch at Deck -a 2.50 -d 30/03/2021`
-1. Test case: `remove -i 1` Expected: The record with index 1 will be removed from the record list.
+1. Test case: `remove -i 1` Expected: The record with record ID 1 will be removed from the record list.
 1. Other incorrect commands to try:
    1. `remove`
    1. `remove -i`
    1. `remove -i 0`
-   1. `remove -i -x` (where x is any integer)
-   1. `remove -i y` (where y is any integer that is greater than the size of the array)
+   1. `remove -i x` (where x is any integer that is greater than the size of the array or a negative integer)
+
+<div style="page-break-after: always;"></div>
 
 ### D.15 Checking the CreditScore of a person
 
@@ -1290,12 +1401,17 @@ will be ready for use.
    1. `creditscore`
    1. `creditscore -p jason`
    1. `creditscore -i x` (where x is any integer)
-   
-Note: The `creditscore` command will also calculate the person's credit score should the loan not be returned.
+
+💡 Note: The `creditscore` command will also calculate the person's credit score should the loan not be returned.
 
 ### D.16 Displaying the help list
 1. Prerequisite: None.
 1. Test case: `help` Expected: The summary table of all commands and  format will be displayed.
+1. Test case: `help x` (where x is a valid command) Expected: The detailed explanation of `x` command will be displayed.
+1. Other incorrect commands to try:
+   1. `help -i`
+   1. `help -i 0`
+   1. `help y` (where y is an invalid command)
 
 ### D.17 Exiting Finux application
 1. Prerequisite: None.

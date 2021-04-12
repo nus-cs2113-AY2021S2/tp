@@ -14,6 +14,7 @@ import static seedu.duke.command.Utils.getValue;
 import static seedu.duke.command.Utils.validateArguments;
 import static seedu.duke.command.Utils.getDaysDifference;
 import static seedu.duke.command.Utils.computeCreditScore;
+import static seedu.duke.command.Utils.validateNoOptions;
 
 /**
  * Handles all operations related to the credit score command.
@@ -33,8 +34,9 @@ public class CreditScoreCommand extends Command {
      * @throws CommandException contains the error messages when a incorrect format is detected.
      */
     public CreditScoreCommand(ArrayList<String> arguments) throws CommandException {
-        borrowerName = getValue(arguments, COMMAND_CREDIT_SCORE);
+        validateNoOptions(arguments, COMMAND_CREDIT_SCORE);
         validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_CREDIT_SCORE);
+        borrowerName = getValue(arguments, COMMAND_CREDIT_SCORE);
     }
 
 

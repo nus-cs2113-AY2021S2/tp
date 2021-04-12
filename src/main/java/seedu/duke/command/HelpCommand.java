@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import static seedu.duke.command.Utils.validateArguments;
 import static seedu.duke.command.Utils.validateHelpType;
+import static seedu.duke.command.Utils.validateNoOptions;
 
 /**
  * Handles all operations related to the help command.
@@ -30,6 +31,7 @@ public class HelpCommand extends Command {
      * @throws CommandException contains the error messages when a incorrect format is detected.
      */
     public HelpCommand(ArrayList<String> arguments) throws CommandException {
+        validateNoOptions(arguments, COMMAND_HELP);
         validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_HELP);
         helpType = validateHelpType(arguments, COMMAND_HELP);
     }

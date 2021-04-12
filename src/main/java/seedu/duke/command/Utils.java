@@ -34,6 +34,7 @@ public class Utils {
     private static final String ERROR_CONFLICT_OPTION = "conflict with options: ";
     private static final String ERROR_TOO_MANY_ARGUMENTS = "too many arguments.";
     private static final String ERROR_TOO_FEW_ARGUMENTS = "not enough arguments.";
+    private static final String ERROR_EXPECTED_A_VALUE = "expected a value, not an option.";
     private static final String ERROR_INVALID_ORDER = "invalid command order, ";
     private static final String ERROR_INVALID_ORDER_OPTION = ERROR_INVALID_ORDER
             + "expected an option instead of ";
@@ -124,7 +125,21 @@ public class Utils {
         if (!isValuable) {
             throw new CommandException(ERROR_MISSING_VALUE, command);
         }
+        String value = arguments.get(VALUE_INDEX);
+        if (isOption(value)) {
+            throw new CommandException(ERROR_EXPECTED_A_VALUE, command);
+        }
         return arguments.get(VALUE_INDEX);
+    }
+
+    public static void validateNoOptions(ArrayList<String> arguments, String command)
+            throws CommandException {
+        assert arguments != null : "arguments is null!";
+        for (String arg : arguments) {
+            if (isOption(arg)) {
+                throw new CommandException(ERROR_EXPECTED_A_VALUE, command);
+            }
+        }
     }
 
     // This hasOption method is only meant to improve readability.
@@ -302,7 +317,14 @@ public class Utils {
         assert argument != null : "argument is null!";
         return Pattern.matches(REGEX_OPTION, argument);
     }
-    
+
+    /**
+     * Computes the difference in days between two {@code LocalDate} objects.
+     *
+     * @param issueDate the date of issue.
+     * @param returnDate the date of return.
+     * @return the day difference.
+     */
     public static long getDaysDifference(LocalDate issueDate, LocalDate returnDate) {
         LocalDate toDate;
         if (returnDate == null) {
@@ -313,6 +335,15 @@ public class Utils {
         return ChronoUnit.DAYS.between(issueDate, toDate);
     }
 
+    /**
+     * Computes the new credit score based on the {code daysDifference}, {code currentCreditScore}
+     * and whether the loan was returned in the first week.
+     *
+     * @param daysDifference the day difference from the loan's issue and return.
+     * @param currentCreditScore the current credit score of a borrower.
+     * @param isReturn a check if current loan is returned.
+     * @return the new credit score.
+     */
     public static int computeCreditScore(long daysDifference, int currentCreditScore, boolean isReturn) {
         long computedCreditScore = currentCreditScore;
         if (daysDifference < FIRST_WEEK) {
