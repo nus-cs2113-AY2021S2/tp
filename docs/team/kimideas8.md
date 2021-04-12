@@ -18,18 +18,18 @@ This application was created with the aim of helping NUS Computing and Engineeri
     - What it does: allows the user to add notes one at a time to a location of choice, view an existing list of notes by locations, and delete notes at a location of choice one at a time 
     - Justification: It provides users with way of making quick notes within the campus, and saves users the trouble of adding notes in their own note-taking softwares, especially if the user is rushing for time.
       Since it helps to naturally organise a person's notes by locations, the user can easily recall what the note was made for.
-      
+
+<div style="page-break-after: always;"></div>
+
 - **Feature 2**: Implemented the ability to save the history of recently searched routes and all notes tagged to locations.
     - What it does: allows the user to auto-save all the past data in the app. This does not require any input from the user.
     - Justification: The ability to save previous data of the user is useful for the features of the app which requires saving data from previous interactions.
     - Highlights: It required an in-depth analysis of design alternatives to minimise the amount of redundancy on our code for the storage classes.
 
-<div style="page-break-after: always;"></div>
-
 ### Documentation
 - **User Guide:**
     - Added documentation for Section 4.8 'Notes' (under Section 4 'Features')
-    - Edited documentation for 'add, view, delete notes' rows (under Section 6 'Command Summary' Table)
+    - Edited documentation for 'add, view, delete notes' rows (under Section 6 'Command Summary')
 - **Developer Guide:**
     - Added documentation for Section 2.7 'Storage Component' (under Section 2 'Design')
         - UML Diagrams added: (1 diagram) Storage Component Diagram 
@@ -37,7 +37,7 @@ This application was created with the aim of helping NUS Computing and Engineeri
         - UML Diagrams added: (4 diagrams) 3 close-up Sequence diagrams for Step 1 and 1 close-up Sequence diagram for Step 2
 
 ### Contribution to Team-based Tasks 
-- Managed releases v2.0 (1 release) on GitHub
+- Managed releases `v2.0` (1 release) on GitHub
 - Enabled assertions for team's code
     
 ### Review / Mentoring Contributions
@@ -45,9 +45,6 @@ This application was created with the aim of helping NUS Computing and Engineeri
       
 ### Contributions beyond the project team
 - **Evidence of helping others:**
-  - Contributed suggestions for improving product for Team W09-1:
-    - [Suggestion 1](https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/182)
-    - [Suggestion 2](https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/181)
-    - [Suggestion 3](https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/183)
+  - Contributed suggestions for improving product for Team W09-1: [1](https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/182), [2](https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/181), [3](https://github.com/AY2021S2-CS2113T-W09-1/tp/issues/183)
       
         
