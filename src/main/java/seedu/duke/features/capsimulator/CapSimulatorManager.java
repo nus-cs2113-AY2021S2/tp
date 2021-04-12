@@ -52,27 +52,26 @@ public class CapSimulatorManager {
 
     private static void addCapAndMcs() {
         Ui.getCurrentCapPrompt();
-        //missing exception to catch <0 >5 CAP user input
         double cap = Double.parseDouble(Ui.readCommand());
         boolean validCap = (cap >= 0.0 && cap <= 5.0);
         if (validCap) {
             assert cap >= 0.0 : "Not Valid";
             assert cap <= 5.0 : "Not Valid";
         } else {
-            System.out.println("Invalid CAP score. Entries is not registered.");
+            Ui.printInvalidCapMessage();
             return;
         }
         //assert false;
 
         Ui.getNumberOfGradedMCsTakenPrompt();
-        //missing exception to catch <0 >180? MCs user input
         int totalMcs = Integer.parseInt(Ui.readCommand());
-        if (((cap > 0 && cap <= 5.0) && (totalMcs > 0 && totalMcs <= 180))
-                || ((cap == 0) && (totalMcs == 0))) {
+        boolean validMc = ((cap > 0 && cap <= 5.0) && (totalMcs > 0 && totalMcs <= 180))
+                || ((cap == 0) && (totalMcs == 0));
+        if (validMc) {
             AcademicRecords.setCurrentCap(cap);
             AcademicRecords.setTotalMcs(totalMcs);
         } else {
-            System.out.println("Invalid MCs. Entries is not registered.\n");
+            Ui.printInvalidMcsMessage();
         }
     }
 }

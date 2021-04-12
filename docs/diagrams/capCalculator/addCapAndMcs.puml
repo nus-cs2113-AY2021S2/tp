@@ -1,27 +1,40 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
-participant Duke
-Duke -> HelpGraduationManager : execute()
-activate HelpGraduationManager
-HelpGraduationManager -> HelpGraduationManager : addCapAndMcs()
-activate HelpGraduationManager
-HelpGraduationManager -> Ui : readCommand()
-activate Ui
-Ui --> HelpGraduationManager : cap
-deactivate Ui
-HelpGraduationManager -> Ui: readCommand()
-activate Ui
-Ui --> HelpGraduationManager : totalMcs
-deactivate Ui
-HelpGraduationManager -> Storage : setCurrentCap()
-activate Storage
-Storage --> HelpGraduationManager
-deactivate Storage
-HelpGraduationManager -> Storage : setTotalMcs()
-activate Storage
-Storage --> HelpGraduationManager
-deactivate Storage
-deactivate HelpGraduationManager
+-> ":CapSimulatorManager"
+activate ":CapSimulatorManager"
+":CapSimulatorManager" -> ":CapSimulatorManager" : addCapAndMcs()
+activate ":CapSimulatorManager"
+
+":CapSimulatorManager" -> ":Ui" : readCommand()
+activate ":Ui"
+":Ui" --> ":CapSimulatorManager" : cap
+deactivate ":Ui"
+
+alt 0 <= cap <= 5
+":CapSimulatorManager" -> ":Ui": readCommand()
+activate ":Ui"
+":Ui" --> ":CapSimulatorManager" : totalMcs
+deactivate ":Ui"
+alt valid mcs
+":CapSimulatorManager" -> ":AcademicRecords" : setCurrentCap()
+activate ":AcademicRecords"
+":AcademicRecords" --> ":CapSimulatorManager"
+deactivate ":AcademicRecords"
+":CapSimulatorManager" -> ":AcademicRecords" : setTotalMcs()
+activate ":AcademicRecords"
+":AcademicRecords" --> ":CapSimulatorManager"
+deactivate ":AcademicRecords"
+else else
+":CapSimulatorManager" -> ":Ui" : printInvalidMcsMessage()
+activate ":Ui"
+return
+end
+else else
+":CapSimulatorManager" -> ":Ui" : printInvalidCapMessage()
+activate ":Ui"
+return
+end
+return
 return
 @enduml

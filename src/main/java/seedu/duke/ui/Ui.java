@@ -739,4 +739,12 @@ public class Ui {
         System.out.println(
                 "The module you specified already has a zoom link! Bringing you back to the links menu...");
     }
+
+    public static void printInvalidMcsMessage() {
+        System.out.println("Invalid MCs. Entries is not registered.\n");
+    }
+
+    public static void printInvalidCapMessage() {
+        System.out.println("Invalid CAP score. Entries is not registered.");
+    }
 }
