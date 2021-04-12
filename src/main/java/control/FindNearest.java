@@ -19,14 +19,13 @@ public class FindNearest {
     }
 
     /**
-
      * This function searches a user inputted facility from all our existing facility and returns the facility found.
      * If facility not found, there will be an error message.
      * @param facilityLocation the user input facility name
      * @return Facility the facility object found
      * @throws FacilityNotFoundException if the user inputted invalid facility that does not match with any of our existing facilities
      */
-    public static Facility findFacilityByName(String facilityLocation) throws FacilityNotFoundException {
+    public static Facility findFacilityByName(String facilityName) throws FacilityNotFoundException {
 
         for (Facility f: FileManager.getLibraries()) {
             if (f.getName().equals(facilityName)) {
@@ -47,7 +46,6 @@ public class FindNearest {
     }
 
     /**
-
      * This function search for a specific fype of facility near user's current location.
      * It returns the top K nearest facility of this type.
      * @param currentLocation the current of the user
