@@ -276,7 +276,7 @@ Any invalid input such as decimals or alphabets will result in
 #### Current Implementation
 The following diagram illustrates the class diagram for implementation of the alias feature:
 ![img.png](images/AliasFeature.png)
-The command entered by the user in the `Main()` function of NUSMaze will be parsed in the `Parser` class. Thereafter, the parser will decide which of the 3 alias commands,
+The command entered by the user in the `Main()` function of NUSMaze will be parsed by the `Parser` class. Thereafter, the parser will decide which of the 3 alias commands,
 if applicable, was the command that the user wanted to execute. 
 
 The three command classes, namely `AddCustomAliasCommand`, `ShowCustomAliasCommand` and `DeleteCustomAliasCommand` extend the `Command` class, and they all depend on the `AliasUi` class to obtain inputs and display outputs.
@@ -287,6 +287,24 @@ The data model for this feature is facilitated by the `BlockAlias` class which c
 The hashmap will have the `custom alias name` as the `key` and the `block name` as the `value` for each key-value pair. The
 `BlockAlias` class also depends on the `NusMap` class to ensure that valid blocks are input by the user.
 
+#### Adding of custom aliases
+The user can enter `add alias` invoke an instance of `AddCustomAliasCommand` which will prompt them for the
+alias and block names. If the alias name already exists, or the alias name conflicts
+with a block name, the application will display an error message and the addition of the custom alias will not be executed. If there
+were no errors, the alias and block pair would be added to the hashmap in the instance of the `BlockAlias` class and it will also be
+stored in the `AliasStorage`.
+
+#### Showing custom aliases
+The user can enter `show alias` to invoke an instance of `ShowCustomAliasCommand` to view all the alias and block pairs that have been stored previously by them.
+If there are no alias and block pairs, then the message `You haven't set any aliases yet!` will be displayed to the user. If there 
+are valid alias and block pairs stored in the application, then the list of alias and block pairs will be displayed.
+
+#### Deleting a custom alias
+The user can enter `delete alias` to invoke an instance of `DeleteCustomAliasCommand` which will prompt them for the alias name that they
+wish to delete. If the entered alias name exists in the alias hashmap stored in the instance of `BlockAlias`, then that alias will be removed.
+However, if the alias does not exist in the hashmap, then an invalid alias error message will be displayed.
+
+#### Example for alias feature
 Given below is an example usage scenario and how the add/view/delete mechanism behaves at each step:
 
 1. The user launches the application for the first time. If there is a storage file with pre-existing alias-block pairs, then the hashmap in `BlockAlias` class will be initialized with those data, or an empty hashmap if it does not exist.  
@@ -301,6 +319,12 @@ Given below is an example usage scenario and how the add/view/delete mechanism b
 
 Shown below is the sequence diagram when a valid block name and alias are added:
 ![img.png](images/AliasFeatureSequence.png)
+
+#### Design Consideration
+**Current choice:** Saves the alias and block names in a hashmap stored within a data model class which is the `BlockAlias` class. <br/>
+- Pros: Easy to implement. <br/>
+- Cons: The same instance of `BlockAlias` needs to be shared among the other classes that may use the alias feature. <br/>
+
 ### 3.5. History feature 
 ![img.png](images/history.png)
 #### Current Implementation
