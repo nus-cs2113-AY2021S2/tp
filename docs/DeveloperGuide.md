@@ -546,7 +546,7 @@ You are running low on food in these categories:
 8. OTHER quantity: 0 out of 500
 ```
 
-Note that `MEAT`,`SEAFOOD` AND `BEVERAGE` category are omitted from the above list,
+Note that `MEAT`, `SEAFOOD` and `BEVERAGE` category are omitted from the above list,
 as they are not "running low". There is sufficient food from the given category in the
 fridge, because it is above the quantity we have specified by `setlimit`.
 
