@@ -753,4 +753,32 @@ public class Ui {
         System.out.println("Alright! The Zoom Link shall not be tagged to a module...");
     }
 
+    public static void printWelcomeVersion1Message() {
+        System.out.println("Welcome to CAP Simulator Version 1!");
+    }
+
+    public static void printNoGradeEnteredMessage(String module) {
+        System.out.println("There is no grade entered for " + module);
+    }
+
+    public static void printCapCalculatorMessage(ArrayList<String> gradesInString,
+                                                 ArrayList<Integer> listOfMCs,
+                                                 Double currentCap, int numberOfGradedMCsTaken) {
+        System.out.println("Calculating on the following entries: ");
+        System.out.println("Grades: " + gradesInString);
+        System.out.println("MCs: " + listOfMCs);
+
+        System.out.printf("Current CAP: %.02f\n", currentCap);
+        System.out.println("Current Graded MCs taken: " + numberOfGradedMCsTaken);
+    }
+
+    public static void printSimulatedCapMessage(Double calculatedCap) {
+        System.out.println("The simulated cumulative average point (rounded to 2 d.p) you have is: ");
+        System.out.printf("%.02f\n", calculatedCap);
+    }
+
+    public static void printMcsOverflowMessage() {
+        System.out.println("The upper limit of total number of MCs is 220!");
+        System.out.println("ERROR IN MCs OVERFLOW");
+    }
 }

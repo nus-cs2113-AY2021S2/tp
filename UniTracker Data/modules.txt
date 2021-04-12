@@ -5,5 +5,5 @@ CG1112 ~~ epp2 ~~ 8 ~~ A ~~ {finals=40, FinalExam=40}
 You have not reviewed this module yet. -- end of module --
 CS2040C ~~ OOP ~~ 1 ~~ null ~~ {}
 You have not reviewed this module yet. -- end of module --
-CS3234 ~~ idk ~~ 0 ~~ SU ~~ {}
+CS3234 ~~ idk ~~ 4 ~~ SU ~~ {}
 You have not reviewed this module yet. -- end of module --
