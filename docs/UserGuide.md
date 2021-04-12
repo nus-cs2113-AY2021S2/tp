@@ -2,6 +2,9 @@
 ol {
     counter-reset: item
 }
+ul {
+    counter-reset: item
+}
 ol > li {
     counter-increment: item;
 }
