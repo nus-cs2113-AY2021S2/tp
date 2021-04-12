@@ -225,12 +225,12 @@ Just before a successful deletion, the deleted `module`'s relevant information (
 This feature allows user to add user-defined module components and its related weightage for an
 existing module.
 
-Given below is the sequence diagram of the feature:  
+Given below is the sequence diagram of the feature: 
 
 ![Diagram](diagrams/moduleInfo/addComponent1.png)  
 *Figure 6*
 
-A general 2-step explanation of how this feature works is shown below:
+A general 3-step explanation of how this feature works is shown below:
 
 Step 1. The feature is facilitated by the `Component` class and a call to `addComponent()` is performed upon
 expected user input to add a new component to a module.  
@@ -238,12 +238,12 @@ expected user input to add a new component to a module.
 Step 2. A call to `Ui` is performed to find out what module* the user wishes to add a component (and
 its weightage).  
 
-Step 3. A `for` loop is run to find whether the module entered by the user is
+Step 3. A check is done to find whether the selection of module(an integer number) entered by the user is
 stored in the system.  
 
 Here, there are two possible routes:
 
-- If the module is present, a call to `Ui` is performed to find out the component name and the
+- If the module is present, a call to `Ui` is performed to get the component name and the
   associated weightage for that component.
 - If the module is not present, the call to `addComponent()` returns to `ModuleInfo` class (main
   class for module-related commands).
@@ -253,12 +253,17 @@ Hashtable format in the `Module` object specified by the user previously*.
 
 ### 4.06 View Module Components
 
-How the feature works:  
-The feature is an extension of the `Component` feature.
+This feature prints
+`module components (together with its weightage)` stored in a `Hashtable` under a module specified by the user input.  
 
-It allows user to view all the module components under a module specified by the user input.
+A brief explanation of how the feature works:
 
-Improvement: the total weightage (in whole numbers) of the module should not exceed 100.
+Step 1: A check is done on the module number specified user input. 
+
+Assuming the module is present,
+
+Step 2: `getComponentstoString` method in the `Module` object is executed to print the module components
+in a `Hashtable` format. If the `Hashtable` is empty, an empty message is printed. 
 
 
 ### 4.07 Add New Review
@@ -315,24 +320,33 @@ this same string will be printed out as a warning to the user.
 
 ### 4.10 Add CAP and Number of MCs counted towards CAP  
 
-This feature allows user to add cumulative average point, that ranges between 0 - 5,
-with 2 decimal places of precision, and total number of graded modular credits.
+This feature allows user to add cumulative average point(CAP), that ranges between 0 - 5,
+with 2 decimal places of precision, and total number of modular credits(MCs) that is counted towards CAP.
 
 Given below is the sequence diagram for the feature:
 
 ![Diagram](diagrams/capCalculator/addCapAndMcs1.png)  
 *Figure 8*
 
-How the feature works:
-The feature is facilitated by the `AddCapAndMcs` method in the `HelpGraduationManager` class, and a call to the class is performed
-upon entering this sequence of numbers from the main menu:  
-`2`, `1`.
+A general 3-step explanation of how this feature works is shown below:  
 
-A general 2-step explanation of how this feature works is shown below:
+Step 1. The feature is facilitated by the `CapSimulatorManager` object, and a call to the 
+classto `AddCapAndMcs` method is performed upon entering this sequence of numbers from the main menu:  
+`2`, `1`.  
 
-Step 1.
+Step 2. A call to `readCommand()` method in the `Ui` object is performed to get the CAP score.  
 
-Step 2.
+- Here, there are two possible routes:  
+
+   - If the CAP is valid, a call to `readCommand()` method in the `Ui` object is performed to get the total MCs counted into the CAP.
+   - If the CAP is not valid, a call to `printInvalidCAPMessage()` method in `Ui` is performed to print an invalid CAP message and returns to the main program.
+
+Assuming the first route is well executed,  
+
+Step 3. There are two possible routes:  
+
+   - If the MCs is valid, a call to `setCurrentCap()` and `setTotalMcs()` method is facilitated by `AcademicRecords` class and stores the CAP and MCs.
+   - If the MCs is not valid, a call to `printInvalidMcsMessage()` method in `Ui` is performed to print an invalid MCs message and returns to the main program.
 
 
 ### 4.11 Add New Task
@@ -518,6 +532,8 @@ can keep track of commonly accessed information while keeping track of the tasks
 |v1.0|student|categorize my tasks|know whether a task is a normal task, assignment or exam  
 |v1.0|student|add messages that will print when I complete a task|encourage or remind myself of what I need to do next    
 |v1.0|student|add personal reviews on modules I have taken|know what to recommend to my peers  
+|v1.0|student|add grades and mcs to each module|see how different grades will affect my cumulative average point  
+|v1.0|student|list out the component and weightage of a module|know the assessment breakdown of the module  
 |v2.0|student| store my information | view them later without having to re-type them again  
 |v2.0|impatient student|use an application that doesn't crash|trust it to store my module information   
 
