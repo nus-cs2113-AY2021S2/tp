@@ -14,11 +14,17 @@ public class ViewBooking {
     private ArrayList<Booking> bookings = null;
     private User user = null;
 
+    /**
+     * Class constructor.
+     */
     public ViewBooking(User user) {
         this.bookings = downcastToSpecificUser(user);
         this.user = user;
     }
 
+    /**
+     * Display the bookings made by the user.
+     */
     public void printBookings() {
         if (bookings.size() == 0) {
             System.out.println("No bookings available.");
@@ -29,6 +35,10 @@ public class ViewBooking {
         }
     }
 
+    /**
+     * Display the cancel booking menu choice and prompt users to make a choice.
+     * @param bookings  the list of bookings.
+     */
     private void displayCancelBookingMenu(ArrayList<Booking> bookings) {
         int functionSelection = -1;
         do {
@@ -59,6 +69,9 @@ public class ViewBooking {
         } while (functionSelection != 2);
     }
 
+    /**
+     * Display all the bookings and their indexes.
+     */
     private void printAllBookings() {
         for (int i = 0; i < bookings.size(); i++) {
             System.out.println("Booking Number " + (i + 1));
@@ -66,6 +79,11 @@ public class ViewBooking {
         }
     }
 
+    /**
+     * Gets the list of booking of a specific user.
+     * @param user the user to get bookings from.
+     * @return a list of bookings of the user.
+     */
     private ArrayList<Booking> downcastToSpecificUser(User user) {
         if (user.getUserType().equals("Customer")) {
             return ((Customer) user).getBookings();

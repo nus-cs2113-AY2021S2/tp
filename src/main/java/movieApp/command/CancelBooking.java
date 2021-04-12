@@ -17,11 +17,17 @@ public class CancelBooking {
     private ArrayList<Booking> currentBookings = null;
     private User user = null;
 
+    /**
+     * Class constructor.
+     */
     public CancelBooking(User user, ArrayList<Booking> bookings) {
         this.user = user;
         currentBookings = bookings;
     }
 
+    /**
+     * Cancel one booking.
+     */
     public void cancelOneBooking() {
         int thisBookingNumber = getBookingNumber();
         if (thisBookingNumber != 0) {
@@ -32,6 +38,10 @@ public class CancelBooking {
         }
     }
 
+    /**
+     * Delete a user's booking.
+     * @param thisBookingNumber the number of the booking to be deleted.
+     */
     private void deleteThisBooking(int thisBookingNumber) {
         if (checkIfCurrDateOverBookingDate(currentBookings.get(thisBookingNumber - 1))) {
             System.out.println("The movie screening is over. Cancelling of booking is unsuccessful.");
@@ -43,6 +53,11 @@ public class CancelBooking {
         }
     }
 
+    /**
+     * Check whether current date is after the booking date.
+     * @param selectedBooking the booking made by the user.
+     * @return a boolean value that indicate whether current date is after the booking date.
+     */
     private boolean checkIfCurrDateOverBookingDate(Booking selectedBooking) {
         Date currentDate = new Date();
         Calendar calendar = selectedBooking.getShowtimes().getDateTime();
@@ -50,6 +65,10 @@ public class CancelBooking {
         return currentDate.compareTo(movieDate) > 0;
     }
 
+    /**
+     * Reset the status of the seats.
+     * @param booking the booking made by users.
+     */
     private void resetSeatStatus(Booking booking) {
         Showtimes showtimes = booking.getShowtimes();
         ArrayList<Seat> seats = booking.getSeats();
@@ -63,6 +82,10 @@ public class CancelBooking {
         }
     }
 
+    /**
+     * Enables the users to cancel the number of booking they made.
+     * @return an int value that indicate user's input.
+     */
     private int getBookingNumber() {
         int booking_choice = 0;
 
