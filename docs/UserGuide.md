@@ -282,33 +282,41 @@ Example of viewing a module:
 
 ```   
 > 2
---------------------------------------------  
-Here are the modules in your Modules List:  
---------------------------------------------  
-[1] --- CS2113T  
---------------------------------------------  
-Which module would you like to view?  
-> 1  
---------------------------------------------  
-Name: CS2113T  
-  
-Description:  
-Software Engineering and OOP  
-  
-Review:  
-You have not reviewed this module yet.  
-  
-Modular Credit:  
-0  
-  
-Grade:  
-null  
-  
-These are your tasks:   
-1. [Task][CS2113T][    ] study week 10 topics  
-2. [Assignment][CS2113T][DONE] nice (by: Mar 27 2021, 11:59 PM)  
---------------------------------------------  
-Returning to module information menu...  
+--------------------------------------------
+Here are the modules in your Modules List:
+--------------------------------------------
+[1] --- CG1112
+[2] --- CS2040C
+[3] --- CS2113T
+--------------------------------------------
+Which module would you like to view?
+> 3
+--------------------------------------------
+Name: CS2113T
+
+Description:
+software eng
+
+Components:
+{finals=50}
+
+Review:
+heavy workload!
+
+Modular Credit:
+0
+
+Grade:
+null
+
+Zoom Link:
+https://nus-sg.zoom.us/j/87226556676?pwd=aDNXWkNtRWRGdFM0SHFPQnpJM2gzUT09
+
+These are your tasks: 
+1. [Task][CS2113T][    ] PE
+--------------------------------------------
+Returning to module information menu...
+
 ```  
 → Go To [Table of Contents](#table-of-contents)    
 → Go To [Command Summary](#5-command-summary)  
@@ -1257,7 +1265,7 @@ Supported Top Level Domain(TLD) include: .com, .org, .sg, .edu, .gov
 > **Note!**  
 > 1. While using other TLDs that have not been included in the list above might work, the intended behaviour is not guaranteed and might vary in such cases.
 > 2. This feature accepts uppercase characters too and converts it to lowercase for your convenience. Hence, a link like: `HTTPS//WWW.YOUTUBE.COM` would become `https://www.youtube.com`
-
+> 3. Due to the offline nature of the application, we are unable to check if the link is legitimate.
 
 Example for adding an external link:
 
