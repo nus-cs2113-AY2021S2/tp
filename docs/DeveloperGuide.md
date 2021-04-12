@@ -1022,7 +1022,7 @@ display the credit score of the borrower.
 
 ![CreditscoreFeatureSequenceDiagram](img/CreditScoreFeatureSequenceDiagram.png)
 
-_Figure 20: Sequence Diagram for `CreditScoreCommand`_
+_Figure 21: Sequence Diagram for `CreditScoreCommand`_
 
 ***Step 1***\
 User enters the command `creditscore Mark`. `Finux` class invokes `ParserHandler#getParseInput()` to provide the parsed
