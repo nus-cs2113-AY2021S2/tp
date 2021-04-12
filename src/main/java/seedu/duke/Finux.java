@@ -13,6 +13,9 @@ import java.util.ArrayList;
 
 import static seedu.duke.common.Constant.FINUX_LOGGER;
 
+/**
+ * Main class of Finux Application.
+ */
 public class Finux {
     private Ui ui;
     private Storage storage;
@@ -22,14 +25,14 @@ public class Finux {
     private CreditScoreReturnedLoansMap creditScoreReturnedLoansMap;
 
     /**
-     * Main entry-point for Finux application.
+     * Main entry-point for Finux Application.
      */
     public static void main(String[] args) {
         new Finux().run();
     }
 
     /**
-     * Runner for the FINUX Application.
+     * Runner for the Finux Application.
      */
     private void run() {
         start();

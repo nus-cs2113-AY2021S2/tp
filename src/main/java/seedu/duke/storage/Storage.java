@@ -69,10 +69,10 @@ public class Storage {
     }
 
     /**
-     * Saves the data in the recordList and creditScoreRetrunedLoansMap into a local text file.
+     * Saves the data in the recordList and creditScoreReturnedLoansMap into a local text file.
      *
-     * @param recordList is the recordList.
-     * @param creditScoreReturnedLoansMap is the creditScoreReturnedLoansMap.
+     * @param recordList is the RecordList component of Finux.
+     * @param creditScoreReturnedLoansMap is the CreditScoreReturnedLoansMap component of Finux.
      */
     public void saveData(RecordList recordList, CreditScoreReturnedLoansMap creditScoreReturnedLoansMap) {
         try {
