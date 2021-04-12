@@ -45,7 +45,7 @@ Given below are my contributions to the project.
   * Refactor source code
     * Try to make the code in line with coding standard
     * Adopt abstraction to split long methods into multiple short methods.
-    * Encapsulate codes to from a large class into small classes.
+    * Adopt better encapsulation by separating a large class into smaller classes.
     * Reduced coupling between classes (In previous design, both `Main` and `Logic` stores the address of `Model`. In the current version, only `Logic` stores the address of `Model`.)
     * Removing magic numbers/literals
   * Post/resolve issues in the Issue tracker
