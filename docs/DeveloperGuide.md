@@ -38,9 +38,7 @@ for use via a Command Line Interface (CLI).
 The Architecture Diagram provided above illustrates the high-level design of TraceYourProj. Given below is a quick 
 overview of each component.
 
-`Main` is consisted of a class, namely Duke. The main function of it is to:
-1. Initialize project list
-2. Receive inputs from the user until he/she types `exit` command to terminate the program
+`Main` is consisted of a class, namely Duke. The main function of it is to receive inputs from the user until he/she types `exit` command to terminate the program.
 
 The rest of TraceYourProj comprises the following components:
 - `MainUi`: The user interface of the application.
