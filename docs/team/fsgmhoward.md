@@ -4,9 +4,9 @@
 Patient Manager is a _Command Line Interface_ (CLI) application for **_general practitioners_** (GP)
 who work in polyclinics to manage their patient list.
 
-I, together with my teammates, developed this application as a team project for CS2113T module of NUS.
+I, together with my teammates, developed this application as a team project for the CS2113T module in NUS.
 This project aimed to develop a program targeting a current problem using Java with Object-oriented
-programming as model.
+programming as the model.
 
 The entire development cycle, excluding the planning stage which consists of a few weeks before actual
 development, includes three iterations. Iteration v1.0 is the minimum viable product, and v2.0 is the 
@@ -19,7 +19,7 @@ in product documentation.
 
 This is a link to the RepoSense dashboard, which has a detailed analysis of the lines of code contributed by me:
 
-https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?breakdown=true&search=fsgmhoward
+[https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?breakdown=true&search=fsgmhoward](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?breakdown=true&search=fsgmhoward)
 
 ### Enhancement Implemented
 
@@ -60,16 +60,16 @@ https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?breakdown=true&search=fsgmho
 Along the way of development, I have reviewed a number of pull requests opened by other team members. This
 is a non-exhaustive list:
 
-* https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/54
-* https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/58
-* https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/66
-* https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/70
-* https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/125
+* [https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/54](https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/54)
+* [https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/58](https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/58)
+* [https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/66](https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/66)
+* [https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/70](https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/70)
+* [https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/125](https://github.com/AY2021S2-CS2113T-W09-4/tp/pull/125)
 * ... and more
 
 For a full list of PRs reviewed by me, you may refer to this link:
 
-https://github.com/AY2021S2-CS2113T-W09-4/tp/pulls?q=is%3Apr+reviewed-by%3Afsgmhoward+
+[https://github.com/AY2021S2-CS2113T-W09-4/tp/pulls?q=is%3Apr+reviewed-by%3Afsgmhoward+](https://github.com/AY2021S2-CS2113T-W09-4/tp/pulls?q=is%3Apr+reviewed-by%3Afsgmhoward+)
 
 Other than PR reviews, I have also provided general help given to teammates encountering technical difficulties
 along the way of development.
@@ -79,4 +79,4 @@ along the way of development.
 I have reviewed other peer teams' product and documentation during tutorials and PE-D. The list of bugs reported
 in PE-D can be accessed by clicking the following link:
 
-https://github.com/fsgmhoward/ped/issues
+[https://github.com/fsgmhoward/ped/issues](https://github.com/fsgmhoward/ped/issues)
