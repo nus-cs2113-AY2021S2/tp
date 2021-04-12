@@ -34,6 +34,7 @@ public class Utils {
     private static final String ERROR_CONFLICT_OPTION = "conflict with options: ";
     private static final String ERROR_TOO_MANY_ARGUMENTS = "too many arguments.";
     private static final String ERROR_TOO_FEW_ARGUMENTS = "not enough arguments.";
+    private static final String ERROR_EXPECTED_A_VALUE = "expected a value, not an option.";
     private static final String ERROR_INVALID_ORDER = "invalid command order, ";
     private static final String ERROR_INVALID_ORDER_OPTION = ERROR_INVALID_ORDER
             + "expected an option instead of ";
@@ -124,7 +125,21 @@ public class Utils {
         if (!isValuable) {
             throw new CommandException(ERROR_MISSING_VALUE, command);
         }
+        String value = arguments.get(VALUE_INDEX);
+        if (isOption(value)) {
+            throw new CommandException(ERROR_EXPECTED_A_VALUE, command);
+        }
         return arguments.get(VALUE_INDEX);
+    }
+
+    public static void validateNoOptions(ArrayList<String> arguments, String command)
+            throws CommandException {
+        assert arguments != null : "arguments is null!";
+        for (String arg : arguments) {
+            if (isOption(arg)) {
+                throw new CommandException(ERROR_EXPECTED_A_VALUE, command);
+            }
+        }
     }
 
     // This hasOption method is only meant to improve readability.
