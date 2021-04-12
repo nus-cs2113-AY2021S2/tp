@@ -23,7 +23,6 @@ list
 list meat
 list lower_shelf
 list aldkjadlj
-expiring
 search
 remove chicken /qty 200
 remove pork /qty 200
