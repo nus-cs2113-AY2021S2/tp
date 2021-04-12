@@ -120,6 +120,8 @@ branch or to any PR.
 Before starting to write any code, we recommend that you have a look at Finux's overall design by reading
 [Finux's Architecture](#31-architecture) section.
 
+<div style="page-break-after: always;"></div>
+
 ## 3. Design
 
 ### 3.1 Architecture
