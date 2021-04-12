@@ -44,6 +44,10 @@ public class Login {
             name = sc.nextLine().toUpperCase();
 
             if (name.equals("OUT")) {
+                System.out.println("Thank you for your time.");
+                System.out.println("Have a good day!");
+                System.out.println();
+                System.out.println("System Exiting..");
                 System.exit(0);
             }
 
