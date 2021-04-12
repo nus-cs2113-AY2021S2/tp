@@ -39,6 +39,7 @@ Given below are my contributions to the project.
   - General code enhancements
   - Fixed Java CI
   - Maintained issue tracker with creation of some labels
+  - Participated in rigorous testing of team members codebase to weed out potential bugs
 
 - **Review/Mentoring contributions**:
   - PR's reviewed: #35, #171, #334, #333, #343, #349, #371, #401, #404, #407
