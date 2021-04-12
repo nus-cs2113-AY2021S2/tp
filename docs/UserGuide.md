@@ -46,7 +46,7 @@ Allowing to choose the mode “Admin” or “Customer” based on user’s acco
 **Format**: `USERNAME  PASSWORD`
 
 **Example**:
-1. Customer Account
+***Customer Account***
    Input:
 ```
    customer1  
@@ -81,15 +81,17 @@ Allowing to choose the mode “Admin” or “Customer” based on user’s acco
 ```
 
 </details>
+
 <br />
 
 
-2. Admin Account
+***Admin Account***
    Input:
 ```
    admin1  
    password1
 ```
+
 <details><summary markdown="span"> <strong>Display:</strong> </summary>
 
 ```
@@ -120,6 +122,7 @@ Allowing to choose the mode “Admin” or “Customer” based on user’s acco
   Please indicate your choice:
 ```
 </details>
+
 <br />
 
 
@@ -137,6 +140,7 @@ Exit the app from login page
  System Exiting…
 ```
 </details>
+
 <br />
 
  ___________  
@@ -171,6 +175,7 @@ View all movies and movie filters.
 Please indicate your choice:
 ```
 </details>
+
 <br />
 
 
@@ -189,6 +194,7 @@ Logging out...
 ```
 
 </details>
+
 <br />
 
   ___________  
@@ -231,6 +237,7 @@ Please indicate your choice:
 ============================
 ```
 </details>
+
 <br />
 
 
@@ -268,6 +275,7 @@ Movie List:
 To select a single movie, select "6 Select movie" from the Movie Filter menu below.
 ```
 </details>
+
 <br />
 
 
@@ -287,6 +295,7 @@ Select the cut-off rating (0-5):
 ```
 
 </details>
+
 <br />
 
 
@@ -316,6 +325,7 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 ```
 
 </details>
+
 <br />
 
 
@@ -339,6 +349,7 @@ Please indicate your choice:
 ```
 
 </details>
+
 <br />
 
 
@@ -373,6 +384,7 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 ```
 
 </details>
+
 <br />
 
 
@@ -394,6 +406,7 @@ Please indicate your choice:
 Please indicate your choice:
 ```
 </details>
+
 <br />
 
 
@@ -426,6 +439,7 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 ```
 
 </details>
+
 <br />
 
 
@@ -443,6 +457,7 @@ Please indicate your choice:
 Search: 
 ```
 </details>
+
 <br />
 
 
@@ -468,6 +483,7 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 ```
 
 </details>
+
 <br />
 
 
@@ -502,9 +518,10 @@ Please indicate your choice:
 ```
 
 </details>
-<br />
 
 <br />
+
+
 
 
 <details><summary markdown="span"> <strong>Example:</strong> </summary>
@@ -545,6 +562,7 @@ Please indicate your choice:
 ```
 
 </details>
+
 <br />
 
 
@@ -576,6 +594,7 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 ```
 
 </details>
+
 <br />
 
 
@@ -609,6 +628,7 @@ To select a single movie, select "6 Select movie" from the Movie Filter menu bel
 ```
 
 </details>
+
 <br />
 
 
@@ -629,6 +649,7 @@ Please indicate your choice:
 ```
 
 </details>
+
 <br />
 
 
@@ -749,6 +770,7 @@ Date Booked:     Mon Apr 12 19:21:27 SGT 2021
 ```
 
 </details>
+
 <br />
 
 
@@ -781,6 +803,7 @@ Rating content: great movie concept!
 ```
 
 </details>
+
 <br />
 
 
@@ -797,6 +820,7 @@ Comment:
 Rating:
 ```
 </details>
+
 <br />
 
 
@@ -818,6 +842,7 @@ Thank you for your review!
 ```
 
 </details>
+
 <br />
 
 
@@ -837,6 +862,7 @@ Go back to access the main menu
 Please indicate your choice:
 ```
 </details>
+
 <br />
 
 
@@ -922,6 +948,7 @@ The new movie "Hi, Mom" have been saved to the database.
 ```
 
 </details>
+
 <br />
 
 
@@ -943,6 +970,7 @@ Select a movie to be deleted from the list (enter the number)
 Please enter your choice: 
 ```
 </details>
+
 <br />
 
 
@@ -958,6 +986,7 @@ Please enter your choice:
 The movie has been removed from the database. 
 ```
 </details>
+
 <br />
 
 
@@ -978,6 +1007,7 @@ Select a movie to be edited from the list (enter the number)
 Please enter your choice: 
 ```
 </details>
+
 <br />
 
 
@@ -1007,6 +1037,7 @@ Set several centuries in the future, the abandoned Alita is found in the scrapya
 The changes have been saved to the database.
 ```
 </details>
+
 <br />
 
 
@@ -1021,6 +1052,7 @@ Logout current admin user.
 Logging out..
 ```
 </details>
+
 <br />
 
 
