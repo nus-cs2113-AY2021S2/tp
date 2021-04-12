@@ -413,7 +413,7 @@ The mechanism to edit a recommendation is facilitated by the `RecommendationList
 
 The following Figure 15 is the Sequence diagram to `edit a recommendation`.
 ![Edit_Reco_seq](./diagrams/Edit_Reco_Sequence_Diagram.png)
-<p align="center">Figure 15. Sequence Diagram for Edit recommendations</p>
+<p align="center">Figure 15. Sequence Diagram for edit recommendations</p>
 
 A general explanation of how this feature works:
 
@@ -430,7 +430,7 @@ The mechanism to remove a recommendation is facilitated by the `RecommendationLi
 
 The following Figure 16 is the Sequence diagram to `delete a recommendation`.
 ![Delete_Reco_seq](./diagrams/Delete_Reco_Sequence_Diagram.png)
-<p align="center">Figure 16. Sequence Diagram for Edit recommendations</p>
+<p align="center">Figure 16. Sequence Diagram for delete recommendations</p>
 
 A general explanation of how this feature works:
 
@@ -444,7 +444,7 @@ The mechanism to review a recommendation is facilitated by the `RecommendationLi
 
 The following Figure 17 is the Sequence diagram to `review a recommendation`.
 ![Review_a_Reco_seq](./diagrams/Done_Sequence_Diagram.png)
-<p align="center">Figure 17. Sequence Diagram for Edit recommendations</p>
+<p align="center">Figure 17. Sequence Diagram for review recommendations</p>
 
 A general explanation of how this feature works:
 
@@ -462,7 +462,7 @@ To facilitate easier conversion between the raw data and JSON object, a `Connois
 #### 4.4.2 Implementation
 The following is a Sequence diagram to illustrate how Connoisseur saves data on exit. 
 ![saving_sequence](./diagrams/Save_Sequence_Diagram.png)
-<p align="center">Figure 18. Sequence Diagram for Saving data</p>
+<p align="center">Figure 18. Sequence Diagram for saving data</p>
 
 1. When the `Commands#exit()` method is called, `Storage#saveConnoisseurData()` will be called to save the data before exiting. 
 2. `Storage#saveReviews()` is called to convert the reviews to a JSON Array. 
