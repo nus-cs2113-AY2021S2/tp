@@ -756,11 +756,11 @@ This is an example of the welcome screen for the Inventory Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **List example**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```ItemName        | Price      | Quantity```
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```------------------------------------------------------------```
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```paracetamol     | 3.00       | 90   ```
+```
+ItemName        | Price      | Quantity
+------------------------------------------------------------
+paracetamol     | 3.00       | 90
+```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1. Example of usage(increases quantity of existing item)**:
 
@@ -772,11 +772,11 @@ This is an example of the welcome screen for the Inventory Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **List example**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```ItemName        | Price      | Quantity```
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```------------------------------------------------------------```
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```paracetamol     | 3.00       | 140   ```
+```
+ItemName        | Price      | Quantity
+------------------------------------------------------------
+paracetamol     | 3.00       | 140
+```
 
 <br/><br/>
 
@@ -802,11 +802,11 @@ This is an example of the welcome screen for the Inventory Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **List example**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```ItemName        | Price      | Quantity```
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```------------------------------------------------------------```
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```paracetamol     | 3.00       | 120   ```
+```
+ItemName        | Price      | Quantity
+------------------------------------------------------------
+paracetamol     | 3.00       | 120   
+```
 
 <br/><br/>
 
