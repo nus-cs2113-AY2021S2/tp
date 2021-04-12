@@ -161,6 +161,34 @@ public class ShiftController {
         }
         System.out.println("No such shift in database. Please add shift for this index.");
     }
+
+//@@justinaquak
+    public static void unassignEmployee(ArrayList<Employee> employees, ArrayList<Shift> shifts) {
+        viewAllShifts(shifts);
+        if (shifts.isEmpty()) {
+            return;
+        }
+        LocalDate shiftDate = getShiftDate();
+        int shiftIndex = getShiftIndex();
+        if (getShift(shiftDate, shiftIndex, shifts) != null) {
+            Shift shift = getShift(shiftDate, shiftIndex, shifts);
+            assert shift != null;
+            viewSelectedShift(shift);
+            System.out.println("Enter Employee name to unassign:");
+            Scanner sc = new Scanner(System.in);
+            String name = sc.nextLine();
+            Employee employee = getEmployee(name, employees);
+            if (shift.getEmployees().contains(employee)) {
+                shift.unassignEmployee(employee);
+            }
+            else {
+                System.out.println("Employee " + name + " is not assigned to this shift. Please unassign another employee.");
+            }
+            return;
+        }
+        System.out.println("No such shift in database. Please add shift for this index.");
+    }
+
     public static void viewAllShifts(ArrayList<Shift> shifts) {
         if (shifts.isEmpty()) {
             System.out.println("No shift in database. Please add shift first.");
@@ -202,32 +230,6 @@ public class ShiftController {
         if (!dateFound) {
             System.out.println("Date chosen has no shifts");
         }
-    }
-
-    public static void unassignEmployee(ArrayList<Employee> employees, ArrayList<Shift> shifts) {
-        viewAllShifts(shifts);
-        if (shifts.isEmpty()) {
-            return;
-        }
-        LocalDate shiftDate = getShiftDate();
-        int shiftIndex = getShiftIndex();
-        if (getShift(shiftDate, shiftIndex, shifts) != null) {
-            Shift shift = getShift(shiftDate, shiftIndex, shifts);
-            assert shift != null;
-            viewSelectedShift(shift);
-            System.out.println("Enter Employee name to unassign:");
-            Scanner sc = new Scanner(System.in);
-            String name = sc.nextLine();
-            Employee employee = getEmployee(name, employees);
-            if (shift.getEmployees().contains(employee)) {
-                shift.unassignEmployee(employee);
-            }
-            else {
-                System.out.println("Employee " + name + " is not assigned to this shift. Please unassign another employee.");
-            }
-            return;
-        }
-        System.out.println("No such shift in database. Please add shift for this index.");
     }
 
 }
