@@ -1,4 +1,4 @@
-u# Developer Guide
+# Developer Guide
 ## Table of Contents
 
 1. [Preface](#1-preface)
@@ -23,7 +23,7 @@ u# Developer Guide
     
     4.3 [Logic component](#43-logic-component)
     
-    4.4 [Model component](#44-model-componnet)
+    4.4 [Model component](#44-model-componenet)
     
     4.5 [Sorter component](#45-sorter-component)
     
