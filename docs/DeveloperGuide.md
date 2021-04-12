@@ -1305,8 +1305,6 @@ coding and typing can speed up the process of their finance management through t
    1. `add -s Savings from Intern -a x -d 30/03/2021`
       (where `x` is a negative number or a word)
 
-<div style="page-break-after: always;"></div>
-
 ### D.5 Listing expense(s) in the record list
 
 1. Prerequisite: None.
@@ -1330,6 +1328,8 @@ coding and typing can speed up the process of their finance management through t
 1. Prerequisite: None.
 1. Test case: `list -a`
    Expected: Lists all the records currently in the record list.
+
+<div style="page-break-after: always;"></div>
 
 ### D.9 Viewing total expense amount in the record list
 
