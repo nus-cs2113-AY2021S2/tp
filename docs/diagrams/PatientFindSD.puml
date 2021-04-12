@@ -1,0 +1,55 @@
+@startuml
+
+hide footbox
+actor user
+participant ":PatientInstance"
+participant ":PatientParser"
+participant ":PatientChecker"
+participant ":MainChecker"
+participant ":UI"
+participant ":PatientFindCommand"
+participant ":PatientList"
+participant ":Patient"
+participant ":PatientUI"
+participant ":PatientStorage"
+
+user -> ":PatientInstance" : "find"
+
+":PatientInstance" -> ":PatientParser": patientParse()
+
+ref over ":PatientChecker", ":MainChecker", ":UI" : parsing user input
+
+create ":PatientFindCommand"
+":PatientParser" -> ":PatientFindCommand"
+
+":PatientFindCommand" --> ":PatientParser" : Command
+
+":PatientParser" -> ":PatientInstance" : Command
+
+":PatientInstance" -> ":PatientFindCommand" : execute
+
+":PatientFindCommand" -> ":PatientList" : findPatients()
+
+loop for all Patients in PatientList
+    ":PatientList" -> ":Patient" : getPatientDetails()
+
+    ":Patient" --> ":PatientList" : patient's_details
+
+        alt patient details contains input string
+            ":PatientList" -> ":PatientUI" : printPatientDetails()
+
+            ":PatientUI" --> ":PatientList" : user shown message
+        end
+end
+
+":PatientList" --> ":PatientFindCommand"
+
+":PatientFindCommand" --> ":PatientInstance"
+
+":PatientInstance" -> ":PatientStorage" : storePatients()
+
+":PatientStorage" --> ":PatientInstance"
+
+":PatientInstance" --> user : user sees find result
+
+@enduml

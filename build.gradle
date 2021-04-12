@@ -4,6 +4,13 @@ plugins {
     id 'checkstyle'
     id 'com.github.johnrengelman.shadow' version '5.1.0'
 }
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'seedu.duke.HealthVault'
+        )
+    }
+}
 
 repositories {
     mavenCentral()
@@ -29,7 +36,7 @@ test {
 }
 
 application {
-    mainClassName = "seedu.duke.Duke"
+    mainClassName = "seedu.duke.HealthVault"
 }
 
 shadowJar {
@@ -42,5 +49,6 @@ checkstyle {
 }
 
 run{
+    enableAssertions = true
     standardInput = System.in
 }
