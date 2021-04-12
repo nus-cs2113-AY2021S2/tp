@@ -8,11 +8,11 @@ import ui.Ui;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ViewStoreCommand extends Command {
+public class DisplayStoreCommand extends Command {
 
     private final NusFoodReviews nusFoodReviews;
 
-    public ViewStoreCommand(NusFoodReviews nusFoodReviews) {
+    public DisplayStoreCommand(NusFoodReviews nusFoodReviews) {
         this.nusFoodReviews = nusFoodReviews;
     }
 
