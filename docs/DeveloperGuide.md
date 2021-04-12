@@ -262,7 +262,7 @@ The Storage component consists of classes that individually reads data from, and
 
 The `Storage`, consists of 5 different types of classes:
 
-- DoctorApointmentStorage implements `writeToFile()` to write information regarding doctorID, name, date, appointmentID, and gender into DoctorAppointment.txt file. `loadFile()`loads the data in the DoctorAppointment.txt file into an array list to be returned. `loadDoctorFile()` loads the doctor information from the staff database.
+- DoctorAppointmentStorage implements `writeToFile()` to write information regarding doctorID, name, date, appointmentID, and gender into DoctorAppointment.txt file. `loadFile()`loads the data in the DoctorAppointment.txt file into an array list to be returned. `loadDoctorFile()` loads the doctor information from the staff database.
 - InventoryStorage implements `storeInventory()` to write information regarding item name, price, and quantity into Inventory.txt file. `loadInventory()`loads the data in the Inventory.txt file into an array list to be returned.
 - NurseScheduleStorage implements `writeToFile()` to write information regarding nurseID, patientID, date into NurseSchedule.txt file. `loadPatientFile()` loads the patient information from the patient database.
 - StaffStorage implements `writeToFile()` to write information regarding staffID, name, age, and specialisation into Staff.txt file. `loadFile()`loads the data in the Patients.txt file into an array list to be returned.
@@ -1158,7 +1158,7 @@ Invalid Input includes:
 
 5. InventoryInstance then executes the InventoryAdd Command object by running `InventoryAdd.execute()`.
 
-6. `InventoryList.addItems()` will be called in which a Inventory object will be created and added into the ArrayList<Inventory> inventoryList which contains all the Inventory Objects. 
+6. `InventoryList.addItems()` will be called in which an Inventory object will be created and added into the ArrayList<Inventory> inventoryList which contains all the Inventory Objects. 
 
 7. If the list already contains data with the same Item Name and Price, the Quantity of the Item will be increased in the list by the value in the user input Quantity field. `InventoryList.addItems` will call `Inventory.addQuantity`. This will modify the Quantity of that specified Item.
  
@@ -1200,8 +1200,8 @@ Invalid Input includes:
 
 **Deleting Quantity from an Inventory Object using User Input**
 
-4. InventoryInstance then executes the InventoryDelete Command object to begin the process of deleting the referenced Quantitiy of the Inventory object
-5. `InventoryList.deleteItems()` is called, which iterate through the objects in ArrayList<Inventory> InventoryList. The Inventory Object referenced by the input given by the user, will have its Quanitity reduced by the Quantity indicated in the user input.
+4. InventoryInstance then executes the InventoryDelete Command object to begin the process of deleting the referenced Quantity of the Inventory object
+5. `InventoryList.deleteItems()` is called, which iterate through the objects in ArrayList<Inventory> InventoryList. The Inventory Object referenced by the input given by the user, will have its Quantity reduced by the Quantity indicated in the user input.
 
 **Saving changed Inventory Objects into .txt file**
 
@@ -1673,7 +1673,7 @@ Please input with the following format [P][5 digit ID number]
 > The keyword input can be case-insensitive and still find matches in the database.
 > 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Postive Test case:** ```find/P55555```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Positive Test case:** ```find/P55555```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
 	
@@ -1735,7 +1735,7 @@ Please input with the following format [P][5 digit ID number]
 1. Adding a new appointment
 
 >:information_source: Important notes about the input format
->1. Make sure that the inputted doctor/appointment ID starts with a D/A and have **exactly** 5 digits in the number following!  
+>1. Make sure that the inputted doctor/appointment ID starts with an upper-case D/A and have **exactly** 5 digits in the number following!  
 >2. Any input fields in HealthVault only accepts space and alphanumeric characters.
 >3. The gender field input should only be "M", "F".
 >4. This function **allows** the adding of past appointments.
@@ -1896,9 +1896,9 @@ Please input with the following format [all/D/A] followed by [5 digit ID number]
 
 >:information_source: Important notes about the input format
 >1. Make sure Nurse ID exists in Staff and Patient ID exists in Patients before adding.
->2. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and have **exactly** 5 digits in the number following! 
+>2. Make sure that the inputted user ID starts with an N for Nurse, P for Patient and have **exactly** 5 digits in the number following! 
 >3. Any input fields in HealthVault only accepts space and alphanumeric characters.
->4. HealhVault currently only allows the adding of **1** schedule per patient per day.
+>4. HealthVault currently only allows the adding of **1** schedule per patient per day.
     
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Positive Test case:** ```add/N12345/P12345/30012020```
 
@@ -1920,7 +1920,7 @@ eg. N12345 or P67891
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted Nurse ID starts with a N for Nurse, and have **exactly** 5 digits in the number following! 
+>1. Make sure that the inputted Nurse ID starts with an N for Nurse, and have **exactly** 5 digits in the number following! 
 >2. HealthVault only accepts valid Date inputs.
     
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Positive Test case:** ```delete/N12345/30012020```
@@ -1937,7 +1937,7 @@ eg. N12345 or P67891
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted Nurse ID starts with a N for Nurse, and have **exactly** 5 digits in the number following! 
+>1. Make sure that the inputted Nurse ID starts with an N for Nurse, and have **exactly** 5 digits in the number following! 
     
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.1
 
