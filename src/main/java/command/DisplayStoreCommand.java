@@ -20,9 +20,7 @@ public class DisplayStoreCommand extends Command {
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
 
         if (canteens.size() == 0) {
-            System.out.println(Ui.LINESPACING);
-            System.out.println("There are no canteens for you to view any stores yet.");
-            System.out.println(Ui.LINESPACING);
+            ui.showNoCanteen();
             return;
         }
 
