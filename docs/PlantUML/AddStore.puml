@@ -62,10 +62,10 @@ activate "ui:Ui"
 "ui:Ui" --> ":AddStoreCommand"
 deactivate "ui:Ui"
 
-":AddStoreCommand" -> "<<class>> \n:Storage" : saveStore()
-activate "<<class>> \n:Storage"
-"<<class>> \n:Storage" --> ":AddStoreCommand"
-deactivate "<<class>> \n:Storage"
+":AddStoreCommand" -> "<<class>> \n:WriteToFile" : saveStore()
+activate "<<class>> \n:WriteToFile"
+"<<class>> \n:WriteToFile" --> ":AddStoreCommand"
+deactivate "<<class>> \n:WriteToFile"
 
 <-- ":AddStoreCommand"
 deactivate ":AddStoreCommand"

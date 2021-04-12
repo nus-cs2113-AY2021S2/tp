@@ -225,7 +225,7 @@ If the user inputs 'cancel', the loop is exited and the program returns from `Ad
 Once a valid CanteenName is entered, a new Canteen object is instantiated and added to the ArrayList of canteens.
 `Ui#showAddCanteenSuccess()` is then called to display canteen added confirmation.
 
-Additionally, the static method `Storage#saveCanteen()` is called to update the canteen in storage.
+Additionally, the static method `WriteToFile#saveCanteen()` is called to update the canteen in storage.
 
 ### [Admin] Delete Canteen
 #### Implementation
@@ -246,7 +246,7 @@ Otherwise, `Parser#parseInt()` is called to check if the user input is a valid i
 The canteen is then removed from the canteens ArrayList, 
 and `Ui#showCanteenDeleted()` is called to display the canteen deleted message.
 
-The static method `Storage#save()` is also called to update the storage.
+The static method `UpdateFile#deleteAndUpdateFile()` is also called to update the storage.
 
 ### [Admin] Add Store
 ![AddCanteen Sequence Diagram](./img/AddStore.png)
@@ -267,6 +267,8 @@ If the user inputs 'cancel', the loop is exited and the program returns from `Ad
 Once a valid StoreName is entered, `Canteen#addStore()` will be called to instantiate the Store object 
 and append it to the ArrayList of Stores stored in the relevant Canteen object.
 `Ui#printStoreAdded()` is then called to display store added confirmation.
+
+The static method `WriteToFile#saveStore()` is also called to update the storage.
 
 ### [Admin] Delete Stores
 ![DeleteStores](./img/DeleteStores.png)
@@ -311,6 +313,7 @@ it aims to allow new students/staffs to have a better experience at these food s
 |v1.0|admin|login|verify myself|
 |v2.0|admin|add a new canteen 
 |v2.0|admin|delete an existing canteen
+|v2.0|admin|add a store|update availability of stores
 |v2.0|admin|delete a store|update availability of stores
 |v2.0|admin|delete a review|restrict inappropriate reviews
 

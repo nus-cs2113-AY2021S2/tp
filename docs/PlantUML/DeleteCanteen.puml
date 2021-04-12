@@ -34,10 +34,10 @@ activate "ui:Ui"
 "ui:Ui" --> ":DeleteCanteenCommand"
 deactivate "ui:Ui"
 
-":DeleteCanteenCommand" -> "<<class>> \n:Storage" : save()
-activate "<<class>> \n:Storage"
-"<<class>> \n:Storage" --> ":DeleteCanteenCommand"
-deactivate "<<class>> \n:Storage"
+":DeleteCanteenCommand" -> "<<class>> \n:UpdateFile" : deleteAndUpdateFile()
+activate "<<class>> \n:UpdateFile"
+"<<class>> \n:UpdateFile" --> ":DeleteCanteenCommand"
+deactivate "<<class>> \n:UpdateFile"
 
 else
 <-- ":DeleteCanteenCommand"
