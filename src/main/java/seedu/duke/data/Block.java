@@ -92,7 +92,7 @@ public class Block {
      * @throws InvalidNoteException if the note is empty
      */
     public void addNote(String note) throws InvalidNoteException {
-        if (note.isBlank()) {
+        if (note.isBlank() || note.contains("/")) {
             throw new InvalidNoteException();
         }
         this.notes.add(note);

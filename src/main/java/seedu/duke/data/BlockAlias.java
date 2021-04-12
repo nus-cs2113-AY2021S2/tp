@@ -53,7 +53,8 @@ public class BlockAlias {
         return (!aliases.containsKey(alias)
                 && nusMap.getBlock(alias) == null
                 && !alias.equalsIgnoreCase("eatery")
-                && !alias.equals(""));
+                && !alias.equals(""))
+                && !alias.contains("/");
     }
 
     /**
