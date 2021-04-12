@@ -59,8 +59,5 @@ deactivate UI
 deactivate AddCommand
 [<-[hidden]- AddCommand
 destroy AddCommand
-destroy Expense
-destroy Loan
-destroy Saving
 
 @enduml

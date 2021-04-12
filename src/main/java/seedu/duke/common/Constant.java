@@ -1,5 +1,8 @@
 package seedu.duke.common;
 
+/**
+ * Container for constants used among the classes.
+ */
 public class Constant {
     public static final String OPTION_ALL = "-a";
     public static final String OPTION_EXPENSE = "-e";

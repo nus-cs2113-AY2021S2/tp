@@ -61,7 +61,7 @@ Record <|-- Expense
 Record <|-- Saving
 Record <|-- Loan
 
-note "Some methods and attributes omitted for brevity." as N1
+note "Some methods and attributes are omitted for brevity." as N1
 
 
 @enduml

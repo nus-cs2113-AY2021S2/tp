@@ -16,6 +16,15 @@ import static seedu.duke.command.Utils.hasOption;
 import static seedu.duke.command.Utils.validateOptions;
 import static seedu.duke.common.Constant.OPTION_DATE;
 import static seedu.duke.common.Constant.OPTION_INDEX;
+import static seedu.duke.common.Messages.ERROR_INCORRECT_ID_DATA_TYPE;
+import static seedu.duke.common.Messages.ERROR_INCORRECT_ID_FRONT;
+import static seedu.duke.common.Messages.ERROR_INCORRECT_ID_FRONT2;
+import static seedu.duke.common.Messages.ERROR_INCORRECT_ID_NON_INTEGER;
+import static seedu.duke.common.Messages.ERROR_INCORRECT_ID_OUT_OF_BOUNDS;
+import static seedu.duke.common.Messages.ERROR_MISSING_ID_OPTION;
+import static seedu.duke.common.Messages.ERROR_RETURN_DATE_BEFORE_ISSUE_DATE;
+import static seedu.duke.common.Messages.ERROR_RETURN_DATE_FUTURE_DATE;
+import static seedu.duke.common.Messages.MESSAGE_RETURN_SUCCESS;
 import static seedu.duke.common.Validators.validateDate;
 import static seedu.duke.common.Validators.validateId;
 import static seedu.duke.command.Utils.getDaysDifference;
@@ -28,9 +37,9 @@ public class ReturnCommand extends Command {
     private static final String[] VALID_OPTIONS = {OPTION_INDEX, OPTION_DATE};
     private static final String[] CONFLICT_OPTIONS = {};
     protected static final String COMMAND_RETURN = "return";
-    private final String recordNumberStr;
-    private final int recordNumberInt;
-    private final LocalDate returnDate;
+    private String recordNumberStr;
+    private int recordNumberInt;
+    private LocalDate returnDate;
 
     /**
      * Constructor to validate the format for return command.
@@ -41,13 +50,25 @@ public class ReturnCommand extends Command {
      */
     public ReturnCommand(ArrayList<String> arguments, RecordList recordList) throws CommandException {
         validateOptions(arguments, COMMAND_RETURN, VALID_OPTIONS, CONFLICT_OPTIONS);
-        recordNumberStr = getIndexInString(arguments);
-        recordNumberInt = getIndexInInteger(arguments, recordList);
+        setRecordNumberToString(arguments);
+        setRecordNumberToInteger(arguments, recordList);
+        setReturnDate(arguments, recordList);
+    }
+
+    private void setReturnDate(ArrayList<String> arguments, RecordList recordList) throws CommandException {
         returnDate = getDate(arguments, recordList.getRecordAt(recordNumberInt));
     }
 
+    private void setRecordNumberToInteger(ArrayList<String> arguments, RecordList recordList) throws CommandException {
+        recordNumberInt = getIndexInInteger(arguments, recordList);
+    }
+
+    private void setRecordNumberToString(ArrayList<String> arguments) throws CommandException {
+        recordNumberStr = getIndexInString(arguments);
+    }
+
     /**
-     * Get the index field in String.
+     * Gets the index field in String.
      *
      * @param arguments parsed input containing options and arguments.
      * @return a String containing the index of the record.
@@ -55,13 +76,13 @@ public class ReturnCommand extends Command {
      */
     private String getIndexInString(ArrayList<String> arguments) throws CommandException {
         if (!hasOption(arguments, OPTION_INDEX)) {
-            throw new CommandException("missing option: -i", COMMAND_RETURN);
+            throw new CommandException(ERROR_MISSING_ID_OPTION, COMMAND_RETURN);
         }
         return getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX);
     }
 
     /**
-     * Get the index field in Integer.
+     * Gets the index field in Integer.
      *
      * @param arguments  parsed input containing options and arguments.
      * @param recordList is the recordList.
@@ -73,14 +94,16 @@ public class ReturnCommand extends Command {
             int index = validateId(getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX), recordList);
             Record currentRecord = recordList.getRecordAt(index);
             if (!(currentRecord instanceof Loan)) {
-                throw new CommandException("Index \"" + recordNumberStr + "\" is not an index of Loan!",
+                throw new CommandException(ERROR_INCORRECT_ID_FRONT + recordNumberStr + ERROR_INCORRECT_ID_DATA_TYPE,
                         COMMAND_RETURN);
             }
             return index;
         } catch (NumberFormatException e) {
-            throw new CommandException("\"" + recordNumberStr + "\" is not an integer!", COMMAND_RETURN);
+            throw new CommandException(ERROR_INCORRECT_ID_FRONT2 + recordNumberStr
+                    + ERROR_INCORRECT_ID_NON_INTEGER, COMMAND_RETURN);
         } catch (IndexOutOfBoundsException e) {
-            throw new CommandException("ID: \"" + recordNumberStr + "\" is out of bounds!", COMMAND_RETURN);
+            throw new CommandException(ERROR_INCORRECT_ID_FRONT + recordNumberStr
+                    + ERROR_INCORRECT_ID_OUT_OF_BOUNDS, COMMAND_RETURN);
         }
     }
 
@@ -95,10 +118,10 @@ public class ReturnCommand extends Command {
         try {
             LocalDate returnDate = validateDate(getOptionValue(arguments, COMMAND_RETURN, OPTION_DATE));
             if (currentRecord.getIssueDate().compareTo(returnDate) > 0) {
-                throw new CommandException("Return date cannot be before Loan's issue date!", COMMAND_RETURN);
+                throw new CommandException(ERROR_RETURN_DATE_BEFORE_ISSUE_DATE, COMMAND_RETURN);
             }
             if (returnDate.compareTo(LocalDate.now()) > 0) {
-                throw new CommandException("Return date cannot be in the future!", COMMAND_RETURN);
+                throw new CommandException(ERROR_RETURN_DATE_FUTURE_DATE, COMMAND_RETURN);
             }
 
             return returnDate;
@@ -128,7 +151,7 @@ public class ReturnCommand extends Command {
             creditScore = computeCreditScore(daysDifference, creditScore, currentLoan.isReturn());
             creditScoreReturnedLoansMap.insertCreditScoreOf(borrowerNameInLowerCase, creditScore);
         }
-        ui.printMessage(System.lineSeparator() + "Loan marked as returned:"
+        ui.printMessage(System.lineSeparator() + MESSAGE_RETURN_SUCCESS
                 + System.lineSeparator() + System.lineSeparator()
                 + ui.getId(recordNumberInt) + currentLoan + System.lineSeparator());
         storage.saveData(recordList, creditScoreReturnedLoansMap);

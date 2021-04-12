@@ -1,7 +1,4 @@
 # Finux User Guide
-By: `Jonah Tham`, `Gerard Tan`, `Lee Han Yong Andy`, `Mark Low`, `Tan Tze Xern`
-
-Since: `March 2021`
 
 ---
 
@@ -66,6 +63,7 @@ applications in the market.
 5. Run the `finux.jar` file by executing the command `java -jar finux.jar`.
 
 ---
+<div style="page-break-after: always;"></div>
 
 ### 2.1 Understanding the guide
 Now that you are here, congratulations on taking the first step to embark on your finance management journey! But before you proceed, there are a few tips and tricks that you should know in order to better understand our guide.
@@ -79,6 +77,7 @@ Throughout the guide, you will come across various symbols, each has a different
 > 📝: The notepad will precede information that may improve the flexibility of using the app. 
 
 ---
+<div style="page-break-after: always;"></div>
 
 ### 2.2 Explanation for Command formats
 
@@ -105,6 +104,7 @@ The Commands in Finux follow these argument orders (depending on the command):
     recognized as valid because the input have a missing space in between `-a` and `10`.
 
 ---
+<div style="page-break-after: always;"></div>
 
 ### 2.3 Explanation for Date and Date formats
 
@@ -122,6 +122,7 @@ Finux supports multiple date formats for ease of use such as the one listed belo
 > 📝 `today` keyword specifies today's date, replacing the need for you to type in the actual date for date inputs.
 
 ---
+<div style="page-break-after: always;"></div>
 
 ### 2.4 Explanation for Expense, Loan, and Saving record output formats
 
@@ -193,6 +194,7 @@ Output:
 
 ![add expense example output](img/AddExpenseExampleOutput.png)
 
+<div style="page-break-after: always;"></div>
 
 #### 3.1.2 Add a loan record
 
@@ -210,6 +212,8 @@ Output:
 
 ![add loan example output](img/AddLoanExampleOutput.png)
 
+<div style="page-break-after: always;"></div>
+
 #### 3.1.3 Add a saving record
 
 Lastly, you may have saved a sum of money over the past month of March and you recorded your `saving`
@@ -225,6 +229,8 @@ Output:
 
 > 💡 Do note that for an `expense`, you will have to use `-e` as the option. This follows for `loan` with `-l` and
 > `saving` with `-s`.
+
+<div style="page-break-after: always;"></div>
 
 ### 3.2 List the records details: `list`
 
@@ -252,6 +258,8 @@ Output:
 
 ![list loan example output](img/ListLoanExampleOutput.png)
 
+<div style="page-break-after: always;"></div>
+
 #### 3.2.3 List all saving records
 
 Furthermore, all your saved savings can also be listed with the `saving` option `-s`. 
@@ -271,6 +279,8 @@ Format: `list -a`
 Output:
 
 ![list all example output](img/ListAllExampleOutput.png)
+
+<div style="page-break-after: always;"></div>
 
 ### 3.3 View category total amount: `view`
 
@@ -299,6 +309,8 @@ Output:
 
 ![view loan example output](img/ViewLoanExampleOutput.png)
 
+<div style="page-break-after: always;"></div>
+
 #### 3.3.3 View total savings
 
 Your total savings can also be calculated using `view` and the option `-s`.
@@ -319,6 +331,8 @@ Format: `view -a`
 Output:
 
 ![view all example output](img/ViewAllExampleOutput.png)
+
+<div style="page-break-after: always;"></div>
 
 ### 3.4 Mark a loan as returned: `return`
 
@@ -342,6 +356,8 @@ Output:
 
 ![return example output](img/ReturnExampleOutput.png)
 
+<div style="page-break-after: always;"></div>
+
 ### 3.5 Remove a record: `remove`
 
 ---
@@ -364,6 +380,8 @@ Output:
 >  
 > 💡 After removing a record from the application, you will have to use the list command again to retrieve the latest 
 > updated record IDs.
+
+<div style="page-break-after: always;"></div>
 
 ### 3.6 Check a person's credit score: `creditscore`
 
@@ -390,6 +408,8 @@ Output:
 > 💡 A credit score of `100` will be shown from a person who has not borrowed money from you as they can still
 > considered trustworthy. The Finux application will display a credit score of `100` for people whom you have not added 
 > any loans prior.
+
+<div style="page-break-after: always;"></div>
 
 ### 3.7 Exit the program: `exit`
 
@@ -421,6 +441,8 @@ Output:
 If you would like to know the specifications in details, simply type
 `help` followed by the `feature` name from the available list below:
 
+<div style="page-break-after: always;"></div>
+
 * `add`: display the help section for `add` command.
 * `list`: display the help section for `list` command.
 * `view`: display the help section for `view` command.
@@ -442,6 +464,8 @@ Example: `help remove`
 Output:
 
 ![help example output](img/HelpExampleOutput.png)
+
+<div style="page-break-after: always;"></div>
 
 ### 3.9 Records storage
 
@@ -472,6 +496,8 @@ Output:
   
 > ❗ Do **NOT** modify the contents of the `finux.txt` save file.
 
+<div style="page-break-after: always;"></div>
+
 ## 4. Frequently Asked Questions
 
 **Q1**: How can I transfer my saved tasks information to another computer?
@@ -486,6 +512,8 @@ Output:
 
 **Q4**: Finux keeps having a `bad init` error message, but it is my first time launching Finux. <br>
 > Do check and ensure that Finux has the proper write permissions in the directory.
+
+<div style="page-break-after: always;"></div>
 
 ## 5. Command Summary
 
@@ -509,3 +537,8 @@ Output:
 | Help (detailed)                        | `help <feature>`                                         | `help remove`                                        |
 | Help (brief)                           | `help`                                                   | -                                                    |
 
+---
+
+By: `Jonah Tham`, `Gerard Tan`, `Lee Han Yong Andy`, `Mark Low`, `Tan Tze Xern`
+
+Updated: `April 2021`

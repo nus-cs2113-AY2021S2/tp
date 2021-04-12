@@ -14,6 +14,12 @@ import static seedu.duke.command.Utils.hasOption;
 import static seedu.duke.command.Utils.validateArguments;
 import static seedu.duke.command.Utils.validateOptions;
 import static seedu.duke.common.Constant.OPTION_INDEX;
+import static seedu.duke.common.Messages.ERROR_INCORRECT_ID_FRONT;
+import static seedu.duke.common.Messages.ERROR_INCORRECT_ID_FRONT2;
+import static seedu.duke.common.Messages.ERROR_INCORRECT_ID_NON_INTEGER;
+import static seedu.duke.common.Messages.ERROR_INCORRECT_ID_OUT_OF_BOUNDS;
+import static seedu.duke.common.Messages.ERROR_MISSING_ID_OPTION;
+import static seedu.duke.common.Messages.MESSAGE_REMOVE_SUCCESS;
 import static seedu.duke.common.Validators.validateId;
 
 /**
@@ -39,27 +45,34 @@ public class RemoveCommand extends Command {
      */
     public RemoveCommand(ArrayList<String> arguments, RecordList recordList) throws CommandException {
         validateOptions(arguments, COMMAND_REMOVE, VALID_OPTIONS, VALID_OPTIONS);
-        recordNumberStr = getIndexInString(arguments);
-        recordNumberInt = getIndexInInteger(arguments, recordList);
+        setIndexToString(arguments);
+        setIndexToInteger(arguments, recordList);
         validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_REMOVE);
     }
 
+    private void setIndexToInteger(ArrayList<String> arguments, RecordList recordList) throws CommandException {
+        recordNumberInt = getIndexInInteger(arguments, recordList);
+    }
+
+    private void setIndexToString(ArrayList<String> arguments) throws CommandException {
+        recordNumberStr = getIndexInString(arguments);
+    }
+
     /**
-     * Get the index field in String.
+     * Gets the index field in String.
      * @param arguments parsed input containing options and arguments.
      * @return a String containing the index of the record.
      * @throws CommandException contains the error messages when a incorrect format is detected.
      */
     private String getIndexInString(ArrayList<String> arguments) throws CommandException {
         if (!hasOption(arguments, OPTION_INDEX)) {
-            throw new CommandException("missing option: -i", COMMAND_REMOVE);
-
+            throw new CommandException(ERROR_MISSING_ID_OPTION, COMMAND_REMOVE);
         }
         return getOptionValue(arguments, COMMAND_REMOVE, OPTION_INDEX);
     }
 
     /**
-     * Get the index field in Integer.
+     * Gets the index field in Integer.
      * @param arguments parsed input containing options and arguments.
      * @param recordList is the recordList.
      * @return a Integer containing the index of the record.
@@ -69,9 +82,11 @@ public class RemoveCommand extends Command {
         try {
             return validateId(getOptionValue(arguments, COMMAND_REMOVE, OPTION_INDEX), recordList);
         } catch (NumberFormatException e) {
-            throw new CommandException("\"" + recordNumberStr + "\" is not an integer!", COMMAND_REMOVE);
+            throw new CommandException(ERROR_INCORRECT_ID_FRONT2 + recordNumberStr
+                    + ERROR_INCORRECT_ID_NON_INTEGER, COMMAND_REMOVE);
         } catch (IndexOutOfBoundsException e) {
-            throw new CommandException("ID: \"" + recordNumberStr + "\" is out of bounds!", COMMAND_REMOVE);
+            throw new CommandException(ERROR_INCORRECT_ID_FRONT + recordNumberStr
+                    + ERROR_INCORRECT_ID_OUT_OF_BOUNDS, COMMAND_REMOVE);
         }
     }
 
@@ -88,7 +103,7 @@ public class RemoveCommand extends Command {
     public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreReturnedLoansMap
             creditScoreReturnedLoansMap) {
         Record currentRecord = recordList.getRecordAt(recordNumberInt);
-        ui.printMessage(System.lineSeparator() + "This record will be removed:"
+        ui.printMessage(System.lineSeparator() + MESSAGE_REMOVE_SUCCESS
                 + System.lineSeparator() + System.lineSeparator()
                 + ui.getId(recordNumberInt) + currentRecord + System.lineSeparator());
         recordList.deleteRecordAt(recordNumberInt);
