@@ -501,11 +501,11 @@ Below is our analysis of our target user and the importance in which he/she woul
 
 ### 5.1 Launch and shutdown
 1. Initial launch<br>
-    1.1. Download the latest jar file from [here](https://github.com/AY2021S2-CS2113T-T09-2/tp/releases/tag/v1.0) and copy it into an empty folder.  
+    1.1. Download the latest jar file from [here](https://github.com/AY2021S2-CS2113T-T09-2/tp/releases) and copy it into an empty folder.  
     1.2. Open the terminal/powershell console and navigate to the folder in which the `.jar` file was saved.<br>
    Expected: Greeting message of NUSMaze  to be shown<br>
 2. Exiting the application<br>
-    2.1 Type 'bye' and press enter<br>
+    2.1 Type `bye` and press enter<br>
     Expected: The application shows thank you message and exits successfully.<br>
    
 
