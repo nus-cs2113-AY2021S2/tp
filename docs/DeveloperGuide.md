@@ -450,8 +450,8 @@ credit score of 100, indicating that the borrower is trustable **based solely on
 to the current loan that has just been returned.**
 
 Next, the `ReturnCommand` will compute the days taken for the borrower to return this loan. With this information
-together with the retrieved score, the `ReturnCommand` will recompute the Borrower’s credit score by executing 
-`Utils#computeCreditScore()`. The formula used by `Utils#computeCreditScore() `is as described in 
+together with the retrieved score, the `ReturnCommand` will recompute the borrower’s credit score by executing 
+`Utils#computeCreditScore()`. The formula used by `Utils#computeCreditScore()` is as described in 
 [section 4.7](#47-credit-score-feature). With this newly recomputed score, the `ReturnCommand` will proceed to update
 `CreditScoreReturnedLoansMap` with the Borrower’s new credit score via 
 `CreditScoreReturnedLoansMap#insertCreditScoreOf()`. Upon successful update, the state of the 
@@ -589,6 +589,8 @@ parsed input in the `new AddCommand()` constructor before returning the construc
 ***Step 2:***\
 The application next invokes the `AddCommand#execute()` to execute the user's instruction.
 
+<div style="page-break-after: always;"></div>
+
 ***Step 3:***\
 Inside the `AddCommand#execute()`, the method conducts a check on the `RecordType` enumeration before creating
 the `Record` object.
@@ -634,6 +636,8 @@ modular changes,
 Other than increased complexity of regex Strings, any changes to command and option structure requires a completely
 new regex String. Therefore, systematic validation is the preferred approach, for the current and future developers.
 
+<div style="page-break-after: always;"></div>
+
 ### 4.2 List Feature
 The `list` feature allows the users to display the record's information of the respective category of
 *expense*, *loan*, and *saving* of the added records.
@@ -650,6 +654,8 @@ _Figure 15: Sequence Diagram for `ListCommand`_
 > 📝 The sequence diagram starts from Step 2 onward.
 
 Given below is an example usage scenario of how `ListCommand` behaves at each step.
+
+<div style="page-break-after: always;"></div>
 
 ***Step 1:***\
 The user execute the `list` command with one of the available options, `{-e | -l | -s | -a}`. The program 
@@ -706,6 +712,7 @@ record ID rather than just a single number printout to provide the user a better
 `getId()` is needed, the price to pay is very little compared to confusing the user as indices can be interpreted
 differently by different people.
 
+<div style="page-break-after: always;"></div>
 
 ### 4.3 View Feature
 The `view` feature aims to allow the users to view the total expenditures, loans, and savings for the respective 
@@ -723,6 +730,8 @@ _Figure 16: Sequence Diagram for `ViewCommand`_
 > 📝 The sequence diagram starts from Step 2 onward.
 
 Given below is an example usage scenario of how `ViewCommand` behaves at each step.
+
+<div style="page-break-after: always;"></div>
 
 ***Step 1:***\
 The user execute the `view` command with one of the available options, `{-e | -l | -s | -a}`. The program invokes 
@@ -776,6 +785,7 @@ Having considered two of the approaches, we have decided to adopt the second app
 The deterministic factor was the possibility of very large number such as 1000 billions. Thus, covering more than
 what the integer data type provided can cater to higher flexibility of the application.
 
+<div style="page-break-after: always;"></div>
 
 ### 4.4 Return Feature
 The `return` feature aims to allow users to mark a loan as return after querying the ID with the `list` command. The
@@ -975,7 +985,7 @@ As the saving and loading methods have no explicit command calls, these methods 
 classes. During the launch of the Finux application, in the `start()` method, `getRecordListData()` is called to load the
 data from the saved file: `finux.txt`. 
 
-![SavingFeatureSequenceDiagram](img/StorageSequenceDiagramSave.png)
+![SavingFeatureSequenceDiagram](img/StorageSequenceDiagramSave.png)\
 _Figure 19: Sequence Diagram for Storage's save function_
 
 Saving of data works differently, the data will be automatically saved into `finux.txt` only with a few 
@@ -1013,7 +1023,7 @@ The `writeRecordListToSaveFile()` will repeat Steps 2 to 4 until the last `recor
 
 ---
 
-![LoadingFeatureSequenceDiagram](img/StorageSequenceDiagramLoad.png)
+![LoadingFeatureSequenceDiagram](img/StorageSequenceDiagramLoad.png)\
 *Figure 20: Sequence Diagram for Storage's load function*
 
 `Finux` will automatically load the data from the save file: `finux.txt`. When the Finux application is launched, the
@@ -1091,8 +1101,7 @@ to the `CreditScoreCommand`, the `ParserHandler` will parse the input for `Comma
 `CreditScoreCommand`. Upon successful creation, the `execute()` method of the instance will be called to compute and
 display the credit score of the borrower.
 
-![CreditscoreFeatureSequenceDiagram](img/CreditScoreFeatureSequenceDiagram.png)
-
+![CreditscoreFeatureSequenceDiagram](img/CreditScoreFeatureSequenceDiagram.png)\
 _Figure 21: Sequence Diagram for `CreditScoreCommand`_
 
 ***Step 1***\
