@@ -995,7 +995,7 @@ compared to the second approach, the third approach minimises the coupling withi
 
 
 ### 4.7 Credit Score Feature
-The credit score feature aims to provide users with a way to assess the credibility of his/her borrowers through
+The `creditscore` feature aims to provide users with a way to assess the credibility of his/her borrowers through
 a point scoring system. On a high level view, credit score ranges from 0 to 100 inclusive, and is generally computed
 based on the following pseudo code:
 
@@ -1010,49 +1010,50 @@ based on the following pseudo code:
 
 
 #### 4.7.1 Current Implementation
-The credit score feature is facilitated by the CreditScoreCommand. By providing the name of a borrower as an argument
-to the CreditScoreCommand, the ParserHandler will parse the input for CommandHandler to create an instance of
-CreditScoreCommand. Upon successful creation, the execute() method of the instance will be called to compute and
+The `creditscore` feature is facilitated by the `CreditScoreCommand`. By providing the name of a borrower as an argument
+to the `CreditScoreCommand`, the `ParserHandler` will parse the input for `CommandHandler` to create an instance of
+`CreditScoreCommand`. Upon successful creation, the `execute()` method of the instance will be called to compute and
 display the credit score of the borrower.
 
 ![CreditscoreFeatureSequenceDiagram](img/CreditScoreFeatureSequenceDiagram.png)
+
 _Figure 20: Sequence Diagram for `CreditScoreCommand`_
 
 ***Step 1***\
-User enters the command “creditscore Mark”. Finux class invokes ParserHandler#getParseInput() to provide the parsed
-input to CommandHandler#createCommand().  Since the command requested by the user in this case is the
-CreditScoreCommand, an instance of the CreditScoreCommand is created and returned by createCommand() to the Finux
-class. Validation of the input provided to CreditScoreCommand is performed by the constructor new CreditScoreCommand()
+User enters the command `creditscore Mark`. `Finux` class invokes `ParserHandler#getParseInput()` to provide the parsed
+input to `CommandHandler#createCommand()`.  Since the command requested by the user in this case is the
+`CreditScoreCommand`, an instance of the `CreditScoreCommand` is created and returned by `createCommand()` to the `Finux`
+class. Validation of the input provided to `CreditScoreCommand` is performed by the constructor `new CreditScoreCommand()`
 during the creation of this instance.
 
 ***Step 2***\
-Finux class executes the CreditScoreCommand#execute() to compute and display the credit score of the borrower.
+`Finux` class executes the `CreditScoreCommand#execute()` to compute and display the credit score of the borrower.
 
 ***Step 3***\
-Within the execute() of the CreditScoreCommand class, the method first retrieves the borrower’s credit score via
-CreditScoreReturnedLoansMap#getCreditScoreOf(). This retrieved score is computed based on the list of confirmed
-returned loans made by the borrower and is not the final score. Data stored within CreditScoreReturnedLoansMap are
-computed by the ReturnCommand, when a loan is marked as returned.
+Within the `execute()` of the `CreditScoreCommand` class, the method first retrieves the borrower’s credit score via
+`CreditScoreReturnedLoansMap#getCreditScoreOf()`. This retrieved score is computed based on the **list of confirmed
+returned loans made by the borrower** and **is not the final score.** Data stored within `CreditScoreReturnedLoansMap` are
+computed by the `ReturnCommand`, when a loan is [marked as returned.](#44-return-feature)
 
 ***Step 4***\
-Continuing the computation from the score retrieved in step 3, the method proceeds to loop through the entire RecordList.
+Continuing the computation from the score retrieved in step 3, the method proceeds to loop through the entire `RecordList`.
 
 ***Step 5***\
-Within each iteration, a Record object is first retrieved via RecordList#getRecordAt(). If this retrieved Record
-object is an instance of the Loan class, the method will proceed to check if the loan represented by this loan object
-is being loaned to the specified borrower (in this example, Mark) and has not yet returned.
+Within each iteration, a `Record` object is first retrieved via `RecordList#getRecordAt()`. If this retrieved `Record`
+object is an instance of the `Loan` class, the method will proceed to check if the loan represented by this loan object
+is being loaned to the specified borrower (in this example, Mark) and **has not yet returned.**
 
 ***Step 6***\
-If true, the method will proceed to call the method Utils#getDaysDifference(), which will  compute the difference in
+If true, the method will proceed to call `Utils#getDaysDifference()`, which will compute the difference in
 days between the current date and the issue date of the loan.
 
 ***Step 7***\
-Next, Utils#computeCreditScore() will be used to compute a new credit score of the borrower. This computation is
-cumulative to the score retrieved in step 3 and takes into account the value computed in step 6. The formula used
-by Utils#computeCreditScore() is as described above in the description section.
+Next, `Utils#computeCreditScore()` will be used to compute a new credit score of the borrower. This computation is
+cumulative to the score retrieved in step 3 and takes into account of the value computed in step 6. The formula used
+by `Utils#computeCreditScore()` is as described above in the [introduction section of Credit Score Feature.](#47-credit-score-feature)
 
 ***Step 8***\
-Lastly after the loop mentioned in step 3 ends, the final score is displayed on the console via the UI component.
+Lastly after the loop mentioned in step 3 ends, the final score is displayed onto the console via the `UI` component.
 
 
 #### 4.7.2 Design Consideration
@@ -1060,21 +1061,22 @@ This section shows the design considerations taken when implementing the Credit 
 
 Aspect: **How can we preserve the accuracy of the credit score system?**
 
-As the credit score calculation is calculated based on the loan records of a person, the following methods of
+As the credit score calculation is calculated based on the loan records of a borrower, the following methods of
 calculation can be implemented:
-* Calculating the credit score at run time based on the current record list
-* Persisting the credit score of returned loans and storing into the save file
+* Calculating the credit score at run time based on the current contents of the record list
+* Persisting the credit score of returned loans by storing into the save file
 
 |Approach|Pros|Cons|
 |--------|----|----|
 |Non-persistent|Straight forward and no additional resources needed|Credit score is bias towards the current record list and does not factor in any borrowing history|
-|Persistent|Provide more accurate credit score based on the history regardless of the current record list|Additional resources required to save each person’s current score when exiting the program|
+|Persistent|Provide a more accurate credit score computation based on the borrower's borrowing history regardless of the current contents of the record list|Additional resources required to save each borrower’s current score when exiting the program|
 
-Having considered the two approaches, we have decided to adopt the second approach.
-To preserve the integrity of the credit score system, persisting the credit score of each person throughout the
-application lifetime from the first instance of loan is important. This will ensure that the loan history is kept
-and persisted on every new start up. Even though there is the downside arising from the extra memory space needed, it
-is a small price to pay compared to the benefit it brings to the user when enhancing their decision.
+Having considered the two approaches, we have decided to adopt the second approach. 
+To preserve the accuracy of the credit score system, the persistence of each borrower's credit score starting from 
+the very first loan made to them, to throughout the entire application lifetime is important. This will ensure that
+the loan history is persisted on every new startup, and hence factored in every instance of the credit score 
+computation. Even though there is the downside arising from the extra memory space needed, it is a small price to pay
+as compared to the benefits it brings to the user when enhancing their decision on loaning money to others.
 
 ## Appendix A: Product Scope
 
