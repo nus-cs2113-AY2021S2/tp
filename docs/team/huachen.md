@@ -53,3 +53,4 @@ My code contribution can be found [here](https://nus-cs2113-ay2021s2.github.io/t
 
 #### Contributions beyond the project team
 * Raised [issues](https://github.com/huachen24/ped/issues) on the projects of other groups
+* Gave feedback to other team's documentations.
