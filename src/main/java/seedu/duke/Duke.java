@@ -1,21 +1,20 @@
 package seedu.duke;
 
-import java.util.Scanner;
+import controller.AppController;
+
+import java.io.IOException;
+
+import ui.Ui;
 
 public class Duke {
     /**
-     * Main entry-point for the java.duke.Duke application.
+     * Main entry-point for the our application.
      */
-    public static void main(String[] args) {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
-        System.out.println("What is your name?");
-
-        Scanner in = new Scanner(System.in);
-        System.out.println("Hello " + in.nextLine());
+    public static void main(String[] args) throws IOException {
+        Ui.printWelcomeMessage();
+        Ui.printHelpMessage();
+        AppController controller = new AppController();
+        controller.run();
+        Ui.printExitMessage();
     }
 }
