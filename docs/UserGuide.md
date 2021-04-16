@@ -92,6 +92,8 @@ This section gives you step-by-step instructions on how to download and open the
 
 7. Type your command into the command box at the bottom of the screen, and press Enter on your keyboard to execute it. E.g. typing `help` and pressing Enter will open a help window.<br>
 
+<div style="page-break-after: always;"></div>
+
 8. Refer to [Section 4 - Features](#4-features) for details on the commands you can use for each feature. <br> <br>
 
 
@@ -159,12 +161,12 @@ More examples will be provided for each command in [Section 4 - Features](#4-fea
 
 --------------------------------------------------------------------------------------------------------------------
 
-<div style="page-break-after: always;"></div>
-
 ## 4. Features
 
 This section contains all the information about the features of **NUSMaze**.
 You may enter a command into the CLI to use each feature. 
+
+<div style="page-break-after: always;"></div>
 
 ### 4.1 Viewing Help
 
@@ -214,6 +216,8 @@ Example :
 ------------------------------------------------------------------------------------------------------------
 ```
 
+<div style="page-break-after: always;"></div>
+
 ### 4.2 Showing all venues
 
 List all the venues in Engineering and Computing campus. <br>
@@ -250,6 +254,8 @@ Eateries:
 ```
 
 > :information_source: These are the venue names that can be used in the features below. <br>
+
+<div style="page-break-after: always;"></div>
 
 ### 4.3 Routing
 #### 4.3.1 Routing between blocks
@@ -340,6 +346,7 @@ Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
 > :warning: The `STARTING_BLOCK` must be one of the Engineering or Computing buildings. <br>
 > :warning: `EATERY_ENTRY` must be an integer from 1 to 7. <br>
 
+<div style="page-break-after: always;"></div>
 
 ### 4.4 History
 #### 4.4.1 Viewing History
@@ -399,6 +406,8 @@ Your history has been successfully cleared
 ------------------------------------------------------------------------------------------------------------
 ```
 
+<div style="page-break-after: always;"></div>
+
 ### 4.5 Alias
 #### 4.5.1 Adding alias for block name
 Creates an alias for existing blocks.<br>
@@ -457,6 +466,8 @@ Got it! Successfully deleted FOOD from alias list!
 ```
 - When the `delete alias` command is given, NUSMaze will prompt you for the
   `ALIAS_NAME` that you wish to delete.
+
+<div style="page-break-after: always;"></div>
 
 ### 4.6 Daily Routes
 #### 4.6.1 Adding daily routes
@@ -564,6 +575,8 @@ Got it! Successfully cleared MONDAY's schedule!
 
 > :warning: The `DAY_NUMBER` must be the index of one of the available days which has been displayed. <br>
 
+<div style="page-break-after: always;"></div>
+
 ### 4.7 Favourite Routes
 #### 4.7.1 Adding favourite routes
 You can add a route to favourites to easily access it in the future.<br>
@@ -637,6 +650,8 @@ Got it! Successfully deleted favourite route :)
 ```
 > :warning: `ROUTE_INDEX` must be an integer within the bounds of the favourite list. <br>
 
+<div style="page-break-after: always;"></div>
+
 ### 4.8 Notes
 #### 4.8.1 Adding notes
 Tags a note to a particular existing location of your choice.<br/>
@@ -707,6 +722,7 @@ Got it! Successfully deleted note tagged to STARBUCKS
 > :warning: The `BLOCK` must be one of the Engineering or Computing buildings. <br>
 >:warning: The `NOTE_INDEX` must be an integer within the total number of notes that the location has. <br>
 
+<div style="page-break-after: always;"></div>
 
 ### 4.9 Exiting the application
 
@@ -730,6 +746,8 @@ In the data folder you will find 5 text files as shown below.<br>
 ![image.png](images/textfiles.png)
 
 > :warning: It is highly recommended that you do not edit the saved data as it can cause loading issues in future sessions! <br>
+
+<div style="page-break-after: always;"></div>
 
 ### 4.11 Loading Past Data
 
