@@ -1,0 +1,106 @@
+@startuml
+hide circle
+skinparam classAttributeIconSize 0
+
+package Storage {
+    interface "<<interface>>\nStorable" as Storable {
+    }
+}
+
+interface "<<interface>>\nComparable" as Comparable {
+}
+
+package Data {
+    class Data {
+    }
+
+    package Module {
+        class Module {
+                -moduleCode: String
+            }
+    }
+
+    package Assignment {
+        interface "<<interface>>\nAutogradable" as Autogradable {
+        }
+
+        class "{abstract}\nAssignment" as Assignment {
+            #name: String
+            #typeOfAssignment: String
+            #deadline: LocalDate
+            #percentageOfOverallGrade: float
+            +assignmentComments: ArrayList<String>
+            #studentGrades: HashMap<String, float>
+        }
+
+        class Answer {
+            -answers: ArrayList<String>
+            -marks: ArrayList<Integer>
+            -numberOfQuestions: int
+        }
+
+        class LongAnswerAssignment {
+        }
+
+        class McqAssignment {
+        }
+
+        class ShortAnswerAssignment {
+        }
+    }
+
+    package Lesson {
+        class Lesson {
+            -lessonType: String
+            -venue: String
+            -day: Day
+            -startTime: LocalTime
+            -endTime: LocalTime
+        }
+        enum "<<enumeration>>\nDay" {
+                MONDAY
+                TUESDAY
+                WEDNESDAY
+                THURSDAY
+                FRIDAY
+                SATURDAY
+                SUNDAY
+            }
+    }
+
+    package Student {
+        class Student {
+            -name: String
+            -studentNumber: String
+            -email: String
+        }
+    }
+}
+
+Assignment ...|> Storable
+Lesson ...|> Storable
+Student ...|> Storable
+Assignment ...|> Comparable
+
+Data o--> "0..*" Module
+Module o--> "0..*" Assignment
+Assignment <|-- LongAnswerAssignment
+Assignment <|-- McqAssignment
+Assignment <|-- ShortAnswerAssignment
+LongAnswerAssignment --> "0..1" Answer
+McqAssignment --> "0..1" Answer
+ShortAnswerAssignment --> "0..1" Answer
+McqAssignment ...|> Autogradable
+ShortAnswerAssignment ...|> Autogradable
+
+Module o--> "0..*" Lesson
+Module o--> "0..*" Student
+
+
+
+
+
+
+
+
+@enduml

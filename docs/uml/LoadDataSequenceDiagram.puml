@@ -1,0 +1,73 @@
+@startuml
+
+hide footbox
+
+participant ":Storage" as Storage
+participant ":Scanner" as Scanner
+participant ":Module" as Module
+participant ":Assignment" as Assignment
+participant ":Lesson" as Lesson
+participant ":Student" as Student
+participant ":Data" as Data
+
+[-> Storage : loadData()
+
+activate Storage
+Storage -> Scanner **
+activate Scanner
+Scanner --> Storage
+deactivate Scanner
+
+Storage -> Data **
+activate Data
+Data --> Storage
+deactivate Data
+
+loop for all Module
+
+    Storage -> Storage : loadModule()
+    activate Storage
+    Storage -> Module **
+    activate Module
+    Module --> Storage
+    deactivate Module
+
+    loop for all Assignment
+        ref over Storage, Assignment : loadAssignment()
+        Storage -> Module : addAssignment()
+        activate Module
+        Module --> Storage
+        deactivate Module
+    end
+
+    loop for all Lesson
+        ref over Storage, Lesson : loadLesson()
+        Storage -> Module : addLesson()
+        activate Module
+        Module --> Storage
+        deactivate Module
+    end
+
+    loop for all Student
+        ref over Storage, Student : loadStudent()
+        Storage -> Module : addStudent()
+        activate Module
+        Module --> Storage
+        deactivate Module
+    end
+
+Storage --> Storage
+deactivate Storage
+
+end
+deactivate Module
+
+Storage -> Data : addModule()
+activate Data
+Data --> Storage
+deactivate Data
+
+[<-- Storage : Data
+deactivate Storage
+
+@enduml

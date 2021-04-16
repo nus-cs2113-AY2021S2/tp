@@ -1,0 +1,7 @@
+1 | CS2113T Rocks! | 10
+2 | CS2101 Rocks! | 10
+3 | CS2040C Rocks! | 10
+4 | CS1010X Rocks! | 10
+5 | CS1231 Rocks! | 10
+6 | EE2026 Rocks! | 10
+7 | CG1112 is okay | 1

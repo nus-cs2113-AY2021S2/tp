@@ -1,0 +1,104 @@
+@startuml
+
+hide footbox
+
+participant ":Parser" as Parser
+participant ":AutogradeAssignmentCommand" as Command
+participant ":Data" as Data
+participant ":Module" as Module
+participant ":Storage" as Storage
+participant ":Answer" as Answer
+participant ":Assignment" as Assignment
+participant ":McqAssignment" as McqAssignment
+participant ":ShortAnswerAssignment" as ShortAnswerAssignment
+participant ":Student" as Student
+participant ":Ui" as Ui
+
+[-> Parser : parse("autograde assignment")
+activate Parser
+
+ref over Parser, Command : getCommand
+
+[<-- Parser : AutogradeAssignmentCommand
+deactivate Parser
+
+[->Command : execute()
+activate Command
+
+Command -> Data : find(moduleCode)
+activate Data
+
+Data --> Command : module
+deactivate Data
+
+Command -> Module : findAssignment(assignmentName)
+activate Module
+
+Module --> Command : assignment
+deactivate Module
+
+Command -> Module : getStudents()
+activate Module
+
+Module --> Command : students
+deactivate Module
+
+Command -> Storage : loadAnswer(assignmentName, moduleCode)
+activate Storage
+
+ref over Storage, Answer : loadAnswer
+
+Storage --> Command : answer
+deactivate Storage
+
+Command -> Assignment : setAnswers(answer)
+activate Assignment
+
+Assignment --> Command
+deactivate Assignment
+
+alt assignment instanceof McqAssignment
+
+Command -> McqAssignment : autogradeAssignment(students, moduleCode, storage)
+activate McqAssignment
+
+ref over McqAssignment, Student, Storage, Answer : autogradeMcq
+
+McqAssignment --> Command
+deactivate McqAssignment
+
+
+else assignment instanceof ShortAnswerAssignment
+
+Command -> ShortAnswerAssignment : autogradeAssignment(students, moduleCode, storage)
+activate ShortAnswerAssignment
+
+ref over ShortAnswerAssignment, Student, Storage, Answer : autogradeShortAnswer
+
+ShortAnswerAssignment --> Command
+deactivate ShortAnswerAssignment
+
+end
+
+Command -> Assignment : getUngraded(students)
+activate Assignment
+
+Assignment --> Command : ungraded
+deactivate Assignment
+
+Command -> Ui : listAssignmentStudentGrades(assignment)
+activate Ui
+
+Ui --> Command
+deactivate Ui
+
+Command -> Ui : listUngradedStudents(ungraded)
+activate Ui
+
+Ui --> Command
+deactivate Ui
+
+[<-- Command
+deactivate Command
+
+@enduml
