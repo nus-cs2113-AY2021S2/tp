@@ -95,7 +95,9 @@ This section gives you step-by-step instructions on how to download and open the
 
 8. Refer to [Section 4 - Features](#4-features) for details on the commands you can use for each feature. <br> <br>
 
+<div style="page-break-after: always;"></div>
 
+> :information_source: Image below shows you can open home directory of NUSMaze in command prompt or terminal.
 ![img.png](images/howtolaunch.png)
 
 | Windows |  Mac |
