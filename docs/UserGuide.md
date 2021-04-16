@@ -666,7 +666,7 @@ Got it! Successfully deleted favourite route :)
 
 ### 4.8 Notes
 #### 4.8.1 Adding notes
-Tags a note to a particular existing location of your choice.<br/>
+Tags a note to a location of your choice, if the location exists.<br/>
 Format : `add note` → `BLOCK` → `NOTE` <br>
 Example :
 ```
@@ -710,7 +710,7 @@ Here is the list of notes:
 
 #### 4.8.3 Deleting notes
 
-Delete the specified note based on index number tagged to the given existing location.<br/>
+Deletes a note with the corresponding index number tagged to the given location, if the location exists and the note has been tagged to the given location.<br/>
 Format : `delete note` → `BLOCK` → `NOTE_INDEX` <br>
 Example :
 ```
@@ -734,7 +734,7 @@ Got it! Successfully deleted note tagged to STARBUCKS
   which is the index of the note in the location's notes list. <br>
 
 > :warning: The `BLOCK` must be one of the Engineering or Computing buildings. <br>
->:warning: The `NOTE_INDEX` must be an integer within the total number of notes that the location has. <br>
+> :warning: The `NOTE_INDEX` must be an integer within the total number of notes that the location has. <br>
 
 <div style="page-break-after: always;"></div>
 
