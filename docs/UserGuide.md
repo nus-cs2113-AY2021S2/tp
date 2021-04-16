@@ -766,7 +766,7 @@ In the data folder you will find 5 text files as shown below.<br>
 ### 4.11 Loading Past Data
 
 NUSMaze automatically loads your past data when the application is launched.<br>
-NUSMaze will inform you whether the data has been successfully loaded by displaying the below message after the NUSMaze Logo.<br>
+NUSMaze will inform you whether the data has been successfully loaded by displaying the message, as shown below, after the NUSMaze Logo.<br>
 ```
 ------------------------------------------------------------------------------------------------------------
 [X] Alias data has been successfully loaded!
