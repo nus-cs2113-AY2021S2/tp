@@ -87,10 +87,10 @@ This section gives you step-by-step instructions on how to download and open the
 5. Key in `java -jar NUSMaze.jar` and press enter to launch the NUSMaze application.<br>
    
 6. A CLI similar to Figure 1 below should appear in a few seconds.  <br>
-   ![img.png](images/NUSMazecli.png)
-   <p align="center">Figure 1 - CLI of NUSMaze</p> 
    <br>
-   
+   ![img.png](images/NUSMazecli.png)
+   <p align="center">Figure 1 - CLI of NUSMaze</p> <br>
+
 7. Type your command into the command box at the bottom of the screen, and press Enter on your keyboard to execute it. E.g. typing `help` and pressing Enter will open a help window.<br>
 
 8. Refer to [Section 4 - Features](#4-features) for details on the commands you can use for each feature. <br> <br>
