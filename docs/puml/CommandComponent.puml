@@ -1,0 +1,111 @@
+@startuml
+!include Style.puml
+
+package Command <<Rectangle>> {
+    abstract class "{abstract}\nCommand" COMMAND_COLOR {
+        # blockAlias: BlockAlias
+        # history: History
+        # favourite: Favourite
+        # dailyRoute: DailyRoute
+        # isExit: boolean
+
+        + setData(NusMap, BlockAlias, History, Favourite, DailyRoute): void
+        + isExit(): boolean
+        + execute(): void
+    }
+
+    package routecommand {
+        class GoCommand COMMAND_COLOR {
+        }
+    }
+
+    package generalcommand {
+        class ByeCommand COMMAND_COLOR {
+        }
+        class HelpCommand COMMAND_COLOR {
+        }
+        class ShowVenuesCommand COMMAND_COLOR {
+        }
+    }
+
+    package aliascommand {
+        class AddCustomAliasCommand COMMAND_COLOR {
+        }
+        class DeleteCustomAliasCommand COMMAND_COLOR {
+        }
+        class ShowCustomAliasCommand COMMAND_COLOR {
+        }
+    }
+
+    package dailyroutecommand {
+        class AddDailyRouteCommand COMMAND_COLOR {
+        }
+        class ShowDailyRouteCommand COMMAND_COLOR {
+        }
+        class DeleteDailyRouteCommand COMMAND_COLOR {
+        }
+    }
+
+    package favouritecommand {
+        class AddFavouriteCommand COMMAND_COLOR {
+        }
+        class ShowFavouriteCommand COMMAND_COLOR {
+        }
+        class DeleteFavouriteCommand COMMAND_COLOR {
+        }
+        class RepeatFavouriteCommand COMMAND_COLOR {
+        }
+    }
+
+    package historycommand {
+        class ClearHistoryCommand COMMAND_COLOR {
+        }
+        class RepeatHistoryCommand COMMAND_COLOR {
+        }
+        class ShowHistoryCommand COMMAND_COLOR {
+        }
+    }
+
+    package notecommand {
+        class AddNoteCommand COMMAND_COLOR {
+        }
+        class DeleteNoteCommand COMMAND_COLOR {
+        }
+        class ListNoteCommand COMMAND_COLOR {
+        }
+    }
+}
+
+'ByeCommand -[hidden]down- HelpCommand
+'AddDailyRouteCommand -[hidden]down- ShowDailyRouteCommand
+dailyroutecommand -[hidden]up- routecommand
+notecommand -[hidden]- favouritecommand
+historycommand -[hidden]down- aliascommand
+
+"{abstract}\nCommand" <|-left- GoCommand
+"{abstract}\nCommand" <|-down- ByeCommand
+"{abstract}\nCommand" <|-down- HelpCommand
+"{abstract}\nCommand" <|-up- AddCustomAliasCommand
+"{abstract}\nCommand" <|-up- DeleteCustomAliasCommand
+"{abstract}\nCommand" <|-up- ShowCustomAliasCommand
+"{abstract}\nCommand" <|-up- AddDailyRouteCommand
+"{abstract}\nCommand" <|-up- ShowDailyRouteCommand
+"{abstract}\nCommand" <|-down- AddFavouriteCommand
+"{abstract}\nCommand" <|-down- DeleteFavouriteCommand
+"{abstract}\nCommand" <|-down- RepeatFavouriteCommand
+"{abstract}\nCommand" <|-down- ShowFavouriteCommand
+"{abstract}\nCommand" <|-up- ClearHistoryCommand
+"{abstract}\nCommand" <|-up- RepeatHistoryCommand
+"{abstract}\nCommand" <|-up- ShowHistoryCommand
+"{abstract}\nCommand" <|-down- AddNoteCommand
+"{abstract}\nCommand" <|-down- DeleteNoteCommand
+"{abstract}\nCommand" <|-down- ListNoteCommand
+"{abstract}\nCommand" <|-down- ShowVenuesCommand
+"{abstract}\nCommand" <|-down- DeleteDailyRouteCommand
+
+hide members
+show "{abstract}\nCommand" members
+hide circle
+skinparam classAttributeIconSize 0
+
+@enduml

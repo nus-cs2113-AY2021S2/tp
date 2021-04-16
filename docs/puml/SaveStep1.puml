@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/object-diagram
+
+object __Storage__
+
+object __AliasStorage__ {
+    filepath = "data/aliasList.txt"
+}
+
+object __HistoryRouteStorage__ {
+    filepath = "data/routesHistoryList.txt"
+}
+
+object __NotesStorage__ {
+  filepath = "data/notesList.txt" 
+}
+
+object __FavouriteLocationsStorage__ {
+    filepath = "data/favouritesList.txt"
+}
+
+__Storage__ <--- __AliasStorage__
+__Storage__ <--- __NotesStorage__
+__Storage__ <--- __HistoryRouteStorage__
+__Storage__ <--- __FavouriteLocationsStorage__
+@enduml

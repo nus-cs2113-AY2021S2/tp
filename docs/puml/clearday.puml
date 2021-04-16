@@ -1,0 +1,25 @@
+@startuml
+hide footbox
+
+participant ":NUSMaze"
+":NUSMaze" -> "command:DeleteDailyRouteCommand" : execute()
+activate "command:DeleteDailyRouteCommand"
+"command:DeleteDailyRouteCommand" -> "dailyRoute:DailyRoute" : getSelectableDays()
+activate "dailyRoute:DailyRoute"
+return
+deactivate "dailyRoute:DailyRoute"
+"command:DeleteDailyRouteCommand" -> "ui:DailyRouteUi" : getDayEntry(ArrayList<String>)
+activate "ui:DailyRouteUi"
+return
+deactivate "ui:DailyRouteUi"
+"command:DeleteDailyRouteCommand" -> "dailyRoute:DailyRoute" : addDailyRoute(String, ArrayList<String>)
+activate "dailyRoute:DailyRoute"
+"dailyRoute:DailyRoute" --> "command:DeleteDailyRouteCommand"
+deactivate "dailyRoute:DailyRoute"
+"command:DeleteDailyRouteCommand" -> "ui:DailyRouteUi": showMessageWithDivider(String)
+activate "ui:DailyRouteUi"
+return
+deactivate "ui:DailyRouteUi"
+"command:DeleteDailyRouteCommand" --> ":NUSMaze"
+deactivate "command:DeleteDailyRouteCommand"
+@enduml

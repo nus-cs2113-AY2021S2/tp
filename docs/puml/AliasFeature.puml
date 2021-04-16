@@ -1,0 +1,64 @@
+@startuml
+hide circle
+skinparam classAttributeIconSize 0
+
+class ShowCustomAliasCommand {
+# AliasUi ui
++ execute():void
+}
+class AddCustomAliasCommand {
+# AliasUi ui
+- {static} String MESSAGE_SUCCESS
++ execute():void
+}
+class BlockAlias {
+- HashMap<String,String> aliases
++ getAliasHashMap():HashMap<String,String>
++ changeAliasToBlock(String,String):String[]
++ addAlias(String,String):void
++ deleteAlias(String):void
+}
+class NusMap {
+- HashMap<String,Block> map
+}
+class NusMaze {
+- NusMap nusMap
+- UiManager ui
+- BlockAlias blockAlias
+- Storage aliasStorage
+}
+class DeleteCustomAliasCommand {
+# AliasUi ui
+- {static} String MESSAGE_SUCCESS
++ execute():void
+}
+class AliasStorage {
++ loadAlias(BlockAlias):void
++ overwriteAliasListFile(BlockAlias):void
++ appendToAliasListFile(String):void
+}
+class AliasUi {
++ getAliasInfo():String[]
++ showCustomAliases(BlockAlias):void
++ getDeleteAliasInfo():String
+}
+
+
+"{abstract}\nCommand" <|-- ShowCustomAliasCommand
+"{abstract}\nCommand" <|-- AddCustomAliasCommand
+"{abstract}\nCommand" <|-- DeleteCustomAliasCommand
+"{abstract}\nStorage" <|-- AliasStorage
+UiManager <|-- AliasUi
+
+NusMaze --> "**1..***" "{abstract}\nCommand"
+
+DeleteCustomAliasCommand ..> AliasUi
+AddCustomAliasCommand ..> AliasUi
+ShowCustomAliasCommand ..> AliasUi
+
+NusMaze --> "**1**" BlockAlias
+NusMaze --> "**1**" AliasStorage
+
+BlockAlias ..> NusMap
+
+@enduml

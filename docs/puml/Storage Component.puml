@@ -1,0 +1,87 @@
+@startuml
+'https://plantuml.com/class-diagram
+!include Style.puml
+
+package Data <<rectangle>> DATA_COLOR {
+}
+
+package TextFiles <<rectangle>> {
+    class aliasList FILES_COLOR
+    class dailyRouteList FILES_COLOR
+    class favouriteList FILES_COLOR
+    class history FILES_COLOR
+    class noteList FILES_COLOR
+}
+
+package Storage <<rectangle>> {
+        interface DataEncoder <<interface>> STORAGE_COLOR
+        interface DataDecoder <<interface>> STORAGE_COLOR
+        abstract class "{abstract}\nStorage" STORAGE_COLOR {
+            #filepath:Path
+            #nusMap:NusMap;
+            #blockAlias:BlockAlias;
+            #history:History;
+            #favourite:Favourite;
+            #dailyRoute:DailyRoute;
+            +setData(:NusMap, :BlockAlias, :History, :Favourite, :DailyRoute)
+            +saveData()
+            +loadData()
+        }
+
+         class AliasStorage STORAGE_COLOR {
+         }
+         class DailyRouteStorage STORAGE_COLOR {
+         }
+         class FavouriteStorage STORAGE_COLOR {
+         }
+         class HistoryStorage STORAGE_COLOR {
+         }
+         class NotesStorage STORAGE_COLOR {
+         }
+
+
+}
+
+
+"{abstract}\nStorage" ..up|> DataEncoder
+"{abstract}\nStorage" ..up|> DataDecoder
+AliasStorage ---up|> "{abstract}\nStorage"
+DailyRouteStorage ---up|> "{abstract}\nStorage"
+FavouriteStorage ---up|> "{abstract}\nStorage"
+HistoryStorage ---up|> "{abstract}\nStorage"
+NotesStorage ---up|> "{abstract}\nStorage"
+
+AliasStorage --down[ARROW_DATA_COLOR]> Data
+DailyRouteStorage --down[ARROW_DATA_COLOR]> Data
+FavouriteStorage --down[ARROW_DATA_COLOR]> Data
+HistoryStorage --down[ARROW_DATA_COLOR]> Data
+NotesStorage --down[ARROW_DATA_COLOR]> Data
+
+
+AliasStorage --right[ARROW_FILES_ALIASLIST_COLOR]> aliasList
+DailyRouteStorage --right[ARROW_FILES_DAILYROUTELIST_COLOR]> dailyRouteList
+FavouriteStorage --right[ARROW_FILES_FAVLIST_COLOR]> favouriteList
+HistoryStorage --right[ARROW_FILES_HISTORY_COLOR]> history
+NotesStorage --right[ARROW_FILES_NOTELIST_COLOR]> noteList
+
+skinparam classAttributeIconSize 0
+hide AliasStorage attributes
+hide DailyRouteStorage attributes
+hide FavouriteStorage attributes
+hide HistoryStorage attributes
+hide NotesStorage attributes
+hide AliasStorage members
+hide DailyRouteStorage members
+hide FavouriteStorage members
+hide HistoryStorage members
+hide NotesStorage members
+hide DataDecoder members
+hide DataEncoder members
+hide aliasList members
+hide dailyRouteList members
+hide favouriteList members
+hide history members
+hide noteList members
+hide circle
+
+@enduml
