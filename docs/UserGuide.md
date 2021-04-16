@@ -33,13 +33,13 @@
    &nbsp;&nbsp;&nbsp;&nbsp; 4.7.2. [Showing favourite routes](#472-showing-favourite-routes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.7.3. [Repeating favourite routes](#473-repeating-favourite-routes) <br> 
    &nbsp;&nbsp;&nbsp;&nbsp; 4.7.4. [Deleting favourite routes](#474-deleting-favourite-routes) <br>
-   
-   <div style="page-break-after: always;"></div>
-   
    4.8. [Notes](#48-notes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.8.1. [Adding notes](#481-adding-notes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.8.2. [Showing notes](#482-showing-notes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.8.3. [Deleting notes](#483-deleting-notes) <br>
+
+   <div style="page-break-after: always;"></div>
+
    4.9. [Exiting the application](#49-exiting-the-application) <br>
    4.10. [Saving the Data](#410-saving-the-data) <br>
    4.11. [Loading Past Data](#411-loading-past-data) <br>
@@ -392,6 +392,8 @@ Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
 
 > :warning: `REPEAT_ENTRY` must be an integer that is within the bounds of the history list shown.
 
+<div style="page-break-after: always;"></div>
+
 
 #### 4.4.3 Clearing History
 
@@ -449,6 +451,9 @@ Here are your aliases:
 1. FOOD - TECHNO EDGE
 ------------------------------------------------------------------------------------------------------------
 ```
+
+<div style="page-break-after: always;"></div>
+
 
 #### 4.5.3 Deleting aliases
 Deletes an alias that was previously created.<br>
@@ -513,6 +518,7 @@ Got it! Successfully added MONDAY's schedule!
 > :warning: There must be at least one block entered for the schedule.<br>
 > :warning: Entries must be the original block names. Aliases are not allowed.<br>
 
+<div style="page-break-after: always;"></div>
 
 #### 4.6.2 Showing daily routes
 
@@ -696,6 +702,8 @@ Here is the list of notes:
 - When the `show note` command is entered, NUSMaze will prompt you for a `BLOCK`. <br>
 
 > :warning: The `BLOCK` must be one of the Engineering or Computing buildings. <br>
+
+<div style="page-break-after: always;"></div>
 
 #### 4.8.3 Deleting notes
 
