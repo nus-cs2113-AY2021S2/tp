@@ -33,13 +33,13 @@
    &nbsp;&nbsp;&nbsp;&nbsp; 4.7.2. [Showing favourite routes](#472-showing-favourite-routes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.7.3. [Repeating favourite routes](#473-repeating-favourite-routes) <br> 
    &nbsp;&nbsp;&nbsp;&nbsp; 4.7.4. [Deleting favourite routes](#474-deleting-favourite-routes) <br>
-   
-   <div style="page-break-after: always;"></div>
-   
    4.8. [Notes](#48-notes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.8.1. [Adding notes](#481-adding-notes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.8.2. [Showing notes](#482-showing-notes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.8.3. [Deleting notes](#483-deleting-notes) <br>
+
+   <div style="page-break-after: always;"></div>
+
    4.9. [Exiting the application](#49-exiting-the-application) <br>
    4.10. [Saving the Data](#410-saving-the-data) <br>
    4.11. [Loading Past Data](#411-loading-past-data) <br>
@@ -87,6 +87,7 @@ This section gives you step-by-step instructions on how to download and open the
 5. Key in `java -jar NUSMaze.jar` and press enter to launch the NUSMaze application.<br>
    
 6. A CLI similar to Figure 1 below should appear in a few seconds.  <br>
+   <br>
    ![img.png](images/NUSMazecli.png)
    <p align="center">Figure 1 - CLI of NUSMaze</p>
 
@@ -102,6 +103,7 @@ This section gives you step-by-step instructions on how to download and open the
 |Key in `cmd` and press enter.|Right click on the folder and click on "New Terminal at Folder"|
 
 --------------------------------------------------------------------------------------------------------------------
+
 <div style="page-break-after: always;"></div>
 
 ## 3. About
@@ -164,7 +166,7 @@ More examples will be provided for each command in [Section 4 - Features](#4-fea
 ## 4. Features
 
 This section contains all the information about the features of **NUSMaze**.
-You may enter a command into the CLI to use each feature. 
+You may enter a command into the CLI to use each feature.
 
 ### 4.1 Viewing Help
 
@@ -214,6 +216,8 @@ Example :
 ------------------------------------------------------------------------------------------------------------
 ```
 
+<div style="page-break-after: always;"></div>
+
 ### 4.2 Showing all venues
 
 List all the venues in Engineering and Computing campus. <br>
@@ -250,6 +254,8 @@ Eateries:
 ```
 
 > :information_source: These are the venue names that can be used in the features below. <br>
+
+<div style="page-break-after: always;"></div>
 
 ### 4.3 Routing
 #### 4.3.1 Routing between blocks
@@ -340,6 +346,7 @@ Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
 > :warning: The `STARTING_BLOCK` must be one of the Engineering or Computing buildings. <br>
 > :warning: `EATERY_ENTRY` must be an integer from 1 to 7. <br>
 
+<div style="page-break-after: always;"></div>
 
 ### 4.4 History
 #### 4.4.1 Viewing History
@@ -385,6 +392,8 @@ Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
 
 > :warning: `REPEAT_ENTRY` must be an integer that is within the bounds of the history list shown.
 
+<div style="page-break-after: always;"></div>
+
 
 #### 4.4.3 Clearing History
 
@@ -398,6 +407,8 @@ Example :
 Your history has been successfully cleared
 ------------------------------------------------------------------------------------------------------------
 ```
+
+<div style="page-break-after: always;"></div>
 
 ### 4.5 Alias
 #### 4.5.1 Adding alias for block name
@@ -441,6 +452,9 @@ Here are your aliases:
 ------------------------------------------------------------------------------------------------------------
 ```
 
+<div style="page-break-after: always;"></div>
+
+
 #### 4.5.3 Deleting aliases
 Deletes an alias that was previously created.<br>
 Format : `delete alias` → `ALIAS_NAME`<br>
@@ -457,6 +471,8 @@ Got it! Successfully deleted FOOD from alias list!
 ```
 - When the `delete alias` command is given, NUSMaze will prompt you for the
   `ALIAS_NAME` that you wish to delete.
+
+<div style="page-break-after: always;"></div>
 
 ### 4.6 Daily Routes
 #### 4.6.1 Adding daily routes
@@ -502,6 +518,7 @@ Got it! Successfully added MONDAY's schedule!
 > :warning: There must be at least one block entered for the schedule.<br>
 > :warning: Entries must be the original block names. Aliases are not allowed.<br>
 
+<div style="page-break-after: always;"></div>
 
 #### 4.6.2 Showing daily routes
 
@@ -536,6 +553,7 @@ Route: E7 -> E6 -> EW2 -> E4A -> E4 -> E3 -> E2 -> EA
 
 > :warning: The `DAY_NUMBER` must be the index of one of the available days which has been displayed. <br>
 
+<div style="page-break-after: always;"></div>
 
 #### 4.6.3 Deleting daily routes
 
@@ -563,6 +581,8 @@ Got it! Successfully cleared MONDAY's schedule!
 - NUSMaze will then prompt you for a `DAY_NUMBER`. <br>
 
 > :warning: The `DAY_NUMBER` must be the index of one of the available days which has been displayed. <br>
+
+<div style="page-break-after: always;"></div>
 
 ### 4.7 Favourite Routes
 #### 4.7.1 Adding favourite routes
@@ -598,6 +618,8 @@ Here are your favourite routes:
 1. EA -> E4
 ------------------------------------------------------------------------------------------------------------
 ```
+
+<div style="page-break-after: always;"></div>
 
 #### 4.7.3 Repeating favourite routes
 You can execute and obtain the route to take for your favourite routes.<br>
@@ -636,6 +658,8 @@ Got it! Successfully deleted favourite route :)
 ------------------------------------------------------------------------------------------------------------
 ```
 > :warning: `ROUTE_INDEX` must be an integer within the bounds of the favourite list. <br>
+
+<div style="page-break-after: always;"></div>
 
 ### 4.8 Notes
 #### 4.8.1 Adding notes
@@ -679,6 +703,8 @@ Here is the list of notes:
 
 > :warning: The `BLOCK` must be one of the Engineering or Computing buildings. <br>
 
+<div style="page-break-after: always;"></div>
+
 #### 4.8.3 Deleting notes
 
 Delete the specified note based on index number tagged to the given existing location.<br/>
@@ -707,6 +733,7 @@ Got it! Successfully deleted note tagged to STARBUCKS
 > :warning: The `BLOCK` must be one of the Engineering or Computing buildings. <br>
 >:warning: The `NOTE_INDEX` must be an integer within the total number of notes that the location has. <br>
 
+<div style="page-break-after: always;"></div>
 
 ### 4.9 Exiting the application
 
@@ -730,6 +757,8 @@ In the data folder you will find 5 text files as shown below.<br>
 ![image.png](images/textfiles.png)
 
 > :warning: It is highly recommended that you do not edit the saved data as it can cause loading issues in future sessions! <br>
+
+<div style="page-break-after: always;"></div>
 
 ### 4.11 Loading Past Data
 
@@ -774,6 +803,7 @@ can be found on the second computer. <br>
 **A** : You can refer to this [map](http://map.nus.edu.sg) to view the directions. <br>
 
 --------------------------------------------------------------------------------------------------------------------
+
 <div style="page-break-after: always;"></div>
 
 ## 6. Command summary
