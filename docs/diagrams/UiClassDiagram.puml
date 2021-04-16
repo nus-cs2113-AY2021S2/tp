@@ -1,0 +1,15 @@
+@startuml
+hide circle
+skinparam classAttributeIconSize 0
+
+Ui"1" <-- iGraduate
+Ui : -SCANNER:Scanner
+Ui : +getCommand(): String
+
+
+
+
+
+iGraduate : +run()
+iGraduate : +main()
+@enduml

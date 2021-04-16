@@ -1,0 +1,61 @@
+@startuml
+
+hide circle
+skinparam classAttributeIconSize 0
+
+class "{abstract}\nModule" {
+    +isGradeSu():boolean
+    +isPrerequisitesSatisfied():boolean
+    +removeUntakenPreRequisite(String:ModuleCode)
+    +removeRequredByModule(String:ModuleCode)
+    +hashCode():int
+    +equals(Object:Module):boolean
+    +toString():String
+}
+
+class "CoreModule" {
+    +isGradeSu():boolean
+    +isPrerequisitesSatisfied():boolean
+    +removeUntakenPreRequisite(String:ModuleCode)
+    +removeRequredByModule(String:ModuleCode)
+    +hashCode():int
+    +equals(Object:Module):boolean
+    +toString():String
+}
+
+class "GeModule" {
+    +isGradeSu():boolean
+    +isPrerequisitesSatisfied():boolean
+    +removeUntakenPreRequisite(String:ModuleCode)
+    +removeRequredByModule(String:ModuleCode)
+    +hashCode():int
+    +equals(Object:Module):boolean
+    +toString():String
+}
+
+class "ElectiveModule" {
+    +isGradeSu():boolean
+    +isPrerequisitesSatisfied():boolean
+    +removeUntakenPreRequisite(String:ModuleCode)
+    +removeRequredByModule(String:ModuleCode)
+    +hashCode():int
+    +equals(Object:Module):boolean
+    +toString():String
+}
+
+class "MathModule" {
+    +isGradeSu():boolean
+    +isPrerequisitesSatisfied():boolean
+    +removeUntakenPreRequisite(String:ModuleCode)
+    +removeRequredByModule(String:ModuleCode)
+    +hashCode():int
+    +equals(Object:Module):boolean
+    +toString():String
+}
+
+"{abstract}\nModule" <|-- "CoreModule"
+"{abstract}\nModule" <|-- "GeModule"
+"{abstract}\nModule" <|-- "ElectiveModule"
+"{abstract}\nModule" <|-- "MathModule"
+
+@enduml
