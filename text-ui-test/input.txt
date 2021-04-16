@@ -1,1 +1,35 @@
-James Gosling
+help
+items
+orders
+items add pen
+13 12
+items update
+1
+p
+15
+items clear
+items list
+items add PS5
+599 100
+items delete 1
+items list
+items add PS4
+299 100
+items find PS
+items list
+orders add yw
+1 2
+stop
+orders clear
+orders list
+orders add ws
+1 2
+stop
+orders delete 1
+orders list
+orders add zk
+1 2
+stop
+orders find z
+orders done 1
+exit

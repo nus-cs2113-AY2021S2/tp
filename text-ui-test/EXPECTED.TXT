@@ -1,9 +1,209 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
-
-What is your name?
-Hello James Gosling
+____________________________________________________________
+Hello! I'm easyLog!
+What can I do for you? Enter help to view commands.
+____________________________________________________________
+Looking for save data.
+Save data not found.
+____________________________________________________________
+____________________________________________________________
+General Options:
+  1. items                          Show items-related commands
+  2. items add <item_name>          Add an item
+  3. items list                     List all items
+  4. items delete <item_index>      Delete an item
+  5. items clear                    Empty all items
+  6. items find <item_name>         Find an item
+  7. items update                   Update the detail of an item
+  8. items stats                    Discover the most popular item(s)
+  9. orders                         Show orders-related commands
+  10. orders add <order_name>       Add an order
+  11. orders list                   List all orders
+  12. orders delete <order_index>   Delete an order
+  13. orders clear                  Empty all orders
+  14. orders price <order_index>    Check the total price of an order
+  15. orders done <order_index>     Update the status of an order
+  16. orders find <order_name>      Find an order
+____________________________________________________________
+____________________________________________________________
+Items-Related Options:
+  1. items add <item_name>          Add an item
+  2. items list                     List all items
+  3. items delete <item_index>      Delete an item
+  4. items clear                    Empty all items
+  5. items find <item_name>         Find an item
+  6. items update                   Update the detail of an item
+  7. items stats                    Discover the most popular item(s)
+____________________________________________________________
+____________________________________________________________
+Orders-Related Options:
+  1. orders add <order_name>        Add an order
+  2. orders list                    List all orders
+  3. orders delete <order_index>    Delete an order
+  4. orders clear                   Empty all orders
+  5. orders price <order_index>     Check the total price of an order
+  6. orders done <order_index>      Update the status of an order
+  7. orders find <order_name>       Find an order
+____________________________________________________________
+____________________________________________________________
+Please input item price and stock.
+Input format: <item_price> <item_quantity>.
+____________________________________________________________
+____________________________________________________________
+Got it! The item [pen] is added.
+____________________________________________________________
+____________________________________________________________
+Below is the exhaustive list for all items.
+May I know which item should be updated?
+Please input the index of the item of interest only.
+____________________________________________________________
+Here is the list of items.
+____________________________________________________________
+1. pen, S$13.00, 12
+____________________________________________________________
+____________________________________________________________
+What would you like to update, price or stock? (p/s)
+____________________________________________________________
+____________________________________________________________
+What is the revised item price?
+Enter the same price if you no longer want to update the item price.
+____________________________________________________________
+Please enter the price of the item.
+____________________________________________________________
+____________________________________________________________
+Done! I just updated the item price [15.00] for you.
+____________________________________________________________
+____________________________________________________________
+Done! I just cleared all items for you.
+____________________________________________________________
+____________________________________________________________
+There is no item in the system at the moment.
+Please add at least one item to the system first.
+____________________________________________________________
+____________________________________________________________
+Please input item price and stock.
+Input format: <item_price> <item_quantity>.
+____________________________________________________________
+____________________________________________________________
+Got it! The item [PS5] is added.
+____________________________________________________________
+____________________________________________________________
+Got it! The item [PS5] is deleted.
+____________________________________________________________
+____________________________________________________________
+There is no item in the system at the moment.
+Please add at least one item to the system first.
+____________________________________________________________
+____________________________________________________________
+Please input item price and stock.
+Input format: <item_price> <item_quantity>.
+____________________________________________________________
+____________________________________________________________
+Got it! The item [PS4] is added.
+____________________________________________________________
+____________________________________________________________
+Here is the list of relevant items found.
+____________________________________________________________
+1. PS4, S$299.00, 100
+____________________________________________________________
+____________________________________________________________
+Here is the list of items.
+____________________________________________________________
+1. PS4, S$299.00, 100
+____________________________________________________________
+____________________________________________________________
+Here is the list of items.
+____________________________________________________________
+1. PS4, S$299.00, 100
+____________________________________________________________
+Input the item to be added to this order.
+Input format: <item_index> <item_quantity>
+Type <stop> to stop adding items to order, else continue entering items in the same format.
+Do note that you need at least 1 item in the order for <stop> to work.
+____________________________________________________________
+____________________________________________________________
+PS4 and stock of 2 added to the order.
+____________________________________________________________
+Input the item to be added to this order.
+Input format: <item_index> <item_quantity>
+Type <stop> to stop adding items to order, else continue entering items in the same format.
+Do note that you need at least 1 item in the order for <stop> to work.
+____________________________________________________________
+____________________________________________________________
+Got it! The order for customer [yw] is added.
+____________________________________________________________
+____________________________________________________________
+Done! I just cleared all orders for you.
+____________________________________________________________
+____________________________________________________________
+There is no order at the moment.
+Please add at least one order to the system first.
+____________________________________________________________
+____________________________________________________________
+Here is the list of items.
+____________________________________________________________
+1. PS4, S$299.00, 100
+____________________________________________________________
+Input the item to be added to this order.
+Input format: <item_index> <item_quantity>
+Type <stop> to stop adding items to order, else continue entering items in the same format.
+Do note that you need at least 1 item in the order for <stop> to work.
+____________________________________________________________
+____________________________________________________________
+PS4 and stock of 2 added to the order.
+____________________________________________________________
+Input the item to be added to this order.
+Input format: <item_index> <item_quantity>
+Type <stop> to stop adding items to order, else continue entering items in the same format.
+Do note that you need at least 1 item in the order for <stop> to work.
+____________________________________________________________
+____________________________________________________________
+Got it! The order for customer [ws] is added.
+____________________________________________________________
+____________________________________________________________
+Got it! The order for customer [ws] is deleted.
+____________________________________________________________
+____________________________________________________________
+There is no order at the moment.
+Please add at least one order to the system first.
+____________________________________________________________
+____________________________________________________________
+Here is the list of items.
+____________________________________________________________
+1. PS4, S$299.00, 100
+____________________________________________________________
+Input the item to be added to this order.
+Input format: <item_index> <item_quantity>
+Type <stop> to stop adding items to order, else continue entering items in the same format.
+Do note that you need at least 1 item in the order for <stop> to work.
+____________________________________________________________
+____________________________________________________________
+PS4 and stock of 2 added to the order.
+____________________________________________________________
+Input the item to be added to this order.
+Input format: <item_index> <item_quantity>
+Type <stop> to stop adding items to order, else continue entering items in the same format.
+Do note that you need at least 1 item in the order for <stop> to work.
+____________________________________________________________
+____________________________________________________________
+Got it! The order for customer [zk] is added.
+____________________________________________________________
+____________________________________________________________
+Here is the list of relevant orders found.
+____________________________________________________________
+1.zk
+    1. PS4, S$299.00, 2
+    Total Price : S$598.00
+____________________________________________________________
+____________________________________________________________
+Got it! The order for customer [zk] is completed.
+Generating receipt for customer: zk
+Receipt generated for customer: zk
+Do note that the receipt file can only be accessed when you exit the app.
+____________________________________________________________
+____________________________________________________________
+Save data created as there is no existing save data
+____________________________________________________________
+Save data saved.
+____________________________________________________________
+Bye. Thanks for using easyLog!
+____________________________________________________________
