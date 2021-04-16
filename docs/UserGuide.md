@@ -166,9 +166,7 @@ More examples will be provided for each command in [Section 4 - Features](#4-fea
 ## 4. Features
 
 This section contains all the information about the features of **NUSMaze**.
-You may enter a command into the CLI to use each feature. 
-
-<div style="page-break-after: always;"></div>
+You may enter a command into the CLI to use each feature.
 
 ### 4.1 Viewing Help
 
