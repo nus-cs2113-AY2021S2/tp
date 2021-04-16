@@ -33,6 +33,9 @@
    &nbsp;&nbsp;&nbsp;&nbsp; 4.7.2. [Showing favourite routes](#472-showing-favourite-routes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.7.3. [Repeating favourite routes](#473-repeating-favourite-routes) <br> 
    &nbsp;&nbsp;&nbsp;&nbsp; 4.7.4. [Deleting favourite routes](#474-deleting-favourite-routes) <br>
+   
+   <div style="page-break-after: always;"></div>
+   
    4.8. [Notes](#48-notes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.8.1. [Adding notes](#481-adding-notes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.8.2. [Showing notes](#482-showing-notes) <br>
@@ -126,9 +129,12 @@ The table below explains some technical terms that you may come across throughou
 | Command word| The Command word refers to the keywords which NUSMaze recognises to invoke specific commands. These command words will be indicated by `COMMAND WORD` in the various sections below.|
 |Parameter|Parameter refers to the user input required after the user is prompted by NUSMaze|
 
+<div style="page-break-after: always;"></div>
+
 #### 3.2.2. General Symbols and Syntax
 
 The table below explains the general syntax used throughout the user guide.
+
 
 | Syntax |  What it means |
 |:----------:|-------------|
@@ -752,6 +758,8 @@ For example if favourite data is corrupted, NUSMaze will display:<br>
 ```
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## 5. FAQ
 
