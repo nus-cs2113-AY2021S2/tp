@@ -88,8 +88,9 @@ This section gives you step-by-step instructions on how to download and open the
    
 6. A CLI similar to Figure 1 below should appear in a few seconds.  <br>
    ![img.png](images/NUSMazecli.png)
-   <p align="center">Figure 1 - CLI of NUSMaze</p>
-
+   <p align="center">Figure 1 - CLI of NUSMaze</p> 
+   <br>
+   
 7. Type your command into the command box at the bottom of the screen, and press Enter on your keyboard to execute it. E.g. typing `help` and pressing Enter will open a help window.<br>
 
 8. Refer to [Section 4 - Features](#4-features) for details on the commands you can use for each feature. <br> <br>
@@ -102,6 +103,7 @@ This section gives you step-by-step instructions on how to download and open the
 |Key in `cmd` and press enter.|Right click on the folder and click on "New Terminal at Folder"|
 
 --------------------------------------------------------------------------------------------------------------------
+
 <div style="page-break-after: always;"></div>
 
 ## 3. About
@@ -158,6 +160,8 @@ More examples will be provided for each command in [Section 4 - Features](#4-fea
 5. In each example, lines starting with * signifies a user input after being prompted by NUSMaze. <br>
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## 4. Features
 
@@ -793,6 +797,7 @@ can be found on the second computer. <br>
 **A** : You can refer to this [map](http://map.nus.edu.sg) to view the directions. <br>
 
 --------------------------------------------------------------------------------------------------------------------
+
 <div style="page-break-after: always;"></div>
 
 ## 6. Command summary
