@@ -27,7 +27,7 @@ your inventory using easyLog. This guide also gives you a step-by-step instructi
 to offer and we have prepared [Frequently Asked Questions (FAQ)](#3-faq) and a concise table of
 [Command Summary](#4-command-summary) for you. We invite you to explore easyLog.
 
-1. Currently supports Windows, macOS and Linux machines which have Java 11 installed. <br>
+1. easyLog currently supports Windows, macOS and Linux machines which have Java 11 installed. <br>
 2. The best-selling item refers to the item which has the most number of sales. That is, the item is added to
    orders for the most number of times. There can be multiple items which are the most popular. This happens when more than
    one item have the most number of sales.
@@ -71,16 +71,16 @@ to offer and we have prepared [Frequently Asked Questions (FAQ)](#3-faq) and a c
 
 ## 1. Quick start
 
-Setting up easyLog is made really easy. It does not even require an installation, and a few simple 
+Setting up easyLog is made really easy. It does not even require an installation and a few simple 
 steps listed below will be good to go.
 
 1. Ensure your device has Java 11 installed.
 
 > To check if you have Java 11 installed, simply type `java --version` in the command terminal of your operating system.
 > <br>
-> For Windows users, you can type `cmd` in the Windows search box before pressing Enter to open the Command Prompt. <br>
-> For macOS users, you can press Command and Space to launch Spotlight and type `Terminal` before pressing Enter. <br>
-> For Ubuntu users, you can press Ctrl + Alt + T to open a terminal window.
+> For Windows users, you can type `cmd` in the Windows search box before pressing `Enter` to open the Command Prompt. <br>
+> For macOS users, you can press `Command` and `Space` to launch Spotlight and type `Terminal` before pressing `Enter`. <br>
+> For Ubuntu users, you can press `Ctrl + Alt + T` to open a terminal window.
 
 2. Download the latest easyLog.jar from [here](https://github.com/AY2021S2-CS2113T-T09-4/tp/releases/v2.1).
 3. Put the downloaded jar file in an empty folder in which easyLog is allowed to create files
@@ -305,7 +305,7 @@ Expected Output:
 
 #### 2.2.8. Discover the most popular item(s): `items stats`
 
-If you would like to gain some useful insights from the orders history since you start using easyLog, the `items stats`
+If you would like to gain some useful insights from the order history since you start using easyLog, the `items stats`
 feature will let you know the most popular item(s) ordered by customers. You will also be reminded to stock up.
 
 Steps to obtain the most popular item(s) in the items list:
@@ -431,7 +431,7 @@ Expected Output:
 In the very unlikely event that all orders are cancelled, instead of deleting them one by one, you can use the
 `orders clear` feature to do it efficiently.
 
-steps to clear the order list:
+Steps to clear the order list:
 1. Input `orders clear` command.
 3. Press enter.
 4. You can see the confirmation message that there is no single order now.
@@ -441,7 +441,7 @@ Note:
 > `orders clear` feature.<br>
 > 📄 Items which belong to the orders cleared will be added back to the inventory. It is the same as executing
 > `orders delete` feature for every order in the order list. <br>
-> 📄 `Orders clear` can make item stock temporarily go more than 1,000,000,000. If it happens, please move them out of
+> 📄 `orders clear` can make item stock temporarily go more than 1,000,000,000. If it happens, please move them out of
 > the inventory due to potentially limited space available.
 
 Expected Output:
@@ -590,7 +590,7 @@ Expected Output:
 > by typing `items add Competitive Programming 4`. <br/>
 >
 > After that, input the **price per item** *(unit price)* and item stock. Please note that the unit price is either zero (free item) or
-> a positive number smaller or equal to 1,000,000,000 while item stock is a positive number smaller or equal to 1000000000.
+> a positive number smaller or equal to 1,000,000,000 while item stock is a positive number smaller or equal to 1,000,000,000.
 > For example, you can enter `20 100`. <br/>
 
 **Q4**: I do not seem to be able to add an order. Why is this so?
@@ -601,7 +601,7 @@ Expected Output:
 > Please note that you need to specify a customer's name as he or she is the one whom the order of interest will be
 > sent to. For instance, you can do this by typing `orders add Alice`. <br/>
 >
-> After that, input the item number found in the item list (if unsure, simply type `items list` to check) and the quantity.
+> After that, input the item index found in the item list (if unsure, simply type `items list` to check) and the quantity.
 > For example, you could type `1 2`.
 
 **Q5**: I am scared that I input any command which I do not intend to execute. Is there a way to revert changes in the
