@@ -92,8 +92,6 @@ This section gives you step-by-step instructions on how to download and open the
 
 7. Type your command into the command box at the bottom of the screen, and press Enter on your keyboard to execute it. E.g. typing `help` and pressing Enter will open a help window.<br>
 
-<div style="page-break-after: always;"></div>
-
 8. Refer to [Section 4 - Features](#4-features) for details on the commands you can use for each feature. <br> <br>
 
 
@@ -547,6 +545,7 @@ Route: E7 -> E6 -> EW2 -> E4A -> E4 -> E3 -> E2 -> EA
 
 > :warning: The `DAY_NUMBER` must be the index of one of the available days which has been displayed. <br>
 
+<div style="page-break-after: always;"></div>
 
 #### 4.6.3 Deleting daily routes
 
@@ -611,6 +610,8 @@ Here are your favourite routes:
 1. EA -> E4
 ------------------------------------------------------------------------------------------------------------
 ```
+
+<div style="page-break-after: always;"></div>
 
 #### 4.7.3 Repeating favourite routes
 You can execute and obtain the route to take for your favourite routes.<br>
