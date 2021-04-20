@@ -55,9 +55,9 @@ public class Storage {
 
     private void loadResources() {
         String[] files = {"LoginInfo.txt",
-                          "12312@gmail.com.json",
-                          "test@gmail.com.json",
-                          "test@yahoo.com.json"
+                "12312@gmail.com.json",
+                "test@gmail.com.json",
+                "test@yahoo.com.json"
         };
 
         for (String file : files) {
