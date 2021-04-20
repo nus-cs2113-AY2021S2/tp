@@ -1,0 +1,62 @@
+@startuml
+
+hide circle
+skinparam classAttributeIconSize 0
+
+class utilities.Ui {
+- in: Scanner
+- out: PrintStream
++ void printDivider()
++ String getUserInput()
++ String getResetPsw()
++ void printComposeUI()
++ void printEditEmail()
++ void printEmailDrafted(Email email)
++ void printEmailSent(Email email)
++ void printEmailsSorted(String sortType)
++ void printEmailEdited(String editType)
++ void printFeedback(String feedback)
++ void printMenu()
++ void printNumberOfEmails(int totalEmails, String emailType)
++ String printTag()
++ void showInvalidIdMessage(String type)
++ void showMessageForInvalidCommandInput()
++ void showInvalidListTypeMessage()
++ void showMessageForInvalidSortTypeInput()
++ void showMessageForInvalidEditTypeInput()
++ void showMessageForEmptySortType()
++ void showMessageForIndexOutOfBoundsException()
++ void printErrorMessage(String... messages)
+}
+
+class utilities.Storage {
+- fileName: String
+- filePath: String
+- pwd: String
+- emailAccount: String
++ String getEmailAccount()
++ String getPwd()
++ ArrayList<Email> load()
++ JSONObject readJson()
++ ArrayList<Email> parse(JSONObject jsonObject)
+- ArrayList<String> getToArrayList(JSONArray toList)
++ String getPassword(JSONObject jsonObject)
++ void changePwd(String newPassword)
++ void updateAllTypeEmails(ArrayList<Email> emails)
+- JSONObject createJsonObj(Email email)
+- <T> void updateEmails(String key, T newValue)
+- void createJsonFile(File file)
+}
+
+class utilities.Parser {
+- cmd: Command
++ Command getCmd()
++ void parse(String userInputString)
++ int extractIndex(String userInput)
++ String removeCommand(String userInput)
++ int[] extractMultipleIndices(String userInput)
++ ArrayList<Email> getTypeToList(EmailManager emailManager, String userInput)
++ ArrayList<String> parseRecipients(String recipientsString)
+}
+
+@enduml

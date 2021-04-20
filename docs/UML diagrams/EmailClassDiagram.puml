@@ -1,0 +1,92 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+hide circle
+hide empty members
+skinparam classAttributeIconSize 0
+
+package email <<Rectangle>>{
+class Email
+class Archive
+class Deleted
+class Draft
+class EmailManager
+class Inbox
+class Junk
+class Sent
+}
+class Command
+
+class Email {
+- from: String
+- to: ArrayList<String>
+- subject: String
+- time: String
+- content: String
+- isRead: boolean
+- tags: ArrayList<String>
++ boolean isRead()
++ void setRead(boolean isRead)
++ String getFrom()
++ void setFrom(String from)
++ String getTo()
++ void setTo(ArrayList<String> to)
++ String getSubject()
++ void setSubject(String subject)
++ String getTime()
++ void setTime(String time)
++ String getContent()
++ void setContent(String content)
+- String getStatus()
++ String toString()
++ String getShortDescription()
++ ArrayList<String> getTags()
++ void setTags(int[] indices)
+}
+
+class EmailManager {
+- emailsList: ArrayList<Email>
+- listedEmailsList: ArrayList<Email>
+- listedType: String
++ static ArrayList<Email> getEmailsList()
++ int getNumOfEmails()
++ int getNumOfArchiveEmails()
++ int getNumOfDeletedEmails()
++ int getNumOfDraftEmails()
++ int getNumOfInboxEmails()
++ int getNumOfJunkEmails()
++ int getNumOfSentEmails()
++ void printEmailByType(ArrayList<Email>)
++ void setListedType(String emailType)
++ String getListedType()
++ void sortBySender()
++ void sortByTime()
++ static ArrayList<Email> getArchivedEmails()
++ static ArrayList<Email> getDeletedEmails()
++ static ArrayList<Email> getDraftEmails()
++ static ArrayList<Email> getInboxEmails()
++ static ArrayList<Email> getJunkEmails()
++ static ArrayList<Email> getSentEmails()
++ static ArrayList<Email> getAllEmails()
++ static ArrayList<Email> getListedEmailsList()
++ void deleteEmail(Email)
++ void addToDeleted(Email)
++ void addToSent(Email)
++ void addToArchive(Email)
++ void addToDraft(Email)
++ void addToInbox(Email)
++ ArrayList<Email> findByString(ArrayList<Email> emails, String filterString)
+
+}
+
+Archive ---|> Email
+Deleted ---|> Email
+Draft ---|> Email
+Inbox ---|> Email
+Junk ---|> Email
+Sent ---|> Email
+EmailManager "1" *---> "*" Email: contains
+Command --left-> Email: uses
+Command --left-> EmailManager: uses
+
+@enduml

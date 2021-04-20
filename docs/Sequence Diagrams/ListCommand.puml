@@ -1,0 +1,25 @@
+@startuml
+participant " :Actor"
+
+hide footbox
+
+" :Actor" -> ":ListCommand" : execute( )
+activate ":ListCommand"
+
+
+":ListCommand" -> "<<class>>\n:Parser" : getTypeToList( )
+activate "<<class>>\n:Parser"
+
+"<<class>>\n:Parser" --> ":ListCommand"
+deactivate "<<class>>\n:Parser"
+
+":ListCommand" -> ":EmailManager" : printEmailByType( )
+activate ":EmailManager"
+
+":EmailManager" --> ":ListCommand"
+deactivate ":EmailManager"
+
+
+
+return
+@enduml

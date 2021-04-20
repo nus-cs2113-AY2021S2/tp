@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+actor user
+participant ":Ui" as Ui
+participant ":Command" as Command
+participant ":Email" as Email
+participant ":Storage" as Storage
+hide footbox
+
+user -> Ui: "help"
+activate Ui
+Ui -> Command: execute()
+activate Command
+
+Command -> Email :deleteEmail(email)
+activate Email
+Email -> Command
+deactivate Email
+
+Command -> Storage: update(emailList)
+activate Storage
+
+Storage -> Storage: save to hard disk
+activate Storage
+Storage -> Storage
+deactivate Storage
+
+Storage -> Command
+deactivate Storage
+Command -> Ui
+deactivate Command
+Ui -> user
+deactivate Ui
+
+@enduml
